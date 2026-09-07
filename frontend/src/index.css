@@ -1,3 +1,13 @@
+/*
+  قلم‌ها محلی‌اند، نه از Google Fonts.
+
+  چرا: این برنامه به‌صورت نصب‌شونده روی رایانهٔ کاربر اجرا می‌شود و ممکن است
+  هیچ دسترسی اینترنتی نداشته باشد. با قلمِ راه‌دور، متن فارسی به قلم پیش‌فرض
+  سیستم برمی‌گشت و کل هویت بصری اپ از بین می‌رفت.
+*/
+@import "@fontsource-variable/vazirmatn/index.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -76,7 +86,7 @@
 
   body {
     margin: 0;
-    font-family: "Vazirmatn", system-ui, sans-serif;
+    font-family: "Vazirmatn Variable", "Vazirmatn", system-ui, sans-serif;
     background-color: rgb(var(--bg));
     color: rgb(var(--fg));
     -webkit-font-smoothing: antialiased;
@@ -89,7 +99,7 @@
   code,
   pre,
   kbd {
-    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-family: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
     font-feature-settings: "liga" 0;
   }
 

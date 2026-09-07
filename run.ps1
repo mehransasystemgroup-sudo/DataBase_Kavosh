@@ -240,7 +240,7 @@ if ($Rebuild -and (Test-Path $IndexFile)) {
 if (-not (Test-Path $IndexFile)) {
     Write-Info 'ساخت ایندکس از kb/ — این گام یک‌بار انجام می‌شود و کمی طول می‌کشد…'
     Invoke-External -FilePath $VenvPython `
-                    -Arguments @('scripts/build_index.py', '--kb', 'kb', '--out', 'index/kb.sqlite', '--instance', 'instances/live') `
+                    -Arguments @('-m', 'core.indexer', '--kb', 'kb', '--out', 'index/kb.sqlite', '--instance', 'instances/live') `
                     -WorkingDirectory $BackendDir `
                     -FailureMessage 'ساخت ایندکس ناموفق بود.'
 } else {

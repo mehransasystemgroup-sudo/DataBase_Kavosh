@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import asyncio
 import os
-import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -26,31 +25,35 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from core.search import KnowledgeBase          # noqa: E402
-from core.writer import KnowledgeWriter        # noqa: E402
+from app.console import setup as setup_console                 # noqa: E402
+from app.paths import bundle_root, data_root, seed_data_dir   # noqa: E402
+from core import indexer                                      # noqa: E402
+from core.search import KnowledgeBase                         # noqa: E402
+from core.writer import KnowledgeWriter                       # noqa: E402
 
-KB_ROOT = Path(os.environ.get("KB_ROOT", ROOT / "kb"))
-INDEX = Path(os.environ.get("KB_INDEX", ROOT / "index" / "kb.sqlite"))
-INSTANCE = Path(os.environ.get("KB_INSTANCE", ROOT / "instances" / "live"))
-STATIC_DIR = Path(os.environ.get("STATIC_DIR", ROOT / "static"))
-BUILD_SCRIPT = ROOT / "scripts" / "build_index.py"
+# پیش از هر خروجی: بدون این، اولین پیام فارسی روی کنسول ویندوز برنامه را
+# با UnicodeEncodeError می‌کُشد و سرور اصلاً بالا نمی‌آید.
+setup_console()
 
+BUNDLE = bundle_root()
+DATA = data_root()
+seed_data_dir(DATA, BUNDLE)
 
-def _ensure_index() -> None:
-    """ایندکس مصنوعی مشتق است — اگر نبود، همین‌جا از kb/ ساخته می‌شود."""
-    if INDEX.exists():
-        return
-    print(f"ایندکس یافت نشد؛ ساخت از {KB_ROOT} …", flush=True)
-    cmd = [sys.executable, str(BUILD_SCRIPT), "--kb", str(KB_ROOT), "--out", str(INDEX)]
-    if INSTANCE.exists():
-        cmd += ["--instance", str(INSTANCE)]
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    if result.returncode != 0:
-        sys.exit(f"✖ ساخت ایندکس شکست خورد:\n{result.stdout}\n{result.stderr}")
-    print(result.stdout, flush=True)
+KB_ROOT = Path(os.environ.get("KB_ROOT", DATA / "kb"))
+INDEX = Path(os.environ.get("KB_INDEX", DATA / "index" / "kb.sqlite"))
+INSTANCE = Path(os.environ.get("KB_INSTANCE", DATA / "instances" / "live"))
+STATIC_DIR = Path(os.environ.get("STATIC_DIR", BUNDLE / "static"))
 
 
-_ensure_index()
+def _build_index() -> None:
+    """ساخت ایندکس از kb/ — درون همین فرایند، بدون زیرفرایند."""
+    indexer.build(KB_ROOT, INDEX, INSTANCE if INSTANCE.exists() else None)
+
+
+INDEX.parent.mkdir(parents=True, exist_ok=True)
+if not INDEX.exists():
+    print(f"ایندکس یافت نشد؛ ساخت از {KB_ROOT} — یک بار و چند ثانیه…", flush=True)
+    _build_index()
 
 kb = KnowledgeBase(INDEX)
 writer = KnowledgeWriter(KB_ROOT)
@@ -183,8 +186,16 @@ def knowledge(body: KnowledgeIn) -> dict:
         raise HTTPException(400, f"پارامترهای نادرست: {e}") from e
     except Exception as e:
         raise HTTPException(400, str(e)) from e
-    return {"ok": True, "message": message,
-            "note": "برای اعمال در جست‌وجو، ایندکس را بازسازی کنید."}
+    # منبع حقیقت YAML است، ولی همان تغییر بی‌درنگ روی ایندکس زنده هم می‌نشیند
+    # تا کاربر نتیجهٔ کار خودش را فوراً در جست‌وجو ببیند.
+    try:
+        kb.apply_learned(body.kind, body.payload)
+        applied = True
+    except Exception:
+        applied = False
+
+    return {"ok": True, "message": message, "applied": applied,
+            "note": "" if applied else "برای اعمال در جست‌وجو، ایندکس را بازسازی کنید."}
 
 
 @app.post("/api/index/rebuild")
@@ -199,23 +210,19 @@ async def rebuild_index() -> dict:
         return {"ok": False, "error": "بازسازی هم‌اکنون در جریان است."}
     INDEX_STATE["building"] = True
 
-    def run() -> subprocess.CompletedProcess:
-        cmd = [sys.executable, str(BUILD_SCRIPT), "--kb", str(KB_ROOT),
-               "--out", str(INDEX)]
-        if INSTANCE.exists():
-            cmd += ["--instance", str(INSTANCE)]
-        return subprocess.run(cmd, capture_output=True, text=True, timeout=900)
-
+    # ساخت ایندکس چند ثانیه CPU می‌برد؛ در اجراکنندهٔ جداگانه می‌رود تا حلقهٔ
+    # رویداد قفل نشود. اتصال هم باید بسته شود، وگرنه ویندوز اجازهٔ جایگزینی
+    # فایلِ باز را نمی‌دهد.
     try:
-        r = await asyncio.get_running_loop().run_in_executor(None, run)
-        INDEX_STATE["log"] = (r.stdout or r.stderr)[-1500:]
+        kb.close()
+        await asyncio.get_running_loop().run_in_executor(None, _build_index)
+        kb.reload()          # پیش از خواندن آمار، وگرنه روی اتصال بسته می‌افتیم
         INDEX_STATE["last"] = datetime.now().isoformat(timespec="seconds")
-        if r.returncode != 0:
-            return {"ok": False, "error": INDEX_STATE["log"]}
-        kb.reload()
+        INDEX_STATE["log"] = "ایندکس با موفقیت از kb/ بازساخته شد."
         return {"ok": True, "log": INDEX_STATE["log"], "at": INDEX_STATE["last"],
                 "kb": kb.stats()}
     except Exception as e:
+        kb.reload()
         return {"ok": False, "error": str(e)}
     finally:
         INDEX_STATE["building"] = False
@@ -243,10 +250,49 @@ if STATIC_DIR.is_dir():
         return FileResponse(STATIC_DIR / "index.html")
 
 
+def _free_port(host: str, preferred: int) -> int:
+    """
+    اولین پورت آزاد از پورت دلخواه به بعد.
+
+    یک برنامهٔ رومیزی نباید فقط به این دلیل که پورتی اشغال است بالا نیاید؛
+    اگر ۸۳۲۱ گرفته باشد، ۸۳۲۲ را امتحان می‌کند و همین‌طور تا بیست پورت بعد.
+    """
+    import socket
+
+    for candidate in range(preferred, preferred + 20):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as probe:
+            probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            try:
+                probe.bind((host, candidate))
+                return candidate
+            except OSError:
+                continue
+    raise SystemExit(f"هیچ پورت آزادی بین {preferred} تا {preferred + 19} پیدا نشد.")
+
+
 def main() -> None:
+    import threading
+    import webbrowser
+
     import uvicorn
-    uvicorn.run(app, host=os.environ.get("HOST", "127.0.0.1"),
-                port=int(os.environ.get("PORT", "8321")))
+
+    host = os.environ.get("HOST", "127.0.0.1")
+    port = _free_port(host, int(os.environ.get("PORT", "8321")))
+    url = f"http://{host}:{port}"
+
+    print()
+    print("  کاوشگر پایگاه داده  ·  DataBase Kavosh")
+    print("  " + "─" * 42)
+    print(f"  {url}")
+    print(f"  داده‌ها: {DATA}")
+    print("  برای بستن برنامه، این پنجره را ببندید یا Ctrl+C بزنید.")
+    print()
+
+    if os.environ.get("KAVOSH_NO_BROWSER") != "1":
+        # مرورگر با کمی تأخیر باز می‌شود تا به صفحهٔ «اتصال برقرار نشد» نخورد
+        threading.Timer(1.5, lambda: webbrowser.open(url)).start()
+
+    uvicorn.run(app, host=host, port=port, log_level="warning")
 
 
 if __name__ == "__main__":

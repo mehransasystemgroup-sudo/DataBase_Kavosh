@@ -31,8 +31,8 @@ function Field({ label, hint, children }) {
 /**
  * ثبت دانش کاربر روی جدول.
  *
- * آنچه کاربر می‌گوید در KB با اطمینان بالا ذخیره می‌شود، ولی تا بازسازی
- * ایندکس در جست‌وجو دیده نمی‌شود — همین را هم صریح به کاربر می‌گوییم.
+ * آنچه کاربر می‌گوید در KB با اطمینان بالا ذخیره می‌شود و هم‌زمان روی ایندکس
+ * زنده می‌نشیند، پس بی‌درنگ در جست‌وجو دیده می‌شود.
  */
 export default function TeachDialog({ table, onDone }) {
   const [open, setOpen] = useState(false);
@@ -47,7 +47,9 @@ export default function TeachDialog({ table, onDone }) {
     try {
       const { data } = await http.post("/knowledge", { kind, payload });
       toast.success(data.message || successText, {
-        description: "برای دیده‌شدن در جست‌وجو، ایندکس را بازسازی کنید.",
+        description: data.applied
+          ? "هم‌اکنون در جست‌وجو فعال است."
+          : data.note || undefined,
       });
       setOpen(false);
       onDone?.();

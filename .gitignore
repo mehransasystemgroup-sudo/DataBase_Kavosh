@@ -17,3 +17,8 @@ backend/kb/audit.log
 
 # سیستم‌عامل
 .DS_Store
+
+# خروجی بسته‌بندی ویندوز (PyInstaller / Inno Setup)
+/dist/
+/build/
+packaging/output/
