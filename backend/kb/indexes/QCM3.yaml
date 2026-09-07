@@ -1,0 +1,1240 @@
+schema: QCM3
+source: extracted
+indexes:
+- table: InspectionCharacteristic
+  name: PK_InspectionCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionCharacteristicID
+- table: InspectionCharacteristic
+  name: UIX_QCM3_InspectionCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: InspectionCharacteristic
+  name: IX_QCM3_InspectionCharacteristic_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: InspectionCharacteristicInspectionMethod
+  name: PK_InspectionCharacteristicInspectionMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionCharacteristicInspectionMethodID
+- table: InspectionCharacteristicInspectionMethod
+  name: UIX_QCM3_InspectionCharacteristicInspectionMethod_InspectionMethodRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionMethodRef
+  - InspectionCharacteristicRef
+- table: InspectionCharacteristicInspectionMethod
+  name: IX_QCM3_InspectionCharacteristicInspectionMethod_InspectionCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicRef
+- table: InspectionCharacteristicRelatedDefectGroup
+  name: PK_InspectionCharacteristicRelatedDefectGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionCharacteristicRelatedDefectGroupID
+- table: InspectionCharacteristicRelatedDefectGroup
+  name: IX_QCM3_InspectionCharacteristicRelatedDefectGroup_InspectionCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicRef
+- table: InspectionCharacteristicRelatedDefectGroup
+  name: IX_QCM3_InspectionCharacteristicRelatedDefectGroup_EntityGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityGroupRef
+- table: InspectionDocumentRules
+  name: PK_InspectionDocumentRules
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionDocumentRulesID
+- table: InspectionDocumentRules
+  name: UIX_QCM3_InspectionDocumentRules_InspectionDocumentType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionDocumentType
+- table: InspectionDocumentRulesEvaluation
+  name: PK_InspectionDocumentRulesEvaluation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionDocumentRulesEvaluationID
+- table: InspectionLot
+  name: PK_InspectionLot
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionLotID
+- table: InspectionLot
+  name: IX_QCM3_InspectionLot_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: InspectionLot
+  name: IX_QCM3_InspectionLot_InspectionPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanRef
+- table: InspectionLot
+  name: IX_QCM3_InspectionLot_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: InspectionLot
+  name: IX_QCM3_InspectionLot_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionLot
+  name: IX_QCM3_InspectionLot_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: InspectionLot
+  name: IX_QCM3_InspectionLot_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: InspectionLot
+  name: IX_QCM3_InspectionLot_QualityInspectionResultRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - QualityInspectionResultRef
+- table: InspectionLot
+  name: IX_QCM3_InspectionLot_InspectionDocumentRulesEvaluationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionDocumentRulesEvaluationRef
+- table: InspectionLotInventoryVoucherItemTrackingFactor
+  name: PK_QCM3_InspectionLotInventoryVoucherItemTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionLotInventoryVoucherItemTrackingFactorID
+- table: InspectionLotInventoryVoucherItemTrackingFactor
+  name: UIX_QCM3_InspectionLotInventoryVoucherItemTrackingFactor_InspectionLotRef_InventoryVoucherItemTrackingFactorRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionLotRef
+  - InventoryVoucherItemTrackingFactorRef
+- table: InspectionLotOperation
+  name: PK_InspectionLotOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionLotOperationID
+- table: InspectionLotOperation
+  name: IX_QCM3_InspectionLotOperation_InspectionLotRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionLotRef
+- table: InspectionLotOperation
+  name: IX_QCM3_InspectionLotOperation_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: InspectionLotOperation
+  name: IX_QCM3_InspectionLotOperation_InspectionPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointRef
+- table: InspectionLotOperation
+  name: IX_QCM3_InspectionLotOperation_InspectionDocumentRulesEvaluationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionDocumentRulesEvaluationRef
+- table: InspectionLotOperationCharacteristic
+  name: PK_InspectionLotOperationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionLotOperationCharacteristicID
+- table: InspectionLotOperationCharacteristic
+  name: IX_QCM3_InspectionLotOperationCharacteristic_InspectionCharacteristicInspectionMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicInspectionMethodRef
+- table: InspectionLotOperationCharacteristic
+  name: IX_QCM3_InspectionLotOperationCharacteristic_InspectionCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicRef
+- table: InspectionLotOperationCharacteristic
+  name: IX_QCM3_InspectionLotOperationCharacteristic_InspectionPointValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointValueRef
+- table: InspectionLotOperationCharacteristicExtraTargetValue
+  name: PK_QCM3_InspectionLotOperationCharacteristicExtraTargetValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionLotOperationCharacteristicExtraTargetValueID
+- table: InspectionLotOperationCharacteristicExtraTargetValue
+  name: IX_QCM3_InspectionLotOperationCharacteristicExtraTargetValue_InspectionLotOperationCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionLotOperationCharacteristicRef
+- table: InspectionLotOperationResourceToolAssignment
+  name: PK_InspectionLotOperationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionLotOperationResourceToolAssignmentID
+- table: InspectionLotOperationResourceToolAssignment
+  name: IX_QCM3_InspectionLotOperationResourceToolAssignment_InspectionLotOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionLotOperationRef
+- table: InspectionLotOperationResourceToolAssignment
+  name: IX_QCM3_InspectionLotOperationResourceToolAssignment_InspectionLotOperationCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionLotOperationCharacteristicRef
+- table: InspectionLotOperationResourceToolAssignment
+  name: IX_QCM3_InspectionLotOperationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: InspectionLotOperationResourceToolAssignment
+  name: IX_QCM3_InspectionLotOperationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionLotOperationResourceToolAssignment
+  name: IX_QCM3_InspectionLotOperationResourceToolAssignment_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: InspectionLotOperationResourceToolAssignment
+  name: IX_QCM3_InspectionLotOperationResourceToolAssignment_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: InspectionLotOperationRTAExtension
+  name: PK_QCM3_InspectionLotOperationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionLotOperationRTAExtensionID
+- table: InspectionLotOperationRTAExtension
+  name: IX_QCM3_InspectionLotOperationRTAExtension_InspectionLotOperationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionLotOperationResourceToolAssignmentRef
+- table: InspectionMethod
+  name: PK_InspectionMethodID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionMethodID
+- table: InspectionMethod
+  name: UIX_QCM3_InspectionMethod_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: InspectionMethod
+  name: IX_QCM3_InspectionMethod_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: InspectionMethod
+  name: IX_QCM3_InspectionMethod_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: InspectionPlan
+  name: PK_InspectionPlanID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPlanID
+- table: InspectionPlan
+  name: UIX_QCM3_InspectionPlan_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: InspectionPlan
+  name: IX_QCM3_InspectionPlan_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: InspectionPlan
+  name: IX_QCM3_InspectionPlan_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: InspectionPlan
+  name: IX_QCM3_InspectionPlan_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: InspectionPlan
+  name: IX_QCM3_InspectionPlan_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: InspectionPlanOperation
+  name: PK_InspectionPlanOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPlanOperationID
+- table: InspectionPlanOperation
+  name: IX_QCM3_InspectionPlanOperation_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: InspectionPlanOperation
+  name: IX_QCM3_InspectionPlanOperation_InspectionPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointRef
+- table: InspectionPlanOperation
+  name: UIX_QCM3_InspectionPlanOperation_InspectionPlanRefTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionPlanRef
+  - Title
+- table: InspectionPlanOperationCharacteristic
+  name: PK_InspectionPlanOperationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPlanOperationCharacteristicID
+- table: InspectionPlanOperationCharacteristic
+  name: IX_QCM3_InspectionPlanOperationCharacteristic_InspectionCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicRef
+- table: InspectionPlanOperationCharacteristic
+  name: IX_QCM3_InspectionPlanOperationCharacteristic_InspectionCharacteristicInspectionMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicInspectionMethodRef
+- table: InspectionPlanOperationCharacteristic
+  name: UIX_QCM3_InspectionPlanOperationCharacteristic_InspectionPlanOperationRefInspectionCharacteristicRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionPlanOperationRef
+  - InspectionCharacteristicRef
+- table: InspectionPlanOperationCharacteristic
+  name: IX_QCM3_InspectionPlanOperationCharacteristic_SamplingUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SamplingUnitRef
+- table: InspectionPlanOperationCharacteristic
+  name: IX_QCM3_InspectionPlanOperationCharacteristic_SamplingProcedureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SamplingProcedureRef
+- table: InspectionPlanOperationCharacteristicDependentValue
+  name: PK_QCM3_InspectionPlanOperationCharacteristicDependentValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPlanOperationCharacteristicDependentValueID
+- table: InspectionPlanOperationCharacteristicDependentValue
+  name: IX_QCM3_InspectionPlanOperationCharacteristicDependentValue_InspectionPlanOperationCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanOperationCharacteristicRef
+- table: InspectionPlanOperationCharacteristicDependentValue
+  name: IX_QCM3_InspectionPlanOperationCharacteristicDependentValue_InspectionCharacteristicInspectionMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicInspectionMethodRef
+- table: InspectionPlanOperationCharacteristicDependentValue
+  name: IX_QCM3_InspectionPlanOperationCharacteristicDependentValue_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: InspectionPlanOperationCharacteristicDependentValue
+  name: IX_QCM3_InspectionPlanOperationCharacteristicDependentValue_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionPlanOperationCharacteristicExtraTargetValue
+  name: PK_QCM3_InspectionPlanOperationCharacteristicExtraTargetValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPlanOperationCharacteristicExtraTargetValueID
+- table: InspectionPlanOperationCharacteristicExtraTargetValue
+  name: IX_QCM3_InspectionPlanOperationCharacteristicExtraTargetValue_InspectionPlanOperationCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanOperationCharacteristicRef
+- table: InspectionPlanOperationResourceToolAssignment
+  name: PK_InspectionPlanOperationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPlanOperationResourceToolAssignmentID
+- table: InspectionPlanOperationResourceToolAssignment
+  name: IX_QCM3_InspectionPlanOperationResourceToolAssignment_InspectionPlanOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanOperationRef
+- table: InspectionPlanOperationResourceToolAssignment
+  name: IX_QCM3_InspectionPlanOperationResourceToolAssignment_InspectionPlanOperationCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanOperationCharacteristicRef
+- table: InspectionPlanOperationResourceToolAssignment
+  name: IX_QCM3_InspectionPlanOperationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: InspectionPlanOperationResourceToolAssignment
+  name: IX_QCM3_InspectionPlanOperationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionPlanOperationResourceToolAssignment
+  name: IX_QCM3_InspectionPlanOperationResourceToolAssignment_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: InspectionPlanOperationResourceToolAssignment
+  name: IX_QCM3_InspectionPlanOperationResourceToolAssignment_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: InspectionPlanOperationRTAExtension
+  name: PK_QCM3_InspectionPlanOperationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPlanOperationRTAExtensionID
+- table: InspectionPlanOperationRTAExtension
+  name: IX_QCM3_InspectionPlanOperationRTAExtension_InspectionPlanOperationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanOperationResourceToolAssignmentRef
+- table: InspectionPlanPart
+  name: PK_InspectionPlanPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPlanPartID
+- table: InspectionPlanPart
+  name: IX_QCM3_InspectionPlanPart_InspectionPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanRef
+- table: InspectionPlanPart
+  name: IX_QCM3_InspectionPlanPart_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionPoint
+  name: PK_QCM3_InspectionPoint
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPointID
+- table: InspectionPoint
+  name: UIX_QCM3_InspectionPoint_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: InspectionPointCharacteristic
+  name: PK_QCM3_InspectionPointCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPointCharacteristicID
+- table: InspectionPointCharacteristic
+  name: IX_QCM3_InspectionPointCharacteristic_InspectionPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointRef
+- table: InspectionPointCharacteristic
+  name: IX_QCM3_InspectionPointCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: InspectionPointCharacteristicDefaultValue
+  name: PK_InspectionPointCharacteristicDefaultValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPointCharacteristicDefaultValueID
+- table: InspectionPointCharacteristicDefaultValue
+  name: IX_QCM3_InspectionPointCharacteristicDefaultValue_InspectionPointCharacteristicRefValue
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionPointCharacteristicRef
+  - Value
+- table: InspectionPointCharacteristicValue
+  name: PK_QCM3_InspectionPointCharacteristicValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPointCharacteristicValueID
+- table: InspectionPointCharacteristicValue
+  name: IX_QCM3_InspectionPointCharacteristicValue_InspectionPointCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointCharacteristicRef
+- table: InspectionPointCharacteristicValue
+  name: IX_QCM3_InspectionPointCharacteristicValue_InspectionPointValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointValueRef
+- table: InspectionPointValue
+  name: PK_QCM3_InspectionPointValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPointValueID
+- table: InspectionPointValue
+  name: IX_QCM3_InspectionPointValue_InspectionPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointRef
+- table: InspectionPointValue
+  name: IX_QCM3_InspectionPointValue_InspectionLotOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionLotOperationRef
+- table: InspectionPointValue
+  name: IX_QCM3_InspectionPointValue_InspectionDocumentRulesEvaluationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionDocumentRulesEvaluationRef
+- table: InspectionPointValue
+  name: IX_QCM3_InspectionPointValue_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: InspectionSchedule
+  name: PK_QCM3_InspectionScheduleID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionScheduleID
+- table: InspectionScheduleItem
+  name: PK_QCM3_InspectionScheduleItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionScheduleItemID
+- table: InspectionScheduleItem
+  name: IX_QCM3_InspectionScheduleItme_InspectionScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionScheduleRef
+- table: InventoryInspectionDocumentRules
+  name: PK_InventoryInspectionDocumentRules
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryInspectionDocumentRulesID
+- table: InventoryInspectionDocumentRules
+  name: UIX_QCM3_InventoryInspectionDocumentRules_InspectionDocumentRulesRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionDocumentRulesRef
+- table: LogicalOperatorMapping
+  name: PK_QCM3_LogicalOperatorMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LogicalOperatorMappingID
+- table: LogicalOperatorMappingOperator
+  name: PK_QCM3_LogicalOperatorMappingOperator
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LogicalOperatorMappingOperatorID
+- table: LogicalOperatorMappingOperator
+  name: IX_QCM3_LogicalOperatorMappingOperator_LogicalOperatorMappingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LogicalOperatorMappingRef
+- table: LogicalOperatorMappingOperatorNotation
+  name: PK_QCM3_LogicalOperatorMappingOperatorNotation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LogicalOperatorMappingOperatorNotationID
+- table: LogicalOperatorMappingOperatorNotation
+  name: IX_QCM3_LogicalOperatorMappingOperatorNotation_LogicalOperatorMappingOperatorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LogicalOperatorMappingOperatorRef
+- table: PartQualityControlExtension
+  name: PK_QCM_PartQualityControlExtensionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartQualityControlExtensionID
+- table: PartQualityControlInspectionPlanExtension
+  name: PK_QCM_PartQualityControlInspectionPlanExtensionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartQualityControlInspectionPlanExtensionID
+- table: PartQualityControlInspectionPlanExtension
+  name: IX_QCM3_PartQualityControlInspectionPlanExtension_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: PartQualityControlInspectionPlanExtension
+  name: IX_QCM3_PartQualityControlInspectionPlanExtension_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PartQualityControlInspectionPlanExtension
+  name: IX_QCM3_PartQualityControlInspectionPlanExtension_PartQualityControlExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartQualityControlExtensionRef
+- table: PartQualityControlInspectionPlanExtension
+  name: IX_QCM3_PartQualityControlInspectionPlanExtension_InspectionPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanRef
+- table: PartSupplierProfile
+  name: PK_PartSupplierProfileID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartSupplierProfileID
+- table: PartSupplierProfile
+  name: IX_QCM3_PartSupplierProfile_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PartSupplierProfile
+  name: IX_QCM3_PartSupplierProfile_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: PartSupplierProfile
+  name: IX_QCM3_PartSupplierProfile_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: PartSupplierProfile
+  name: IX_QCM3_PartSupplierProfile_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PartSupplierProfileCharacteristic
+  name: PK_PartSupplierProfileCharacteristicID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartSupplierProfileCharacteristicID
+- table: PartSupplierProfileCharacteristic
+  name: IX_QCM3_PartSupplierProfileCharacteristic_PartSupplierProfileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartSupplierProfileRef
+- table: PartSupplierProfileCharacteristic
+  name: IX_QCM3_PartSupplierProfileCharacteristic_InspectionCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicRef
+- table: PartSupplierProfileCharacteristicHistory
+  name: PK_PartSupplierProfileCharacteristicHistoryID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartSupplierProfileCharacteristicHistoryID
+- table: PartSupplierProfileCharacteristicHistory
+  name: IX_QCM3_PartSupplierProfileCharacteristicHistory_PartSupplierProfileCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartSupplierProfileCharacteristicRef
+- table: PartSupplierProfileCharacteristicHistory
+  name: IX_QCM3_PartSupplierProfileCharacteristicHistory_InspectionCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCharacteristicRef
+- table: PartSupplierProfileCharacteristicHistory
+  name: IX_QCM3_PartSupplierProfileCharacteristicHistory_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PartSupplierProfileCharacteristicInspectionResult
+  name: PK_PartSupplierProfileCharacteristicInspectionResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartSupplierProfileCharacteristicInspectionResultID
+- table: PartSupplierProfileCharacteristicInspectionResult
+  name: IX_QCM3_PartSupplierProfileCharacteristicInspectionResult_PartSupplierProfileCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartSupplierProfileCharacteristicRef
+- table: QualityInspectionResult
+  name: PK_QCM3_QualityInspectionResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QualityInspectionResultID
+- table: QualityInspectionResult
+  name: IX_QCM3_QualityInspectionResult_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: QualityInspectionResult
+  name: IX_QCM3_QualityInspectionResult_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: QualityInspectionResultItem
+  name: PK_QCM3_QualityInspectionResultItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QualityInspectionResultItemID
+- table: QualityInspectionResultItemTrackingFactor
+  name: PK_QCM3_QualityInspectionResultItemTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QualityInspectionResultItemTrackingFactorID
+- table: ResultRecording
+  name: PK_ResultRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResultRecordingID
+- table: ResultRecording
+  name: IX_QCM3_ResultRecording_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ResultRecording
+  name: IX_QCM3_ResultRecording_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ResultRecording
+  name: UIX_QCM3_ResultRecording_InspectionPointValueRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionPointValueRef
+- table: ResultRecordingCharacteristic
+  name: PK_ResultRecordingCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResultRecordingCharacteristicID
+- table: ResultRecordingCharacteristic
+  name: IX_QCM3_ResultRecordingCharacteristic_InspectionLotOperationCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionLotOperationCharacteristicRef
+- table: ResultRecordingCharacteristic
+  name: IX_QCM3_ResultRecordingCharacteristic_ResultRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResultRecordingRef
+- table: ResultRecordingCharacteristic
+  name: IX_QCM3_ResultRecordingCharacteristic_InspectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectorRef
+- table: ResultRecordingCharacteristicHistory
+  name: PK_QCM3_ResultRecordingCharacteristicHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResultRecordingCharacteristicHistoryID
+- table: ResultRecordingCharacteristicHistory
+  name: IX_QCM3_ResultRecordingCharacteristicHistory_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ResultRecordingCharacteristicHistory
+  name: IX_QCM3_ResultRecordingCharacteristicHistory_ResultRecordingCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResultRecordingCharacteristicRef
+- table: ResultRecordingCharacteristicHistory
+  name: IX_QCM3_ResultRecordingCharacteristicHistory_InspectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectorRef
+- table: ResultRecordingCharacteristicSample
+  name: PK_ResultRecordingCharacteristicSample
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResultRecordingCharacteristicSampleID
+- table: ResultRecordingCharacteristicSample
+  name: IX_QCM3_ResultRecordingCharacteristicSample_ResultRecordingCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResultRecordingCharacteristicRef
+- table: ResultRecordingCharacteristicSampleValue
+  name: PK_ResultRecordingCharacteristicSampleValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResultRecordingCharacteristicSampleValueID
+- table: ResultRecordingCharacteristicSampleValue
+  name: IX_QCM3_ResultRecordingCharacteristicSampleValue_ResultRecordingCharacteristicSampleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResultRecordingCharacteristicSampleRef
+- table: ResultRecordingResourceToolAssignment
+  name: PK_ResultRecordingResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResultRecordingResourceToolAssignmentID
+- table: ResultRecordingResourceToolAssignment
+  name: IX_QCM3_ResultRecordingResourceToolAssignment_ResultRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResultRecordingRef
+- table: ResultRecordingResourceToolAssignment
+  name: IX_QCM3_ResultRecordingResourceToolAssignment_ResultRecordingCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResultRecordingCharacteristicRef
+- table: ResultRecordingResourceToolAssignment
+  name: IX_QCM3_ResultRecordingResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: ResultRecordingResourceToolAssignment
+  name: IX_QCM3_ResultRecordingResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ResultRecordingRTAExtension
+  name: PK_QCM3_ResultRecordingRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResultRecordingRTAExtensionID
+- table: ResultRecordingRTAExtension
+  name: IX_QCM3_ResultRecordingRTAExtension_ResultRecordingResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResultRecordingResourceToolAssignmentRef
+- table: SamplingProcedure
+  name: PK_SamplingProcedure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SamplingProcedureID
+- table: SamplingProcedure
+  name: UIX_QCM3_SamplingProcedure_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SamplingProcedure
+  name: IX_QCM3_SamplingProcedure_SamplingTableRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SamplingTableRef
+- table: SamplingTable
+  name: PK_SamplingTable
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SamplingTableID
+- table: SamplingTable
+  name: UIX_QCM3_SamplingTable_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SamplingTableItem
+  name: PK_SamplingTableItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SamplingTableItemID
+- table: SamplingTableItem
+  name: IX_QCM3_SamplingTableItem_SamplingTableRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SamplingTableRef
+- table: StandardSamplingTable
+  name: PK_QCM3_StandardSamplingTable
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StandardSamplingTableID
+- table: TestProfile
+  name: PK_TestProfileID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TestProfileID
+- table: TestProfile
+  name: IX_QCM3_TestProfile_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: TestProfile
+  name: IX_QCM3_TestProfile_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: TestProfile
+  name: IX_QCM3_TestProfile_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: TestProfile
+  name: IX_QCM3_TestProfile_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: TestProfile
+  name: IX_QCM3_TestProfile_InspectionPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanRef
+- table: TestProfile
+  name: IX_QCM3_TestProfile_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: TestProfile
+  name: IX_QCM3_TestProfile_InspectionScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionScheduleRef
+- table: TestProfileInspectionLot
+  name: PK_TestProfileInspectionLotID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TestProfileInspectionLotID
+- table: TestProfileInspectionLot
+  name: IX_QCM3_TestProfileInspectionLot_TestProfileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TestProfileRef
+- table: TestProfileInspectionLot
+  name: IX_QCM3_TestProfileInspectionLot_InspectionLotRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionLotRef
+- table: TestProfileInspectionLot
+  name: IX_QCM3_TestProfileInspectionLot_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: TestProfileInspectionLot
+  name: IX_QCM3_TestProfileInspectionLot_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier

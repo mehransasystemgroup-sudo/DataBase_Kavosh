@@ -1,0 +1,593 @@
+schema: PRC3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: AccountGroupDLSourceTypeRelation
+  title_fa: AccountGroupDLSourceTypeRelation
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountGroupLedger
+  title_fa: استقرار حسابهای خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountGroupLedgerParameterValue
+  title_fa: مقادیر پارامتریک استقرار حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountGroupParameterRelation
+  title_fa: AccountGroupParameterRelation
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountingVoucherTemplate
+  title_fa: الگوی سند حسابداری خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountingVoucherTemplateParameterValue
+  title_fa: قلم الگوی سند حسابداری خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Agreement
+  title_fa: تفاهم نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AgreementPolicy
+  title_fa: سیاستهای خاص تفاهم نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BusinessPolicyExtraProperty
+  title_fa: تنظیمات انتقال سیاست خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CompanyAdminUser
+  title_fa: کاربر ارشد بنگاه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CompanyAdminUserItem
+  title_fa: CompanyAdminUserItem
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Contract
+  title_fa: قرارداد خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractAmendment
+  title_fa: اصلاحیه قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractItem
+  title_fa: اقلام قرارداد خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractPolicy
+  title_fa: سیاستهای خاص قرارداد خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractPolicyContextItem
+  title_fa: سیاست های اعمال شده روی قرارداد خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractPolicyResult
+  title_fa: نتیجه اعمال سیاست بر روی قراداد خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractRenewalHistory
+  title_fa: تاریخچه تمدید مدت قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractTemplate
+  title_fa: الگوی قرارداد خرید/تفاهم نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractTemplateDetailLedger
+  title_fa: تفصیل قرارداد خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractTemplateDetailLedgerType
+  title_fa: نوع تفصیل قرارداد خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractTemplateRelatedOrderType
+  title_fa: سند خرید مرتبط با الگوی قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractTemplateUser
+  title_fa: کاربران مجاز الگوی قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CostRepository
+  title_fa: هزینه های سیستم
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Delivery
+  title_fa: تحویل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DeliveryItem
+  title_fa: اقلام تحویل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DeliveryReturn
+  title_fa: برگه مرجوعی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DeliveryReturnItem
+  title_fa: اقلام برگه مرجوعی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DeliveryReturnItemDraftVoucher
+  title_fa: DeliveryReturnItemDraftVoucher
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DirectDeliveryReceipt
+  title_fa: رسید تحویل مستقیم
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DirectDeliveryReceiptItem
+  title_fa: اقلام رسید تحویل مستقیم
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DirectDeliveryReceiptItemDraftVoucher
+  title_fa: DirectDeliveryReceiptItemDraftVoucher
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DraftVoucher
+  title_fa: اطلاعات حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DraftVoucherItem
+  title_fa: قلم اطلاعات حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DraftVoucherItemDetail
+  title_fa: جزئیات قلم اطلاعات حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EntityDLLevelInfo
+  title_fa: EntityDLLevelInfo
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Inquiry
+  title_fa: استعلام بها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InquiryItem
+  title_fa: قلم استعلام
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InquirySupplier
+  title_fa: تأمین کننده استعلام بها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryVoucherItemTag
+  title_fa: تگ محموله کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Invoice
+  title_fa: فاکتور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InvoiceItem
+  title_fa: قلم فاکتور
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InvoicePolicyContextItem
+  title_fa: سیاست های اعمال شده روی فاکتور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InvoicePolicyResult
+  title_fa: نتیجه اعمال سیاست بر روی فاکتور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LandedCost
+  title_fa: بهای تمام شده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LandedCostItem
+  title_fa: قلم بهای تمام شده خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MiscCost
+  title_fa: نوع هزینه تکمیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MiscCostTargetEntity
+  title_fa: سند نوع هزینه تکمیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Order
+  title_fa: سفارش خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: OrderAllocationInfo
+  title_fa: اطلاعات سهم بری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: OrderItem
+  title_fa: قلم سفارش خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: OrderItemDeliverySchedule
+  title_fa: زمانبندی تحویل اقلام سفارش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: OrderPolicyContextItem
+  title_fa: OrderPolicyContextItem
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: OrderPolicyResult
+  title_fa: OrderPolicyResult
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PaymentInformation
+  title_fa: اطلاعات دریافت/پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PaymentInformationItem
+  title_fa: قلم اطلاعات دریافت/پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PaymentSettlement
+  title_fa: روش تسویه حساب خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PaymentSettlementPhase
+  title_fa: روش تسویه حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PriceList
+  title_fa: لیست قیمت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PriceListItem
+  title_fa: اقلام لیست قیمت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseItem
+  title_fa: قلم خریدنی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseItemToSupplierRelationship
+  title_fa: حوزه خرید و تامین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseMiscCost
+  title_fa: هزینه تکمیلی خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseMiscCostItem
+  title_fa: قلم هزینه تکمیلی خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseMiscCostPolicyContextItem
+  title_fa: سیاست های اعمال شده روی هزینه تکمیلی خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseMiscCostPolicyResult
+  title_fa: نتیجه اعمال سیاست در هزینه تکمیلی خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseOrder
+  title_fa: دستور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseOrderItem
+  title_fa: قلم دستور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseOrderPolicyContextItem
+  title_fa: سیاست های اعمال شده روی دستور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseOrderPolicyResult
+  title_fa: نتیجه اعمال سیاست بر روی دستور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseRequest
+  title_fa: درخواست خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseRequestAmendment
+  title_fa: اصلاحیه درخواست خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseRequestAmendmentItem
+  title_fa: قلم اصلاحیه درخواست خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseRequestItem
+  title_fa: قلم درخواست خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseRequestItemSupplier
+  title_fa: تامین کننده قلم درخواست خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseRequestItemVerification
+  title_fa: بررسی اقلام درخواست
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseRequestPolicyContextItem
+  title_fa: سیاست های اعمال شده روی درخواست خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseRequestPolicyResult
+  title_fa: نتیجه اعمال سیاست بر روی درخواست خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchasingAdminUser
+  title_fa: کاربر ارشد تدارکات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchasingAgent
+  title_fa: کارشناس خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchasingDepartment
+  title_fa: واحد/رمز تامین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchasingDepartmentAgreement
+  title_fa: واحد/رمز تامین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchasingDepartmentContract
+  title_fa: واحد/رمز تامین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchasingDepartmentPurchasingAgent
+  title_fa: کارشناس خرید واحد/رمز تامین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Quotation
+  title_fa: پیش فاکتور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: QuotationItem
+  title_fa: قلم پیش فاکتور
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: QuotationPolicyContextItem
+  title_fa: سیاست های اعمال شده روی پیش فاکتور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: QuotationPolicyResult
+  title_fa: نتیجه اعمال سیاست بر روی پیش فاکتور خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Refund
+  title_fa: فاکتور برگشتی خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RefundItem
+  title_fa: اقلام فاکتور برگشتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RefundPolicyContextItem
+  title_fa: سیاست های اعمال شده روی فاکتور برگشتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RefundPolicyResult
+  title_fa: نتیجه اعمال سیاست بر روی فاکتور برگشتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SelfServiceKeyValueConfiguration
+  title_fa: SelfServiceKeyValueConfiguration
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SelfServiceUserGroup
+  title_fa: گروه کاربران سلف سرویس
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SelfServiceUserGroupMember
+  title_fa: اعضای گروه کاربران
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SelfServiceUserGroupPermission
+  title_fa: مجوز گروه کاربر خدمات الکترونیک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SelfServiceUserPermission
+  title_fa: مجوز کاربر خدمات الکترونیک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SelfServiceUserProfile
+  title_fa: اطلاعات پروفایل کاربر سلف سرویس
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShippingNotification
+  title_fa: اعلام بار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShippingNotificationItem
+  title_fa: قلم اعلام بار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Supplier
+  title_fa: تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierAssessment
+  title_fa: ارزیابی تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierAssessmentGroupingInfo
+  title_fa: گروه بندی تامین کنندگان
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierAssessmentItem
+  title_fa: اقلام ارزیابی تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierAssessmentParameter
+  title_fa: شاخص ارزیابی تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierPartCode
+  title_fa: کد فاکتور تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierQuotation
+  title_fa: پیش فاکتور تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierQuotationItem
+  title_fa: قلم پیش فاکتور تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierRating
+  title_fa: رتبه تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SupplierRatingItem
+  title_fa: قلم معرفی رتبه تامین کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TechinicalProposalNonSendingReason
+  title_fa: علت عدم ارسال پیشنهاد فنی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TechnicalAgent
+  title_fa: کارشناس فنی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TechnicalInquiry
+  title_fa: استعلام فنی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TechnicalInquiryItem
+  title_fa: اقلام استعلام فنی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TimingSchedule
+  title_fa: زمانبندی ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: UserPurchaseType
+  title_fa: نوع خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VerificationStep
+  title_fa: مرحله بررسی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VoucherPricingFailureLog
+  title_fa: لاگ نتیجه ارسال قیمت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog

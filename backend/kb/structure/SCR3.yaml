@@ -1,0 +1,1286 @@
+schema: SCR3
+table_count: 32
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: BufferStoreTrace
+  columns:
+  - name: BufferStoreTraceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BufferStoreRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: BufferQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: UndeliveredReservedQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: UndeliveredNotReservedQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - BufferStoreTraceID
+- name: BufferStoreTracePartRequest
+  columns:
+  - name: BufferStoreTracePartRequestID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BufferStoreTraceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRequestRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRequestItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - BufferStoreTracePartRequestID
+- name: BufferStoreTraceProcurmentOrderExtensionMaterial
+  columns:
+  - name: BufferStoreTraceProcurmentOrderExtensionMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BufferStoreTraceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProcurmentOrderExtensionMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - BufferStoreTraceProcurmentOrderExtensionMaterialID
+- name: ProcurementDeliveryExtension
+  columns:
+  - name: ProcurementDeliveryExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DeliveryRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - ProcurementDeliveryExtensionID
+- name: ProcurementDeliveryExtensionLowerGrade
+  columns:
+  - name: ProcurementDeliveryExtensionLowerGradeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OrderItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProcurementOrderExtensionLowerGradeRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ProcurementDeliveryExtensionLowerGradeID
+- name: ProcurementDeliveryExtensionMaterial
+  columns:
+  - name: ProcurementDeliveryExtensionMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: OrderItemRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: DeliveryReturnItemRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ProcurementOrderExtensionMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: ProcurementDeliveryReturnExtensionMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: EstimatedConsumption
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 8
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 9
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: IsBackflush
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: PartTrackingFactor1Ref
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: PartTrackingFactor2Ref
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: PartTrackingFactor3Ref
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: PartTrackingFactor4Ref
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: PartTrackingFactor5Ref
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 20
+  primary_key:
+  - ProcurementDeliveryExtensionMaterialID
+- name: ProcurementDeliveryExtensionMaterialTrackingFactor
+  columns:
+  - name: ProcurementDeliveryExtensionMaterialTrackingFactorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryExtensionMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TrackingFactor1Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: TrackingFactor2Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: TrackingFactor3Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: TrackingFactor4Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: TrackingFactor5Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ProcurementDeliveryExtensionMaterialTrackingFactorID
+- name: ProcurementDeliveryExtensionProduct
+  columns:
+  - name: ProcurementDeliveryExtensionProductID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: OrderItemRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: DeliveryReturnItemRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: SubcontractingOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 7
+  - name: ScrapQuantity
+    type: decimal(28,15)
+    nullable: true
+    ordinal: 8
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ProcurementDeliveryExtensionProductID
+- name: ProcurementDeliveryExtensionScrap
+  columns:
+  - name: ProcurementDeliveryExtensionScrapID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: OrderItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProcurementOrderExtensionScrapRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ProcurementDeliveryReturnExtensionScrapRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DeliveryReturnItemRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 8
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - ProcurementDeliveryExtensionScrapID
+- name: ProcurementDeliveryExtensionSideProduct
+  columns:
+  - name: ProcurementDeliveryExtensionSideProductID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: OrderItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProcurementOrderExtensionSideProductRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 6
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ProcurementDeliveryExtensionSideProductID
+- name: ProcurementDeliveryReturnExtension
+  columns:
+  - name: ProcurementDeliveryReturnExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryReturnRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SupplierStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: CostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ProcurementDeliveryReturnExtensionID
+- name: ProcurementDeliveryReturnExtensionItem
+  columns:
+  - name: ProcurementDeliveryReturnExtensionItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryReturnExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BomRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: DeliveryReturnItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ProcurementDeliveryReturnExtensionItemID
+- name: ProcurementDeliveryReturnExtensionMaterial
+  columns:
+  - name: ProcurementDeliveryReturnExtensionMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryReturnExtensionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 3
+  - name: IsSuppliedBySupplier
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: IsActualBackflush
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: BomItemRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: PartIssueType
+    type: tinyint
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - ProcurementDeliveryReturnExtensionMaterialID
+- name: ProcurementDeliveryReturnExtensionScrap
+  columns:
+  - name: ProcurementDeliveryReturnExtensionScrapID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDeliveryReturnExtensionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 3
+  - name: BomScrapRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ProcurementDeliveryReturnExtensionScrapID
+- name: ProcurementDirectDeliveryReceiptExtension
+  columns:
+  - name: ProcurementDirectDeliveryReceiptExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DirectDeliveryReceiptRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - ProcurementDirectDeliveryReceiptExtensionID
+- name: ProcurementDirectDeliveryReceiptExtensionLowerGrade
+  columns:
+  - name: ProcurementDirectDeliveryReceiptExtensionLowerGradeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDirectDeliveryReceiptExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DirectDeliveryReceiptItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProcurementDeliveryExtensionLowerGradeRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ProcurementDirectDeliveryReceiptExtensionLowerGradeID
+- name: ProcurementDirectDeliveryReceiptExtensionProduct
+  columns:
+  - name: ProcurementDirectDeliveryReceiptExtensionProductID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDirectDeliveryReceiptExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DirectDeliveryReceiptItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: SubcontractingOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 6
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ProcurementDirectDeliveryReceiptExtensionProductID
+- name: ProcurementDirectDeliveryReceiptExtensionScrap
+  columns:
+  - name: ProcurementDirectDeliveryReceiptExtensionScrapID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDirectDeliveryReceiptExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DirectDeliveryReceiptItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProcurementDeliveryExtensionScrapRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 6
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ProcurementDirectDeliveryReceiptExtensionScrapID
+- name: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  columns:
+  - name: ProcurementDirectDeliveryReceiptExtensionSideProductID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurementDirectDeliveryReceiptExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DirectDeliveryReceiptItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProcurementDeliveryExtensionSideProductRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 6
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ProcurementDirectDeliveryReceiptExtensionSideProductID
+- name: ProcurmentOrderExtension
+  columns:
+  - name: ProcurmentOrderExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurmentOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SupplierStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  - name: CostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  primary_key:
+  - ProcurmentOrderExtensionID
+- name: ProcurmentOrderExtensionItem
+  columns:
+  - name: ProcurmentOrderExtensionItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurmentOrderExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BomRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: OrderItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ProcurmentOrderExtensionItemID
+- name: ProcurmentOrderExtensionLowerGrade
+  columns:
+  - name: ProcurmentOrderExtensionLowerGradeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurmentOrderExtensionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ProcurmentOrderExtensionLowerGradeID
+- name: ProcurmentOrderExtensionMaterial
+  columns:
+  - name: ProcurmentOrderExtensionMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurmentOrderExtensionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 3
+  - name: IsSuppliedBySupplier
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: IsActualBackflush
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: IsBackflush
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: BomItemRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: PartIssueType
+    type: tinyint
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - ProcurmentOrderExtensionMaterialID
+- name: ProcurmentOrderExtensionScrap
+  columns:
+  - name: ProcurmentOrderExtensionScrapID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurmentOrderExtensionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: BomScrapRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ProcurmentOrderExtensionScrapID
+- name: ProcurmentOrderExtensionSideProduct
+  columns:
+  - name: ProcurmentOrderExtensionSideProductID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurmentOrderExtensionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ProcurmentOrderExtensionSideProductID
+- name: ProcurmentSupplierExtension
+  columns:
+  - name: ProcurmentSupplierExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SupplierRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ProcurmentSupplierExtensionID
+- name: ProcurmentSupplierExtensionStore
+  columns:
+  - name: ProcurmentSupplierExtensionStoreID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProcurmentSupplierExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SupplierStoreRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IsDefault
+    type: bit
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ProcurmentSupplierExtensionStoreID
+- name: SubcontractingOrder
+  columns:
+  - name: SubcontractingOrderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 2
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: OrderDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: NeedDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: BomRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 9
+  - name: PurchaseItemRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: CounterpartEntityCode
+    type: int
+    nullable: false
+    ordinal: 13
+  - name: CounterpartEntityRef
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: StoreRef
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: ScrapStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: ScrapInventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: SupplierRef
+    type: bigint
+    nullable: true
+    ordinal: 20
+  - name: SupplierStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 21
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 22
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 23
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 24
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 25
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 26
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 27
+  primary_key:
+  - SubcontractingOrderID
+- name: SubcontractingOrderLowerGrade
+  columns:
+  - name: SubcontractingOrderLowerGradeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SubcontractingOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - SubcontractingOrderLowerGradeID
+- name: SubcontractingOrderMaterial
+  columns:
+  - name: SubcontractingOrderMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SubcontractingOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 3
+  - name: BomItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: IsActualBackflush
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: IsBackflush
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: IsSuppliedBySupplier
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: PartIssueType
+    type: tinyint
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - SubcontractingOrderMaterialID
+- name: SubcontractingOrderScrap
+  columns:
+  - name: SubcontractingOrderScrapID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SubcontractingOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 3
+  - name: BomScrapRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - SubcontractingOrderScrapID
+- name: SubcontractingOrderSideProduct
+  columns:
+  - name: SubcontractingOrderSideProductID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SubcontractingOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 3
+  - name: BomItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - SubcontractingOrderSideProductID

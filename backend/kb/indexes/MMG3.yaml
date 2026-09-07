@@ -1,0 +1,1404 @@
+schema: MMG3
+source: extracted
+indexes:
+- table: CapacityType
+  name: PK_MMG3_CapacityType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CapacityTypeID
+- table: CapacityType
+  name: IX_MMG3_CapacityType_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: CapacityType
+  name: IX_MMG3_CapacityType_FactoryCalendarRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FactoryCalendarRef
+- table: CapacityType
+  name: UIX_MMG3_CapacityTypeTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: CapacityTypeExceptionDate
+  name: PK_MMG3_CapacityTypeExceptionDate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CapacityTypeExceptionDateID
+- table: CapacityTypeExceptionDate
+  name: IX_MMG3_CapacityTypeExceptionDate_CapacityTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CapacityTypeRef
+- table: CapacityTypeExceptionDate
+  name: UIX_MMG3_CapacityTypeExceptionDate_CapacityTypeRefDate
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CapacityTypeRef
+  - Date
+- table: Defect
+  name: PK_DefectID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefectID
+- table: Defect
+  name: UIX_MMG3_Defect_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Defect
+  name: IX_MMG3_Defect_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Defect
+  name: IX_MMG3_Defect_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: DefectCharacteristic
+  name: PK_DefectCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefectCharacteristicID
+- table: DefectCharacteristic
+  name: IX_MMG3_DefectCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: DefectCharacteristic
+  name: IX_MMG3_DefectCharacteristic_DefectRefCharacteristicRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DefectRef
+  - CharacteristicRef
+- table: DefectCharacteristic
+  name: IX_MMG3_DefectCharacteristic_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: DefectGroupMember
+  name: PK_MMG3_DefectGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefectGroupMemberID
+- table: DefectGroupMember
+  name: IX_MMG3_DefectGroupMember_GroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupingRef
+- table: DefectGroupMember
+  name: IX_MMG3_DefectGroupMember_GroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupRef
+- table: DefectGroupMember
+  name: IX_MMG3_DefectGroupMember_MemberID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MemberID
+- table: DefectReason
+  name: PK_DefectReasonID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefectReasonID
+- table: DefectReason
+  name: UIX_MMG3_DefectReason_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DefectReason
+  name: IX_MMG3_DefectReason_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: DefectReason
+  name: IX_MMG3_DefectReason_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: DefectRecording
+  name: PK_DefectRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefectRecordingID
+- table: DefectRecording
+  name: IX_MMG3_DefectRecording_DefectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefectRef
+- table: DefectRecordingCharacteristic
+  name: PK_DefectRecordingCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefectRecordingCharacteristicID
+- table: DefectRecordingCharacteristic
+  name: IX_MMG3_DefectRecordingCharacteristic_DefectCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefectCharacteristicRef
+- table: DefectRecordingCharacteristic
+  name: IX_MMG3_DefectRecordingCharacteristic_DefectRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefectRecordingRef
+- table: DefectRecordingReason
+  name: PK_DefectRecordingReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefectRecordingReasonID
+- table: DefectRecordingReason
+  name: IX_MMG3_DefectRecordingReason_DefectReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefectReasonRef
+- table: DefectRecordingReason
+  name: IX_MMG3_DefectRecordingReason_DefectRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefectRecordingRef
+- table: DefectRecordingReason
+  name: UIX_MMG3_DefectRecordingReason_DefectRecordingRefDefectReasonRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DefectRecordingRef
+  - DefectReasonRef
+- table: Equipment
+  name: PK_MMG3_Equipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentID
+- table: Equipment
+  name: UIX_MMG3_Equipment_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Equipment
+  name: IX_MMG3_Equipment_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Equipment
+  name: IX_MMG3_Equipment_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Equipment
+  name: IX_MMG3_Equipment_ParentEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentEquipmentRef
+- table: Equipment
+  name: IX_MMG3_Equipment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: Equipment
+  name: IX_MMG3_Equipment_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: Equipment
+  name: IX_MMG3_Equipment_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: Equipment
+  name: IX_MMG3_Equipment_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: Equipment
+  name: IX_MMG3_Equipment_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Equipment
+  name: IX_MMG3_Equipment_ResponsibleWorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsibleWorkCenterRef
+- table: Equipment
+  name: IX_MMG3_Equipment_Left_Right
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Left
+  - Right
+- table: Equipment
+  name: UIX_MMG3_Equipment_ShowingPriorityParentEquipmentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ShowingPriority
+  - ParentEquipmentRef
+- table: EquipmentCategory
+  name: PK_EquipmentCategory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentCategoryID
+- table: EquipmentCategory
+  name: UIX_MMG3_EquipmentCategory_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: EquipmentCategory
+  name: UIX_MMG3_EquipmentCategory_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: EquipmentCategoryAssignment
+  name: PK_EquipmentCategoryAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentCategoryAssignmentID
+- table: EquipmentCategoryAssignment
+  name: IX_MMG3_EquipmentCategoryAssignment_EquipmentCategoryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentCategoryItemRef
+- table: EquipmentCategoryAssignment
+  name: IX_MMG3_EquipmentCategoryAssignment_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: EquipmentCategoryItem
+  name: PK_EquipmentCategoryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentCategoryItemID
+- table: EquipmentCategoryItem
+  name: IX_MMG3_EquipmentCategoryItem_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: EquipmentCategoryItem
+  name: IX_MMG3_EquipmentCategoryItem_EquipmentCategoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentCategoryRef
+- table: EquipmentCategoryItem
+  name: UIX_MMG3_EquipmentCategoryItem_EquipmentCategoryRefCode
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EquipmentCategoryRef
+  - Code
+- table: EquipmentCategoryItem
+  name: UIX_MMG3_EquipmentCategoryItem_EquipmentCategoryRefParentRefTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EquipmentCategoryRef
+  - ParentRef
+  - Title
+- table: EquipmentHistory
+  name: PK_MMG3_EquipmentHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentHistoryID
+- table: EquipmentHistory
+  name: IX_MMG3_EquipmentHistory_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: EquipmentHistory
+  name: IX_MMG3_EquipmentHistory_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: EquipmentHistory
+  name: IX_MMG3_EquipmentHistory_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: EquipmentHistory
+  name: IX_MMG3_EquipmentHistory_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: EquipmentHistory
+  name: IX_MMG3_EquipmentHistory_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: EquipmentHistory
+  name: IX_MMG3_EquipmentHistory_ParentEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentEquipmentRef
+- table: EquipmentHistory
+  name: IX_MMG3_EquipmentHistory_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: EquipmentProfile
+  name: PK_MMG3_EquipmentProfile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentProfileID
+- table: EquipmentProfile
+  name: IX_MMG3_EquipmentProfile_EquipmentProfileTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentProfileTemplateRef
+- table: EquipmentProfile
+  name: IX_MMG3_EquipmentProfile_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: EquipmentProfileCharacteristic
+  name: PK_MMG3_EquipmentProfileCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentProfileCharacteristicID
+- table: EquipmentProfileCharacteristic
+  name: IX_MMG3_EquipmentProfileCharacteristic_EquipmentProfileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentProfileRef
+- table: EquipmentProfileCharacteristic
+  name: IX_MMG3_EquipmentProfileCharacteristic_EquipmentProfileTemplateCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentProfileTemplateCharacteristicRef
+- table: EquipmentProfileTemplate
+  name: PK_MMG3_EquipmentProfileTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentProfileTemplateID
+- table: EquipmentProfileTemplate
+  name: UIX_MMG3_EquipmentProfileTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: EquipmentProfileTemplateCharacteristic
+  name: PK_MMG3_EquipmentProfileTemplateCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentProfileTemplateCharacteristicID
+- table: EquipmentProfileTemplateCharacteristic
+  name: IX_MMG3_EquipmentProfileTemplateCharacteristic_EquipmentProfileTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentProfileTemplateRef
+- table: EquipmentProfileTemplateCharacteristic
+  name: IX_MMG3_EquipmentProfileTemplateCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: EquipmentProfileTemplateCharacteristic
+  name: IX_MMG3_EquipmentProfileTemplateCharacteristic_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: FactoryCalendar
+  name: PK_FactoryCalendar
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FactoryCalendarID
+- table: FactoryCalendar
+  name: UIX_MMG3_FactoryCalendar_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: FactoryCalendarSpecialDate
+  name: PK_FactoryCalendarSpecialDate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FactoryCalendarSpecialDateID
+- table: Holiday
+  name: PK_MMG3_Holiday
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HolidayID
+- table: Holiday
+  name: UIX_MMG3_Holiday_Date
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Date
+- table: MaterialControlPolicy
+  name: PK_MMG3_MaterialControlPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialControlPolicyID
+- table: MaterialControlPolicy
+  name: UIX_MMG3_MaterialControlPolicy_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: MaterialControlPolicyItem
+  name: PK_MMG3_MaterialControlPolicyItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialControlPolicyItemID
+- table: MaterialControlPolicyPart
+  name: PK_MMG3_MaterialControlPolicyPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialControlPolicyPartID
+- table: MaterialControlPolicyPart
+  name: UIX_MMG3_MaterialControlPolicyPartPartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: PartCapacityProfile
+  name: PK_PartCapacityProfile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartCapacityProfileID
+- table: PartCapacityProfile
+  name: IX_PartCapacityProfile_CreatorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: PartCapacityProfile
+  name: IX_PartCapacityProfile_LastModifierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PartCapacityProfile
+  name: IX_PartCapacityProfile_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PartCapacityProfile
+  name: IX_PartCapacityProfile_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: PartCapacityProfile
+  name: IX_PartCapacityProfile_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: PartCapacityProfileStandardValue
+  name: PK_PartCapacityProfileStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartCapacityProfileStandardValueID
+- table: PartCapacityProfileStandardValue
+  name: IX_PartCapacityProfileStandardValue_PartCapacityProfileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartCapacityProfileRef
+- table: PartCapacityProfileStandardValue
+  name: IX_PartCapacityProfileStandardValue_StandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StandardValueRef
+- table: PartCapacityProfileWorkCenter
+  name: PK_PartCapacityProfileWorkCenter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartCapacityProfileWorkCenterID
+- table: PartCapacityProfileWorkCenter
+  name: IX_PartCapacityProfileWorkCenter_PartCapacityProfileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartCapacityProfileRef
+- table: PartCapacityProfileWorkCenter
+  name: IX_PartCapacityProfileWorkCenter_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: PartCapacityProfileWorkCenterCapacityType
+  name: PK_PartCapacityProfileWorkCenterCapacityType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartCapacityProfileWorkCenterCapacityTypeID
+- table: PartCapacityProfileWorkCenterCapacityType
+  name: IX_PartCapacityProfileWorkCenterCapacityType_CapacityTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: PartCapacityProfileWorkCenterCapacityType
+  name: IX_PartCapacityProfileWorkCenterCapacityType_PartCapacityProfileWorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartCapacityProfileWorkCenterRef
+- table: PartDefectExtension
+  name: PK_MMG_PartDefectExtensionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartDefectExtensionID
+- table: PartDefectExtensionRelatedDefectGroup
+  name: PK_MMG_PartDefectExtensionRelatedDefectGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartDefectExtensionRelatedDefectGroupID
+- table: PartDefectExtensionRelatedDefectGroup
+  name: IX_MMG3_PartDefectExtensionRelatedDefectGroup_PartDefectExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartDefectExtensionRef
+- table: PartDefectExtensionRelatedDefectGroup
+  name: IX_MMG3_PartDefectExtensionRelatedDefectGroup_EntityGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityGroupRef
+- table: PublicHoliday
+  name: PK_PublicHoliday
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PublicHolidayID
+- table: PublicHoliday
+  name: UIX_MMG3_PublicHoliday_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: RCCP
+  name: PK_RCCP
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCCPID
+- table: RCCP
+  name: IX_RCCP_FactoryCalendarRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FactoryCalendarRef
+- table: RCCP
+  name: IX_RCCP_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: RCCP
+  name: IX_RCCP_ShiftGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftGroupingRef
+- table: RCCP
+  name: IX_RCCP_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: RCCP
+  name: IX_RCCP_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: RCCP
+  name: IX_RCCP_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: RCCPCapacity
+  name: PK_RCCPCapacity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCCPCapacityID
+- table: RCCPCapacity
+  name: IX_RCCPCapacity_RCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: RCCPCapacityDetail
+  name: PK_RCCPCapacityDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCCPCapacityDetailID
+- table: RCCPCapacityDetail
+  name: IX_RCCPCapacityDetail_RCCPCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPCapacityRef
+- table: RCCPCapacityGroup
+  name: PK_RCCPCapacityGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCCPCapacityGroup
+- table: RCCPCapacityGroup
+  name: IX_RCCPCapacityGroup_RCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: RCCPCapacityShiftDate
+  name: PK_RCCPCapacityShiftDate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCCPCapacityShiftDateID
+- table: RCCPCapacityShiftDate
+  name: IX_RCCPCapacityShiftDate_RCCPCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPCapacityRef
+- table: RCCPCapacityShiftOffDate
+  name: PK_RCCPCapacityShiftOffDate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCCPCapacityShiftOffDateID
+- table: RCCPCapacityShiftOffDate
+  name: IX_RCCPCapacityShiftOffDate_RCCPCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPCapacityRef
+- table: RCCPCapacityType
+  name: PK_RCCPCapacityType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCCPCapacityTypeID
+- table: RCCPCapacityType
+  name: IX_RCCPCapacityType_CapacityTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CapacityTypeRef
+- table: RCCPCapacityType
+  name: IX_RCCPCapacityType_RCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: RCCPWorkCenter
+  name: PK_RCCPWorkCenter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCCPWorkCenterID
+- table: RCCPWorkCenter
+  name: IX_RCCPWorkCenter_RCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: RCCPWorkCenter
+  name: IX_RCCPWorkCenter_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: ResourceTool
+  name: PK_MMG3_ResourceTool
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResourceToolID
+- table: ResourceTool
+  name: IX_MMG3_ResourceTool_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: ResourceTool
+  name: IX_MMG3_ResourceTool_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: ResourceTool
+  name: IX_MMG3_ResourceTool_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ResourceTool
+  name: IX_MMG3_ResourceTool_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: ResourceTool
+  name: IX_MMG3_ResourceTool_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: ResourceTool
+  name: IX_MMG3_ResourceTool_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: ResourceTool
+  name: IX_MMG3_ResourceTool_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ResourceTool
+  name: IX_MMG3_ResourceTool_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ResourceTool
+  name: UIX_MMG3_ResourceTool_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: ResourceTool
+  name: UIX_MMG3_ResourceTool_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ResourceToolRelatedModule
+  name: PK_MMG3_ResourceToolRelatedModule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResourceToolRelatedModuleID
+- table: ResourceToolRelatedModule
+  name: IX_MMG3_ResourceToolRelatedModule_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: Shift
+  name: PK_MMG3_Shift
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShiftID
+- table: Shift
+  name: IX_MMG3_Shift_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Shift
+  name: IX_MMG3_Shift_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Shift
+  name: UIX_MMG3_Shift_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ShiftBreak
+  name: PK_MMG3_ShiftBreak
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShiftBreakID
+- table: ShiftBreak
+  name: IX_MMG3_ShiftBreak_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ShiftBreak
+  name: IX_MMG3_ShiftBreak_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ShiftBreak
+  name: UIX_MMG3_ShiftBreak_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ShiftGrouping
+  name: PK_MMG3_ShiftGrouping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShiftGroupingID
+- table: ShiftGrouping
+  name: UIX_MMG3_ShiftGrouping_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ShiftGrouping
+  name: UIX_MMG3_ShiftGrouping_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ShiftGrouping
+  name: UIX_MMG3_ShiftGroupingTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ShiftGroupingDay
+  name: PK_MMG3_ShiftGroupingDay
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShiftGroupingDayID
+- table: ShiftGroupingDay
+  name: IX_MMG3_ShiftGroupingDay_ShiftGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftGroupingRef
+- table: ShiftGroupingDay
+  name: IX_MMG3_ShiftGroupingDay_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: ShiftShiftBreak
+  name: PK_PAC3_ShiftShiftBreak
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShiftShiftBreakID
+- table: ShiftShiftBreak
+  name: IX_MMG3_ShiftShiftBreak_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: ShiftShiftBreak
+  name: IX_MMG3_ShiftShiftBreak_ShiftBreakRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftBreakRef
+- table: StandardValue
+  name: PK_MMG3_StandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StandardValueID
+- table: StandardValue
+  name: UIX_MMG3_StandardValueTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: StandardValue
+  name: IX_MMG3_StandardValue_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: StandardValue
+  name: IX_MMG3_StandardValue_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: StandardValue
+  name: IX_MMG3_StandardValue_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: WorkCenter
+  name: PK_MMG3_WorkCenter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterID
+- table: WorkCenter
+  name: IX_MMG3_WorkCenter_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: WorkCenter
+  name: IX_MMG3_WorkCenter_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: WorkCenter
+  name: IX_MMG3_WorkCenter_SupervisorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupervisorRef
+- table: WorkCenter
+  name: UIX_MMG3_WorkCenter_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: WorkCenterCapacity
+  name: PK_MMG3_WorkCenterCapacity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterCapacityID
+- table: WorkCenterCapacity
+  name: IX_MMG3_WorkCenterCapacity_CapacityTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CapacityTypeRef
+- table: WorkCenterCapacity
+  name: IX_MMG3_WorkCenterCapacity_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: WorkCenterCapacityConsumption
+  name: PK_MMG3_WorkCenterCapacityConsumptionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterCapacityConsumptionID
+- table: WorkCenterCapacityConsumption
+  name: IX_MMG3_WorkCenterCapacityConsumption_StandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StandardValueRef
+- table: WorkCenterCapacityConsumption
+  name: IX_MMG3_WorkCenterCapacityConsumption_WorkCenterCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: WorkCenterCapacityDetail
+  name: PK_MMG3_WorkCenterCapacityDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterCapacityDetailID
+- table: WorkCenterCapacityDetail
+  name: IX_MMG3_WorkCenterCapacityDetail_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: WorkCenterCapacityDetail
+  name: IX_MMG3_WorkCenterCapacityDetail_WorkCenterCapacityShiftGroupingAndFactoryCalendarRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityShiftGroupingAndFactoryCalendarRef
+- table: WorkCenterCapacityEquipment
+  name: PK_MMG3_WorkCenterCapacityEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterCapacityEquipmentID
+- table: WorkCenterCapacityEquipment
+  name: IX_MMG3_WorkCenterCapacityEquipment_WorkCenterCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: WorkCenterCapacityEquipment
+  name: IX_MMG3_WorkCenterCapacityEquipment_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: WorkCenterCapacityPersonnel
+  name: PK_MMG3_WorkCenterCapacityPersonnel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterCapacityPersonnelID
+- table: WorkCenterCapacityPersonnel
+  name: IX_MMG3_WorkCenterCapacityPersonnel_WorkCenterCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: WorkCenterCapacityPersonnel
+  name: IX_MMG3_WorkCenterCapacityPersonnel_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: WorkCenterCapacityShiftGroupingAndFactoryCalendar
+  name: PK_MMG3_WorkCenterCapacityShiftGroupingAndFactoryCalendar
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterCapacityShiftGroupingAndFactoryCalendarID
+- table: WorkCenterCapacityShiftGroupingAndFactoryCalendar
+  name: IX_MMG3_WorkCenterCapacityShiftGroupingAndFactoryCalendar_WorkCenterCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: WorkCenterCapacityShiftGroupingAndFactoryCalendar
+  name: IX_MMG3_WorkCenterCapacityShiftGroupingAndFactoryCalendar_ShiftGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftGroupingRef
+- table: WorkCenterCapacityShiftGroupingAndFactoryCalendar
+  name: IX_MMG3_WorkCenterCapacityShiftGroupingAndFactoryCalendar_FactoryCalendarRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FactoryCalendarRef
+- table: WorkCenterInterStore
+  name: PK_MMG3_WorkCenterInterStore
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterInterStoreID
+- table: WorkCenterInterStore
+  name: IX_MMG3_WorkCenterInterStore_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: WorkCenterInterStore
+  name: IX_MMG3_WorkCenterInterStore_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: WorkCenterPersonnel
+  name: PK_WorkCenterPersonnel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterPersonnelID
+- table: WorkCenterPersonnel
+  name: IX_MMG3_WorkCenterPersonnel_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: WorkCenterPersonnel
+  name: IX_MMG3_WorkCenterPersonnel_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: WorkCenterStandardValue
+  name: PK_MMG3_WorkCenterStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterStandardValueID
+- table: WorkCenterStandardValue
+  name: IX_MMG3_WorkCenterStandardValue_StandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StandardValueRef
+- table: WorkCenterStandardValue
+  name: IX_MMG3_WorkCenterStandardValue_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef

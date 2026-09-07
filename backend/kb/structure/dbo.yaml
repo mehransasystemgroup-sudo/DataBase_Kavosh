@@ -1,0 +1,426 @@
+schema: dbo
+table_count: 12
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: AccountGroup08091404
+  columns:
+  - name: AccountGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+  - name: Code
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: State
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  primary_key: []
+- name: AccountTransactionAnalysis_corruptedRows
+  columns:
+  - name: AccountTransactionAnalysisID
+    type: bigint
+    nullable: false
+    ordinal: 1
+  primary_key: []
+- name: GL08091404
+  columns:
+  - name: GLID
+    type: bigint
+    nullable: false
+    ordinal: 1
+  - name: AccountGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 5
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: State
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  primary_key: []
+- name: InitialTransaction
+  columns:
+  - name: AssetRef
+    type: bigint
+    nullable: true
+    ordinal: 1
+  - name: CostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: AssetGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: BranchRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: DocumentDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: TransactionType
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: UserRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: SettlementPlaceRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  primary_key: []
+- name: SL08091404
+  columns:
+  - name: SLID
+    type: bigint
+    nullable: false
+    ordinal: 1
+  - name: GLRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 5
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: IsTraceable
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: IsMultiCurrency
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: HasCurrencyConversion
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 10
+  - name: DefaultCurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: State
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 14
+  - name: VATSLType
+    type: int
+    nullable: true
+    ordinal: 15
+  - name: TaxAccountType
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: IsQuantifiable
+    type: bit
+    nullable: false
+    ordinal: 17
+  - name: FundCategory
+    type: int
+    nullable: true
+    ordinal: 18
+  - name: ZeroBalance
+    type: int
+    nullable: false
+    ordinal: 19
+  - name: AccountClass
+    type: int
+    nullable: false
+    ordinal: 20
+  - name: NatureControl
+    type: int
+    nullable: false
+    ordinal: 21
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 22
+  primary_key: []
+- name: TempPettyCashRunningSumTransaction
+  columns:
+  - name: TempPettyCashTransactionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PettyCashTransactionID
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Debit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 3
+  - name: Credit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: DocumentDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: RunningSum
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - TempPettyCashTransactionID
+- name: Vouchertypesep
+  columns:
+  - name: LookupID
+    type: int
+    nullable: false
+    ordinal: 1
+  - name: Type
+    type: nchar(50)
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 5
+  - name: DisplayOrder
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Extra
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 7
+  - name: System
+    type: char(3)
+    nullable: false
+    ordinal: 8
+  primary_key: []
+- name: _ScriptChecksum
+  columns:
+  - name: FileName
+    type: nvarchar(400)
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Checksum
+    type: int
+    nullable: false
+    ordinal: 2
+  primary_key:
+  - FileName
+- name: filteredAssets
+  columns:
+  - name: FilteredAssetID
+    type: bigint
+    nullable: false
+    ordinal: 1
+  - name: AstState
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: DocDate
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: DiffrentInitialDate
+    type: bit
+    nullable: true
+    ordinal: 4
+  - name: UtilizationDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: UserRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  primary_key: []
+- name: filteredTransaction
+  columns:
+  - name: AssetTransactionID
+    type: bigint
+    nullable: true
+    ordinal: 1
+  - name: AssetRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: TransactionType
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: DocumentDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: CostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: AssetGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: BranchRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: DiffrentInitialDate
+    type: bit
+    nullable: true
+    ordinal: 9
+  - name: DocDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: UserRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: SettlementPlaceRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  primary_key: []
+- name: glgl
+  columns:
+  - name: glcode
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 1
+  - name: glid
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 2
+  - name: tit
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 3
+  primary_key: []
+- name: slsl
+  columns:
+  - name: slid
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 1
+  - name: glref
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 2
+  - name: slcode
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 3
+  - name: ti
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 4
+  primary_key: []

@@ -1,0 +1,363 @@
+schema: ACC
+table_count: 5
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: Account
+  columns:
+  - name: AccountId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ParentAccountRef
+    type: int
+    nullable: true
+    ordinal: 2
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Code
+    type: varchar(40)
+    nullable: false
+    ordinal: 4
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 5
+  - name: Title_En
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 6
+  - name: IsActive
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: CashFlowCategory
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: OpeningBalance
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 9
+  - name: BalanceType
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: HasBalanceTypeCheck
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: HasDL
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: HasCurrency
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: HasCurrencyConversion
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: HasTracking
+    type: bit
+    nullable: false
+    ordinal: 15
+  - name: HasTrackingCheck
+    type: bit
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 17
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 18
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 20
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 21
+  - name: ShowInCompanyDashboard
+    type: bit
+    nullable: false
+    ordinal: 22
+  - name: ShowInAccountAnalysisReport
+    type: bit
+    nullable: false
+    ordinal: 23
+  primary_key:
+  - AccountId
+- name: DL
+  columns:
+  - name: DLId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: varchar(40)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: IsActive
+    type: bit
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - DLId
+- name: Topic
+  columns:
+  - name: TopicId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Topic
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: Topic_En
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: Category
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Priority
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: IsSystemTopic
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - TopicId
+- name: Voucher
+  columns:
+  - name: VoucherId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: ReferenceNumber
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: SecondaryNumber
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: FiscalYearRef
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 9
+  - name: Description_En
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: DailyNumber
+    type: int
+    nullable: false
+    ordinal: 16
+  - name: IssuerSystem
+    type: int
+    nullable: false
+    ordinal: 17
+  - name: IsMerged
+    type: bit
+    nullable: false
+    ordinal: 18
+  - name: MergedIssuerSystem
+    type: int
+    nullable: true
+    ordinal: 19
+  primary_key:
+  - VoucherId
+- name: VoucherItem
+  columns:
+  - name: VoucherItemId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VoucherRef
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: AccountSLRef
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: DLRef
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Debit
+    type: decimal(28,4)
+    nullable: true
+    ordinal: 6
+  - name: Credit
+    type: decimal(28,4)
+    nullable: true
+    ordinal: 7
+  - name: CurrencyRef
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: CurrencyRate
+    type: decimal(26,16)
+    nullable: true
+    ordinal: 9
+  - name: CurrencyDebit
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 10
+  - name: CurrencyCredit
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 11
+  - name: TrackingNumber
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 12
+  - name: TrackingDate
+    type: datetime
+    nullable: true
+    ordinal: 13
+  - name: IssuerEntityName
+    type: varchar(400)
+    nullable: false
+    ordinal: 14
+  - name: IssuerEntityRef
+    type: int
+    nullable: false
+    ordinal: 15
+  - name: Description
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 16
+  - name: Description_En
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 17
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 18
+  primary_key:
+  - VoucherItemId

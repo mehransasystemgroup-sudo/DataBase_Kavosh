@@ -1,0 +1,315 @@
+schema: SCM3
+source: extracted
+indexes:
+- table: Approval
+  name: PK_SCM3_Approval
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ApprovalID
+- table: ApprovalItem
+  name: PK_SCM3_ApprovalItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ApprovalItemID
+- table: Catalog
+  name: PK_SCM3_Catalog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CatalogID
+- table: CatalogItem
+  name: PK_SCM3_CatalogItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CatalogItemID
+- table: DeliveryExtension
+  name: PK_SCM3_DeliveryExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeliveryExtensionID
+- table: DeliveryItemExtension
+  name: PK_SCM3_DeliveryItemExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeliveryItemExtensionID
+- table: DocumentProcessLog
+  name: PK_SCM3_DocumentProcessLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentProcessLogID
+- table: DownloadHistory
+  name: PK_SCM3_DownloadHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DownloadHistoryID
+- table: DownloadSettings
+  name: PK_SCM3_DownloadSettings
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DownloadSettingsID
+- table: ExtrinsicField
+  name: PK_SCM3_ExtrinsicField
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExtrinsicFieldID
+- table: GoodsReceiptNotice
+  name: PK_SCM3_GoodsReceiptNotice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GoodsReceiptNoticeID
+- table: GoodsReceiptNotice
+  name: IX_SCM3_GoodsReceiptNotice_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: HandshakeHistory
+  name: PK_SCM3_HandshakeHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandshakeHistoryID
+- table: InquiryExtension
+  name: PK_SCM3_InquiryExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InquiryExtensionID
+- table: InquirySupplierExtension
+  name: PK_SCM3_InquirySupplierExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InquirySupplierExtensionID
+- table: Message
+  name: PK_SCM3_Message
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MessageID
+- table: MessageRecipient
+  name: PK_SCM3_MessageRecipient
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MessageRecipientID
+- table: NotificationExtension
+  name: PK_SCM3_NotificationExtensionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationExtensionID
+- table: NotificationTaskExtension
+  name: PK_SCM3_NotificationTaskExtensionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationTaskExtensionID
+- table: OrderConfirmation
+  name: PK_SCM3_OrderConfirmation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderConfirmationID
+- table: OrderConfirmationItem
+  name: PK_SCM3_OrderConfirmationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderConfirmationItemID
+- table: OrderExtension
+  name: PK_SCM3_OrderExtensionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderExtensionID
+- table: OrderItemExtension
+  name: PK_SCM3_OrderItemExtensionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderItemExtensionID
+- table: OrderStatusRequest
+  name: PK_SCM3_OrderStatusRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderStatusRequestID
+- table: OrderStatusUpdate
+  name: PK_SCM3_OrderStatusUpdate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderStatusUpdateID
+- table: PurchaseItemMapping
+  name: PK_SCM3_PurchaseItemMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseItemMappingID
+- table: PurchaseItemMapping
+  name: UIX_SCM3_PurchaseItemMapping_PurchaseItemRef_SupplierRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SupplierRef
+  - PurchaseItemRef
+- table: QNNote
+  name: PK_SCM3_QNNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QNNoteID
+- table: QNNoteAttachment
+  name: PK_SCM3_QNNoteAttachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QNNoteAttachmentID
+- table: QNVersion
+  name: PK_SCM3_QNVersion
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QNVersionID
+- table: QuotationExtension
+  name: PK_SCM3_QuotationExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuotationExtensionID
+- table: QuotationItemExtension
+  name: PK_SCM3_QuotationItemExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuotationItemExtensionID
+- table: QuoteMessageOpeningEvent
+  name: PK_SCM3_QuoteMessageOpeningEvent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuoteMessageOpeningEventID
+- table: QuoteMessageOpeningEventAttender
+  name: PK_SCM3_QuoteMessageOpeningEventAttender
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuoteMessageOpeningEventAttenderID
+- table: QuoteMessagePayload
+  name: PK_SCM3_QuoteMessagePayload
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuoteMessagePayloadID
+- table: ReceivedDocument
+  name: PK_SCM3_ReceivedDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivedDocumentID
+- table: ReceivedDocumentAttachment
+  name: PK_SCM3_ReceivedDocumentAttachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivedDocumentAttachmentID
+- table: ReceivedDocumentReference
+  name: PK_SCM3_ReceivedDocumentReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivedDocumentReferenceID
+- table: ReceivedDocumentTarget
+  name: PK_SCM3_ReceivedDocumentTarget
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivedDocumentTargetID
+- table: SentDocument
+  name: PK_SCM3_SentDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SentDocumentID
+- table: SentDocument
+  name: UIX_SCM3_SentDocument_DocumentType_SourceType_SourceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DocumentType
+  - SourceType
+  - SourceRef
+- table: SupplierAssessmentExtension
+  name: PK_SCM3_SupplierAssessmentExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierAssessmentExtensionID
+- table: UploadHistory
+  name: PK_SCM3_UploadHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UploadHistoryID
+- table: UploadSettings
+  name: PK_SCM3_UploadSettings
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UploadSettingsID

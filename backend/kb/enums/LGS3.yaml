@@ -1,0 +1,1119 @@
+schema: LGS3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: AccountGroupConfiguration
+  column: DL4SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: AccountGroupConfiguration
+  column: DL5SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: AccountGroupConfiguration
+  column: DL6SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: Category
+  column: State
+  lookup_type: CategoryState
+  type_title_fa: LookupTitleEmptyToken
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 9
+  - value: '2'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high
+- table: CodeBlock
+  column: CodeBlockType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: CodeBlock
+  column: CodingType
+  nullable: true
+  lookup_type: CodingType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: کد کامل
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: کد زیرگروه
+    source: stated_by_config
+    confidence: high
+- table: CodeTemplate
+  column: CounterType
+  nullable: true
+  lookup_type: CounterType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: در سطح گروهبندی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: در سطح زیرگروه
+    source: stated_by_config
+    confidence: high
+- table: CodeTemplate
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+- table: DefaultPricingFactorsSharedMethod
+  column: PricingFactorType
+  lookup_type: PricingFactorType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '0'
+    label_fa: تعریف نشده
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: تخفیف
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سایر اضافات فاکتور خرید
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '4'
+    label_fa: کرایه حمل
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '8'
+    label_fa: عوارض
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: مالیات
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: پیش پرداخت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '64'
+    label_fa: عوارض حمل
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: مالیات حمل
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: سایر هزینه ها
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: DefaultPricingFactorsSharedMethod
+  column: ShareType
+  lookup_type: ShareType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '0'
+    label_fa: ''
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '1'
+    label_fa: نسبت مساوی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: نسبت قیمت قلم
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: نسبت مقدار قلم
+    source: stated_by_config
+    confidence: high
+- table: InventoryVoucher
+  column: ReferenceType
+  nullable: true
+  lookup_type: ReferenceType
+  type_title_fa: ReferenceType
+  values:
+  - value: '1'
+    label_fa: سند بازرسی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: بدون مبنا
+    source: stated_by_config
+    confidence: high
+- table: InventoryVoucher
+  column: State
+  lookup_type: InventoryVoucherState
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: ثبت شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 416
+  - value: '3'
+    label_fa: باطل شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '4'
+    label_fa: در حال تایید
+    source: stated_by_config
+    confidence: high
+- table: InventoryVoucherItem
+  column: ReferenceType
+  nullable: true
+  lookup_type: ReferenceType
+  type_title_fa: ReferenceType
+  values:
+  - value: '1'
+    label_fa: سند بازرسی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: بدون مبنا
+    source: stated_by_config
+    confidence: high
+- table: InventoryVoucherItem
+  column: SLResolvingType
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: InventoryVoucherItem
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 819
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: InventoryVoucherSpecification
+  column: Category
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 5
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 6
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 6
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 5
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '11'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '12'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+  - value: '13'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+  - value: '14'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: InventoryVoucherSpecification
+  column: Direction
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 24
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 25
+- table: InventoryVoucherSpecification
+  column: PurchaseType
+  nullable: true
+  lookup_type: PurchaseType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: جزئی
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '2'
+    label_fa: استعلامی
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+- table: InventoryVoucherSpecification
+  column: State
+  lookup_type: InventoryVoucherSpecificationState
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 27
+  - value: '2'
+    label_fa: غیرفعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 22
+- table: InventoryVoucherSpecification
+  column: TrackingFactorDialogState
+  lookup_type: TrackingFactorDialogState
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: عدم نمایش
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: پنجره عامل
+    source: proven_by_data
+    confidence: high
+    observed_count: 49
+  - value: '3'
+    label_fa: پنجره انتخاب چندگانه عامل
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: انتخاب عامل بر اساس ویژگی های بچ
+    source: stated_by_config
+    confidence: high
+- table: ItemPrice
+  column: PriceType
+  lookup_type: PriceType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: اتوماتیک
+    source: proven_by_data
+    confidence: high
+    observed_count: 292
+  - value: '2'
+    label_fa: برآوردی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: واقعی
+    source: proven_by_data
+    confidence: high
+    observed_count: 283
+  - value: '4'
+    label_fa: برآوردی به واقعی افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: برآوردی به واقعی کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: اصلاح بها افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: اصلاح بها کاهنده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '8'
+    label_fa: تعدیل افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: تعدیل کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: تخفیف افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '11'
+    label_fa: تخفیف کاهنده
+    source: proven_by_data
+    confidence: high
+    observed_count: 12
+  - value: '12'
+    label_fa: کرایه حمل افزاینده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '13'
+    label_fa: کرایه حمل کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '14'
+    label_fa: سایر اضافات فاکتور خرید افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '15'
+    label_fa: سایر اضافات فاکتور خرید کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: عوارض قابل استرداد افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '17'
+    label_fa: عوارض قابل استرداد کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '18'
+    label_fa: مالیات قابل استردادافزاینده
+    source: proven_by_data
+    confidence: high
+    observed_count: 78
+  - value: '19'
+    label_fa: مالیات قابل استرداد کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '20'
+    label_fa: پیش پرداخت افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '21'
+    label_fa: پیش پرداخت کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '22'
+    label_fa: عوارض حمل قابل استرداد افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '23'
+    label_fa: عوارض حمل قابل استرداد کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '24'
+    label_fa: مالیات حمل قابل استرداد افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '25'
+    label_fa: مالیات حمل قابل استرداد کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '26'
+    label_fa: عوارض غیر قابل استرداد افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '27'
+    label_fa: عوارض غیر قابل استرداد کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '28'
+    label_fa: مالیات غیر قابل استردادافزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '29'
+    label_fa: مالیات غیر قابل استرداد کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '30'
+    label_fa: عوارض حمل غیر قابل استرداد افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '31'
+    label_fa: عوارض حمل غیر قابل استرداد کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: مالیات حمل غیر قابل استرداد افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '33'
+    label_fa: مالیات حمل غیر قابل استرداد کاهنده
+    source: stated_by_config
+    confidence: high
+  - value: '34'
+    label_fa: سایر هزینه های افزاینده
+    source: stated_by_config
+    confidence: high
+  - value: '35'
+    label_fa: سایر هزینه های کاهنده
+    source: stated_by_config
+    confidence: high
+- table: Part
+  column: PartType
+  lookup_type: PartType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: خریدنی
+    source: proven_by_data
+    confidence: high
+    observed_count: 8260
+  - value: '2'
+    label_fa: قابل فروش
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '4'
+    label_fa: ساختنی
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: کالای غیر موجودی
+    source: stated_by_config
+    confidence: high
+- table: Part
+  column: QuantityControlType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: Part
+  column: SecondType
+  nullable: true
+  lookup_type: PartSecondType
+  type_title_fa: نوع دوم کالا
+  values:
+  - value: '1'
+    label_fa: C
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: S
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: I
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: X
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: Q
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: O
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: N
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: T
+    source: stated_by_config
+    confidence: high
+- table: Part
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 8248
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 13
+- table: PartNotice
+  column: DisplayUnitType
+  lookup_type: PartNoticeDisplayUnitType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: واحد اصلی
+    source: proven_by_data
+    confidence: high
+    observed_count: 36
+  - value: '2'
+    label_fa: واحد پیش فرض
+    source: stated_by_config
+    confidence: high
+- table: PartNotice
+  column: NoticeType
+  lookup_type: NoticeType
+  values:
+  - value: '1'
+    label_fa: سفارش دهی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: اطلاعات سفارش گذاری
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '11'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '12'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '13'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '14'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '15'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '16'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '17'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '19'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '20'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '22'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '23'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '24'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '25'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '26'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '27'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '28'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '29'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '30'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '31'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '32'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '33'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '34'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '35'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '36'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '37'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '38'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: PartNotice
+  column: PlanningCodeStandardType
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 7
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+- table: PartNotice
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 36
+- table: PartStore
+  column: State
+  lookup_type: PartStoreState
+  type_title_fa: LookupTitleEmptyToken
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 8261
+  - value: '2'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high
+- table: Plant
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: PricingCheckResult
+  column: CheckType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 182
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 336
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 422
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 25
+- table: PricingCheckResult
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 783
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 182
+- table: PricingFactor
+  column: PricingFactorType
+  lookup_type: PricingFactorType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '0'
+    label_fa: تعریف نشده
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: تخفیف
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: سایر اضافات فاکتور خرید
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: کرایه حمل
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '8'
+    label_fa: عوارض
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: مالیات
+    source: proven_by_data
+    confidence: high
+    observed_count: 48
+  - value: '32'
+    label_fa: پیش پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: عوارض حمل
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: مالیات حمل
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: سایر هزینه ها
+    source: stated_by_config
+    confidence: high
+- table: PricingFactor
+  column: ShareType
+  lookup_type: ShareType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '0'
+    label_fa: ''
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '1'
+    label_fa: نسبت مساوی
+    source: proven_by_data
+    confidence: high
+    observed_count: 46
+  - value: '2'
+    label_fa: نسبت قیمت قلم
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: نسبت مقدار قلم
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: StocktakingPeriod
+  column: CountStepState
+  nullable: true
+  lookup_type: null
+  values: []
+- table: StocktakingPeriod
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: StocktakingPolicy
+  column: CardexType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: StocktakingPolicy
+  column: DocumentType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: StocktakingPolicy
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: Store
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: StorePosition
+  column: State
+  lookup_type: StorePositionState
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: غیرفعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: TaxGrouping
+  column: Type
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: TermOfDelivery
+  column: TermOfDeliveryType
+  lookup_type: TermOfDeliveryType
+  type_title_fa: TermOfDeliveryType
+  values:
+  - value: '1'
+    label_fa: FOB
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: FCA
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: CFR
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '4'
+    label_fa: CPT
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: TransportationManagementPortalUser
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1

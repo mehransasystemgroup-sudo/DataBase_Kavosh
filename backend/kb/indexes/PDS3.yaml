@@ -1,0 +1,488 @@
+schema: PDS3
+source: extracted
+indexes:
+- table: CustomerCreditPolicy
+  name: PK_PDS3_CustomerCreditPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerCreditPolicyID
+- table: CustomerCreditPolicy
+  name: IX_PDS3_CustomerCreditPolicy_CustomerGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerGroupingRef
+- table: CustomerCreditPolicy
+  name: IX_PDS3_CustomerCreditPolicy_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: CustomerCreditPolicy
+  name: IX_PDS3_CustomerCreditPolicy_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: CustomerCreditPolicy
+  name: UIX_PDS3_CustomerCreditPolicy_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: CustomerCreditPolicyConfirmation
+  name: PK_PDS3_CustomerCreditPolicyConfirmation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerCreditPolicyConfirmationID
+- table: CustomerCreditPolicyConfirmation
+  name: IX_PDS3_CustomerCreditPolicyConfirmation_UserCreditLimitItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserCreditLimitItemRef
+- table: CustomerCreditPolicyConfirmation
+  name: UIX_PDS3_CustomerCreditPolicyConfirmation_DocumentRef_DocumentType_MeasureUID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DocumentRef
+  - DocumentType
+  - MeasureUID
+- table: CustomerCreditPolicyItem
+  name: PK_PDS3_CustomerCreditPolicyItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerCreditPolicyItemID
+- table: CustomerCreditPolicyItem
+  name: IX_PDS3_CustomerCreditPolicyItem_CustomerCreditPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerCreditPolicyRef
+- table: CustomerCreditPolicyItem
+  name: IX_PDS3_CustomerCreditPolicyItem_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: CustomerCreditPolicyItem
+  name: IX_PDS3_CustomerCreditPolicyItem_CustomerGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerGroupRef
+- table: CustomerCreditPolicyItem
+  name: IX_PDS3_CustomerCreditPolicyItem_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: CustomerCreditPolicyItem
+  name: IX_PDS3_CustomerCreditPolicyItem_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: CustomerCreditPolicyRelation
+  name: PK_PDS3_CustomerCreditPolicyRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerCreditPolicyRelationID
+- table: CustomerCreditPolicyRelation
+  name: IX_PDS3_CustomerCreditPolicyRelation_CustomerCreditPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerCreditPolicyRef
+- table: CustomerCreditPolicyRelation
+  name: IX_PDS3_CustomerCreditPolicyRelation_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: CustomerPharma
+  name: PK_PDS3_CustomerPharma
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerPharmaID
+- table: CustomerPharma
+  name: UIX_PDS3_CustomerPharma_CustomerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: RemainingUntilProductExpiration
+  name: PK_PDS3_RemainingUntilProductExpiration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RemainingUntilProductExpirationID
+- table: RemainingUntilProductExpiration
+  name: IX_PDS3_RemainingUntilProductExpiration_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: RemainingUntilProductExpiration
+  name: IX_PDS3_RemainingUntilProductExpiration_ProductGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductGroupingRef
+- table: RemainingUntilProductExpirationItem
+  name: PK_PDS3_RemainingUntilProductExpirationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RemainingUntilProductExpirationItemID
+- table: RemainingUntilProductExpirationItem
+  name: IX_PDS3_RemainingUntilProductExpirationItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: RemainingUntilProductExpirationItem
+  name: IX_PDS3_RemainingUntilProductExpirationItem_ProductGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductGroupRef
+- table: SettlementRespite
+  name: PK_PDS3_SettlementRespite
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SettlementRespiteID
+- table: SettlementRespite
+  name: IX_PDS3_SettlementRespite_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: SettlementRespite
+  name: IX_PDS3_SettlementRespite_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: SettlementRespite
+  name: IX_PDS3_SettlementRespite_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: SettlementRespiteItem
+  name: PK_PDS3_SettlementRespiteItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SettlementRespiteItemID
+- table: SettlementRespiteItem
+  name: IX_PDS3_SettlementRespiteItem_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: SettlementRespiteItem
+  name: IX_PDS3_SettlementRespiteItem_SettlementRespiteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementRespiteRef
+- table: SettlementRespiteRequest
+  name: PK_PDS3_SettlementRespiteRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SettlementRespiteRequestID
+- table: SettlementRespiteRequest
+  name: IX_PDS3_SettlementRespiteRequest_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: SettlementRespiteRequest
+  name: IX_PDS3_SettlementRespiteRequest_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: SettlementRespiteRequest
+  name: IX_PDS3_SettlementRespiteRequest_SettlementRespiteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementRespiteRef
+- table: SettlementRespiteRequest
+  name: IX_PDS3_SettlementRespiteRequest_RequesterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RequesterRef
+- table: SettlementRespiteRequest
+  name: IX_PDS3_SettlementRespiteRequest_ConfirmerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmerRef
+- table: SettlementRespiteRequest
+  name: IX_PDS3_SettlementRespiteRequest_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: SettlementRespiteRequest
+  name: IX_PDS3_SettlementRespiteRequest_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: SettlementRespiteRequest
+  name: IX_PDS3_SettlementRespiteRequest_SalesAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesAreaRef
+- table: SettlementRespiteRequestItem
+  name: PK_PDS3_SettlementRespiteRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SettlementRespiteRequestItemID
+- table: SettlementRespiteRequestItem
+  name: IX_PDS3_SettlementRespiteRequestItem_SettlementRespiteRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementRespiteRequestRef
+- table: TriplePriceList
+  name: PK_PDS3_TriplePriceList
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TriplePriceListID
+- table: TriplePriceList
+  name: IX_PDS3_TriplePriceList_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: TriplePriceList
+  name: IX_PDS3_TriplePriceList_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: TriplePriceList
+  name: IX_PDS3_TriplePriceList_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: TriplePriceList
+  name: IX_PDS3_TriplePriceList_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: TriplePriceListItem
+  name: PK_PDS3_TriplePriceListItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TriplePriceListItemID
+- table: TriplePriceListItem
+  name: IX_PDS3_TriplePriceListItem_TriplePriceListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TriplePriceListRef
+- table: TriplePriceListItem
+  name: IX_PDS3_TriplePriceListItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: TriplePriceListItem
+  name: IX_PDS3_TriplePriceListItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: TriplePriceListRelation
+  name: PK_PDS3_TriplePriceListRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TriplePriceListRelationID
+- table: TriplePriceListRelation
+  name: IX_PDS3_TriplePriceListRelation_TriplePriceListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TriplePriceListRef
+- table: TriplePriceListRelation
+  name: IX_PDS3_TriplePriceListRelation_SalesPriceListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesPriceListRef
+- table: TriplePriceListRelation
+  name: IX_PDS3_TriplePriceListRelation_ConsumerPriceListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConsumerPriceListRef
+- table: TriplePriceListRelation
+  name: IX_PDS3_TriplePriceListRelation_InventoryPriceListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryPriceListRef
+- table: UserCreditLimit
+  name: PK_PDS3_UserCreditLimit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserCreditLimitID
+- table: UserCreditLimit
+  name: IX_PDS3_UserCreditLimit_CustomerGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerGroupingRef
+- table: UserCreditLimit
+  name: IX_PDS3_UserCreditLimit_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: UserCreditLimit
+  name: IX_PDS3_UserCreditLimit_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: UserCreditLimit
+  name: UIX_PDS3_UserCreditLimit_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: UserCreditLimitItem
+  name: PK_PDS3_UserCreditLimitItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserCreditLimitItemID
+- table: UserCreditLimitItem
+  name: IX_PDS3_UserCreditLimitItem_UserCreditLimitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserCreditLimitRef
+- table: UserCreditLimitItem
+  name: IX_PDS3_UserCreditLimitItem_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: UserCreditLimitItem
+  name: IX_PDS3_UserCreditLimitItem_CustomerGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerGroupRef
+- table: UserCreditLimitItem
+  name: IX_PDS3_UserCreditLimitItem_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: UserCreditLimitItem
+  name: IX_PDS3_UserCreditLimitItem_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: UserCreditLimitItem
+  name: IX_PDS3_UserCreditLimitItem_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier

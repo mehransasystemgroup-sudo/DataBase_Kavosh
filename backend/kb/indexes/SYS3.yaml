@@ -1,0 +1,2299 @@
+schema: SYS3
+source: extracted
+indexes:
+- table: Action
+  name: PK_SYS3_Action
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ActionID
+- table: Action
+  name: UIX_SYS3_Action_TaskRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TaskRef
+- table: ActiveDirectoryGroupRelation
+  name: PK_SYS3_ActiveDirectoryGroupRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ActiveDirectoryGroupRelationID
+- table: Attachment
+  name: PK_SYS3_Attachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AttachmentID
+- table: Attachment
+  name: IX_SYS3_Attachment_EntityCode_RecordID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityCode
+  - RecordID
+- table: Attachment
+  name: IX_SYS3_Attachment_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: BusinessCode
+  name: PK_BusinessCode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessCodeID
+- table: BusinessData
+  name: PK_BusinessData
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessDataID
+- table: BusinessDataDependency
+  name: PK_SYS3_BusinessDataDependency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessDataDependencyID
+- table: BusinessEventRuleAction
+  name: PK_BusinessEventRuleAction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessEventRuleActionID
+- table: BusinessEventRuleDataReference
+  name: PK_SYS3_BusinessEventRuleDataReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessEventRuleDataReferenceID
+- table: BusinessRuleActionExecutionLog
+  name: PK_BusinessRuleActionExecutionLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessRuleActionExecutionLogID
+- table: BusinessXMLSchemaDefination
+  name: PK_SYS3_BusinessXMLSchemaDefination
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessXMLSchemaDefinationID
+- table: BusinessXMLSchemaDefination
+  name: IX_SYS3_BusinessXMLSchemaDefination_UniqueId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UniqueId
+- table: ConfigurationGroup
+  name: PK_SYS3_ConfigurationGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfigurationGroupID
+- table: ConfigurationValue
+  name: PK_SYS3_ConfigurationValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfigurationValueID
+- table: ConfigurationValue
+  name: IX_SYS3_ConfigurationValue_ConfigurationGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfigurationGroupRef
+  included:
+  - UserRef
+  - Scope
+  - Key
+  - Data
+  - Version
+- table: ConfigurationValue
+  name: IX_SYS3_ConfigurationValue_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: ConfigurationValue
+  name: IX_SYS3_ConfigurationValue_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: CustomCondition
+  name: PK_CustomCondition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomConditionID
+- table: Dashboard
+  name: PK_Dashboard
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DashboardID
+- table: DashboardCategory
+  name: PK_DashboardCategory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DashboardCategoryID
+- table: DashboardDatasource
+  name: PK_DashboardDatasource
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DashboardDatasourceID
+- table: DashboardsInShell
+  name: PK_DashboardsInShell
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DashboardsInShellID
+- table: DashboardUserNote
+  name: PK_DashboardUserNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DashboardUserNoteID
+- table: DashboardWidget
+  name: PK_DashboardWidget
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DashboardWidgetID
+- table: DataTransferMethod
+  name: PK_DataTransferMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DataTransferMethodID
+- table: DataTransferMethodItem
+  name: PK_DataTransferMethodItem_1
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DataTransferMethodItemID
+- table: DataTransferMethodSetting
+  name: PK_DataTransferMethodSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DataTransferMethodSettingID
+- table: DynamicComponent
+  name: PK_DynamicComponent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicComponentID
+- table: DynamicComponent
+  name: UQ_DynamicComponent_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: DynamicComponentDependency
+  name: PK_SYS3_DynamicComponentDependency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicComponentDependencyID
+- table: DynamicComponentDeployment
+  name: PK_SYS3_DynamicComponentDeployment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicComponentDeploymentID
+- table: DynamicComponentMenu
+  name: PK_SYS3_DynamicComponentMenu
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicComponentMenuID
+- table: DynamicComponentUnit
+  name: PK_DynamicComponentUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicComponentUnitID
+- table: DynamicComponentUnit
+  name: UQ_DynamicComponentUnit_MasterEntityName_ComponentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - MasterEntityName
+  - ComponentRef
+- table: DynamicComponentUnit
+  name: IX_Unique_SYS3_DynamicComponentUnit_Guid
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Guid
+- table: DynamicPortal
+  name: PK_SYS3_DynamicPortal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicPortalID
+- table: DynamicPortalMenu
+  name: PK_SYS3_DynamicPortalMenu
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicPortalMenuID
+- table: DynamicPortalPage
+  name: PK_SYS3_DynamicPortalPage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicPortalPageID
+- table: DynamicPortalPageAssosiation
+  name: PK_SYS3_DynamicPortalPageAssosiation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicPortalPageAssosiationID
+- table: DynamicReport
+  name: PK_SYS3_DynamicReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DynamicReportID
+- table: DynamicReport
+  name: UX_DynamicReport_UniqueName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UniqueName
+  included:
+  - Category
+- table: DynamicReport
+  name: IX_Unique_SYS3_DynamicReport_Guid
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Guid
+- table: EntityConversation
+  name: PK_EntityConversation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityConversationID
+- table: EntityConversationRecipient
+  name: PK_EntityConversationRecipient
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityConversationRecipientID
+- table: EntityEvent
+  name: PK_EntityEvent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityEventID
+- table: EntityEvent
+  name: UQ_EntityEvent_EntityCode_EventName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EntityCode
+  - EventName
+- table: EntityGeneralNotification
+  name: PK_EntityGeneralNotification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityGeneralNotificationID
+- table: EntityGeneralNotification
+  name: UQ_EntityGeneralNotification_EntityEventRef_UserRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EntityEventRef
+  - UserRef
+  included:
+  - PreviousState
+  - CurrentState
+  - Filter
+  - NotificationMethod
+  - Title
+- table: EntityHistoryRecord
+  name: PK__EntityHi__4D713E5381F275E5
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityHistoryRecordID
+- table: EntityHistoryRecord
+  name: IX_SYS3_EntityHistoryRecord_RecordID_EntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityCode
+  - RecordID
+- table: EntityLookup
+  name: PK_SYS3_EntityLookup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Code
+- table: EntityLookup
+  name: IX_SYS3_EntityLookup_EntityName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityName
+- table: EntityRecordNotification
+  name: PK_EntityRecordNotification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityRecordNotificationID
+- table: EntityRecordNotification
+  name: UQ_EntityRecordNotification_EntityEventRef_EntityRef_UserRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EntityEventRef
+  - EntityRef
+  - UserRef
+  included:
+  - PreviousState
+  - CurrentState
+  - Filter
+  - NotificationMethod
+  - Title
+- table: EntityRelation
+  name: PK_SYS3_EntityRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityRelationID
+- table: EntityRelation
+  name: IX_SYS3_EntityRelation_SourceRef_SourceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceRef
+  - SourceType
+- table: EntityRelation
+  name: IX_SYS3_EntityRelation_TargetMasterRef_TargetMasterType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetMasterRef
+  - TargetMasterType
+- table: EntityRelation
+  name: IX_SYS3_EntityRelation_TargetRef_TargetType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetRef
+  - TargetType
+- table: EntityRelation
+  name: UIX_SYS3_EntityRelation_SourceRef_SourceType_TargetRef_TargetType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SourceRef
+  - TargetRef
+  - SourceType
+  - TargetType
+- table: EntityReport
+  name: PK_SYS3_EntityReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityReportID
+- table: EPayment
+  name: PK_SYS3_EPayment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EPaymentID
+- table: EPayment
+  name: IX_SYS3_EPayment_UniqueId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UniqueId
+- table: ErrorLog
+  name: PK__ErrorLog__D65247E2E46CC1FF
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ErrorLogID
+- table: FailedProcessInstance
+  name: PK_SYS3_FailedProcessInstance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FailedProcessInstanceId
+- table: FarayarHookExecution
+  name: PK_SYS3_FarayarHookExecution
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FarayarHookExecutionID
+- table: FarayarPackage
+  name: PK_SYS3_FarayarPackage_FarayarPackageID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FarayarPackageID
+- table: FarayarPackageActivityLog
+  name: PK_SYS3_FarayarPackageActivityLog_FarayarPackageActivityLogID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FarayarPackageActivityLogID
+- table: FarayarPackageActivityLog
+  name: IDX_SYS3_FarayarPackageActivityLog_FarayarPackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FarayarPackageRef
+- table: FarayarPackageConfiguration
+  name: PK_SYS3_FarayarPackageConfiguration_FarayarUserConfigurationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FarayarUserConfigurationID
+- table: FarayarPackageConfiguration
+  name: IDX_SYS3_FarayarPackageConfiguration_FarayarPackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FarayarPackageRef
+- table: FarayarPackageDeployment
+  name: PK_SYS3_FarayarPackageDeployment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FarayarPackageDeploymentID
+- table: Field
+  name: PK_SYS3_Field
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FieldID
+- table: Field
+  name: IX_SYS3_Field_EntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityCode
+  included:
+  - Name
+  - Type
+  - TypeMetadata
+  - Index
+  - IsRequired
+  - Version
+- table: FieldValueContainer
+  name: PK_SYS3_FieldValueContainer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FieldValueContainerID
+- table: FieldValueContainer
+  name: IX_SYS3_FieldValueContainer_EntityCode_RecordID_Index
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityCode
+  - RecordID
+  - Index
+  included:
+  - Number1
+  - Number2
+  - Number3
+  - Number4
+  - Number5
+  - Number6
+  - Number7
+  - Number8
+  - Number9
+  - Number10
+  - String1
+  - String2
+  - String3
+  - String4
+  - String5
+  - String6
+  - String7
+  - String8
+  - String9
+  - String10
+  - Lookup1
+  - Lookup2
+  - Lookup3
+  - Lookup4
+  - Lookup5
+  - Lookup6
+  - Lookup7
+  - Lookup8
+  - Lookup9
+  - Lookup10
+  - Reference1
+  - Reference2
+  - Reference3
+  - Reference4
+  - Reference5
+  - Reference6
+  - Reference7
+  - Reference8
+  - Reference9
+  - Reference10
+  - Date1
+  - Date2
+  - Date3
+  - Date4
+  - Date5
+  - Date6
+  - Date7
+  - Date8
+  - Date9
+  - Date10
+  - Boolean1
+  - Boolean2
+  - Boolean3
+  - Boolean4
+  - Boolean5
+  - Boolean6
+  - Boolean7
+  - Boolean8
+  - Boolean9
+  - Boolean10
+- table: File
+  name: PK_SYS3_File
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FileID
+- table: File
+  name: UQ__File__A2A2A54BCF07BDF3
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UniqueId
+- table: Filter
+  name: PK_SYS3_Filter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FilterID
+- table: GeneralPackageDependency
+  name: PK_SYS3_GeneralPackageDependency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GeneralPackageDependencyID
+- table: GeneralPackageDependencyItem
+  name: PK_SYS3_GeneralPackageDependencyItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GeneralPackageDependencyItemID
+- table: GeneralPackageInfo
+  name: PK_SYS3_GeneralPackageInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GeneralPackageInfoID
+- table: GeneralPackageInfoItem
+  name: PK_SYS3_GeneralPackageInfoItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GeneralPackageInfoItemID
+- table: GeneralPackageItem
+  name: PK_SYS3_GeneralPackageItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GeneralPackageItemID
+- table: Image
+  name: PK_Image
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ImageID
+- table: IncommingMessage
+  name: PK_IncommingMessage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IncommingMessageID
+- table: JalaliStartDate
+  name: PK__JalaliSt__4E19FCF7059AB0FF
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StartDate
+- table: Job
+  name: PK__Job__056690E2CB3EF0A6
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - JobID
+- table: Job
+  name: IX_SYS3_Job_RootJobRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RootJobRef
+- table: Job
+  name: IX_SYS3_Job_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: Job
+  name: IX_SYS3_Job_StartTime
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartTime
+- table: Job
+  name: IX_SYS3_Job_FinishTime
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FinishTime
+- table: Job
+  name: IX_SYS3_Job_Status
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Status
+- table: JobStep
+  name: PK__JobStep__D344D47638037190
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - JobStepID
+- table: JobStep
+  name: IX_SYS3_JobStep_JobRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - JobRef
+- table: LogicalResource
+  name: PK_SYS3_LogicalResource
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LogicalResourceID
+- table: LogicalResourceConfiguration
+  name: PK_SYS3_LogicalResourceConfiguration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LogicalResourceConfigurationID
+- table: LogicalResourceRelation
+  name: PK_SYS3_LogicalResourceRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LogicalResourceRelationID
+- table: Lookup
+  name: PK_SYS3_Lookup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LookupID
+- table: Lookup
+  name: UIX_SYS3_Lookup_Type_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Type
+  - Code
+- table: LookupInfo
+  name: PK_SYS3_LookupInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LookupInfoID
+- table: LookupInfo
+  name: UIX_SYS3_LookupInfo_Type
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Type
+- table: LookupTranslation
+  name: PK_SYS3_LookupTranslation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LookupTranslationID
+- table: LookupTranslation
+  name: UIX_SYS3_LookupTranslation_LookupRef_Culture_AllColumns
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LookupRef
+  - Culture
+  included:
+  - Value
+- table: Note
+  name: PK_SYS3_Notes
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NoteID
+- table: Note
+  name: IX_SYS3_Note_ComponentName_EntityName_EntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComponentName
+  - EntityName
+  - EntityRef
+- table: NoteAttachment
+  name: PK_SYS3_NoteAttachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NoteAttachmentID
+- table: NotificationChannelConfig
+  name: PK_SYS3_NotificationChannelConfig
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationChannelConfigID
+- table: NotificationChannelConfig
+  name: UIX_SYS3_NotificationChannelConfig_ChannelName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ChannelTypeName
+  - ChannelName
+- table: NotificationChannelState
+  name: PK_NotificationChannelState
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationChannelStateID
+- table: NumberingMethod
+  name: PK_SYS3_NumberingMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingMethodID
+- table: NumberingMethod
+  name: UIX_NumberingMethod_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: NumberingMethodEntityAttribute
+  name: PK_SYS3_NumberingMethodEntityAttribute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingMethodEntityAttributeID
+- table: NumberingMethodRange
+  name: PK_SYS3_NumberingMethodRange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingMethodRangeID
+- table: NumberingRangeReservation
+  name: PK_SYS3_NumberingRangeReservation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingRangeReservationID
+- table: NumberingRangeReservation
+  name: UIX_SYS3_NumberingRangeReservation_NumberingMethodRangeRef_DomainKey_ReservedSerial
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - NumberingMethodRangeRef
+  - DomainKey
+  - ReservedSerial
+- table: NumberingReseterAttribute
+  name: PK_SYS3_NumberingReseterAttribute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingReseterAttributeID
+- table: OutgoingMessage
+  name: PK_OutgoingMessage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OutgoingMessageID
+- table: PasswordHistory
+  name: PK_SYS3_PasswordHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PasswordHistoryID
+- table: PersistantEvent
+  name: PK_SYS3_PersistantEvent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PersistantEventID
+- table: Portal
+  name: PK_Portal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PortalID
+- table: PortalComponent
+  name: PK_PortalComponent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PortalComponentID
+- table: Primitive
+  name: PK_SYS3_Primitive
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PrimitiveID
+- table: Primitive
+  name: IX_SYS3_Primitive_EntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FieldRef
+  included:
+  - Name
+  - Type
+  - TypeMetadata
+  - Index
+  - PlaceHolderIndex
+  - DefaultNumberValue
+  - DefaultLookupValue
+  - DefaultReferenceValue
+  - DefaultDateValue
+  - DefaultBooleanValue
+  - DefaultStringValue
+  - Version
+- table: ProcessActivityTracking
+  name: PK_SYS3_ProcessActivityTracking
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessActivityTrackingID
+- table: ProcessActivityTracking
+  name: IX_SYS3_ProcessActivityTracking_ProcessInstanceTrackingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessInstanceTrackingRef
+- table: ProcessAdministrator
+  name: PK_SYS3_ProcessAdministrator
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessAdministratorID
+- table: ProcessAdministrator
+  name: IX_SYS3_ProcessAdministrator_ProcessDefinitionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessDefinitionRef
+  included:
+  - UserRef
+- table: ProcessAdministrator
+  name: IX_SYS3_ProcessAdministrator_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+  included:
+  - ProcessDefinitionRef
+- table: ProcessBookmarkCallDefinition
+  name: PK_SYS3_ProcessBookmarkCallDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessBookmarkCallDefinitionID
+- table: ProcessBookmarkCallDefinition
+  name: IX_SYS3_ProcessBookmarkCallDefinition_ProcessDefinitionVersionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessDefinitionVersionRef
+- table: ProcessBookmarkDefinition
+  name: PK_SYS3_ProcessBookmarkDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessBookmarkDefinitionID
+- table: ProcessBookmarkDefinition
+  name: IX_SYS3_ProcessBookmarkDefinition_ProcessDefinitionVersionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessDefinitionVersionRef
+- table: ProcessBookmarkInstance
+  name: PK_SYS3_ProcessBookmarkInstance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessBookmarkInstanceID
+- table: ProcessBookmarkInstance
+  name: IX_SYS3_ProcessBookmarkInstance_ProcessInstanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessInstanceRef
+- table: ProcessBookmarkInstance
+  name: IX_SYS3_ProcessBookmarkInstance_ProcessBookmarkDefinitionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessBookmarkDefinitionRef
+- table: ProcessDashboard
+  name: PK_SYS3_ProcessDashboard
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessDashboardID
+- table: ProcessDefinition
+  name: PK_SYS3_ProcessDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessDefinitionID
+- table: ProcessDefinition
+  name: IX_SYS3_ProcessDefinition_ParentCategoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentCategoryRef
+- table: ProcessDefinitionCategory
+  name: PK_SYS3_ProcessDefinitionCategory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessDefinitionCategoryID
+- table: ProcessDefinitionVersion
+  name: PK_SYS3_ProcessDefinitionVersion
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessDefinitionVersionID
+- table: ProcessDefinitionVersion
+  name: IX_SYS3_ProcessDefinitionVersion_ProcessDefinitionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessDefinitionRef
+- table: ProcessDefinitionVersion
+  name: IX_SYS3_ProcessDefinitionVersion_ParentVersionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentVersionRef
+- table: ProcessDelayInstance
+  name: PK_SYS3_ProcessDelayInstance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessDelayInstanceID
+- table: ProcessDelayInstance
+  name: IX_SYS3_ProcessDelayInstance_ProcessInstanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessInstanceRef
+- table: ProcessDeliveryTagAssignment
+  name: PK_SYS3_ProcessDeliveryTagAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessDeliveryTagAssignmentID
+- table: ProcessEntityLock
+  name: PK_SYS3_ProcessEntityLock
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessEntityLockID
+- table: ProcessEntityLock
+  name: IX_SYS3_ProcessEntityLock_InstanceId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstanceId
+  included:
+  - EntityCode
+  - EntityID
+- table: ProcessEntityLock
+  name: IX_SYS3_ProcessEntityLock_EntityID_EntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityID
+  - EntityCode
+  included:
+  - InstanceId
+- table: ProcessGeneralParametersRepository
+  name: PK_SYS3_ProcessGeneralParametersRepository
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessGeneralParametersRepositoryID
+- table: ProcessGeneralParametersRepository
+  name: IX_SYS3_ProcessGeneralParametersRepository_Name
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Name
+- table: ProcessGeneralParametersRepository
+  name: IX_SYS3_ProcessGeneralParametersRepository_TypeName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TypeName
+- table: ProcessInstance
+  name: PK_SYS3_ProcessInstance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceID
+- table: ProcessInstance
+  name: IX_SYS3_ProcessInstance_ProcessDefinitionVersionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessDefinitionVersionRef
+- table: ProcessInstance
+  name: IX_SYS3_ProcessInstance_InstanceId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstanceId
+- table: ProcessInstanceEntityReference
+  name: PK_ProcessInstanceEntityReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceEntityReferenceID
+- table: ProcessInstanceEntityReference
+  name: IX_SYS3_ProcessInstanceEntityReference_InstanceID_EntityCode_EntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstanceID
+  - EntityCode
+  - EntityRef
+- table: ProcessInstanceEntityReference
+  name: UX_SYS3_ProcessInstanceEntityReference_EntityCode_EntityRef_InstanceID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EntityCode
+  - EntityRef
+  - InstanceID
+- table: ProcessInstanceReassignmentTracking
+  name: PK_SYS3_ProcessInstanceReassignmentTracking
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceReassignmentTrackingID
+- table: ProcessInstanceRepository
+  name: PK_SYS3_ProcessInstanceRepository
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceRepositoryID
+- table: ProcessInstanceRepository
+  name: IX_SYS3_ProcessInstanceRepository_ProcessDefinitionVersionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessDefinitionVersionRef
+- table: ProcessInstanceRepository
+  name: IX_SYS3_ProcessInstanceRepository_InstanceId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstanceId
+- table: ProcessInstanceRepository
+  name: IX_SYS3_ProcessInstanceRepository_Name
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Name
+- table: ProcessInstanceRepository
+  name: IX_SYS3_ProcessInstanceRepository_Type
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Type
+- table: ProcessInstanceRepository
+  name: IX_SYS3_ProcessInstanceRepository_Type_InstanceId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Type
+  - InstanceId
+- table: ProcessInstanceTask
+  name: PK_SYS3_ProcessInstanceTask
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceTaskID
+- table: ProcessInstanceTask
+  name: IX_SYS3_ProcessInstanceTask_InstanceId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstanceId
+  - Context
+- table: ProcessInstanceTask
+  name: IX_SYS3_ProcessInstanceTask_Entity
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompletionTime
+  - RelatedEntityCode
+  - RelatedEntityID
+  - Context
+- table: ProcessInstanceTask
+  name: IX_SYS3_ProcessInstanceTask_RelatedEntityCode_RelatedEntityID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RelatedEntityCode
+  - RelatedEntityID
+- table: ProcessInstanceTaskAssignment
+  name: PK_SYS3_ProcessInstanceTaskAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceTaskAssignmentID
+- table: ProcessInstanceTaskAssignment
+  name: IX_SYS3_ProcessInstanceTaskAssignment_ProcessInstanceTaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessInstanceTaskRef
+- table: ProcessInstanceTaskDelivery
+  name: PK_SYS3_ProcessInstanceTaskDelivery
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceTaskDeliveryID
+- table: ProcessInstanceTaskDelivery
+  name: IX_SYS3_ProcessInstanceTaskDelivery_Resolve
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResolveTime
+  - Type
+  - State
+- table: ProcessInstanceTaskDelivery
+  name: IX_SYS3_ProcessInstanceTaskDelivery_ProcessInstanceTaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessInstanceTaskRef
+- table: ProcessInstanceTaskError
+  name: PK_SYS3_ProcessInstanceTaskError
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceTaskErrorID
+- table: ProcessInstanceTaskError
+  name: IX_SYS3_ProcessInstanceTaskError_InstanceId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstanceId
+- table: ProcessInstanceTaskError
+  name: IX_SYS3_ProcessInstanceTaskError_ProcessInstanceTaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessInstanceTaskRef
+- table: ProcessInstanceTracking
+  name: PK_SYS3_ProcessInstanceTracking
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceTrackingID
+- table: ProcessInstanceTracking
+  name: IX_SYS3_ProcessInstanceTracking_ProcessDefinitionVersionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessDefinitionVersionRef
+- table: ProcessKPIActivityRange
+  name: PK_SYS3_ProcessKPIActivityRange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessKPIActivityRangeID
+- table: ProcessKPIActivityRangeItem
+  name: PK_SYS3_ProcessKPIActivityRangeItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessKPIActivityRangeItemID
+- table: ProcessKPIActivityRangeItem
+  name: IX_SYS3_ProcessKPIActivityRangeItem_ProcessKPIActivityRangeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessKPIActivityRangeRef
+- table: ProcessMessageQueue
+  name: PK_SYS3_ProcessMessageQueue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessMessageQueueID
+- table: ProcessMessageQueue
+  name: IX_SYS3_ProcessMessageQueue_TopicSubscription
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicSubscription
+- table: ProcessPredefined
+  name: PK_SYS3_ProcessPredefined
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessPredefinedID
+- table: ProcessPredefined
+  name: IX_SYS3_ProcessPredefined_UniqueId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UniqueId
+- table: ProcessRepository
+  name: PK_SYS3_ProcessRepository
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessRepositoryID
+- table: ProcessRuleActionAssignment
+  name: PK_SYS3_ProcessRuleActionAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessRuleActionAssignmentID
+- table: ProcessRuleActionDefinition
+  name: PK_SYS3_ProcessRuleActionDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessRuleActionDefinitionID
+- table: ProcessRuleActionTagAssignment
+  name: PK_SYS3_ProcessRuleActionTagAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessRuleActionTagAssignmentID
+- table: ProcessServerMessageQueue
+  name: PK_SYS3_ProcessServerMessageQueue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessServerMessageQueueID
+- table: ProcessServerMessageQueue
+  name: IX_SYS3_ProcessServerMessageQueue_TopicSubscription
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicSubscription
+- table: ProcessServiceArgument
+  name: PK_SYS3_ProcessServiceArgument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessServiceArgumentID
+- table: ProcessServiceArgument
+  name: IX_SYS3_ProcessServiceArgument_ProcessServiceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessServiceOperationRef
+- table: ProcessServiceConsumer
+  name: PK_SYS3_ProcessServiceConsumer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessServiceConsumerID
+- table: ProcessServiceConsumerRelation
+  name: PK_SYS3_ProcessServiceConsumerRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessServiceConsumerRelationID
+- table: ProcessServiceConsumerRelation
+  name: IX_SYS3_ProcessServiceConsumerRelation_ProcessServiceContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessServiceContractRef
+- table: ProcessServiceConsumerRelation
+  name: IX_SYS3_ProcessServiceConsumerRelation_ProcessServiceConsumerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessServiceConsumerRef
+- table: ProcessServiceContract
+  name: PK_SYS3_ProcessServiceContract
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessServiceContractID
+- table: ProcessServiceOperation
+  name: PK_SYS3_ProcessServiceOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessServiceOperationID
+- table: ProcessServiceOperation
+  name: IX_SYS3_ProcessServiceOperation_ProcessServiceContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessServiceContractRef
+- table: ProcessServiceOperationResult
+  name: PK_SYS3_ProcessServiceOperationResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessServiceOperationResultID
+- table: ProcessServiceOperationResult
+  name: IX_SYS3_ProcessServiceOperationResult_ProcessServiceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessServiceOperationRef
+- table: ProcessSimulationAgentRun
+  name: PK_SYS3_ProcessSimulationAgentRun
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessSimulationAgentRunID
+- table: ProcessSimulationAgentRun
+  name: IX_SYS3_ProcessSimulationAgentRun_ProcessSimulationRunRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessSimulationRunRef
+- table: ProcessSimulationAgentRunItem
+  name: PK_SYS3_ProcessSimulationAgentRunItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessSimulationAgentRunItemID
+- table: ProcessSimulationAgentRunItem
+  name: IX_SYS3_ProcessSimulationAgentRunItem_ProcessSimulationAgentRunRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessSimulationAgentRunRef
+- table: ProcessSimulationDefinition
+  name: PK_SYS3_ProcessSimulationDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessSimulationDefinitionID
+- table: ProcessSimulationRun
+  name: PK_SYS3_ProcessSimulationRun
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessSimulationRunID
+- table: ProcessSimulationRun
+  name: IX_SYS3_ProcessSimulationRun_ProcessSimulationDefinitionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessSimulationDefinitionRef
+- table: ProcessTagDefinition
+  name: PK_SYS3_ProcessTagDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessTagDefinitionID
+- table: ProcessTest
+  name: PK_SYS3_ProcessTest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessTestID
+- table: ProcessTest
+  name: IX_SYS3_ProcessTest_ProcessTest
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessDefinitionVersionRef
+- table: ProcessUpdateHistory
+  name: PK_SYS3_ProcessUpdateHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessUpdateHistoryID
+- table: ProcessXMLSchemaDefination
+  name: PK_SYS3_ProcessXMLSchemaDefination
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessXMLSchemaDefinationID
+- table: ProcessXMLSchemaDefination
+  name: IX_SYS3_ProcessXMLSchemaDefination_UniqueId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UniqueId
+- table: RahkaranReplicationBusinessPersist
+  name: PK_SYS3_RahkaranReplicationBusinessPersist
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RahkaranReplicationBusinessPersistID
+- table: RahkaranReplicationNotify
+  name: PK_SYS3_RahkaranReplicationNotify
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RahkaranReplicationNotifyID
+- table: RahkaranReplicationNotify
+  name: IXS_SYS3_RahkaranReplicationNotify_IsProcessed
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IsProcessed
+- table: RecursiveEntityRelation
+  name: PK_SYS3_RecursiveEntityRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RecursiveEntityRelationID
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_SourceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceType
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_DirectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DirectRef
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_EntryRef_ExitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntryRef
+  - ExitRef
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_EntryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntryRef
+  included:
+  - Depth
+  - ExitRef
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_ExitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ExitRef
+  included:
+  - Depth
+  - EntryRef
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_SourceType_SourceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceRef
+  - SourceType
+  included:
+  - TargetRef
+  - TargetType
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_TargetType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetType
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_TargetType_TargetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetRef
+  - TargetType
+  included:
+  - SourceRef
+  - SourceType
+  - Depth
+  - StartRelationRef
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_SourceType_SourceRef_TargetType_TargetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceType
+  - TargetType
+  - SourceRef
+  - TargetRef
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_SourceType_SourceRef_TargetType_TargetRef_Depth
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Depth
+  - SourceRef
+  - SourceType
+  - TargetRef
+  - TargetType
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_StartRelationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartRelationRef
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_EndRelationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndRelationRef
+- table: RecursiveEntityRelation
+  name: IX_RecursiveEntityRelation_StartRelationRef_EndRelationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartRelationRef
+  - EndRelationRef
+- table: RecursiveEntityRelation
+  name: IX_SYS3_RecursiveEntityRelation_Depth
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Depth
+  included:
+  - RecursiveEntityRelationID
+  - EntryRef
+  - ExitRef
+- table: RecursiveEntityRelation
+  name: IX_SYS3_RecursiveEntityRelation_TargetType_SourceType_TargetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetType
+  - SourceType
+  - TargetRef
+  included:
+  - Depth
+- table: ReplicationConflict
+  name: PK_SYS3_ReplicationConflict
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SequenceID
+- table: ReplicationConflict
+  name: IXS_SYS3_ReplicationConflict_Status
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Status
+- table: ReplicationConflict
+  name: IX_SYS3_ReplicationConflict_IncomingEventSequenceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IncomingEventSequenceID
+  included:
+  - Status
+- table: ReplicationConflictResolution
+  name: PK_SYS3_ReplicationConflictResolution
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SequenceID
+- table: ReplicationConnectionStatus
+  name: PK_SYS3_ReplicationConnectionStatus
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SequenceID
+- table: ReplicationConnectionStatus
+  name: IXS_SYS3_ReplicationConnectionStatus_NodeName_SequenceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NodeName
+  - SequenceID
+- table: ReplicationIncomingEvent
+  name: PK_SYS3_ReplicationIncomingEvent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SequenceID
+- table: ReplicationIncomingEvent
+  name: IXS_SYS3_ReplicationIncomingEvent_PackageID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageID
+- table: ReplicationIncomingPackage
+  name: PK_SYS3_ReplicationIncomingPackage
+  type: NONCLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: ReplicationIncomingPackage
+  name: IXS_SYS3_ReplicationIncomingPackage_IsProcessed_CreationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IsProcessed
+  - CreationDate
+- table: ReplicationIncomingPackage
+  name: IXS_SYS3_ReplicationIncomingPackage_IsProcessed
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IsProcessed
+- table: ReplicationOutgoingEvent
+  name: PK_SYS3_ReplicationOutgoingEvent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SequenceID
+- table: ReplicationOutgoingPackage
+  name: PK_SYS3_ReplicationOutgoingPackage
+  type: NONCLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: ReplicationOutgoingPackage
+  name: IXS_SYS3_ReplicationOutgoingPackage_OriginNode_EndSequenceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OriginNode
+  included:
+  - EndSequenceID
+- table: ReplicationOutgoingPackage
+  name: IXS_SYS3_ReplicationOutgoingPackage_CreationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreationDate
+- table: ReplicationOutgoingPackageTarget
+  name: PK_SYS3_ReplicationOutgoingPackageTarget
+  type: NONCLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PackageID
+  - TargetNode
+- table: ReplicationOutgoingPackageTarget
+  name: IXS_SYS3_ReplicationOutgoingPackageTarget_TargetNode_IsProcessed_PackageID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetNode
+  - IsProcessed
+  included:
+  - PackageID
+- table: ReplicationTrackedTable
+  name: PK_SYS3_ReplicationTrackedTable
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TableName
+  - TrackVersion
+- table: ReportPathMapping
+  name: PK_SYS3_ReportPathMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportPathMappingID
+- table: Schedule
+  name: PK_Schedule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScheduleID
+- table: Schedule
+  name: UIX_SYS3_Schedule_UniqueName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UniqueName
+- table: SecurityEvent
+  name: PK_SecurityEvent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: SecurityPolicy
+  name: PK_SYS3_SecurityPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PolicyID
+- table: SecurityPolicy
+  name: UX_SYS3_SecurityPolicy_KeyCompanyUserGroup_Uniqueness
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LogicalResourceKey
+  - CompanyRef
+  - UserRef
+  - EntityGroupRef
+  - PositionRef
+- table: SecurityPolicy
+  name: IX_SYS3_SecurityPolicy_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: SecurityPolicy
+  name: IX_SYS3_SecurityPolicy_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: SecurityPolicy
+  name: IX_SYS3_SecurityPolicy_EntityGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityGroupRef
+- table: SecurityPolicy
+  name: IX_SYS3_SecurityPolicy_PositionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PositionRef
+- table: SetupValues
+  name: PK_SYS3_SetupValues
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Key
+- table: ShellNotification
+  name: PK_ShellNotification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShellNotificationID
+- table: SQLScriptExecutionLog
+  name: PK__SQLScrip__4599AE803A2BCD27
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SQLScriptExecutionLogID
+- table: StateHistory
+  name: PK__StateHis__AE69DA730184B074
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StateHistoryID
+- table: StateHistory
+  name: IX_SYS3_StateHistory_EntityCode_RecordID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityCode
+  - RecordID
+  included:
+  - TargetState
+  - ChangeDate
+  - ChangingUserID
+  - Notes
+- table: StaticID
+  name: UX_SYS3_StaticID_TableName_RecordID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TableName
+  - RecordID
+- table: StoredNotification
+  name: PK_StoredNotification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StoredNotificationID
+- table: TableIdGenBacking
+  name: PK_SYS3_TableIdGen
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TableName
+- table: Task
+  name: PK_SYS3_Task
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskID
+- table: TelegramPart
+  name: PK_SYS3_TelegramPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TelegramPartID
+- table: TelegramPart
+  name: UIX_SYS3_TelegramPart_TelegramUserRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TelegramUserRef
+- table: TelegramSession
+  name: PK_SYS3_TelegramSession
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TelegramSessionID
+- table: TelegramSession
+  name: UIX_SYS3_TelegramSession_ChannelName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ChannelName
+- table: TelegramUser
+  name: PK_SYS3_TelegramUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TelegramUserID
+- table: TelegramUser
+  name: UIX_SYS3_TelegramUser_TelegramID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TelegramID
+- table: TelegramUser
+  name: UIX_SYS3_TelegramUser_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: Trigger
+  name: PK_SYS3_Trigger
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TriggerID
+- table: Trigger
+  name: UIX_SYS3_Trigger_TaskRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TaskRef
+- table: User
+  name: PK_SYS3_User
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserID
+- table: User
+  name: UIX_SYS3_User_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: User
+  name: UIX_SYS3_User_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: UserEntityAction
+  name: PK_SYS3_UserEntityAction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserEntityActionID
+- table: UserEntityAction
+  name: UIX_SYS3_UserEntityAction_Name_EntityName_ComponentName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Name
+  - ComponentName
+  - EntityName
+- table: UserGroupMember
+  name: PK_SYS3_UserGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: UserHash
+  name: PK_SYS3_UserHash
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: UserHash
+  name: UIX_SYS3_UserHash_UserRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UserRef
+  included:
+  - Hash
+- table: UserLogonAudit
+  name: PK_SYS3_UserLogonAudit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserLogonAuditID
+- table: UserMapping
+  name: PK_SYS3_UserMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserMappingID
+- table: UserShellNotification
+  name: PK_UserShellNotification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserShellNotificationID
+- table: UserShellNotification
+  name: IX_UserShellNotification_UserRef_IsDismissed_ShellNotificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+  - IsDismissed
+  - ShellNotificationRef
+  included:
+  - IsRead
+- table: WebSession
+  name: PK_SYS3_WebSession
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WebSessionID
+- table: WebSession
+  name: IX_SYS3_WebSession_ApplicationInstanceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ApplicationInstanceID
+- table: WebViewState
+  name: PK_SYS3_WebViewState
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WebViewStateID
+- table: WebViewState
+  name: IX_SYS3_WebViewState_WebSessionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WebSessionRef

@@ -1,0 +1,102 @@
+schema: QCM3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: InspectionDocumentRules
+  column: InspectionDocumentType
+  lookup_type: InspectionDocumentType
+  type_title_fa: نوع سند بازرسی کیفی
+  values:
+  - value: '1'
+    label_fa: بازرسی اقلام ورودی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: بازرسی حین تولید
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: بازرسی نهایی تولید
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '4'
+    label_fa: بازرسی مجدد
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '5'
+    label_fa: بازرسی متفرقه
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '6'
+    label_fa: بازرسی پایداری
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: InspectionDocumentRulesEvaluation
+  column: State
+  lookup_type: InspectionDocumentRulesEvaluationState
+  type_title_fa: وضعیت ارزیابی تنظیمات قواعد سند بازرسی
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 24
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: InventoryInspectionDocumentRules
+  column: PartRequestType
+  nullable: true
+  lookup_type: PartRequestType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: تولید
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: مصرف
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: فروش
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: امانی
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: انتقال بین انبار
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: ضایعات
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: سایر
+    source: stated_by_config
+    confidence: high
+- table: StandardSamplingTable
+  column: StandardType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 174
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 174

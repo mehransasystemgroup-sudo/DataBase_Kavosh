@@ -1,0 +1,131 @@
+schema: PRC3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: AccountGroupDLSourceTypeRelation
+  column: DLSourceType
+  lookup_type: DLSourceType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: تأمین کننده
+    source: proven_by_data
+    confidence: high
+    observed_count: 43
+  - value: '2'
+    label_fa: طرف مقابل
+    source: proven_by_data
+    confidence: high
+    observed_count: 15
+  - value: '3'
+    label_fa: مرکز هزینه/پروژه
+    source: proven_by_data
+    confidence: high
+    observed_count: 8
+  - value: '7'
+    label_fa: سفارشات
+    source: proven_by_data
+    confidence: high
+    observed_count: 59
+  - value: '8'
+    label_fa: شرکت حمل
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '9'
+    label_fa: سازمان مجوز دهنده
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '10'
+    label_fa: شرکت بیمه
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '11'
+    label_fa: وزارت صنعت و معدن
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '12'
+    label_fa: گمرک ترخیص شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '13'
+    label_fa: قراردادخرید
+    source: proven_by_data
+    confidence: high
+    observed_count: 60
+  - value: '14'
+    label_fa: سطح 5 قراردادخرید
+    source: proven_by_data
+    confidence: high
+    observed_count: 54
+  - value: '15'
+    label_fa: سطح 6 قراردادخرید
+    source: proven_by_data
+    confidence: high
+    observed_count: 54
+  - value: '16'
+    label_fa: طرف مقابل درخواست خرید
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '17'
+    label_fa: تفصیل اول واحد/رمز تامین
+    source: proven_by_data
+    confidence: high
+    observed_count: 12
+  - value: '18'
+    label_fa: تفصیل دوم واحد/رمز تامین
+    source: proven_by_data
+    confidence: high
+    observed_count: 12
+  - value: '19'
+    label_fa: تفصیل سوم واحد/رمز تامین
+    source: proven_by_data
+    confidence: high
+    observed_count: 12
+- table: MiscCost
+  column: DefaultEffectType
+  lookup_type: DefaultEffectType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: افزاینده
+    source: proven_by_data
+    confidence: high
+    observed_count: 9
+  - value: '2'
+    label_fa: کاهنده
+    source: stated_by_config
+    confidence: high
+- table: MiscCost
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 9
+- table: SelfServiceUser
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1

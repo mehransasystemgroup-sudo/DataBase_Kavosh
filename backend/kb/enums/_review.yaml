@@ -1,0 +1,954 @@
+note: نیازمند بررسی دستی. label_fa را پر کنید و source را به stated_by_user تغییر دهید.
+count: 159
+items:
+- column: BDG3.BudgetEntityItemAdjustmentFactor.ActionType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: BDG3.BudgetEntityStandardDescription.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '3'
+- column: BDG3.CheckingRequest.ReferenceType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '90012'
+  lookup_type: ReferenceType
+- column: BDG3.CheckingRequest.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: CheckingRequestState
+  alternatives:
+  - State
+- column: CNV3.DLTypeMap.Delphi_DLType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '11'
+  - '13'
+  - '14'
+  - '15'
+  - '16'
+  - '22'
+  - '105'
+  - '107'
+  - '119'
+  - '121'
+  - '123'
+  - '130'
+- column: CNV3.DLTypeMap.Delphi_ParentDLType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '7'
+  - '9'
+  - '10'
+  - '13'
+- column: CNV3.RegionalDivisionMap.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+  - '3'
+  - '4'
+- column: ECM.Correspondent.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: CorrespondentState
+  alternatives:
+  - State
+- column: ECM.DelegationGrant.Category
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: ECM.OrganizationalStructureParentLevelHierarchy.Level
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+- column: ECM.OrganizationalStructureParentLevelHierarchy.StructureNodeType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: ECM.PredefinedReferringReceiverPermission.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: State
+- column: ECM.PredefinedReferringReceiverPermission.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+- column: ECM.ReferringReason.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: ReferringReasonState
+  alternatives:
+  - State
+- column: FAM3.DepreciationMethod.MethodType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: FAM3.SettlementPlace.StaticSettlementPlaceType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: FIN3.AccountGroup.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: FIN3.AccountGroup.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: FIN3.AccountType.CategoryType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: FIN3.ClosingVoucherPattern.Type
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '1202'
+  lookup_type: ClosingVoucherPatternType
+- column: FIN3.CodingStandardReportFieldInfo.ContentType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: FIN3.CodingStandardReportFieldInfo.Data_Type
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '5'
+  lookup_type: CodingStandardReportFieldInfoData_Type
+- column: FIN3.DLTypeRelation.Level
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+- column: FIN3.GL.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: FIN3.GL.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: FIN3.PeriodicOppositNatureAccounts.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+- column: FIN3.SL.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: FIN3.SeasonalReportMergePatternItem.PartyType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '5'
+  lookup_type: PartyType
+- column: FIN3.SeasonalReportMergePatternItem.ProviderType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: FIN3.VoucherHistory.PropertyType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: FSR3.DetailSetting.SeperateAmountByColumnType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: FSR3.DetailSetting.SeperateAmountByTotalType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: FSR3.DetailSetting.SeperateTitleByColumnType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: FSR3.ReportingStyle.ItemType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '3'
+  - '5'
+  - '6'
+  - '7'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+  - '14'
+  - '15'
+  - '17'
+  - '18'
+  - '19'
+  - '20'
+  - '22'
+  lookup_type: ItemType
+- column: GNR3.Company.Status
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: CompanyStatus
+  alternatives:
+  - Status
+- column: GNR3.CostCenter.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: CostCenterState
+  alternatives:
+  - State
+- column: GNR3.LedgerFiscalYear.ClosingState
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '4'
+- column: GNR3.Party_14020317.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+- column: GNR3.TaxPayerSellerInformation.PartyType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: PartyType
+- column: GNR3.Unit.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: UnitState
+  alternatives:
+  - State
+- column: HCM3.AttendanceCalc.CalcType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: HCM3.AttendanceCalculationCalendar.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: State
+- column: HCM3.AuditLog.ActionType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+  - '2'
+- column: HCM3.CompensationCalcType.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: HCM3.CompensationCalcTypeItem.DeferredConditionType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '94'
+- column: HCM3.CompensationFactorProperty.Status
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '0'
+  lookup_type: Status
+- column: HCM3.EmployeeRelative.RelativeType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: HCM3.EmploymentType.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: HCM3.FactorViewSettingType.CalcType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '3'
+- column: HCM3.FactorViewSettingType.LevelType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '3'
+- column: HCM3.FileStructure.SubType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '5'
+  - '7'
+- column: HCM3.Job.Status
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: JobStatus
+  alternatives:
+  - Status
+- column: HCM3.LeaveTypeProperty.ConsiderEmployeeSacrificeStatus
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+- column: HCM3.MappingInput.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: HCM3.MappingOutput.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '3'
+- column: HCM3.MappingStructureInput.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: HCM3.MissionDocument.Status
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: MissionDocumentStatus
+  alternatives:
+  - Status
+- column: HCM3.Organization.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+- column: HCM3.ReportSetting.ReportType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '3'
+  lookup_type: ReportType
+- column: HCM3.ReportSettingItem.FactorType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: HCM3.ReportSettingItem.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+  - '2'
+  - '4'
+  - '8'
+  - '16'
+  - '32'
+  - '64'
+  - '128'
+  - '256'
+  - '1024'
+- column: HCM3.RfidCardReader.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '3'
+  - '4'
+- column: HCM3.RfidDevice.SynchronizationStatus
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: HCM3.RfidDeviceAccess.Status
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '0'
+  lookup_type: Status
+- column: HCM3.RfidLocalBiometric_BACKUP.BiometricType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: HCM3.RfidLocalSecurityPolicy.AccessType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: HCM3.RfidMessage.Status
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: RfidMessageStatus
+  alternatives:
+  - Status
+- column: HCM3.RfidResponse.IssuerType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: HCM3.RfidResponse.Status
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: RfidResponseStatus
+  alternatives:
+  - Status
+- column: HCM3.RfidTrafficLog.Status
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: RfidTrafficLogStatus
+  alternatives:
+  - Status
+- column: HCM3.SelfServiceLinkAccess.AttendanceStatus
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: HCM3.SelfServiceLinkAccess.ManagerAttendanceStatus
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: HCM3.SelfServiceLinkAccess.ManagerBatchAttendanceStatus
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: HCM3.StatuteType.Status
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: StatuteTypeStatus
+  alternatives:
+  - Status
+- column: HCM3.WorkingShift.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: WorkingShiftState
+  alternatives:
+  - State
+- column: LGS3.Category.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: CategoryState
+  alternatives:
+  - State
+- column: LGS3.CodeBlock.CodeBlockType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: LGS3.InventoryVoucherItem.SLResolvingType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: LGS3.InventoryVoucherItem.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  - '3'
+  lookup_type: State
+- column: LGS3.InventoryVoucherSpecification.Category
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+  - '14'
+- column: LGS3.InventoryVoucherSpecification.Direction
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: LGS3.Part.PartType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '3'
+  lookup_type: PartType
+- column: LGS3.Part.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: State
+- column: LGS3.PartNotice.NoticeType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+  - '14'
+  - '15'
+  - '16'
+  - '17'
+  - '19'
+  - '20'
+  - '22'
+  - '23'
+  - '24'
+  - '25'
+  - '26'
+  - '27'
+  - '28'
+  - '29'
+  - '30'
+  - '31'
+  - '32'
+  - '33'
+  - '34'
+  - '35'
+  - '36'
+  - '37'
+  - '38'
+  lookup_type: NoticeType
+- column: LGS3.PartNotice.PlanningCodeStandardType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: LGS3.PartStore.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: PartStoreState
+  alternatives:
+  - State
+- column: LGS3.PricingCheckResult.CheckType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+  - '2'
+  - '6'
+- column: LGS3.StocktakingPolicy.CardexType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: LGS3.StocktakingPolicy.DocumentType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: LGS3.TaxGrouping.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+- column: QCM3.InspectionDocumentRulesEvaluation.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: InspectionDocumentRulesEvaluationState
+  alternatives:
+  - State
+- column: QCM3.StandardSamplingTable.StandardType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: RMS3.AccountDeploymentSettingsAllowedPaymentType.DefaultPaymentType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: RPA3.AccountingOperation.OperationType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '4'
+  - '5'
+  - '9'
+  lookup_type: OperationType
+- column: RPA3.BankAccount.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: BankAccountState
+  alternatives:
+  - State
+- column: RPA3.CollectionRejectionReceivableNote.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '4'
+  lookup_type: CollectionRejectionReceivableNoteState
+- column: RPA3.CollectionRejectionReceivableNote.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: CollectionRejectionReceivableNoteState
+  alternatives:
+  - State
+- column: RPA3.OnlineGateway.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: OnlineGatewayState
+  alternatives:
+  - State
+- column: RPA3.OnlineGatewayApi.Level
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: RPA3.PayableNote.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '11'
+  - '28'
+  lookup_type: State
+- column: RPA3.PayableNoteTransaction.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '11'
+  - '28'
+  lookup_type: State
+- column: RPA3.Payment.SourceType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '710006'
+- column: RPA3.Receipt.SourceType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '720004'
+- column: RPA3.ReceiptAndPaymentCause.DocumentType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: RPA3.ReceivableCollateralAccountingInformation.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: RPA3.ReceivableNote.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '-17'
+  lookup_type: State
+- column: RPA3.ReceivableNoteTransaction.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  - '4'
+  - '-17'
+  lookup_type: State
+- column: RPA3.Transfer.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: State
+- column: RPA3.TransferPayableCheque.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: State
+- column: SCM3.DownloadSettings.DocumentType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '10'
+- column: SCM3.UploadSettings.DocumentType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+- column: SYS3.BusinessCode.CodeType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+  - '5'
+  - '6'
+- column: SYS3.BusinessEventRuleAction.DefinitionType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: SYS3.DynamicComponentDeployment.Status
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: DynamicComponentDeploymentStatus
+  alternatives:
+  - Status
+- column: SYS3.DynamicComponentUnit.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: State
+- column: SYS3.DynamicReport.Level
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: SYS3.EntityRelation.SourceType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '772'
+  - '1388'
+  - '1428'
+- column: SYS3.EntityRelation.TargetMasterType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '539'
+  - '568'
+  - '774'
+- column: SYS3.EntityRelation.TargetType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '539'
+  - '568'
+  - '774'
+- column: SYS3.GeneralPackageDependency.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+  - '5'
+  - '6'
+  - '8'
+  - '9'
+  - '11'
+  - '14'
+- column: SYS3.GeneralPackageInfo.PackageType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: SYS3.GeneralPackageInfo.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: SYS3.LogicalResource.OperationType
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '0'
+  lookup_type: OperationType
+- column: SYS3.LogicalResource.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: SYS3.NumberingMethod.NumberDigitsType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+- column: SYS3.NumberingMethod.NumberType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: SYS3.NumberingMethod.NumberingMethodState
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: SYS3.ProcessBookmarkCallDefinition.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '3'
+- column: SYS3.ProcessBookmarkDefinition.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: SYS3.ProcessDefinitionVersion.DefinitionType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: SYS3.ProcessDefinitionVersion.State
+  reason: چند نوع lookup ممکن با معنای متفاوت — داده تفکیک نکرد
+  chosen: ProcessDefinitionVersionState
+  alternatives:
+  - State
+- column: SYS3.ProcessEntityLock.LockType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+- column: SYS3.ProcessInstance.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: SYS3.ProcessInstanceRepository.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '4'
+  - '7'
+  - '8'
+- column: SYS3.ProcessInstanceTask.AssignmentType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+- column: SYS3.ProcessInstanceTaskDelivery.ReadState
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: SYS3.ProcessInstanceTaskDelivery.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '4'
+  - '6'
+  lookup_type: State
+- column: SYS3.ProcessInstanceTaskDelivery.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: SYS3.ProcessPredefined.DefinitionType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: SYS3.RecursiveEntityRelation.SourceType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '772'
+  - '1388'
+  - '1428'
+- column: SYS3.RecursiveEntityRelation.TargetType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '539'
+  - '568'
+  - '774'
+- column: SYS3.Schedule.ScheduleType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '2'
+- column: SYS3.SecurityPolicy.AccessType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+  - '-1'
+- column: SYS3.SecurityPolicy.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+- column: SYS3.ShellNotification.ActionType
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+- column: SYS3.ShellNotification.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+  - '2'
+- column: SYS3.StateHistory.SourceState
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '-1'
+  - '10'
+  - '15'
+- column: SYS3.StateHistory.TargetState
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '10'
+  - '15'
+- column: SYS3.User.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: USR3.InstitutionalCreditAnyDialMlyka.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: State
+- column: dbo.COSTCENTER07051402.State
+  reason: مقادیری در داده هست که lookup توضیحشان نمی‌دهد
+  unexplained:
+  - '2'
+  lookup_type: State
+- column: dbo.COSTCENTER07051402.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+- column: dbo.DLTypeRelationOLD.Level
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+- column: dbo.accountgroupOLD.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+- column: dbo.accountgroupOLD.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: dbo.glOLD.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '2'
+- column: dbo.glOLD.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+- column: dbo.slOLD.Nature
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'
+- column: dbo.slOLD.Type
+  reason: نوع lookup پیدا نشد
+  observed_values:
+  - '1'
+  - '2'
+  - '3'

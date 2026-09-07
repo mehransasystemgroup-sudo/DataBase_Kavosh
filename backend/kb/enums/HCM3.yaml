@@ -1,0 +1,1133 @@
+schema: HCM3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: AttendanceCalc
+  column: CalcType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 12568
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 199
+- table: AttendanceCalcLog
+  column: AttendanceCalcStatus
+  lookup_type: AttendanceCalcStatus
+  values:
+  - value: '0'
+    label_fa: ناموفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 10
+  - value: '1'
+    label_fa: موفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 2209
+- table: AttendanceCalculationCalendar
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: AttendanceDataCorrectionRequest
+  column: State
+  lookup_type: AttendanceDataCorrectionRequestState
+  values:
+  - value: '1'
+    label_fa: ذخیره شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 522
+  - value: '3'
+    label_fa: رد شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 80
+- table: AttendanceFactorProperty
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 212
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: AuditLog
+  column: ActionType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4917
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 197
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 994
+- table: CompensationCalcType
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 10
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: CompensationCalcTypeItem
+  column: DeferredConditionType
+  lookup_type: null
+  values:
+  - value: '94'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 9
+- table: CompensationFactorProperty
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 13
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 4533
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: CorrectiveEmployeeStatute
+  column: Status
+  lookup_type: CorrectiveEmployeeStatuteStatus
+  values:
+  - value: '1'
+    label_fa: ذخیره
+    source: proven_by_data
+    confidence: high
+    observed_count: 13
+  - value: '2'
+    label_fa: تایید کارگزینی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: تایید پرداخت
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+- table: Department
+  column: Status
+  lookup_type: DepartmentStatus
+  type_title_fa: وضعیت واحد سازمانی
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 131
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: Employee
+  column: MonthLengthType
+  nullable: true
+  lookup_type: MonthLengthType
+  values:
+  - value: '2'
+    label_fa: ماه 30 روزه
+    source: stated_by_config
+    confidence: high
+- table: Employee
+  column: Status
+  lookup_type: EmployeeStatus
+  type_title_fa: وضعیت کارمند
+  values:
+  - value: '1'
+    label_fa: جدید
+    source: proven_by_data
+    confidence: high
+    observed_count: 10
+  - value: '2'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 197
+  - value: '3'
+    label_fa: غیر فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 300
+  - value: '4'
+    label_fa: معلق
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '5'
+    label_fa: مرخصی پزشکی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '6'
+    label_fa: بازنشسته
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: مستمری بگیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: مستمری بگیر غیرفعال
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: وظیفه بگیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: وظیفه بگیر غیرفعال
+    source: stated_by_config
+    confidence: high
+- table: EmployeeRelatedOrganization
+  column: InsuranceType
+  nullable: true
+  lookup_type: InsuranceType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: وارداتی
+    source: proven_by_data
+    confidence: high
+    observed_count: 239
+  - value: '2'
+    label_fa: داخلی
+    source: stated_by_config
+    confidence: high
+- table: EmployeeRelative
+  column: RelativeType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 866
+- table: EmployeeStatute
+  column: Status
+  lookup_type: EmployeeStatuteStatus
+  type_title_fa: وضعیت حکم کارگزینی
+  values:
+  - value: '1'
+    label_fa: ذخیره
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '5'
+    label_fa: تایید کارگزینی
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '10'
+    label_fa: تایید پرداخت
+    source: proven_by_data
+    confidence: high
+    observed_count: 4113
+- table: EmploymentType
+  column: Nature
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+- table: FactorViewSettingType
+  column: CalcType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 17
+- table: FactorViewSettingType
+  column: LevelType
+  lookup_type: null
+  values:
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+- table: FileStructure
+  column: EncodingType
+  lookup_type: EncodingType
+  values:
+  - value: '1'
+    label_fa: Unicode
+    source: proven_by_data
+    confidence: high
+    observed_count: 13
+  - value: '2'
+    label_fa: UTF8
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: ANSI
+    source: stated_by_config
+    confidence: high
+- table: FileStructure
+  column: SubType
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: InputFileStructure
+  column: KeyColumnType
+  lookup_type: KeyColumnType
+  type_title_fa: مبنای ستون یکتا
+  values:
+  - value: '1'
+    label_fa: کد پرسنلی
+    source: proven_by_data
+    confidence: high
+    observed_count: 16
+  - value: '2'
+    label_fa: کد ملی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: کد مستخدم
+    source: stated_by_config
+    confidence: high
+- table: Job
+  column: Status
+  lookup_type: JobStatus
+  type_title_fa: وضعیت Job
+  ambiguous_type: true
+  values:
+  - value: '0'
+    label_fa: منتظر شروع
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: در حال اجرا
+    source: proven_by_data
+    confidence: high
+    observed_count: 481
+  - value: '2'
+    label_fa: در حال توقف موقت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: توقف موقت
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: در حال لغو
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: لغو شده
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: موفق
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: نیمه موفق
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: ناموفق
+    source: stated_by_config
+    confidence: high
+- table: LeaveRequest
+  column: Status
+  lookup_type: LeaveRequestStatus
+  type_title_fa: وضعیت درخواست مرخصی
+  values:
+  - value: '1'
+    label_fa: ذخیره شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 31
+  - value: '10'
+    label_fa: تایید نهایی
+    source: proven_by_data
+    confidence: high
+    observed_count: 4529
+  - value: '15'
+    label_fa: رد شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 16
+- table: LeaveType
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 10
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: LeaveTypeProperty
+  column: ConsiderEmployeeSacrificeStatus
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 13
+- table: LeaveTypeProperty
+  column: NegativeRemainType
+  lookup_type: NegativeRemainType
+  type_title_fa: NegativeRemainType
+  values:
+  - value: '1'
+    label_fa: ندارد
+    source: proven_by_data
+    confidence: high
+    observed_count: 13
+  - value: '2'
+    label_fa: محدود
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: براساس استحقاق تا پایان سال
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: نامحدود
+    source: stated_by_config
+    confidence: high
+- table: LeaveTypeProperty
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 13
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: LoanPayment
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 688
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: Mapping
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 54
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: MappingInput
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 163
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 422
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 557
+- table: MappingOutput
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1050
+- table: MappingStructureInput
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 14
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 16
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 68
+- table: MappingStructureOutput
+  column: Type
+  lookup_type: MappingStructureOutputType
+  values:
+  - value: '1'
+    label_fa: موجودیت
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '2'
+    label_fa: کد و شرحی
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '3'
+    label_fa: عدد
+    source: proven_by_data
+    confidence: high
+    observed_count: 47
+  - value: '4'
+    label_fa: رشته
+    source: proven_by_data
+    confidence: high
+    observed_count: 12
+  - value: '5'
+    label_fa: تاریخ
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+- table: MissionDocument
+  column: Status
+  lookup_type: MissionDocumentStatus
+  type_title_fa: MissionDocumentStatus
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: ثبت شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 58
+  - value: '2'
+    label_fa: تایید اداری
+    source: proven_by_data
+    confidence: high
+    observed_count: 2544
+  - value: '3'
+    label_fa: تایید پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: رد شده
+    source: stated_by_config
+    confidence: high
+- table: MissionType
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+- table: Organization
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: Post
+  column: Status
+  lookup_type: PostStatus
+  type_title_fa: وضعیت پست
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 810
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: ReportSetting
+  column: ReportType
+  lookup_type: ReportType
+  type_title_fa: ReportType
+  values:
+  - value: '1'
+    label_fa: گزارش
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: یادداشت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ReportSetting
+  column: Type
+  lookup_type: ReportSettingType
+  values:
+  - value: '1'
+    label_fa: حقوق
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: عیدی
+    source: stated_by_config
+    confidence: high
+- table: ReportSettingItem
+  column: FactorType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 37
+- table: ReportSettingItem
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 27
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '16'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '32'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '64'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '128'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '256'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '1024'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: RfidCard
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 357
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: RfidCardReader
+  column: Type
+  lookup_type: null
+  values:
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: RfidDevice
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: RfidDevice
+  column: SynchronizationStatus
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+- table: RfidDeviceAccess
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 628
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: RfidLocalBiometric_BACKUP
+  column: BiometricType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 302
+- table: RfidLocalSecurityPolicy
+  column: AccessType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 29
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 27
+- table: RfidMessage
+  column: IssuerType
+  lookup_type: RfidMessageIssuerType
+  type_title_fa: RfidMessageIssuerType
+  values:
+  - value: '1'
+    label_fa: فعالیت‌های کاربر
+    source: proven_by_data
+    confidence: high
+    observed_count: 96
+  - value: '2'
+    label_fa: پیامد فعالیت‌های کاربر
+    source: proven_by_data
+    confidence: high
+    observed_count: 922
+  - value: '3'
+    label_fa: برنامه‌ریزی فرامین
+    source: stated_by_config
+    confidence: high
+- table: RfidMessage
+  column: Status
+  lookup_type: RfidMessageStatus
+  type_title_fa: RfidMessageStatus
+  ambiguous_type: true
+  values:
+  - value: '0'
+    label_fa: در حال ارسال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: ارسال شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1018
+  - value: '3'
+    label_fa: منتفی
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: منقضی
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: لغو شده
+    source: stated_by_config
+    confidence: high
+- table: RfidMessage
+  column: Type
+  lookup_type: RfidMessageType
+  type_title_fa: RfidMessageType
+  values:
+  - value: '1'
+    label_fa: بی‌درنگ
+    source: proven_by_data
+    confidence: high
+    observed_count: 929
+  - value: '2'
+    label_fa: فرآیند
+    source: proven_by_data
+    confidence: high
+    observed_count: 89
+- table: RfidResponse
+  column: IssuerType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1027
+- table: RfidResponse
+  column: Status
+  lookup_type: RfidResponseStatus
+  type_title_fa: RfidResponseStatus
+  ambiguous_type: true
+  values:
+  - value: '0'
+    label_fa: در انتظار
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: موفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 972
+  - value: '2'
+    label_fa: ناموفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 55
+- table: RfidTrafficLog
+  column: Status
+  lookup_type: RfidTrafficLogStatus
+  type_title_fa: وضعیت رویداد تردد
+  ambiguous_type: true
+  values:
+  - value: '0'
+    label_fa: ناموفق
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: مجاز
+    source: proven_by_data
+    confidence: high
+    observed_count: 22979
+  - value: '2'
+    label_fa: ممنوع
+    source: stated_by_config
+    confidence: high
+- table: RfidTrafficLog
+  column: TransferStatus
+  lookup_type: RfidTrafficLogTransferStatus
+  type_title_fa: وضعیت انتقال
+  values:
+  - value: '0'
+    label_fa: درحال انتقال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: غیرقابل انتقال
+    source: proven_by_data
+    confidence: high
+    observed_count: 22979
+  - value: '2'
+    label_fa: خطای موقت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: موفق
+    source: stated_by_config
+    confidence: high
+- table: SelfServiceLinkAccess
+  column: AttendanceStatus
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 7
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 21
+- table: SelfServiceLinkAccess
+  column: ManagerAttendanceStatus
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 9
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 19
+- table: SelfServiceLinkAccess
+  column: ManagerBatchAttendanceStatus
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 9
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 19
+- table: StatuteFactorProperty
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1195
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: StatuteType
+  column: Status
+  lookup_type: StatuteTypeStatus
+  type_title_fa: وضعیت نوع حکم
+  ambiguous_type: true
+  values:
+  - value: '0'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 55
+- table: TaxTable
+  column: TaxType
+  lookup_type: TaxType
+  values:
+  - value: '1'
+    label_fa: حقوق
+    source: proven_by_data
+    confidence: high
+    observed_count: 15
+  - value: '2'
+    label_fa: عیدی
+    source: stated_by_config
+    confidence: high
+- table: VoucherSpecification
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: غیر فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+- table: VoucherSpecificationSL
+  column: RelatedDLStatus
+  lookup_type: VoucherSpecificationSLRelatedDLStatus
+  values:
+  - value: '1'
+    label_fa: شامل
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: خارج شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 306
+- table: WorkingShift
+  column: State
+  lookup_type: WorkingShiftState
+  type_title_fa: WorkingShiftState
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high

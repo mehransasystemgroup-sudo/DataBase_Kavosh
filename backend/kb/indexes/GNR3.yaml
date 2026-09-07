@@ -1,0 +1,1684 @@
+schema: GNR3
+source: extracted
+indexes:
+- table: Address
+  name: PK_GNR3_Address
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AddressID
+- table: Address
+  name: IX_GNR3_Address_RegionalDivisionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RegionalDivisionRef
+  included:
+  - AddressID
+- table: ArchiveConfig
+  name: PK_GNR3_ArchiveConfig
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ArchiveConfigID
+- table: ArchiveJob
+  name: PK_GNR3_ArchiveJob
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ArchiveJobID
+- table: ArchiveJobExecutionLog
+  name: PK_GNR3_ArchiveJobExecutionLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ArchiveJobExecutionLogID
+- table: Branch
+  name: PK_GNR3_Branch
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BranchID
+- table: Branch
+  name: UIX_GNR3_Branch_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Branch
+  name: UIX_GNR3_Branch_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: BranchGrouping
+  name: PK_GNR3_BranchGrouping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BranchGroupingID
+- table: BranchGrouping
+  name: UIX_GNR3_BranchGrouping_Code_ParentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - ParentRef
+- table: BranchGrouping
+  name: UIX_GNR3_BranchGrouping_Title_ParentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - ParentRef
+- table: BranchGrouping
+  name: IX_GNR3_BranchGrouping_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: BranchGroupingDetail
+  name: PK_GNR3_BranchGroupingDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BranchGroupingDetailID
+- table: BranchGroupingDetail
+  name: IX_GNR3_BranchGroupingDetail_BranchGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchGroupingRef
+- table: BranchGroupingDetail
+  name: IX_GNR3_BranchGroupingDetail_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: BusinessPolicy
+  name: PK_GNR3_BusinessPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyID
+- table: BusinessPolicy
+  name: IX_GNR3_BusinessPolicy_TargetBaseConcept
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetBaseConcept
+- table: BusinessPolicy
+  name: IX_GNR3_BusinessPolicy_TargetBaseConcept_TargetConcept
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetBaseConcept
+  - TargetConcept
+- table: BusinessPolicy
+  name: IX_GNR3_BusinessPolicy_TargetConcept
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetConcept
+- table: BusinessPolicy
+  name: IX_GNR3_BusinessPolicy_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: BusinessPolicy
+  name: IX_GNR3_BusinessPolicy_Name
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Name
+- table: BusinessPolicy
+  name: UIX_GNR3_BusinessPolicy_CompanyRef_TargetBaseConcept_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CompanyRef
+  - TargetBaseConcept
+  - Name
+- table: BusinessPolicyCondition
+  name: PK_BusinessPolicyCondition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyConditionID
+- table: BusinessPolicyCondition
+  name: IX_GNR3_BusinessPolicyCondition_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: BusinessPolicyCondition
+  name: IX_GNR3_BusinessPolicyCondition_EndDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndDate
+- table: BusinessPolicyCondition
+  name: IX_GNR3_BusinessPolicyCondition_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: BusinessPolicyCondition
+  name: IX_GNR3_BusinessPolicyCondition_StartDate_EndDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartDate
+  - EndDate
+- table: BusinessPolicyConditionRow
+  name: PK_BusinessPolicyConditionRow
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyConditionRowID
+- table: BusinessPolicyConditionRow
+  name: IX_GNR3_BusinessPolicyConditionRow_BusinessPolicyConditionRef_EndDate_ForceToUnload
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+  - EndDate
+  - ForceToUnload
+- table: BusinessPolicyConditionRow
+  name: IX_GNR3_BusinessPolicyConditionRow_EndDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndDate
+- table: BusinessPolicyConditionRow
+  name: IX_GNR3_BusinessPolicyConditionRow_BusinessPolicyInputRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyInputRef
+- table: BusinessPolicyConditionRow
+  name: IX_GNR3_BusinessPolicyConditionRow_BusinessPolicyOutputRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyOutputRef
+- table: BusinessPolicyEnforcementProcedure
+  name: PK_GNR3_BusinessPolicyEnforcementProcedure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyEnforcementProcedureID
+- table: BusinessPolicyEnforcementProcedure
+  name: IX_GNR3_BusinessPolicyEnforcementProcedure_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: BusinessPolicyEnforcementProcedureRow
+  name: PK_GNR3_BusinessPolicyEnforcementProcedureRow
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyEnforcementProcedureRowID
+- table: BusinessPolicyEnforcementProcedureRow
+  name: IX_GNR3_BusinessPolicyEnforcementProcedureRow_BusinessPolicyEnforcementProcedureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyEnforcementProcedureRef
+- table: BusinessPolicyEnforcementProcedureRowDependency
+  name: PK_GNR3_BusinessPolicyEnforcementProcedureRowDependency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyDependencyID
+- table: BusinessPolicyEnforcementProcedureRowDependency
+  name: IX_GNR3_BusinessPolicyEnforcementProcedureRowDependency_BusinessPolicyEnforcementProcedureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyEnforcementProcedureRef
+- table: BusinessPolicyEnforcementProcedureRowDependency
+  name: IX_GNR3_BusinessPolicyEnforcementProcedureRowDependency_DependantPolicyEnforcementProcedureRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DependantPolicyEnforcementProcedureRowRef
+- table: BusinessPolicyEnforcementProcedureRowDependency
+  name: IX_GNR3_BusinessPolicyEnforcementProcedureRowDependency_DependencyPolicyEnforcementProcedureRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DependencyPolicyEnforcementProcedureRowRef
+- table: BusinessPolicyInputValue
+  name: PK_GNR3_BusinessPolicyInputValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyInputValueID
+- table: BusinessPolicyInputValue
+  name: IX_GNR3_BusinessPolicyInputValue_HashedValue
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HashedValue
+  included:
+  - Value
+- table: BusinessPolicyMeasure
+  name: PK_GNR3_BusinessPolicyMeasure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyMeasureID
+- table: BusinessPolicyMeasure
+  name: IX_GNR3_BusinessPolicyMeasure_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: BusinessPolicyOutputValue
+  name: PK_GNR3_BusinessPolicyOutputValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyOutputValueID
+- table: BusinessPolicyOutputValue
+  name: IX_GNR3_BusinessPolicyOutputValue_HashedValue
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HashedValue
+  included:
+  - Value
+- table: BusinessPolicyParameter
+  name: PK_GNR3_BusinessPolicyParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyParameterID
+- table: BusinessPolicyParameter
+  name: UIX_GNR3_BusinessPolicyParameter_BaseConcept_Concept_ConceptProperty_EntityGroupingRef_DrillProperties_IsInternal_Computational
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BaseConcept
+  - Concept
+  - ConceptProperty
+  - EntityGroupingRef
+  - DrillThroughFieldRef
+  - DrillThroughProperty
+  - DrillThroughPrimitiveIndex
+  - DrillThroughProviderProperty
+  - ProviderFullName
+  - IsInternal
+  - ComputationType
+- table: BusinessPolicyParameter
+  name: UIX_GNR3_BusinessPolicyParameter_BaseConcept_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BaseConcept
+  - Name
+- table: BusinessPolicyParameterAssociation
+  name: PK_GNR3_BusinessPolicyParameterAssociation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyParameterAssociationID
+- table: BusinessPolicyParameterAssociation
+  name: IX_GNR3_BusinessPolicyParameterAssociation_BusinessPolicyParameterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyParameterRef
+- table: BusinessPolicyParameterAssociation
+  name: IX_GNR3_BusinessPolicyParameterAssociation_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: BusinessPolicyParameterAssociation
+  name: UIX_GNR3_BusinessPolicyParameterAssociation_BusinessPolicyRef_BusinessPolicyParameterRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BusinessPolicyParameterRef
+  - BusinessPolicyRef
+- table: BusinessPolicyTargetEntity
+  name: PK_BusinessPolicyTargetEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyTargetEntityID
+- table: BusinessPolicyTargetEntity
+  name: IX_GNR3_BusinessPolicyTargetEntity_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: BusinessPolicyTargetEntity
+  name: IX_GNR3_BusinessPolicyTargetEntity_ComponentName_EntityName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComponentName
+  - EntityName
+  included:
+  - BusinessPolicyRef
+- table: Characteristic
+  name: PK_GNR3_Characteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CharacteristicID
+- table: Characteristic
+  name: UIX_GNR3_Characteristic_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: CharacteristicItem
+  name: PK_GNR3_CharacteristicItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CharacteristicItemID
+- table: Company
+  name: PK_GNR3_Company
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CompanyID
+- table: Company
+  name: UIX_GNR3_Company_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: Company
+  name: UIX_GNR3_Company_Name_EN
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name_EN
+- table: Company
+  name: UIX_GNR3_Company_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: Company
+  name: IX_GNR3_Company_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: CompanyItem
+  name: PK_CompanyItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CompanyItemID
+- table: CompanyLedger
+  name: PK_CompanyLedger
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CompanyLedgerID
+- table: CorporateStructure
+  name: PK_CorporateStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CorporateStructureID
+- table: CorporateStructure
+  name: UK_CorporateStructure_PublishDate
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PublishDate
+- table: CorporateStructure
+  name: UK_CorporateStructure_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: CorporateStructureNode
+  name: PK_CorporateStructureNode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CorporateStructureNodeID
+- table: CostCenter
+  name: PK_CostCenter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostCenterID
+- table: CostCenter
+  name: UIX_GNR3_CostCenter_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: CostCenter
+  name: UIX_GNR3_CostCenter_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: Currency
+  name: PK_GNR3_Currency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CurrencyID
+- table: Currency
+  name: uix_gnr3_Currency_Abbreviation
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Abbreviation
+- table: Currency
+  name: UIX_GNR3_Currency_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: CurrencyExchangeRate
+  name: PK_GNR3_CurrencyExchangeRate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CurrencyExchangeRateID
+- table: CurrencyGroupMember
+  name: PK_GNR3_CurrencyGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CurrencyGroupMemberID
+- table: DependantCustomerAncestorInformation
+  name: PK_DependantCustomerAncestorInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DependantCustomerAncestorInformationID
+- table: DependantCustomerInformationSource
+  name: PK_DependantCustomerInformationSource
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DependantCustomerInformationSourceID
+- table: DependantCustomerInformationSourceItem
+  name: PK_DependantCustomerInformationSourceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DependantCustomerInformationSourceItemID
+- table: EntityGroup
+  name: PK_GNR3_EntityGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityGroupID
+- table: EntityGroup
+  name: IX_GNR3_EntityGroup_EntityGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityGroupingRef
+  included:
+  - EntityGroupID
+  - Name
+  - ParentRef
+  - Left
+  - Right
+  - Version
+  - Code
+- table: EntityGroup
+  name: IX_GNR3_EntityGroup_EntityGroupingRef_Left_Right
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityGroupingRef
+  - Left
+  - Right
+  included:
+  - EntityGroupID
+- table: EntityGrouping
+  name: PK_GNR3_EntityGrouping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityGroupingID
+- table: EntityGrouping
+  name: UIX_GNR3_EntityGrouping_Name_ComponentName_EntityName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ComponentName
+  - EntityName
+  - Name
+- table: EntitySegmentAssignment
+  name: PK_EntitySegmentAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntitySegmentAssignmentID
+- table: EntitySegmentAssignment
+  name: IX_EntitySegmentAssignment
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EntitySegmentSettingRef
+  - EntityID
+  - CompanyRef
+  - LedgerRef
+- table: EntitySegmentSetting
+  name: PK_EntitySegmentSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntitySegmentSettingID
+- table: EntitySegmentSetting
+  name: IX_EntitySegmentSetting
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EntityCode
+  - Discriminator
+- table: EntityUnit
+  name: PK_GNR3_EntityUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityUnitID
+- table: EntityUnit
+  name: IX_EntityUnit_EntityName_ComponentName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityName
+  - ComponentName
+  - UnitRef
+  included:
+  - EntityUnitID
+  - MeasurableEntityRef
+  - Volume
+  - VolumeUnitRef
+  - WeightUnitRef
+  - Weight
+- table: EntityUnit
+  name: IX_EntityUnit_MeasurableEntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MeasurableEntityRef
+  - IsDefault
+  - EntityName
+  - ComponentName
+- table: EntityUnit
+  name: IX_GNR3_EntityUnit_IsMasterUnit_ComponentName_EntityName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IsMasterUnit
+  - EntityName
+  - ComponentName
+  included:
+  - EntityUnitID
+  - MeasurableEntityRef
+  - UnitRef
+  - IsDefault
+  - Version
+  - IsSecondUnit
+  - Length
+  - Width
+  - Height
+  - Volume
+  - Weight
+  - VolumeUnitRef
+  - WeightUnitRef
+  - DimensionUnitRef
+- table: EntityUnit
+  name: IX_GNR3_EntityUnit_MeasurableEntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MeasurableEntityRef
+- table: EntityUnit
+  name: IX_GNR3_EntityUnit_MeasurableEntityRef_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MeasurableEntityRef
+  - UnitRef
+  included:
+  - Volume
+  - Weight
+  - VolumeUnitRef
+  - WeightUnitRef
+  - EntityName
+  - ComponentName
+- table: EntityUnit
+  name: IX_GNR3_EntityUnit_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: EntityUnitRate
+  name: PK_GNR3_EntityUnitRate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityUnitRateID
+- table: EntityUnitRate
+  name: IX_GNR3_EntityUnitRate_SourceEntityUnitRef_DestinationentityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceEntityUnitRef
+  - DestinationEntityUnitRef
+- table: EntityUnitRate
+  name: IX_GNR3_EntityUnitRate_DestinationEntityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationEntityUnitRef
+  included:
+  - SourceEntityUnitRef
+  - SDRatio
+  - DSRatio
+- table: EntityUnitRate
+  name: IX_GNR3_EntityUnitRate_SourceEntityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceEntityUnitRef
+- table: FiscalYear
+  name: PK_GNR3_FiscalYear
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FiscalYearID
+- table: FiscalYear
+  name: UIX_GNR3_FiscalYear_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Fund
+  name: PK_GNR3_Fund
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FundID
+- table: Fund
+  name: UK_GNR3_Fund_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Fund
+  name: UK_GNR3_Fund_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: FundType
+  name: PK_GNR3_FundType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FundTypeID
+- table: FundType
+  name: UK_GNR3_FundType_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: GroupMember
+  name: PK_GNR3_GroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GroupMemberID
+- table: IndependentUnitCategory
+  name: PK_GNR3_UnitCategory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndependentUnitCategoryID
+- table: IndependentUnitCategory
+  name: UIX_GNR3_IndependentUnitCategory_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: Ledger
+  name: PK_GNR3_Ledger
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LedgerID
+- table: Ledger
+  name: UIX_GNR3_Ledger_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Ledger
+  name: UIX_GNR3_Ledger_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: LedgerFiscalYear
+  name: PK_GNR3_LedgerFiscalYear
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LedgerFiscalYearID
+- table: LedgerFiscalYear
+  name: IX_GNR3_LedgerFiscalYear_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: LedgerFiscalYear
+  name: IX_GNR3_LedgerFiscalYear_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: LedgerFiscalYear
+  name: UIX_GNR3_LedgerFiscalYear_LedgerRef_FiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LedgerRef
+  - FiscalYearRef
+- table: LoyaltyCreditTransaction
+  name: PK_GNR3_LoyaltyCreditTransaction_LoyaltyCreditTransactionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyCreditTransactionID
+- table: LoyaltyCreditTransaction
+  name: IX_GNR3_LoyaltyCreditTransaction_LoyaltyProgramRef_LoyaltyMemberRef_CurrencyRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoyaltyProgramRef
+  - LoyaltyMemberRef
+  - CurrencyRef
+  - State
+  included:
+  - ValidFromDate
+  - ValidToDate
+  - TransactionType
+  - Amount
+- table: LoyaltyCreditTransaction
+  name: IX_GNR3_LoyaltyCreditTransaction_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: LoyaltyCreditTransaction
+  name: IX_GNR3_LoyaltyCreditTransaction_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: LoyaltyCreditTransactionGroup
+  name: PK_GNR3_LoyaltyCreditTransactionGroup_LoyaltyCreditTransactionGroupID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyCreditTransactionGroupID
+- table: LoyaltyCreditTransactionItem
+  name: PK_GNR3_LoyaltyCreditTransactionItem_LoyaltyCreditTransactionItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyCreditTransactionItemID
+- table: LoyaltyHoldInTierCalculation
+  name: PK_GNR3_LoyaltyHoldInTierCalculation_LoyaltyHoldInTierCalculationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyHoldInTierCalculationID
+- table: LoyaltyMember
+  name: PK_GNR3_LoyaltyMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyMemberID
+- table: LoyaltyMember
+  name: UIX_GNR3_LoyaltyMember_LoyaltyMemberPatternRef_MappedRecordRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LoyaltyMemberPatternRef
+  - MappedRecordRef
+- table: LoyaltyMember
+  name: IX_GNR3_LoyaltyMember_MappedRecordRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MappedRecordRef
+  included:
+  - LoyaltyMemberPatternRef
+- table: LoyaltyMemberAttribute
+  name: PK_GNR3_LoyaltyMemberAttribute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyMemberAttributeID
+- table: LoyaltyMemberCard
+  name: PK_GNR3_LoyaltyMemberCard
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyMemberCardID
+- table: LoyaltyMemberPattern
+  name: PK_GNR3_LoyaltyMemberPattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyMemberPatternID
+- table: LoyaltyMemberPattern
+  name: UIX_GNR3_LoyaltyMemberPattern_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: LoyaltyMemberPatternAttribute
+  name: PK_GNR3_LoyaltyMemberPatternAttribute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyMemberPatternAttributeID
+- table: LoyaltyMemberPatternEntityAttribute
+  name: PK_GNR3_LoyaltyMemberPatternEntityAttribute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyMemberPatternEntityAttributeID
+- table: LoyaltyMemberSuspensionHistory
+  name: PK_GNR3_LoyaltyMemberSuspensionHistoryID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyMemberSuspensionHistoryID
+- table: LoyaltyMemberSuspensionHistory
+  name: IX_GNR3_LoyaltyMemberSuspensionHistory_LoyaltyMemberRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoyaltyMemberRef
+- table: LoyaltyPointTransaction
+  name: PK_GNR3_LoyaltyPointTransaction_LoyaltyPointTransactionID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyPointTransactionID
+- table: LoyaltyPointTransaction
+  name: IX_GNR3_LoyaltyPointTransaction_LoyaltyProgramRef_LoyaltyMemberRef_PointTypeRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoyaltyProgramRef
+  - LoyaltyMemberRef
+  - PointTypeRef
+  - State
+  included:
+  - ValidFromDate
+  - ValidToDate
+  - TransactionType
+  - Amount
+- table: LoyaltyPointTransaction
+  name: IX_GNR3_LoyaltyPointTransaction_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: LoyaltyPointTransaction
+  name: IX_GNR3_LoyaltyPointTransaction_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: LoyaltyPointTransaction
+  name: IX_GNR3_LoyaltyPointTransaction_DataRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DataRef
+  included:
+  - DataRefType
+- table: LoyaltyPointTransactionGroup
+  name: PK_GNR3_LoyaltyPointTransactionGroup_LoyaltyPointTransactionGroupID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyPointTransactionGroupID
+- table: LoyaltyPointTransactionItem
+  name: PK_GNR3_LoyaltyPointTransactionItem_LoyaltyPointTransactionItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyPointTransactionItemID
+- table: LoyaltyPointType
+  name: PK_GNR3_LoyaltyPointType_LoyaltyPointTypeID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyPointTypeID
+- table: LoyaltyPolicyEnforcementProcedure
+  name: PK_GNR3_LoyaltyPolicyEnforcementProcedure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyPolicyEnforcementProcedureID
+- table: LoyaltyPolicyEnforcementProcedureRow
+  name: PK_GNR3_LoyaltyPolicyEnforcementProcedureRow
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyPolicyEnforcementProcedureRowID
+- table: LoyaltyPolicyEnforcementProcedureRow
+  name: IX_GNR3_LoyaltyPolicyEnforcementProcedureRow_LoyaltyPolicyEnforcementProcedureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoyaltyPolicyEnforcementProcedureRef
+- table: LoyaltyProgram
+  name: PK_GNR3_LoyaltyProgram_LoyaltyProgramID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyProgramID
+- table: LoyaltyProgramMember
+  name: PK_GNR3_LoyaltyProgramMember_LoyaltyProgramMemberID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyProgramMemberID
+- table: LoyaltyProgramMember
+  name: UK_GNR3_LoyaltyProgramMember_LoyaltyProgramRef_LoyaltyMemberRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LoyaltyProgramRef
+  - LoyaltyMemberRef
+- table: LoyaltyProgramPolicyEventActionMap
+  name: PK_GNR3_LoyaltyProgramPolicyEventActionMap_LoyaltyProgramPolicyEventActionMapID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyProgramPolicyEventActionMapID
+- table: LoyaltyProgramPolicyEventActionMap
+  name: UK_GNR3_LoyaltyProgramPolicyEventActionMap_Title_LoyaltyProgramRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - LoyaltyProgramRef
+- table: LoyaltyTier
+  name: PK_GNR3_LoyaltyTier_LoyaltyTierID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoyaltyTierID
+- table: LoyaltyTier
+  name: UK_GNR3_LoyaltyTier_LoyaltyProgramRef_LoyaltyPointTypeRef_EntrancePoint
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LoyaltyProgramRef
+  - LoyaltyPointTypeRef
+  - EntrancePoint
+- table: LoyaltyTier
+  name: UK_GNR3_LoyaltyTier_Title_LoyaltyProgramRef_LoyaltyPointTypeRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - LoyaltyProgramRef
+  - LoyaltyPointTypeRef
+- table: MiddlewareInformation
+  name: PK_GNR3_MiddlewareInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MiddlewareInformationID
+- table: Party
+  name: PK_GNR3_Party
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartyID
+- table: Party
+  name: IX_GNR3_Party_NationalID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NationalID
+- table: Party
+  name: IX_GNR3_Party_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+  included:
+  - PartyID
+- table: PartyAddress
+  name: PK_GNR3_PartyAddress
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartyAddressID
+- table: Project
+  name: PK_Project
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProjectID
+- table: Project
+  name: UIX_GNR3_Project_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: Project
+  name: UIX_GNR3_Project_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: RegionalDivision
+  name: PK_RegionalDivision
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RegionalDivisionID
+- table: RegionalDivision
+  name: IX_GNR3_RegionalDivision_Left_Right
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Left
+  - Right
+- table: RegionalDivision
+  name: IX_GNR3_RegionalDivision_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: RegionalDivision
+  name: IX_GNR3_RegionalDivision_Type
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Type
+- table: SessionLock
+  name: PK_GNR3_SessionLock
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SessionLockID
+- table: SessionLock
+  name: UIX_GNR3_SessionLock_SessionKey_LedgerRef_FiscalYearRef_BranchRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SessionKey
+  - LedgerRef
+  - FiscalYearRef
+  - BranchRef
+- table: SignatureAssignment
+  name: PK_GNR3_SignatureAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SignatureAssignmentID
+- table: SignatureAssignment
+  name: IX_GNR3_SignatureAssignment_SignatureRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SignatureRequestRef
+- table: SignatureAssignment
+  name: IX_GNR3_SignatureAssignment_SignatoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SignatoryRef
+- table: SignatureRequest
+  name: PK_GNR3_SignatureRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SignatureRequestID
+- table: SignatureRequest
+  name: IX_GNR3_SignatureRequest_SignatureTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SignatureTemplateRef
+- table: SignatureRequest
+  name: IX_GNR3_SignatureRequest_RequesterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RequesterRef
+- table: SignatureTemplate
+  name: PK_GNR3_SignatureTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SignatureTemplateID
+- table: SignatureTemplate
+  name: UIX_GNR3_SignatureTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SignatureTemplateSignatory
+  name: PK_GNR3_SignatureTemplateSignatory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SignatureTemplateSignatoryID
+- table: SignatureTemplateSignatory
+  name: UIX_GNR3_SignatureTemplateSignatory_SignatureTemplateRef_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SignatureTemplateRef
+  - PartyRef
+- table: SignatureTemplateSignatory
+  name: IX_GNR3_SignatureTemplateSignatory_SignatureTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SignatureTemplateRef
+- table: SignatureTemplateSignatory
+  name: IX_GNR3_SignatureTemplateSignatory_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: SignedDocument
+  name: PK_GNR3_SignedDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SignedDocumentID
+- table: SignedDocument
+  name: IX_GNR3_SignedDocument_SignatureTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SignatureTemplateRef
+- table: SignedDocument
+  name: IX_GNR3_SignedDocument_LastVerifierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastVerifierRef
+- table: StandardDescription
+  name: PK_GNR3_StandardDescription
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StandardDescriptionID
+- table: TaxPayerBill
+  name: PK_GNR3_TaxPayerBill
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerBillID
+- table: TaxPayerBill
+  name: IX_GNR3_TaxPayerBill_ReferenceRef_ReferenceType_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+  - State
+- table: TaxPayerBill
+  name: IX_GNR3_TaxPayerBill_ReferenceDate_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceDate
+  - State
+- table: TaxPayerBillBatchJobScheduling
+  name: PK_GNR3_TaxPayerBillBatchJobScheduling
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerBillBatchJobSchedulingID
+- table: TaxPayerBillConfigSnapshot
+  name: PK_GNR3_TaxPayerBillConfigSnapshot
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerBillConfigSnapshotID
+- table: TaxPayerBillConfigSnapshot
+  name: IX_GNR3_TaxPayerBillConfigSnapshot_TaxPayerBillRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaxPayerBillRef
+- table: TaxPayerBillItem
+  name: PK_GNR3_TaxPayerBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerBillItemID
+- table: TaxPayerBillItem
+  name: IX_GNR3_TaxPayerBillItem_TaxPayerBillRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaxPayerBillRef
+- table: TaxPayerBillLog
+  name: PK_GNR3_TaxPayerBillLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerBillLogID
+- table: TaxPayerBillLog
+  name: IX_GNR3_TaxPayerBillLog_TaxPayerBillItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaxPayerBillItemRef
+  included:
+  - TaxPayerDataLogRef
+- table: TaxPayerBillLog
+  name: IX_GNR3_TaxPayerBillLog_TaxPayerDataLogRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaxPayerDataLogRef
+  included:
+  - TaxPayerBillItemRef
+- table: TaxPayerBillPaymentInformation
+  name: PK_GNR3_TaxPayerBillPaymentInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerBillPaymentInformationID
+- table: TaxPayerBillPaymentInformation
+  name: IX_GNR3_TaxPayerBillPaymentInformation_TaxPayerBillRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaxPayerBillRef
+- table: TaxPayerCancellationBill
+  name: PK_GNR3_TaxPayerCancellationBill
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerCancellationBillID
+- table: TaxPayerDataLog
+  name: PK_GNR3_TaxPayerDataLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerDataLogID
+- table: TaxPayerDataLog
+  name: IX_GNR3_TaxPayerDataLog_ReferenceRef_ReferenceType_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+  - State
+- table: TaxPayerDataLog
+  name: IX_GNR3_TaxPayerDataLog_ReferenceDate_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceDate
+  - State
+- table: TaxPayerDataLog
+  name: IX_GNR3_TaxPayerDataLog_ReferenceType_ActionType_State_RelatedReferenceType_ReferenceDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ActionType
+  - State
+  - RelatedReferenceType
+  - ReferenceDate
+  included:
+  - RelatedReferenceRef
+- table: TaxPayerSellerInformation
+  name: PK_TaxPayerSellerInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerSellerInformationID
+- table: TaxPayerSerialNumber
+  name: PK_GNR3_TaxPayerSerialNumber
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPayerSerialNumberID
+- table: TaxPayerSerialNumber
+  name: IX_GNR3_TaxPayerSerialNumber_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: TaxPaymentProfile
+  name: PK_TaxPaymentProfile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxPaymentProfileID
+- table: TaxPaymentProfile
+  name: UK_TaxPaymentProfile_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: TransformedQuantity
+  name: PK_GNR3_TransformedQuantity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransformedQuantityID
+- table: TransformedQuantity
+  name: IX_GNR3_TransformedQuantity_SourceType_SourceRef_TargetRef_TrackerCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceType
+  - SourceRef
+  - TrackerCode
+  - TargetRef
+  included:
+  - Quantity
+  - SourceInfoID1
+  - SourceInfoID2
+- table: TransformedQuantity
+  name: IX_GNR3_TransformedQuantity_SourceType_SourceRef_TrackerCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceType
+  - SourceRef
+  - TrackerCode
+  included:
+  - Quantity
+- table: TransformedQuantity
+  name: IX_GNR3_TransformedQuantity_SourceType_SourceRef_TrackerCode_TargetInfoID1_TargetInfoID2
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceType
+  - SourceRef
+  - TrackerCode
+  - TargetInfoID1
+  - TargetInfoID2
+  included:
+  - Quantity
+  - SourceInfoID1
+  - SourceInfoID2
+- table: TransformedQuantity
+  name: IX_GNR3_TransformedQuantity_SourceType_TargetType_SourceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceType
+  - TargetType
+  - SourceRef
+  included:
+  - Quantity
+- table: TransformedQuantity
+  name: IX_GNR3_TransformedQuantity_SourceType_TargetType_SourceRef_TrackerCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceType
+  - TargetType
+  - SourceRef
+  - TrackerCode
+  included:
+  - Quantity
+- table: Unit
+  name: PK_Unit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UnitID
+- table: Unit
+  name: UIX_GNR3_Unit_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name

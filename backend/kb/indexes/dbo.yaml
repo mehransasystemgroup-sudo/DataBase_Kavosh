@@ -1,0 +1,45 @@
+schema: dbo
+source: extracted
+indexes:
+- table: _ScriptChecksum
+  name: PK___ScriptC__589E6EED1EEB0DC1
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FileName
+- table: CompletedScope
+  name: IX_CompletedScope
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - completedScopeID
+- table: CompletedScope
+  name: IX_CompletedScope_InstanceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - uidInstanceID
+- table: filteredAssets
+  name: IX_dbo_FilteredAssets_FilteredAssetID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FilteredAssetID
+- table: filteredTransaction
+  name: IX_dbo_filteredTransaction_AssetTransactionID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionID
+- table: InitialTransaction
+  name: IX_dbo_InitialTransaction_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef

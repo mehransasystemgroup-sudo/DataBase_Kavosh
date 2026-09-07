@@ -1,0 +1,15 @@
+note: مسیرهای JOIN که کاربر تأیید کرده — بر استنتاج اولویت دارند.
+edges:
+- from: FIN3.Voucher.AccountRef
+  to: FIN3.Account.AccountID
+  source: stated_by_user
+  confidence: high
+  verified: true
+  updated_at: '2026-08-09'
+- from: RPA3.Receipt.CustomerRef
+  to: GNR3.Party.PartyID
+  source: stated_by_user
+  confidence: high
+  verified: true
+  updated_at: '2026-07-25'
+  note: تأییدشده در گزارش دریافت‌های ماهانه

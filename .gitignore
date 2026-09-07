@@ -1,0 +1,19 @@
+# محیط توسعه
+.venv/
+venv/
+node_modules/
+
+# مصنوعات مشتق (همیشه از منبع ساخته می‌شوند)
+backend/index/
+backend/static/
+frontend/dist/
+
+# پایتون
+__pycache__/
+*.py[cod]
+
+# دانش ثبت‌شدهٔ محلی
+backend/kb/audit.log
+
+# سیستم‌عامل
+.DS_Store

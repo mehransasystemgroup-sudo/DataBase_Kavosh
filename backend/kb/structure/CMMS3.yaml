@@ -1,0 +1,5378 @@
+schema: CMMS3
+table_count: 144
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: Bom
+  columns:
+  - name: BomID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - BomID
+- name: BomAssembly
+  columns:
+  - name: BomAssemblyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BomItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 5
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - BomAssemblyID
+- name: BomItem
+  columns:
+  - name: BomItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BomRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ParentBomItemRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Left
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Right
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BomItemID
+- name: BomSpare
+  columns:
+  - name: BomSpareID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BomItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: CounterPartType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: PartStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 9
+  - name: IsActive
+    type: bit
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - BomSpareID
+- name: BomSpareInventoryVoucher
+  columns:
+  - name: BomSpareInventoryVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BomSpareRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IsAutoConsume
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: IssueMethod
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: InterStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - BomSpareInventoryVoucherID
+- name: Confirmation
+  columns:
+  - name: ConfirmationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - ConfirmationID
+- name: ConfirmationActivity
+  columns:
+  - name: ConfirmationActivityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: WorkOrderOperationActivityRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  - name: EquipmentMeasurementPointRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: ConfirmationEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ConfirmationActivityID
+- name: ConfirmationDelayReason
+  columns:
+  - name: ConfirmationDelayReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DelayReasonRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StartTime
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: EndTime
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: DurationMinutes
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: DurationHours
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 9
+  primary_key:
+  - ConfirmationDelayReasonID
+- name: ConfirmationEquipment
+  columns:
+  - name: ConfirmationEquipmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ConfirmationRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: OperationStatus
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ConfirmationEquipmentID
+- name: ConfirmationMaterial
+  columns:
+  - name: ConfirmationMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: ConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartSelectionMethod
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: RealQuantity
+    type: decimal(18,6)
+    nullable: false
+    ordinal: 6
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 8
+  - name: CounterPartType
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ConfirmationMaterialID
+- name: ConfirmationMaterialInventoryVoucher
+  columns:
+  - name: ConfirmationMaterialInventoryVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: InterStoreRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ConfirmationMaterialInventoryVoucherID
+- name: ConfirmationMaterialTrackingFactor
+  columns:
+  - name: ConfirmationMaterialTrackingFactorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TrackingFactor1
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: TrackingFactor2
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: TrackingFactor3
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: TrackingFactor4
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: TrackingFactor5
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ConfirmationMaterialTrackingFactorID
+- name: ConfirmationPersonnel
+  columns:
+  - name: ConfirmationPersonnelID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PersonnelSelectionMethod
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: WorkCenterPersonnelRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: ShiftRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: StartTime
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: EndTime
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: DurationMinutes
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: DurationHours
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ConfirmationPersonnelID
+- name: ConfirmationRTAExtension
+  columns:
+  - name: ConfirmationRTAExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationResourceToolAssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UsageValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ConfirmationRTAExtensionID
+- name: ConfirmationResourceToolAssignment
+  columns:
+  - name: ConfirmationResourceToolAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ResourceToolRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: UsageStartTime
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: UsageEndTime
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ConfirmationResourceToolAssignmentID
+- name: ConfirmationStandardValue
+  columns:
+  - name: ConfirmationStandardValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkOrderOperationStandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ConfirmationStandardValueID
+- name: Damage
+  columns:
+  - name: DamageID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - DamageID
+- name: DamageGroupMember
+  columns:
+  - name: DamageGroupMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MemberID
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - DamageGroupMemberID
+- name: DamageReason
+  columns:
+  - name: DamageReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - DamageReasonID
+- name: DamageReasonGroupMember
+  columns:
+  - name: DamageReasonGroupMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MemberID
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - DamageReasonGroupMemberID
+- name: DelayReason
+  columns:
+  - name: DelayReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - DelayReasonID
+- name: EquipmentDamageGroup
+  columns:
+  - name: EquipmentDamageGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DamageGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - EquipmentDamageGroupID
+- name: EquipmentDamageReasonGroup
+  columns:
+  - name: EquipmentDamageReasonGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DamageReasonGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - EquipmentDamageReasonGroupID
+- name: EquipmentExtension
+  columns:
+  - name: EquipmentExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BomRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: ParentBomItemRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: FactoryCalendarRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - EquipmentExtensionID
+- name: EquipmentExtensionHistory
+  columns:
+  - name: EquipmentExtensionHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentHistoryRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BomRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: ParentBomItemRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: FactoryCalendarRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - EquipmentExtensionHistoryID
+- name: EquipmentFunction
+  columns:
+  - name: EquipmentFunctionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: EquipmentFunctionType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - EquipmentFunctionID
+- name: EquipmentFunctionalFailure
+  columns:
+  - name: EquipmentFunctionalFailureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - EquipmentFunctionalFailureID
+- name: EquipmentMeasurementPoint
+  columns:
+  - name: EquipmentMeasurementPointID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: MeterType
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: MeasurementParameterRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: NotificationLowerLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: NotificationUpperLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: AnnualWork
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: EstimatedAnnualWork
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - EquipmentMeasurementPointID
+- name: EquipmentMeasurementPointHistory
+  columns:
+  - name: EquipmentMeasurementPointHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentMeasurementPointRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MeasurementParameterRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 5
+  - name: NotificationLowerLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: NotificationUpperLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - EquipmentMeasurementPointHistoryID
+- name: EquipmentProblemGroup
+  columns:
+  - name: EquipmentProblemGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProblemGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - EquipmentProblemGroupID
+- name: FMEADamageInformation
+  columns:
+  - name: FMEADamageInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FMEADamageRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProblemRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: FailureConsequenceRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: DamageReasonRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: FailureLikelihoodRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: FailureDetectionMethodRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - FMEADamageInformationID
+- name: FailureConsequence
+  columns:
+  - name: FailureConsequenceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: NatureOfFailureConsequence
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: SeverityOfFailureConsequence
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - FailureConsequenceID
+- name: FailureDetectionMethod
+  columns:
+  - name: FailureDetectionMethodID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - FailureDetectionMethodID
+- name: FailureDetectionMethodType
+  columns:
+  - name: FailureDetectionMethodTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FailureDetectionMethodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DetectionMethodType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - FailureDetectionMethodTypeID
+- name: FailureDetectionMethodTypeMethod
+  columns:
+  - name: FailureDetectionMethodTypeMethodID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FailureDetectionMethodTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: DetectionMethod
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - FailureDetectionMethodTypeMethodID
+- name: FailureEffect
+  columns:
+  - name: FailureEffectID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - FailureEffectID
+- name: FailureLikelihood
+  columns:
+  - name: FailureLikelihoodID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - FailureLikelihoodID
+- name: Inspection
+  columns:
+  - name: InspectionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: ServiceRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Priority
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: ResponsibleWorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: IsLegacy
+    type: bit
+    nullable: false
+    ordinal: 15
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 18
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: IsAdvance
+    type: bit
+    nullable: false
+    ordinal: 20
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 21
+  primary_key:
+  - InspectionID
+- name: InspectionConfirmation
+  columns:
+  - name: InspectionConfirmationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: InspectionOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - InspectionConfirmationID
+- name: InspectionConfirmationActivity
+  columns:
+  - name: InspectionConfirmationActivityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: InspectionOperationActivityRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: EquipmentMeasurementPointRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  primary_key:
+  - InspectionConfirmationActivityID
+- name: InspectionConfirmationActivityTime
+  columns:
+  - name: InspectionConfirmationActivityTimeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationActivityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentMeasurementPointRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 6
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - InspectionConfirmationActivityTimeID
+- name: InspectionConfirmationDelayReason
+  columns:
+  - name: InspectionConfirmationDelayReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DelayReasonRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StartTime
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: EndTime
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: DurationMinutes
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: DurationHours
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 9
+  primary_key:
+  - InspectionConfirmationDelayReasonID
+- name: InspectionConfirmationEquipment
+  columns:
+  - name: InspectionConfirmationEquipmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: InspectionOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: OperationStatus
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - InspectionConfirmationEquipmentID
+- name: InspectionConfirmationEquipmentTime
+  columns:
+  - name: InspectionConfirmationEquipmentTimeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationStatus
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - InspectionConfirmationEquipmentTimeID
+- name: InspectionConfirmationMaterial
+  columns:
+  - name: InspectionConfirmationMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionOperationMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: RealQuantity
+    type: decimal(18,6)
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 7
+  - name: CounterPartType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - InspectionConfirmationMaterialID
+- name: InspectionConfirmationMaterialInventoryVoucher
+  columns:
+  - name: InspectionConfirmationMaterialInventoryVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: InterStoreRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - InspectionConfirmationMaterialInventoryVoucherID
+- name: InspectionConfirmationMaterialTrackingFactor
+  columns:
+  - name: InspectionConfirmationMaterialTrackingFactorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TrackingFactor1
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: TrackingFactor2
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: TrackingFactor3
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: TrackingFactor4
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: TrackingFactor5
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - InspectionConfirmationMaterialTrackingFactorID
+- name: InspectionConfirmationPersonnel
+  columns:
+  - name: InspectionConfirmationPersonnelID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PersonnelSelectionMethod
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: WorkCenterPersonnelRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: StartTime
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: EndTime
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: DurationMinutes
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: DurationHours
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: ShiftRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  primary_key:
+  - InspectionConfirmationPersonnelID
+- name: InspectionConfirmationRTAExtension
+  columns:
+  - name: InspectionConfirmationRTAExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationResourceToolAssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UsageValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - InspectionConfirmationRTAExtensionID
+- name: InspectionConfirmationResourceToolAssignment
+  columns:
+  - name: InspectionConfirmationResourceToolAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ResourceToolRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: UsageStartTime
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: UsageEndTime
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - InspectionConfirmationResourceToolAssignmentID
+- name: InspectionConfirmationStandardValue
+  columns:
+  - name: InspectionConfirmationStandardValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InspectionOperationStandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - InspectionConfirmationStandardValueID
+- name: InspectionConfirmationTime
+  columns:
+  - name: InspectionConfirmationTimeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterPersonnelConfirmerRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: WorkCenterPersonnelAccomplisherRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - InspectionConfirmationTimeID
+- name: InspectionEquipment
+  columns:
+  - name: InspectionEquipmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BomAssemblyRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: CostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - InspectionEquipmentID
+- name: InspectionEquipmentOperationActivity
+  columns:
+  - name: InspectionEquipmentOperationActivityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InspectionOperationActivityRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PeriodCheck
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: EndTime
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: NegativeTolerance
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: PositiveTolerance
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - InspectionEquipmentOperationActivityID
+- name: InspectionEquipmentOperationActivityTime
+  columns:
+  - name: InspectionEquipmentOperationActivityTimeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionEquipmentOperationActivityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - InspectionEquipmentOperationActivityTimeID
+- name: InspectionOperation
+  columns:
+  - name: InspectionOperationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 5
+  - name: OperationTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: EquipmentStatus
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: StartTime
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: EndTime
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - InspectionOperationID
+- name: InspectionOperationActivity
+  columns:
+  - name: InspectionOperationActivityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 5
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: DefaultValue
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 8
+  - name: PeriodCheck
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: EndTime
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: NegativeTolerance
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: PositiveTolerance
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - InspectionOperationActivityID
+- name: InspectionOperationMaterial
+  columns:
+  - name: InspectionOperationMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: PlannedQuantity
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 9
+  - name: CounterPartType
+    type: int
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - InspectionOperationMaterialID
+- name: InspectionOperationMaterialInventoryVoucher
+  columns:
+  - name: InspectionOperationMaterialInventoryVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionOperationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IsAutoConsume
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: IssueMethod
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: InterStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - InspectionOperationMaterialInventoryVoucherID
+- name: InspectionOperationPersonnel
+  columns:
+  - name: InspectionOperationPersonnelID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: WorkCenterPersonnelRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ShiftRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: StartTime
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: EndTime
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: DurationMinutes
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: DurationHours
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - InspectionOperationPersonnelID
+- name: InspectionOperationRTAExtension
+  columns:
+  - name: InspectionOperationRTAExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionOperationResourceToolAssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UsageValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - InspectionOperationRTAExtensionID
+- name: InspectionOperationResourceToolAssignment
+  columns:
+  - name: InspectionOperationResourceToolAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ResourceToolRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: UsageStartTime
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: UsageEndTime
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: StartOffset
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: StartOffsetUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: EndOffset
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: EndOffsetUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - InspectionOperationResourceToolAssignmentID
+- name: InspectionOperationStandardValue
+  columns:
+  - name: InspectionOperationStandardValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InspectionOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterStandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: PlannedQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - InspectionOperationStandardValueID
+- name: MaintenancePartExtension
+  columns:
+  - name: MaintenancePartExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CanUseAsSparePart
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - MaintenancePartExtensionID
+- name: MaintenanceProject
+  columns:
+  - name: MaintenanceProjectID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: ProjectRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - MaintenanceProjectID
+- name: MeasurementParameter
+  columns:
+  - name: MeasurementParameterID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: DimensionUnit
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - MeasurementParameterID
+- name: MeasurementResultRecording
+  columns:
+  - name: MeasurementResultRecordingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: EquipmentMeasurementPointRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Value
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 13
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 14
+  primary_key:
+  - MeasurementResultRecordingID
+- name: Notification
+  columns:
+  - name: NotificationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(54)
+    nullable: false
+    ordinal: 2
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ServiceRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: EquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: BomAssemblyRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: ResponsibleWorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 9
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Priority
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: Risk
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 13
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 14
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 15
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: ReportedByRef
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 19
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 20
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 21
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 22
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 23
+  primary_key:
+  - NotificationID
+- name: NotificationDamage
+  columns:
+  - name: NotificationDamageID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DamageGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DamageRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - NotificationDamageID
+- name: NotificationDamageInfo
+  columns:
+  - name: NotificationDamageInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: Breakdown
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: BreakdownDuration
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 6
+  - name: BreakdownDurationUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - NotificationDamageInfoID
+- name: NotificationDamageReason
+  columns:
+  - name: NotificationDamageReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationDamageRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DamageReasonGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DamageReasonRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - NotificationDamageReasonID
+- name: NotificationProblem
+  columns:
+  - name: NotificationProblemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProblemGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ProblemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: FailureDetectionMethodTypeMethodRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: FailureLikelihoodRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - NotificationProblemID
+- name: NotificationProblemFailureConsequence
+  columns:
+  - name: NotificationProblemFailureConsequenceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationProblemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FailureConsequenceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - NotificationProblemFailureConsequenceID
+- name: OperationType
+  columns:
+  - name: OperationTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - OperationTypeID
+- name: ParentEquipmentMeasurementPointAssignment
+  columns:
+  - name: ParentEquipmentMeasurementPointAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentMeasurementPointRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ParentEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ParentEquipmentMeasurementPointRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: StartAutomaticDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: EndAutomaticDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ParentEquipmentMeasurementPointAssignmentID
+- name: Permit
+  columns:
+  - name: PermitID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PermitTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 7
+  - name: Released
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Finalized
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - PermitID
+- name: PermitHistory
+  columns:
+  - name: PermitHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LastModificationDateTime
+    type: datetime
+    nullable: false
+    ordinal: 2
+  - name: PermitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Released
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Finalized
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - PermitHistoryID
+- name: PermitInspection
+  columns:
+  - name: PermitInspectionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PermitRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InspectionRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - PermitInspectionID
+- name: PermitType
+  columns:
+  - name: PermitTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: IsolationLevel
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - PermitTypeID
+- name: PermitWorkOrder
+  columns:
+  - name: PermitWorkOrderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PermitRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - PermitWorkOrderID
+- name: Plan
+  columns:
+  - name: PlanID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: TimeIndicator
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: CallHorizonforNotification
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: CallHorizonforWorkOrder
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: ShiftFactor
+    type: decimal(5,2)
+    nullable: true
+    ordinal: 8
+  - name: CallHorizonPercentforNotification
+    type: decimal(5,2)
+    nullable: true
+    ordinal: 9
+  - name: CallHorizonPercentforWorkOrder
+    type: decimal(5,2)
+    nullable: true
+    ordinal: 10
+  - name: AcceptableTolerance
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: NegativeAcceptableTolerance
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: PercentAcceptableTolerance
+    type: decimal(5,2)
+    nullable: true
+    ordinal: 13
+  - name: NegativePercentAcceptableTolerance
+    type: decimal(5,2)
+    nullable: true
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  - name: WorkOrderExportationState
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: NotificationType
+    type: int
+    nullable: true
+    ordinal: 17
+  - name: WorkOrderType
+    type: int
+    nullable: true
+    ordinal: 18
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - PlanID
+- name: PlanIndicator
+  columns:
+  - name: PlanIndicatorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Row
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: IndicatorType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: GroupNumber
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: MeasurementParameterRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CycleUnit
+    type: decimal(18,2)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: TimeUnit
+    type: int
+    nullable: true
+    ordinal: 10
+  primary_key:
+  - PlanIndicatorID
+- name: PlanSchedule
+  columns:
+  - name: PlanScheduleID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ServiceEquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: WorkOrderRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: InspectionRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: PlannedDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: NextNotificationRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: IsMaintenanceDocumentCreated
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: NextPlanCreated
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: NextNotificationCreated
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - PlanScheduleID
+- name: PlanScheduleLog
+  columns:
+  - name: PlanScheduleLogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanScheduleRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: Succeeded
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: Message
+    type: nvarchar(2048)
+    nullable: false
+    ordinal: 4
+  - name: OperationType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: PlanIndicatorRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: PlanServiceHierarchyRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: CyclePerformance
+    type: decimal(18,2)
+    nullable: true
+    ordinal: 10
+  primary_key:
+  - PlanScheduleLogID
+- name: PlanService
+  columns:
+  - name: PlanServiceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: WorkOrderExportationState
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: NotificationType
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: WorkOrderType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - PlanServiceID
+- name: PlanServiceEquipmentMeasurementPoint
+  columns:
+  - name: PlanServiceEquipmentMeasurementPointID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ServiceEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EquipmentMeasurementPointRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: PerformancePlanType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: PlanIndicatorRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - PlanServiceEquipmentMeasurementPointID
+- name: PlanServiceHierarchy
+  columns:
+  - name: PlanServiceHierachyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: HigherLevelHierarchyEquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: LowerLevelHierarchyServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: LowerLevelHierarchyEquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - PlanServiceHierachyID
+- name: PlanServiceHierarchyHistory
+  columns:
+  - name: PlanServiceHierarchyHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanServiceHierarchyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PlanServiceHierarchyToleranceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: HigherLevelServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: HigherLevelEquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: LowerLevelServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LowerLevelEquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: NegativeTolerance
+    type: decimal(18,2)
+    nullable: false
+    ordinal: 9
+  - name: PositiveTolerance
+    type: decimal(18,2)
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: PlanIndicatorRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  primary_key:
+  - PlanServiceHierarchyHistoryID
+- name: PlanServiceHierarchyTolerance
+  columns:
+  - name: PlanServiceHierarchyToleranceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanServiceHierarchyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PlanIndicatorRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: NegativeTolerance
+    type: decimal(18,2)
+    nullable: true
+    ordinal: 4
+  - name: PositiveTolerance
+    type: decimal(18,2)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - PlanServiceHierarchyToleranceID
+- name: PlanningAndMonitoringMaintenanceProject
+  columns:
+  - name: PlanningAndMonitoringMaintenanceProjectID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: MaintenanceProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 7
+  - name: StartDateTime
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: ActualStartDateTime
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: EndDateTime
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: ActualEndDateTime
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - PlanningAndMonitoringMaintenanceProjectID
+- name: PlanningAndMonitoringMaintenanceProjectNetwork
+  columns:
+  - name: PlanningAndMonitoringMaintenanceProjectNetworkID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanningAndMonitoringMaintenanceProjectRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkBreakdownStructureNetworkRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StartDateTime
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: EndDateTime
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 6
+  - name: Order
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - PlanningAndMonitoringMaintenanceProjectNetworkID
+- name: PlanningAndMonitoringMaintenanceProjectOperation
+  columns:
+  - name: PlanningAndMonitoringMaintenanceProjectOperationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlanningAndMonitoringMaintenanceProjectNetworkRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PlanningAndMonitoringMaintenanceProjectOperationID
+- name: Problem
+  columns:
+  - name: ProblemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ProblemID
+- name: ProblemGroupMember
+  columns:
+  - name: ProblemGroupMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MemberID
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ProblemGroupMemberID
+- name: RCMDecisionLogic
+  columns:
+  - name: RCMDecisionLogicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 4
+  - name: RecommendationRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - RCMDecisionLogicID
+- name: RCMDecisionLogicAssessment
+  columns:
+  - name: RCMDecisionLogicAssessmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCMEvaluationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RCMDecisionLogicNodeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Answer
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - RCMDecisionLogicAssessmentID
+- name: RCMDecisionLogicAssessmentDetail
+  columns:
+  - name: RCMDecisionLogicAssessmentDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCMDecisionLogicAssessmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RCMDecisionLogicNodeNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - RCMDecisionLogicAssessmentDetailID
+- name: RCMDecisionLogicNode
+  columns:
+  - name: RCMDecisionLogicNodeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCMIdentifier
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 2
+  - name: Prompt
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: RCMDecisionLogicNodeYesRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: RCMDecisionLogicNodeNoRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: RCMDecisionLogicRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: RecommendationTypeYesRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: RecommendationTypeNoRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - RCMDecisionLogicNodeID
+- name: RCMDecisionLogicNodeNote
+  columns:
+  - name: RCMDecisionLogicNodeNoteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: RCMDecisionLogicNodeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Prompt
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - RCMDecisionLogicNodeNoteID
+- name: RCMEvaluation
+  columns:
+  - name: RCMEvaluationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCMDecisionLogicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EquipmentFunctionRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: EquipmentFunctionalFailureRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: FailureEffectRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: ProblemGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: ProblemRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: RecommendationTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - RCMEvaluationID
+- name: RCMFailureConsequence
+  columns:
+  - name: RCMFailureConsequenceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCMEvaluationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FailureConsequenceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - RCMFailureConsequenceID
+- name: Recommendation
+  columns:
+  - name: RecommendationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - RecommendationID
+- name: RecommendationType
+  columns:
+  - name: RecommendationTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: RecommendationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - RecommendationTypeID
+- name: ResourceToolExtension
+  columns:
+  - name: ResourceToolExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ResourceToolRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentMeasurementPointRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ResourceToolExtensionID
+- name: RiskAndPriorityMapping
+  columns:
+  - name: RiskAndPriorityMappingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Priority
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Risk
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Color
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - RiskAndPriorityMappingID
+- name: RiskMatrix
+  columns:
+  - name: RiskMatrixID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FailureConsequenceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FailureLikelihoodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Risk
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: Priority
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - RiskMatrixID
+- name: Service
+  columns:
+  - name: ServiceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: Priority
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: ValidFrom
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: ValidTo
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: IsInspection
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: IsInspectionAdvance
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: DoesNeedToOtherMaintenanceDocumentsToBeClosed
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: EffectiveDate
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - ServiceID
+- name: ServiceEquipment
+  columns:
+  - name: ServiceEquipmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BomItemRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: EffectiveServiceDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: Risk
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: ResponsibleWorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ServiceEquipmentID
+- name: ServiceEquipmentHistory
+  columns:
+  - name: ServiceEquipmentHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EffectiveServiceDate
+    type: datetime
+    nullable: true
+    ordinal: 2
+  - name: ServiceEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: BomItemRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ServiceEquipmentHistoryID
+- name: ServiceEquipmentOperationActivity
+  columns:
+  - name: ServiceEquipmentOperationActivityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ServiceOperationActivityRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PeriodCheck
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: EndTime
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: NegativeTolerance
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: PositiveTolerance
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ServiceEquipmentOperationActivityID
+- name: ServiceEquipmentPermitType
+  columns:
+  - name: ServiceEquipmentPermitTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PermitTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ServiceEquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ServiceEquipmentPermitTypeID
+- name: ServiceEquipmentPermitTypeHistory
+  columns:
+  - name: ServiceEquipmentPermitTypeHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceEquipmentPermitTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PermitTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ServiceEquipmentPermitTypeHistoryID
+- name: ServiceGroupMember
+  columns:
+  - name: ServiceGroupMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MemberID
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ServiceGroupMemberID
+- name: ServiceHistory
+  columns:
+  - name: ServiceHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DoesNeedToOtherMaintenanceDocumentsToBeClosed
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ServiceHistoryID
+- name: ServiceOperation
+  columns:
+  - name: ServiceOperationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: ServiceOperationSetRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: OperationTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: EquipmentStatus
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ServiceOperationID
+- name: ServiceOperationActivity
+  columns:
+  - name: ServiceOperationActivityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: DefaultValue
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 8
+  - name: PeriodCheck
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: EndTime
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: NegativeTolerance
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: PositiveTolerance
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - ServiceOperationActivityID
+- name: ServiceOperationMaterial
+  columns:
+  - name: ServiceOperationMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartSelectionMethod
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Quantity
+    type: decimal(18,6)
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: CounterPartType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 10
+  primary_key:
+  - ServiceOperationMaterialID
+- name: ServiceOperationMaterialInventoryVoucher
+  columns:
+  - name: ServiceOperationMaterialInventoryVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceOperationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: IsAutoConsume
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: IssueMethod
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: InterStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ServiceOperationMaterialInventoryVoucherID
+- name: ServiceOperationResourceToolAssignment
+  columns:
+  - name: ServiceOperationResourceToolAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ResourceToolRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: StartOffset
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: StartOffsetUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: EndOffset
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: EndOffsetUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ServiceOperationResourceToolAssignmentID
+- name: ServiceOperationResourceToolAssignmentExtension
+  columns:
+  - name: ServiceOperationResourceToolAssignmentExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceOperationResourceToolAssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UsageValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ServiceOperationResourceToolAssignmentExtensionID
+- name: ServiceOperationSet
+  columns:
+  - name: ServiceOperationSetID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 5
+  - name: ServiceRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: ResponsibleWorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ServiceOperationSetID
+- name: ServiceOperationStandardValue
+  columns:
+  - name: ServiceOperationStandardValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterStandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ServiceOperationStandardValueID
+- name: ServiceOperationSubcontract
+  columns:
+  - name: ServiceOperationSubcontractID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: SubcontractType
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: ServiceOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PurchaseRequestAutomaticIssue
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: PurchaseItemRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: PartyRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: SupplierRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: CounterPartEntityType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: CounterPartEntityRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: PurchaseRequestType
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 13
+  primary_key:
+  - ServiceOperationSubcontractID
+- name: ServicePermitType
+  columns:
+  - name: ServicePermitTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PermitTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ServicePermitTypeID
+- name: ServicePermitTypeHistory
+  columns:
+  - name: ServicePermitTypeHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServicePermitTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PermitTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ServicePermitTypeHistoryID
+- name: WorkBreakdownStructure
+  columns:
+  - name: WorkBreakdownStructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: MaintenanceProjectRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: PartyRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - WorkBreakdownStructureID
+- name: WorkBreakdownStructureNetwork
+  columns:
+  - name: WorkBreakdownStructureNetworkID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkBreakdownStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: EquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - WorkBreakdownStructureNetworkID
+- name: WorkBreakdownStructureNetworkWorkOrderOperation
+  columns:
+  - name: WorkBreakdownStructureNetworkWorkOrderOperationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkBreakdownStructureNetworkRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: IsAddedByUser
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 6
+  - name: Order
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - WorkBreakdownStructureNetworkWorkOrderOperationID
+- name: WorkOrder
+  columns:
+  - name: WorkOrderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 3
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: EquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: BomAssemblyRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ServiceRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Priority
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: Risk
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 12
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: ReferenceNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: ResponsibleWorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: IsLegacy
+    type: bit
+    nullable: false
+    ordinal: 19
+  - name: ParentWorkOrderRef
+    type: bigint
+    nullable: true
+    ordinal: 20
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 21
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 22
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 23
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 24
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 25
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 26
+  primary_key:
+  - WorkOrderID
+- name: WorkOrderDamage
+  columns:
+  - name: WorkOrderDamageID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DamageGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DamageRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - WorkOrderDamageID
+- name: WorkOrderDamageInfo
+  columns:
+  - name: WorkOrderDamageInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: Breakdown
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: BreakdownDuration
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 6
+  - name: BreakdownDurationUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - WorkOrderDamageInfoID
+- name: WorkOrderDamageReason
+  columns:
+  - name: WorkOrderDamageReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderDamageRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DamageReasonGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DamageReasonRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - WorkOrderDamageReasonID
+- name: WorkOrderEquipment
+  columns:
+  - name: WorkOrderEquipmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BomItemRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: CostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - WorkOrderEquipmentID
+- name: WorkOrderOperation
+  columns:
+  - name: WorkOrderOperationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 5
+  - name: OperationTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: EquipmentStatus
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: StartTime
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: EndTime
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - WorkOrderOperationID
+- name: WorkOrderOperationActivity
+  columns:
+  - name: WorkOrderOperationActivityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 5
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: DefaultValue
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - WorkOrderOperationActivityID
+- name: WorkOrderOperationMaterial
+  columns:
+  - name: WorkOrderOperationMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartSelectionMethod
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Quantity
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: PlannedQuantity
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 6
+  - name: PartUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 10
+  - name: CounterPartType
+    type: int
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - WorkOrderOperationMaterialID
+- name: WorkOrderOperationMaterialInventoryVoucher
+  columns:
+  - name: WorkOrderOperationMaterialInventoryVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IsAutoConsume
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: InventoryVoucherSpecificationRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: IssueMethod
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: InterStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - WorkOrderOperationMaterialInventoryVoucherID
+- name: WorkOrderOperationPersonnel
+  columns:
+  - name: WorkOrderOperationPersonnelID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: WorkCenterPersonnelRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ShiftRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: StartTime
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: EndTime
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: DurationMinutes
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: DurationHours
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - WorkOrderOperationPersonnelID
+- name: WorkOrderOperationRTAExtension
+  columns:
+  - name: WorkOrderOperationRTAExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationResourceToolAssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UsageValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - WorkOrderOperationRTAExtensionID
+- name: WorkOrderOperationResourceToolAssignment
+  columns:
+  - name: WorkOrderOperationResourceToolAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ResourceToolRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: UsageStartTime
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: UsageEndTime
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: StartOffset
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: StartOffsetUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: EndOffset
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: EndOffsetUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - WorkOrderOperationResourceToolAssignmentID
+- name: WorkOrderOperationStandardValue
+  columns:
+  - name: WorkOrderOperationStandardValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterStandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: PlannedQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - WorkOrderOperationStandardValueID
+- name: WorkOrderOperationSubcontract
+  columns:
+  - name: WorkOrderOperationSubcontractID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: SubcontractType
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PurchaseRequestAutomaticIssue
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: PurchaseItemRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: PartyRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: SupplierRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: CounterPartEntityType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: CounterPartEntityRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: PurchaseRequestType
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 13
+  primary_key:
+  - WorkOrderOperationSubcontractID
+- name: WorkOrderProblem
+  columns:
+  - name: WorkOrderProblemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProblemGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ProblemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: FailureDetectionMethodTypeMethodRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: FailureLikelihoodRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - WorkOrderProblemID
+- name: WorkOrderProblemFailureConsequence
+  columns:
+  - name: WorkOrderProblemFailureConsequenceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderProblemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FailureConsequenceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - WorkOrderProblemFailureConsequenceID

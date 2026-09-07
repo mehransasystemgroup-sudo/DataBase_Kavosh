@@ -1,0 +1,956 @@
+schema: SYS3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: BusinessCode
+  column: CodeType
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 15
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 36
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 21
+- table: BusinessEventRuleAction
+  column: DefinitionType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 14
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 22
+- table: DataTransferMethodItem
+  column: FieldType
+  lookup_type: DataTransferMethodItemFieldType
+  type_title_fa: نوع فیلد آیتم روش انتقال داده
+  values:
+  - value: '0'
+    label_fa: ارجاع
+    source: proven_by_data
+    confidence: high
+    observed_count: 13
+  - value: '1'
+    label_fa: فیلد
+    source: proven_by_data
+    confidence: high
+    observed_count: 55
+  - value: '2'
+    label_fa: ستون کمکی
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+- table: DynamicComponentDeployment
+  column: Status
+  lookup_type: DynamicComponentDeploymentStatus
+  type_title_fa: DynamicComponentDeploymentStatus
+  ambiguous_type: true
+  values:
+  - value: '0'
+    label_fa: نامشخص
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: در حال انتشار
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: موفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 160
+  - value: '3'
+    label_fa: ناموفق
+    source: stated_by_config
+    confidence: high
+- table: DynamicComponentUnit
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 25
+- table: DynamicReport
+  column: Level
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 8
+- table: EntityGeneralNotification
+  column: CurrentState
+  nullable: true
+  lookup_type: null
+  values: []
+- table: EntityGeneralNotification
+  column: PreviousState
+  nullable: true
+  lookup_type: null
+  values: []
+- table: EntityRecordNotification
+  column: CurrentState
+  nullable: true
+  lookup_type: null
+  values: []
+- table: EntityRecordNotification
+  column: PreviousState
+  nullable: true
+  lookup_type: null
+  values: []
+- table: EntityRelation
+  column: SourceType
+  lookup_type: null
+  values:
+  - value: '772'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '1388'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 34
+  - value: '1428'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+- table: EntityRelation
+  column: TargetMasterType
+  lookup_type: null
+  values:
+  - value: '539'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+  - value: '568'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 34
+  - value: '774'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: EntityRelation
+  column: TargetType
+  lookup_type: null
+  values:
+  - value: '539'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+  - value: '568'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 34
+  - value: '774'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: GeneralPackageDependency
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 24
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 5
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 107
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 6
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 57
+  - value: '11'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 9
+  - value: '14'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: GeneralPackageInfo
+  column: PackageType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 10
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 8
+- table: GeneralPackageInfo
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 8
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 10
+- table: Job
+  column: Status
+  lookup_type: JobStatus
+  type_title_fa: وضعیت Job
+  values:
+  - value: '0'
+    label_fa: منتظر شروع
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: در حال اجرا
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: در حال توقف موقت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: توقف موقت
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: در حال لغو
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: لغو شده
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: موفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 1809
+  - value: '7'
+    label_fa: نیمه موفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 7
+  - value: '8'
+    label_fa: ناموفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 1386
+- table: LogicalResource
+  column: OperationType
+  lookup_type: OperationType
+  type_title_fa: OperationType
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+  - value: '1'
+    label_fa: داخل شهری
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: بین شهری
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بین المللی
+    source: stated_by_config
+    confidence: high
+- table: LogicalResource
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+- table: NumberingMethod
+  column: NumberDigitsType
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 330
+- table: NumberingMethod
+  column: NumberType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 317
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 13
+- table: NumberingMethod
+  column: NumberingMethodState
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 329
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ProcessActivityTracking
+  column: AssignmentType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: ProcessBookmarkCallDefinition
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 7
+- table: ProcessBookmarkCallDefinition
+  column: Type
+  lookup_type: null
+  values:
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 7
+- table: ProcessBookmarkDefinition
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 16
+- table: ProcessBookmarkDefinition
+  column: Type
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 12
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+- table: ProcessDefinitionVersion
+  column: DefinitionType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+- table: ProcessDefinitionVersion
+  column: State
+  lookup_type: ProcessDefinitionVersionState
+  ambiguous_type: true
+  values:
+  - value: '0'
+    label_fa: ذخیره شده
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '2'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: معلق
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: در حال پردازش
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: منتشر شده
+    source: stated_by_config
+    confidence: high
+- table: ProcessEntityLock
+  column: LockType
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 509
+- table: ProcessInstance
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 563
+- table: ProcessInstance
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 562
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ProcessInstanceRepository
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 563
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3004
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 563
+- table: ProcessInstanceTask
+  column: AssignmentType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 59
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 7
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 54
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1254
+- table: ProcessInstanceTaskDelivery
+  column: ReadState
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1317
+- table: ProcessInstanceTaskDelivery
+  column: State
+  nullable: true
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 806
+- table: ProcessInstanceTaskDelivery
+  column: Type
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: ProcessPredefined
+  column: DefinitionType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 22
+- table: ProcessPredefined
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 22
+- table: RecursiveEntityRelation
+  column: SourceType
+  lookup_type: null
+  values:
+  - value: '772'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '1388'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 34
+  - value: '1428'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+- table: RecursiveEntityRelation
+  column: TargetType
+  lookup_type: null
+  values:
+  - value: '539'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+  - value: '568'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 34
+  - value: '774'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ReportPathMapping
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 31
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: Schedule
+  column: ScheduleType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 14
+- table: SecurityEvent
+  column: Type
+  lookup_type: SecurityEventType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: اطلاع
+    source: proven_by_data
+    confidence: high
+    observed_count: 25
+  - value: '2'
+    label_fa: هشدار
+    source: proven_by_data
+    confidence: high
+    observed_count: 16
+  - value: '8'
+    label_fa: مهم
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '16'
+    label_fa: بحرانی
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: موفق
+    source: proven_by_data
+    confidence: high
+    observed_count: 61
+  - value: '257'
+    label_fa: موفق | اطلاع
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: ناموفق
+    source: stated_by_config
+    confidence: high
+  - value: '514'
+    label_fa: ناموفق | هشدار
+    source: stated_by_config
+    confidence: high
+  - value: '520'
+    label_fa: ناموفق | مهم
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '528'
+    label_fa: ناموفق | بحرانی
+    source: stated_by_config
+    confidence: high
+- table: SecurityPolicy
+  column: AccessType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 293
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 10046
+  - value: '-1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 52
+- table: SecurityPolicy
+  column: Type
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2641
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 7750
+- table: ShellNotification
+  column: ActionType
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 108
+- table: ShellNotification
+  column: Type
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 138
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: StateHistory
+  column: SourceState
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 966
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 11473
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1536
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 146
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 20
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 657
+  - value: '-1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 276
+  - value: '15'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 106
+- table: StateHistory
+  column: TargetState
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 826
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1331
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 6280
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 812
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 22
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 649
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 5098
+  - value: '15'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 163
+- table: User
+  column: Status
+  lookup_type: UserStatus
+  type_title_fa: UserStatus
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 177
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: User
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 177
+- table: UserEntityAction
+  column: ViewType
+  lookup_type: UserEntityActionViewType
+  type_title_fa: نوع نمای عملیات انتیتی کاربر
+  values:
+  - value: '1'
+    label_fa: راهکاران
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: خدمات الکترونیک
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: راهکاران (همراه با فهرست‌ها)
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: خدمات الکترونیک (همراه با فهرست‌ها)
+    source: stated_by_config
+    confidence: high
+  - value: '255'
+    label_fa: همه
+    source: proven_by_data
+    confidence: high
+    observed_count: 3

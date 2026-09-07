@@ -1,0 +1,450 @@
+schema: CAL3
+table_count: 12
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: CalibrationCharacteristic
+  columns:
+  - name: CalibrationCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 3
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - CalibrationCharacteristicID
+- name: CalibrationInspection
+  columns:
+  - name: CalibrationInspectionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CalibrationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: CalibrationPlanRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: CalibrationEvaluation
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - CalibrationInspectionID
+- name: CalibrationInspectionCharacteristic
+  columns:
+  - name: CalibrationInspectionCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalibrationInspectionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: CalibrationCharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CalibrationCharacteristicEvaluation
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: UpperLimit
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: LowerLimit
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: NegativeTolerance
+    type: decimal(9,6)
+    nullable: false
+    ordinal: 8
+  - name: PositiveTolerance
+    type: decimal(9,6)
+    nullable: false
+    ordinal: 9
+  - name: TestDeviceRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: DefaultValue
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 11
+  - name: TargetValue
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - CalibrationInspectionCharacteristicID
+- name: CalibrationPlan
+  columns:
+  - name: CalibrationPlanID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - CalibrationPlanID
+- name: CalibrationPlanEquipment
+  columns:
+  - name: CalibrationPlanEquipmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalibrationPlanRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IsActive
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CalibrationPlanEquipmentID
+- name: CalibrationPlanSpecification
+  columns:
+  - name: CalibrationPlanSpecificationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalibrationPlanRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: CalibrationCharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: LowerLimit
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: UpperLimit
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: NegativeTolerance
+    type: decimal(9,6)
+    nullable: false
+    ordinal: 7
+  - name: PositiveTolerance
+    type: decimal(9,6)
+    nullable: false
+    ordinal: 8
+  - name: TestDeviceRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: TargetValue
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 10
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 11
+  - name: UnitRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - CalibrationPlanSpecificationID
+- name: CalibrationResultRecording
+  columns:
+  - name: CalibrationResultRecordingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: CalibrationInspectionRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - CalibrationResultRecordingID
+- name: CalibrationResultRecordingCharacteristic
+  columns:
+  - name: CalibrationResultRecordingCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalibrationResultRecordingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalibrationInspectionCharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: ErrorValue
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: InferredState
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 7
+  - name: InspectorRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: InspectionStartDate
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: InspectionEndDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - CalibrationResultRecordingCharacteristicID
+- name: EquipmentCalibrationExtension
+  columns:
+  - name: EquipmentCalibrationExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IsTestDevice
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - EquipmentCalibrationExtensionID
+- name: EquipmentCalibrationExtensionInspection
+  columns:
+  - name: EquipmentCalibrationExtensionInspectionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentCalibrationExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalibrationPlanRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CalibrationDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: NextCalibrationDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - EquipmentCalibrationExtensionInspectionID
+- name: ServiceOperationCalibration
+  columns:
+  - name: ServiceOperationCalibrationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationNature
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: CalibrationPlanRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ServiceOperationCalibrationID
+- name: WorkOrderOperationCalibration
+  columns:
+  - name: WorkOrderOperationCalibrationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationNature
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: CalibrationPlanRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - WorkOrderOperationCalibrationID

@@ -1,0 +1,758 @@
+schema: PDS3
+table_count: 16
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: CustomerCreditPolicy
+  columns:
+  - name: CustomerCreditPolicyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: CalculationStartDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: CalculationEndDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: CustomerGroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - CustomerCreditPolicyID
+- name: CustomerCreditPolicyConfirmation
+  columns:
+  - name: CustomerCreditPolicyConfirmationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: UserCreditLimitItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DocumentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DocumentType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: DocumentNumber
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 5
+  - name: DocumentDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: MeasureUID
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 7
+  - name: MeasureValue
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - CustomerCreditPolicyConfirmationID
+- name: CustomerCreditPolicyItem
+  columns:
+  - name: CustomerCreditPolicyItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerCreditPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: CustomerRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: CustomerGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Value
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - CustomerCreditPolicyItemID
+- name: CustomerCreditPolicyRelation
+  columns:
+  - name: CustomerCreditPolicyRelationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerCreditPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CustomerCreditPolicyRelationID
+- name: CustomerPharma
+  columns:
+  - name: CustomerPharmaID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: HIX
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CustomerPharmaID
+- name: RemainingUntilProductExpiration
+  columns:
+  - name: RemainingUntilProductExpirationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProductGroupingRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: CreditStartDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: CreditEndDate
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - RemainingUntilProductExpirationID
+- name: RemainingUntilProductExpirationItem
+  columns:
+  - name: RemainingUntilProductExpirationItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RemainingUntilProductExpirationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: ProductGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: DaysUntilItemExpirationDate
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: DaysUntilFreeProductItemExpirationDate
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - RemainingUntilProductExpirationItemID
+- name: SettlementRespite
+  columns:
+  - name: SettlementRespiteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: ExpirationStartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: ExpirationEndDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: CurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: MaximumTotalCreditAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - SettlementRespiteID
+- name: SettlementRespiteItem
+  columns:
+  - name: SettlementRespiteItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SettlementRespiteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: UserRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: MaximumSettlementRespite
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: MaximumCreditAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - SettlementRespiteItemID
+- name: SettlementRespiteRequest
+  columns:
+  - name: SettlementRespiteRequestID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: DocumentType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: DocumentRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: SettlementRespiteRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: BaseQuantity
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: InitialQuantity
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: NewQuantity
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: NetPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: RequesterRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: RequesterType
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: ConfirmerRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: CurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: SalesAreaRef
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: DocumentDate
+    type: datetime
+    nullable: false
+    ordinal: 16
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 17
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 18
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 20
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 21
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 22
+  primary_key:
+  - SettlementRespiteRequestID
+- name: SettlementRespiteRequestItem
+  columns:
+  - name: SettlementRespiteRequestItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SettlementRespiteRequestRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: DocumentItemType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: DocumentItemRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: BaseQuantity
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: InitialQuantity
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: NewQuantity
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - SettlementRespiteRequestItemID
+- name: TriplePriceList
+  columns:
+  - name: TriplePriceListID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: LetterNumber
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 4
+  - name: ExpirationStartDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: ExpirationEndDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: CurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: SupplierRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 10
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - TriplePriceListID
+- name: TriplePriceListItem
+  columns:
+  - name: TriplePriceListItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TriplePriceListRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProductUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PurchasePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: SalePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: ConsumerPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - TriplePriceListItemID
+- name: TriplePriceListRelation
+  columns:
+  - name: TriplePriceListRelationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TriplePriceListRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SalesPriceListRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ConsumerPriceListRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: InventoryPriceListRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - TriplePriceListRelationID
+- name: UserCreditLimit
+  columns:
+  - name: UserCreditLimitID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: CustomerGroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - UserCreditLimitID
+- name: UserCreditLimitItem
+  columns:
+  - name: UserCreditLimitItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: UserCreditLimitRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: CustomerRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: CustomerGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: UserRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Value
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - UserCreditLimitItemID

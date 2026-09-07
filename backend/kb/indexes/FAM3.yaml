@@ -1,0 +1,3229 @@
+schema: FAM3
+source: extracted
+indexes:
+- table: Accident
+  name: PK_FAM3_Accident
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccidentID
+- table: Accident
+  name: IX_FAM3_Accident_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Accident
+  name: IX_FAM3_Accident_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Accident
+  name: IX_FAM3_Accident_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: Accident
+  name: IX_FAM3_Accident_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: AccidentItem
+  name: PK_FAM3_AccidentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccidentItemID
+- table: AccidentItem
+  name: IX_FAM3_AccidentItem_AccidentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccidentRef
+- table: AccidentItem
+  name: IX_FAM3_AccidentItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: AccidentItemInCalculationArea
+  name: PK_FAM3_AccidentItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccidentItemInCalculationAreaID
+- table: AccidentItemInCalculationArea
+  name: IX_FAM3_AccidentItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: AccidentItemInCalculationArea
+  name: IX_FAM3_AccidentItemInCalculationArea_AccidentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccidentItemRef
+- table: AccountConfiguration
+  name: PK_FAM3_AccountConfiguration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountConfigurationID
+- table: AccountConfiguration
+  name: UIX_FAM3_AccountConfiguration_CalculationAreaRef_AccountGroupType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CalculationAreaRef
+  - AccountGroupType
+- table: AccountConfigurationAssetDLType
+  name: PK_FAM3_AccountConfigurationAssetDLType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountConfigurationAssetDLTypeID
+- table: AccountConfigurationAssetDLType
+  name: UIX_FAM3_AccountConfigurationAssetDLType_AccountConfigurationRef_AccountConfigurationItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AccountConfigurationRef
+  - AccountConfigurationItemRef
+- table: AccountConfigurationItem
+  name: PK_FAM3_AccountConfigurationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountConfigurationItemID
+- table: AccountConfigurationItem
+  name: IX_FAM3_AccountConfigurationItem_AccountConfigurationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountConfigurationRef
+- table: AccountConfigurationItem
+  name: IX_FAM3_AccountConfigurationItem_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: AccountConfigurationItem
+  name: IX_FAM3_AccountConfigurationItem_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: AccountConfigurationItem
+  name: IX_FAM3_AccountConfigurationItem_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: AccountConfigurationItem
+  name: IX_FAM3_AccountConfigurationItem_SettlementPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementPlaceRef
+- table: AccountConfigurationItem
+  name: IX_FAM3_AccountConfigurationItem_AssetClassRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetClassRef
+- table: AccountConfigurationItem
+  name: IX_FAM3_AccountConfigurationItem_CollectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectorRef
+- table: AccountConfigurationItem
+  name: IX_FAM3_AccountConfigurationItem_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: AcquisitionReceipt
+  name: PK_FAM3_AcquisitionReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AcquisitionReceiptID
+- table: AcquisitionReceipt
+  name: IX_FAM3_AcquisitionReceipt_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: AcquisitionReceipt
+  name: IX_FAM3_AcquisitionReceipt_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: AcquisitionReceipt
+  name: IX_FAM3_AcquisitionReceipt_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: AcquisitionReceipt
+  name: IX_FAM3_AcquisitionReceipt_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: AcquisitionReceipt
+  name: IX_FAM3_AcquisitionReceipt_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: AcquisitionReceipt
+  name: IX_FAM3_AcquisitionReceipt_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: AcquisitionReceipt
+  name: IX_FAM3_AcquisitionReceipt_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: AcquisitionReceiptItem
+  name: PK_FAM3_AcquisitionReceiptItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AcquisitionReceiptItemID
+- table: AcquisitionReceiptItem
+  name: IX_FAM3_AcquisitionReceiptItem_AcquisitionReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AcquisitionReceiptRef
+- table: AcquisitionReceiptItem
+  name: IX_FAM3_AcquisitionReceiptItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: AcquisitionReceiptItem
+  name: IX_FAM3_AcquisitionReceiptItem_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: AcquisitionReceiptItem
+  name: IX_FAM3_AcquisitionReceiptItem_CollectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectorRef
+- table: AcquisitionReceiptItem
+  name: IX_FAM3_AcquisitionReceiptItem_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: AcquisitionReceiptItem
+  name: IX_FAM3_AcquisitionReceiptItem_SettlementPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementPlaceRef
+- table: AcquisitionReceiptItem
+  name: IX_FAM3_AcquisitionReceiptItem_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: AcquisitionReceiptItem
+  name: IX_FAM3_AcquisitionReceiptItem_DelivererRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererRef
+- table: AcquisitionReceiptItemInCalculationArea
+  name: PK_FAM3_AcquisitionReceiptItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AcquisitionReceiptItemInCalculationAreaID
+- table: AcquisitionReceiptItemInCalculationArea
+  name: IX_FAM3_AcquisitionReceiptItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: AcquisitionReceiptItemPurchasePriceElement
+  name: PK_FAM3_AcquisitionReceiptItemPurchasePriceElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AcquisitionReceiptItemPurchasePriceElementID
+- table: AcquisitionReceiptItemPurchasePriceElement
+  name: IX_FAM3_AcquisitionReceiptItemPurchasePriceElement_AcquisitionReceiptItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AcquisitionReceiptItemRef
+- table: AcquisitionReceiptItemPurchasePriceElement
+  name: IX_FAM3_AcquisitionReceiptItemPurchasePriceElement_PurchasePriceElementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchasePriceElementRef
+- table: AcquisitionReceiptItemPurchasePriceElement
+  name: IX_FAM3_AcquisitionReceiptItemPurchasePriceElement_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: AcquisitionReceiptItemPurchasePriceElement
+  name: IX_FAM3_AcquisitionReceiptItemPurchasePriceElement_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: Asset
+  name: PK_FAM3_Asset
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetID
+- table: Asset
+  name: IX_FAM3_Asset_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: Asset
+  name: IX_FAM3_Asset_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: Asset
+  name: IX_FAM3_Asset_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: Asset
+  name: IX_FAM3_Asset_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Asset
+  name: IX_FAM3_Asset_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: Asset
+  name: IX_FAM3_Asset_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: Asset
+  name: IX_FAM3_Asset_DelivererRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererRef
+- table: Asset
+  name: IX_FAM3_Asset_CollectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectorRef
+- table: Asset
+  name: IX_FAM3_Asset_SettlementPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementPlaceRef
+- table: Asset
+  name: IX_FAM3_Asset_PlaqueNumber
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlaqueNumber
+- table: AssetBarcode
+  name: PK_FAM3_AssetBarcode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetBarcodeID
+- table: AssetClass
+  name: PK_FAM3_AssetClass
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetClassID
+- table: AssetClass
+  name: UIX_FAM3_AssetClass_Code_IsGas
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - IsGas
+- table: AssetDepreciation
+  name: PK_AssetDepreciation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetDepreciationID
+- table: AssetDepreciationItem
+  name: PK_AssetDepreciationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetDepreciationItemID
+- table: AssetDepreciationItemInCalculationArea
+  name: PK_AssetDepreciationItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetDepreciationItemInCalculationAreaID
+- table: AssetDLType
+  name: PK_FAM3_AssetDLType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetDLTypeID
+- table: AssetDLType
+  name: UIX_FAM3_AssetDLType_DLTypeRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: AssetDLType
+  name: UIX_FAM3_AssetDLType_DLTypeIndex
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DLTypeIndex
+- table: AssetDLType
+  name: UIX_FAM3_AssetDLType_Order
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Order
+- table: AssetDLTypeValue
+  name: PK_FAM3_AssetDLTypeValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetDLTypeValueID
+- table: AssetDLTypeValue
+  name: IX_FAM3_AssetDLTypeValue_AssetRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AssetRef
+- table: AssetEquipment
+  name: PK_FAM3_AssetEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetEquipmentID
+- table: AssetEquipment
+  name: UIX_FAM3_AssetEquipment_AssetRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AssetRef
+- table: AssetEquipment
+  name: UIX_FAM3_AssetEquipment_EquipmentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: AssetExtraField
+  name: PK_FAM3_AssetExtraField
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetExtraFieldID
+- table: AssetExtraField
+  name: IX_FAM3_AssetExtraField_AssetClassRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetClassRef
+- table: AssetExtraField
+  name: UIX_FAM3_AssetExtraField_AssetClass_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AssetClassRef
+  - Title
+- table: AssetExtraFieldGroup
+  name: PK_FAM3_AssetExtraFieldGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetExtraFieldGroupID
+- table: AssetExtraFieldValue
+  name: PK_FAM3_AssetExtraFieldValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetExtraFieldValueID
+- table: AssetExtraFieldValue
+  name: IX_FAM3_AssetExtraFieldValue_AssetExtraFieldRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetExtraFieldRef
+- table: AssetExtraFieldValue
+  name: IX_FAM3_AssetExtraFieldValue_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: AssetGroup
+  name: PK_FAM3_AssetGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetGroupID
+- table: AssetGroup
+  name: UIX_FAM3_AssetGroup_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: AssetGroup
+  name: IX_FAM3_AssetGroup_AssetClassRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetClassRef
+- table: AssetGroupInCalculationArea
+  name: PK_FAM3_AssetGroupInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetGroupInCalculationAreaID
+- table: AssetGroupInCalculationArea
+  name: UIX_FAM3_AssetGroupInCalculationArea_AssetGroupRef_CalculationArea
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AssetGroupRef
+  - CalculationAreaRef
+- table: AssetGroupPart
+  name: PK_AssetGroupPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetGroupPartID
+- table: AssetGroupPart
+  name: IX_FAM3_AssetGroupPart_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: AssetGroupPart
+  name: IX_FAM3_AssetGroupPart_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: AssetInCalculationArea
+  name: PK_FAM3_AssetInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetInCalculationAreaID
+- table: AssetInCalculationArea
+  name: IX_FAM3_AssetInCalculationArea_AssetRef_CalculationAreaRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+  - CalculationAreaRef
+  - State
+- table: AssetInCalculationArea
+  name: IX_FAM3_AssetInCalculationArea_CalculationAreaRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationAreaRef
+  - State
+  included:
+  - AssetRef
+- table: AssetInventory
+  name: PK_FAM3_AssetInventory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetInventoryID
+- table: AssetInventory
+  name: IX_FAM3_AssetInventory_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: AssetInventory
+  name: IX_FAM3_AssetInventory_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: AssetInventory
+  name: IX_FAM3_AssetInventory_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: AssetInventoryAddition
+  name: PK_FAM3_AssetInventoryAddition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetInventoryAdditionID
+- table: AssetInventoryItem
+  name: PK_FAM3_AssetInventoryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetInventoryItemID
+- table: AssetOperationSummary
+  name: PK_AssetOperationSummary
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetOperationSummaryID
+- table: AssetOperationSummaryConsiderRevaluation
+  name: PK_AssetOperationSummaryConsiderRevaluation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetOperationSummaryConsiderRevaluationID
+- table: AssetReformExtraFieldValue
+  name: PK_FAM3_AssetReformExtraFieldValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetReformExtraFieldValueID
+- table: AssetReformExtraFieldValue
+  name: IX_FAM3_AssetReformExtraFieldValue_AssetExtraFieldRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetExtraFieldRef
+- table: AssetReformExtraFieldValue
+  name: IX_FAM3_AssetReformExtraFieldValue_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: AssetTagTemplate
+  name: PK_FAM3_AssetTagTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetTagTemplateID
+- table: AssetTagTemplate
+  name: FK_FAM3_AssetTagTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: AssetTransaction
+  name: PK_FAM3_AssetTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssetTransactionID
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_CollectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectorRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_SettlementPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementPlaceRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_DelivererRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererRef
+- table: AssetTransaction
+  name: IX_FAM3_AssetTransaction_AssetRef_DocumentDate_CreationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+  - DocumentDate
+  - CreationDate
+  included:
+  - TransactionType
+  - AssetState
+  - SettlementPlaceRef
+  - AssetGroupRef
+- table: CalculationArea
+  name: PK_CalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationAreaID
+- table: CalculationArea
+  name: UIX_FAM3_CalculationArea_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: CalculationArea
+  name: UIX_FAM3_CalculationArea_VoucherLedger
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - VoucherLedgerRef
+- table: CancelledSalesHistory
+  name: PK_FAM3_CancelledSalesHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CancelledSalesHistoryID
+- table: ChangeCost
+  name: PK_FAM3_ChangeCost
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChangeCostID
+- table: ChangeCost
+  name: IX_FAM3_ChangeCost_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ChangeCost
+  name: IX_FAM3_ChangeCost_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: ChangeCost
+  name: IX_FAM3_ChangeCost_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ChangeCost
+  name: IX_FAM3_ChangeCost_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ChangeCost
+  name: IX_FAM3_ChangeCost_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: ChangeCost
+  name: IX_FAM3_ChangeCost_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ChangeCost
+  name: IX_FAM3_ChangeCost_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ChangeCost
+  name: IX_FAM3_ChangeCost_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: ChangeCostItem
+  name: PK_FAM3_ChangeCostItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChangeCostItemID
+- table: ChangeCostItem
+  name: IX_FAM3_ChangeCostItem_ChangeCostRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ChangeCostRef
+- table: ChangeCostItem
+  name: IX_FAM3_ChangeCostItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: ChangeCostItemInCalculationArea
+  name: PK_FAM3_ChangeCostItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChangeCostItemInCalculationAreaID
+- table: ChangeCostItemInCalculationArea
+  name: IX_FAM3_ChangeCostItemInCalculationArea_ChangeCostItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ChangeCostItemRef
+- table: ChangeCostItemInCalculationArea
+  name: IX_FAM3_ChangeCostItemInCalculationArea_CostPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostPartRef
+- table: ChangeCostItemInCalculationArea
+  name: IX_FAM3_ChangeCostItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: ChangeCostItemPriceElement
+  name: PK_FAM3_ChangeCostItemPriceElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChangeCostItemPriceElementID
+- table: ChangeCostItemPriceElement
+  name: IX_FAM3_ChangeCostItemPriceElement_ChangeCostItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ChangeCostItemRef
+- table: ChangeCostItemPriceElement
+  name: IX_FAM3_ChangeCostItemPriceElement_PurchasePriceElementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchasePriceElementRef
+- table: ChangeCostItemPriceElement
+  name: IX_FAM3_ChangeCostItemPriceElement_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ChangeCostItemPriceElement
+  name: IX_FAM3_ChangeCostItemPriceElement_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: ChangeRate
+  name: PK_FAM3_ChangeRate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChangeRateID
+- table: ChangeRateItem
+  name: PK_FAM3_ChangeRateItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChangeRateItemID
+- table: ChangeRateItemInCalculationArea
+  name: PK_FAM3_ChangeRateItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChangeRateItemInCalculationAreaID
+- table: ChangeRateItemInCalculationArea
+  name: IX_FAM3_ChangeRateItemInCalculationArea_ChangeRateItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ChangeRateItemRef
+- table: ChangeRateItemInCalculationArea
+  name: IX_FAM3_ChangeRateItemInCalculationArea_CostPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostPartRef
+- table: ChangeRateItemInCalculationArea
+  name: IX_FAM3_ChangeRateItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: ClosingFiscalYear
+  name: PK_ClosingFiscalYear
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClosingFiscalYearID
+- table: Collector
+  name: PK_FAM3_Collector
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectorID
+- table: Collector
+  name: UIX_FAM3_Collector_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Collector
+  name: UIX_FAM3_Collector_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: CollectorDefaultCompany
+  name: PK_FAM3_CollectorDefaultCompany
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectorDefaultCompanyID
+- table: CollectorItem
+  name: PK_FAM3_CollectorItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectorItemID
+- table: CollectorItem
+  name: UIX_FAM3_CollectorItem_SettlementPlaceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SettlementPlaceRef
+- table: CostPart
+  name: PK_FAM3_CostPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostPartID
+- table: CostPart
+  name: IX_FAM3_CostPart_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: CostPart
+  name: IX_FAM3_CostPart_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: CostPart
+  name: IX_FAM3_CostPart_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: CostPart
+  name: IX_FAM3_CostPart_RootRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RootRef
+- table: CostPart
+  name: IX_FAM3_CostPart_CostType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostType
+- table: CostPart
+  name: IX_FAM3_CostPart_CalculationAreaRef_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationAreaRef
+  - AssetRef
+- table: CostPart
+  name: IX_FAM3_CostPart_DepreciationState_CalculationAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DepreciationState
+  - CalculationAreaRef
+  included:
+  - AssetRef
+- table: CostPartDeploymentExtraInfo
+  name: PK_FAM3_CostPartDeploymentExtraInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostPartDeploymentExtraInfoID
+- table: CostPartDeploymentExtraInfo
+  name: IX_FAM3_CostPartDeploymentExtraInfo_CostPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostPartRef
+- table: CostPartTransaction
+  name: PK_FAM3_CostPartTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostPartTransactionID
+- table: CostPartTransaction
+  name: IX_FAM3_CostPartTransaction_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: CostPartTransaction
+  name: IX_FAM3_CostPartTransaction_DepreciationMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DepreciationMethodRef
+- table: CostPartTransaction
+  name: IX_FAM3_CostPartTransaction_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: CostPartTransaction
+  name: IX_FAM3_CostPartTransaction_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: CostPartTransaction
+  name: IX_FAM3_CostPartTransaction_AssetTransactionRef_CostPartRef_EffectiveDate_CreationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+  - CostPartRef
+  - EffectiveDate
+  - CreationDate
+  included:
+  - Cost
+  - AccumulatedDepreciationValue
+- table: CostPartTransaction
+  name: IX_FAM3_CostPartTransaction_CostPartRef_EffectiveDate_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostPartRef
+  - EffectiveDate
+  - Date
+  included:
+  - Cost
+  - AccumulatedDepreciationValue
+  - IsActive
+  - DepreciationMethodRef
+- table: DefinitiveTransfer
+  name: PK_FAM3_DefinitiveTransfer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefinitiveTransferID
+- table: DefinitiveTransferItem
+  name: PK_FAM3_DefinitiveTransferItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefinitiveTransferItemID
+- table: DefinitiveTransferItem
+  name: IX_FAM3_DefinitiveTransferItem_DefinitiveTransferRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefinitiveTransferRef
+- table: DefinitiveTransferItem
+  name: IX_FAM3_DefinitiveTransferItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: DefinitiveTransferItemInCalculationArea
+  name: PK_DefinitiveTransferItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefinitiveTransferItemInCalculationAreaID
+- table: DefinitiveTransferItemInCalculationArea
+  name: IX_FAM3_DefinitiveTransferItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: Depreciation
+  name: PK_FAM3_Depreciation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DepreciationID
+- table: Depreciation
+  name: IX_FAM3_Depreciation_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: Depreciation
+  name: IX_FAM3_Depreciation_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: Depreciation
+  name: IX_FAM3_Depreciation_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Depreciation
+  name: IX_FAM3_Depreciation_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Depreciation
+  name: IX_FAM3_Depreciation_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Depreciation
+  name: UIX_FAM3_Depreciation_CalculationAreaRef_AssetRefCalculationDate
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AssetRef
+  - CalculationAreaRef
+  - CalculationDate
+- table: Depreciation
+  name: IX_FAM3_Depreciation_CalculationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationDate
+  included:
+  - AssetTransactionRef
+- table: DepreciationMethod
+  name: PK_FAM3_DepreciationMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DepreciationMethodID
+- table: DepreciationMethod
+  name: UIX_FAM3_DepreciationMethod_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Diskette
+  name: PK_FAM3_Diskette
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisketteID
+- table: DisketteItem
+  name: PK_FAM3_DisketteItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisketteItemID
+- table: DocumentInCalculationArea
+  name: PK_FAM3_DocumentInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentInCalculationAreaID
+- table: DocumentInCalculationArea
+  name: UIX_FAM3_DocumentInCalculationArea_DocumentRef_TransactionType_CalculationArea
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DocumentRef
+  - AssetTransactionType
+  - CalculationAreaRef
+- table: Donation
+  name: PK_FAM3_Donation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DonationID
+- table: DonationItem
+  name: PK_FAM3_DonationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DonationItemID
+- table: DonationItemInCalculationArea
+  name: PK_DonationItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DonationItemInCalculationAreaID
+- table: DonationItemInCalculationArea
+  name: IX_FAM3_DonationItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: Elimination
+  name: PK_FAM3_Elimination
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EliminationID
+- table: Elimination
+  name: IX_FAM3_Elimination_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Elimination
+  name: IX_FAM3_Elimination_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Elimination
+  name: IX_FAM3_Elimination_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Elimination
+  name: IX_FAM3_Elimination_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Elimination
+  name: IX_FAM3_Elimination_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Elimination
+  name: IX_FAM3_Elimination_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: Elimination
+  name: IX_FAM3_Elimination_Collector
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectorRef
+- table: EliminationItem
+  name: PK_FAM3_EliminationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EliminationItemID
+- table: EliminationItem
+  name: IX_FAM3_EliminationItem_EliminationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EliminationRef
+- table: EliminationItem
+  name: IX_FAM3_EliminationItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: EliminationItemInCalculationArea
+  name: PK_EliminationItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EliminationItemInCalculationAreaID
+- table: EliminationItemInCalculationArea
+  name: IX_FAM3_EliminationItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: ExitFromOrganization
+  name: PK_FAM3_ExitFromOrganization
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExitFromOrganizationID
+- table: ExitFromOrganization
+  name: IX_FAM3_ExitFromOrganization_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ExitFromOrganization
+  name: IX_FAM3_ExitFromOrganization_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ExitFromOrganization
+  name: IX_FAM3_ExitFromOrganization_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: ExitFromOrganization
+  name: IX_FAM3_ExitFromOrganization_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ExitFromOrganization
+  name: IX_FAM3_ExitFromOrganization_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ExitFromOrganization
+  name: IX_FAM3_ExitFromOrganization_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ExitFromOrganization
+  name: IX_FAM3_ExitFromOrganization_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: ExitFromOrganizationItem
+  name: PK_FAM3_ExitFromOrganizationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExitFromOrganizationItemID
+- table: ExitFromOrganizationItem
+  name: IX_FAM3_ExitFromOrganizationItem_ExitFromOrganizationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ExitFromOrganizationRef
+- table: ExitFromOrganizationItem
+  name: IX_FAM3_ExitFromOrganizationItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: ExitFromOrganizationItemInCalculationArea
+  name: PK_ExitFromOrganizationItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExitFromOrganizationItemInCalculationAreaID
+- table: ExitFromOrganizationItemInCalculationArea
+  name: IX_FAM3_ExitFromOrganizationItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: ExitFromOrganizationItemPriceElement
+  name: PK_FAM3_ExitFromOrganizationItemPriceElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExitFromOrganizationItemPriceElementID
+- table: ExitFromOrganizationItemPriceElement
+  name: IX_FAM3_ExitFromOrganizationItemPriceElement_ExitFromOrganizationItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ExitFromOrganizationItemRef
+- table: ExitFromOrganizationItemPriceElement
+  name: IX_FAM3_ExitFromOrganizationItemPriceElement_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ExitFromOrganizationItemPriceElement
+  name: IX_FAM3_ExitFromOrganizationItemPriceElement_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: ExitFromOrganizationItemPriceElement
+  name: UIX_FAM3_ExitFromOrganizationItemPriceElement_ExitFromOrganizationItemRef_SalesPriceElementType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ExitFromOrganizationItemRef
+  - ExitFromOrganizationPriceElementType
+- table: ExitPermit
+  name: PK_FAM3_ExitPermit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExitPermitID
+- table: ExitPermitItem
+  name: PK_FAM3_ExitPermitItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExitPermitItemID
+- table: ExitPermitItem
+  name: IX_FAM3_ExitPermitItem_ExitPermitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ExitPermitRef
+- table: ExitPermitItem
+  name: IX_FAM3_ExitPermitItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: ExitPermitItemInCalculationArea
+  name: PK_FAM3_ExitPermitItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExitPermitItemInCalculationAreaID
+- table: ExitPermitItemInCalculationArea
+  name: IX_FAM3_ExitPermitItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: ExitPermitItemInCalculationArea
+  name: IX_FAM3_ExitPermitItemInCalculationArea_ExitPermitItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ExitPermitItemRef
+- table: ExpenditureClass
+  name: PK_FAM3_ExpenditureClass
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExpenditureClassID
+- table: ExpenditureClass
+  name: UIX_FAM3_ExpenditureClass_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: ExpenditureClass
+  name: UIX_FAM3_ExpenditureClass_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: FAMGLComparisonReport
+  name: PK_FAMGLComparisonReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FAMGLComparisonReportID
+- table: FAMGLComparisonReportItem
+  name: PK_FAMGLComparisonReportItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FAMGLComparisonReportItemID
+- table: FAMGLComparisonReportReason
+  name: PK_FAMGLComparisonReportReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FAMGLComparisonReportReasonID
+- table: FixedAssetPart
+  name: PK_FixedAssetPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FixedAssetPartID
+- table: FixedAssetPart
+  name: UIX_FAM3_FixedAssetPart_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: GasAssetReform
+  name: PK_FAM3_GasAssetReform
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GasAssetReformID
+- table: GasAssetReform
+  name: IX_FAM3_GasAssetReform_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: GasAssetReform
+  name: IX_FAM3_GasAssetReform_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: GasAssetReform
+  name: IX_FAM3_GasAssetReform_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: GasAssetReform
+  name: IX_FAM3_GasAssetReform_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: GasAssetReform
+  name: IX_FAM3_GasAssetReform_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: GasAssetReform
+  name: IX_FAM3_GasAssetReform_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: GasAssetReformItem
+  name: PK_FAM3_GasAssetReformItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GasAssetReformItemID
+- table: GasAssetReformItem
+  name: IX_FAM3_GasAssetReformItem_GasAssetReformRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GasAssetReformRef
+- table: GasAssetReformItem
+  name: IX_FAM3_GasAssetReformItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: GasAssetReformItemInCalculationArea
+  name: PK_GasAssetReformItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GasAssetReformItemInCalculationAreaID
+- table: GasAssetReformItemInCalculationArea
+  name: IX_FAM3_GasAssetReformItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: GasDeployment
+  name: PK_FAM3_GasDeployment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GasDeploymentID
+- table: GasDeployment
+  name: IX_FAM3_GasDeployment_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: GasDeployment
+  name: IX_FAM3_GasDeployment_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: GasDeployment
+  name: IX_FAM3_GasDeployment_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: GasDeployment
+  name: IX_FAM3_GasDeployment_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: GasDeployment
+  name: IX_FAM3_GasDeployment_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: GasDeploymentItem
+  name: PK_FAM3_GasDeploymentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GasDeploymentItemID
+- table: GasDeploymentItem
+  name: IX_FAM3_GasDeploymentItem_GasDeploymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GasDeploymentRef
+- table: GasDeploymentItem
+  name: IX_FAM3_GasDeploymentItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: GasDeploymentItem
+  name: IX_FAM3_GasDeploymentItem_CollectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectorRef
+- table: GasDeploymentItem
+  name: IX_FAM3_GasDeploymentItem_SettlementPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementPlaceRef
+- table: GasDeploymentItem
+  name: IX_FAM3_GasDeploymentItem_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: GasDeploymentItem
+  name: IX_FAM3_GasDeploymentItem_DelivererRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererRef
+- table: Insurance
+  name: PK_FAM3_Insurance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceID
+- table: InsuranceAccountConfiguration
+  name: PK_FAM3_InsuranceAccountConfiguration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceAccountConfigurationID
+- table: InsuranceAccountConfigurationItem
+  name: PK_FAM3_InsuranceAccountConfigurationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceAccountConfigurationItemID
+- table: InsuranceAccountConfigurationItem
+  name: IX_FAM3_InsuranceAccountConfigurationItem_InsuranceAccountConfigurationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InsuranceAccountConfigurationRef
+- table: InsuranceAccountConfigurationItem
+  name: IX_FAM3_InsuranceAccountConfigurationItem_InsuranceTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InsuranceTypeRef
+- table: InsuranceAccountConfigurationItem
+  name: IX_FAM3_InsuranceAccountConfigurationItem_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: InsuranceAccountConfigurationItem
+  name: IX_FAM3_InsuranceAccountConfigurationItem_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: InsuranceCalculation
+  name: PK_FAM3_InsuranceCalculation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceCalculationID
+- table: InsuranceEndorsement
+  name: PK_FAM3_InsuranceEndorsement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceEndorsementID
+- table: InsuranceEndorsementItem
+  name: PK_FAM3_InsuranceEndorsementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceEndorsementItemID
+- table: InsuranceItem
+  name: PK_FAM3_InsuranceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceItemId
+- table: InsuranceType
+  name: PK_FAM3_InsuranceType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceTypeID
+- table: InsuranceType
+  name: UIX_FAM3_InsuranceType_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: InsuranceType
+  name: UIX_FAM3_InsuranceType_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: InternalTransfer
+  name: PK_FAM3_InternalTransfer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InternalTransferID
+- table: InternalTransfer
+  name: IX_FAM3_InternalTransfer_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: InternalTransfer
+  name: IX_FAM3_InternalTransfer_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: InternalTransfer
+  name: IX_FAM3_InternalTransfer_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: InternalTransfer
+  name: IX_FAM3_InternalTransfer_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: InternalTransfer
+  name: IX_FAM3_InternalTransfer_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: InternalTransfer
+  name: IX_FAM3_InternalTransfer_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: InternalTransfer
+  name: IX_FAM3_InternalTransfer_Collector
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectorRef
+- table: InternalTransferItem
+  name: PK_FAM3_InternalTransferItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InternalTransferItemID
+- table: InternalTransferItem
+  name: IX_FAM3_InternalTransferItem_InternalTransferRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InternalTransferRef
+- table: InternalTransferItem
+  name: IX_FAM3_InternalTransferItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: InternalTransferItem
+  name: IX_FAM3_InternalTransferItem_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: InternalTransferItem
+  name: IX_FAM3_InternalTransferItem_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: InternalTransferItem
+  name: IX_FAM3_InternalTransferItem_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: InternalTransferItem
+  name: IX_FAM3_InternalTransferItem_CollectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectorRef
+- table: InternalTransferItem
+  name: IX_FAM3_InternalTransferItem_DelivererRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererRef
+- table: InternalTransferItemInCalculationArea
+  name: PK_InternalTransferItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InternalTransferItemInCalculationAreaID
+- table: InternalTransferItemInCalculationArea
+  name: IX_FAM3_InternalTransferItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: MaintenanceExpenditures
+  name: PK_FAM3_MaintenanceExpenditures
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaintenanceExpendituresID
+- table: MaintenanceExpenditures
+  name: IX_FAM3_MaintenanceExpenditures_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: MaintenanceExpenditures
+  name: IX_FAM3_MaintenanceExpenditures_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: MaintenanceExpenditures
+  name: IX_FAM3_MaintenanceExpenditures_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: MaintenanceExpenditures
+  name: IX_FAM3_MaintenanceExpenditures_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: MaintenanceExpenditures
+  name: IX_FAM3_MaintenanceExpenditures_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: MaintenanceExpenditures
+  name: IX_FAM3_MaintenanceExpenditures_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: MaintenanceExpenditures
+  name: IX_FAM3_MaintenanceExpenditures_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: MaintenanceExpenditures
+  name: IX_FAM3_MaintenanceExpenditures_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: MaintenanceExpendituresItem
+  name: PK_FAM3_MaintenanceExpendituresItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaintenanceExpendituresItemID
+- table: MaintenanceExpendituresItem
+  name: IX_FAM3_MaintenanceExpendituresItem_MaintenanceExpendituresRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaintenanceExpendituresRef
+- table: MaintenanceExpendituresItem
+  name: IX_FAM3_MaintenanceExpendituresItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: MaintenanceExpendituresItem
+  name: IX_FAM3_MaintenanceExpendituresItem_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: MaintenanceExpendituresItem
+  name: IX_FAM3_MaintenanceExpendituresItem_ExpenditureClassRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ExpenditureClassRef
+- table: MaintenanceExpendituresItem
+  name: IX_FAM3_MaintenanceExpendituresItem_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: MaintenanceExpendituresItemInCalculationArea
+  name: PK_FAM3_MaintenanceExpendituresItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaintenanceExpendituresItemInCalculationAreaID
+- table: MaintenanceExpendituresItemInCalculationArea
+  name: IX_FAM3_MaintenanceExpendituresItemInCalculationArea_DepreciationMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DepreciationMethodRef
+- table: MaintenanceExpendituresItemInCalculationArea
+  name: IX_FAM3_MaintenanceExpendituresItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: MaintenanceExpendituresItemInCalculationArea
+  name: IX_FAM3_MaintenanceExpendituresItemInCalculationArea_CalculationAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationAreaRef
+- table: MaintenanceExpendituresItemPriceElement
+  name: PK_FAM3_MaintenanceExpendituresItemPriceElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaintenanceExpendituresItemPriceElementID
+- table: MaintenanceExpendituresItemPriceElement
+  name: IX_FAM3_MaintenanceExpendituresItemPriceElement_MaintenanceExpendituresItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaintenanceExpendituresItemRef
+- table: MaintenanceExpendituresItemPriceElement
+  name: IX_FAM3_MaintenanceExpendituresItemPriceElement_PurchasePriceElementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchasePriceElementRef
+- table: MaintenanceExpendituresItemPriceElement
+  name: IX_FAM3_MaintenanceExpendituresItemPriceElement_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: MaintenanceExpendituresItemPriceElement
+  name: IX_FAM3_MaintenanceExpendituresItemPriceElement_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: MinimumCostOfNonConsumableAsset
+  name: PK_FAM3_MinimumCostOfNonConsumableAsset
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MinimumCostOfNonConsumableAssetID
+- table: ModularTopic
+  name: PK_FAM3_ModularTopic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ModularTopicID
+- table: ModularTopic
+  name: IX_FAM3_ModularTopic_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: ModularTopicFilter
+  name: PK_FAM3_ModularTopicFilter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ModularTopicFilterID
+- table: ModularTopicFilter
+  name: IX_FAM3_ModularTopicFilter_ModularTopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ModularTopicRef
+- table: ModularTopicParameter
+  name: PK_FAM3_ModularTopicParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ModularTopicParameterID
+- table: ModularTopicParameter
+  name: IX_FAM3_ModularTopicParameter_ModularTopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ModularTopicRef
+- table: PermissionRequest
+  name: PK_FAM3_PermissionRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PermissionRequestID
+- table: PermissionRequest
+  name: IX_FAM3_PermissionRequest_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PermissionRequest
+  name: IX_FAM3_PermissionRequest_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PermissionRequest
+  name: IX_FAM3_PermissionRequest_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: PermissionRequest
+  name: IX_FAM3_PermissionRequest_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: PermissionRequestItem
+  name: PK_FAM3_PermissionRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PermissionRequestItemID
+- table: PermissionRequestItem
+  name: IX_FAM3_PermissionRequestItem_PermissionRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PermissionRequestRef
+- table: PermissionRequestItem
+  name: IX_FAM3_PermissionRequestItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: PermissionRequestItemInCalculationArea
+  name: PK_FAM3_PermissionRequestItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PermissionRequestItemInCalculationAreaID
+- table: PermissionRequestItemInCalculationArea
+  name: IX_FAM3_PermissionRequestItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: PermissionRequestItemInCalculationArea
+  name: IX_FAM3_PermissionRequestItemInCalculationArea_PermissionRequestItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PermissionRequestItemRef
+- table: PurchasePriceElement
+  name: PK_FAM3_PurchasePriceElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchasePriceElementID
+- table: PurchasePriceElementInCalculationArea
+  name: PK_FAM3_PurchasePriceElementInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchasePriceElementInCalculationAreaID
+- table: ReassignPlaqueNumber
+  name: PK_FAM3_ReassignPlaqueNumber
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReassignPlaqueNumberID
+- table: RetakeFromStore
+  name: PK_FAM3_RetakeFromStore
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RetakeFromStoreID
+- table: RetakeFromStore
+  name: IX_FAM3_RetakeFromStore_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: RetakeFromStore
+  name: IX_FAM3_RetakeFromStore_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: RetakeFromStore
+  name: IX_FAM3_RetakeFromStore_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: RetakeFromStore
+  name: IX_FAM3_RetakeFromStore_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: RetakeFromStore
+  name: IX_FAM3_RetakeFromStore_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: RetakeFromStore
+  name: IX_FAM3_RetakeFromStore_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: RetakeFromStoreItem
+  name: PK_FAM3_RetakeFromStoreItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RetakeFromStoreItemID
+- table: RetakeFromStoreItem
+  name: IX_FAM3_RetakeFromStoreItem_RetakeFromStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RetakeFromStoreRef
+- table: RetakeFromStoreItem
+  name: IX_FAM3_RetakeFromStoreItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: RetakeFromStoreItemInCalculationArea
+  name: PK_RetakeFromStoreItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RetakeFromStoreItemInCalculationAreaID
+- table: RetakeFromStoreItemInCalculationArea
+  name: IX_FAM3_RetakeFromStoreItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: Revaluation
+  name: PK_FAM3_Revaluation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RevaluationID
+- table: Revaluation
+  name: IX_FAM3_Revaluation_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Revaluation
+  name: IX_FAM3_Revaluation_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Revaluation
+  name: IX_FAM3_Revaluation_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Revaluation
+  name: IX_FAM3_Revaluation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Revaluation
+  name: IX_FAM3_Revaluation_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Revaluation
+  name: IX_FAM3_Revaluation_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: Revaluation
+  name: IX_FAM3_Revaluation_AssetGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetGroupRef
+- table: RevaluationItem
+  name: PK_FAM3_RevaluationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RevaluationItemID
+- table: RevaluationItem
+  name: IX_FAM3_RevaluationItem_RevaluationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RevaluationRef
+- table: RevaluationItem
+  name: IX_FAM3_RevaluationItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: RevaluationItemInCalculationArea
+  name: PK_RevaluationItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RevaluationItemInCalculationAreaID
+- table: RevaluationItemInCalculationArea
+  name: IX_FAM3_RevaluationItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: RevaluationItemInCalculationArea
+  name: IX_FAM3_RevaluationItemInCalculationArea_CostPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostPartRef
+- table: Sales
+  name: PK_FAM3_Sales
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesID
+- table: Sales
+  name: IX_FAM3_Sales_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Sales
+  name: IX_FAM3_Sales_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Sales
+  name: IX_FAM3_Sales_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Sales
+  name: IX_FAM3_Sales_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: Sales
+  name: IX_FAM3_Sales_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Sales
+  name: IX_FAM3_Sales_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Sales
+  name: IX_FAM3_Sales_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Sales
+  name: IX_FAM3_Sales_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: SalesItem
+  name: PK_FAM3_SalesItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesItemID
+- table: SalesItem
+  name: IX_FAM3_SalesItem_SalesRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesRef
+- table: SalesItem
+  name: IX_FAM3_SalesItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: SalesItemInCalculationArea
+  name: PK_SalesItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesItemInCalculationAreaID
+- table: SalesItemInCalculationArea
+  name: IX_FAM3_SalesItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: SalesItemSalesPriceElement
+  name: PK_FAM3_SalesItemSalesPriceElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesItemSalesPriceElementID
+- table: SalesItemSalesPriceElement
+  name: IX_FAM3_SalesItemSalesPriceElement_SalesItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesItemRef
+- table: SalesItemSalesPriceElement
+  name: IX_FAM3_SalesItemSalesPriceElement_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: SalesItemSalesPriceElement
+  name: IX_FAM3_SalesItemSalesPriceElement_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: SalesItemSalesPriceElement
+  name: UIX_FAM3_SalesItemSalesPriceElement_SalesItemRef_SalesPriceElementType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SalesItemRef
+  - SalesPriceElementType
+- table: SalesPriceElement
+  name: PK_FAM3_SalesPriceElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesPriceElementID
+- table: SalesPriceElement
+  name: IX_FAM3_SalesPriceElement_SalesRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesRef
+- table: SalesPriceElement
+  name: IX_FAM3_SalesPriceElement_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: SalesPriceElement
+  name: IX_FAM3_SalesPriceElement_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: SalesPriceElement
+  name: UIX_FAM3_SalesPriceElement_SalesRef_SalesPriceElementType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SalesRef
+  - SalesPriceElementType
+- table: Scrap
+  name: PK_FAM3_Scrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScrapID
+- table: Scrap
+  name: IX_FAM3_Scrap_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Scrap
+  name: IX_FAM3_Scrap_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Scrap
+  name: IX_FAM3_Scrap_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Scrap
+  name: IX_FAM3_Scrap_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Scrap
+  name: IX_FAM3_Scrap_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Scrap
+  name: IX_FAM3_Scrap_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: ScrapItem
+  name: PK_FAM3_ScrapItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScrapItemID
+- table: ScrapItemInCalculationArea
+  name: PK_FAM3_ScrapItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScrapItemInCalculationAreaID
+- table: ScrapItemInCalculationArea
+  name: IX_FAM3_ScrapItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: SendToStore
+  name: PK_FAM3_SendToStore
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SendToStoreID
+- table: SendToStore
+  name: IX_FAM3_SendToStore_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: SendToStore
+  name: IX_FAM3_SendToStore_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: SendToStore
+  name: IX_FAM3_SendToStore_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: SendToStore
+  name: IX_FAM3_SendToStore_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: SendToStore
+  name: IX_FAM3_SendToStore_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: SendToStore
+  name: IX_FAM3_SendToStore_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: SendToStore
+  name: IX_FAM3_SendToStore_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: SendToStoreItem
+  name: PK_FAM3_SendToStoreItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SendToStoreItemID
+- table: SendToStoreItem
+  name: IX_FAM3_SendToStoreItem_SendToStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SendToStoreRef
+- table: SendToStoreItem
+  name: IX_FAM3_SendToStoreItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: SendToStoreItemInCalculationArea
+  name: PK_SendToStoreItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SendToStoreItemInCalculationAreaID
+- table: SendToStoreItemInCalculationArea
+  name: IX_FAM3_SendToStoreItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: SettlementPlace
+  name: PK_FAM3_SettlementPlace
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SettlementPlaceID
+- table: SettlementPlace
+  name: UIX_FAM3_SettlementPlace_Code_IsStatic
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - IsStatic
+- table: SettlementPlace
+  name: IX_FAM3_SettlementPlace_SettlementPlaceID_Left_Right
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementPlaceID
+  included:
+  - Left
+  - Right
+- table: SettlementPlaceDefaultCompany
+  name: PK_FAM3_SettlementPlaceDefaultCompany
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SettlementPlaceDefaultCompanyID
+- table: SmallDealsQuorum
+  name: PK_SmallDealsQuorum
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SmallDealsQuorumID
+- table: SmartDevice
+  name: PK_FAM3_SmartDevice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SmartDeviceID
+- table: SmartDevice
+  name: UIX_FAM3_SmartDevice_DeviceIDAndDeviceType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DeviceID
+  - DeviceType
+- table: TemporaryExit
+  name: PK_FAM3_TemporaryExit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TemporaryExitID
+- table: TemporaryExit
+  name: IX_FAM3_TemporaryExit_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: TemporaryExit
+  name: IX_FAM3_TemporaryExit_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: TemporaryExit
+  name: IX_FAM3_TemporaryExit_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: TemporaryExit
+  name: IX_FAM3_TemporaryExit_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: TemporaryExit
+  name: IX_FAM3_TemporaryExit_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: TemporaryExit
+  name: IX_FAM3_TemporaryExit_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: TemporaryExitItem
+  name: PK_FAM3_TemporaryExitItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TemporaryExitItemID
+- table: TemporaryExitItem
+  name: IX_FAM3_TemporaryExitItem_TemporaryExitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TemporaryExitRef
+- table: TemporaryExitItem
+  name: IX_FAM3_TemporaryExitItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: TemporaryExitItem
+  name: IX_FAM3_TemporaryExitItem_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: TemporaryExitItem
+  name: IX_FAM3_TemporaryExitItem_SettlementPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SettlementPlaceRef
+- table: TemporaryExitItemInCalculationArea
+  name: PK_FAM3_TemporaryExitItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TemporaryExitItemInCalculationAreaID
+- table: TemporaryExitItemInCalculationArea
+  name: IX_FAM3_TemporaryExitItemInCalculationArea_TemporaryExitItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TemporaryExitItemRef
+- table: TemporaryExitItemInCalculationArea
+  name: IX_FAM3_TemporaryExitItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef
+- table: VoucherDescription
+  name: PK_FAM3_VoucherDescription
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherDescriptionID
+- table: VoucherDescription
+  name: IX_FAM3_VoucherDescription_EntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityCode
+- table: VoucherDescription
+  name: IX_FAM3_VoucherDescription_AccountGroupType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountGroupType
+- table: VoucherDescription
+  name: IX_FAM3_VoucherDescription_IsDebit
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IsDebit
+- table: Withdrawal
+  name: PK_FAM3_Withdrawal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WithdrawalID
+- table: Withdrawal
+  name: IX_FAM3_Withdrawal_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Withdrawal
+  name: IX_FAM3_Withdrawal_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Withdrawal
+  name: IX_FAM3_Withdrawal_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Withdrawal
+  name: IX_FAM3_Withdrawal_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Withdrawal
+  name: IX_FAM3_Withdrawal_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Withdrawal
+  name: IX_FAM3_Withdrawal_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: WithdrawalItem
+  name: PK_FAM3_WithdrawalItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WithdrawalItemID
+- table: WithdrawalItem
+  name: IX_FAM3_WithdrawalItem_WithdrawalRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WithdrawalRef
+- table: WithdrawalItem
+  name: IX_FAM3_WithdrawalItem_AssetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetRef
+- table: WithdrawalItemInCalculationArea
+  name: PK_FAM3_WithdrawalItemInCalculationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WithdrawalItemInCalculationAreaID
+- table: WithdrawalItemInCalculationArea
+  name: IX_FAM3_WithdrawalItemInCalculationArea_AssetTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssetTransactionRef

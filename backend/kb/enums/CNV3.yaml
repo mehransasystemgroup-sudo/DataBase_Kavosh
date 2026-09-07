@@ -1,0 +1,161 @@
+schema: CNV3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: DLTypeMap
+  column: Delphi_DLType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '11'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '13'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '14'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '15'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '16'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '22'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '105'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '107'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '119'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '121'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '123'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '130'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: DLTypeMap
+  column: Delphi_ParentDLType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 16
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '13'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: RegionalDivisionMap
+  column: Type
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 30
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 188
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1

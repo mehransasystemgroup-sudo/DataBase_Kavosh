@@ -1,0 +1,76 @@
+schema: CNV3
+source: extracted
+indexes:
+- table: CurrencyMap
+  name: PK_CNV3_CurrencyMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Abbreviation
+- table: DLTypeMap
+  name: PK_cnv3_DLTypeMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLTypeMapID
+- table: DLTypeMap
+  name: UIX_cnv3_DLTypeMap_G3_DLTypeID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - G3_DLTypeID
+- table: DLTypeMap
+  name: UIX_cnv3_DLTypeMap_Delphi_DLType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Delphi_DLType
+  - Delphi_ParentDLType
+- table: LedgerMap
+  name: PK_cnv3_LedgerMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LedgerMapID
+- table: LedgerMap
+  name: UIX_cnv3_LedgerMap_G3_LedgerID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - G3_LedgerID
+- table: LedgerMap
+  name: UIX_cnv3_LedgerMap_Delphi_Independent
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Delphi_Independent
+- table: Log
+  name: PK_cnv3_Log
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LogID
+- table: RegionalDivisionMap
+  name: PK_CNV3_RegionalDivisionMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Delphi_Serial
+- table: VoucherTypeMap
+  name: PK_CNV3_VoucherTypeMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Delphi_SystemRef
+  - Delphi_Code
+  - Delphi_Title

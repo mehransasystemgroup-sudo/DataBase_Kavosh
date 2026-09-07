@@ -1,0 +1,720 @@
+schema: FIN3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: AccountGroup
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+- table: AccountGroup
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 9
+- table: AccountGroup
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 5
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: AccountType
+  column: CategoryType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ClosingVoucherClosableSL
+  column: PeriodNatureType
+  nullable: true
+  lookup_type: PeriodNatureType
+  type_title_fa: ماهیت دوره
+  values:
+  - value: '1'
+    label_fa: جاری
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: سنواتی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: متمم
+    source: stated_by_config
+    confidence: high
+- table: ClosingVoucherCounterPartSL
+  column: PeriodNatureType
+  nullable: true
+  lookup_type: PeriodNatureType
+  type_title_fa: ماهیت دوره
+  values:
+  - value: '1'
+    label_fa: جاری
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: سنواتی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: متمم
+    source: stated_by_config
+    confidence: high
+- table: ClosingVoucherPattern
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+- table: ClosingVoucherPattern
+  column: Type
+  lookup_type: ClosingVoucherPatternType
+  type_title_fa: ClosingVoucherPatternType
+  values:
+  - value: '1'
+    label_fa: بستن حساب ها
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: افتتاحیه
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بودجه ای
+    source: stated_by_config
+    confidence: high
+  - value: '1202'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: CodingStandardReportFieldInfo
+  column: ContentType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1018
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 8
+- table: CodingStandardReportFieldInfo
+  column: Data_Type
+  lookup_type: CodingStandardReportFieldInfoData_Type
+  type_title_fa: نوع داده
+  values:
+  - value: '1'
+    label_fa: عدد صحیح
+    source: proven_by_data
+    confidence: high
+    observed_count: 264
+  - value: '2'
+    label_fa: اعشار
+    source: proven_by_data
+    confidence: high
+    observed_count: 46
+  - value: '3'
+    label_fa: رشته
+    source: proven_by_data
+    confidence: high
+    observed_count: 619
+  - value: '4'
+    label_fa: عدد صحیح بزرگ
+    source: proven_by_data
+    confidence: high
+    observed_count: 96
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: DL
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1459
+- table: DLTypeRelation
+  column: Level
+  lookup_type: null
+  values:
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 280
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 278
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 140
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 97
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 98
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 24
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+- table: DL_14020317
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 501
+- table: DL_14020317_Code
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 479
+- table: GL
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 23
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 17
+- table: GL
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 42
+- table: GL
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 34
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 6
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: PeriodNature
+  column: Type
+  lookup_type: PeriodNatureType
+  type_title_fa: ماهیت دوره
+  values:
+  - value: '1'
+    label_fa: جاری
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سنواتی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: متمم
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: PeriodicOppositNatureAccounts
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+- table: SL
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 9
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 165
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 101
+- table: SL
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 275
+- table: SL
+  column: TaxAccountType
+  nullable: true
+  lookup_type: TaxAccountType
+  type_title_fa: TaxAccountType
+  values:
+  - value: '1'
+    label_fa: مالیات بر ارزش افزوده پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: عوارض پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: پیش پرداخت مالیات بر ارزش افزوده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: پیش پرداخت عوارض
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: مالیات تکلیفی
+    source: stated_by_config
+    confidence: high
+- table: SL
+  column: Type
+  lookup_type: SLType
+  type_title_fa: SLType
+  values:
+  - value: '1'
+    label_fa: دائم
+    source: proven_by_data
+    confidence: high
+    observed_count: 199
+  - value: '2'
+    label_fa: موقت
+    source: proven_by_data
+    confidence: high
+    observed_count: 42
+  - value: '3'
+    label_fa: انتظامی
+    source: proven_by_data
+    confidence: high
+    observed_count: 34
+  - value: '4'
+    label_fa: انتظامی قابل بستن
+    source: stated_by_config
+    confidence: high
+- table: SL
+  column: VATSLType
+  nullable: true
+  lookup_type: VATSLType
+  type_title_fa: VATSLType
+  values:
+  - value: '1'
+    label_fa: معین مالیاتی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: معین مالیات پذیر
+    source: stated_by_config
+    confidence: high
+- table: SLDefaultVat
+  column: TaxStateType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: SLDefaultVat
+  column: TransactionType
+  nullable: true
+  lookup_type: TransactionType
+  type_title_fa: TransactionType
+  values:
+  - value: '1'
+    label_fa: داخلی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: خارجی
+    source: stated_by_config
+    confidence: high
+- table: SeasonalReportMergePattern
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: SeasonalReportMergePatternItem
+  column: PartyType
+  lookup_type: PartyType
+  type_title_fa: نوع طرف تجاری
+  values:
+  - value: '0'
+    label_fa: شخص
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: SeasonalReportMergePatternItem
+  column: ProviderType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: Voucher
+  column: State
+  lookup_type: VoucherState
+  type_title_fa: VoucherState
+  values:
+  - value: '1'
+    label_fa: موقت
+    source: proven_by_data
+    confidence: high
+    observed_count: 603
+  - value: '2'
+    label_fa: یادداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '4'
+    label_fa: بررسی شده
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: در حال بررسی
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: قطعی شده
+    source: stated_by_config
+    confidence: high
+- table: VoucherHistory
+  column: PropertyType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 13
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 7
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 131
+- table: VoucherHistory
+  column: ReferenceType
+  lookup_type: ReferenceType
+  type_title_fa: ReferenceType
+  values:
+  - value: '1'
+    label_fa: سند بازرسی
+    source: proven_by_data
+    confidence: high
+    observed_count: 20
+  - value: '2'
+    label_fa: بدون مبنا
+    source: proven_by_data
+    confidence: high
+    observed_count: 131
+- table: VoucherItem
+  column: TaxAccountType
+  nullable: true
+  lookup_type: TaxAccountType
+  type_title_fa: TaxAccountType
+  values:
+  - value: '1'
+    label_fa: مالیات بر ارزش افزوده پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: عوارض پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: پیش پرداخت مالیات بر ارزش افزوده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: پیش پرداخت عوارض
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: مالیات تکلیفی
+    source: stated_by_config
+    confidence: high
+- table: VoucherItem
+  column: TaxStateType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: VoucherItem
+  column: TransactionType
+  nullable: true
+  lookup_type: TransactionType
+  type_title_fa: TransactionType
+  values:
+  - value: '1'
+    label_fa: داخلی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: خارجی
+    source: stated_by_config
+    confidence: high
+- table: VoucherItemOffline
+  column: SLType
+  lookup_type: SLType
+  type_title_fa: SLType
+  values:
+  - value: '1'
+    label_fa: دائم
+    source: proven_by_data
+    confidence: high
+    observed_count: 3982
+  - value: '2'
+    label_fa: موقت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1440
+  - value: '3'
+    label_fa: انتظامی
+    source: proven_by_data
+    confidence: high
+    observed_count: 324
+  - value: '4'
+    label_fa: انتظامی قابل بستن
+    source: stated_by_config
+    confidence: high
+- table: VoucherItemOffline
+  column: TaxAccountType
+  nullable: true
+  lookup_type: TaxAccountType
+  type_title_fa: TaxAccountType
+  values:
+  - value: '1'
+    label_fa: مالیات بر ارزش افزوده پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: عوارض پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: پیش پرداخت مالیات بر ارزش افزوده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: پیش پرداخت عوارض
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: مالیات تکلیفی
+    source: stated_by_config
+    confidence: high
+- table: VoucherItemOffline
+  column: TaxStateType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: VoucherItemOffline
+  column: TransactionType
+  nullable: true
+  lookup_type: TransactionType
+  type_title_fa: TransactionType
+  values:
+  - value: '1'
+    label_fa: داخلی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: خارجی
+    source: stated_by_config
+    confidence: high
+- table: VoucherItemOffline
+  column: VoucherState
+  lookup_type: VoucherState
+  type_title_fa: VoucherState
+  values:
+  - value: '1'
+    label_fa: موقت
+    source: proven_by_data
+    confidence: high
+    observed_count: 5746
+  - value: '2'
+    label_fa: یادداشت
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: بررسی شده
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: در حال بررسی
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: قطعی شده
+    source: stated_by_config
+    confidence: high
+- table: dlsh_14020317
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 108

@@ -1,0 +1,18 @@
+schema: RMS3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: AccountDeploymentSettingsAllowedPaymentType
+  column: DefaultPaymentType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3

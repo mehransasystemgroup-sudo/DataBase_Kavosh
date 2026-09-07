@@ -1,0 +1,498 @@
+schema: FIN3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: Account
+  title_fa: حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountDebitCreditStatement
+  title_fa: اعلامیه بدهکار بستانکار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountDebitCreditStatementItem
+  title_fa: قلم اعلامیه بدهکار بستانکار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountEstablishment
+  title_fa: استقرار حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountEstablishmentItem
+  title_fa: استقرار حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountGroup
+  title_fa: گروه حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountGroupGroupMember
+  title_fa: گروهِ گروه حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountMapping
+  title_fa: نگاشت حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountMappingItem
+  title_fa: قلم نگاشت حساب ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountProxy
+  title_fa: نماینده حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountProxyItem
+  title_fa: آیتم نماینده حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountTransactionAnalysis
+  title_fa: آنالیز جامع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountTransactionAnalysisDetail
+  title_fa: قلم آنالیز جامع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountType
+  title_fa: نوع حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountingDepartment
+  title_fa: دپارتمان حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountingVoucherTemplate
+  title_fa: الگوی سند حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountingVoucherTemplateItem
+  title_fa: قلم الگوی سند حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AgingReceivableSetting
+  title_fa: تنظیمات تجزیه سنی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Analyse
+  title_fa: آنالیز
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AutomaticVoucherPattern
+  title_fa: الگوی سند اتوماتیک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AutomaticVoucherPatternDestinationSL
+  title_fa: حساب های مقصد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AutomaticVoucherPatternSourceSL
+  title_fa: حساب های مبدا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BranchCurrentAccount
+  title_fa: حساب جاری شعبه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: COAGrouping
+  title_fa: گروهبندی حساب ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: COAGroupingSL
+  title_fa: معین های تخصیص یافته گروهبندی حساب ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: COAGroupingSLDL
+  title_fa: تفصیلی های تخصیص یافته به معین های گروهبندی حساب ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ClosingVoucherClosableSL
+  title_fa: حساب های قابل بستن
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ClosingVoucherCounterPartSL
+  title_fa: حساب طرف مقابل سند بستن حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ClosingVoucherPattern
+  title_fa: تعریف الگو
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandard
+  title_fa: کدینگ استاندارد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandardEntity
+  title_fa: موجودیت استاندارد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandardEntityCode
+  title_fa: کدهای استاندارد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandardEntityCodeMapping
+  title_fa: کدهای نگاشت شده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandardFormula
+  title_fa: فرمول کدینگ استاندارد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandardFormulaItem
+  title_fa: عوامل فرمول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandardFormulaItemFilter
+  title_fa: فیلتر فرمول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandardReportFieldInfoAttachment
+  title_fa: پیوست‌ جزئیات گزارش سناما
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodingStandardReportInfo
+  title_fa: پیوست‌های گزارش سناما
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContaminationToll
+  title_fa: عوارض آلایندگی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ConversionAccountItem
+  title_fa: اقلام حساب تسعیر
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ConversionDocument
+  title_fa: تسعیر ارز
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ConversionPattern
+  title_fa: الگوی تسعیر ارز
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ConvertibleAccountItem
+  title_fa: اقلام حساب تسعیر پذیر
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DL
+  title_fa: حساب تفصیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DLGroupMember
+  title_fa: گروه تفصیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DLGrouping
+  title_fa: گروهبندی حساب تفصیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DLGroupingDetail
+  title_fa: اقلام گروهبندی تفصیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DLType
+  title_fa: نوع تفصیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DLTypeConversionInfo
+  title_fa: مبدل نوع تفصیل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DLTypeRelation
+  title_fa: انواع تفصیلی های حساب معین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DebitCreditStatement
+  title_fa: اعلامیه بدهکار- بستانکار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DebitCreditStatementItem
+  title_fa: قلم اعلامیه بدهکار بستانکار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DeletedVoucher
+  title_fa: سند حذف‌شده
+  source: stated_by_user
+  confidence: high
+  origin: glossary_entity_catalog
+  gotchas:
+  - فقط برای ردیابی حذف — در گزارش عملیاتی استفاده نشود
+  updated_at: '2026-07-26'
+  updated_by: user
+  _manual: true
+- name: DraftVoucher
+  title_fa: اطلاعات سند حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DraftVoucherItem
+  title_fa: قلم اطلاعات حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GL
+  title_fa: حساب کل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GLGroupMember
+  title_fa: GLGroupMember
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GLVoucher
+  title_fa: سند کل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GLVoucherItem
+  title_fa: اقلام سند کل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GLVoucherReference
+  title_fa: مرجع های سند کل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GatheringProvider
+  title_fa: ارائه دهنده جمع آوری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PeriodNature
+  title_fa: ماهیت دوره
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchaseOrImportGoodOrService
+  title_fa: خرید و واردات کالا و خدمات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RefundableOrDeductiblePaidTaxAndToll
+  title_fa: مالیات و عوارض قابل استرداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SL
+  title_fa: حساب معین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SLCounterPart
+  title_fa: حساب طرف مقابل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SLDLFlow
+  title_fa: SLDLFlow
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SLDefaultVat
+  title_fa: مقدار پیشفرض معین مالیاتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SLGroupMember
+  title_fa: گروه معین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SLStandardDesc
+  title_fa: شرح پیش فرض
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SaleOrExportGoodOrService
+  title_fa: فروش و صادرات کالا و خدمات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SeasonalCurrency
+  title_fa: منطقه جغرافیایی اداره مالیات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SeasonalCurrencyMap
+  title_fa: نگاشت ارز
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SeasonalReport
+  title_fa: گزارش خرید و فروش فصلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SeasonalReportLog
+  title_fa: تاریخچه گزارش فصلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SeasonalReportMergePattern
+  title_fa: روش تجمیع اطلاعات خرید و فروش فصلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SeasonalZone
+  title_fa: منطقه جغرافیایی اداره مالیات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SeasonalZoneMap
+  title_fa: نگاشت مناطق جغرافیایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StandardVoucherTypeEntity
+  title_fa: نوع سند استاندارد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StandardVoucherTypeMapping
+  title_fa: نگاشت نوع سند استاندارد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StandardVoucherTypeMappingItem
+  title_fa: StandardVoucherTypeMappingItem_StandardVoucherTypeMappingItem
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TaxAndTollRemaining
+  title_fa: مانده مالیات و عوارض
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TaxInformation
+  title_fa: حد نصاب تجمیع گزارش فصلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TaxYear
+  title_fa: دوره مالیاتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Transaction
+  title_fa: تراکنش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransactionAffectedAccount
+  title_fa: _
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VATBaseInformation
+  title_fa: اطلاعات هویتی مودی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VATCollectiveExtraInformation
+  title_fa: جمع آوری جزییات اطلاعات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VATCollectiveInformation
+  title_fa: جمع آوری اطلاعات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VATCollectiveInformationHistory
+  title_fa: تاریخچه تغییر اقلام تجمیعی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VATParty
+  title_fa: طرف معامله مالیاتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VatContractCollectiveInformation
+  title_fa: VatContractCollectiveInformation
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VoucherHistory
+  title_fa: تاریخچه تغییرات سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VoucherItem
+  title_fa: قلم سند حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VoucherItemOffline
+  title_fa: قلم سند حسابداری آفلاین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VoucherLock
+  title_fa: VoucherLock
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VoucherReference
+  title_fa: مرجع های سند حسابداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VoucherType
+  title_fa: نوع سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog

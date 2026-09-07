@@ -1,0 +1,4344 @@
+schema: DSD3
+table_count: 90
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: AppliedVisitPattern
+  columns:
+  - name: AppliedVisitPatternID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitScheduleRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: VisitPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - AppliedVisitPatternID
+- name: Assignment
+  columns:
+  - name: AssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: CalculationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: VehicleRemainingDocumentRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: MainBrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: HotSalesAreaRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: HotSalesAreaGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: RouteRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: InventoryRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: ShippingPointRef
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: LoadingPointRef
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: TransporterRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: TransporterName
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 18
+  - name: TransportationVehicleRef
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: TransportationVehicleName
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 20
+  - name: CarrierRef
+    type: bigint
+    nullable: true
+    ordinal: 21
+  - name: TransportationUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: HasReservation
+    type: bit
+    nullable: false
+    ordinal: 23
+  - name: DistributingOnHandheld
+    type: bit
+    nullable: false
+    ordinal: 24
+  - name: DistributionShiftRef
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: Price
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 27
+  - name: IncludedPolicies
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 28
+  - name: ExcludedPolicies
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 29
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 30
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 31
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 32
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 33
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 34
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 35
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 36
+  primary_key:
+  - AssignmentID
+- name: AssignmentDeliveryItem
+  columns:
+  - name: AssignmentDeliveryItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OrderRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: InvoiceRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SaleRequestRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Weight
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: WeightUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Volume
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: VolumeUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: CustomerRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: DeliveryState
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: NotDeliveredType
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: UnexecutedActivityReasonRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: UnexecutedActivityDescription
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 15
+  - name: HandheldCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 16
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 19
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 20
+  - name: DeviceMobileDataState
+    type: int
+    nullable: true
+    ordinal: 21
+  - name: DeviceChangeDate
+    type: datetime
+    nullable: true
+    ordinal: 22
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 23
+  primary_key:
+  - AssignmentDeliveryItemID
+- name: AssignmentHotSalesItem
+  columns:
+  - name: AssignmentHotSalesItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: ProductUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: MajorUnitQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: Weight
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: WeightUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Volume
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: VolumeUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: TrackingFactor1
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 11
+  - name: TrackingFactor2
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 12
+  - name: TrackingFactor3
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 13
+  - name: TrackingFactor4
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 14
+  - name: TrackingFactor5
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 15
+  - name: PartTrackingFactorRef1
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: PartTrackingFactorRef2
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: PartTrackingFactorRef3
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: PartTrackingFactorRef4
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: PartTrackingFactorRef5
+    type: bigint
+    nullable: true
+    ordinal: 20
+  - name: TrackingFactorInputMode1
+    type: int
+    nullable: true
+    ordinal: 21
+  - name: TrackingFactorInputMode2
+    type: int
+    nullable: true
+    ordinal: 22
+  - name: TrackingFactorInputMode3
+    type: int
+    nullable: true
+    ordinal: 23
+  - name: TrackingFactorInputMode4
+    type: int
+    nullable: true
+    ordinal: 24
+  - name: TrackingFactorInputMode5
+    type: int
+    nullable: true
+    ordinal: 25
+  - name: TrackingFactorValue
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 26
+  - name: BatchRef
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 28
+  - name: CanSetTrackingFactorManually
+    type: bit
+    nullable: false
+    ordinal: 29
+  - name: ExitPolicyRef
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 31
+  primary_key:
+  - AssignmentHotSalesItemID
+- name: AssignmentItemChange
+  columns:
+  - name: AssignmentItemChangeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ProductUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: VehicleRemainingDocumentItemRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: MajorUnitQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: BaseWeight
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: WeightUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: BaseVolume
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: VolumeUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: TrackingFactor1
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 11
+  - name: TrackingFactor2
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 12
+  - name: TrackingFactor3
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 13
+  - name: TrackingFactor4
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 14
+  - name: TrackingFactor5
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 15
+  - name: PartTrackingFactorRef1
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: PartTrackingFactorRef2
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: PartTrackingFactorRef3
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: PartTrackingFactorRef4
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: PartTrackingFactorRef5
+    type: bigint
+    nullable: true
+    ordinal: 20
+  - name: TrackingFactorInputMode1
+    type: int
+    nullable: true
+    ordinal: 21
+  - name: TrackingFactorInputMode2
+    type: int
+    nullable: true
+    ordinal: 22
+  - name: TrackingFactorInputMode3
+    type: int
+    nullable: true
+    ordinal: 23
+  - name: TrackingFactorInputMode4
+    type: int
+    nullable: true
+    ordinal: 24
+  - name: TrackingFactorInputMode5
+    type: int
+    nullable: true
+    ordinal: 25
+  - name: TrackingFactorValue
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 26
+  - name: BatchRef
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: InitialQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 28
+  - name: DeliverableQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 29
+  - name: FinalQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 30
+  - name: IsNewItem
+    type: bit
+    nullable: false
+    ordinal: 31
+  - name: AddVehicleReminingToDeliverableQuantity
+    type: bit
+    nullable: false
+    ordinal: 32
+  - name: CreatedByVehicleRemainingDocument
+    type: bit
+    nullable: false
+    ordinal: 33
+  - name: MaxDecreasePercent
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 34
+  - name: MaxIncreasePercent
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 35
+  - name: DeliveryItemQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 36
+  - name: PriceBaseUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: PriceBaseFee
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 38
+  - name: Fee
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 39
+  - name: FeeBusinessPolicyRef
+    type: bigint
+    nullable: true
+    ordinal: 40
+  - name: FeeBusinessPolicyConditionRef
+    type: bigint
+    nullable: true
+    ordinal: 41
+  - name: FeeBusinessPolicyConditionRowRef
+    type: bigint
+    nullable: true
+    ordinal: 42
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 43
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 44
+  primary_key:
+  - AssignmentItemChangeID
+- name: AssignmentItemPolicyResult
+  columns:
+  - name: AssignmentItemPolicyResultID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AssignmentPolicyResultRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: AssignmentItemChangeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: BusinessPolicyConditionRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: BusinessPolicyConditionRowRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Value
+    type: xml
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - AssignmentItemPolicyResultID
+- name: AssignmentPolicyResult
+  columns:
+  - name: AssignmentPolicyResultID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BusinessPolicyConditionRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: BusinessPolicyConditionRowRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Value
+    type: xml
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - AssignmentPolicyResultID
+- name: AssignmentReturnItem
+  columns:
+  - name: AssignmentReturnItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReturnPermitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Weight
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: WeightUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Volume
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: VolumeUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: CustomerRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: ReturnState
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: NotReturnedType
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: UnexecutedActivityReasonRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: UnexecutedActivityDescription
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 13
+  - name: HandheldCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 14
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 17
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - AssignmentReturnItemID
+- name: BrokerRoute
+  columns:
+  - name: BrokerRouteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RouteRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - BrokerRouteID
+- name: CollectionList
+  columns:
+  - name: CollectionListID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 4
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - CollectionListID
+- name: CollectionListItem
+  columns:
+  - name: CollectionListItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CollectionListRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InvoiceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CustomerRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CollectionListItemID
+- name: CustomerSurveyData
+  columns:
+  - name: CustomerSurveyDataID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourItemSurveyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CustomerSurveyStructureFieldSpecRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EntityCode
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: EntityRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Text1
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 6
+  - name: Numeric1
+    type: float
+    nullable: true
+    ordinal: 7
+  - name: UnitRef1
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Pic1
+    type: image
+    nullable: true
+    ordinal: 9
+  - name: DateTime1
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: Lookup1
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: Boolean1
+    type: bit
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  - name: MultipleChoiceLookup
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 14
+  primary_key:
+  - CustomerSurveyDataID
+- name: CustomerSurveyStructure
+  columns:
+  - name: CustomerSurveyStructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: StructureType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: StructureSubType
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: EntityCode
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: EntityGroupingRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: IsSentToHandheld
+    type: bit
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - CustomerSurveyStructureID
+- name: CustomerSurveyStructureBrokerGroup
+  columns:
+  - name: CustomerSurveyStructureBrokerGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerSurveyStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BrokerGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CustomerSurveyStructureBrokerGroupID
+- name: CustomerSurveyStructureEntity
+  columns:
+  - name: CustomerSurveyStructureEntityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerSurveyStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowID
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: EntityRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: EntityGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: IsMandatory
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - CustomerSurveyStructureEntityID
+- name: CustomerSurveyStructureFieldSpec
+  columns:
+  - name: CustomerSurveyStructureFieldSpecID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerSurveyStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowID
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Title
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 5
+  - name: IsMandatory
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: LookupType
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 7
+  - name: PicSize
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: UnitBased
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: UseEntityUnits
+    type: bit
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - CustomerSurveyStructureFieldSpecID
+- name: CustomerSurveyStructureSalesOffice
+  columns:
+  - name: CustomerSurveyStructureSalesOfficeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerSurveyStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CustomerSurveyStructureSalesOfficeID
+- name: CustomerSurveyStructureTourActivity
+  columns:
+  - name: CustomerSurveyStructureTourActivityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerSurveyStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ActivityTypeRef
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: IsMandatoryInNonScheduledActivity
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: IsMandatoryInScheduledActivity
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - CustomerSurveyStructureTourActivityID
+- name: CustomerUnavailabilityInfo
+  columns:
+  - name: CustomerUnavailabilityInfoId
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ActivityType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Saturday
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Sunday
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Monday
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Tuesday
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: Wednesday
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Thursday
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: Friday
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - CustomerUnavailabilityInfoId
+- name: DistributerReceivableNote
+  columns:
+  - name: DistributerReceivableNoteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DistributerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReceivableNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BrokerReceivableNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - DistributerReceivableNoteID
+- name: DistributionShift
+  columns:
+  - name: DistributionShiftID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: StartTime
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: EndTime
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: ControlType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - DistributionShiftID
+- name: DistributionShiftTransportationVehicle
+  columns:
+  - name: DistributionShiftTransportationVehicleID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DistributionShiftRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TransportationVehicleRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: WeightCapacity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: WeightCapacityUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: VolumeCapacity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: VolumeCapacityUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: QuantityCapacity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: QuantityCapacityUnit
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - DistributionShiftTransportationVehicleID
+- name: DistributionShiftTransportationVehicleBroker
+  columns:
+  - name: DistributionShiftTransportationVehicleBrokerID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DistributionShiftTransportationVehicleRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - DistributionShiftTransportationVehicleBrokerID
+- name: HandheldBrokerApplyBusinessPolicyAccess
+  columns:
+  - name: HandheldBrokerApplyBusinessPolicyAccessID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - HandheldBrokerApplyBusinessPolicyAccessID
+- name: HandheldBrokerChangeNonDefinitiveBusinessPolicyAccess
+  columns:
+  - name: HandheldBrokerChangeNonDefinitiveBusinessPolicyAccessID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - HandheldBrokerChangeNonDefinitiveBusinessPolicyAccessID
+- name: HandheldBrokerPriceListAccess
+  columns:
+  - name: HandheldBrokerPriceListAccessID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PriceListRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - HandheldBrokerPriceListAccessID
+- name: HandheldClearDataLog
+  columns:
+  - name: HandheldClearDataLogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Date
+    type: datetime
+    nullable: true
+    ordinal: 2
+  - name: InstallDate
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  - name: HandheldDeviceRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - HandheldClearDataLogID
+- name: HandheldExcludedPriceList
+  columns:
+  - name: HandheldExcludedPriceListID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PriceListRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - HandheldExcludedPriceListID
+- name: HandheldLocationTrackingInfo
+  columns:
+  - name: HandheldLocationTrackingInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: HandheldDeviceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: TourRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ServerDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: HandheldDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - HandheldLocationTrackingInfoID
+- name: HandheldMessage
+  columns:
+  - name: HandheldMessageID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 2
+  - name: Description
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - HandheldMessageID
+- name: HandheldMessageAttachment
+  columns:
+  - name: HandheldMessageAttachmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: HandheldMessageRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FileName
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 3
+  - name: MimeType
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: FileContent
+    type: varbinary(max)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - HandheldMessageAttachmentID
+- name: HandheldMessageBroker
+  columns:
+  - name: HandheldMessageBrokerID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BrokerRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: HandheldMessageRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: ReceiveDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: ReadDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - HandheldMessageBrokerID
+- name: HandheldOperationsAcknowledge
+  columns:
+  - name: HandheldOperationsAcknowledgeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GUID
+    type: uniqueidentifier
+    nullable: false
+    ordinal: 2
+  - name: EntityCode
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: EntityRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - HandheldOperationsAcknowledgeID
+- name: HandheldProductDefaultUnit
+  columns:
+  - name: HandheldProductDefaultUnitID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - HandheldProductDefaultUnitID
+- name: HandheldReport
+  columns:
+  - name: HandheldReportID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 2
+  - name: ReportPath
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 3
+  - name: IsInternal
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  - name: EntityType
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 6
+  - name: HandheldPrinterRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  primary_key:
+  - HandheldReportID
+- name: HandheldReportParameter
+  columns:
+  - name: HandheldReportParameterID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: HandheldReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ParameterName
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 4
+  - name: IsFixed
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Reference
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 7
+  - name: Value
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 8
+  - name: Nullable
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: DefaultValue
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - HandheldReportParameterID
+- name: HandheldReturnPermit
+  columns:
+  - name: HandheldReturnPermitID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReturnPermitRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: HandheldCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: GUID
+    type: uniqueidentifier
+    nullable: false
+    ordinal: 5
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  - name: DeviceMobileDataState
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: DeviceChangeDate
+    type: datetime
+    nullable: true
+    ordinal: 12
+  primary_key:
+  - HandheldReturnPermitID
+- name: HandheldSaleRequest
+  columns:
+  - name: HandheldSaleRequestID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SaleRequestRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: HandheldCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: GUID
+    type: uniqueidentifier
+    nullable: false
+    ordinal: 4
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: DeviceMobileDataState
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: DeviceChangeDate
+    type: datetime
+    nullable: true
+    ordinal: 11
+  primary_key:
+  - HandheldSaleRequestID
+- name: Invoice
+  columns:
+  - name: InvoiceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesInvoiceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: TourRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: OrderRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: SaleRequestRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: HandheldCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: GUID
+    type: uniqueidentifier
+    nullable: true
+    ordinal: 8
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: DistributerRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: EffectiveOnDistributorAccount
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: DistributionShiftRef
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: DistributionShiftIsFixed
+    type: bit
+    nullable: true
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  - name: DeviceMobileDataState
+    type: int
+    nullable: true
+    ordinal: 18
+  - name: DeviceChangeDate
+    type: datetime
+    nullable: true
+    ordinal: 19
+  primary_key:
+  - InvoiceID
+- name: PaymentServiceProviderCompanyBarcodeTemplate
+  columns:
+  - name: PaymentServiceProviderCompanyBarcodeTemplateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PaymentServiceProviderCompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Separator
+    type: nvarchar(10)
+    nullable: true
+    ordinal: 3
+  - name: DescriptionTemplate
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PaymentServiceProviderCompanyBarcodeTemplateID
+- name: PaymentServiceProviderCompanyBarcodeTemplatePart
+  columns:
+  - name: PaymentServiceProviderCompanyBarcodeTemplatePartID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PaymentServiceProviderCompanyBarcodeTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Position
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PaymentServiceProviderCompanyBarcodeTemplatePartID
+- name: ProductConflictAcceptanceTolerance
+  columns:
+  - name: ProductConflictAcceptanceToleranceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: MaxNegativePercent
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: MaxNegativeValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: MaxPositivePercent
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: MaxPositiveValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ProductConflictAcceptanceToleranceID
+- name: ProductPriority
+  columns:
+  - name: ProductPriorityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: ApplyForOrders
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: ApplyForSales
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Method
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: SortOrder
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - ProductPriorityID
+- name: ProductPriorityItem
+  columns:
+  - name: ProductPriorityItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductPriorityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ProductPriorityItemID
+- name: ProductUnitTolerance
+  columns:
+  - name: ProductUnitToleranceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MaxIncreasePercent
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: MaxDecreasePercent
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ProductUnitToleranceID
+- name: ReturnInvoice
+  columns:
+  - name: ReturnInvoiceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesReturnInvoiceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReturnPermitRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: TourRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: HandheldCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: GUID
+    type: uniqueidentifier
+    nullable: true
+    ordinal: 6
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: DistributerRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: EffectiveOnDistributorAccount
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: WithoutMainBroker
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  - name: DeviceMobileDataState
+    type: int
+    nullable: true
+    ordinal: 15
+  - name: DeviceChangeDate
+    type: datetime
+    nullable: true
+    ordinal: 16
+  primary_key:
+  - ReturnInvoiceID
+- name: Route
+  columns:
+  - name: RouteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: CarrierRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: TransportationUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: RoutingType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: IsOrderTaking
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: IsHotSales
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: IsDistribution
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: IsCollection
+    type: bit
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - RouteID
+- name: RouteStep
+  columns:
+  - name: RouteStepId
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RouteStepType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: StepNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: RouteRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CustomerAddressRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CustomerRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: DistanceFromPreviousStep
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: UnitRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: TimeToReceive
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: StopTime
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - RouteStepId
+- name: SaleRequestTour
+  columns:
+  - name: SaleRequestTourID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SaleRequestRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - SaleRequestTourID
+- name: SalesEmployeeDSDExtraInfo
+  columns:
+  - name: SalesEmployeeDSDExtraInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CannotRegisterSaleRequestsWithoutTourInfo
+    type: bit
+    nullable: true
+    ordinal: 3
+  - name: MaxUnPlannedSalesRequestPerTour
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: AutomaticCollectionListGenerationForTourCustomers
+    type: bit
+    nullable: true
+    ordinal: 5
+  - name: MaxUnPlannedSalesRequestPricePerTour
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: MaxUnPlannedSalesRequestCurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - SalesEmployeeDSDExtraInfoID
+- name: SalesEmployeeDSDExtraInfoBroker
+  columns:
+  - name: SalesEmployeeDSDExtraInfoBrokerID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesEmployeeDSDExtraInfoRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BrokerRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: SalesGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - SalesEmployeeDSDExtraInfoBrokerID
+- name: SalesGroupRoute
+  columns:
+  - name: SalesGroupRouteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RouteRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - SalesGroupRouteID
+- name: SalesOfficeAutoTourGeneration
+  columns:
+  - name: SalesOfficeAutoTourGenerationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Enabled
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - SalesOfficeAutoTourGenerationID
+- name: SalesOfficeNoneWorkingDay
+  columns:
+  - name: SalesOfficeNoneWorkingDayID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: DayOfWeek
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: DayOfMonth
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: SpecificDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - SalesOfficeNoneWorkingDayID
+- name: SmartOrderSuggestion
+  columns:
+  - name: SmartOrderSuggestionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: EffectiveDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: CustomerRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - SmartOrderSuggestionID
+- name: SmartOrderSuggestionItem
+  columns:
+  - name: SmartOrderSuggestionItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SmartOrderSuggestionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: Color
+    type: nvarchar(7)
+    nullable: false
+    ordinal: 7
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - SmartOrderSuggestionItemID
+- name: Tour
+  columns:
+  - name: TourID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: MainBrokerRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: HasDistribution
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: HasReturn
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: HasCollection
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: HasHotSales
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: HasOrderTaking
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: HasSurvey
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 14
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 18
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: IsOnline
+    type: bit
+    nullable: false
+    ordinal: 20
+  - name: SentToHandheld
+    type: bit
+    nullable: false
+    ordinal: 21
+  - name: InvalidatedAfterSending
+    type: bit
+    nullable: false
+    ordinal: 22
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 23
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 24
+  primary_key:
+  - TourID
+- name: TourAssignmentItem
+  columns:
+  - name: TourAssignmentItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: AssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SentToHandheld
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - TourAssignmentItemID
+- name: TourClosingLogInfo
+  columns:
+  - name: TourClosingLogInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EntityCode
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: EntityRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - TourClosingLogInfoID
+- name: TourCollectionListItem
+  columns:
+  - name: TourCollectionListItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CollectionListRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SentToHandheld
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - TourCollectionListItemID
+- name: TourInventoryVoucher
+  columns:
+  - name: TourInventoryVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InventoryVoucherRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - TourInventoryVoucherID
+- name: TourItem
+  columns:
+  - name: TourItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: CustomerRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CustomerAddressRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: HasDistribution
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: HasReturn
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: HasCollection
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: HasHotSales
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: HasOrderTaking
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: HasSurvey
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: IsOrderTakingNonscheduled
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: IsHotSalesNonscheduled
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: IsCollectionNonscheduled
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: IsReturnNonscheduled
+    type: bit
+    nullable: false
+    ordinal: 15
+  - name: EnterTime
+    type: datetime
+    nullable: true
+    ordinal: 16
+  - name: EnterTimeLatitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: EnterTimeLongitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: EnterLocationIsValid
+    type: bit
+    nullable: true
+    ordinal: 19
+  - name: ExitTime
+    type: datetime
+    nullable: true
+    ordinal: 20
+  - name: ExitTimeLatitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: ExitTimeLongitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 22
+  - name: ExitLocationIsValid
+    type: bit
+    nullable: true
+    ordinal: 23
+  - name: ExtraPresenceDuration
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 25
+  primary_key:
+  - TourItemID
+- name: TourItemSurvey
+  columns:
+  - name: TourItemSurveyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerSurveyStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TourItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: RegisterDateTime
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: AskDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: OperationDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: IsAutomatic
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: UnexecutedActivityReasonRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: UnexecutedActivityReasonDescription
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 13
+  - name: IsSurveyNonscheduled
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: SentFromHandheld
+    type: bit
+    nullable: false
+    ordinal: 15
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - TourItemSurveyID
+- name: TourItemUnexecutedActivityReason
+  columns:
+  - name: TourItemUnexecutedActivityReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UnexecutedHotSalesReasonRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: UnexecutedHotSalesReasonDescription
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 4
+  - name: HandheldHotSalesCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: HotSalesLatitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: HotSalesLongitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: HotSalesProvider
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: HotSalesAccuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: UnexecutedOrderTakingReasonRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: UnexecutedOrderTakingReasonDescription
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 11
+  - name: HandheldOrderTakingCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 12
+  - name: OrderTakingLatitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: OrderTakingLongitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: OrderTakingProvider
+    type: int
+    nullable: true
+    ordinal: 15
+  - name: OrderTakingAccuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - TourItemUnexecutedActivityReasonID
+- name: TourPayment
+  columns:
+  - name: TourPaymentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PaymentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - TourPaymentID
+- name: TourProductConflict
+  columns:
+  - name: TourProductConflictID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: MajorUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: InputQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: OutputQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: ReturnedQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: ToleranceLowerBound
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: ToleranceUpperBound
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: TrackingFactor1
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 11
+  - name: TrackingFactor2
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 12
+  - name: TrackingFactor3
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 13
+  - name: TrackingFactor4
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 14
+  - name: TrackingFactor5
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 15
+  - name: PartTrackingFactorRef1
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: PartTrackingFactorRef2
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: PartTrackingFactorRef3
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: PartTrackingFactorRef4
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: PartTrackingFactorRef5
+    type: bigint
+    nullable: true
+    ordinal: 20
+  - name: BatchRef
+    type: bigint
+    nullable: true
+    ordinal: 21
+  - name: CounterpartRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: TrackingFactorValue
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 23
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 24
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 25
+  primary_key:
+  - TourProductConflictID
+- name: TourProductConflictItem
+  columns:
+  - name: TourProductConflictItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourProductConflictRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EntityName
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: EntityTitle
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 4
+  - name: ComponentName
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 5
+  - name: EntityRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: EntityNumber
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 7
+  - name: EntityDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: MajorUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: MajorUnitQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - TourProductConflictItemID
+- name: TourReceipt
+  columns:
+  - name: TourReceiptID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReceiptRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - TourReceiptID
+- name: TourReceiptMoneyInfo
+  columns:
+  - name: TourReceiptMoneyInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CustomerRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: InvoiceRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ReceivedCashAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: ReceivedChequeAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: ReceiptReceivableNoteRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ReceiptReceivableChequeNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 8
+  - name: ReceivedReceiptDepositAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: ReceiptDepositRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: ReceiptDepositNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 11
+  - name: ReceivableAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: IsUnScheduled
+    type: bit
+    nullable: true
+    ordinal: 13
+  - name: PayerPartyRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: CurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: SentFromHandheld
+    type: bit
+    nullable: false
+    ordinal: 16
+  - name: HandheldCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 17
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 20
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 21
+  - name: ReceivedChequeBankRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: ReceivedChequeBankBranch
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 23
+  - name: ReceivedChequeBankBranchCode
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 24
+  - name: ReceivedChequeAccountNumber
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 25
+  - name: ReceivedChequeDueDate
+    type: datetime
+    nullable: true
+    ordinal: 26
+  - name: ReceivedChequeSayadNumber
+    type: nvarchar(16)
+    nullable: true
+    ordinal: 27
+  - name: ReceivedItemDescription
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 28
+  - name: UnexecutedActivityReasonRef
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: UnexecutedActivityReasonDescription
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 30
+  - name: HandheldUnexecutedReasonCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 31
+  - name: HandheldUnexecutedReasonLatitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 32
+  - name: HandheldUnexecutedReasonLongitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 33
+  - name: HandheldUnexecutedReasonProvider
+    type: int
+    nullable: true
+    ordinal: 34
+  - name: HandheldUnexecutedReasonAccuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 35
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 36
+  - name: ReturnInvoiceAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 37
+  - name: ReturnInvoiceRef
+    type: bigint
+    nullable: true
+    ordinal: 38
+  - name: SurplusAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 39
+  - name: PartyBankAccountRef
+    type: bigint
+    nullable: true
+    ordinal: 40
+  - name: IsOutOfTour
+    type: bit
+    nullable: false
+    ordinal: 41
+  - name: ReturnInvoiceNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 42
+  primary_key:
+  - TourReceiptMoneyInfoID
+- name: TourRemainedContainerInfo
+  columns:
+  - name: TourRemainedContainerInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: HandheldDeliveryID
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: HandheldDeliveryDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: TotalQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: DeliveredQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: BrokerRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - TourRemainedContainerInfoID
+- name: TourRemainedProductInfo
+  columns:
+  - name: TourRemainedProductInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: HandheldDeliveryID
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: HandheldDeliveryDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: ProductUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: TrackingFactor1
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 7
+  - name: TrackingFactor2
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: TrackingFactor3
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 9
+  - name: TrackingFactor4
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 10
+  - name: TrackingFactor5
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 11
+  - name: PartTrackingFactorRef1
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: PartTrackingFactorRef2
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: PartTrackingFactorRef3
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: PartTrackingFactorRef4
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: PartTrackingFactorRef5
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: TrackingFactorValue
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 17
+  - name: BatchRef
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: WasteQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 19
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 20
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 21
+  - name: BrokerRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: HealthyDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 23
+  primary_key:
+  - TourRemainedProductInfoID
+- name: TourReturnInvoiceSettlement
+  columns:
+  - name: TourReturnInvoiceSettlementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TourRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReturnInvoiceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ReferenceCode
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: SettlementAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: SentFromHandheld
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: HandheldCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: Provider
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: Accuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: HandheldUnexecutedReasonCreationDate
+    type: datetime
+    nullable: true
+    ordinal: 13
+  - name: HandheldUnexecutedReasonLatitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: HandheldUnexecutedReasonLongitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: HandheldUnexecutedReasonProvider
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: HandheldUnexecutedReasonAccuracy
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 17
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 18
+  primary_key:
+  - TourReturnInvoiceSettlementID
+- name: UnexecutedActivityReason
+  columns:
+  - name: UnexecutedActivityReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ActivityType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ReasonDescription
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: IsVisited
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: LocationMet
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - UnexecutedActivityReasonID
+- name: UnsuccessfulInventoryVoucherItem
+  columns:
+  - name: UnsuccessfulInventoryVoucherItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RationableStockRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InventoryVoucherItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: FailureMessage
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - UnsuccessfulInventoryVoucherItemID
+- name: VehicleRemainingDocument
+  columns:
+  - name: VehicleRemainingDocumentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: TransportationVehicleRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: TourRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 9
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: SentFromHandheld
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: HandheldDeliveryID
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - VehicleRemainingDocumentID
+- name: VehicleRemainingDocumentEmptiesItem
+  columns:
+  - name: VehicleRemainingDocumentEmptiesItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VehicleRemainingDocumentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: InitialQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: TransferQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: ReductionQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - VehicleRemainingDocumentEmptiesItemID
+- name: VehicleRemainingDocumentEmptiesItemReduction
+  columns:
+  - name: VehicleRemainingDocumentEmptiesItemReductionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VehicleRemainingDocumentEmptiesItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: ReasonRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: TransportationVehicleRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: TransferedDocumentNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 6
+  - name: InventoryRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 9
+  - name: DestinationRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - VehicleRemainingDocumentEmptiesItemReductionID
+- name: VehicleRemainingDocumentItem
+  columns:
+  - name: VehicleRemainingDocumentItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VehicleRemainingDocumentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProductUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: TrackingFactor1
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 6
+  - name: TrackingFactor2
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 7
+  - name: TrackingFactor3
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: TrackingFactor4
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 9
+  - name: TrackingFactor5
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 10
+  - name: PartTrackingFactorRef1
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: PartTrackingFactorRef2
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: PartTrackingFactorRef3
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: PartTrackingFactorRef4
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: PartTrackingFactorRef5
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: TrackingFactorInputMode1
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: TrackingFactorInputMode2
+    type: int
+    nullable: true
+    ordinal: 17
+  - name: TrackingFactorInputMode3
+    type: int
+    nullable: true
+    ordinal: 18
+  - name: TrackingFactorInputMode4
+    type: int
+    nullable: true
+    ordinal: 19
+  - name: TrackingFactorInputMode5
+    type: int
+    nullable: true
+    ordinal: 20
+  - name: TrackingFactorValue
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 21
+  - name: BatchRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: InitialQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 23
+  - name: TransferQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 24
+  - name: ReductionQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 25
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 26
+  primary_key:
+  - VehicleRemainingDocumentItemID
+- name: VehicleRemainingDocumentItemReduction
+  columns:
+  - name: VehicleRemainingDocumentItemReductionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VehicleRemainingDocumentItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: ReasonRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ProductUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: TransportationVehicleRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: TransferedDocumentNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 7
+  - name: InventoryRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: DestinationRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - VehicleRemainingDocumentItemReductionID
+- name: VisitPattern
+  columns:
+  - name: VisitPatternID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 2
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: HasOrderTaking
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: HasHotSales
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: HasDistribution
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: HasCollection
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: CycleType
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: CycleLength
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - VisitPatternID
+- name: VisitPatternDate
+  columns:
+  - name: VisitPatternDateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - VisitPatternDateID
+- name: VisitPatternItem
+  columns:
+  - name: VisitPatternItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DayNumber
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: Date
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: CustomerRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: CustomerAddressRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: RouteRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: SalesTerritoryRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - VisitPatternItemID
+- name: VisitPlan
+  columns:
+  - name: VisitPlanID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: FinishDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: HasOrderTaking
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: HasHotSales
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: HasDistribution
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: HasCollection
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - VisitPlanID
+- name: VisitPlanCustomer
+  columns:
+  - name: VisitPlanCustomerID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitPlanRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CustomerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  - name: CustomerAddressRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  primary_key:
+  - VisitPlanCustomerID
+- name: VisitPlanDay
+  columns:
+  - name: VisitPlanDayID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitPlanRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: VisitDay
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - VisitPlanDayID
+- name: VisitPlanRoute
+  columns:
+  - name: VisitPlanRouteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitPlanRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RouteRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - VisitPlanRouteID
+- name: VisitPlanSalesTerritory
+  columns:
+  - name: VisitPlanSalesTerritoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitPlanRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SalesTerritoryRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - VisitPlanSalesTerritoryID
+- name: VisitSchedule
+  columns:
+  - name: VisitScheduleID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SalesOfficeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: FinishDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: IncludeOrderTaking
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: IncludeHotSales
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: IncludeDistribution
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: IncludeCollection
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: IncludeNoneWorkingDays
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - VisitScheduleID
+- name: VisitScheduleDate
+  columns:
+  - name: VisitScheduleDateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitScheduleRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - VisitScheduleDateID
+- name: VisitScheduleItem
+  columns:
+  - name: VisitScheduleItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VisitScheduleRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: HasOrderTaking
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: HasHotSales
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: HasDistribution
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: HasCollection
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: CustomerRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: CustomerAddressRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: RouteRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: SalesTerritoryRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - VisitScheduleItemID

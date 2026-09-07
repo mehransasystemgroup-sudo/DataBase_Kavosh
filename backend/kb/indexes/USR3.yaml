@@ -1,0 +1,707 @@
+schema: USR3
+source: extracted
+indexes:
+- table: AgencyJustificationMaximumAtePeople
+  name: PK_AgencyJustificationMaximumAtePeople_AgencyJustificationMaximumAtePeopleID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AgencyJustificationMaximumAtePeopleID
+- table: AgencyJustificationMaximumAtePeople
+  name: IX_EmployeeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmployeeRef
+- table: AnnualAppraisal
+  name: PK_AnnualAppraisal_AnnualAppraisalID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AnnualAppraisalID
+- table: AnnualAppraisal
+  name: IX_InstitutionalCreditRef1Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef1Ref
+- table: AnnualAppraisalItem
+  name: PK_AnnualAppraisalItem_AnnualAppraisalItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AnnualAppraisalItemID
+- table: AnnualAppraisalItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: AnnualAppraisalItem
+  name: IX_EmployeeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmployeeRef
+- table: AnnualAppraisalMlyka
+  name: PK_AnnualAppraisalMlyka_AnnualAppraisalMlykaID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AnnualAppraisalMlykaID
+- table: AnnualAppraisalMlyka
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: AnnualAppraisalMlykaItem
+  name: PK_AnnualAppraisalMlykaItem_AnnualAppraisalMlykaItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AnnualAppraisalMlykaItemID
+- table: AnnualAppraisalMlykaItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: AnnualAppraisalMlykaItem
+  name: IX_EmployeeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmployeeRef
+- table: AnnualArzyal
+  name: PK_AnnualArzyal_AnnualArzyalID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AnnualArzyalID
+- table: AnnualArzyalAnnualAppraisalFormItem
+  name: PK_AnnualArzyalAnnualAppraisalFormItem_AnnualArzyalAnnualAppraisalFormItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AnnualArzyalAnnualAppraisalFormItemID
+- table: AnnualArzyalAnnualAppraisalFormItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: AnnualArzyalAnnualAppraisalFormItem
+  name: IX_ShundhAppraisalEmployeeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShundhAppraisalEmployeeRef
+- table: AnnualArzyalAnnualAppraisalFormItem
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: AppraisalHeyDial
+  name: PK_AppraisalHeyDial_AppraisalHeyDialID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AppraisalHeyDialID
+- table: Arzyaby22shakhs
+  name: PK_Arzyaby22shakhs_Arzyaby22shakhsID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Arzyaby22shakhsID
+- table: Arzyaby2Dial
+  name: PK_Arzyaby2Dial_Arzyaby2DialID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Arzyaby2DialID
+- table: CreditAnyAppraisalHeyDial
+  name: PK_CreditAnyAppraisalHeyDial_CreditAnyAppraisalHeyDialID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CreditAnyAppraisalHeyDialID
+- table: CreditAnyAppraisalHeyDial
+  name: IX_CreditAttendantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditAttendantRef
+- table: CreditAnyAppraisalHeyDial
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: CreditAnyAppraisalHeyDialCreditAppraisalDialItem
+  name: PK_CreditAnyAppraisalHeyDialCreditAppraisalDialItem_CreditAnyAppraisalHeyDialCreditAppraisalDialItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CreditAnyAppraisalHeyDialCreditAppraisalDialItemID
+- table: CreditAnyAppraisalHeyDialCreditAppraisalDialItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: CreditAnyAppraisalHeyDialCreditAppraisalDialItem
+  name: IX_DialNameRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DialNameRef
+- table: Dial
+  name: PK_Dial_DialID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DialID
+- table: DialMlyka
+  name: PK_DialMlyka_DialMlykaID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DialMlykaID
+- table: GuyMonthlyAppraisal
+  name: PK_GuyMonthlyAppraisal_GuyMonthlyAppraisalID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GuyMonthlyAppraisalID
+- table: GuyMonthlyAppraisal
+  name: IX_ShundhAppraisalGuyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShundhAppraisalGuyRef
+- table: GuyMonthlyAppraisal
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: GuyMonthlyAppraisalItem
+  name: PK_GuyMonthlyAppraisalItem_GuyMonthlyAppraisalItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GuyMonthlyAppraisalItemID
+- table: GuyMonthlyAppraisalItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: GuyMonthlyAppraisalItem
+  name: IX_DialRef1Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DialRef1Ref
+- table: GuyMonthlyAppraisalMlyka
+  name: PK_GuyMonthlyAppraisalMlyka_GuyMonthlyAppraisalMlykaID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GuyMonthlyAppraisalMlykaID
+- table: GuyMonthlyAppraisalMlyka
+  name: IX_ShundhAppraisalGuyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShundhAppraisalGuyRef
+- table: GuyMonthlyAppraisalMlyka
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: GuyMonthlyAppraisalMlykaMonthlyAppraisalMlykaItem
+  name: PK_GuyMonthlyAppraisalMlykaMonthlyAppraisalMlykaItem_GuyMonthlyAppraisalMlykaMonthlyAppraisalMlykaItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GuyMonthlyAppraisalMlykaMonthlyAppraisalMlykaItemID
+- table: GuyMonthlyAppraisalMlykaMonthlyAppraisalMlykaItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: GuyMonthlyAppraisalMlykaMonthlyAppraisalMlykaItem
+  name: IX_DialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DialRef
+- table: Hruahd2AppraisalHey2shakhs
+  name: PK_Hruahd2AppraisalHey2shakhs_Hruahd2AppraisalHey2shakhsID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Hruahd2AppraisalHey2shakhsID
+- table: Hruahd2AppraisalHey2shakhs
+  name: IX_CreditAttendantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditAttendantRef
+- table: Hruahd2AppraisalHey2shakhs
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: Hruahd2AppraisalHey2shakhsArzyaby22shakhsFormItem
+  name: PK_Hruahd2AppraisalHey2shakhsArzyaby22shakhsFormItem_Hruahd2AppraisalHey2shakhsArzyaby22shakhsFormItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Hruahd2AppraisalHey2shakhsArzyaby22shakhsFormItemID
+- table: Hruahd2AppraisalHey2shakhsArzyaby22shakhsFormItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: Hruahd2AppraisalHey2shakhsArzyaby22shakhsFormItem
+  name: IX_DialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DialRef
+- table: InstitutionalCreditAnyDialMlyka
+  name: PK_InstitutionalCreditAnyDialMlyka_InstitutionalCreditAnyDialMlykaID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditAnyDialMlykaID
+- table: InstitutionalCreditAnyDialMlyka
+  name: IX_InstitutionalCreditNameRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditNameRef
+- table: InstitutionalCreditAnyDialMlykaHruahdDialMlykaItem
+  name: PK_InstitutionalCreditAnyDialMlykaHruahdDialMlykaItem_InstitutionalCreditAnyDialMlykaHruahdDialMlykaItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditAnyDialMlykaHruahdDialMlykaItemID
+- table: InstitutionalCreditAnyDialMlykaHruahdDialMlykaItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: InstitutionalCreditAnyDialMlykaHruahdDialMlykaItem
+  name: IX_DialNameRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DialNameRef
+- table: InstitutionalCreditAnyPeopleMlyka
+  name: PK_InstitutionalCreditAnyPeopleMlyka_InstitutionalCreditAnyPeopleMlykaID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditAnyPeopleMlykaID
+- table: InstitutionalCreditAnyPeopleMlyka
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: InstitutionalCreditAnyPeopleMlyka
+  name: IX_AttendantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AttendantRef
+- table: InstitutionalCreditAnyPeopleMlykaCreditMlykaItem
+  name: PK_InstitutionalCreditAnyPeopleMlykaCreditMlykaItem_InstitutionalCreditAnyPeopleMlykaCreditMlykaItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditAnyPeopleMlykaCreditMlykaItemID
+- table: InstitutionalCreditAnyPeopleMlykaCreditMlykaItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: InstitutionalCreditAnyPeopleMlykaCreditMlykaItem
+  name: IX_PersonNameRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PersonNameRef
+- table: InstitutionalCreditDial
+  name: PK_InstitutionalCreditDial_InstitutionalCreditDialID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditDialID
+- table: InstitutionalCreditDial
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: InstitutionalCreditDialItem
+  name: PK_InstitutionalCreditDialItem_InstitutionalCreditDialItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditDialItemID
+- table: InstitutionalCreditDialItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: InstitutionalCreditDialItem
+  name: IX_DialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DialRef
+- table: InstitutionalCreditForm
+  name: PK_InstitutionalCreditForm_InstitutionalCreditFormID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditFormID
+- table: InstitutionalCreditMlyka
+  name: PK_InstitutionalCreditMlyka_InstitutionalCreditMlykaID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditMlykaID
+- table: InstitutionalCreditMlyka
+  name: IX_InstitutionalCreditNameRef_INCLUDING_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditNameRef
+  included:
+  - Number
+- table: InstitutionalCreditPeople
+  name: PK_InstitutionalCreditPeople_InstitutionalCreditPeopleID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditPeopleID
+- table: InstitutionalCreditPeople
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: InstitutionalCreditPeople
+  name: IX_AttendantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AttendantRef
+- table: InstitutionalCreditPeopleItem
+  name: PK_InstitutionalCreditPeopleItem_InstitutionalCreditPeopleItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstitutionalCreditPeopleItemID
+- table: InstitutionalCreditPeopleItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: InstitutionalCreditPeopleItem
+  name: IX_PersonNameRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PersonNameRef
+- table: Mahanh22arzyab
+  name: PK_Mahanh22arzyab_Mahanh22arzyabID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Mahanh22arzyabID
+- table: Mahanh22arzyab
+  name: IX_ShundhAppraisalGuyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShundhAppraisalGuyRef
+- table: Mahanh22arzyab
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: Mahanh22arzyabMahanh2AppraisalFormItem
+  name: PK_Mahanh22arzyabMahanh2AppraisalFormItem_Mahanh22arzyabMahanh2AppraisalFormItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Mahanh22arzyabMahanh2AppraisalFormItemID
+- table: Mahanh22arzyabMahanh2AppraisalFormItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: Mahanh22arzyabMahanh2AppraisalFormItem
+  name: IX_DialNameRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DialNameRef
+- table: MhranDial
+  name: PK_MhranDial_MhranDialID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MhranDialID
+- table: MhranInstitutionalCredit
+  name: PK_MhranInstitutionalCredit_MhranInstitutionalCreditID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MhranInstitutionalCreditID
+- table: MhranInstitutionalCredit
+  name: IX_InstitutionalCreditNameRef_INCLUDING_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditNameRef
+  included:
+  - Number
+- table: MhranInstitutionalCreditAnyPeople
+  name: PK_MhranInstitutionalCreditAnyPeople_MhranInstitutionalCreditAnyPeopleID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MhranInstitutionalCreditAnyPeopleID
+- table: MhranInstitutionalCreditAnyPeople
+  name: IX_InstitutionalCreditNameRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditNameRef
+- table: MhranInstitutionalCreditAnyPeople
+  name: IX_MhranFormAttendantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MhranFormAttendantRef
+- table: MhranInstitutionalCreditAnyPeopleMhran
+  name: PK_MhranInstitutionalCreditAnyPeopleMhran_MhranInstitutionalCreditAnyPeopleMhranID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MhranInstitutionalCreditAnyPeopleMhranID
+- table: MhranInstitutionalCreditAnyPeopleMhran
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: MhranInstitutionalCreditAnyPeopleMhran
+  name: IX_MhranFormPersonNameRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MhranFormPersonNameRef
+- table: MonthlyAppraisal
+  name: PK_MonthlyAppraisal_MonthlyAppraisalID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MonthlyAppraisalID
+- table: MonthlyAppraisal
+  name: IX_ShundhAppraisalGuyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShundhAppraisalGuyRef
+- table: MonthlyAppraisal
+  name: IX_InstitutionalCreditReffReffRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditReffReffRef
+- table: MonthlyAppraisal
+  name: IX_CreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditRef
+- table: MonthlyAppraisalFormItem
+  name: PK_MonthlyAppraisalFormItem_MonthlyAppraisalFormItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MonthlyAppraisalFormItemID
+- table: MonthlyAppraisalFormItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: MonthlyAppraisalFormItem
+  name: IX_DialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DialRef
+- table: QuarteringSeniorUser
+  name: PK_QuarteringSeniorUser_QuarteringSeniorUserID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuarteringSeniorUserID
+- table: QuarteringSeniorUser
+  name: IX_PersonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PersonRef
+- table: Salanh22arzyab
+  name: PK_Salanh22arzyab_Salanh22arzyabID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Salanh22arzyabID
+- table: Salanh22arzyab
+  name: IX_InstitutionalCreditRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstitutionalCreditRef
+- table: Salanh22arzyabSalanh2AppraisalFormItem
+  name: PK_Salanh22arzyabSalanh2AppraisalFormItem_Salanh22arzyabSalanh2AppraisalFormItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Salanh22arzyabSalanh2AppraisalFormItemID
+- table: Salanh22arzyabSalanh2AppraisalFormItem
+  name: IX__MasterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - _MasterRef
+- table: Salanh22arzyabSalanh2AppraisalFormItem
+  name: IX_EmployeeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmployeeRef

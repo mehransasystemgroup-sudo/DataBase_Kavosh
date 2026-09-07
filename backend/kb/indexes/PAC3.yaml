@@ -1,0 +1,3889 @@
+schema: PAC3
+source: extracted
+indexes:
+- table: Bom
+  name: PK_PAC3_Bom
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomID
+- table: Bom
+  name: IX_PAC3_Bom_BomGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomGroupRef
+- table: Bom
+  name: IX_PAC3_Bom_PartLotSizeUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LotSizeUnitRef
+- table: Bom
+  name: IX_PAC3_Bom_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: Bom
+  name: IX_PAC3_Bom_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: Bom
+  name: IX_PAC3_Bom_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Bom
+  name: IX_PAC3_Bom_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: BomItem
+  name: PK_PAC3_BomItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomItemID
+- table: BomItem
+  name: IX_PAC3_BomItem_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: BomItem
+  name: IX_PAC3_BomItem_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: BomItem
+  name: IX_PAC3_BomItem_BomGroupItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomGroupItemRef
+- table: BomItem
+  name: IX_PAC3_BomItem_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: BomItem
+  name: IX_PAC3_BomItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: BomItem
+  name: IX_PAC3_BomItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: BomItem
+  name: IX_PAC3_BomItem_ConsumptionScrapPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConsumptionScrapPartUnitRef
+- table: BomItem
+  name: IX_PAC3_BomItem_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: BomItem
+  name: IX_PAC3_BomItem_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: BomPhantom
+  name: PK_PAC3_BomPhantom
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomPhantomID
+- table: BomPhantom
+  name: IX_PAC3_BomPhantom_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: BomPhantom
+  name: IX_PAC3_BomPhantom_ParentBomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentBomRef
+- table: BomScrap
+  name: PK_PAC3_BomScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomScrapID
+- table: BomScrap
+  name: IX_PAC3_BomScrap_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: BomScrap
+  name: IX_PAC3_BomScrap_BomReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomReferenceRef
+- table: BomScrap
+  name: IX_PAC3_BomScrap_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: BomScrap
+  name: IX_PAC3_BomScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: BomScrap
+  name: IX_PAC3_BomScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: BomScrap
+  name: IX_PAC3_BomScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: BufferStoreTrace
+  name: PK_PAC3_BufferStoreTrace
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BufferStoreTraceID
+- table: BufferStoreTrace
+  name: IX_PAC3_BufferStoreTrace_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: BufferStoreTrace
+  name: IX_PAC3_BufferStoreTrace_BufferStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BufferStoreRef
+- table: BufferStoreTrace
+  name: IX_PAC3_BufferStoreTrace_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: BufferStoreTracePartRequest
+  name: PK_PAC3_BufferStoreTracePartRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BufferStoreTracePartRequestID
+- table: BufferStoreTracePartRequest
+  name: IX_PAC3_BufferStoreTracePartRequest_BufferStoreTraceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BufferStoreTraceRef
+- table: BufferStoreTracePartRequest
+  name: IX_PAC3_BufferStoreTracePartRequest_PartRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRequestRef
+- table: BufferStoreTracePartRequest
+  name: IX_PAC3_BufferStoreTracePartRequest_PartRequestItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRequestItemRef
+- table: BufferStoreTraceProductionOrderMaterial
+  name: PK_PAC3_BufferStoreTraceProductionOrderMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BufferStoreTraceProductionOrderMaterialID
+- table: BufferStoreTraceProductionOrderMaterial
+  name: IX_PAC3_BufferStoreTraceProductionOrderMaterial_BufferStoreTraceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BufferStoreTraceRef
+- table: BufferStoreTraceProductionOrderMaterial
+  name: IX_PAC3_BufferStoreTraceProductionOrderMaterial_ProductionOrderMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderMaterialRef
+- table: Confirmation
+  name: PK_PAC3_Confirnation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationID
+- table: Confirmation
+  name: IX_PAC3_Confirmation_ProductionOrderOperationRef_WithIncludes
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+  included:
+  - Number
+  - Date
+  - UnitRef
+  - Yield
+  - Scrap
+- table: Confirmation
+  name: IX_PAC3_Confirmation_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: Confirmation
+  name: IX_PAC3_Confirmation_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: Confirmation
+  name: IX_PAC3_Confirmation_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: Confirmation
+  name: IX_PAC3_Confirmation_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: Confirmation
+  name: IX_PAC3_Confirmation_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: Confirmation
+  name: IX_PAC3_Confirmation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Confirmation
+  name: IX_PAC3_Confirmation_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ConfirmationBatch
+  name: PK_PAC3_ConfirmationBatch
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationBatchID
+- table: ConfirmationBatch
+  name: IX_PAC3_ConfirmationBatch_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationBatch
+  name: IX_PAC3_ConfirmationBatch_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ConfirmationBatch
+  name: IX_PAC3_ConfirmationBatch_ConfirmationDetailRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationDetailRef
+- table: ConfirmationBatch
+  name: IX_PAC3_ConfirmationBatch_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ConfirmationBatch
+  name: IX_PAC3_ConfirmationBatch_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ConfirmationDelayReason
+  name: PK_PAC3_ConfirmationDelay
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationDelayReasonID
+- table: ConfirmationDelayReason
+  name: IX_PAC3_ConfirmationDelayReason_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationDelayReason
+  name: IX_PAC3_ConfirmationDelayReason_DelayReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelayReasonRef
+- table: ConfirmationLowerGradeProduct
+  name: PK_PAC3_ConfirmationLowerGradeProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationLowerGradeProductID
+- table: ConfirmationLowerGradeProduct
+  name: IX_PAC3_ConfirmationLowerGradeProduct_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationLowerGradeProduct
+  name: IX_PAC3_ConfirmationLowerGradeProduct_ProductionOrderLowerGradeProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderLowerGradeProductRef
+- table: ConfirmationLowerGradeProduct
+  name: IX_PAC3_ConfirmationLowerGradeProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ConfirmationMachine
+  name: PK_MMG3_ConfirmationMachine
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationMachineID
+- table: ConfirmationMachine
+  name: IX_PAC3_ConfirmationMachine_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationMachine
+  name: IX_PAC3_ConfirmationMachine_MachineRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MachineRef
+- table: ConfirmationMachineEquipmentMeasurementPoint
+  name: PK_PAC3_ConfirmationMachineEquipmentMeasurementPoint
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationMachineEquipmentMeasurementPointID
+- table: ConfirmationMachineEquipmentMeasurementPoint
+  name: IX_PAC3_ConfirmationMachineEquipmentMeasurementPoint_EquipmentMeasurementPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentMeasurementPointRef
+- table: ConfirmationMachineMeasurementPointExtension
+  name: PK_PAC3_ConfirmationMachineMeasurementPointExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationMachineMeasurementPointExtensionID
+- table: ConfirmationMachineMeasurementPointExtension
+  name: IX_PAC3_ConfirmationMachineMeasurementPointExtension_ConfirmationMachineRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationMachineRef
+- table: ConfirmationPersonnel
+  name: PK_PAC3_ConfirmationPersonnel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationPersonnelID
+- table: ConfirmationPersonnel
+  name: IX_PAC3_ConfirmationPersonnel_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationPersonnel
+  name: IX_PAC3_ConfirmationPersonnel_WorkCenterPersonnelRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterPersonnelRef
+- table: ConfirmationProductionOrderComponent
+  name: PK_PAC3_ConfirmationProductionOrderComponent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationProductionOrderComponentID
+- table: ConfirmationProductionOrderComponent
+  name: IX_PAC3_ConfirmationProductionOrderComponent_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationProductionOrderComponent
+  name: IX_PAC3_ConfirmationProductionOrderComponent_ProductionOrderComponentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderComponentRef
+- table: ConfirmationProductionOrderComponent
+  name: IX_PAC3_ConfirmationProductionOrderComponent_PartTrackingFactor1Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor1Ref
+- table: ConfirmationProductionOrderComponent
+  name: IX_PAC3_ConfirmationProductionOrderComponent_PartTrackingFactor2Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor2Ref
+- table: ConfirmationProductionOrderComponent
+  name: IX_PAC3_ConfirmationProductionOrderComponent_PartTrackingFactor3Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor3Ref
+- table: ConfirmationProductionOrderComponent
+  name: IX_PAC3_ConfirmationProductionOrderComponent_PartTrackingFactor4Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor4Ref
+- table: ConfirmationProductionOrderComponent
+  name: IX_PAC3_ConfirmationProductionOrderComponent_PartTrackingFactor5Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor5Ref
+- table: ConfirmationProductionOrderComponent
+  name: IX_PAC3_ConfirmationProductionOrderComponent_IssuePermitItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IssuePermitItemRef
+- table: ConfirmationProductionOrderComponentScrapReason
+  name: PK_PAC3_ConfirmationProductionOrderComponentScrapReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationProductionOrderComponentScrapReasonID
+- table: ConfirmationProductionOrderComponentScrapReason
+  name: IX_PAC3_ConfirmationProductionOrderComponentScrapReason_ConfirmationProductionOrderComponentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationProductionOrderComponentRef
+- table: ConfirmationProductionOrderComponentScrapReason
+  name: IX_PAC3_ConfirmationProductionOrderComponentScrapReason_ConfirmationProductionOrderComponentTrackingFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationProductionOrderComponentTrackingFactorRef
+- table: ConfirmationProductionOrderComponentScrapReason
+  name: IX_PAC3_ConfirmationProductionOrderComponentScrapReason_ScrapReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapReasonRef
+- table: ConfirmationProductionOrderComponentTrackingFactor
+  name: PK_PAC3_ConfirmationProductionOrderComponentTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationProductionOrderComponentTrackingFactorID
+- table: ConfirmationProductionOrderComponentTrackingFactor
+  name: IX_PAC3_ConfirmationProductionOrderComponentTrackingFactor_ConfirmationProductionOrderComponentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationProductionOrderComponentRef
+- table: ConfirmationReceiptPermit
+  name: PK_PAC3_ConfirmationReceiptPermit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationReceiptPermitID
+- table: ConfirmationResourceToolAssignment
+  name: PK_ConfirmationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationResourceToolAssignmentID
+- table: ConfirmationResourceToolAssignment
+  name: IX_PAC3_ConfirmationResourceToolAssignment_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationResourceToolAssignment
+  name: IX_PAC3_ConfirmationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: ConfirmationResourceToolAssignment
+  name: IX_PAC3_ConfirmationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ConfirmationReworkCause
+  name: PK_PAC3_ConfirmationReworkCause
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationReworkCauseID
+- table: ConfirmationReworkCause
+  name: IX_PAC3_ConfirmationReworkCause_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationReworkCause
+  name: IX_PAC3_ConfirmationReworkCause_ReworkCauseRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReworkCauseRef
+- table: ConfirmationReworkCause
+  name: IX_PAC3_ConfirmationReworkCause_EntityGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityGroupingRef
+- table: ConfirmationReworkCause
+  name: IX_PAC3_ConfirmationReworkCause_ReworkCauseGroupMemberRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReworkCauseGroupMemberRef
+- table: ConfirmationRTAExtension
+  name: PK_PAC3_ConfirmationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationRTAExtensionID
+- table: ConfirmationRTAExtension
+  name: IX_PAC3_ConfirmationRTAExtension_ConfirmationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationResourceToolAssignmentRef
+- table: ConfirmationScrap
+  name: PK_PAC3_ConfirmationScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationScrapID
+- table: ConfirmationScrap
+  name: IX_PAC3_ConfirmationScrap_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ConfirmationScrap
+  name: IX_PAC3_ConfirmationScrap_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationScrap
+  name: IX_PAC3_ConfirmationScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ConfirmationScrap
+  name: IX_PAC3_ConfirmationScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ConfirmationScrap
+  name: IX_PAC3_ConfirmationScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ConfirmationScrapReason
+  name: PK_PAC3_ConfirmationScrapReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationScrapReasonID
+- table: ConfirmationScrapReason
+  name: IX_PAC3_ConfirmationScrapReason_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationScrapReason
+  name: IX_PAC3_ConfirmationScrapReason_ScrapReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapReasonRef
+- table: ConfirmationSerial
+  name: PK_PAC3_ConfirmationSerial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationSerialID
+- table: ConfirmationSerial
+  name: IX_PAC3_ConfirmationSerial_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationSerial
+  name: IX_PAC3_ConfirmationSerial_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ConfirmationSerialScrap
+  name: PK_PAC3_ConfirmationSerialScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationSerialScrapID
+- table: ConfirmationSerialScrap
+  name: IX_PAC3_ConfirmationSerialScrap_ConfirmationScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationScrapRef
+- table: ConfirmationSerialScrap
+  name: IX_PAC3_ConfirmationSerialScrap_ConfirmationSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationSerialRef
+- table: ConfirmationSideProduct
+  name: PK_PAC3_ConfirmationSideProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationSideProductID
+- table: ConfirmationSideProduct
+  name: IX_PAC3_ConfirmationSideProduct_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ConfirmationSideProduct
+  name: IX_PAC3_ConfirmationSideProduct_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: ConfirmationSideProduct
+  name: IX_PAC3_ConfirmationSideProduct_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationSideProduct
+  name: IX_PAC3_ConfirmationSideProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ConfirmationSideProduct
+  name: IX_PAC3_ConfirmationSideProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ConfirmationSideProduct
+  name: IX_PAC3_ConfirmationSideProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ConfirmationStandardValue
+  name: PK_PAC3_ConfirmationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationStandardValueID
+- table: ConfirmationStandardValue
+  name: IX_PAC3_ConfirmationStandardValue_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationStandardValue
+  name: IX_PAC3_ConfirmationStandardValue_ProductionOrderOperationStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationStandardValueRef
+- table: CorrectionAction
+  name: PK_PAC3_CorrectionAction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CorrectionActionID
+- table: CorrectionAction
+  name: UIX_PAC3_CorrectionAction_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: CorrectionAction
+  name: UIX_PAC3_CorrectionAction_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DamageReason
+  name: PK_PAC3_DamageReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DamageReasonID
+- table: DamageReason
+  name: UIX_PAC3_DamageReason_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: DamageReason
+  name: UIX_PAC3_DamageReason_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DamageRootCause
+  name: PK_PAC3_DamageRootCause
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DamageRootCauseID
+- table: DamageRootCause
+  name: UIX_PAC3_DamageRootCause_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: DamageRootCause
+  name: UIX_PAC3_DamageRootCause_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DelayReason
+  name: PK_PAC3_DelayReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DelayReasonID
+- table: DelayReason
+  name: UIX_PAC3_DelayReason_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DisassemblingConfirmation
+  name: PK_PAC3_DisassemblingConfirmation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingConfirmationID
+- table: DisassemblingConfirmation
+  name: IX_PAC3_DisassemblingConfirmation_DisassemblingOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingOrderOperationRef
+- table: DisassemblingConfirmation
+  name: IX_PAC3_DisassemblingConfirmation_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: DisassemblingConfirmationConsumedMaterial
+  name: PK_PAC3_DisassemblingConfirmationConsumedMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingConfirmationConsumedMaterialID
+- table: DisassemblingConfirmationConsumedMaterialTrackingFactor
+  name: PK_PAC3_DisassemblingConfirmationConsumedMaterialTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingConfirmationConsumedMaterialTrackingFactorID
+- table: DisassemblingConfirmationConsumedMaterialTrackingFactor
+  name: IX_PAC3_DisassemblingConfirmationConsumedMaterialTrackingFactor_DisassemblingConfirmationConsumedMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingConfirmationConsumedMaterialRef
+- table: DisassemblingConfirmationMachine
+  name: PK_MMG3_DisassemblingConfirmationMachine
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingConfirmationMachineID
+- table: DisassemblingConfirmationMachine
+  name: IX_PAC3_DisassemblingConfirmationMachine_DisassemblingConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingConfirmationRef
+- table: DisassemblingConfirmationMachine
+  name: IX_PAC3_DisassemblingConfirmationMachine_MachineRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MachineRef
+- table: DisassemblingConfirmationMaterialRelatedSerialSubset
+  name: PK_DisassemblingConfirmationMaterialRelatedSerialSubset
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingConfirmationMaterialRelatedSerialSubsetID
+- table: DisassemblingConfirmationPersonnel
+  name: PK_PAC3_DisassemblingConfirmationPersonnel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingConfirmationPersonnelID
+- table: DisassemblingConfirmationPersonnel
+  name: IX_PAC3_DisassemblingConfirmationPersonnel_DisassemblingConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingConfirmationRef
+- table: DisassemblingConfirmationPersonnel
+  name: IX_PAC3_DisassemblingConfirmationPersonnel_WorkCenterPersonnelRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterPersonnelRef
+- table: DisassemblingConfirmationReferenceOrder
+  name: PK_PAC3_DisassemblingConfirmationReferenceOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingConfirmationReferenceOrderID
+- table: DisassemblingConfirmationSerialRelated
+  name: PK_PAC3_DisassemblingConfirmationSerialRelated
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingConfirmationSerialRelatedID
+- table: DisassemblingConfirmationSerialRelated
+  name: IX_PAC3_DisassemblingConfirmationSerialRelated_DisassemblingOrderSerialRelatedRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingOrderSerialRelatedRef
+- table: DisassemblingConfirmationSerialRelated
+  name: IX_PAC3_DisassemblingConfirmationSerialRelated_DisassemblingConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingConfirmationRef
+- table: DisassemblingOperation
+  name: PK_PAC3_DisassemblingOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOperationID
+- table: DisassemblingOperation
+  name: IX_PAC3_DisassemblingOperation_OperationTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationTypeRef
+- table: DisassemblingOperation
+  name: IX_PAC3_DisassemblingOperation_DisassemblingOperationSetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingOperationSetRef
+- table: DisassemblingOperation
+  name: IX_PAC3_DisassemblingOperation_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: DisassemblingOperation
+  name: IX_PAC3_DisassemblingOperation_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: DisassemblingOperationCharacteristic
+  name: PK_PAC3_DisassemblingOperationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOperationCharacteristicID
+- table: DisassemblingOperationCharacteristic
+  name: IX_PAC_DisassemblingOperationCharacteristic_DisassemblingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingOperationRef
+- table: DisassemblingOperationCharacteristic
+  name: IX_PAC3_DisassemblingOperationCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: DisassemblingOperationSet
+  name: PK_PAC3_DisassemblingOperationSet
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOperationSetID
+- table: DisassemblingOperationSet
+  name: UIX_PAC3_DisassemblingOperationSet_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DisassemblingOperationSet
+  name: IX_PAC3_DisassemblingOperationSet_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: DisassemblingOperationSet
+  name: IX_PAC3_DisassemblingOperationSet_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: DisassemblingOperationSet
+  name: IX_PAC3_DisassemblingOperationSet_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: DisassemblingOperationStandardValue
+  name: PK_PAC3_DisassemblingOperationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOperationStandardValueID
+- table: DisassemblingOperationStandardValue
+  name: IX_PAC3_DisassemblingOperationStandardValue_DisassemblingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingOperationRef
+- table: DisassemblingOperationStandardValue
+  name: IX_PAC3_DisassemblingOperationStandardValue_WorkCenterStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterStandardValueRef
+- table: DisassemblingOrder
+  name: PK_PAC3_DisassemblingOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderID
+- table: DisassemblingOrderOperation
+  name: PK_PAC3_DisassemblingOrderOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderOperationID
+- table: DisassemblingOrderOperationCharacteristic
+  name: PK_PAC3_DisassemblingOrderOperationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderOperationCharacteristicID
+- table: DisassemblingOrderOperationConsumedMaterial
+  name: PK_PAC3_DisassemblingOrderOperationConsumedMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderOperationConsumedMaterialID
+- table: DisassemblingOrderOperationConsumedMaterialRelatedSerialSubset
+  name: PK_DisassemblingOrderOperationConsumedMaterialRelatedSerialSubset
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderOperationConsumedMaterialRelatedSerialSubsetID
+- table: DisassemblingOrderOperationConsumedMaterialTrackingFactor
+  name: PK_PAC3_DisassemblingOrderOperationConsumedMaterialTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderOperationConsumedMaterialTrackingFactorID
+- table: DisassemblingOrderOperationConsumedMaterialTrackingFactor
+  name: IX_PAC3_DisassemblingOrderOperationConsumedMaterialTrackingFactor_DisassemblingOrderOperationConsumedMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingOrderOperationConsumedMaterialRef
+- table: DisassemblingOrderOperationStandardValue
+  name: PK_PAC3_DisassemblingOrderOperationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderOperationStandardValueID
+- table: DisassemblingOrderReferenceOrder
+  name: PK_PAC3_DisassemblingOrderReferenceOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderReferenceOrderID
+- table: DisassemblingOrderSerialRelated
+  name: PK_PAC3_DisassemblingOrderSerialRelated
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DisassemblingOrderSerialRelatedID
+- table: DisassemblingOrderSerialRelated
+  name: IX_PAC3_DisassemblingOrderSerialRelated_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: DisassemblingOrderSerialRelated
+  name: IX_PAC3_DisassemblingOrderSerialRelated_DisassemblingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DisassemblingOrderRef
+- table: EngineeringCharacteristicExtension
+  name: PK_PAC3_EngineeringCharacteristicExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EngineeringCharacteristicExtensionID
+- table: EngineeringCharacteristicExtension
+  name: IX_PAC3_EngineeringCharacteristicExtension_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: EngineeringPartBomRoutingExtension
+  name: PK_EngineeringPartBomRoutingExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EngineeringPartBomRoutingExtensionID
+- table: EngineeringPartBomRoutingExtension
+  name: IX_PAC3_EngineeringPartBomRoutingExtension_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: EngineeringPartBomRoutingExtension
+  name: IX_PAC3_EngineeringPartBomRoutingExtension_RoutingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingRef
+- table: EngineeringPartBomRoutingExtension
+  name: IX_PAC3_EngineeringPartBomRoutingExtension_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: EngineeringPartBomRoutingExtension
+  name: UIX_PAC3_EngineeringPartBomRoutingExtension_EngineeringPartExtensionRefPlantRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EngineeringPartExtensionRef
+  - PlantRef
+- table: EngineeringPartExtension
+  name: PK_PAC3_EngineeringPartExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EngineeringPartExtensionID
+- table: EngineeringPartExtension
+  name: UIX_PAC3_EngineeringPartExtension_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: EngineeringPartGradeExtension
+  name: PK_PAC3_EngineeringPartGradeExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EngineeringPartGradeExtensionID
+- table: EngineeringPartGradeExtension
+  name: IX_PAC3_EngineeringPartGradeExtension_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: EngineeringPartGradeExtension
+  name: IX_PAC3_EngineeringPartGradeExtension_EngineeringPartExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EngineeringPartExtensionRef
+- table: EngineeringPartStorePriorityExtension
+  name: PK_EngineeringPartStorePriorityExtension_1
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EngineeringPartStorePriorityExtensionID
+- table: EngineeringPartStorePriorityExtension
+  name: UIX_PAC3_EngineeringPartStorePriorityExtension_EngineeringPartExtensionRefPriority
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EngineeringPartExtensionRef
+  - Priority
+- table: EngineeringPartStorePriorityExtension
+  name: UIX_PAC3_EngineeringPartStorePriorityExtension_PartExtensionRef_StoreRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EngineeringPartExtensionRef
+  - StoreRef
+- table: InspectionPointValueSerialRange
+  name: PK_InspectionPointValueSerialRange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPointValueSerialRangeID
+- table: InspectionPointValueSerialRange
+  name: IX_InspectionPointValueSerialRange_InspectionPointValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointValueRef
+- table: InspectionPointValueSerialRange
+  name: IX_InspectionPointValueSerialRange_SerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialRef
+- table: InspectionPointValueSerialSample
+  name: PK_InspectionPointValueSerialSample
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionPointValueSerialSampleID
+- table: InspectionPointValueSerialSample
+  name: IX_InspectionPointValueSerialSample_InspectionPointValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointValueRef
+- table: InspectionPointValueSerialSample
+  name: IX_InspectionPointValueSerialSample_SerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialRef
+- table: ManufacturingOrderOperationMaterialTerminalInputOrder
+  name: PK_PAC3_ManufacturingOrderOperationMaterialTerminalInputOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ManufacturingOrderOperationMaterialTerminalInputOrderID
+- table: ManufacturingOrderOperationMaterialTerminalInputOrder
+  name: IX_PAC3_ManufacturingOrderOperationMaterialTerminalInputOrder_ManufacturingOrderOperationMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ManufacturingOrderOperationMaterialRef
+- table: ManufacturingOrderOperationSerialCharacteristic
+  name: PK_PAC3_ManufacturingOrderOperationSerialCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ManufacturingOrderOperationSerialCharacteristicID
+- table: ManufacturingOrderOperationSerialCharacteristic
+  name: IX_PAC3_ManufacturingOrderOperationSerialCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: ManufacturingOrderOperationSerialCharacteristic
+  name: IX_PAC3_ManufacturingOrderOperationSerialCharacteristic_ManufacturingOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ManufacturingOrderOperationRef
+- table: ManufacturingOrderOperationTerminal
+  name: PK_PAC3_ManufacturingOrderOperationTerminal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ManufacturingOrderOperationTerminalID
+- table: ManufacturingOrderOperationTerminal
+  name: IX_PAC3_ManufacturingOrderOperationTerminal_TerminalRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TerminalRef
+- table: ManufacturingOrderOperationTerminal
+  name: IX_PAC3_ManufacturingOrderOperationTerminal_ManufacturingOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ManufacturingOrderOperationRef
+- table: ManufacturingOrderSerialSetting
+  name: PK_PAC3_ManufacturingOrderSerialSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ManufacturingOrderSerialSettingID
+- table: ManufacturingOrderSerialSetting
+  name: IX_PAC3_ManufacturingOrderSerialSetting_ManufacturingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ManufacturingOrderRef
+- table: ManufacturingOrderSerialStatus
+  name: PK_PAC3_ManufacturingOrderSerialStatus
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ManufacturingOrderSerialStatusID
+- table: ManufacturingOrderSerialStatus
+  name: UIX_PAC3_ManufacturingOrderSerialStatus_ManufacturingOrderRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ManufacturingOrderRef
+- table: MaterialWithdrawalDefaultValuesExtension
+  name: PK_PAC3_MaterialWithdrawalDefaultValuesExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialWithdrawalDefaultValuesExtensionID
+- table: MaterialWithdrawalDefaultValuesExtension
+  name: UIX_PAC3_MaterialWithdrawalDefaultValuesExtension_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: MaterialWithdrawalDefaultValuesExtension
+  name: UIX_PAC3_MaterialWithdrawalDefaultValuesExtension_DefaultStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefaultStoreRef
+- table: MaterialWithdrawalDefaultValuesExtension
+  name: UIX_PAC3_MaterialWithdrawalDefaultValuesExtension_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: MaterialWithdrawalPlantStore
+  name: PK_PAC3_MaterialWithdrawalPlantStoreID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialWithdrawalPlantStoreID
+- table: MaterialWithdrawalPlantStore
+  name: IX_PAC3_MaterialWithdrawalPlantStore_MaterialWithdrawalDefaultValuesExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaterialWithdrawalDefaultValuesExtensionRef
+- table: MaterialWithdrawalPlantStore
+  name: IX_PAC3_MaterialWithdrawalPlantStore_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: MaterialWithdrawalPlantStore
+  name: IX_PAC3_MaterialWithdrawalPlantStore_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: MechanizedConfirmation
+  name: PK_PAC3_MechanizedConfirmation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationID
+- table: MechanizedConfirmation
+  name: IX_PAC3_MechanizedConfirmation_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: MechanizedConfirmation
+  name: IX_PAC3_MechanizedConfirmation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: MechanizedConfirmation
+  name: IX_PAC3_MechanizedConfirmation_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: MechanizedConfirmation
+  name: IX_PAC3_MechanizedConfirmation_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: MechanizedConfirmationBatch
+  name: PK_PAC3_MechanizedConfirmationBatch
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationBatchID
+- table: MechanizedConfirmationBatch
+  name: IX_PAC3_MechanizedConfirmationBatch_MechanizedConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationRef
+- table: MechanizedConfirmationBatchMapping
+  name: PK_PAC3_MechanizedConfirmationBatchMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationBatchMappingID
+- table: MechanizedConfirmationBatchMapping
+  name: IX_PAC3_MechanizedConfirmationBatchMapping_MechanizedConfirmationBatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationBatchRef
+- table: MechanizedConfirmationBatchMapping
+  name: IX_PAC3_MechanizedConfirmationBatchMapping_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: MechanizedConfirmationBatchRelation
+  name: PK_PAC3_MechanizedConfirmationBatchRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationBatchRelationID
+- table: MechanizedConfirmationBatchRelation
+  name: IX_PAC3_MechanizedConfirmationBatchRelation_MechanizedConfirmationBatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationBatchRef
+- table: MechanizedConfirmationLowerGradeProduct
+  name: PK_PAC3_MechanizedConfirmationLowerGradeProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationLowerGradeProductID
+- table: MechanizedConfirmationLowerGradeProduct
+  name: IX_PAC3_MechanizedConfirmationLowerGradeProduct_MechanizedConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationRef
+- table: MechanizedConfirmationLowerGradeProduct
+  name: IX_PAC3_MechanizedConfirmationLowerGradeProduct_ProductionOrderLowerGradeProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderLowerGradeProductRef
+- table: MechanizedConfirmationLowerGradeProduct
+  name: IX_PAC3_MechanizedConfirmationLowerGradeProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: MechanizedConfirmationLowerGradeProductInputBatch
+  name: PK_PAC3_MechanizedConfirmationLowerGradeProductInputBatch
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationLowerGradeProductInputBatchID
+- table: MechanizedConfirmationMachine
+  name: PK_PAC3_MechanizedConfirmationMachine
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationMachineID
+- table: MechanizedConfirmationMachine
+  name: IX_PAC3_MechanizedConfirmationMachine_MechanizedConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationRef
+- table: MechanizedConfirmationMachine
+  name: IX_PAC3_MechanizedConfirmationMachine_MachineRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MachineRef
+- table: MechanizedConfirmationProductionOrderComponent
+  name: PK_PAC3_MechanizedConfirmationProductionOrderComponent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationProductionOrderComponentID
+- table: MechanizedConfirmationProductionOrderComponent
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponent_MechanizedConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationRef
+- table: MechanizedConfirmationProductionOrderComponent
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponent_PartTrackingFactor1Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor1Ref
+- table: MechanizedConfirmationProductionOrderComponent
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponent_PartTrackingFactor2Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor2Ref
+- table: MechanizedConfirmationProductionOrderComponent
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponent_PartTrackingFactor3Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor3Ref
+- table: MechanizedConfirmationProductionOrderComponent
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponent_PartTrackingFactor4Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor4Ref
+- table: MechanizedConfirmationProductionOrderComponent
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponent_PartTrackingFactor5Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactor5Ref
+- table: MechanizedConfirmationProductionOrderComponent
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponent_ProductionOrderComponentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderComponentRef
+- table: MechanizedConfirmationProductionOrderComponentScrapReason
+  name: PK_PAC3_MechanizedConfirmationProductionOrderComponentScrapReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationProductionOrderComponentScrapReasonID
+- table: MechanizedConfirmationProductionOrderComponentScrapReason
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponentScrapReason_MConfirmationProductionOrderComponentTrackingFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationProductionOrderComponentTrackingFactorRef
+- table: MechanizedConfirmationProductionOrderComponentScrapReason
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponentScrapReason_MechanizedConfirmationProductionOrderComponentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationProductionOrderComponentRef
+- table: MechanizedConfirmationProductionOrderComponentScrapReason
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponentScrapReason_ScrapReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapReasonRef
+- table: MechanizedConfirmationProductionOrderComponentTrackingFactor
+  name: PK_PAC3_MechanizedConfirmationProductionOrderComponentTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationProductionOrderComponentTrackingFactorID
+- table: MechanizedConfirmationProductionOrderComponentTrackingFactor
+  name: IX_PAC3_MechanizedConfirmationProductionOrderComponentTrackingFactor_MechanizedConfirmationProductionOrderComponentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationProductionOrderComponentRef
+- table: MechanizedConfirmationScrap
+  name: PK_PAC3_MechanizedConfirmationScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationScrapID
+- table: MechanizedConfirmationScrap
+  name: IX_PAC3_MechanizedConfirmationScrap_MechanizedConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationRef
+- table: MechanizedConfirmationScrap
+  name: IX_PAC3_MechanizedConfirmationScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: MechanizedConfirmationScrap
+  name: IX_PAC3_MechanizedConfirmationScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: MechanizedConfirmationScrap
+  name: IX_PAC3_MechanizedConfirmationScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: MechanizedConfirmationSideProduct
+  name: PK_PAC3_MechanizedConfirmationSideProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MechanizedConfirmationSideProductID
+- table: MechanizedConfirmationSideProduct
+  name: IX_PAC3_MechanizedConfirmationSideProduct_MechanizedConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MechanizedConfirmationRef
+- table: MechanizedConfirmationSideProduct
+  name: IX_PAC3_MechanizedConfirmationSideProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: MechanizedConfirmationSideProduct
+  name: IX_PAC3_MechanizedConfirmationSideProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: MechanizedConfirmationSideProduct
+  name: IX_PAC3_MechanizedConfirmationSideProduct_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: MechanizedConfirmationSideProduct
+  name: IX_PAC3_MechanizedConfirmationSideProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: OperationType
+  name: PK_PAC3_OperationType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationTypeID
+- table: OperationType
+  name: UIX_PAC3_OperationType_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: OperationType
+  name: IX_PAC3_OperationType_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: OperationType
+  name: IX_PAC3_OperationType_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PartSerialCharacteristicExtension
+  name: PK_PAC3_PartSerialCharacteristicExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartSerialCharacteristicExtensionID
+- table: PartSerialCharacteristicExtensionItem
+  name: PK_PAC3_PartSerialCharacteristicExtensionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartSerialCharacteristicExtensionItemID
+- table: PartUnitBatchSize
+  name: PK_PAC3_PartUnitBatchSize
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartUnitBatchSizeID
+- table: PartUnitBatchSize
+  name: IX_PAC3_PartUnitBatchSize_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: PartUnitBatchSize
+  name: IX_PAC3_PartUnitBatchSize_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PartUnitBatchSize
+  name: UIX_PAC3_PartUnitBatchSize_PartUnitBatchSize
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartUnitRef
+  - BatchSize
+- table: PartUnitBatchSize
+  name: UIX_PAC3_PartUnitBatchSize_PartUnitIsDefault
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartUnitRef
+  - IsDefault
+- table: ProductionLineCollectedSerial
+  name: PK_PAC3_ProductionLineCollectedSerial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionLineCollectedSerialID
+- table: ProductionLineCollectedSerial
+  name: IX_PAC3_ProductionLineCollectedSerial_TerminalRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TerminalRef
+- table: ProductionLineCollectedSerial
+  name: IX_PAC3_ProductionLineCollectedSerial_ProductionOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderRef
+- table: ProductionLineCollectedSerial
+  name: IX_PAC3_ProductionLineCollectedSerial_ProductionOrderRef_TerminalRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderRef
+  - TerminalRef
+  included:
+  - JointSerialRef
+  - ProductSerialRef
+- table: ProductionLineCollectedSerial
+  name: IX_PAC3_ProductionLineCollectedSerial_ProductSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductSerialRef
+- table: ProductionLineCollectedSerial
+  name: IX_PAC3_ProductionLineCollectedSerial_NewProductSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NewProductSerialRef
+- table: ProductionLineCollectedSerial
+  name: IX_PAC3_ProductionLineCollectedSerial_JointSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - JointSerialRef
+- table: ProductionLineCollectedSerial
+  name: IX_PAC3_ProductionLineCollectedSerial_JointSerialRef_ProductionOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - JointSerialRef
+  - ProductionOrderRef
+- table: ProductionLineCollectedSerial
+  name: IX_PAC3_ProductionLineCollectedSerial_TerminalRef_JointSerialRef_ProductSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TerminalRef
+  - JointSerialRef
+  - ProductSerialRef
+- table: ProductionLineCollectedSerialAdditionalSerial
+  name: PK_PAC3_ProductionLineCollectedSerialAdditionalSerial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionLineCollectedSerialAdditionalSerialID
+- table: ProductionLineCollectedSerialAdditionalSerial
+  name: IX_PAC3_ProductionLineCollectedSerialAdditionalSerial_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ProductionLineCollectedSerialMixedProductionOrder
+  name: PK_ProductionLineCollectedSerialMixedProductionOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionLineCollectedSerialMixedProductionOrderID
+- table: ProductionLineCollectedSerialMixedProductionOrder
+  name: IX_ProductionLineCollectedSerialMixedProductionOrder_DetermineProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DetermineProductionLineCollectedSerialRef
+- table: ProductionLineCollectedSerialMixedProductionOrder
+  name: IX_ProductionLineCollectedSerialMixedProductionOrder_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ProductionLineCollectedSerialProductCharacteristic
+  name: PK_PAC3_ProductionLineCollectedSerialProductCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionLineCollectedSerialProductCharacteristicID
+- table: ProductionLineCollectedSerialProductCharacteristic
+  name: IX_PAC3_ProductionLineCollectedSerialProductCharacteristic_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ProductionLineCollectedSerialProductCharacteristic
+  name: IX_PAC3_ProductionLineCollectedSerialProductCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: ProductionLineCollectedSerialReworkReason
+  name: PK_PAC3_ProductionLineCollectedSerialReworkReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionLineCollectedSerialReworkReasonID
+- table: ProductionLineCollectedSerialReworkReason
+  name: IX_PAC3_ProductionLineCollectedSerialReworkReason_ReworkReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReworkReasonRef
+- table: ProductionLineCollectedSerialReworkReason
+  name: IX_PAC3_ProductionLineCollectedSerialReworkReason_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ProductionLineCollectedSerialScrapReason
+  name: PK_PAC3_ProductionLineCollectedSerialScrapReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionLineCollectedSerialScrapReasonID
+- table: ProductionLineCollectedSerialScrapReason
+  name: IX_PAC3_ProductionLineCollectedSerialScrapReason_ScrapReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapReasonRef
+- table: ProductionLineCollectedSerialScrapReason
+  name: IX_PAC3_ProductionLineCollectedSerialScrapReason_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ProductionLineCollectedSerialSubset
+  name: PK_PAC3_ProductionLineCollectedSerialSubset
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionLineCollectedSerialSubsetID
+- table: ProductionLineCollectedSerialSubset
+  name: IX_PAC3_ProductionLineCollectedSerialSubset_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ProductionLineCollectedSerialSubset
+  name: IX_PAC3_ProductionLineCollectedSerialSubset_ChildSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialRef
+- table: ProductionLineCollectedSerialSubset
+  name: IX_PAC3_ProductionLineCollectedSerialSubset_PartBarcodeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartBarcodeRef
+- table: ProductionLineCollectedSerialSubset
+  name: IX_PAC3_ProductionLineCollectedSerialSubset_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: ProductionLineCollectedSerialTerminalCharacteristic
+  name: PK_PAC3_ProductionLineCollectedSerialTerminalCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionLineCollectedSerialTerminalCharacteristicID
+- table: ProductionOrder
+  name: PK_PAC3_ProductionOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderID
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_RoutingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_CombiningProductionOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CombiningProductionOrderRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_ReferenceOperationSetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationSetRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_StoreRefForReturnItem
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRefForReturnItem
+- table: ProductionOrder
+  name: IX_PAC3_ProductionOrder_InventoryVoucherSpecificationForReturnItem
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationForReturnItem
+- table: ProductionOrderBaseInfo
+  name: PK_ProductionOrderBaseInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderBaseInfoID
+- table: ProductionOrderBaseInfo
+  name: IX_PAC3_ProductionOrderBaseInfo_ProductionOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderRef
+- table: ProductionOrderBaseInfo
+  name: IX_PAC3_ProductionOrderBaseInfo_BaseProductionOrderComponentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseProductionOrderComponentRef
+- table: ProductionOrderBaseInfo
+  name: IX_PAC3_ProductionOrderBaseInfo_BaseProductionOrderBaseInfoRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseProductionOrderBaseInfoRef
+- table: ProductionOrderBatchPartExtension
+  name: PK_PAC3_ProductionOrderBatchPartExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderBatchPartExtensionID
+- table: ProductionOrderComponent
+  name: PK_PAC3_ProductionOrderComponent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderComponentID
+- table: ProductionOrderComponent
+  name: IX_PAC3_ProductionOrderComponent_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ProductionOrderComponent
+  name: IX_PAC3_ProductionOrderComponent_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProductionOrderComponent
+  name: IX_PAC3_ProductionOrderComponent_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProductionOrderComponent
+  name: IX_PAC3_ProductionOrderComponent_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProductionOrderComponent
+  name: IX_PAC3_ProductionOrderComponent_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: ProductionOrderComponent
+  name: IX_PAC3_ProductionOrderComponent_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: ProductionOrderComponent
+  name: IX_PAC3_ProductionOrderComponent_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProductionOrderComponent
+  name: IX_PAC3_ProductionOrderComponent_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: ProductionOrderItem
+  name: PK_PAC3_ProductionOrderItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderItemID
+- table: ProductionOrderItem
+  name: IX_PAC3_ProductionOrderItem_CoProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CoProductRef
+- table: ProductionOrderItem
+  name: IX_PAC3_ProductionOrderItem_ProductionOrderScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderScrapRef
+- table: ProductionOrderItem
+  name: IX_PAC3_ProductionOrderItem_ProductionOrderLowerGradeProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderLowerGradeProductRef
+- table: ProductionOrderItem
+  name: IX_PAC3_ProductionOrderItem_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: ProductionOrderLowerGradeProduct
+  name: PK_PAC3_ProductionOrderLowerGradeProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderLowerGradeProductID
+- table: ProductionOrderLowerGradeProduct
+  name: IX_PAC3_ProductionOrderLowerGradeProduct_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ProductionOrderLowerGradeProduct
+  name: IX_PAC3_ProductionOrderLowerGradeProduct_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProductionOrderLowerGradeProduct
+  name: IX_PAC3_ProductionOrderLowerGradeProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProductionOrderLowerGradeProduct
+  name: IX_PAC3_ProductionOrderLowerGradeProduct_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: ProductionOrderLowerGradeProduct
+  name: IX_PAC3_ProductionOrderLowerGradeProduct_ProductionOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderRef
+- table: ProductionOrderLowerGradeProduct
+  name: IX_PAC3_ProductionOrderLowerGradeProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProductionOrderOperation
+  name: PK_PPC3_ProductionOrderOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderOperationID
+- table: ProductionOrderOperation
+  name: IX_PAC3_ProductionOrderOperation_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: ProductionOrderOperation
+  name: IX_PAC3_ProductionOrderOperation_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: ProductionOrderOperation
+  name: IX_PAC3_ProductionOrderOperation_OperationTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationTypeRef
+- table: ProductionOrderOperation
+  name: IX_PAC3_ProductionOrderOperation_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: ProductionOrderOperation
+  name: IDX_PAC3_ProductionOrderOperation_ProductionOrderSequenceRef_UniqueID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderSequenceRef
+  - UniqueID
+  included:
+  - Rank
+- table: ProductionOrderOperation
+  name: IX_PAC3_ProductionOrderOperation_ProductionOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderRef
+- table: ProductionOrderOperationCharacteristic
+  name: PK_ProductionOrderOperationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderOperationCharacteristicID
+- table: ProductionOrderOperationCharacteristic
+  name: IX_PAC3_ProductionOrderOperationCharacteristic_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: ProductionOrderOperationCharacteristic
+  name: IX_PAC3_ProductionOrderOperationCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: ProductionOrderOperationCharacteristic
+  name: IX_PAC3_ProductionOrderOperationCharacteristic_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: ProductionOrderOperationEquipment
+  name: PK_PAC3_ProductionOrderOperationEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderOperationEquipmentID
+- table: ProductionOrderOperationEquipment
+  name: IX_PAC3_ProductionOrderOperationEquipment_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: ProductionOrderOperationEquipment
+  name: IX_PAC3_ProductionOrderOperationEquipment_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: ProductionOrderOperationResourceToolAssignment
+  name: PK_ProductionOrderOperationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderOperationResourceToolAssignmentID
+- table: ProductionOrderOperationResourceToolAssignment
+  name: IX_PAC3_ProductionOrderOperationResourceToolAssignment_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: ProductionOrderOperationResourceToolAssignment
+  name: IX_PAC3_ProductionOrderOperationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: ProductionOrderOperationResourceToolAssignment
+  name: IX_PAC3_ProductionOrderOperationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProductionOrderOperationResourceToolAssignment
+  name: IX_PAC3_ProductionOrderOperationResourceToolAssignment_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: ProductionOrderOperationResourceToolAssignment
+  name: IX_PAC3_ProductionOrderOperationResourceToolAssignment_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: ProductionOrderOperationRTAExtension
+  name: PK_PAC3_ProductionOrderOperationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderOperationRTAExtensionID
+- table: ProductionOrderOperationRTAExtension
+  name: IX_PAC3_ProductionOrderOperationRTAExtension_ProductionOrderOperationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationResourceToolAssignmentRef
+- table: ProductionOrderOperationStandardValue
+  name: PK_PAC3_ProductionOrderOperationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderOperationStandardValueID
+- table: ProductionOrderOperationStandardValue
+  name: IX_PAC3_ProductionOrderOperationStandardValue_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: ProductionOrderOperationStandardValue
+  name: IX_PAC3_ProductionOrderOperationStandardValue_WorkCenterStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterStandardValueRef
+- table: ProductionOrderReleaseFailureReason
+  name: PK_PAC3_ProductionOrderReleaseFailureReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderReleaseFailureReasonID
+- table: ProductionOrderScrap
+  name: PK_PAC3_ProductionOrderScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderScrapID
+- table: ProductionOrderScrap
+  name: IX_PAC3_ProductionOrderScrap_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ProductionOrderScrap
+  name: IX_PAC3_ProductionOrderScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProductionOrderScrap
+  name: IX_PAC3_ProductionOrderScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProductionOrderScrap
+  name: IX_PAC3_ProductionOrderScrap_ProductionOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderOperationRef
+- table: ProductionOrderScrap
+  name: IX_PAC3_ProductionOrderScrap_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: ProductionOrderScrap
+  name: IX_PAC3_ProductionOrderScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProductionOrderSequence
+  name: PK_PAC3_ProductionOrderSequence
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionOrderSequenceID
+- table: ProductionOrderSequence
+  name: IX_PAC3_ProductionOrderSequence_ProductionOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionOrderRef
+- table: ProductionOrderSequence
+  name: IX_PAC3_ProductionOrderSequence_ReferenceOperationSetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationSetRef
+- table: QCRoutingOperationMapping
+  name: PK_PAC3_QCRoutingOperationMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QCRoutingOperationMappingID
+- table: QCRoutingOperationMapping
+  name: IX_PAC3_QCRoutingOperationMapping_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+- table: QCRoutingOperationMapping
+  name: IX_PAC3_QCRoutingOperationMapping_ReferenceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationRef
+- table: ReferenceOperation
+  name: PK_PAC3_ReferenceOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationID
+- table: ReferenceOperation
+  name: IX_PAC3_ReferenceOperation_OperationTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationTypeRef
+- table: ReferenceOperation
+  name: IX_PAC3_ReferenceOperation_ProductQuantityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductQuantityUnitRef
+- table: ReferenceOperation
+  name: IX_PAC3_ReferenceOperation_ReferenceOperationSetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationSetRef
+- table: ReferenceOperation
+  name: IX_PAC3_ReferenceOperation_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: ReferenceOperation
+  name: IX_PAC3_ReferenceOperation_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: ReferenceOperationCharacteristic
+  name: PK_PAC3_ReferenceOperationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationCharacteristicID
+- table: ReferenceOperationCharacteristic
+  name: IX_PAC_ReferenceOperationCharacteristic_ReferenceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationRef
+- table: ReferenceOperationCharacteristic
+  name: IX_PAC3_ReferenceOperationCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: ReferenceOperationResourceToolAssignment
+  name: PK_ReferenceOperationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationResourceToolAssignmentID
+- table: ReferenceOperationResourceToolAssignment
+  name: IX_PAC3_ReferenceOperationResourceToolAssignment_ReferenceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationRef
+- table: ReferenceOperationResourceToolAssignment
+  name: IX_PAC3_ReferenceOperationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: ReferenceOperationResourceToolAssignment
+  name: IX_PAC3_ReferenceOperationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ReferenceOperationResourceToolAssignment
+  name: IX_PAC3_ReferenceOperationResourceToolAssignment_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: ReferenceOperationResourceToolAssignment
+  name: IX_PAC3_ReferenceOperationResourceToolAssignment_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: ReferenceOperationRTAExtension
+  name: PK_PAC3_ReferenceOperationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationRTAExtensionID
+- table: ReferenceOperationRTAExtension
+  name: IX_PAC3_ReferenceOperationRTAExtension_ReferenceOperationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationResourceToolAssignmentRef
+- table: ReferenceOperationSet
+  name: PK_PAC3_ReferenceOperationSet
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationSetID
+- table: ReferenceOperationSet
+  name: UIX_PAC3_ReferenceOperationSet_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ReferenceOperationSet
+  name: IX_PAC3_ReferenceOperationSet_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: ReferenceOperationSet
+  name: IX_PAC3_ReferenceOperationSet_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ReferenceOperationSet
+  name: IX_PAC3_ReferenceOperationSet_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ReferenceOperationSetInspectionPlanAssignment
+  name: PK_ReferenceOperationSetInspectionPlanAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationSetInspectionPlanAssignmentID
+- table: ReferenceOperationSetInspectionPlanAssignment
+  name: IX_ReferenceOperationSetInspectionPlanAssignment_InspectionPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanRef
+- table: ReferenceOperationSetInspectionPlanAssignment
+  name: IX_ReferenceOperationSetInspectionPlanAssignment_ReferenceOperationSetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationSetRef
+- table: ReferenceOperationSetInspectionPlanOperationAssignment
+  name: PK_ReferenceOperationSetInspectionPlanOperationAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationSetInspectionPlanOperationAssignmentID
+- table: ReferenceOperationSetInspectionPlanOperationAssignment
+  name: IX_ReferenceOperationSetInspectionPlanOperationAssignment_InspectionPlanOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanOperationRef
+- table: ReferenceOperationSetInspectionPlanOperationAssignment
+  name: IX_ReferenceOperationSetInspectionPlanOperationAssignment_ReferenceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationRef
+- table: ReferenceOperationSetInspectionPlanOperationAssignment
+  name: IX_ReferenceOperationSetInspectionPlanOperationAssignment_ReferenceOperationSetInspectionPlanAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationSetInspectionPlanAssignmentRef
+- table: ReferenceOperationSetSerialProductionLine
+  name: PK_PAC3_ReferenceOperationSetSerialProductionLine
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationSetSerialProductionLineID
+- table: ReferenceOperationSetSerialProductionLine
+  name: IX_PAC3_ReferenceOperationSetSerialProductionLine_ReferenceOperationSetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationSetRef
+- table: ReferenceOperationStandardValue
+  name: PK_PAC3_ReferenceOperationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationStandardValueID
+- table: ReferenceOperationStandardValue
+  name: IX_PAC3_ReferenceOperationStandardValue_ReferenceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationRef
+- table: ReferenceOperationStandardValue
+  name: IX_PAC3_ReferenceOperationStandardValue_WorkCenterStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterStandardValueRef
+- table: ReferenceOperationTerminal
+  name: PK_PAC3_ReferenceOperationTerminal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferenceOperationTerminalID
+- table: ReferenceOperationTerminal
+  name: IX_PAC3_ReferenceOperationTerminal_TerminalRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TerminalRef
+- table: ReferenceOperationTerminal
+  name: IX_PAC3_ReferenceOperationTerminal_ReferenceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationRef
+- table: ResultRecordingCharacteristicSerialSampleValue
+  name: PK_PAC3_ResultRecordingCharacteristicSerialSampleValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResultRecordingCharacteristicSerialSampleValueID
+- table: ResultRecordingCharacteristicSerialSampleValue
+  name: IX_PAC3_ResultRecordingCharacteristicSerialSampleValue_InspectionPointValueSerialSampleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPointValueSerialSampleRef
+- table: ResultRecordingCharacteristicSerialSampleValue
+  name: IX_PAC3_ResultRecordingCharacteristicSerialSampleValue_ResultRecordingCharacteristicSampleValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResultRecordingCharacteristicSampleValueRef
+- table: ResultRecordingCharacteristicSerialSampleValue
+  name: IX_PAC3_ResultRecordingCharacteristicSerialSampleValue_InspectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectorRef
+- table: ReworkCause
+  name: PK_PAC3_ReworkCause
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkCauseID
+- table: ReworkCause
+  name: UIX_PAC3_ReworkCause_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ReworkCauseGroupMember
+  name: PK_PAC3_ReworkCauseGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkCauseGroupMemberID
+- table: ReworkCauseGroupMember
+  name: IX_PAC3_ReworkCauseGroupMember_GroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupingRef
+- table: ReworkCauseGroupMember
+  name: IX_PAC3_ReworkCauseGroupMember_GroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupRef
+- table: ReworkCauseGroupMember
+  name: IX_PAC3_ReworkCauseGroupMember_MemberID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MemberID
+- table: ReworkOrderReferenceOrder
+  name: PK_PAC3_ReworkOrderReferenceOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkOrderReferenceOrderID
+- table: ReworkOrderReferenceOrder
+  name: IX_PAC3_ReworkOrderReferenceOrder_ReworkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReworkOrderRef
+- table: ReworkOrderReferenceOrder
+  name: IX_PAC3_ReworkOrderReferenceOrder_ManufacturingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ManufacturingOrderRef
+- table: ReworkOrderReferenceOrder
+  name: IX_PAC3_ReworkOrderReferenceOrder_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ReworkOrderSerialRelated
+  name: PK_PAC3_ReworkOrderSerialRelated
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkOrderSerialRelatedID
+- table: ReworkOrderSerialRelated
+  name: IX_PAC3_ReworkOrderSerialRelated_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ReworkOrderSerialRelated
+  name: IX_PAC3_ReworkOrderSerialRelated_ReworkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReworkOrderRef
+- table: ReworkProductionLineCollectedSerialCorrectionAction
+  name: PK_PAC3_ReworkProductionLineCollectedSerialCorrectionAction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkProductionLineCollectedSerialCorrectionActionID
+- table: ReworkProductionLineCollectedSerialCorrectionAction
+  name: IX_PAC3_ReworkProductionLineCollectedSerialCorrectionAction_CorrectionActionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CorrectionActionRef
+- table: ReworkProductionLineCollectedSerialCorrectionAction
+  name: IX_PAC3_ReworkProductionLineCollectedSerialCorrectionAction_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ReworkProductionLineCollectedSerialDamageReason
+  name: PK_PAC3_ReworkProductionLineCollectedSerialDamageReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkProductionLineCollectedSerialDamageReasonID
+- table: ReworkProductionLineCollectedSerialDamageReason
+  name: IX_PAC3_ReworkProductionLineCollectedSerialDamageReason_DamageReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageReasonRef
+- table: ReworkProductionLineCollectedSerialDamageReason
+  name: IX_PAC3_ReworkProductionLineCollectedSerialDamageReason_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ReworkProductionLineCollectedSerialDamageRootCause
+  name: PK_PAC3_ReworkProductionLineCollectedSerialDamageRootCause
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkProductionLineCollectedSerialDamageRootCauseID
+- table: ReworkProductionLineCollectedSerialDamageRootCause
+  name: IX_PAC3_ReworkProductionLineCollectedSerialDamageRootCause_DamageRootCauseRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageRootCauseRef
+- table: ReworkProductionLineCollectedSerialDamageRootCause
+  name: IX_PAC3_ReworkProductionLineCollectedSerialDamageRootCause_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ReworkProductionLineCollectedSerialPrimaryPLCSInfo
+  name: PK_PAC3_ReworkProductionLineCollectedSerialPrimaryPLCSInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkProductionLineCollectedSerialPrimaryPLCSInfoID
+- table: ReworkProductionLineCollectedSerialPrimaryPLCSInfo
+  name: IX_PAC3_ReworkProductionLineCollectedSerialPrimaryPLCSInfo_ProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionLineCollectedSerialRef
+- table: ReworkProductionLineCollectedSerialPrimaryPLCSInfo
+  name: IX_PAC3_ReworkProductionLineCollectedSerialPrimaryPLCSInfo_FirstReadPrimaryProductionLineCollectedSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FirstReadPrimaryProductionLineCollectedSerialRef
+- table: ReworkReason
+  name: PK_PAC3_ReworkReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReworkReasonID
+- table: ReworkReason
+  name: UIX_PAC3_ReworkReason_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: ReworkReason
+  name: UIX_PAC3_ReworkReason_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Routing
+  name: PK_PAC3_Routing
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingID
+- table: Routing
+  name: UIX_PAC3_Routing_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Routing
+  name: IX_PAC3_Routing_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Routing
+  name: IX_PAC3_Routing_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: Routing
+  name: IX_PAC3_Routing_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Routing
+  name: IX_PAC3_Routing_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: RoutingBomAssignment
+  name: PK_PAC3_RoutingBomAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingBomAssignmentID
+- table: RoutingBomAssignment
+  name: IX_PAC3_RoutingBomAssignment_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: RoutingBomAssignment
+  name: IX_PAC3_RoutingBomAssignment_RoutingProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingProductRef
+- table: RoutingComponentAssignment
+  name: PK_PAC3_RoutingComponentAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingComponentAssignmentID
+- table: RoutingComponentAssignment
+  name: IX_PAC3_RoutingComponentAssignment_BomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomItemRef
+- table: RoutingComponentAssignment
+  name: IX_PAC3_RoutingComponentAssignment_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: RoutingComponentAssignment
+  name: IX_PAC3_RoutingComponentAssignment_RoutingBomAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingBomAssignmentRef
+- table: RoutingComponentAssignment
+  name: IX_PAC3_RoutingComponentAssignment_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+- table: RoutingComponentAssignment
+  name: IX_PAC3_RoutingComponentAssignment_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: RoutingComponentAssignment
+  name: IX_PAC3_RoutingComponentAssignment_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: RoutingComponentAssignment
+  name: IX_PAC3_RoutingComponentAssignment_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: RoutingInspectionPlanOperationAssignment
+  name: PK_PAC3_RoutingInspectionPlanOperationAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingInspectionPlanOperationAssignmentID
+- table: RoutingInspectionPlanOperationAssignment
+  name: IX_PAC3_RoutingInspectionPlanOperationAssignment_InspectionPlanOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanOperationRef
+- table: RoutingInspectionPlanOperationAssignment
+  name: IX_PAC3_RoutingInspectionPlanOperationAssignment_QCRoutingOperationMappingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - QCRoutingOperationMappingRef
+- table: RoutingInspectionPlanProductAssignment
+  name: PK_PAC3_RoutingInspectionPlanProductAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingInspectionPlanProductAssignmentID
+- table: RoutingInspectionPlanProductAssignment
+  name: IUX_PAC3_RoutingInspectionPlanProductAssignment_RoutingProductRefInspectionPlanPartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - RoutingProductRef
+  - InspectionPlanPartRef
+- table: RoutingInspectionPlanProductAssignment
+  name: IX_PAC3_RoutingInspectionPlanProductAssignment_InspectionPlanPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionPlanPartRef
+- table: RoutingOperation
+  name: PK_PAC3_RoutingOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationID
+- table: RoutingOperation
+  name: IX_PAC3_RoutingOperation_OperationTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationTypeRef
+- table: RoutingOperation
+  name: IX_PAC3_RoutingOperation_ProductQuantityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductQuantityUnitRef
+- table: RoutingOperation
+  name: IX_PAC3_RoutingOperation_RoutingRef_UniqueID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingRef
+  - UniqueID
+  included:
+  - RoutingSequenceRef
+  - Rank
+  - Type
+- table: RoutingOperation
+  name: IX_PAC3_RoutingOperation_RoutingSequenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingSequenceRef
+- table: RoutingOperation
+  name: IX_PAC3_RoutingOperation_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: RoutingOperation
+  name: IX_PAC3_RoutingOperation_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: RoutingOperationCharacteristic
+  name: PK_PAC3_RoutingOperationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationCharacteristicID
+- table: RoutingOperationCharacteristic
+  name: IX_PAC_RoutingOperationCharacteristic_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+- table: RoutingOperationCharacteristic
+  name: IX_PAC3_RoutingOperationCharacteristic_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: RoutingOperationMaterialTerminalInputOrder
+  name: PK_PAC3_RoutingOperationMaterialTerminalInputOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationMaterialTerminalInputOrderID
+- table: RoutingOperationMaterialTerminalInputOrder
+  name: IX_PAC3_RoutingOperationMaterialTerminalInputOrder_RoutingComponentAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingComponentAssignmentRef
+- table: RoutingOperationReferenceOperationSet
+  name: PK_PAC3_RoutingOperationReferenceOperationSet
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationReferenceOperationSetID
+- table: RoutingOperationReferenceOperationSet
+  name: IX_PAC_RoutingOperationReferenceOperationSet_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+- table: RoutingOperationReferenceOperationSet
+  name: IX_PAC3_RoutingOperationReferenceOperationSet_ReferenceOperationSetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceOperationSetRef
+- table: RoutingOperationResourceToolAssignment
+  name: PK_RoutingOperationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationResourceToolAssignmentID
+- table: RoutingOperationResourceToolAssignment
+  name: IX_PAC3_RoutingOperationResourceToolAssignment_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+- table: RoutingOperationResourceToolAssignment
+  name: IX_PAC3_RoutingOperationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: RoutingOperationResourceToolAssignment
+  name: IX_PAC3_RoutingOperationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: RoutingOperationResourceToolAssignment
+  name: IX_PAC3_RoutingOperationResourceToolAssignment_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: RoutingOperationResourceToolAssignment
+  name: IX_PAC3_RoutingOperationResourceToolAssignment_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: RoutingOperationRTAExtension
+  name: PK_PAC3_RoutingOperationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationRTAExtensionID
+- table: RoutingOperationRTAExtension
+  name: IX_PAC3_RoutingOperationRTAExtension_RoutingOperationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationResourceToolAssignmentRef
+- table: RoutingOperationSerialCharacteristicGroupItem
+  name: PK_PAC3_RoutingOperationSerialCharacteristicGroupItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationSerialCharacteristicGroupItemID
+- table: RoutingOperationStandardValue
+  name: PK_PAC3_RoutingOperationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationStandardValueID
+- table: RoutingOperationStandardValue
+  name: IX_PAC3_RoutingOperationStandardValue_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+- table: RoutingOperationStandardValue
+  name: IX_PAC3_RoutingOperationStandardValue_WorkCenterStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterStandardValueRef
+- table: RoutingOperationTerminal
+  name: PK_PAC3_RoutingOperationTerminal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingOperationTerminalID
+- table: RoutingOperationTerminal
+  name: IX_PAC3_RoutingOperationTerminal_TerminalRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TerminalRef
+- table: RoutingOperationTerminal
+  name: IX_PAC3_RoutingOperationTerminal_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+- table: RoutingProduct
+  name: PK_PAC3_RoutingProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingProductID
+- table: RoutingProduct
+  name: IX_PAC3_RoutingProduct_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: RoutingProduct
+  name: IX_PAC3_RoutingProduct_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: RoutingProduct
+  name: IX_PAC3_RoutingProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: RoutingProduct
+  name: IX_PAC3_RoutingProduct_RoutingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingRef
+- table: RoutingProduct
+  name: IX_PAC3_RoutingProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: RoutingProduct
+  name: IX_PAC3_RoutingProduct_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: RoutingProductSerialSetting
+  name: PK_PAC3_RoutingProductSerialSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingProductSerialSettingID
+- table: RoutingProductSerialSetting
+  name: IX_PAC3_RoutingProductSerialSetting_RoutingProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingProductRef
+- table: RoutingScrapAssignment
+  name: PK_PAC3_RoutingScrapAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingScrapAssignmentID
+- table: RoutingScrapAssignment
+  name: IX_PAC3_RoutingScrapAssignment_BomScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomScrapRef
+- table: RoutingScrapAssignment
+  name: IX_PAC3_RoutingScrapAssignment_RoutingBomAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingBomAssignmentRef
+- table: RoutingScrapAssignment
+  name: IX_PAC3_RoutingScrapAssignment_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+- table: RoutingScrapAssignment
+  name: IX_PAC3_RoutingScrapAssignment_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: RoutingScrapAssignment
+  name: IX_PAC3_RoutingScrapAssignment_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: RoutingSequence
+  name: PK_PAC3_RoutingSequence
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingSequenceID
+- table: RoutingSequence
+  name: IX_PAC3_RoutingSequence_RoutingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingRef
+- table: RoutingSequence
+  name: IX_PAC3_RoutingSequence_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: RoutingSerialProductionLine
+  name: PK_PAC3_RoutingSerialProductionLine
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RoutingSerialProductionLineID
+- table: RoutingSerialProductionLine
+  name: IX_PAC3_RoutingSerialProductionLine_RoutingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingRef
+- table: ScrapReason
+  name: PK_PAC3_ScrapReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScrapReasonID
+- table: ScrapReason
+  name: UIX_PAC3_ScrapReason_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SerialCharacteristicExtension
+  name: PK_PAC3_SerialCharacteristicExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialCharacteristicExtensionID
+- table: SerialCharacteristicExtension
+  name: IX_PAC3_SerialCharacteristicExtension_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: SerialCharacteristicExtensionItem
+  name: PK_PAC3_SerialCharacteristicExtensionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialCharacteristicExtensionItemID
+- table: SerialCharacteristicGroup
+  name: PK_PAC3_SerialCharacteristicGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialCharacteristicGroupID
+- table: SerialCharacteristicGroup
+  name: UIX_PAC3_SerialCharacteristicGroup_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SerialCharacteristicGroupItem
+  name: PK_PAC3_SerialCharacteristicGroupItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialCharacteristicGroupItemID
+- table: SerialProductionLine
+  name: PK_PAC3_SerialProductionLine
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialProductionLineID
+- table: SerialProductionLine
+  name: UIX_PAC3_SerialProductionLine_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SerialProductionLineTerminal
+  name: PK_PAC3_SerialProductionLineTerminal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialProductionLineTerminalID
+- table: SerialProfileManufacturingExtension
+  name: PK_PAC3_SerialProfileManufacturingExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialProfileManufacturingExtensionID
+- table: SerialProfileManufacturingExtension
+  name: IX_PAC3_SerialProfileManufacturingExtension_SerialProfileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialProfileRef
+- table: Terminal
+  name: PK_PAC3_Terminal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TerminalID
+- table: Terminal
+  name: UIX_PAC3_Terminal_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: TerminalCharacteristic
+  name: PK_PAC3_TerminalCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TerminalCharacteristicID
+- table: TerminalInputOrder
+  name: PK_PAC3_TerminalInputOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TerminalInputOrderID
+- table: TerminalPrintSetting
+  name: PK_PAC3_TerminalPrintSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TerminalPrintSettingID
+- table: TerminalReworkReason
+  name: PK_TerminalReworkReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TerminalReworkReasonID
+- table: TerminalReworkReason
+  name: UIX_PAC3_TerminalReworkReasonTerminalRefReworkReasonRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TerminalRef
+  - ReworkReasonRef
+- table: TerminalScrapReason
+  name: PK_TerminalScrapReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TerminalScrapReasonID
+- table: TerminalScrapReason
+  name: UIX_PAC3_TerminalScrapReasonTerminalRefScrapReasonRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TerminalRef
+  - ScrapReasonRef

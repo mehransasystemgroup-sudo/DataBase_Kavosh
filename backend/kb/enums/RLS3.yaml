@@ -1,0 +1,18 @@
+schema: RLS3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: RahkaranInstallationJobStep
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 7
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high

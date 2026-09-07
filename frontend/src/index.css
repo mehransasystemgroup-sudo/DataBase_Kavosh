@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  یک منبع حقیقت برای رنگ‌ها.
+
+  هر رنگی که در اپ دیده می‌شود از این متغیرها می‌آید و tailwind.config.js
+  فقط آن‌ها را به کلاس‌های ابزاری وصل می‌کند. نتیجه: تعویض تم = تعویض
+  همین چند متغیر، بدون هیچ کلاس رنگی سخت‌کدشده در کامپوننت‌ها.
+*/
+
+@layer base {
+  :root,
+  html.dark {
+    color-scheme: dark;
+
+    --bg: 5 8 6; /* #050806 مشکی با ته‌رنگ سبز */
+    --surface: 12 17 14; /* #0C110E */
+    --surface-hover: 20 27 22; /* #141B16 */
+    --ink: 8 11 9; /* #080B09 — چاه ورودی‌ها */
+    --border: 27 38 32; /* #1B2620 */
+    --border-strong: 40 56 47; /* #28382F */
+    --fg: 232 242 236; /* #E8F2EC */
+    --muted-fg: 139 157 146; /* #8B9D92 */
+    --shadow: 0 0 0;
+
+    --brand: 34 197 94; /* #22C55E سبز اصلی */
+    --brand-soft: 22 163 74; /* #16A34A */
+    --brand-text: 74 222 128; /* #4ADE80 — سبز خوانا روی پس‌زمینه تیره */
+    --brand-fg: 4 20 10; /* #04140A — متن روی دکمه‌ی سبز */
+
+    --ok: 52 211 153; /* #34D399 */
+    --warn: 251 191 36; /* #FBBF24 */
+    --err: 251 113 133; /* #FB7185 */
+    --info: 56 189 248; /* #38BDF8 */
+    --on-err: 26 6 10;
+
+    --radius: 0.5rem;
+  }
+
+  html.light {
+    color-scheme: light;
+
+    --bg: 244 248 245; /* #F4F8F5 سفید مایل به سبز */
+    --surface: 255 255 255; /* #FFFFFF */
+    --surface-hover: 236 245 240; /* #ECF5F0 */
+    --ink: 247 251 248; /* #F7FBF8 */
+    --border: 219 232 224; /* #DBE8E0 */
+    --border-strong: 191 211 199; /* #BFD3C7 */
+    --fg: 11 26 18; /* #0B1A12 */
+    --muted-fg: 90 110 98; /* #5A6E62 */
+    --shadow: 12 40 24;
+
+    --brand: 22 163 74; /* #16A34A */
+    --brand-soft: 34 197 94; /* #22C55E */
+    --brand-text: 21 128 61; /* #15803D — سبز خوانا روی پس‌زمینه روشن */
+    --brand-fg: 255 255 255;
+
+    --ok: 21 128 61; /* #15803D */
+    --warn: 180 83 9; /* #B45309 */
+    --err: 190 18 60; /* #BE123C */
+    --info: 14 116 144; /* #0E7490 */
+    --on-err: 255 255 255;
+  }
+
+  * {
+    border-color: rgb(var(--border));
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Vazirmatn", system-ui, sans-serif;
+    background-color: rgb(var(--bg));
+    color: rgb(var(--fg));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior: none;
+  }
+
+  .font-mono,
+  code,
+  pre,
+  kbd {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-feature-settings: "liga" 0;
+  }
+
+  ::selection {
+    background: rgb(var(--brand) / 0.3);
+    color: rgb(var(--fg));
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--border-strong));
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--brand) / 0.6);
+    background-clip: content-box;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--brand) / 0.7);
+    outline-offset: 2px;
+  }
+
+  /* عدد و شناسه‌ی انگلیسی داخل متن راست‌به‌چپ نباید جابه‌جا شود */
+  .ltr {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+}
+
+@layer components {
+  /* پس‌زمینه‌ی نرم و زنده‌ی صفحه — در هر دو تم از همان متغیر سبز می‌آید */
+  .app-canvas {
+    background-image:
+      radial-gradient(
+        60rem 40rem at 100% -10%,
+        rgb(var(--brand) / 0.09),
+        transparent 60%
+      ),
+      radial-gradient(
+        50rem 30rem at 0% 100%,
+        rgb(var(--brand) / 0.06),
+        transparent 55%
+      );
+  }
+
+  .panel {
+    @apply rounded-lg border border-border bg-surface;
+  }
+
+  /* نام جدول‌ها لاتین است؛ داخل سند راست‌به‌چپ باید صریحاً چپ‌به‌راست
+     رندر شود، وگرنه سه‌نقطه‌ی کوتاه‌سازی به ابتدای متن می‌پرد. */
+  .graph-label {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .sql-block {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: embed;
+  }
+
+  /* کاهش حرکت برای کاربرانی که آن را خاموش کرده‌اند */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ناحیه‌ی امن دستگاه‌های دارای بریدگی */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}

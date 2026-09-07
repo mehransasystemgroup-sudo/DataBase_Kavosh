@@ -1,0 +1,384 @@
+schema: BDG3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: AdjustmentFactor
+  column: ActionType
+  lookup_type: AdjustmentFactorActionType
+  type_title_fa: رفتار عامل
+  values:
+  - value: '1'
+    label_fa: قابل پرداخت
+    source: proven_by_data
+    confidence: high
+    observed_count: 8
+  - value: '2'
+    label_fa: غیر قابل پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: پرداخت در موعد مقرر
+    source: stated_by_config
+    confidence: high
+- table: AdjustmentFactor
+  column: AdjustmentFactorBankAccountSelectingType
+  nullable: true
+  lookup_type: AdjustmentFactorBankAccountSelectingType
+  type_title_fa: نوع انتخاب حساب بانکی
+  values:
+  - value: '1'
+    label_fa: حساب بانکی انتخاب شده
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: دریافت حساب بانکی از گیرنده
+    source: stated_by_config
+    confidence: high
+- table: AdjustmentFactor
+  column: AdjustmentFactorCounterPartSelectingType
+  lookup_type: AdjustmentFactorCounterPartSelectingType
+  type_title_fa: نوع انتخاب سازمان ذینفع
+  values:
+  - value: '1'
+    label_fa: سازمان ذینفع انتخاب شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '2'
+    label_fa: دریافت سازمان ذینفع از گیرنده
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+- table: AdjustmentFactor
+  column: Type
+  lookup_type: AdjustmentFactorType
+  type_title_fa: عوامل پرداخت
+  values:
+  - value: '1'
+    label_fa: مالیات
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: مالیات بر ارزش افزوده
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بیمه
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '4'
+    label_fa: بازنشستگی
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: سایر
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '6'
+    label_fa: سپرده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '7'
+    label_fa: ضمانت
+    source: stated_by_config
+    confidence: high
+- table: BudgetEntity
+  column: AmendmentType
+  lookup_type: AmendmentType
+  type_title_fa: نوع اصلاحیه
+  values:
+  - value: '1'
+    label_fa: قانونی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1009
+  - value: '2'
+    label_fa: داخلی
+    source: stated_by_config
+    confidence: high
+- table: BudgetEntity
+  column: DirectReferenceOfPaymentReferenceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: BudgetEntity
+  column: PaymentReferenceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: BudgetEntity
+  column: PeriodNatureType
+  lookup_type: PeriodNatureType
+  type_title_fa: ماهیت دوره
+  values:
+  - value: '1'
+    label_fa: جاری
+    source: proven_by_data
+    confidence: high
+    observed_count: 1002
+  - value: '2'
+    label_fa: سنواتی
+    source: proven_by_data
+    confidence: high
+    observed_count: 7
+  - value: '3'
+    label_fa: متمم
+    source: stated_by_config
+    confidence: high
+- table: BudgetEntity
+  column: RegisterType
+  lookup_type: RegisterType
+  type_title_fa: نوع ثبت
+  values:
+  - value: '1'
+    label_fa: اولیه
+    source: proven_by_data
+    confidence: high
+    observed_count: 703
+  - value: '2'
+    label_fa: اصلاحیه مبنادار
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: اصلاحیه بدون مبنا
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: برگشتی
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '5'
+    label_fa: تعدیل
+    source: proven_by_data
+    confidence: high
+    observed_count: 299
+- table: BudgetEntity
+  column: ReturnType
+  lookup_type: ReturnType
+  type_title_fa: نوع برگشتی
+  values:
+  - value: '1'
+    label_fa: عادی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1009
+  - value: '2'
+    label_fa: برگشت به خزانه
+    source: stated_by_config
+    confidence: high
+- table: BudgetEntity
+  column: State
+  lookup_type: BudgetEntityState
+  type_title_fa: وضعیت
+  values:
+  - value: '1'
+    label_fa: موقت
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: تایید
+    source: proven_by_data
+    confidence: high
+    observed_count: 371
+  - value: '3'
+    label_fa: سند صادر شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 636
+- table: BudgetEntityItem
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: BudgetEntityItemAdjustmentFactor
+  column: ActionType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 193
+- table: BudgetEntityStandardDescription
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: CheckingRequest
+  column: ReferenceType
+  lookup_type: ReferenceType
+  type_title_fa: ReferenceType
+  values:
+  - value: '1'
+    label_fa: سند بازرسی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: بدون مبنا
+    source: stated_by_config
+    confidence: high
+  - value: '90012'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: CheckingRequest
+  column: StartingCheckingProcessType
+  lookup_type: StartingCheckingProcessType
+  type_title_fa: وضعیت شروع در فرایند رسیدگی
+  values:
+  - value: '1'
+    label_fa: بدون گردش
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: شروع گردش در موجودیت مرجع مستقیم رسیدگی پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: شروع گردش در موجودیت رسیدگی پرداخت
+    source: stated_by_config
+    confidence: high
+- table: CheckingRequest
+  column: State
+  lookup_type: CheckingRequestState
+  type_title_fa: نوع ثبت
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: رسیدگی نشده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: رسیدگی شده
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: رد شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: تعهد شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: در حال رسیدگی پرداخت
+    source: stated_by_config
+    confidence: high
+- table: EncumbranceRequest
+  column: State
+  lookup_type: EncumbranceRequestState
+  type_title_fa: نوع ثبت
+  values:
+  - value: '1'
+    label_fa: ثبت شده
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: در حال رسیدگی پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: بسته شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: باطل شده
+    source: stated_by_config
+    confidence: high
+- table: PaymentInformationItem
+  column: DurationType
+  nullable: true
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: PaymentInformationItem
+  column: PaymentActionType
+  lookup_type: PaymentActionType
+  type_title_fa: رفتار پرداخت
+  values:
+  - value: '1'
+    label_fa: قابل پرداخت
+    source: proven_by_data
+    confidence: high
+    observed_count: 518
+  - value: '2'
+    label_fa: غیر قابل پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: پرداخت شده
+    source: stated_by_config
+    confidence: high
+- table: ReceiptInformationItem
+  column: DurationType
+  nullable: true
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: ReceiptInformationItem
+  column: ReceiptActionType
+  lookup_type: ReceiptActionType
+  type_title_fa: رفتار دریافت
+  values:
+  - value: '1'
+    label_fa: قابل دریافت
+    source: proven_by_data
+    confidence: high
+    observed_count: 21
+  - value: '2'
+    label_fa: غیر قابل دریافت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: دریافت شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1

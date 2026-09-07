@@ -1,0 +1,608 @@
+schema: FAM3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: Accident
+  title_fa: حادثه دیده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccidentItem
+  title_fa: AccidentItem
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccidentItemInCalculationArea
+  title_fa: حادثه دیده در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountConfiguration
+  title_fa: استقرار حساب ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountConfigurationItem
+  title_fa: قلم استقرار حساب ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AcquisitionReceipt
+  title_fa: رسید تحصیل دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AcquisitionReceiptItem
+  title_fa: قلم رسید تحصیل دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AcquisitionReceiptItemInCalculationArea
+  title_fa: AcquisitionReceiptItemInCalculationArea
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AcquisitionReceiptItemPurchasePriceElement
+  title_fa: جز قیمت خرید رسید تحصیل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Asset
+  title_fa: دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetClass
+  title_fa: طبقه دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetDLType
+  title_fa: معرفی نوع تفصیل غیر سیستمی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetDLTypeValue
+  title_fa: تکمیل حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetDepreciation
+  title_fa: مستهلک کردن دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetDepreciationItem
+  title_fa: قلم مستهلک کردن
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetDepreciationItemInCalculationArea
+  title_fa: قلم مستهلک کردن دارایی در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetExtraField
+  title_fa: اطلاعات تکمیلی دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetExtraFieldGroup
+  title_fa: توضیحات تکمیلی گروه دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetExtraFieldValue
+  title_fa: مقداردهی اطلاعات تکمیلی دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetGroup
+  title_fa: گروه دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetGroupInCalculationArea
+  title_fa: روش استهلاک گروه دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetInCalculationArea
+  title_fa: دارایی در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetInventory
+  title_fa: صورت برداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetInventoryAddition
+  title_fa: اضافات صورت برداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetInventoryItem
+  title_fa: قلم صورت برداری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetOperationSummary
+  title_fa: AssetOperationSummary
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetTagTemplate
+  title_fa: مدیریت چاپ برچسب دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssetTransaction
+  title_fa: تراکنش دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CalculationArea
+  title_fa: حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CancelledSalesHistory
+  title_fa: فروش های ابطال شده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ChangeCost
+  title_fa: تغییر قیمت دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ChangeCostItem
+  title_fa: قلم تغییر قیمت دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ChangeCostItemInCalculationArea
+  title_fa: قلم تغییر قیمت دارایی در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ChangeCostItemPriceElement
+  title_fa: جزء قیمت قلم تغییر قیمت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ChangeRate
+  title_fa: تغییر نرخ و روش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ChangeRateItem
+  title_fa: قلم تغییر نرخ و روش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ChangeRateItemInCalculationArea
+  title_fa: قلم تغییر نرخ و روش در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ClosingFiscalYear
+  title_fa: بستن سال مالی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Collector
+  title_fa: جمع دار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CostPart
+  title_fa: جز قیمت دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CostPartDeploymentExtraInfo
+  title_fa: اطلاعات اضافی استقرار دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CostPartTransaction
+  title_fa: محاسبه جز قیمت دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DefinitiveTransfer
+  title_fa: انتقال قطعی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DefinitiveTransferItem
+  title_fa: اقلام خروج از سازمان
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DefinitiveTransferItemInCalculationArea
+  title_fa: قلم انتقال قطعی در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Depreciation
+  title_fa: استهلاک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DepreciationMethod
+  title_fa: روش استهلاک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Diskette
+  title_fa: دیسکت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DisketteItem
+  title_fa: قلم دیسکت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DocumentInCalculationArea
+  title_fa: حوزه محاسباتی اسناد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Donation
+  title_fa: اعلامیه اهداء
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DonationItem
+  title_fa: قلم اعلامیه اهداء
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DonationItemInCalculationArea
+  title_fa: قلم اعلامیه اهدا در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Elimination
+  title_fa: اعلامیه حذف
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EliminationItem
+  title_fa: قلم اعلامیه حذف
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EliminationItemInCalculationArea
+  title_fa: قلم اعلامیه حذف در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExitFromOrganization
+  title_fa: خروج از سازمان
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExitFromOrganizationItem
+  title_fa: اقلام خروج از سازمان
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExitFromOrganizationItemInCalculationArea
+  title_fa: قلم خروج از سازمان در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExitFromOrganizationItemPriceElement
+  title_fa: اجزای قیمت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExitPermit
+  title_fa: پروانه خروج
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExitPermitItem
+  title_fa: اقلام پروانه خروج
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExitPermitItemInCalculationArea
+  title_fa: قلم پروانه خروج در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExpenditureClass
+  title_fa: طبقه مخارج پس از تحصیل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FAMGLComparisonReport
+  title_fa: FAMGLComparisonReport
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FAMGLComparisonReportItem
+  title_fa: FAMGLComparisonReportItem
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FAMGLComparisonReportReason
+  title_fa: FAMGLComparisonReportReason
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FixedAssetPart
+  title_fa: کالای دارایی ثابت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GasAssetReform
+  title_fa: اصلاحیه رسید تحصیل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GasDeployment
+  title_fa: استقرار اموال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GasDeploymentItem
+  title_fa: قلم اسقرار اموال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: GasStandardCodeMapping
+  title_fa: ارتباط کالا و گروه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Insurance
+  title_fa: ثبت بیمه نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InsuranceAccountConfiguration
+  title_fa: استقرار حساب ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InsuranceAccountConfigurationItem
+  title_fa: قلم استقرار حساب ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InsuranceCalculation
+  title_fa: محاسبه بیمه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InsuranceEndorsement
+  title_fa: ثبت الحاقیه بیمه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InsuranceEndorsementItem
+  title_fa: قلم الحاقیه بیمه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InsuranceItem
+  title_fa: قلم بیمه نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InsuranceType
+  title_fa: نوع بیمه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InternalTransfer
+  title_fa: اعلامیه انتقال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InternalTransferItem
+  title_fa: قلم انتقال داخلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InternalTransferItemInCalculationArea
+  title_fa: قلم انتقال داخلی در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MaintenanceExpenditures
+  title_fa: مخارج پس از تحصیل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MaintenanceExpendituresItem
+  title_fa: اقلام مخارج پس از تحصیل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MaintenanceExpendituresItemInCalculationArea
+  title_fa: قلم مخارج پس از تحصیل در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MaintenanceExpendituresItemPriceElement
+  title_fa: جزء قیمت قلم مخارج پس از تحصیل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MinimumCostOfNonConsumableAsset
+  title_fa: حداقل قیمت اموال غیرمصرفی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ModularTopic
+  title_fa: سرفصل ماژول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ModularTopicFilter
+  title_fa: فیلتر سر فصل ماژول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ModularTopicParameter
+  title_fa: پارامتر سرفصل ماژول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PermissionRequest
+  title_fa: درخواست مجوز
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PermissionRequestItem
+  title_fa: قلم درخواست مجوز
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PurchasePriceElement
+  title_fa: جز قیمت خرید
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReassignPlaqueNumber
+  title_fa: پلاک گذاری مجدد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RetakeFromStore
+  title_fa: تحویل از انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RetakeFromStoreItem
+  title_fa: قلم تحویل از انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RetakeFromStoreItemInCalculationArea
+  title_fa: قلم تحویل از انبار در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Revaluation
+  title_fa: تجدید ارزیابی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RevaluationItem
+  title_fa: قلم تجدید ارزیابی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RevaluationItemInCalculationArea
+  title_fa: قلم تجدید ارزیابی در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Sales
+  title_fa: فروش دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SalesItem
+  title_fa: قلم فروش دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SalesItemSalesPriceElement
+  title_fa: اجزای قیمت فروش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SalesPriceElement
+  title_fa: اجزای قیمت فروش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Scrap
+  title_fa: اسقاط
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ScrapItem
+  title_fa: قلم اسقاط
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ScrapItemInCalculationArea
+  title_fa: قلم اسقاط در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SendToStore
+  title_fa: ارسال به انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SendToStoreItem
+  title_fa: قلم ارسال به انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SendToStoreItemInCalculationArea
+  title_fa: قلم ارسال به انبار در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SettlementPlace
+  title_fa: محل استقرار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SmallDealsQuorum
+  title_fa: حدنصاب معاملات کوچک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SmartDevice
+  title_fa: دستگاه ارتباطی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TemporaryExit
+  title_fa: اعلامیه خروج موقت دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TemporaryExitItem
+  title_fa: قلم خروج موقت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TemporaryExitItemInCalculationArea
+  title_fa: قلم خروج موقت در حوزه محاسباتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VoucherDescription
+  title_fa: شرح استاندارد سند حسابداری دارایی ثابت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Withdrawal
+  title_fa: کنار گذاری دارایی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: WithdrawalItem
+  title_fa: قلم کنارگذاری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: WithdrawalItemInCalculationArea
+  title_fa: WithdrawalItemInCalculationArea
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog

@@ -1,0 +1,1082 @@
+schema: FCC3
+table_count: 24
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: ContractActivityType
+  columns:
+  - name: ContractActivityTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractActivityTypeCode
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ContractActivityTypeTitle
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ContractActivityTypeID
+- name: ContractAmount
+  columns:
+  - name: ContractAmountID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractHeaderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: varchar(200)
+    nullable: false
+    ordinal: 3
+  - name: DLRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: CurrencyAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: varchar(200)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ContractAmountID
+- name: ContractCollateral
+  columns:
+  - name: ContractCollateralID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractHeaderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ContractPayableCollateralRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: ContractReceivableCollateralRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: varchar(1024)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  - name: PayableNoteRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ReceivableNoteRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: CollateralType
+    type: int
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ContractCollateralID
+- name: ContractFactor
+  columns:
+  - name: ContractFactorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractPayCommitmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 3
+  - name: CurrencyAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: varchar(1024)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  - name: FactorRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ContractFactorID
+- name: ContractHeader
+  columns:
+  - name: ContractHeaderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractorRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ContractTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ContractActivityTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 5
+  - name: ContractNo
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 6
+  - name: ContractSubject
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 7
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: SignatureDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: AgencyName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 11
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: Comment
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 15
+  - name: ContractState
+    type: int
+    nullable: false
+    ordinal: 16
+  - name: TenderRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: ContractAmountTolerance
+    type: decimal(18,15)
+    nullable: true
+    ordinal: 18
+  - name: HasTender
+    type: int
+    nullable: false
+    ordinal: 19
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 20
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 21
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 22
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 23
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 24
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 25
+  - name: RootRef
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: ParentRef
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: AmendmentType
+    type: int
+    nullable: true
+    ordinal: 28
+  - name: EffectDate
+    type: datetime
+    nullable: true
+    ordinal: 29
+  - name: GroupRef
+    type: bigint
+    nullable: true
+    ordinal: 30
+  primary_key:
+  - ContractHeaderID
+- name: ContractInvoice
+  columns:
+  - name: ContractInvoiceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractHeaderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: PayableAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: InvoiceNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 7
+  - name: InvoiceDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: OperationStartDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: OperationEndDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: InvoiceState
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: Comment
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 12
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 18
+  primary_key:
+  - ContractInvoiceID
+- name: ContractInvoiceItemFactor
+  columns:
+  - name: ContractInvoiceItemFactorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractFactorRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: ContractInvoiceItemObligationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: FactorRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: EffectCalculationType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: CurrencyAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: EffectiveAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: varchar(1024)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ContractInvoiceItemFactorID
+- name: ContractInvoiceItemObligation
+  columns:
+  - name: ContractInvoiceItemObligationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractInvoiceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ContractPayCommitmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ConfirmedAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: CurrencyExchangeRateRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Comment
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: FinalAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: CurrencyAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ContractInvoiceItemObligationID
+- name: ContractPayCommitment
+  columns:
+  - name: ContractPayCommitmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractHeaderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: CurrencyExchangeRateRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: PayCommitmentTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: CurrencyAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: Description
+    type: varchar(1024)
+    nullable: true
+    ordinal: 10
+  - name: InitialAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  - name: GroupRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: RemainedAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - ContractPayCommitmentID
+- name: ContractType
+  columns:
+  - name: ContractTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractTypeCode
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ContractKind
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ContractTypeTitle
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ContractTypeID
+- name: ContractorType
+  columns:
+  - name: ContractorTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractorTypeCode
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ContractorTypeTitle
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ContractorTypeID
+- name: Factor
+  columns:
+  - name: FactorId
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 2
+  - name: Description
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 3
+  - name: CalcKind
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: EffectKind
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: FactorKind
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: UserChangePermission
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - FactorId
+- name: IndetermineReceiptAndPayment
+  columns:
+  - name: IndetermineReceiptAndPaymentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractHeaderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: PrePayAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: IndetermineReceiptAndPaymentType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: AmountCalcType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: InputAmountType
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: UserChangePermission
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: Title
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 16
+  - name: IndetermineReceiptAndPaymentState
+    type: int
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - IndetermineReceiptAndPaymentID
+- name: IndetermineReceiptAndPaymentCollateral
+  columns:
+  - name: IndetermineReceiptAndPaymentCollateralID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IndetermineReceiptAndPaymentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PayableCollateralRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: ReceivableCollateralRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: PayableNoteRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ReceivableNoteRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: CollateralType
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Description
+    type: varchar(1024)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - IndetermineReceiptAndPaymentCollateralID
+- name: IndetermineReceiptAndPaymentExchange
+  columns:
+  - name: IndetermineReceiptAndPaymentExchangeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IndetermineReceiptAndPaymentItemObligationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ContractInvoiceItemObligationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ContractInvoiceRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: PayableAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: ExchangeCalculationType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - IndetermineReceiptAndPaymentExchangeID
+- name: IndetermineReceiptAndPaymentItemObligation
+  columns:
+  - name: IndetermineReceiptAndPaymentItemObligationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IndetermineReceiptAndPaymentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ContractPayCommitmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PrePayAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: CurrencyAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: CurrencyExchangeRateRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - IndetermineReceiptAndPaymentItemObligationID
+- name: PayCommitmentType
+  columns:
+  - name: PayCommitmentTypeId
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PayCommitmentCode
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: PayCommitmentKind
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: PayCommitmentTitle
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PayCommitmentTypeId
+- name: PayCommitmentTypeFactor
+  columns:
+  - name: PayCommitmentTypeFactorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PayCommitmentTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FactorRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: varchar(500)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PayCommitmentTypeFactorID
+- name: PaymentInfo
+  columns:
+  - name: PaymentInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PaymentInfoState
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: RegisterDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 4
+  - name: CurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CurrencyExchangeRateRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: ContractorRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: BranchRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: PaymentRequestRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: PaymentInfoItemTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: Description
+    type: nvarchar(1000)
+    nullable: true
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - PaymentInfoID
+- name: PaymentInfoItem
+  columns:
+  - name: PaymentInfoItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PaymentInfoRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 3
+  - name: RemainingAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: ItemType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: ItemRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: ItemDetailType
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: ItemDetailRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - PaymentInfoItemID
+- name: PaymentInfoItemType
+  columns:
+  - name: PaymentInfoItemTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PaymentInfoItemTypeCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: PaymentInfoItemTypeTitle
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: PaymentKind
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PaymentInfoItemTypeID
+- name: RelatedContract
+  columns:
+  - name: RelatedContractID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ParentId
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ChildId
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - RelatedContractID
+- name: Tender
+  columns:
+  - name: TenderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TenderNo
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Subject
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 5
+  - name: WinnerRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 13
+  - name: CommissionNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: CommissionDate
+    type: datetime
+    nullable: true
+    ordinal: 15
+  - name: BoardMeetingDate
+    type: datetime
+    nullable: true
+    ordinal: 16
+  - name: BoardMeetingNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  primary_key:
+  - TenderID
+- name: TenderParticipant
+  columns:
+  - name: TenderParticipantID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TenderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BidderRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PayableCollateralRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SuggestedAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(1000)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - TenderParticipantID

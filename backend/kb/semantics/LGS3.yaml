@@ -1,0 +1,888 @@
+schema: LGS3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: AccountGroupConfiguration
+  title_fa: استقرار گروه حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AccountGroupConfigurationParameter
+  title_fa: پارامتر تنظیمات گروه حساب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AdditionalSerial
+  title_fa: شناسه رهگیری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AlternativePart
+  title_fa: کالای جایگزین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssignmentTerminal
+  title_fa: پایانه تخصیص
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssignmentTerminalItem
+  title_fa: قلم پایانه تخصیص
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BarCodeInventoryVoucherProperty
+  title_fa: مقادیر سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Bascule
+  title_fa: باسکول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BasculePaper
+  title_fa: برگ توزین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BasculePaperItem
+  title_fa: اقلام برگ توزین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BasculePaperItemDetail
+  title_fa: ریز اقلام برگ توزین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BasculePaperItemHistory
+  title_fa: تاریخچه برگ توزین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Batch
+  title_fa: بچ
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BatchCharacteristic
+  title_fa: ویژگی بچ
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BatchCharacteristicHistory
+  title_fa: تاریخچه ویژگی بچ
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BatchHistory
+  title_fa: تاریخچه بچ
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BatchProfileTemplate
+  title_fa: الگوی شناسنامه کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BatchProfileTemplateItem
+  title_fa: قلم الگوی شناسنامه کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BatchProfileTemplatePart
+  title_fa: الگوی شناسنامه کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BatchProfileTemplateVisibleCharactristic
+  title_fa: ویژگی قابل نمایش الگوی شناسنامه کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BatchRelation
+  title_fa: بچ های استفاده شده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntityInventoryVoucherRelation
+  title_fa: BudgetEntityInventoryVoucherRelation
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Cardex
+  title_fa: کاردکس
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CardexPeriodicRate
+  title_fa: CardexPeriodicRate
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Carrier
+  title_fa: مؤسسه حمل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Category
+  title_fa: طبقه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodeBlock
+  title_fa: اجزای کد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodeGroupCounter
+  title_fa: اجزای کد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CodeTemplate
+  title_fa: الگوی کد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContainerType
+  title_fa: نوع کانتینر
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Custom
+  title_fa: گمرک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CustomAddress
+  title_fa: آدرس گمرک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DefaultPricingFactorsSharedMethod
+  title_fa: روش تسهیم پیش فرض عوامل مبلغی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EntityDLLevelInfo
+  title_fa: EntityDLLevelInfo
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FinalVerificationHistory
+  title_fa: تاریخچه قطعی شدن انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FinalizationQuantitativeHistory
+  title_fa: تاریخچه بستن تعدادی انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FinancialVoucherTemplate
+  title_fa: الگوی سند حسابداری انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FinancialVoucherTemplateItem
+  title_fa: قلم الگوی سند حسابداری انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldBaseDataBag
+  title_fa: بسته داده ارسالی هندهلد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldBaseDataBagInventoryVoucherSpecification
+  title_fa: الگوی سند بسته داده ارسالی هندهلد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldBaseDataBagStocktakingPeriod
+  title_fa: دوره انبارگردانی بسته داده ارسالی هندهلد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldBaseDataBagStore
+  title_fa: انبار بسته داده ارسالی هندهلد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldBaseDataBagUser
+  title_fa: کاربر بسته داده ارسالی هندهلد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldStocktakingList
+  title_fa: لیست انبارگردانی هندهلدی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldVoucher
+  title_fa: سند هندهلد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldVoucherItem
+  title_fa: قلم سند هندهلد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: HandheldVoucherReferenceAssignment
+  title_fa: تخصیص مبنای سند هندهلد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryCounting
+  title_fa: شمارش انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryCountingItem
+  title_fa: قلم شمارش انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryCountingVoucher
+  title_fa: سند شمارش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryScheduledJob
+  title_fa: اجرای زمانبندی عملیات انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryScheduledTask
+  title_fa: زمانبندی عملیات انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventorySerialProfile
+  title_fa: InventorySerialProfile
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventorySerialProfileVoucherSpecification
+  title_fa: InventorySerialProfileVoucherSpecification
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryTransactionSerialRange
+  title_fa: قلم بازه سریال سند انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryVoucher
+  title_fa: سند انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryVoucherItem
+  title_fa: قلم سند انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryVoucherItemTrackingFactor
+  title_fa: قلم عامل کنترل موجودی سند انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryVoucherSerial
+  title_fa: وضعیت سریال در سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryVoucherSpecification
+  title_fa: الگوی سند انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryVoucherSpecificationDetailLedger
+  title_fa: تفصیل سند انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: InventoryVoucherSpecificationDetailLedgerType
+  title_fa: نوع تفصیل سند انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: IssuePermit
+  title_fa: مجوز خروج
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: IssuePermitItem
+  title_fa: قلم مجوز خروج کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: IssuePermitItemTrackingFactor
+  title_fa: قلم عامل کنترل موجودی مجوز خروج
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ItemPrice
+  title_fa: قیمت قلم سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ItemPriceTravelingHistory
+  title_fa: تاریخچه جابجائی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LedgerStore
+  title_fa: LedgerStore
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LoadingPoint
+  title_fa: جایگاه بارگیری / تخلیه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MaterialControlPolicy
+  title_fa: سیاست خروج کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MaterialControlPolicyItem
+  title_fa: قلم سیاست خروج کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MaterialControlPolicyPart
+  title_fa: کالای سیاست خروج
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: MedicalGenericSpec
+  title_fa: اطلاعات ژنریک کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Package
+  title_fa: نوع بسته بندی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Part
+  title_fa: کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartBarcode
+  title_fa: قلم بارکد ثابت کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartDetail
+  title_fa: اجزاء کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartDetailFormula
+  title_fa: فرمول کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartDetailFormulaItem
+  title_fa: اجزاء کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartDisplayInformation
+  title_fa: اطلاعات نمایشی کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartDisplayInformationItem
+  title_fa: قلم اطلاعات نمایشی کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartFixedBarcode
+  title_fa: بارکد ثابت کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartGroupMember
+  title_fa: گروه کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartLocation
+  title_fa: کالا-ساختار انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartMedicalSpecification
+  title_fa: اطلاعات دارویی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartNotice
+  title_fa: توصیه عملکرد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartQualityControl
+  title_fa: کنترل کیفی کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartQualityControlDocument
+  title_fa: نوع سند کنترل کیفی کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartRequest
+  title_fa: درخواست کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartRequestItem
+  title_fa: قلم درخواست کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartRequestItemTrackingFactor
+  title_fa: قلم عامل کنترل موجودی درخواست
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartSpecification
+  title_fa: ویژگی های کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartStore
+  title_fa: کالای انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartTechnicalSpecification
+  title_fa: مشخصات فنی کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartTemplate
+  title_fa: الگوی کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartTemplateSpecification
+  title_fa: ارتباط الگوی کالا با ویژگی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartTemplateStore
+  title_fa: ارتباط الگوی کالا با انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartTrackingFactor
+  title_fa: عامل کنترل موجودی کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartUnitProposal
+  title_fa: PartUnitProposal
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PartUnitProposalItem
+  title_fa: استقرار واحد سنجش خروج کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Plant
+  title_fa: مرکز نگهداری کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PriceChange
+  title_fa: تغییر قیمت موجودی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PriceChangeItem
+  title_fa: قلم تغییر قیمت موجودی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PriceList
+  title_fa: فهرست بها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PriceListItem
+  title_fa: قلم فهرست بها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PricingCheckResult
+  title_fa: نتیجه قیمت گذاری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PricingFactor
+  title_fa: عوامل مبلغی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PricingHistory
+  title_fa: سابقه قیمت گذاری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PricingPeriod
+  title_fa: PricingPeriod
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PricingYear
+  title_fa: دوره قیمت‌گذاری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ProcessesScheduling
+  title_fa: زمانبندی عملیات گروهی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReceiptPermit
+  title_fa: مجوز ورود
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReceiptPermitItem
+  title_fa: قلم مجوز ورود کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReceiptPermitItemTrackingFactor
+  title_fa: قلم عامل کنترل موجودی مجوز ورود
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Reserve
+  title_fa: رزرو موجودی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReserveDelivery
+  title_fa: تحویل رزرو
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReserveItem
+  title_fa: قلم رزرو موجودی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReserveItemTrackingFactor
+  title_fa: قلم عامل کنترل موجودی رزرو موجودی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SchedulePricing
+  title_fa: زمانبندی قیمت گذاری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Seaport
+  title_fa: بندر
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Section
+  title_fa: بخش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Serial
+  title_fa: سریال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialPackage
+  title_fa: بسته سریال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialPrint
+  title_fa: چاپ سریال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialPrintHistory
+  title_fa: تاریخچه چاپ
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialPrintItem
+  title_fa: موارد چاپ
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialProfile
+  title_fa: پروفایل سریال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialProfilePart
+  title_fa: کالاهای مرتبط
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialProfileSubscribingModule
+  title_fa: ماژول‌های مرتبط
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialSubscribingModule
+  title_fa: ماژولهای سریالی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialTemplate
+  title_fa: الگوی سریال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialTemplatePart
+  title_fa: الگوی سریال کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialTemplateSegment
+  title_fa: قطعه الگو
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialValidation
+  title_fa: شرط‌ اعتبارسنجی سریال کالا
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialValidationCondition
+  title_fa: شرط اعتبارسنجی سریال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialValidationPart
+  title_fa: کالای مرتبط با شرط اعتبار سنجی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Shelf
+  title_fa: قفسه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShelfHandheldVoucher
+  title_fa: ShelfHandheldVoucher
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShelfHandheldVoucherItem
+  title_fa: ShelfHandheldVoucherItem
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShelfVoucher
+  title_fa: سند قفسه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShelfVoucherItem
+  title_fa: قلم سند قفسه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShippingOrder
+  title_fa: مجوز بارگیری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShippingOrderItem
+  title_fa: قلم مجوز بارگیری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShippingPoint
+  title_fa: جایگاه ارسال و دریافت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ShippingPointInventory
+  title_fa: انبار جایگاه ارسال و دریافت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SmartDevice
+  title_fa: دستگاه ارتباطی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Specification
+  title_fa: ویژگی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SpecificationItem
+  title_fa: مقدار ویژگی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingCount
+  title_fa: شمارش انبارگردانی هندهلدی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingCountItem
+  title_fa: قلم شمارش انبارگردانی هندهلدی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingItem
+  title_fa: قلم لیست انبارگردانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingList
+  title_fa: لیست انبارگردانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingPeriod
+  title_fa: دوره انبارگردانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingPeriodPartCategory
+  title_fa: دوره انبارگردانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingPeriodVoucher
+  title_fa: سند حین انبارگردانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingPeriodZone
+  title_fa: ناحیه انبارگردانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingPolicy
+  title_fa: پرونده انبارگردانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StocktakingVoucherItemCountStage
+  title_fa: مراحل شمارش انبارگردانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Store
+  title_fa: انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StorePosition
+  title_fa: بخش داخلی انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StoreStructure
+  title_fa: ساختار انبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: StoreStructureFinalizationState
+  title_fa: وضعیت بستن قفسه ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TaxGrouping
+  title_fa: گروه بندی مالیاتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TaxGroupingItem
+  title_fa: قلم گروه بندی مالیاتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TermOfDelivery
+  title_fa: روش تحویل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Terminal
+  title_fa: پایانه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TrackingFactorCharacteristic
+  title_fa: عامل کنترل موجودی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransportationSequence
+  title_fa: نوبت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransportationUnit
+  title_fa: واحد حمل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransportationVehicle
+  title_fa: وسیله حمل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransportationVehicleType
+  title_fa: نوع وسیله حمل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Transporter
+  title_fa: حمل کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: UnloadingOrder
+  title_fa: مجوز تخلیه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: UnloadingOrderItem
+  title_fa: قلم مجوز تخلیه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: VehicleTransporter
+  title_fa: حمل کننده-وسیله حمل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: WeighInToLoadingTolerance
+  title_fa: تلرانس توزین نسبت به بارگیری/ تخلیه (برگشت از فروش)
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Zone
+  title_fa: ناحیه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog

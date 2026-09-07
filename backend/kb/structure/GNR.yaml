@@ -1,0 +1,1147 @@
+schema: GNR
+table_count: 17
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: Backup
+  columns:
+  - name: BackupID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Label
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: Path
+    type: nvarchar(1500)
+    nullable: true
+    ordinal: 4
+  - name: RestoreDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Filename
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 11
+  - name: ServerName
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 12
+  - name: IsOk
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: IsAutomatic
+    type: bit
+    nullable: true
+    ordinal: 14
+  - name: IsPasswordProtected
+    type: bit
+    nullable: false
+    ordinal: 15
+  - name: Password
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 16
+  - name: IsCompressed
+    type: bit
+    nullable: true
+    ordinal: 17
+  primary_key:
+  - BackupID
+- name: CalculationElement
+  columns:
+  - name: CalculationElementID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Symbol
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CalculationElementID
+- name: CalculationFormula
+  columns:
+  - name: CalculationFormulaID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Text
+    type: nvarchar(4000)
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - CalculationFormulaID
+- name: CostCenter
+  columns:
+  - name: CostCenterId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DLRef
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: LastModifier
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - CostCenterId
+- name: Currency
+  columns:
+  - name: CurrencyID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(40)
+    nullable: false
+    ordinal: 2
+  - name: Title_En
+    type: nvarchar(40)
+    nullable: false
+    ordinal: 3
+  - name: ExchangeUnit
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: PrecisionCount
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: PrecisionName
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 6
+  - name: PrecisionName_En
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - CurrencyID
+- name: DimDate
+  columns:
+  - name: Miladi
+    type: date
+    nullable: false
+    ordinal: 1
+  - name: Jalali_1
+    type: varchar(10)
+    nullable: true
+    ordinal: 2
+  - name: Jalali_2
+    type: varchar(10)
+    nullable: true
+    ordinal: 3
+  - name: JYear
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: MYear
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: MMonthN
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: JMonthN
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: MMonthT
+    type: nvarchar(9)
+    nullable: true
+    ordinal: 8
+  - name: JMonthT
+    type: nvarchar(8)
+    nullable: true
+    ordinal: 9
+  - name: JQuarterN
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: JQuarterT
+    type: nvarchar(7)
+    nullable: true
+    ordinal: 11
+  - name: MQuarterN
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: JWeekN
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: MWeekN
+    type: int
+    nullable: true
+    ordinal: 14
+  - name: JWeekDay
+    type: nvarchar(8)
+    nullable: true
+    ordinal: 15
+  - name: MWeekDay
+    type: varchar(9)
+    nullable: true
+    ordinal: 16
+  primary_key: []
+- name: Location
+  columns:
+  - name: LocationId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 2
+  - name: Title_En
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 3
+  - name: Code
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 4
+  - name: Parent
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Type
+    type: nchar(10)
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: LastModifier
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: MinistryofFinanceCode
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 12
+  - name: TaxFileCode
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 13
+  primary_key:
+  - LocationId
+- name: MarketingDisketteCurrency
+  columns:
+  - name: MarketingDisketteCurrencyID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 2
+  - name: Ttile
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - MarketingDisketteCurrencyID
+- name: Party
+  columns:
+  - name: PartyId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: SubType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Name
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 4
+  - name: LastName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 5
+  - name: Name_En
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 6
+  - name: LastName_En
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 7
+  - name: EconomicCode
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 8
+  - name: IdentificationCode
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 9
+  - name: RegistrationCode
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 10
+  - name: Website
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 11
+  - name: Email
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 12
+  - name: DLRef
+    type: int
+    nullable: false
+    ordinal: 13
+  - name: IsInBlacklist
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: IsVendor
+    type: bit
+    nullable: false
+    ordinal: 15
+  - name: VendorGroupingRef
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: IsBroker
+    type: bit
+    nullable: false
+    ordinal: 17
+  - name: BrokerGroupingRef
+    type: int
+    nullable: true
+    ordinal: 18
+  - name: CommissionRate
+    type: decimal(5,2)
+    nullable: true
+    ordinal: 19
+  - name: BrokerOpeningBalance
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 20
+  - name: BrokerOpeningBalanceType
+    type: int
+    nullable: true
+    ordinal: 21
+  - name: IsEmployee
+    type: bit
+    nullable: false
+    ordinal: 22
+  - name: IsCustomer
+    type: bit
+    nullable: false
+    ordinal: 23
+  - name: SalespersonPartyRef
+    type: int
+    nullable: true
+    ordinal: 24
+  - name: DiscountRate
+    type: decimal(13,10)
+    nullable: true
+    ordinal: 25
+  - name: MaximumCredit
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 26
+  - name: CustomerGroupingRef
+    type: int
+    nullable: true
+    ordinal: 27
+  - name: CustomerCategoryForTax
+    type: int
+    nullable: false
+    ordinal: 28
+  - name: BirthDate
+    type: datetime
+    nullable: true
+    ordinal: 29
+  - name: MarriageDate
+    type: datetime
+    nullable: true
+    ordinal: 30
+  - name: HasCredit
+    type: bit
+    nullable: false
+    ordinal: 31
+  - name: CreditCheckingType
+    type: int
+    nullable: false
+    ordinal: 32
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 33
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 34
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 35
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 36
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 37
+  - name: Guid
+    type: nvarchar(36)
+    nullable: true
+    ordinal: 38
+  - name: CustomerRemaining
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 39
+  - name: PassportNumber
+    type: nvarchar(9)
+    nullable: true
+    ordinal: 40
+  - name: IsPurchasingAgent
+    type: bit
+    nullable: false
+    ordinal: 41
+  primary_key:
+  - PartyId
+- name: PartyAddress
+  columns:
+  - name: PartyAddressId
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartyRef
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: IsMain
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Address
+    type: nvarchar(400)
+    nullable: false
+    ordinal: 5
+  - name: LocationRef
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: ZipCode
+    type: varchar(40)
+    nullable: true
+    ordinal: 7
+  - name: Adress_En
+    type: nvarchar(400)
+    nullable: false
+    ordinal: 8
+  - name: Title
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 9
+  - name: Latitude
+    type: decimal(12,9)
+    nullable: true
+    ordinal: 10
+  - name: Longitude
+    type: decimal(12,9)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: Guid
+    type: nvarchar(36)
+    nullable: true
+    ordinal: 13
+  - name: BranchCode
+    type: varchar(40)
+    nullable: true
+    ordinal: 14
+  primary_key:
+  - PartyAddressId
+- name: PartyOpeningBalance
+  columns:
+  - name: PartyOpeningBalanceID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: OpeningBalance
+    type: decimal(19,4)
+    nullable: false
+    ordinal: 3
+  - name: PartyRef
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: FiscalYearRef
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: OpeningBalanceType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: FeedFromClosingOperation
+    type: bit
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - PartyOpeningBalanceID
+- name: Shred
+  columns:
+  - name: ShredID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Key
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: TargetRef
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: DLRef
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: Amount
+    type: decimal(19,4)
+    nullable: false
+    ordinal: 7
+  - name: InterestAmount
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 8
+  - name: TotalAmount
+    type: decimal(19,4)
+    nullable: false
+    ordinal: 9
+  - name: RemainedAmount
+    type: decimal(19,4)
+    nullable: false
+    ordinal: 10
+  - name: PenaltyRate
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 11
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 16
+  - name: CurrencyRef
+    type: int
+    nullable: false
+    ordinal: 17
+  - name: InterestAccountSLRef
+    type: int
+    nullable: true
+    ordinal: 18
+  - name: PenaltyAccountSLRef
+    type: int
+    nullable: true
+    ordinal: 19
+  - name: RPType
+    type: int
+    nullable: false
+    ordinal: 20
+  primary_key:
+  - ShredID
+- name: ShredItem
+  columns:
+  - name: ShredItemID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ShredRef
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: UsanceDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Amount
+    type: decimal(18,4)
+    nullable: false
+    ordinal: 5
+  - name: InterestAmount
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 6
+  - name: PenaltyAmount
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 7
+  - name: PenaltyRate
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 8
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: PaymentRef
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: ReceiptRef
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: PartySettlementRef
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: PaymentDate
+    type: datetime
+    nullable: true
+    ordinal: 13
+  - name: IsPaid
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: PaidDate
+    type: datetime
+    nullable: true
+    ordinal: 15
+  - name: PaidDesc
+    type: nvarchar(2000)
+    nullable: true
+    ordinal: 16
+  primary_key:
+  - ShredItemID
+- name: TaxPayerCurrency
+  columns:
+  - name: TaxPayerCurrencyID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: UniversalCode
+    type: nvarchar(10)
+    nullable: true
+    ordinal: 9
+  primary_key:
+  - TaxPayerCurrencyID
+- name: TaxPayerUnit
+  columns:
+  - name: TaxPayerUnitID
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 2
+  - name: Ttile
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - TaxPayerUnitID
+- name: gnrLimitedSession
+  columns:
+  - name: Serial
+    type: int
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Data
+    type: text
+    nullable: true
+    ordinal: 2
+  primary_key:
+  - Serial
+- name: vwParty
+  columns:
+  - name: PartyId
+    type: int
+    nullable: false
+    ordinal: 1
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: SubType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Name
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 4
+  - name: Name_En
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 5
+  - name: LastName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 6
+  - name: LastName_En
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 7
+  - name: EconomicCode
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 8
+  - name: RegistrationCode
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 9
+  - name: Website
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 10
+  - name: Email
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 11
+  - name: DLRef
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: IsActive
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: DLTitle
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 14
+  - name: DLTitle_En
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 15
+  - name: DLCode
+    type: varchar(40)
+    nullable: false
+    ordinal: 16
+  - name: DLType
+    type: int
+    nullable: false
+    ordinal: 17
+  - name: FullName
+    type: nvarchar(501)
+    nullable: false
+    ordinal: 18
+  - name: IsVendor
+    type: bit
+    nullable: false
+    ordinal: 19
+  - name: VendorGroupingRef
+    type: int
+    nullable: true
+    ordinal: 20
+  - name: IsBroker
+    type: bit
+    nullable: false
+    ordinal: 21
+  - name: BrokerGroupingRef
+    type: int
+    nullable: true
+    ordinal: 22
+  - name: CommissionRate
+    type: decimal(5,2)
+    nullable: true
+    ordinal: 23
+  - name: BrokerOpeningBalance
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 24
+  - name: IsPurchasingAgent
+    type: bit
+    nullable: false
+    ordinal: 25
+  - name: IsEmployee
+    type: bit
+    nullable: false
+    ordinal: 26
+  - name: IsCustomer
+    type: bit
+    nullable: false
+    ordinal: 27
+  - name: SalespersonPartyRef
+    type: int
+    nullable: true
+    ordinal: 28
+  - name: DiscountRate
+    type: decimal(13,10)
+    nullable: true
+    ordinal: 29
+  - name: MaximumCredit
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 30
+  - name: CustomerGroupingRef
+    type: int
+    nullable: true
+    ordinal: 31
+  - name: SalespersonTitle
+    type: nvarchar(501)
+    nullable: true
+    ordinal: 32
+  - name: VendorGroupingCode
+    type: varchar(400)
+    nullable: true
+    ordinal: 33
+  - name: VendorGroupingTitle
+    type: nvarchar(400)
+    nullable: true
+    ordinal: 34
+  - name: VendorGroupingTitle_En
+    type: nvarchar(400)
+    nullable: true
+    ordinal: 35
+  - name: CustomerGroupingTitle
+    type: nvarchar(400)
+    nullable: true
+    ordinal: 36
+  - name: CustomerGroupingTitle_En
+    type: nvarchar(400)
+    nullable: true
+    ordinal: 37
+  - name: CustomerGroupingCode
+    type: varchar(400)
+    nullable: true
+    ordinal: 38
+  - name: BrokerGroupingCode
+    type: varchar(400)
+    nullable: true
+    ordinal: 39
+  - name: BrokerGroupingTitle
+    type: nvarchar(400)
+    nullable: true
+    ordinal: 40
+  - name: BrokerGroupingTitle_En
+    type: nvarchar(400)
+    nullable: true
+    ordinal: 41
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 42
+  - name: Creator
+    type: int
+    nullable: false
+    ordinal: 43
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 44
+  - name: LastModifier
+    type: int
+    nullable: false
+    ordinal: 45
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 46
+  - name: IdentificationCode
+    type: nvarchar(40)
+    nullable: true
+    ordinal: 47
+  - name: IsInBlacklist
+    type: bit
+    nullable: false
+    ordinal: 48
+  - name: BrokerOpeningBalanceType
+    type: int
+    nullable: true
+    ordinal: 49
+  - name: FullAddress
+    type: nvarchar(652)
+    nullable: true
+    ordinal: 50
+  - name: FullAddress_En
+    type: nvarchar(652)
+    nullable: true
+    ordinal: 51
+  - name: Phone
+    type: varchar(20)
+    nullable: true
+    ordinal: 52
+  - name: CustomerCategoryForTax
+    type: int
+    nullable: false
+    ordinal: 53
+  - name: BirthDate
+    type: datetime
+    nullable: true
+    ordinal: 54
+  - name: MarriageDate
+    type: datetime
+    nullable: true
+    ordinal: 55
+  - name: HasCredit
+    type: bit
+    nullable: false
+    ordinal: 56
+  - name: CreditCheckingType
+    type: int
+    nullable: false
+    ordinal: 57
+  - name: CustomerRemaining
+    type: decimal(19,4)
+    nullable: true
+    ordinal: 58
+  - name: Guid
+    type: nvarchar(36)
+    nullable: true
+    ordinal: 59
+  - name: CreatorName
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 60
+  - name: CreatorName_En
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 61
+  - name: ModifierName
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 62
+  - name: ModifierName_En
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 63
+  - name: PassportNumber
+    type: nvarchar(9)
+    nullable: true
+    ordinal: 64
+  - name: PartyFax
+    type: varchar(20)
+    nullable: true
+    ordinal: 65
+  primary_key: []

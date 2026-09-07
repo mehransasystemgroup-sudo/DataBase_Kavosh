@@ -1,0 +1,2918 @@
+schema: XLS3
+source: extracted
+indexes:
+- table: BillOfLading
+  name: PK_XLS3_BillOfLading
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfLadingID
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_DeliveryPlaceType_DeliveryPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryPlaceType
+  - DeliveryPlaceRef
+- table: BillOfLading
+  name: IX_XLS3_BillOfLading_DestinationType_DestinationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationType
+  - DestinationRef
+- table: BillOfLadingItem
+  name: PK_XLS3_BillOfLadingItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfLadingItemID
+- table: BillOfLadingItem
+  name: IX_XLS3_BillOfLadingItem_BillOfLadingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfLadingRef
+- table: BillOfLadingItem
+  name: IX_XLS3_BillOfLadingItem_CargoItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CargoItemRef
+- table: BillOfLadingItem
+  name: IX_XLS3_BillOfLadingItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: BillOfLadingItem
+  name: IX_XLS3_BillOfLadingItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: BillOfLadingItem
+  name: IX_XLS3_BillOfLadingItem_PackagingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingMethodRef
+- table: BillOfLadingItem
+  name: IX_XLS3_BillOfLadingItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: BillOfLadingItem
+  name: IX_XLS3_BillOfLadingItem_PackageWeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageWeightUnitRef
+- table: BillOfLadingItem
+  name: IX_XLS3_BillOfLadingItem_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: BillOfLadingItemVehicle
+  name: PK_XLS3_BillOfLadingItemVehicle
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfLadingItemVehicleID
+- table: BillOfLadingItemVehicle
+  name: IX_XLS3_BillOfLadingItemVehicle_BillOfLadingItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfLadingItemRef
+- table: BillOfLadingItemVehicle
+  name: IX_XLS3_BillOfLadingItemVehicle_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: BillOfLadingItemVehicle
+  name: IX_XLS3_BillOfLadingItemVehicle_IncomingContainerItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IncomingContainerItemRef
+- table: BillOfLadingItemVehicle
+  name: IX_XLS3_BillOfLadingItemVehicle_VehicleReferenceEntityCode_VehicleReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VehicleReferenceEntityCode
+  - VehicleReferenceRef
+- table: BillOfLadingVehicle
+  name: PK_XLS3_BillOfLadingVehicle
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfLadingVehicleID
+- table: BillOfLadingVehicle
+  name: IX_XLS3_BillOfLadingVehicle_BillOfLadingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfLadingRef
+- table: BillOfLadingVehicle
+  name: IX_XLS3_BillOfLadingVehicle_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: BillOfLadingVehicle
+  name: IX_XLS3_BillOfLadingVehicle_InternationalTransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InternationalTransportationVehicleRef
+- table: BlockedInventoryVoucherItem
+  name: PK_BlockedInventoryVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BlockedInventoryVoucherItemID
+- table: BlockedInventoryVoucherItem
+  name: IX_XLS3_BlockedInventoryVoucherItem_OutputInventoryVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OutputInventoryVoucherRef
+- table: BlockedInventoryVoucherItem
+  name: IX_XLS3_BlockedInventoryVoucherItem_OutputInventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OutputInventoryVoucherItemRef
+- table: BlockedInventoryVoucherItem
+  name: IX_XLS3_BlockedInventoryVoucherItem_OutputInventoryVoucherItemTrackingFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OutputInventoryVoucherItemTrackingFactorRef
+- table: BlockedInventoryVoucherItem
+  name: IX_XLS3_BlockedInventoryVoucherItem_ProformaItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaItemRef
+- table: BlockedInventoryVoucherItem
+  name: IX_XLS3_BlockedInventoryVoucherItem_InputInventoryVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InputInventoryVoucherRef
+- table: BlockedInventoryVoucherItem
+  name: IX_XLS3_BlockedInventoryVoucherItem_InputInventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InputInventoryVoucherItemRef
+- table: BlockedInventoryVoucherItem
+  name: IX_XLS3_BlockedInventoryVoucherItem_InputInventoryVoucherItemTrackingFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InputInventoryVoucherItemTrackingFactorRef
+- table: Cargo
+  name: PK_Cargo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CargoID
+- table: Cargo
+  name: IX_XLS3_Cargo_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: Cargo
+  name: IX_XLS3_Cargo_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: Cargo
+  name: IX_XLS3_Cargo_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Cargo
+  name: IX_XLS3_Cargo_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: Cargo
+  name: IX_XLS3_Cargo_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: Cargo
+  name: IX_XLS3_Cargo_LoadingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoadingPointRef
+- table: Cargo
+  name: IX_XLS3_Cargo_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: Cargo
+  name: IX_XLS3_Cargo_ForwarderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ForwarderRef
+- table: Cargo
+  name: IX_XLS3_Cargo_InspectionCompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionCompanyRef
+- table: Cargo
+  name: IX_XLS3_Cargo_CustomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomRef
+- table: Cargo
+  name: IX_XLS3_Cargo_ContainerTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContainerTypeRef
+- table: Cargo
+  name: IX_XLS3_Cargo_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: Cargo
+  name: IX_XLS3_Cargo_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Cargo
+  name: IX_XLS3_Cargo_TransportationVehicleTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleTypeRef
+- table: Cargo
+  name: IX_XLS3_Cargo_DeliveryPlaceType_DeliveryPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryPlaceType
+  - DeliveryPlaceRef
+- table: Cargo
+  name: IX_XLS3_Cargo_DestinationPlaceType_DestinationPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationPlaceType
+  - DestinationPlaceRef
+- table: CargoItem
+  name: PK_CargoItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CargoItemID
+- table: CargoItem
+  name: IX_XLS3_CargoItem_CargoRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CargoRef
+- table: CargoItem
+  name: IX_XLS3_CargoItem_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: CargoItem
+  name: IX_XLS3_CargoItem_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: CargoItem
+  name: IX_XLS3_CargoItem_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: CargoItem
+  name: IX_XLS3_CargoItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: CargoItem
+  name: IX_XLS3_CargoItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: CargoItem
+  name: IX_XLS3_CargoItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: CargoItem
+  name: IX_XLS3_CargoItem_PackagingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingMethodRef
+- table: CargoItem
+  name: IX_XLS3_CargoItem_PackageWeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageWeightUnitRef
+- table: CargoShippingInfo
+  name: PK_CargoShippingInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CargoShippingInfoID
+- table: CargoShippingInfo
+  name: IX_XLS3_CargoShippingInfo_CargoRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CargoRef
+- table: CargoShippingInfo
+  name: IX_XLS3_CargoShippingInfo_RecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientRef
+- table: CargoTransportationVehicle
+  name: PK_CargoTransportationVehicle
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CargoTransportationVehicleID
+- table: CargoTransportationVehicle
+  name: IX_XLS3_CargoTransportationVehicle_CargoRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CargoRef
+- table: CargoTransportationVehicle
+  name: IX_XLS3_CargoTransportationVehicle_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: CollectionNotice
+  name: PK_XLS3_CollectionNotice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectionNoticeID
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_TransferCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransferCurrencyRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_ReceivedCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivedCurrencyRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_WageCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WageCurrencyRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_BankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_BankBranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankBranchRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_CounterpartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartRef
+- table: CollectionNotice
+  name: IX_XLS3_CollectionNotice_PartyBankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyBankAccountRef
+- table: CollectionNoticeItem
+  name: PK_XLS3_CollectionNoticeItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectionNoticeItemID
+- table: CollectionNoticeItem
+  name: IX_XLS3_CollectionNoticeItem_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: CollectionNoticeItem
+  name: IX_XLS3_CollectionNoticeItem_CollectionNoticeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectionNoticeRef
+- table: CollectionNoticeItem
+  name: IX_XLS3_CollectionNoticeItem_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: CollectionNoticeItemAnalysis
+  name: PK_XLS3_CollectionNoticeItemAnalysis
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectionNoticeItemAnalysisID
+- table: CollectionNoticeItemAnalysis
+  name: IX_XLS3_CollectionNoticeItemAnalysis_CollectionNoticeItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectionNoticeItemRef
+- table: CollectionNoticeItemAnalysis
+  name: IX_XLS3_CollectionNoticeItemAnalysis_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: CollectionNoticeItemAnalysis
+  name: IX_XLS3_CollectionNoticeItemAnalysis_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: ContainerType
+  name: PK_XLS3_ContainerType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContainerTypeID
+- table: ContainerType
+  name: UIX_XLS3_ContainerType_Type
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Type
+- table: ContainerType
+  name: IX_XLS3_ContainerType_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: ContainerType
+  name: IX_XLS3_ContainerType_DimUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DimUnitRef
+- table: CustomsDeclaration
+  name: PK_XLS3_CustomsDeclaration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomsDeclarationID
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_SourceCustomsRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceCustomsRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_DestinationCustomsRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationCustomsRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_DeclaratorPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeclaratorPartyRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_DeclaratorAgentPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeclaratorAgentPartyRef
+- table: CustomsDeclaration
+  name: IX_XLS3_CustomsDeclaration_DeliveryPlaceType_DeliveryPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryPlaceType
+  - DeliveryPlaceRef
+- table: CustomsDeclarationItem
+  name: PK_XLS3_CustomsDeclarationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomsDeclarationItemID
+- table: CustomsDeclarationItem
+  name: IX_XLS3_CustomsDeclarationItem_CustomsDeclarationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomsDeclarationRef
+- table: CustomsDeclarationItem
+  name: IX_XLS3_CustomsDeclarationItem_CargoItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CargoItemRef
+- table: CustomsDeclarationItem
+  name: IX_XLS3_CustomsDeclarationItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: CustomsDeclarationItem
+  name: IX_XLS3_CustomsDeclarationItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: CustomsDeclarationItem
+  name: IX_XLS3_CustomsDeclarationItem_PackagingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingMethodRef
+- table: CustomsDeclarationItem
+  name: IX_XLS3_CustomsDeclarationItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: CustomsDeclarationItem
+  name: IX_XLS3_CustomsDeclarationItem_PackageWeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageWeightUnitRef
+- table: CustomsDeclarationItem
+  name: IX_XLS3_CustomsDeclarationItem_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: CustomsDeclarationItemVehicle
+  name: PK_XLS3_CustomsDeclarationItemVehicle
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomsDeclarationItemVehicleID
+- table: CustomsDeclarationItemVehicle
+  name: IX_XLS3_CustomsDeclarationItemVehicle_CustomsDeclarationItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomsDeclarationItemRef
+- table: CustomsDeclarationItemVehicle
+  name: IX_XLS3_CustomsDeclarationItemVehicle_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: CustomsDeclarationItemVehicle
+  name: IX_XLS3_CustomsDeclarationItemVehicle_IncomingContainerItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IncomingContainerItemRef
+- table: CustomsDeclarationItemVehicle
+  name: IX_XLS3_CustomsDeclarationItemVehicle_VehicleReferenceEntityCode_VehicleReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VehicleReferenceEntityCode
+  - VehicleReferenceRef
+- table: CustomsDeclarationRelatedInvoices
+  name: PK_XLS3_CustomsDeclarationRelatedInvoices
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomsDeclarationRelatedInvoicesID
+- table: CustomsDeclarationRelatedInvoices
+  name: IX_XLS3_CustomsDeclarationRelatedInvoices_CustomsDeclarationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomsDeclarationRef
+- table: CustomsDeclarationRelatedInvoices
+  name: IX_XLS3_CustomsDeclarationRelatedInvoices_InvoiceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InvoiceRef
+- table: CustomsDeclarationVehicle
+  name: PK_XLS3_CustomsDeclarationVehicle
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomsDeclarationVehicleID
+- table: CustomsDeclarationVehicle
+  name: IX_XLS3_CustomsDeclarationVehicle_CustomsDeclarationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomsDeclarationRef
+- table: CustomsDeclarationVehicle
+  name: IX_XLS3_CustomsDeclarationVehicle_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: CustomsDeclarationVehicle
+  name: IX_XLS3_CustomsDeclarationVehicle_InternationalTransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InternationalTransportationVehicleRef
+- table: IncomingContainer
+  name: PK_IncomingContainer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IncomingContainerID
+- table: IncomingContainer
+  name: IX_XLS3_IncomingContainer_CargoRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CargoRef
+- table: IncomingContainer
+  name: IX_XLS3_IncomingContainer_ContainerTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContainerTypeRef
+- table: IncomingContainer
+  name: IX_XLS3_IncomingContainer_ReceivingPlaceType_ReceivingPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivingPlaceType
+  - ReceivingPlaceRef
+- table: IncomingContainerItem
+  name: PK_IncomingContainerItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IncomingContainerItemID
+- table: IncomingContainerItem
+  name: IX_XLS3_IncomingContainerItem_IncomingContainerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IncomingContainerRef
+- table: IncomingContainerItem
+  name: IX_XLS3_IncomingContainerItem_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: IncomingContainerItem
+  name: IX_XLS3_IncomingContainerItem_DimensionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DimensionUnitRef
+- table: InspectionCompany
+  name: PK_XLS3_InspectionCompany
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionCompanyID
+- table: InspectionCompany
+  name: IX_XLS3_InspectionCompany_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: Invoice
+  name: PK_XLS3_Invoice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoiceID
+- table: Invoice
+  name: IX_XLS3_Invoice_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Invoice
+  name: IX_XLS3_Invoice_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Invoice
+  name: IX_XLS3_Invoice_PaymentCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentCurrencyRef
+- table: Invoice
+  name: IX_XLS3_Invoice_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: Invoice
+  name: IX_XLS3_Invoice_SalesAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesAreaRef
+- table: Invoice
+  name: IX_XLS3_Invoice_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: Invoice
+  name: IX_XLS3_Invoice_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: Invoice
+  name: IX_XLS3_Invoice_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: Invoice
+  name: IX_XLS3_Invoice_SalesTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesTypeRef
+- table: Invoice
+  name: IX_XLS3_Invoice_TermOfPaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfPaymentRef
+- table: Invoice
+  name: IX_XLS3_Invoice_PayerAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayerAccountRef
+- table: Invoice
+  name: IX_XLS3_Invoice_TermOfDeliveryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfDeliveryRef
+- table: Invoice
+  name: IX_XLS3_Invoice_PaymentCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentCurrencyExchangeRateRef
+- table: Invoice
+  name: IX_XLS3_Invoice_PriceFormulaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceFormulaRef
+- table: Invoice
+  name: IX_XLS3_Invoice_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: Invoice
+  name: IX_XLS3_Invoice_CounterpartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartRef
+- table: Invoice
+  name: IX_XLS3_Invoice_PartyBankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyBankAccountRef
+- table: Invoice
+  name: IX_XLS3_Invoice_PrevProvisionalInvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PrevProvisionalInvoiceRef
+- table: Invoice
+  name: IX_XLS3_Invoice_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Invoice
+  name: IX_XLS3_Invoice_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: InvoiceFinVoucherInfo
+  name: PK_XLS3_InvoiceFinVoucherInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoiceFinVoucherInfoID
+- table: InvoiceFinVoucherInfo
+  name: UIX_XLS3_InvoiceFinVoucherInfo_InvoiceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InvoiceRef
+- table: InvoiceItem
+  name: PK_XLS3_InvoiceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoiceItemID
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_InvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoiceRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_PrevProvisionalInvoiceItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PrevProvisionalInvoiceItemRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_SalesAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesAreaRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_PackagingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingMethodRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: InvoiceItem
+  name: IX_XLS3_InvoiceItem_PriceBaseUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceBaseUnitRef
+- table: InvoiceItemPolicyResult
+  name: PK_XLS3_InvoiceItemPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoiceItemPolicyResultID
+- table: InvoiceItemPolicyResult
+  name: IX_XLS3_InvoiceItemPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: InvoiceItemPolicyResult
+  name: IX_XLS3_InvoiceItemPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: InvoiceItemPolicyResult
+  name: IX_XLS3_InvoiceItemPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: InvoiceItemPolicyResult
+  name: IX_XLS3_InvoiceItemPolicyResult_InvoiceItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoiceItemRef
+- table: InvoiceItemPolicyResult
+  name: IX_XLS3_InvoiceItemPolicyResult_InvoicePolicyResultRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoicePolicyResultRef
+- table: InvoiceItemPolicyResult
+  name: IX_XLS3_InvoiceItemPolicyResult_BusinessPolicyRef_InvoiceItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+  - InvoiceItemRef
+  included:
+  - Price
+- table: InvoiceItemPriceReferenceItem
+  name: PK_XLS3_InvoiceItemPriceReferenceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoiceItemPriceReferenceItemID
+- table: InvoiceItemPriceReferenceItem
+  name: IX_XLS3_InvoiceItemPriceReferenceItem_InvoiceItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoiceItemRef
+- table: InvoiceItemPriceReferenceItem
+  name: IX_XLS3_InvoiceItemPriceReferenceItem_PriceReferenceItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceReferenceItemRef
+- table: InvoicePermit
+  name: PK_XLS3_InvoicePermit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoicePermitID
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_SalesAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesAreaRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_SalesTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesTypeRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_PackagingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingMethodRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: InvoicePermit
+  name: IX_XLS3_InvoicePermit_PriceBaseUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceBaseUnitRef
+- table: InvoicePolicyResult
+  name: PK_XLS3_InvoicePolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoicePolicyResultID
+- table: InvoicePolicyResult
+  name: IX_XLS3_InvoicePolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: InvoicePolicyResult
+  name: IX_XLS3_InvoicePolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: InvoicePolicyResult
+  name: IX_XLS3_InvoicePolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: InvoicePolicyResult
+  name: IX_XLS3_InvoicePolicyResult_InvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoiceRef
+- table: NegotiableDocument
+  name: PK_XLS3_NegotiableDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NegotiableDocumentID
+- table: NegotiableDocument
+  name: IX_XLS3_NegotiableDocument_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: NegotiableDocument
+  name: IX_XLS3_NegotiableDocument_DocumentType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DocumentType
+  - ReferenceRef
+- table: NegotiableDocumentPackage
+  name: PK_XLS3_NegotiableDocumentPackage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NegotiableDocumentPackageID
+- table: NegotiableDocumentPackage
+  name: IX_XLS3_NegotiableDocumentPackage_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: NegotiableDocumentPackage
+  name: IX_XLS3_NegotiableDocumentPackage_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: NegotiableDocumentPackageItem
+  name: PK_XLS3_NegotiableDocumentPackageItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NegotiableDocumentPackageItemID
+- table: NegotiableDocumentPackageItem
+  name: IX_XLS3_NegotiableDocumentPackageItem_NegotiableDocumentPackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NegotiableDocumentPackageRef
+- table: NegotiableDocumentPackageItem
+  name: IX_XLS3_NegotiableDocumentPackageItem_NegotiableDocumentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NegotiableDocumentRef
+- table: Order
+  name: XLS3_PK_Order_OrderID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderID
+- table: Order
+  name: IX_XLS3_Order_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: Order
+  name: IX_XLS3_Order_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: Order
+  name: IX_XLS3_Order_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: Order
+  name: IX_XLS3_Order_SalesAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesAreaRef
+- table: Order
+  name: IX_XLS3_Order_SalesTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesTypeRef
+- table: Order
+  name: IX_XLS3_Order_TermOfPaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfPaymentRef
+- table: Order
+  name: IX_XLS3_Order_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Order
+  name: IX_XLS3_Order_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: Order
+  name: IX_XLS3_Order_PayerAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayerAccountRef
+- table: Order
+  name: IX_XLS3_Order_TermOfDeliveryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfDeliveryRef
+- table: Order
+  name: IX_XLS3_Order_AgentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AgentRef
+- table: Order
+  name: IX_XLS3_Order_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Order
+  name: IX_XLS3_Order_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: Order
+  name: IX_XLS3_Order_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: Order
+  name: IX_XLS3_Order_LoadingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoadingPointRef
+- table: Order
+  name: IX_XLS3_Order_RecipientType_RecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientType
+  - RecipientRef
+- table: Order
+  name: IX_XLS3_Order_RecipientPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientPartyRef
+- table: Order
+  name: IX_XLS3_Order_DeliveryPlaceType_DeliveryPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryPlaceType
+  - DeliveryPlaceRef
+- table: Order
+  name: IX_XLS3_Order_DeliveryAddressType_DeliveryAddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryAddressType
+  - DeliveryAddressRef
+- table: Order
+  name: IX_XLS3_Order_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Order
+  name: IX_XLS3_Order_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: OrderItem
+  name: XLS3_PK_OrderItem_OrderItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderItemID
+- table: OrderItem
+  name: IX_XLS3_OrderItem_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_RecipientType_RecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientType
+  - RecipientRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_DeliveryAddressType_DeliveryAddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryAddressType
+  - DeliveryAddressRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_OrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_PackagingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingMethodRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_LoadingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoadingPointRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_RecipientPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientPartyRef
+- table: OrderItem
+  name: IX_XLS3_OrderItem_PriceBaseUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceBaseUnitRef
+- table: OrderItemPolicyResult
+  name: PK_XLS3_OrderItemPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderItemPolicyResultID
+- table: OrderItemPolicyResult
+  name: IX_XLS3_OrderItemPolicyResult_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: OrderItemPolicyResult
+  name: IX_XLS3_OrderItemPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: OrderItemPolicyResult
+  name: IX_XLS3_OrderItemPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: OrderItemPolicyResult
+  name: IX_XLS3_OrderItemPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: OrderItemPolicyResult
+  name: IX_XLS3_OrderItemPolicyResult_OrderPolicyResultRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderPolicyResultRef
+- table: OrderPolicyResult
+  name: PK_XLS3_OrderPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderPolicyResultID
+- table: OrderPolicyResult
+  name: IX_XLS3_OrderPolicyResult_OrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderRef
+- table: OrderPolicyResult
+  name: IX_XLS3_OrderPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: OrderPolicyResult
+  name: IX_XLS3_OrderPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: OrderPolicyResult
+  name: IX_XLS3_OrderPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: PaymentFollowUp
+  name: PK_XLS3_PaymentFollowUp
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentFollowUpID
+- table: PaymentFollowUp
+  name: IX_XLS3_PaymentFollowUp_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: PaymentFollowUp
+  name: IX_XLS3_PaymentFollowUp_PaymentFollowUpRecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentFollowUpRecipientRef
+- table: PaymentFollowUp
+  name: IX_XLS3_PaymentFollowUp_ProformaPaymentTermRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaPaymentTermRef
+- table: PaymentFollowUp
+  name: IX_XLS3_PaymentFollowUp_DocumentType_DocumentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DocumentType
+  - DocumentRef
+- table: PaymentFollowUpRecipient
+  name: PK_XLS3_PaymentFollowUpRecipient
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentFollowUpRecipientID
+- table: PaymentFollowUpRecipient
+  name: IX_XLS3_PaymentFollowUpRecipient_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: PaymentFollowUpRecipient
+  name: IX_XLS3_PaymentFollowUpRecipient_RecipientType_RecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientType
+  - RecipientRef
+- table: PriceFormula
+  name: PK_XLS3_PriceFormula
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceFormulaID
+- table: PriceFormula
+  name: UIX_XLS3_PriceFormula_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: PriceFormula
+  name: UIX_XLS3_PriceFormula_Title_State
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - State
+- table: PriceReference
+  name: PK_PriceReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceReferenceID
+- table: PriceReference
+  name: IX_XLS3_PriceReference_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PriceReferenceItem
+  name: PK_PriceReferenceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceReferenceItemID
+- table: PriceReferenceItem
+  name: IX_XLS3_PriceReferenceItem_PriceReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceReferenceRef
+- table: PriceReferenceItem
+  name: IX_XLS3_PriceReferenceItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: PriceReferenceItem
+  name: IX_XLS3_PriceReferenceItem_RegionalDivisionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RegionalDivisionRef
+- table: PriceReferenceItem
+  name: IX_XLS3_PriceReferenceItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: PriceReferenceRegionalArea
+  name: PK_PriceReferenceRegionalArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceReferenceRegionalAreaID
+- table: PriceReferenceRegionalArea
+  name: UIX_XLS3_PriceReferenceRegionalArea_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: PriceReferenceRegionalAreaItem
+  name: PK_PriceReferenceRegionalAreaItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceReferenceRegionalAreaItemID
+- table: PriceReferenceRegionalAreaItem
+  name: UIX_XLS3_PriceReferenceRegionalAreaItem_RegionalDivisionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - RegionalDivisionRef
+- table: Proforma
+  name: XLS3_PK_Proforma_ProformaID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaID
+- table: Proforma
+  name: IX_XLS3_Proforma_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: Proforma
+  name: IX_XLS3_Proforma_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Proforma
+  name: IX_XLS3_Proforma_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Proforma
+  name: IX_XLS3_Proforma_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: Proforma
+  name: IX_XLS3_Proforma_SalesAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesAreaRef
+- table: Proforma
+  name: IX_XLS3_Proforma_SalesTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesTypeRef
+- table: Proforma
+  name: IX_XLS3_Proforma_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Proforma
+  name: IX_XLS3_Proforma_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: Proforma
+  name: IX_XLS3_Proforma_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: Proforma
+  name: IX_XLS3_Proforma_TermOfPaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfPaymentRef
+- table: Proforma
+  name: IX_XLS3_Proforma_PaymentCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentCurrencyRef
+- table: Proforma
+  name: IX_XLS3_Proforma_PaymentCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentCurrencyExchangeRateRef
+- table: Proforma
+  name: IX_XLS3_Proforma_PayerAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayerAccountRef
+- table: Proforma
+  name: IX_XLS3_Proforma_TermOfDeliveryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfDeliveryRef
+- table: Proforma
+  name: IX_XLS3_Proforma_OriginCountryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OriginCountryRef
+- table: Proforma
+  name: IX_XLS3_Proforma_DestinationCountryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationCountryRef
+- table: Proforma
+  name: IX_XLS3_Proforma_PriceFormulaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceFormulaRef
+- table: Proforma
+  name: IX_XLS3_Proforma_InvoicePriceFormulaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoicePriceFormulaRef
+- table: Proforma
+  name: IX_XLS3_Proforma_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: Proforma
+  name: IX_XLS3_Proforma_CounterpartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartRef
+- table: Proforma
+  name: IX_XLS3_Proforma_PartyBankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyBankAccountRef
+- table: ProformaCondition
+  name: PK_XLS3_ProformaCondition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaConditionID
+- table: ProformaCondition
+  name: IX_XLS3_ProformaCondition_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: ProformaHistory
+  name: XLS3_PK_ProformaHistory_ProformaHistoryID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaHistoryID
+- table: ProformaHistory
+  name: IX_XLS3_ProformaHistory_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: ProformaItem
+  name: PK_XLS3_ProformaItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaItemID
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_ParentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentItemRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_DeliveryPlaceType_DeliveryPlaceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryPlaceType
+  - DeliveryPlaceRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_PackagingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingMethodRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: ProformaItem
+  name: IX_XLS3_ProformaItem_PriceBaseUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceBaseUnitRef
+- table: ProformaItemDestination
+  name: PK_XLS3_ProformaItemDestination
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaItemDestinationID
+- table: ProformaItemDestination
+  name: IX_XLS3_ProformaItemDestination_ProformaItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaItemRef
+- table: ProformaItemDestination
+  name: IX_XLS3_ProformaItemDestination_DestinationType_DestinationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationType
+  - DestinationRef
+- table: ProformaItemPolicyResult
+  name: PK_XLS3_ProformaItemPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaItemPolicyResultID
+- table: ProformaItemPolicyResult
+  name: IX_XLS3_ProformaItemPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: ProformaItemPolicyResult
+  name: IX_XLS3_ProformaItemPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: ProformaItemPolicyResult
+  name: IX_XLS3_ProformaItemPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ProformaItemPolicyResult
+  name: IX_XLS3_ProformaItemPolicyResult_ProformaItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaItemRef
+- table: ProformaItemPolicyResult
+  name: IX_XLS3_ProformaItemPolicyResult_ProformaPolicyResultRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaPolicyResultRef
+- table: ProformaItemPolicyResult
+  name: IX_XLS3_ProformaItemPolicyResult_BusinessPolicyRef_ProformaItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+  - ProformaItemRef
+  included:
+  - Price
+- table: ProformaItemPriceReferenceItem
+  name: PK_XLS3_ProformaItemPriceReferenceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaItemPriceReferenceItemID
+- table: ProformaItemPriceReferenceItem
+  name: IX_XLS3_ProformaItemPriceReferenceItem_ProformaItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaItemRef
+- table: ProformaItemPriceReferenceItem
+  name: IX_XLS3_ProformaItemPriceReferenceItem_PriceReferenceItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceReferenceItemRef
+- table: ProformaNegotiableDocument
+  name: PK_XLS3_ProformaNegotiableDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaNegotiableDocumentID
+- table: ProformaNegotiableDocument
+  name: UIX_XLS3_ProformaNegotiableDocument_DocumentType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ProformaRef
+  - DocumentType
+- table: ProformaNegotiableDocument
+  name: IX_XLS3_ProformaNegotiableDocument_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: ProformaPaymentTerm
+  name: PK_SLS3_ProformaPaymentTerm
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaPaymentTermID
+- table: ProformaPaymentTerm
+  name: IX_XLS3_ProformaPaymentTerm_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: ProformaPaymentTerm
+  name: IX_XLS3_ProformaPaymentTerm_TermOfPaymentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfPaymentItemRef
+- table: ProformaPolicyResult
+  name: PK_XLS3_ProformaPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProformaPolicyResultID
+- table: ProformaPolicyResult
+  name: IX_XLS3_ProformaPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: ProformaPolicyResult
+  name: IX_XLS3_ProformaPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ProformaPolicyResult
+  name: IX_XLS3_ProformaPolicyResult_ProformaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProformaRef
+- table: ProformaPolicyResult
+  name: IX_XLS3_ProformaPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: SalesStatement
+  name: PK_XLS3_SalesStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesStatementID
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_CustomerBrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerBrokerRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_DeliveryPlaceRef_DeliveryPlaceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryPlaceRef
+  - DeliveryPlaceType
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_SalesAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesAreaRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_SellerBrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SellerBrokerRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_RecipientPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientPartyRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_SalesTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesTypeRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_PayerAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayerAccountRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_TermOfPaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfPaymentRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_TermOfDeliveryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfDeliveryRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_RecipientType_RecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientType
+  - RecipientRef
+- table: SalesStatement
+  name: IX_XLS3_SalesStatement_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: SalesStatementDestination
+  name: PK_XLS3_SalesStatementDestination
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesStatementDestinationID
+- table: SalesStatementDestination
+  name: IX_XLS3_SalesStatementDestination_SalesStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesStatementRef
+- table: SalesStatementDestination
+  name: IX_XLS3_SalesStatementDestination_DestinationType_DestinationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationType
+  - DestinationRef
+- table: SalesStatementItem
+  name: PK_XLS3_SalesStatementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesStatementItemID
+- table: SalesStatementItem
+  name: IX_XLS3_SalesStatementItem_SalesStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesStatementRef
+  included:
+  - ProductRef
+- table: SalesStatementItem
+  name: IX_XLS3_SalesStatementItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: SalesStatementItem
+  name: IX_XLS3_SalesStatementItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: SalesStatementItem
+  name: IX_XLS3_SalesStatementItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: SalesStatementItem
+  name: IX_XLS3_SalesStatementItem_PackagingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingMethodRef
+- table: SalesStatementItem
+  name: IX_XLS3_SalesStatementItem_PriceBaseUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceBaseUnitRef
+- table: SalesStatementItemPolicyResult
+  name: PK_XLS3_SalesStatementItemPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesStatementItemPolicyResultID
+- table: SalesStatementItemPolicyResult
+  name: IX_XLS3_SalesStatementItemPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: SalesStatementItemPolicyResult
+  name: IX_XLS3_SalesStatementItemPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: SalesStatementItemPolicyResult
+  name: IX_XLS3_SalesStatementItemPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: SalesStatementItemPolicyResult
+  name: IX_XLS3_SalesStatementItemPolicyResult_SalesStatementItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesStatementItemRef
+- table: SalesStatementItemPolicyResult
+  name: IX_XLS3_SalesStatementItemPolicyResult_SalesStatementPolicyResultRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesStatementPolicyResultRef
+- table: SalesStatementItemPolicyResult
+  name: IX_XLS3_SalesStatementItemPolicyResult_BusinessPolicyRef_SalesStatementItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+  - SalesStatementItemRef
+  included:
+  - Price
+- table: SalesStatementPolicyResult
+  name: PK_XLS3_SalesStatementPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesStatementPolicyResultID
+- table: SalesStatementPolicyResult
+  name: IX_XLS3_SalesStatementPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: SalesStatementPolicyResult
+  name: IX_XLS3_SalesStatementPolicyResult_SalesStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesStatementRef
+- table: SalesStatementPolicyResult
+  name: IX_XLS3_SalesStatementPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: SalesStatementPolicyResult
+  name: IX_XLS3_SalesStatementPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: SalesStatementWageResult
+  name: PK_XLS3_SalesStatementWageResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesStatementWageResultID
+- table: SalesStatementWageResult
+  name: IX_XLS3_SalesStatementWageResult_SalesStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesStatementRef
+- table: SalesStatementWageResult
+  name: IX_XLS3_SalesStatementWageResult_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: SalesStatementWageResult
+  name: IX_XLS3_SalesStatementWageResult_BrokerServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerServiceRef
+- table: SalesStatementWageResult
+  name: IX_XLS3_SalesStatementWageResult_CutsAndCostsRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CutsAndCostsRef
+- table: SalesTypeTermOfPayment
+  name: PK_XLS3_SalesTypeTermOfPayment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesTypeTermOfPaymentID
+- table: SalesTypeTermOfPayment
+  name: IX_XLS3_SalesTypeTermOfPayment_SalesTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesTypeRef
+- table: SalesTypeTermOfPayment
+  name: IX_XLS3_SalesTypeTermOfPayment_TermOfPaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TermOfPaymentRef
+- table: ShippingOrderContainer
+  name: PK_XLS3_ShippingOrderContainer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShippingOrderContainerID
+- table: ShippingOrderContainer
+  name: UX_XLS3_ShippingOrderContainer_ShippingOrderRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ShippingOrderRef
+- table: ShippingOrderContainer
+  name: IX_XLS3_ShippingOrderContainer_IncomingContainerItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IncomingContainerItemRef
+- table: TaxpayerInvoiceCorrectionDate
+  name: PK_XLS3_TaxpayerInvoiceCorrectionDate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxpayerInvoiceCorrectionDateID
+- table: TaxpayerInvoiceCorrectionDateHistory
+  name: ix_TaxpayerInvoiceCorrectionDateHistory
+  type: CLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ValidTo
+  - ValidFrom
+- table: TempCollectionNoticeItemAnalysisInfo
+  name: PK_XLS3_TempCollectionNoticeItemAnalysisInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TempCollectionNoticeItemAnalysisInfoID
+- table: TempCollectionNoticeItemAnalysisInfo
+  name: IX_XLS3_TempCollectionNoticeItemAnalysisInfo_CollectionNoticeItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectionNoticeItemRef
+- table: TempCollectionNoticeItemAnalysisInfo
+  name: IX_XLS3_TempCollectionNoticeItemAnalysisInfo_ExportDocType_ExportDocRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ExportDocType
+  - ExportDocRef
+- table: TermOfDelivery
+  name: PK_XLS3_TermOfDelivery
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TermOfDeliveryID
+- table: TermOfDelivery
+  name: UIX_XLS3_TermOfDelivery_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: TermOfDelivery
+  name: UIX_XLS3_TermOfDelivery_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: TermOfPayment
+  name: PK_XLS3_TermOfPayment_ID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TermOfPaymentID
+- table: TermOfPaymentItem
+  name: PK_XLS3_TermOfPaymentItem_ID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TermOfPaymentItemID
+- table: TermOfPaymentItem
+  name: UIX_TermOfPaymentItem_TermOfPaymentRef_EffectiveDateType_EffectiveDateAdditionalDays
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TermOfPaymentRef
+  - EffectiveDateType
+  - EffectiveDateAdditionalDays

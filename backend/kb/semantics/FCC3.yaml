@@ -1,0 +1,83 @@
+schema: FCC3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: ContractActivityType
+  title_fa: نوع فعالیت قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractAmount
+  title_fa: مبالغ قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractCollateral
+  title_fa: ضمانتنامه قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractFactor
+  title_fa: عامل قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractHeader
+  title_fa: قرارداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractInvoice
+  title_fa: صورت وضعیت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractInvoiceItemFactor
+  title_fa: عامل صورت وضعیت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractInvoiceItemObligation
+  title_fa: تعهدات پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContractPayCommitment
+  title_fa: نوع تعهد پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: IndetermineReceiptAndPayment
+  title_fa: دریافت و پرداخت غیر قطعی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: IndetermineReceiptAndPaymentCollateral
+  title_fa: ضمانتنامه دریافت پرداخت غیر قطعی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: IndetermineReceiptAndPaymentExchange
+  title_fa: تهاتر دریافت و پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: IndetermineReceiptAndPaymentItemObligation
+  title_fa: تعهد پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PaymentInfo
+  title_fa: اطلاعات دریافت/پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RelatedContract
+  title_fa: قراردادهای مرتبط
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Tender
+  title_fa: مناقصه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog

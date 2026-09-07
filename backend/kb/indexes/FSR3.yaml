@@ -1,0 +1,2429 @@
+schema: FSR3
+source: extracted
+indexes:
+- table: AccountNote
+  name: PK_AccountNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountNoteID
+- table: AccountNote
+  name: IX_FSR3_AccountNote_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: AccountNote
+  name: IX_FSR3_AccountNote_CalculationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationInformationRef
+- table: AccountNoteImportanceInfo
+  name: PK_AccountNoteImportanceInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountNoteImportanceInfoID
+- table: AccountNoteImportanceInfo
+  name: IX_FSR3_AccountNoteImportanceInfo_AccountNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountNoteRef
+- table: AccountNoteImportanceInfo
+  name: IX_FSR3_AccountNoteImportanceInfo_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: AccountNoteImportanceInfo
+  name: IX_FSR3_AccountNoteImportanceInfo_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: AccountNoteImportanceInfo
+  name: IX_FSR3_AccountNoteImportanceInfo_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: AccountNoteImportanceInfo
+  name: IX_FSR3_AccountNoteImportanceInfo_DLLevel
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel
+- table: AccountNoteItem
+  name: PK_AccountNoteItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountNoteItemID
+- table: AccountNoteItem
+  name: IX_FSR3_AccountNoteItem_AccountNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountNoteRef
+- table: AccountNoteItem
+  name: IX_FSR3_AccountNoteItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: AccountNoteItem
+  name: IX_FSR3_AccountNoteItem_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: AccountNoteItem
+  name: IX_FSR3_AccountNoteItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: AccountNoteItem
+  name: IX_FSR3_AccountNoteItem_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: AccountNoteStructure
+  name: PK_AccountNoteStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountNoteStructureID
+- table: AccountNoteStructure
+  name: IX_FSR3_AccountNoteStructure_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: AccountNoteStructure
+  name: IX_FSR3_AccountNoteStructure_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: AccountNoteStructureImportanceInfo
+  name: PK_AccountNoteStructureImportanceInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountNoteStructureImportanceInfoID
+- table: AccountNoteStructureImportanceInfo
+  name: IX_FSR3_AccountNoteStructureImportanceInfo_AccountNoteStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountNoteStructureRef
+- table: AccountNoteStructureImportanceInfo
+  name: IX_FSR3_AccountNoteStructureImportanceInfo_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: AccountNoteStructureImportanceInfo
+  name: IX_FSR3_AccountNoteStructureImportanceInfo_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: AccountNoteStructureImportanceInfo
+  name: IX_FSR3_AccountNoteStructureImportanceInfo_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: AccountNoteStructureImportanceInfo
+  name: IX_FSR3_AccountNoteStructureImportanceInfo_DLLevel
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel
+- table: AdjustmentClassification
+  name: PK_FSR3_AdjustmentClassification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentClassificationID
+- table: AdjustmentClassification
+  name: UIX_FSR3_AdjustmentClassification_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: AdjustmentClassificationItem
+  name: PK_AdjustmentClassificationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentClassificationItemID
+- table: AdjustmentClassificationItem
+  name: IX_FSR3_AdjustmentClassificationItem_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: AdjustmentClassificationItem
+  name: IX_FSR3_AdjustmentClassificationItem_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: AdjustmentClassificationItem
+  name: IX_FSR3_AdjustmentClassificationItem_AdjustmentClassificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AdjustmentClassificationRef
+- table: AdjustmentClassificationItem
+  name: IX_FSR3_AdjustmentClassificationItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: AdjustmentVoucher
+  name: PK_FSR3_AdjustmentVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentVoucherID
+- table: AdjustmentVoucher
+  name: IX_FSR3_AdjustmentVoucher_VoucherTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherTypeRef
+- table: AdjustmentVoucher
+  name: IX_FSR3_AdjustmentVoucher_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: AdjustmentVoucher
+  name: IX_FSR3_AdjustmentVoucher_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: AdjustmentVoucher
+  name: IX_FSR3_AdjustmentVoucher_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: AdjustmentVoucherItem
+  name: PK_FSR3_AdjustmentVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentVoucherItemID
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel10
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel10
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel11
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel11
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel12
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel12
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel13
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel13
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel14
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel14
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel15
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel15
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel16
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel16
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel17
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel17
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel18
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel18
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel19
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel19
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel20
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel20
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel4_Debit_Credit_TargetCurrencyDebit_TargetCurrencyCredit
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel4
+  included:
+  - AdjustmentVoucherRef
+  - Debit
+  - Credit
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel5_Debit_Credit_TargetCurrencyDebit_TargetCurrencyCredit
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel5
+  included:
+  - AdjustmentVoucherRef
+  - Debit
+  - Credit
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel6_Debit_Credit_TargetCurrencyDebit_TargetCurrencyCredit
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel6
+  included:
+  - AdjustmentVoucherRef
+  - Debit
+  - Credit
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel7
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel8
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_DLLevel9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel9
+- table: AdjustmentVoucherItem
+  name: IX_FSR3_AdjustmentVoucherItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: AssignComparitiveReportingPeriod
+  name: PK_AssignComparitiveReportingPeriod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignComparitiveReportingPeriodID
+- table: AssignComparitiveReportingPeriod
+  name: IX_FSR3_AssignComparitiveReportingPeriod_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: BalanceSheet
+  name: PK_FSR3_BalanceSheet
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BalanceSheetID
+- table: BalanceSheet
+  name: IX_FSR3_BalanceSheet_CalculationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationInformationRef
+- table: BalanceSheetItem
+  name: PK_FSR3_BalanceSheetItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BalanceSheetItemID
+- table: BalanceSheetItem
+  name: IX_FSR3_BalanceSheetItem_BalanceSheetRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BalanceSheetRef
+- table: BalanceSheetItem
+  name: IX_FSR3_BalanceSheetItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: BookletComparitiveReportingPeriodPresentation
+  name: PK_FSR3_BookletComparitiveReportingPeriodPresentation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BookletComparitiveReportingPeriodPresentationID
+- table: BookletComparitiveReportingPeriodPresentation
+  name: IX_FSR3_BookletComparitiveReportingPeriodPresentation_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: BookletComparitiveReportingPeriodPresentation
+  name: IX_FSR3_BookletComparitiveReportingPeriodPresentation_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: BookletStatementOrder
+  name: PK_FSR3_BookletStatementOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BookletStatementOrderID
+- table: BookletStatementOrder
+  name: IX_FSR3_BookletStatementOrder_StructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StructureRef
+- table: CalculationDescription
+  name: PK_FSR3_CalculationDescription
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationDescriptionID
+- table: CalculationDescription
+  name: IX_FSR3_CalculationDescription_CalculationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationInformationRef
+- table: CalculationInformation
+  name: PK_FSR3_CalculationInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationInformationID
+- table: CalculationInformation
+  name: UIX_FSR3_CalculationInformation_CompanyRef_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CompanyRef
+  - ReportingPeriodRef
+- table: CalculationInformation
+  name: IX_FSR3_CalculationInformation_StructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StructureRef
+- table: CalculationInformation
+  name: IX_FSR3_CalculationInformation_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: CalculationInformation
+  name: IX_FSR3_CalculationInformation_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: CashFlowAdjustment
+  name: PK_FSR3_CashFlowAdjustment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowAdjustmentID
+- table: CashFlowAdjustment
+  name: UIX_FSR3_CashFlowAdjustment_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: CashFlowAdjustmentItem
+  name: PK_CashFlowAdjustmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowAdjustmentItemID
+- table: CashFlowAdjustmentItem
+  name: IX_FSR3_CashFlowAdjustmentItem_CashFlowAdjustmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowAdjustmentRef
+- table: CashFlowAdjustmentItem
+  name: IX_FSR3_CashFlowAdjustmentItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: CashFlowStatement
+  name: PK_FSR3_CashFlowStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowStatementID
+- table: CashFlowStatement
+  name: IX_FSR3_CashFlowStatement_CalculationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationInformationRef
+- table: CashFlowStatementItem
+  name: PK_FSR3_CashFlowStatementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowStatementItemID
+- table: CashFlowStatementItem
+  name: IX_FSR3_CashFlowStatementItem_CashFlowStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowStatementRef
+- table: CashFlowStatementItem
+  name: IX_FSR3_CashFlowStatementItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: CollectiveInformation
+  name: PK_CollectiveInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectiveInformationID
+- table: CollectiveInformation
+  name: IX_FSR3_CollectiveInformation_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: CollectiveInformation
+  name: IX_FSR3_CollectiveInformation_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: CollectiveInformation
+  name: IX_FSR3_CollectiveInformation_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: CollectiveInformation
+  name: IX_FSR3_CollectiveInformation_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: CollectiveInformation
+  name: IX_FSR3_CollectiveInformation_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: CollectiveInformation
+  name: IX_FSR3_CollectiveInformation_ReportingPeriodRef_Including_AllLevels
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+  included:
+  - SLRef
+  - SLCode
+  - DLLevel4
+  - DLLevel5
+  - DLLevel6
+  - DLLevel7
+  - DLLevel8
+  - DLLevel9
+  - DLTypeRef4
+  - DLTypeRef5
+  - DLTypeRef6
+  - DLTypeRef7
+  - DLTypeRef8
+  - DLTypeRef9
+  - BeginningDebit
+  - BeginningCredit
+  - TurnoverDebit
+  - TurnoverCredit
+- table: ComprehensiveIncomeStatement
+  name: PK_FSR3_ComprehensiveIncomeStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ComprehensiveIncomeStatementID
+- table: ComprehensiveIncomeStatement
+  name: IX_FSR3_ComprehensiveIncomeStatement_CalculationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationInformationRef
+- table: ComprehensiveIncomeStatementItem
+  name: PK_FSR3_ComprehensiveIncomeStatementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ComprehensiveIncomeStatementItemID
+- table: ComprehensiveIncomeStatementItem
+  name: IX_FSR3_ComprehensiveIncomeStatementItem_ComprehensiveIncomeStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComprehensiveIncomeStatementRef
+- table: ComprehensiveIncomeStatementItem
+  name: IX_FSR3_ComprehensiveIncomeStatementItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: ConstantTopicInfo
+  name: PK_FSR3_ConstantTopicInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConstantTopicInfoID
+- table: ConstantTopicInfo
+  name: IX_FSR3_ConstantTopicInfo_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: ConstantTopicInfo
+  name: IX_FSR3_ConstantTopicInfo_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: ConstantTopicInfo
+  name: IX_FSR3_ConstantTopicInfo_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ConstantTopicInfo
+  name: IX_FSR3_ConstantTopicInfo_CompanyRef_ReportingPeriodRef_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+  - CompanyRef
+  - TopicRef
+- table: DetailSetting
+  name: PK_DetailSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DetailSettingID
+- table: FinancialStatement
+  name: PK_FinancialStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FinancialStatementID
+- table: FinancialStatementsStateLog
+  name: PK_FSR3_FinancialStatementsStateLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FinancialStatementsStateLogID
+- table: FinancialStatementsStateLog
+  name: IX_FSR3_FinancialStatementsStateLog_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: FSRCalcPeriod
+  name: PK_FSR3_FSRCalcPeriod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FSRCalcPeriodID
+- table: FSRCalcPeriod
+  name: IX_FSR3_FSRCalcPeriod_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: FSRCalcPeriod
+  name: IX_FSR3_FSRCalcPeriod_CalcPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+- table: GeneralSetting
+  name: PK_GeneralSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GeneralSettingID
+- table: IncomeStatement
+  name: PK_FSR3_IncomeStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IncomeStatementID
+- table: IncomeStatement
+  name: IX_FSR3_IncomeStatement_CalculationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationInformationRef
+- table: IncomeStatementItem
+  name: PK_FSR3_IncomeStatementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IncomeStatementItemID
+- table: IncomeStatementItem
+  name: IX_FSR3_IncomeStatementItem_IncomeStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IncomeStatementRef
+- table: IncomeStatementItem
+  name: IX_FSR3_IncomeStatementItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: MatrixAccountNote
+  name: PK_MatrixAccountNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixAccountNoteID
+- table: MatrixAccountNote
+  name: IX_FSR3_MatrixAccountNote_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: MatrixAccountNoteItem
+  name: PK_MatrixAccountNoteItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixAccountNoteItemID
+- table: MatrixAccountNoteItem
+  name: IX_FSR3_MatrixAccountNoteItem_MatrixAccountNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MatrixAccountNoteRef
+- table: MatrixAccountNoteItem
+  name: IX_FSR3_MatrixAccountNoteItem_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: MatrixAccountNoteItem
+  name: IX_FSR3_MatrixAccountNoteItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: MatrixAccountNoteItem
+  name: IX_FSR3_MatrixAccountNoteItem_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: MatrixAccountNoteItemImportanceInfo
+  name: PK_MatrixAccountNoteItemImportanceInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixAccountNoteItemImportanceInfoID
+- table: MatrixAccountNoteItemImportanceInfo
+  name: IX_FSR3_MatrixAccountNoteItemImportanceInfo_MatrixAccountNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MatrixAccountNoteRef
+- table: MatrixAccountNoteItemImportanceInfo
+  name: IX_FSR3_MatrixAccountNoteItemImportanceInfo_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: MatrixAccountNoteItemImportanceInfo
+  name: IX_FSR3_MatrixAccountNoteItemImportanceInfo_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: MatrixAccountNoteItemImportanceInfo
+  name: IX_FSR3_MatrixAccountNoteItemImportanceInfo_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: MatrixAccountNoteItemImportanceInfo
+  name: IX_FSR3_MatrixAccountNoteItemImportanceInfo_DLLevel
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel
+- table: MatrixNote
+  name: PK_MatrixNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteID
+- table: MatrixNote
+  name: IX_FSR3_MatrixNote_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: MatrixNote
+  name: IX_FSR3_MatrixNote_CalculationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationInformationRef
+- table: MatrixNoteColumnHeaderArrange
+  name: PK_MatrixNoteColumnHeaderArrange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteColumnHeaderArrangeID
+- table: MatrixNoteDescriptor
+  name: PK_MatrixNoteDescriptor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteDescriptorID
+- table: MatrixNoteInfo
+  name: PK_MatrixNoteInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteInfoID
+- table: MatrixNoteItem
+  name: PK_MatrixNoteItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteItemID
+- table: MatrixNoteItem
+  name: IX_FSR3_MatrixNoteItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: MatrixNoteItem
+  name: IX_FSR3_MatrixNoteItem_MatrixNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MatrixNoteRef
+- table: MatrixNoteStructure
+  name: PK_MatrixNoteStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteStructureID
+- table: MatrixNoteStructure
+  name: IX_FSR3_MatrixNoteStructure_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: MatrixNoteStructure
+  name: IX_FSR3_MatrixNoteStructure_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: MatrixNoteStructureDescriptor
+  name: PK_MatrixNoteStructureDescriptor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteStructureDescriptorID
+- table: MatrixNoteStructureInfo
+  name: PK_MatrixNoteStructureInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteStructureInfoID
+- table: MatrixNoteStructureItem
+  name: PK_MatrixNoteStructureItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteStructureItemID
+- table: MatrixNoteStructureItem
+  name: IX_FSR3_MatrixNoteStructureItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: MatrixNoteStructureItemImportanceInfo
+  name: PK_MatrixNoteStructureItemImportanceInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MatrixNoteStructureItemImportanceInfoID
+- table: MatrixNoteStructureItemImportanceInfo
+  name: IX_FSR3_MatrixNoteStructureItemImportanceInfo_MatrixNoteStructureItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MatrixNoteStructureItemRef
+- table: MatrixNoteStructureItemImportanceInfo
+  name: IX_FSR3_MatrixNoteStructureItemImportanceInfo_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: MatrixNoteStructureItemImportanceInfo
+  name: IX_FSR3_MatrixNoteStructureItemImportanceInfo_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: MatrixNoteStructureItemImportanceInfo
+  name: IX_FSR3_MatrixNoteStructureItemImportanceInfo_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: MatrixNoteStructureItemImportanceInfo
+  name: IX_FSR3_MatrixNoteStructureItemImportanceInfo_DLLevel
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel
+- table: ModularTopicInfo
+  name: PK_FSR3_ModularTopicInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ModularTopicInfoID
+- table: ModularTopicInfo
+  name: IX_FSR3_ModularTopicInfo_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: ModularTopicInfo
+  name: IX_FSR3_ModularTopicInfo_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: ModularTopicInfo
+  name: IX_FSR3_ModularTopicInfo_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ModularTopicInfo
+  name: IX_FSR3_ModularTopicInfo_CompanyRef_ReportingPeriodRef_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+  - CompanyRef
+  - TopicRef
+- table: NatureAdjustment
+  name: PK_FSR3_NatureAdjustment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NatureAdjustmentID
+- table: NatureAdjustmentItem
+  name: PK_FSR3_NatureAdjustmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NatureAdjustmentItemID
+- table: NatureAdjustmentItem
+  name: IX_FSR3_NatureAdjustmentItem_NatureAdjustmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NatureAdjustmentRef
+- table: NatureAdjustmentItem
+  name: IX_FSR3_NatureAdjustmentItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: PriorYearAdjustment
+  name: PK_FSR3_PriorYearAdjustment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriorYearAdjustmentID
+- table: PriorYearAdjustmentAccount
+  name: PK_FSR3_PriorYearAdjustmentAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriorYearAdjustmentAccountID
+- table: PriorYearAdjustmentCollectiveInformation
+  name: PK_PriorYearAdjustmentCollectiveInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriorYearAdjustmentCollectiveInformationID
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef4
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef5
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef6
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef7
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef8
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef9
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef10
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef10
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef11
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef11
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef12
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef12
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef13
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef13
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef14
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef14
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef15
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef15
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef16
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef16
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef17
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef17
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef18
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef18
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef19
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef19
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_DLTypeRef20
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef20
+- table: PriorYearAdjustmentCollectiveInformation
+  name: IX_FSR3_PriorYearAdjustmentCollectiveInformation_EffectiveReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EffectiveReportingPeriodRef
+- table: PriorYearAdjustmentItem
+  name: PK_FSR3_PriorYearAdjustmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriorYearAdjustmentItemID
+- table: PriorYearAdjustmentItemDetail
+  name: PK_FSR3_PriorYearAdjustmentItemDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriorYearAdjustmentItemDetailID
+- table: ReportingPeriod
+  name: PK_ReportingPeriod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportingPeriodID
+- table: ReportingPeriod
+  name: IX_FSR3_ReportingPeriod_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ReportingPeriod
+  name: IX_FSR3_ReportingPeriod_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: ReportingPeriod
+  name: IX_FSR3_ReportingPeriod_CashFlowBaseReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowBaseReportingPeriodRef
+- table: ReportingStyle
+  name: PK_ReportingStyle
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportingStyleID
+- table: ReportStructure
+  name: PK_FSR3_ReportStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportStructureID
+- table: ReportStructure
+  name: IX_FSR3_ReportStructure_StructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StructureRef
+- table: ReportStructureItem
+  name: PK_FSR3_ReportStructureItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportStructureItemID
+- table: ReportStructureItem
+  name: IX_FSR3_ReportStructureItem_ReportStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportStructureRef
+- table: ReportStructureItem
+  name: IX_FSR3_ReportStructureItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: ReportTopic
+  name: PK_FSR3_ReportTopic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportTopicID
+- table: ReportTopicToSLRelation
+  name: PK_FSR3_ReportTopicToSLRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportTopicToSLRelationID
+- table: ReportTopicToSLRelation
+  name: IX_FSR3_ReportTopicToSLRelation_ReportTopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportTopicRef
+- table: ReportTopicToSLRelation
+  name: IX_FSR3_ReportTopicToSLRelation_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: ReportTopicToSLRelation
+  name: IX_FSR3_ReportTopicToSLRelation_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: ReportTopicToSLRelationDL
+  name: PK_FSR3_ReportTopicToSLRelationDL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportTopicToSLRelationDLID
+- table: ReportTopicToSLRelationDL
+  name: IX_FSR3_ReportTopicToSLRelationDL_ReportTopicToSLRelationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportTopicToSLRelationRef
+- table: ReportTopicToSLRelationDL
+  name: IX_FSR3_ReportTopicToSLRelationDL_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: ReportTopicToSLRelationDL
+  name: IX_FSR3_ReportTopicToSLRelationDL_DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLCode
+- table: ReportTopicToTopicRelation
+  name: PK_FSR3_ReportTopicToTopicRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportTopicToTopicRelationID
+- table: ReportTypeSetting
+  name: PK_ReportTypeSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReportTypeSettingID
+- table: SimpleNote
+  name: PK_FSR3_SimpleNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SimpleNoteID
+- table: SimpleNote
+  name: IX_FSR3_SimpleNote_CalculationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationInformationRef
+- table: SimpleNote
+  name: IX_FSR3_SimpleNote_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: SimpleNoteItem
+  name: PK_FSR3_SimpleNoteItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SimpleNoteItemID
+- table: SimpleNoteItem
+  name: IX_FSR3_SimpleNoteItem_SimpleNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SimpleNoteRef
+- table: SimpleNoteItem
+  name: IX_FSR3_SimpleNoteItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: SimpleNoteStructure
+  name: PK_SimpleNoteStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SimpleNoteStructureID
+- table: SimpleNoteStructure
+  name: IX_FSR3_SimpleNoteStructure_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: SimpleNoteStructure
+  name: IX_FSR3_SimpleNoteStructure_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: SimpleNoteStructureItem
+  name: PK_SimpleNoteStructureItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SimpleNoteStructureItemID
+- table: SimpleNoteStructureItem
+  name: IX_FSR3_SimpleNoteStructureItem_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: Structure
+  name: PK_FSR3_Structure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StructureID
+- table: Structure
+  name: UIX_FSR3_Structure_Code_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - LedgerRef
+- table: Structure
+  name: IX_FSR3_Structure_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Topic
+  name: PK_FSR3_Topic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TopicID
+- table: Topic
+  name: UIX_FSR3_Topic_Number_Title_CalculationSourceType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - Title
+  - CalculationSourceType
+- table: TopicAdjustment
+  name: PK_FSR3_TopicAdjustment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TopicAdjustmentID
+- table: TopicCalculation
+  name: PK_FSR3_TopicCalculation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TopicCalculationID
+- table: TopicCalculation
+  name: IX_FSR3_TopicCalculation_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: TopicCalculation
+  name: IX_FSR3_TopicCalculation_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: TopicCalculation
+  name: IX_FSR3_TopicCalculation_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: TopicNoteRelation
+  name: PK_TopicNoteRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TopicNoteRelationID
+- table: TopicNoteRelation
+  name: IX_FSR3_TopicNoteRelation_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: TopicNoteRelationStructure
+  name: PK_FSR3_TopicNoteRelationStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TopicNoteRelationStructureID
+- table: TopicNoteRelationStructure
+  name: IX_FSR3_TopicNoteRelationStructure_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: TopicToSLRelation
+  name: PK_FSR3_TopicToSLRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TopicToSLRelationID
+- table: TopicToSLRelation
+  name: IX_FSR3_TopicToSLRelation_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: TopicToSLRelation
+  name: IX_FSR3_TopicToSLRelation_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: TopicToSLRelation
+  name: IX_FSR3_TopicToSLRelation_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: TopicToSLRelationDL
+  name: PK_FSR3_TopicToSLRelationDL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TopicToSLRelationDLID
+- table: TopicToSLRelationDL
+  name: IX_FSR3_TopicToSLRelationDL_DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLCode
+- table: TopicToSLRelationDL
+  name: IX_FSR3_TopicToSLRelationDL_TopicToSLRelationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicToSLRelationRef
+- table: TopicToSLRelationDL
+  name: IX_FSR3_TopicToSLRelationDL_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: TopicToSLRelationDL
+  name: IX_FSR3_TopicToSLRelationDL_TopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TopicRef
+- table: TopicToTopicRelation
+  name: PK_FSR3_TopicToTopicRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TopicToTopicRelationID
+- table: TopicToTopicRelation
+  name: IX_FSR3_TopicToTopicRelation_MainTopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MainTopicRef
+- table: TopicToTopicRelation
+  name: IX_FSR3_TopicToTopicRelation_UsedTopicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UsedTopicRef
+- table: TopicToTopicRelation
+  name: UIX_FSR3_Topic_TopicToTopicRelation_MainTopicRef_UsedTopicRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - MainTopicRef
+  - UsedTopicRef
+- table: WriteOffPattern
+  name: PK_FSR3_WriteOffPattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WriteOffPatternID
+- table: WriteOffPattern
+  name: IX_FSR3_WriteOffPattern_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: WriteOffPattern
+  name: IX_FSR3_WriteOffPattern_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: WriteOffPattern
+  name: IX_FSR3_WriteOffPattern_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: WriteOffPatternAccount
+  name: PK_FSR3_WriteOffPatternAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WriteOffPatternAccountID
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel4
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel5
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel6
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel7
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel8
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel9
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel10
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel10
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel11
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel11
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel12
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel12
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel13
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel13
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel14
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel14
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel15
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel15
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel16
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel16
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel17
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel17
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel18
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel18
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel19
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel19
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLLevel20
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLLevel20
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef4
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef5
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef6
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef7
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef8
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef9
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef10
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef10
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef11
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef11
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef12
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef12
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef13
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef13
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef14
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef14
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef15
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef15
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef16
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef16
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef17
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef17
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef18
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef18
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef19
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef19
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditDLTypeRef20
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditDLTypeRef20
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_CreditSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditSLRef
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel4
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel5
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel6
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel7
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel8
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel9
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel10
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel10
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel11
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel11
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel12
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel12
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel13
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel13
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel14
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel14
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel15
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel15
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel16
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel16
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel17
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel17
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel18
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel18
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel19
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel19
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLLevel20
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLLevel20
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef4
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef5
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef6
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef7
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef8
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef9
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef10
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef10
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef11
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef11
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef12
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef12
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef13
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef13
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef14
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef14
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef15
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef15
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef16
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef16
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef17
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef17
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef18
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef18
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef19
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef19
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitDLTypeRef20
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitDLTypeRef20
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_DebitSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitSLRef
+- table: WriteOffPatternAccount
+  name: IX_FSR3_WriteOffPatternAccount_WriteOffPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WriteOffPatternRef
+- table: WriteOffPatternAccountSource
+  name: PK_FSR3_WriteOffPatternAccountSource
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WriteOffPatternAccountSourceID
+- table: WriteOffPatternAccountSource
+  name: IX_FSR3_WriteOffPatternAccountSource_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: WriteOffPatternAccountSource
+  name: IX_FSR3_WriteOffPatternAccountSource_WriteOffPatternAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WriteOffPatternAccountRef
+- table: WriteOffStatement
+  name: PK_FSR3_WriteOffStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WriteOffStatementID
+- table: WriteOffStatement
+  name: IX_FSR3_WriteOffStatement_ReportingPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReportingPeriodRef
+- table: WriteOffStatement
+  name: IX_FSR3_WriteOffStatement_WriteOffPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WriteOffPatternRef
+- table: WriteOffStatementItem
+  name: PK_FSR3_WriteOffStatementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WriteOffStatementItemID
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_WriteOffStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WriteOffStatementRef
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLLevel4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel4
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLLevel5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel5
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLLevel6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel6
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLLevel7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel7
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLLevel8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel8
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLLevel9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel9
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLTypeRef4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef4
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLTypeRef5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef5
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLTypeRef6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef6
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLTypeRef7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef7
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLTypeRef8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef8
+- table: WriteOffStatementItem
+  name: IX_FSR3_WriteOffStatementItem_DLTypeRef9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef9

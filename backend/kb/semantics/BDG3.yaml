@@ -1,0 +1,263 @@
+schema: BDG3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: AdjustmentFactor
+  title_fa: عوامل پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AdjustmentFactorManagement
+  title_fa: مدیریت عوامل پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AdjustmentFactorManagementItem
+  title_fa: قلم مدیریت عوامل پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AdjustmentFactorPaymentInformation
+  title_fa: اطلاعات  پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AdjustmentFactorReceiptInformation
+  title_fa: اطلاعات دریافت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AmountControlDefinition
+  title_fa: تنظیمات کنترل‌ها
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AmountControlDefinitionEntity
+  title_fa: موجودیت کنترلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AmountControlDefinitionEntityDLType
+  title_fa: نوع تفصیلی موجودیت کنترلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntity
+  title_fa: موجودیت بودجه‌ای
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntityCategory
+  title_fa: گروه موجودیت بودجه‌ای
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntityClassification
+  title_fa: موجودیت بودجه‌ای
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntityDefinition
+  title_fa: پیکربندی موجودیت بودجه‌ای
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntityItem
+  title_fa: قلم موجودیت بودجه‌ای
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntityItemAdjustmentFactor
+  title_fa: قلم عوامل پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntitySourceInformationItem
+  title_fa: اطلاعات مبنا بودجه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntityStandardDescription
+  title_fa: شرح استاندارد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetEntityType
+  title_fa: نوع موجودیت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetingBatchAmending
+  title_fa: اصلاحیه گروهی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetingBatchAmendingFilter
+  title_fa: فیلترهای اصلاحیه گروهی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetingConfig
+  title_fa: پیکربندی بودجه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetingDefault
+  title_fa: انتخاب پیش‌فرض
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: BudgetingDefaultItem
+  title_fa: اقلام انتخاب پیش‌فرض
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CheckingRequest
+  title_fa: درخواست رسیدگی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ComputationalFormula
+  title_fa: فرمول های مرور اعتبارات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ConfigurationAssignment
+  title_fa: انتساب پیکربندی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ControlTolerance
+  title_fa: تنظیمات کنترل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DLTypeArrangement
+  title_fa: ترکیب تفضیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DLTypeArrangementItem
+  title_fa: تنظیمات نوع تفصیلی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EncumbranceRequest
+  title_fa: درخواست تأمین اعتبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EncumbranceRequestItem
+  title_fa: قلم درخواست تأمین اعتبار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ExcludedControl
+  title_fa: استثنای کنترل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FilterDLType
+  title_fa: نوع تفصیلی فیلتر
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FilterEntity
+  title_fa: موجودیت فیلتر
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Formula
+  title_fa: فرمول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FormulaEntity
+  title_fa: موجودیت فرمول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FormulaEntityFilter
+  title_fa: فیلتر موجودیت‌های فرمول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PaymentInformationItem
+  title_fa: اطلاعات پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PaymentTypeSL
+  title_fa: معین نوع پرداخت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReceiptInformationItem
+  title_fa: اطلاعات دریافت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RegularReportTemplate
+  title_fa: انتساب و تنظیم الگوی گزارش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RegularReportTemplateItem
+  title_fa: قلم انتساب و تنظیم الگوی گزارش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RegularReportTemplateItemBodyColumn
+  title_fa: بدنه گزارش انتساب و تنظیم الگوی گزارش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RegularReportTemplateItemParameter
+  title_fa: پارامتر انتساب و تنظیم الگوی گزارش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RegularReportTemplateItemParameterGrouping
+  title_fa: اطلاعات تکمیلی انتساب و تنظیم الگوی گزارش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RepresentativeAmount
+  title_fa: مقدار نمایشی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReviewTemplate
+  title_fa: قالب گزارش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SLFormula
+  title_fa: فرمول معین
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SLFormulaItemFilter
+  title_fa: فیلتر معین های فرمول
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransposeLog
+  title_fa: لاگ عملیات انتقال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransposePattern
+  title_fa: الگوی نگاشت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransposeSetting
+  title_fa: عملیات اتوماتیک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransposeTransferSetting
+  title_fa: تنظیمات نگاشت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog

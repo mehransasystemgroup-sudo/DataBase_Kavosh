@@ -1,0 +1,17 @@
+schema: MRS3
+source: extracted
+indexes:
+- table: PowerBIItem
+  name: PK_MRS3_PowerBIItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PowerBIItemID
+- table: PowerBIItem
+  name: UIX_MRS3_PowerBIItem_ReportServerCatalogItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReportServerCatalogItemRef

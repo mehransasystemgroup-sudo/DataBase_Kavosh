@@ -1,0 +1,297 @@
+schema: CAL3
+source: extracted
+indexes:
+- table: CalibrationCharacteristic
+  name: PK_CAL3_CalibrationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalibrationCharacteristicID
+- table: CalibrationCharacteristic
+  name: UIX_CAL3_CalibrationCharacteristic_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: CalibrationCharacteristic
+  name: UIX_CAL3_CalibrationCharacteristic_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: CalibrationCharacteristic
+  name: IX_CAL3_CalibrationCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: CalibrationCharacteristic
+  name: IX_CAL3_CalibrationCharacteristic_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: CalibrationInspection
+  name: PK_CalibrationInspection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalibrationInspectionID
+- table: CalibrationInspection
+  name: IX_CAL3_CalibrationInspection_CalibrationPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationPlanRef
+- table: CalibrationInspection
+  name: IX_CAL3_CalibrationInspection_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: CalibrationInspection
+  name: IX_CAL3_CalibrationInspection_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: CalibrationInspection
+  name: IX_CAL3_CalibrationInspection_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: CalibrationInspectionCharacteristic
+  name: PK_CalibrationInspectionCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalibrationInspectionCharacteristicID
+- table: CalibrationInspectionCharacteristic
+  name: IX_CAL3_CalibrationInspectionCharacteristic_CalibrationInspectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationInspectionRef
+- table: CalibrationInspectionCharacteristic
+  name: IX_CAL3_CalibrationInspectionCharacteristic_CalibrationCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationCharacteristicRef
+- table: CalibrationInspectionCharacteristic
+  name: IX_CAL3_CalibrationInspectionCharacteristic_TestDeviceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TestDeviceRef
+- table: CalibrationPlan
+  name: PK_CAL3_CalibrationPlan
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalibrationPlanID
+- table: CalibrationPlan
+  name: UIX_CAL3_CalibrationPlan_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: CalibrationPlan
+  name: IX_CAL3_CalibrationPlan_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: CalibrationPlanEquipment
+  name: PK_CAL3_CalibrationPlanEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalibrationPlanEquipmentID
+- table: CalibrationPlanEquipment
+  name: IX_CAL3_CalibrationPlanEquipment_CalibrationPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationPlanRef
+- table: CalibrationPlanEquipment
+  name: IX_CAL3_CalibrationPlanEquipment_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: CalibrationPlanSpecification
+  name: PK_CAL3_CalibrationPlanSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalibrationPlanSpecificationID
+- table: CalibrationPlanSpecification
+  name: IX_CAL3_CalibrationPlanSpecification_CalibrationPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationPlanRef
+- table: CalibrationPlanSpecification
+  name: IX_CAL3_CalibrationPlanSpecification_CalibrationCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationCharacteristicRef
+- table: CalibrationPlanSpecification
+  name: IX_CAL3_CalibrationPlanSpecification_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: CalibrationPlanSpecification
+  name: IX_CAL3_CalibrationPlanSpecification_TestDeviceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TestDeviceRef
+- table: CalibrationResultRecording
+  name: PK_CalibrationResultRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalibrationResultRecordingID
+- table: CalibrationResultRecording
+  name: IX_CAL3_CalibrationResultRecording_CalibrationInspectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationInspectionRef
+- table: CalibrationResultRecordingCharacteristic
+  name: PK_CalibrationResultRecordingCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalibrationResultRecordingCharacteristicID
+- table: CalibrationResultRecordingCharacteristic
+  name: IX_CAL3_CalibrationResultRecordingCharacteristic_CalibrationResultRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationResultRecordingRef
+- table: CalibrationResultRecordingCharacteristic
+  name: IX_CAL3_CalibrationResultRecordingCharacteristic_CalibrationInspectionCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationInspectionCharacteristicRef
+- table: CalibrationResultRecordingCharacteristic
+  name: IX_CAL3_CalibrationResultRecordingCharacteristic_InspectorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectorRef
+- table: EquipmentCalibrationExtension
+  name: PK_CAL3_EquipmentCalibrationExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentCalibrationExtensionID
+- table: EquipmentCalibrationExtension
+  name: IX_CAL3_EquipmentCalibrationExtension_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: EquipmentCalibrationExtensionInspection
+  name: PK_CAL3_EquipmentCalibrationExtensionInspection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentCalibrationExtensionInspectionID
+- table: EquipmentCalibrationExtensionInspection
+  name: IX_CAL3_EquipmentCalibrationExtensionInspection_EquipmentCalibrationExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentCalibrationExtensionRef
+- table: EquipmentCalibrationExtensionInspection
+  name: IX_CAL3_EquipmentCalibrationExtensionInspection_CalibrationPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationPlanRef
+- table: ServiceOperationCalibration
+  name: PK_CAL3_ServiceOperationCalibration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationCalibrationID
+- table: ServiceOperationCalibration
+  name: UIX_CAL3_ServiceOperationCalibration_ServiceOperationRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ServiceOperationRef
+- table: ServiceOperationCalibration
+  name: IX_CAL3_ServiceOperationCalibration_CalibrationPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationPlanRef
+- table: WorkOrderOperationCalibration
+  name: PK_CAL3_WorkOrderOperationCalibration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationCalibrationID
+- table: WorkOrderOperationCalibration
+  name: UIX_CAL3_WorkOrderOperationCalibration_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: WorkOrderOperationCalibration
+  name: IX_CAL3_WorkOrderOperationCalibration_CalibrationPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalibrationPlanRef
