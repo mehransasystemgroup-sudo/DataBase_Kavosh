@@ -77,7 +77,7 @@ export function CopyButton({ text, label = "کپی", copiedLabel = "کپی شد"
       onClick={run}
       title={label}
       className={cn(
-        "inline-flex items-center gap-1 rounded-sm border border-border bg-surface px-2 py-1 text-[11px] text-muted-foreground transition-colors hover:border-brand/45 hover:text-brand-text",
+        "inline-flex min-h-9 items-center justify-center gap-1 rounded-md border border-border bg-surface px-2.5 text-[11px] text-muted-foreground transition-colors hover:border-brand/45 hover:text-brand-text sm:min-h-8",
         className,
       )}
     >
@@ -158,6 +158,73 @@ export function LoadingBar({ show }) {
   return (
     <div className="h-0.5 w-full overflow-hidden bg-transparent">
       <div className="h-full w-1/3 animate-indeterminate rounded-full bg-brand" />
+    </div>
+  );
+}
+
+/** بلوک خاکستریِ در حال بارگذاری — پایهٔ همهٔ اسکلت‌ها. */
+export function Shimmer({ className }) {
+  return (
+    <div
+      className={cn(
+        "relative overflow-hidden rounded bg-surfaceHover",
+        "after:absolute after:inset-0 after:animate-indeterminate",
+        "after:bg-gradient-to-l after:from-transparent after:via-foreground/[0.06] after:to-transparent",
+        className,
+      )}
+    />
+  );
+}
+
+/**
+ * اسکلت کارت نتیجه.
+ *
+ * چرا اسکلت به‌جای اسپینر: شکل نتیجه را از پیش نشان می‌دهد، پس وقتی داده
+ * می‌رسد چیزی در صفحه نمی‌پرد و انتظار کوتاه‌تر حس می‌شود.
+ */
+const SKELETON_WIDTHS = ["w-28", "w-36", "w-24", "w-32", "w-40", "w-28"];
+
+export function ResultSkeleton({ count = 6 }) {
+  return (
+    <div className="space-y-1" aria-hidden="true">
+      {Array.from({ length: count }, (_, i) => (
+        <div key={i} className="rounded-lg border border-transparent bg-surface/40 p-2.5">
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex items-center gap-1.5">
+              <Shimmer className="h-4 w-10" />
+              <Shimmer className={cn("h-4", SKELETON_WIDTHS[i % SKELETON_WIDTHS.length])} />
+            </div>
+            <Shimmer className="h-4 w-14 rounded-full" />
+          </div>
+          <Shimmer className="mt-2 h-3 w-1/2" />
+          <Shimmer className="mt-2 h-2.5 w-1/3" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** اسکلت صفحهٔ جزئیات جدول — همان ریتم کارت سرصفحه و شبکهٔ آمار. */
+export function DetailSkeleton() {
+  return (
+    <div className="space-y-3" aria-hidden="true">
+      <div className="space-y-3 rounded-xl border border-border bg-surface p-3 sm:p-4">
+        <div className="flex flex-wrap items-center gap-2">
+          <Shimmer className="h-5 w-20" />
+          <Shimmer className="h-6 w-44" />
+        </div>
+        <Shimmer className="h-4 w-2/3 max-w-sm" />
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+          {Array.from({ length: 5 }, (_, i) => (
+            <Shimmer key={i} className="h-16 rounded-lg" />
+          ))}
+        </div>
+      </div>
+      <Shimmer className="h-10 w-full max-w-lg rounded-lg" />
+      <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
+        <Shimmer className="h-64 rounded-lg" />
+        <Shimmer className="h-64 rounded-lg" />
+      </div>
     </div>
   );
 }

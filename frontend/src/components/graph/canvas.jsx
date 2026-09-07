@@ -131,10 +131,21 @@ export function CanvasControls({
   className,
 }) {
   const btn =
-    "flex h-8 w-8 items-center justify-center rounded-md border border-border bg-surface/90 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:border-brand/45 hover:text-brand-text";
+    "flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-border bg-surface/90 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:border-brand/45 hover:text-brand-text sm:h-8 sm:w-8";
 
+  /*
+    روی موبایل کنترل‌ها نوار افقیِ پایین می‌شوند: ستونِ کنارِ صفحه شش دکمه‌ی
+    ۴۴پیکسلی است و ارتفاع کمِ گوشی را می‌بلعد. روی دسکتاپ همان ستون کنار بوم.
+  */
   return (
-    <div className={cn("flex flex-col gap-1", className)}>
+    <div
+      className={cn(
+        "absolute z-10 flex gap-1.5",
+        "inset-x-2 bottom-2 flex-row-reverse justify-start",
+        "sm:inset-x-auto sm:bottom-auto sm:end-2 sm:top-2 sm:flex-col sm:gap-1",
+        className,
+      )}
+    >
       <button type="button" onClick={onZoomIn} title="بزرگ‌نمایی" className={btn}>
         <ZoomIn className="h-3.5 w-3.5" />
       </button>
@@ -172,7 +183,7 @@ export function CanvasControls({
         </button>
       )}
       {typeof level === "number" && (
-        <span className="rounded-md border border-border bg-surface/90 px-1 py-0.5 text-center font-mono text-[9px] text-muted-foreground backdrop-blur">
+        <span className="hidden rounded-md border border-border bg-surface/90 px-1 py-0.5 text-center font-mono text-[9px] text-muted-foreground backdrop-blur sm:block">
           {Math.round(level * 100)}٪
         </span>
       )}
