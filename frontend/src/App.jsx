@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import { Database, Loader2, Network, RefreshCw, Search, WifiOff } from "lucide-react";
+import { Database, Network, Search, WifiOff } from "lucide-react";
 
-import { errorMessage, http } from "@/lib/api";
+import { http } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
 import { useHashRoute } from "@/lib/route";
 import { ThemeProvider } from "@/context/ThemeContext";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Toaster, toast } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/sonner";
 import ExplorerView from "@/views/ExplorerView";
 import SchemaGraphView from "@/views/SchemaGraphView";
 
@@ -79,7 +79,6 @@ function ViewSwitch({ view, setView, className }) {
 function AppShell() {
   const [route, navigate] = useHashRoute();
   const [health, setHealth] = useState(null);
-  const [rebuilding, setRebuilding] = useState(false);
 
   const view = route.view === "graph" ? "graph" : "explorer";
   const graphSchema = route.schema || "FIN3";
@@ -95,24 +94,6 @@ function AppShell() {
 
   useEffect(() => {
     refreshHealth();
-  }, [refreshHealth]);
-
-  const rebuild = useCallback(async () => {
-    setRebuilding(true);
-    const id = toast.loading("بازسازی ایندکس دانش آغاز شد…");
-    try {
-      const { data } = await http.post("/index/rebuild");
-      if (data.ok) {
-        toast.success("ایندکس بازسازی شد؛ دانش تازه در جست‌وجو فعال است.", { id });
-        refreshHealth();
-      } else {
-        toast.error(`بازسازی ناموفق بود: ${data.error || "خطای نامشخص"}`, { id });
-      }
-    } catch (e) {
-      toast.error(errorMessage(e, "ارتباط با سرور برقرار نشد."), { id });
-    } finally {
-      setRebuilding(false);
-    }
   }, [refreshHealth]);
 
   const setView = useCallback(
@@ -131,21 +112,6 @@ function AppShell() {
           <ViewSwitch view={view} setView={setView} className="hidden sm:flex" />
 
           <div className="flex shrink-0 items-center gap-1.5">
-            <button
-              type="button"
-              onClick={rebuild}
-              disabled={rebuilding}
-              aria-label="بازسازی ایندکس جست‌وجو"
-              title="بازسازی ایندکس جست‌وجو پس از ثبت دانش جدید"
-              className="inline-flex h-11 items-center gap-1.5 rounded-md border border-border bg-surface px-3 text-xs font-medium text-muted-foreground transition-colors hover:border-brand/45 hover:bg-surfaceHover hover:text-brand-text disabled:opacity-60 sm:h-9 sm:px-2.5"
-            >
-              {rebuilding ? (
-                <Loader2 className="h-4 w-4 animate-spin text-brand-text" />
-              ) : (
-                <RefreshCw className="h-4 w-4" />
-              )}
-              <span className="hidden lg:inline">بازسازی ایندکس</span>
-            </button>
             <ThemeToggle />
           </div>
         </div>

@@ -11,8 +11,8 @@ export default {
         xs: "420px",
       },
       fontFamily: {
-        sans: ["Vazirmatn", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+        sans: ["Vazirmatn Variable", "Vazirmatn", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono Variable", "JetBrains Mono", "ui-monospace", "monospace"],
       },
       borderRadius: {
         xs: "calc(var(--radius) - 4px)",

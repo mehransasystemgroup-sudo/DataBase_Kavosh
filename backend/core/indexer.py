@@ -1,13 +1,17 @@
-#!/usr/bin/env python3
 """
 ساخت ایندکس جست‌وجو از kb/
 
-ایندکس یک مصنوع مشتق است: همیشه باید با یک دستور از kb/ بازساخته شود.
-هرگز در git نگذارید و هرگز مستقیم ویرایش نکنید.
+ایندکس یک مصنوع مشتق است: همیشه از kb/ ساخته می‌شود، هرگز دستی ویرایش
+نمی‌شود و در git نمی‌نشیند.
 
-استفاده:
-    python3 scripts/build_index.py --kb kb --out index/kb.sqlite \
-                                   [--instance instances/live]
+این ماژول عمداً importable است، نه اسکریپتی که با subprocess صدا زده شود:
+در نسخهٔ بسته‌بندی‌شدهٔ ویندوز، `sys.executable` خودِ برنامه است، پس اجرای
+زیرفرایندی به‌جای ساخت ایندکس، یک نمونهٔ دیگر از برنامه را بالا می‌آورد.
+فراخوانی درون‌فرایندی هم این تله را حذف می‌کند و هم چند ثانیه راه‌اندازی
+مفسر را صرفه‌جویی می‌کند.
+
+اجرای دستی:
+    python3 -m core.indexer --kb kb --out index/kb.sqlite --instance instances/live
 """
 
 from __future__ import annotations
@@ -17,13 +21,9 @@ import sqlite3
 import sys
 from pathlib import Path
 
-try:
-    import yaml
-except ImportError:                                     # pragma: no cover
-    sys.exit("نیاز به PyYAML:  pip install pyyaml")
+import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from core.textnorm import build_search_text             # noqa: E402
+from .textnorm import build_search_text
 
 
 SCHEMA = """

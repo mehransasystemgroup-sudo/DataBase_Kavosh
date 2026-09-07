@@ -12,7 +12,7 @@ from collections import deque
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .textnorm import normalize, stem_fa
+from .textnorm import build_search_text, normalize, stem_fa
 
 # نگاشت دسته‌ی نوع فیلد → الگوهای LIKE روی ستون type
 FIELD_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
@@ -108,14 +108,68 @@ class KnowledgeBase:
         db.row_factory = sqlite3.Row
         return db
 
-    def reload(self) -> None:
-        """اتصال را به ایندکس تازه‌بازسازی‌شده بازمی‌کند — بدون ری‌استارت سرور."""
+    def close(self) -> None:
+        """
+        بستن اتصال.
+
+        روی ویندوز لازم است: تا وقتی فایل ایندکس باز باشد، جایگزینی‌اش هنگام
+        بازسازی با خطای «فایل در حال استفاده است» شکست می‌خورد.
+        """
         try:
             self.db.close()
         except Exception:
             pass
+
+    def reload(self) -> None:
+        """اتصال را به ایندکس تازه‌بازسازی‌شده بازمی‌کند — بدون ری‌استارت سرور."""
+        self.close()
         self.db = self._connect()
         self._adj = None
+
+    def apply_learned(self, kind: str, payload: dict) -> None:
+        """
+        دانش تازه را بی‌درنگ در ایندکس زنده می‌نشاند.
+
+        منبع حقیقت همچنان YAML است، ولی بدون این، کاربر باید پس از هر ثبت
+        دستی «بازسازی ایندکس» بزند و چند ثانیه صبر کند تا چیزی که خودش نوشته
+        در جست‌وجو دیده شود. همان تغییر کوچک این‌جا روی SQLite هم اعمال
+        می‌شود تا بازخورد فوری باشد.
+        """
+        write = sqlite3.connect(self._db_path)
+        try:
+            if kind == "table":
+                full = payload["full_name"]
+                sets, values = [], []
+                for column in ("title_fa", "description_fa"):
+                    if payload.get(column):
+                        sets.append(f"{column} = ?")
+                        values.append(payload[column])
+                if sets:
+                    write.execute(
+                        f"UPDATE tables SET {', '.join(sets)} WHERE full_name = ?",
+                        [*values, full])
+                    row = write.execute(
+                        "SELECT schema, name, title_fa, description_fa FROM tables "
+                        "WHERE full_name = ?", (full,)).fetchone()
+                    if row:
+                        write.execute("DELETE FROM fts WHERE full_name = ?", (full,))
+                        write.execute(
+                            "INSERT INTO fts (full_name, body) VALUES (?, ?)",
+                            (full, build_search_text(*row)))
+            elif kind == "enum":
+                write.execute(
+                    "INSERT OR REPLACE INTO enums VALUES (?,?,?,?,?,?)",
+                    (payload["full_name"], payload["column"], str(payload["value"]),
+                     payload.get("label_fa"), "high", None))
+            elif kind == "join":
+                write.execute(
+                    "INSERT OR REPLACE INTO joins VALUES (?,?,?,?,?,?)",
+                    (payload["from_table"], payload["from_col"],
+                     payload["to_table"], payload["to_col"], "high", 1))
+                self._adj = None
+            write.commit()
+        finally:
+            write.close()
 
     # ─────────────────────── جست‌وجو ───────────────────────
 
