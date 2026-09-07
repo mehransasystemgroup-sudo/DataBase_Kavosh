@@ -1,21 +1,18 @@
 ﻿; نصب‌کنندهٔ ویندوزی کاوشگر پایگاه داده — NSIS 3
 ;
 ; ساخت:  makensis packaging/installer.nsi
-; خروجی: packaging/output/KavoshDB-Setup-1.0.0.exe
+; خروجی: packaging/KavoshDB-Setup-1.0.0.exe
 ;
 ; نصب برای کاربر جاری انجام می‌شود (بدون UAC): برنامه سروری محلی است، چیزی در
 ; سطح سیستم نمی‌نویسد و دانش کاربر در %LOCALAPPDATA%\KavoshDB می‌ماند. همین
 ; باعث می‌شود روی رایانه‌های سازمانی که کاربر دسترسی مدیر ندارد هم نصب شود.
 
 Unicode true
-; خودِ برنامه ۶۴ بیتی است، پس نصب‌کننده هم ۶۴ بیتی ساخته می‌شود: روی ویندوز
-; ۳۲ بیتی اصلاً اجرا نمی‌شود (به‌جای خطای گیج‌کنندهٔ نیمه‌نصب) و به لایهٔ
-; سازگاری WoW64 هم نیازی ندارد.
-Target amd64-unicode
 ManifestDPIAware true
 
 !include "MUI2.nsh"
 !include "FileFunc.nsh"   ; برای ${GetSize} هنگام ثبت حجم برنامه
+!include "x64.nsh"        ; برای بررسی ۶۴ بیتی بودن ویندوز
 
 !define APP_NAME     "کاوشگر پایگاه داده"
 !define APP_NAME_EN  "DataBase Kavosh"
@@ -29,7 +26,9 @@ ManifestDPIAware true
 !endif
 
 Name "${APP_NAME}"
-OutFile "output\KavoshDB-Setup-${APP_VERSION}.exe"
+; خروجی کنار خودِ اسکریپت ساخته می‌شود، نه در زیرپوشه: NSIS پوشهٔ ناموجود
+; را نمی‌سازد و یک کلون تازه زیرپوشه‌ای ندارد، پس ساخت بی‌مقدمه شکست می‌خورد.
+OutFile "KavoshDB-Setup-${APP_VERSION}.exe"
 InstallDir "$LOCALAPPDATA\Programs\${APP_NAME_EN}"
 InstallDirRegKey HKCU "Software\${APP_KEY}" "InstallDir"
 RequestExecutionLevel user
@@ -67,6 +66,17 @@ VIAddVersionKey /LANG=1033 "LegalCopyright"  "${APP_NAME_EN}"
 !insertmacro MUI_LANGUAGE "Farsi"
 
 ; ------------------------------------------------------------------ نصب
+
+; خودِ نصب‌کننده ۳۲ بیتی است — همان چیزی که تقریباً هر نصب‌کنندهٔ ویندوزی هست:
+; روی هر ویندوزی بالا می‌آید و به هیچ ابزار ساخت خاصی وابسته نیست. اما برنامهٔ
+; نصب‌شونده ۶۴ بیتی است، پس اگر ویندوز ۳۲ بیتی باشد باید صریح بگوییم، نه اینکه
+; نصب تمام شود و بعد برنامه اجرا نشود.
+Function .onInit
+  ${IfNot} ${RunningX64}
+    MessageBox MB_ICONSTOP "این برنامه ویندوز ۶۴ بیتی می‌خواهد و روی این سیستم اجرا نمی‌شود."
+    Abort
+  ${EndIf}
+FunctionEnd
 
 ; بستن نسخهٔ در حال اجرا: بدون این کار، فایل‌های قفل‌شده جایگزین نمی‌شوند و
 ; نصب نیمه‌کاره می‌ماند.

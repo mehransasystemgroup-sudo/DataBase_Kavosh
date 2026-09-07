@@ -21,4 +21,4 @@ backend/kb/audit.log
 # خروجی بسته‌بندی ویندوز (PyInstaller / Inno Setup)
 /dist/
 /build/
-packaging/output/
+packaging/*.exe
