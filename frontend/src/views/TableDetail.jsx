@@ -357,7 +357,7 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                   type="button"
                   onClick={() => onOpenSchemaGraph?.(schema)}
                   title={`گراف روابط اسکیمای ${schema}`}
-                  className="rounded px-1.5 py-0.5 font-mono text-[11px] font-bold transition-opacity hover:opacity-80"
+                  className="inline-flex min-h-8 items-center rounded-md px-2 font-mono text-[11px] font-bold transition-opacity hover:opacity-80"
                   style={{ color: accent.text, background: accent.soft }}
                 >
                   {schema}
@@ -460,7 +460,11 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
 
       {/* ── تب‌ها ── */}
       <Tabs value={tab} onValueChange={setTab}>
-        <TabsList className="flex w-full flex-nowrap overflow-x-auto no-scrollbar">
+        {/*
+          نوار تب هنگام اسکرول جدول‌های بلند (۷۳ ستون، ۴۱ رابطه) بالا می‌ماند
+          تا کاربر برای عوض‌کردن تب مجبور نباشد تا سر صفحه برگردد.
+        */}
+        <TabsList className="sticky top-0 z-20 flex w-full flex-nowrap overflow-x-auto rounded-lg bg-ink/95 no-scrollbar backdrop-blur">
           <TabsTrigger value="relations" className="shrink-0">
             <Link2 className="h-3.5 w-3.5" />
             روابط
@@ -769,14 +773,19 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
               />
             </div>
 
-            <div className="overflow-x-auto rounded-lg border border-border">
+            {/*
+              جدولی با ده‌ها ستون باید ناحیهٔ اسکرول خودش را داشته باشد: هم
+              سرستون‌ها هنگام پیمایش می‌مانند، هم صفحه به‌خاطر یک جدول
+              چندصد ردیفی بی‌انتها نمی‌شود.
+            */}
+            <div className="max-h-[62dvh] overflow-auto rounded-lg border border-border">
               <table className="w-full min-w-[560px] border-collapse text-xs">
-                <thead>
-                  <tr className="bg-ink text-[10.5px] text-muted-foreground">
-                    <th className="w-8 p-2" />
-                    <th className="p-2 text-start font-semibold">نام ستون</th>
-                    <th className="p-2 text-start font-semibold">نوع داده</th>
-                    <th className="p-2 text-start font-semibold">ویژگی‌ها</th>
+                <thead className="sticky top-0 z-10">
+                  <tr className="bg-ink text-[10.5px] text-muted-foreground shadow-[0_1px_0_rgb(var(--border))]">
+                    <th className="w-9 bg-ink p-2" />
+                    <th className="bg-ink p-2 text-start font-semibold">نام ستون</th>
+                    <th className="bg-ink p-2 text-start font-semibold">نوع داده</th>
+                    <th className="bg-ink p-2 text-start font-semibold">ویژگی‌ها</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -796,7 +805,7 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                             type="button"
                             onClick={() => togglePick(c.name)}
                             aria-label={isPicked ? "حذف از انتخاب" : "افزودن به انتخاب"}
-                            className="text-muted-foreground transition-colors hover:text-brand-text"
+                            className="-m-2 flex h-9 w-9 items-center justify-center text-muted-foreground transition-colors hover:text-brand-text"
                           >
                             {isPicked ? (
                               <CheckSquare className="h-3.5 w-3.5 text-brand-text" />

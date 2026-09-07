@@ -19,7 +19,13 @@ import { errorMessage, http } from "@/lib/api";
 import { cn, fa, faCompact, splitTable } from "@/lib/utils";
 import { schemaAccent, schemaLabel } from "@/lib/schemaTheme";
 import { useTheme } from "@/context/ThemeContext";
-import { Badge, EmptyState, LoadingBar } from "@/components/primitives";
+import {
+  Badge,
+  DetailSkeleton,
+  EmptyState,
+  LoadingBar,
+  ResultSkeleton,
+} from "@/components/primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -92,7 +98,7 @@ function sortParams(sortBy) {
 }
 
 /** کارت یک نتیجه در فهرست جست‌وجو. */
-function ResultCard({ hit, selected, onOpen, isDark }) {
+function ResultCard({ hit, selected, active, index, onOpen, isDark }) {
   const { schema, name } = splitTable(hit.full_name);
   const accent = schemaAccent(schema, isDark);
 
@@ -100,11 +106,15 @@ function ResultCard({ hit, selected, onOpen, isDark }) {
     <button
       type="button"
       onClick={() => onOpen(hit.full_name)}
+      data-result-index={index}
+      aria-current={selected ? "true" : undefined}
       className={cn(
-        "group block w-full rounded-lg border p-2.5 text-start transition-all duration-150",
+        "group block w-full scroll-mt-2 rounded-lg border p-2.5 text-start transition-colors duration-150",
         selected
           ? "border-brand/55 bg-brand/10 shadow-sm"
-          : "border-transparent bg-surface/60 hover:border-border hover:bg-surfaceHover",
+          : active
+            ? "border-brand/35 bg-surfaceHover"
+            : "border-transparent bg-surface/60 hover:border-border hover:bg-surfaceHover",
       )}
     >
       <div className="flex items-start justify-between gap-2">
@@ -162,10 +172,10 @@ function ResultCard({ hit, selected, onOpen, isDark }) {
   );
 }
 
-export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) {
+export default function ExplorerView({ health, route, navigate }) {
   const { isDark } = useTheme();
 
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(() => route.query || "");
   const [filters, setFilters] = useState(INITIAL);
   const [showFilters, setShowFilters] = useState(false);
   const [results, setResults] = useState([]);
@@ -177,7 +187,9 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
   const [detailLoading, setDetailLoading] = useState(false);
 
   const searchRef = useRef(null);
+  const detailRef = useRef(null);
   const requestId = useRef(0);
+  const [cursor, setCursor] = useState(-1);
   const filterCount = activeFilterCount(filters);
 
   // میان‌بر «/» برای پریدن به جست‌وجو — بدون اینکه تایپ داخل فیلدها را بدزدد
@@ -244,22 +256,101 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
     return () => clearTimeout(t);
   }, [q, filters, runSearch]);
 
-  const openTable = useCallback(async (fullName) => {
-    setDetailLoading(true);
-    try {
-      const { data } = await http.get(`/table/${encodeURIComponent(fullName)}`);
-      setDetail(data);
-    } catch (e) {
-      toast.error(errorMessage(e, "بارگذاری جدول ناموفق بود."));
-    } finally {
-      setDetailLoading(false);
-    }
-  }, []);
+  /** باز کردن جدول = رفتن به نشانی آن؛ خودِ بارگذاری با تغییر مسیر رخ می‌دهد. */
+  const openTable = useCallback(
+    (fullName) => navigate({ view: "explorer", table: fullName }),
+    [navigate],
+  );
 
-  // درخواست باز کردن جدول از بیرون (مثلاً کلیک روی گره در گراف اسکیما)
+  const closeDetail = useCallback(
+    () => navigate({ view: "explorer", query: q }),
+    [navigate, q],
+  );
+
+  const openSchemaGraph = useCallback(
+    (schema) => navigate({ view: "graph", schema }),
+    [navigate],
+  );
+
+  // مسیر منبع حقیقت است: هر جدولی که در نشانی باشد بارگذاری می‌شود —
+  // چه با کلیک، چه با دکمهٔ بازگشت مرورگر، چه با باز کردن مستقیم لینک.
   useEffect(() => {
-    if (focusTable?.name) openTable(focusTable.name);
-  }, [focusTable, openTable]);
+    const name = route.table;
+    if (!name) {
+      setDetail(null);
+      return undefined;
+    }
+    if (detail?.full_name === name) return undefined;
+
+    let alive = true;
+    setDetailLoading(true);
+    http
+      .get(`/table/${encodeURIComponent(name)}`)
+      .then(({ data }) => alive && setDetail(data))
+      .catch((e) => {
+        if (!alive) return;
+        toast.error(errorMessage(e, "بارگذاری جدول ناموفق بود."));
+        navigate({ view: "explorer", query: q }, { replace: true });
+      })
+      .finally(() => alive && setDetailLoading(false));
+    return () => {
+      alive = false;
+    };
+    // `detail` عمداً در وابستگی‌ها نیست: فقط برای پرهیز از بارگذاری تکراری خوانده می‌شود
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [route.table, navigate, q]);
+
+  // با عوض‌شدن جدول، ستون جزئیات باید از بالا شروع شود، نه از وسط اسکرول قبلی
+  useEffect(() => {
+    detailRef.current?.scrollTo({ top: 0, behavior: "auto" });
+  }, [route.table]);
+
+  // عبارت جست‌وجو در نشانی بازتاب می‌یابد تا نمای فعلی قابل اشتراک باشد،
+  // ولی با replace تا هر حرفِ تایپ‌شده یک گام تاریخچه نسازد.
+  useEffect(() => {
+    if (route.table) return;
+    const t = setTimeout(
+      () => navigate({ view: "explorer", query: q.trim() }, { replace: true }),
+      400,
+    );
+    return () => clearTimeout(t);
+  }, [q, route.table, navigate]);
+
+  // هر نتیجهٔ تازه، نشانگر را صفر می‌کند تا فلش پایین از ابتدا شروع شود
+  useEffect(() => setCursor(-1), [results]);
+
+  /*
+    پیمایش فهرست با فلش بالا/پایین و باز کردن با Enter.
+    روی فیلد جست‌وجو هم کار می‌کند، چون کاربر معمولاً همان‌جا تایپ کرده و
+    نمی‌خواهد برای انتخاب نتیجه دستش را از صفحه‌کلید بردارد.
+  */
+  const onSearchKeyDown = useCallback(
+    (e) => {
+      if (e.key === "Escape") {
+        setQ("");
+        e.currentTarget.blur();
+        return;
+      }
+      if (!results.length) return;
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        setCursor((c) => {
+          const step = e.key === "ArrowDown" ? 1 : -1;
+          const next = (c + step + results.length) % results.length;
+          document
+            .querySelector(`[data-result-index="${next}"]`)
+            ?.scrollIntoView({ block: "nearest" });
+          return next;
+        });
+        return;
+      }
+      if (e.key === "Enter" && cursor >= 0 && results[cursor]) {
+        e.preventDefault();
+        openTable(results[cursor].full_name);
+      }
+    },
+    [results, cursor, openTable],
+  );
 
   const patch = useCallback((next) => setFilters((f) => ({ ...f, ...next })), []);
 
@@ -326,8 +417,8 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
       {/* ── ستون جست‌وجو ── */}
       <aside
         className={cn(
-          "flex w-full min-w-0 shrink-0 flex-col border-e border-border bg-surface/40 md:w-[360px] lg:w-[400px] xl:w-[440px]",
-          detail ? "hidden md:flex" : "flex",
+          "flex w-full min-w-0 shrink-0 flex-col border-e border-border bg-surface/40 md:w-[340px] lg:w-[380px] xl:w-[420px] 2xl:w-[460px]",
+          route.table ? "hidden md:flex" : "flex",
         )}
       >
         <div className="space-y-2 border-b border-border bg-surface/70 p-3">
@@ -338,24 +429,20 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
                 ref={searchRef}
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Escape") {
-                    setQ("");
-                    e.currentTarget.blur();
-                  }
-                }}
+                onKeyDown={onSearchKeyDown}
                 placeholder="نام جدول، ستون، اسکیما یا عنوان فارسی…  ( / )"
                 aria-label="جست‌وجوی جدول"
-                className="h-9 ps-8 pe-8 text-xs"
+                aria-controls="kb-results"
+                className="h-11 ps-8 pe-9 text-xs sm:h-9"
               />
               {q && (
                 <button
                   type="button"
                   onClick={() => setQ("")}
                   aria-label="پاک کردن جست‌وجو"
-                  className="absolute end-2 top-1/2 -translate-y-1/2 rounded p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+                  className="absolute end-0 top-0 flex h-full w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <X className="h-3.5 w-3.5" />
+                  <X className="h-4 w-4" />
                 </button>
               )}
             </div>
@@ -366,7 +453,7 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
               aria-expanded={showFilters}
               title="فیلترهای پیشرفته"
               className={cn(
-                "inline-flex h-9 shrink-0 items-center gap-1 rounded-md border px-2.5 text-xs transition-colors",
+                "inline-flex h-11 shrink-0 items-center gap-1 rounded-md border px-3 text-xs transition-colors sm:h-9 sm:px-2.5",
                 showFilters || filterCount
                   ? "border-brand/50 bg-brand/12 text-brand-text"
                   : "border-border bg-ink text-muted-foreground hover:border-borderStrong hover:text-foreground",
@@ -574,7 +661,11 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
             </div>
           )}
 
-          <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+          <div
+            role="status"
+            aria-live="polite"
+            className="flex items-center justify-between text-[11px] text-muted-foreground"
+          >
             <span>
               {busy ? (
                 <span className="flex items-center gap-1 text-brand-text">
@@ -598,11 +689,15 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
         <LoadingBar show={busy} />
 
         <ScrollArea className="min-h-0 flex-1">
-          <div className="space-y-1 p-2">
-            {results.map((hit) => (
+          <div id="kb-results" className="space-y-1 p-2">
+            {busy && results.length === 0 && <ResultSkeleton />}
+
+            {results.map((hit, i) => (
               <ResultCard
                 key={hit.full_name}
                 hit={hit}
+                index={i}
+                active={i === cursor}
                 selected={detail?.full_name === hit.full_name}
                 onOpen={openTable}
                 isDark={isDark}
@@ -665,7 +760,7 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
                         </button>
                         <button
                           type="button"
-                          onClick={() => onOpenSchemaGraph?.(s.id)}
+                          onClick={() => openSchemaGraph(s.id)}
                           title={`گراف روابط اسکیمای ${s.id}`}
                           aria-label={`گراف روابط اسکیمای ${s.id}`}
                           className="flex w-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-brand/12 hover:text-brand-text"
@@ -689,44 +784,49 @@ export default function ExplorerView({ health, focusTable, onOpenSchemaGraph }) 
 
       {/* ── ستون جزئیات ── */}
       <section
+        ref={detailRef}
         className={cn(
-          "min-w-0 flex-1 overflow-y-auto",
-          detail ? "block" : "hidden md:block",
+          "min-w-0 flex-1 overflow-y-auto overscroll-contain",
+          route.table ? "block" : "hidden md:block",
         )}
       >
-        {detailLoading && !detail ? (
-          <div className="flex h-full items-center justify-center gap-2 text-xs text-muted-foreground">
-            <Loader2 className="h-4 w-4 animate-spin text-brand-text" />
-            در حال بارگذاری جدول…
-          </div>
-        ) : detail ? (
-          <div className="p-3 sm:p-4 lg:p-5">
-            <button
-              type="button"
-              onClick={() => setDetail(null)}
-              className="mb-3 flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground md:hidden"
-            >
-              <ArrowRight className="h-3.5 w-3.5" />
-              بازگشت به فهرست
-            </button>
-            <TableDetail
-              table={detail}
-              loading={detailLoading}
-              onSelectTable={openTable}
-              onOpenSchemaGraph={onOpenSchemaGraph}
-              onRefresh={() => openTable(detail.full_name)}
-            />
-          </div>
-        ) : (
-          <div className="flex h-full items-center justify-center p-6">
-            <EmptyState
-              icon={Database}
-              title="یک جدول را برای کاوش انتخاب کنید"
-              description="ستون‌ها، کلیدها، ایندکس‌ها، مقادیر کدینگ، روابط ورودی و خروجی و نمودار گرافیکی هر جدول این‌جا نمایش داده می‌شود."
-              className="max-w-lg"
-            />
-          </div>
-        )}
+        {/*
+          روی نمایشگرهای عریض، محتوا نباید تا لبه کش بیاید: کارت‌های آمار
+          به نوارهای بی‌معنا تبدیل می‌شوند و طول سطرها از حد خوانا رد می‌شود.
+          یک ظرف با بیشینه‌ی عرض، همان چیدمان را روی ۴K هم متعادل نگه می‌دارد.
+        */}
+        <div className="mx-auto w-full max-w-[80rem] p-3 sm:p-4 lg:p-5 2xl:max-w-[88rem]">
+          {detailLoading && !detail ? (
+            <DetailSkeleton />
+          ) : detail ? (
+            <>
+              <button
+                type="button"
+                onClick={closeDetail}
+                className="mb-3 inline-flex min-h-11 items-center gap-1.5 rounded-md border border-border bg-surface px-3 text-xs font-medium text-muted-foreground transition-colors hover:border-brand/45 hover:text-brand-text md:hidden"
+              >
+                <ArrowRight className="h-4 w-4" />
+                بازگشت به فهرست
+              </button>
+              <TableDetail
+                table={detail}
+                loading={detailLoading}
+                onSelectTable={openTable}
+                onOpenSchemaGraph={openSchemaGraph}
+                onRefresh={() => openTable(detail.full_name)}
+              />
+            </>
+          ) : (
+            <div className="flex min-h-[60dvh] items-center justify-center">
+              <EmptyState
+                icon={Database}
+                title="یک جدول را برای کاوش انتخاب کنید"
+                description="ستون‌ها، کلیدها، ایندکس‌ها، مقادیر کدینگ، روابط ورودی و خروجی و نمودار گرافیکی هر جدول این‌جا نمایش داده می‌شود."
+                className="max-w-lg"
+              />
+            </div>
+          )}
+        </div>
       </section>
     </div>
   );

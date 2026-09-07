@@ -479,7 +479,6 @@ export default function TableGraph({ table, onSelectTable }) {
           )}
 
           <CanvasControls
-            className="absolute end-2 top-2"
             onZoomIn={() => zoom.scaleBy(1.35)}
             onZoomOut={() => zoom.scaleBy(0.72)}
             onFit={() => zoom.fit()}
@@ -492,7 +491,7 @@ export default function TableGraph({ table, onSelectTable }) {
           />
 
           {/* راهنما */}
-          <div className="pointer-events-none absolute bottom-2 start-2 flex flex-wrap gap-1.5 text-[10px]">
+          <div className="pointer-events-none absolute bottom-2 start-2 hidden flex-wrap gap-1.5 text-[10px] sm:flex">
             <span className="rounded-md border border-border bg-surface/90 px-1.5 py-0.5 text-muted-foreground backdrop-blur">
               دوبار کلیک روی گره = باز کردن جدول
             </span>
@@ -503,7 +502,7 @@ export default function TableGraph({ table, onSelectTable }) {
 
           {/* کارت گرهٔ انتخاب‌شده */}
           {selected && (
-            <div className="absolute bottom-2 end-2 w-[min(19rem,calc(100%-1rem))] animate-fade-up rounded-lg border border-border bg-surface/95 p-2.5 shadow-panel backdrop-blur">
+            <div className="absolute bottom-16 end-2 w-[min(19rem,calc(100%-1rem))] animate-fade-up sm:bottom-2 rounded-lg border border-border bg-surface/95 p-2.5 shadow-panel backdrop-blur">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
                   <div

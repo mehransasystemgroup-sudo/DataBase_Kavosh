@@ -144,8 +144,21 @@ function Inspector({ node, links, onSelectTable, onClose, isDark }) {
   );
 }
 
-export default function SchemaGraphView({ schema, onSchemaChange, onSelectTable }) {
+export default function SchemaGraphView({ route, navigate }) {
   const t = useGraphTheme();
+
+  const schema = route.schema || "FIN3";
+
+  // این دو در وابستگی‌های افکتِ رسم گراف هستند؛ اگر هر رندر ساخته شوند،
+  // گراف بی‌دلیل از نو رسم می‌شود و چیدمانش می‌پرد.
+  const onSchemaChange = useCallback(
+    (next) => navigate({ view: "graph", schema: next }),
+    [navigate],
+  );
+  const onSelectTable = useCallback(
+    (fullName) => navigate({ view: "explorer", table: fullName }),
+    [navigate],
+  );
   const [wrapRef, size] = useElementSize();
   const svgRef = useRef(null);
   const rootRef = useRef(null);
@@ -574,7 +587,6 @@ export default function SchemaGraphView({ schema, onSchemaChange, onSelectTable 
           )}
 
           <CanvasControls
-            className="absolute end-2 top-2"
             onZoomIn={() => zoom.scaleBy(1.35)}
             onZoomOut={() => zoom.scaleBy(0.72)}
             onFit={() => zoom.fit()}
