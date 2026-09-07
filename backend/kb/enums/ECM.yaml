@@ -1,0 +1,232 @@
+schema: ECM
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: Correspondent
+  column: State
+  lookup_type: CorrespondentState
+  type_title_fa: وضعیت مخاطب
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: Correspondent
+  column: Type
+  lookup_type: CorrespondentType
+  type_title_fa: نوع مخاطب
+  values:
+  - value: '1'
+    label_fa: شخص
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: کارمند (حکمی)
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: کارمند (همزمان)
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: واحد سازمانی
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: واحد سازمانی و زیر مجموعه
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: پست
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: نماینده شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: گروه مخاطب
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: کارمند (برون سازمانی)
+    source: stated_by_config
+    confidence: high
+- table: DelegationGrant
+  column: Category
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 8
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: DocumentTemplate
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: OrganizationalStructureParentLevelHierarchy
+  column: Level
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 212
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 190
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 160
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 27
+- table: OrganizationalStructureParentLevelHierarchy
+  column: StructureNodeType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 435
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 154
+- table: PredefinedReferringReceiverPermission
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 10
+- table: PredefinedReferringReceiverPermission
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ReferringReason
+  column: State
+  lookup_type: ReferringReasonState
+  type_title_fa: وضعیت جهت مکاتبه
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '2'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high
+- table: ReferringReason
+  column: Type
+  lookup_type: ReferringReasonType
+  type_title_fa: نوع جهت مکاتبه
+  values:
+  - value: '1'
+    label_fa: ثابت
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '2'
+    label_fa: سفارشی
+    source: stated_by_config
+    confidence: high

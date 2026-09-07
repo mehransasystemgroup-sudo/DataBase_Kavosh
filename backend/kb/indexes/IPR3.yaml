@@ -1,0 +1,250 @@
+schema: IPR3
+source: extracted
+indexes:
+- table: Clearance
+  name: PK_IPR3_Clearance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClearanceID
+- table: ClearanceItem
+  name: PK_IPR3_ClearanceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClearanceItemID
+- table: ClearancePolicyContextItem
+  name: PK_IPR3_ClearancePolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClearancePolicyContextItemID
+- table: ClearancePolicyContextItem
+  name: IX_IPR3_ClearancePolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ClearancePolicyResult
+  name: PK_IPR3_ClearancePolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClearancePolicyResultID
+- table: ClearancePolicyResult
+  name: IX_IPR3_ClearancePolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ClearancePolicyResult
+  name: IX_IPR3_ClearancePolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: CommercialOrder
+  name: PK_IPR3_CommercialOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CommercialOrderID
+- table: CommercialOrder
+  name: UIX_IPR3_CommercialOrder_OrderNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - OrderNumber
+- table: CommercialOrder
+  name: UIX_IPR3_CommercialOrder_RequestNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - RequestNumber
+- table: CommercialOrder
+  name: IX_IPR3_CommercialOrder_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ImportLicence
+  name: PK_IPR3_ImportLicence
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ImportLicenceID
+- table: ImportLicence
+  name: UIX_IPR3_ImportLicence_NumberAndLicenceTypeAndProforma
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - LicenceType
+  - OrderRef
+- table: ImportLicencePolicyContextItem
+  name: PK_IPR3_ImportLicencePolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ImportLicencePolicyContextItemID
+- table: ImportLicencePolicyContextItem
+  name: IX_IPR3_ImportLicencePolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ImportLicencePolicyResult
+  name: PK_IPR3_ImportLicencePolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ImportLicencePolicyResultID
+- table: ImportLicencePolicyResult
+  name: IX_IPR3_ImportLicencePolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ImportLicencePolicyResult
+  name: IX_IPR3_ImportLicencePolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: Insurance
+  name: PK_IPR3_Insurance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsuranceID
+- table: InsurancePolicyContextItem
+  name: PK_IPR3_InsurancePolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsurancePolicyContextItemID
+- table: InsurancePolicyContextItem
+  name: IX_IPR3_InsurancePolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: InsurancePolicyResult
+  name: PK_IPR3_InsurancePolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InsurancePolicyResultID
+- table: InsurancePolicyResult
+  name: IX_IPR3_InsurancePolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: InsurancePolicyResult
+  name: IX_IPR3_InsurancePolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: LetterOfCredit
+  name: PK_IPR3_LetterOfCredit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterOfCreditID
+- table: PackingList
+  name: PK_PackingList
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PackingListID
+- table: PackingListItem
+  name: PK_PackingListItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PackingListItemID
+- table: PackingListItemDetail
+  name: PK_PackingListItemDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PackingListItemDetailID
+- table: TransportDocument
+  name: PK_IPR3_TransportDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportDocumentID
+- table: TransportDocumentItem
+  name: PK_IPR3_TransportDocumentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportDocumentItemID
+- table: TransportDocumentPolicyContextItem
+  name: PK_IPR3_TransportDocumentPolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportDocumentPolicyContextItemID
+- table: TransportDocumentPolicyContextItem
+  name: IX_IPR3_TransportDocumentPolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: TransportDocumentPolicyResult
+  name: PK_IPR3_TransportDocumentPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportDocumentPolicyResultID
+- table: TransportDocumentPolicyResult
+  name: IX_IPR3_TransportDocumentPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: TransportDocumentPolicyResult
+  name: IX_IPR3_TransportDocumentPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef

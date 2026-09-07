@@ -1,0 +1,2710 @@
+schema: RPA3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: AccountingOperation
+  column: DurationType
+  nullable: true
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: AccountingOperation
+  column: ItemType
+  lookup_type: ItemType
+  type_title_fa: نوع قلم
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 9
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: اعلامیه واریز/برداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '16'
+    label_fa: استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: برگشت از واگذار غیر
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+- table: AccountingOperation
+  column: OperationType
+  lookup_type: OperationType
+  type_title_fa: OperationType
+  values:
+  - value: '1'
+    label_fa: داخل شهری
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '2'
+    label_fa: بین شهری
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '3'
+    label_fa: بین المللی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: AccountingOperation
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 11
+- table: Bank
+  column: BankType
+  lookup_type: BankType
+  type_title_fa: نوع بانک
+  values:
+  - value: '1'
+    label_fa: بانک
+    source: proven_by_data
+    confidence: high
+    observed_count: 23
+  - value: '2'
+    label_fa: موسسه مالی واعتباری
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: صندوق قرض الحسنه
+    source: stated_by_config
+    confidence: high
+- table: BankAccount
+  column: State
+  lookup_type: BankAccountState
+  type_title_fa: وضعیت حساب بانکی
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '2'
+    label_fa: بسته شده
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: مسدود شده
+    source: stated_by_config
+    confidence: high
+- table: BankAccountHistory
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+- table: BankAccountTransaction
+  column: DocumentItemType
+  lookup_type: DocumentItemType
+  type_title_fa: نوع اقلام سند
+  values:
+  - value: '1'
+    label_fa: دریافت چک
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: دریافت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: دریافت اعلامیه واریز
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: دریافت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: برگشت از واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: استرداد چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: استرداد سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: دریافت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: دریافت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: واگذار به بانک چک
+    source: stated_by_config
+    confidence: high
+  - value: '11'
+    label_fa: واگذار به بانک سفته
+    source: stated_by_config
+    confidence: high
+  - value: '12'
+    label_fa: وصول چک
+    source: stated_by_config
+    confidence: high
+  - value: '13'
+    label_fa: وصول سفته
+    source: stated_by_config
+    confidence: high
+  - value: '14'
+    label_fa: واخواست چک
+    source: stated_by_config
+    confidence: high
+  - value: '15'
+    label_fa: واخواست سفته
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: واخواست بدون اقدام چک
+    source: stated_by_config
+    confidence: high
+  - value: '17'
+    label_fa: واخواست بدون اقدام سفته
+    source: stated_by_config
+    confidence: high
+  - value: '18'
+    label_fa: تضمینی به عادی چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '19'
+    label_fa: تضمینی به عادی سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '20'
+    label_fa: تضمینی به عادی چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '21'
+    label_fa: تضمینی به عادی سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '22'
+    label_fa: تغییر مدت چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '23'
+    label_fa: تغییر مدت سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '24'
+    label_fa: تغییر مدت چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '25'
+    label_fa: تغییر مدت سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '26'
+    label_fa: پرداخت چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '27'
+    label_fa: پرداخت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '28'
+    label_fa: اعلامیه برداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 142
+  - value: '29'
+    label_fa: پرداخت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '30'
+    label_fa: واگذار به غیر چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '31'
+    label_fa: استرداد چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '33'
+    label_fa: پرداخت انتقالی چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '34'
+    label_fa: پرداخت انتقالی سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '35'
+    label_fa: قلم صورت خلاصه تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '36'
+    label_fa: درخواست پرداخت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '37'
+    label_fa: درخواست پرداخت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '38'
+    label_fa: درخواست دریافت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '39'
+    label_fa: درخواست دریافت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '40'
+    label_fa: دستور پرداخت واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '41'
+    label_fa: دستور پرداخت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '42'
+    label_fa: دستور پرداخت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '43'
+    label_fa: استقرار چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '44'
+    label_fa: استقرار سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '45'
+    label_fa: استقرار موجودی حساب بانکی
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '46'
+    label_fa: استقرار موجودی صندوق
+    source: stated_by_config
+    confidence: high
+  - value: '47'
+    label_fa: استقرار واگذار به بانک چک
+    source: stated_by_config
+    confidence: high
+  - value: '48'
+    label_fa: استقرار واگذار به بانک سفته
+    source: stated_by_config
+    confidence: high
+  - value: '49'
+    label_fa: استقرار چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '50'
+    label_fa: استقرار سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '51'
+    label_fa: استقرار موجودی اولیه تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '52'
+    label_fa: دریافت انتقالی وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '53'
+    label_fa: دریافت انتقالی اعلامیه واریز
+    source: stated_by_config
+    confidence: high
+  - value: '54'
+    label_fa: پرداخت انتقالی وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '55'
+    label_fa: پرداخت انتقالی اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '56'
+    label_fa: پرداخت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '57'
+    label_fa: دستور پرداخت چک
+    source: stated_by_config
+    confidence: high
+  - value: '58'
+    label_fa: دستور پرداخت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '59'
+    label_fa: دستور پرداخت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '60'
+    label_fa: دستور  اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '61'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '62'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '63'
+    label_fa: انتقال وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: انتقال اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '65'
+    label_fa: انتقال چک پرداختی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '66'
+    label_fa: انتقال چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '67'
+    label_fa: انتقال سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '68'
+    label_fa: ضمانت نامه به عهده شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '69'
+    label_fa: ضمانت نامه به نفع شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '70'
+    label_fa: واگذاری چک به مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '71'
+    label_fa: نقد کردن چک
+    source: stated_by_config
+    confidence: high
+  - value: '72'
+    label_fa: استرداد چک به صندوق
+    source: stated_by_config
+    confidence: high
+  - value: '73'
+    label_fa: واخواست چک توسط مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '74'
+    label_fa: تفاوت تبدیل ارز
+    source: stated_by_config
+    confidence: high
+  - value: '84'
+    label_fa: استقرار واگذاری چک به مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '88'
+    label_fa: حقوقی کردن چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '89'
+    label_fa: حقوقی کردن سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '90'
+    label_fa: نقد شدن چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '91'
+    label_fa: نقد شدن سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '92'
+    label_fa: تسویه سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '93'
+    label_fa: تسویه سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '94'
+    label_fa: انتقال استرداد چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '95'
+    label_fa: لیست دستور پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '96'
+    label_fa: دستور واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '97'
+    label_fa: دستور واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '98'
+    label_fa: استقرار واگذار به غیر چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '99'
+    label_fa: سوخت شدن چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '100'
+    label_fa: کارمزد پرداخت و انتقال
+    source: stated_by_config
+    confidence: high
+  - value: '103'
+    label_fa: کارمزد قلم اعلامیه برداشت اعلامیه پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '104'
+    label_fa: کارمزد قلم اعلامیه برداشت انتقال
+    source: stated_by_config
+    confidence: high
+  - value: '192'
+    label_fa: دستور تسویه سفته پرداختی
+    source: stated_by_config
+    confidence: high
+- table: BankTransfer
+  column: ApproveState
+  lookup_type: ApproveState
+  type_title_fa: وضعیت تایید
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: باطل شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: دریافت شده
+    source: stated_by_config
+    confidence: high
+- table: BankTransfer
+  column: ItemType
+  lookup_type: ItemType
+  type_title_fa: نوع قلم
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: اعلامیه واریز/برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: برگشت از واگذار غیر
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+- table: BankTransferReceivableNote
+  column: DurationType
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: BankTransferReceivableNote
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: Cash
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: ChequePattern
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+- table: CollateralType
+  column: GuaranteeType
+  lookup_type: GuaranteeType
+  type_title_fa: نوع ضمانتنامه
+  values:
+  - value: '1'
+    label_fa: به عهده
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: به نفع
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+- table: CollateralType
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+- table: CollectionRejection
+  column: ApproveState
+  lookup_type: ApproveState
+  type_title_fa: وضعیت تایید
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: باطل شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: دریافت شده
+    source: stated_by_config
+    confidence: high
+- table: CollectionRejection
+  column: ItemType
+  lookup_type: ItemType
+  type_title_fa: نوع قلم
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: اعلامیه واریز/برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: برگشت از واگذار غیر
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+- table: CollectionRejectionReceivableNote
+  column: DurationType
+  nullable: true
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: CollectionRejectionReceivableNote
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: CollectionRejectionReceivableNote
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: CollectionRejectionReceivableNote
+  column: State
+  lookup_type: CollectionRejectionReceivableNoteState
+  type_title_fa: وضعیت اسناد وصول واخواست شده
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: وصول
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: واخواست
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: واخواست بدون اقدام
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: GuaranteeToNormal
+  column: ApproveState
+  lookup_type: ApproveState
+  type_title_fa: وضعیت تایید
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: باطل شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: دریافت شده
+    source: stated_by_config
+    confidence: high
+- table: GuaranteeToNormal
+  column: ItemType
+  lookup_type: ItemType
+  type_title_fa: نوع قلم
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: اعلامیه واریز/برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: برگشت از واگذار غیر
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+- table: GuaranteeToNormalReceivableNote
+  column: DurationType
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: GuaranteeToNormalReceivableNote
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: OnlineGateway
+  column: State
+  lookup_type: OnlineGatewayState
+  type_title_fa: وضعیت درگاه آنلاین
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '2'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high
+- table: OnlineGatewayApi
+  column: Level
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 13
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 6
+- table: OnlinePaymentSimulatorUser
+  column: GenderType
+  lookup_type: OnlinePaymentSimulatorUserGenderType
+  type_title_fa: جنسیت کاربر
+  values:
+  - value: '0'
+    label_fa: آقا
+    source: proven_by_data
+    confidence: high
+    observed_count: 7
+  - value: '1'
+    label_fa: خانم
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: حقوقی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: عمومی
+    source: stated_by_config
+    confidence: high
+- table: PartyBankAccount
+  column: DocumentType
+  lookup_type: PartyBankAccountDocumentType
+  type_title_fa: نوع سند حساب بانکی شخص شرکت
+  values:
+  - value: '1'
+    label_fa: دریافت
+    source: proven_by_data
+    confidence: high
+    observed_count: 26
+  - value: '2'
+    label_fa: پرداخت
+    source: proven_by_data
+    confidence: high
+    observed_count: 297
+  - value: '100'
+    label_fa: همه
+    source: proven_by_data
+    confidence: high
+    observed_count: 64
+- table: PartyBankAccount
+  column: State
+  lookup_type: PartyBankAccountState
+  type_title_fa: وضعیت حساب بانکی شخص شرکت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 386
+  - value: '2'
+    label_fa: غیرفعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: PayableChequeBookItem
+  column: State
+  lookup_type: PayableChequeBookItemState
+  type_title_fa: وضعیت برگه چک پرداختنی
+  values:
+  - value: '1'
+    label_fa: سفید
+    source: proven_by_data
+    confidence: high
+    observed_count: 72
+  - value: '2'
+    label_fa: استفاده شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '3'
+    label_fa: مخدوش
+    source: stated_by_config
+    confidence: high
+- table: PayableNote
+  column: DurationType
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: PayableNote
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: PayableNote
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '11'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+  - value: '28'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: PayableNoteTransaction
+  column: DocumentItemType
+  lookup_type: DocumentItemType
+  type_title_fa: نوع اقلام سند
+  values:
+  - value: '1'
+    label_fa: دریافت چک
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: دریافت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: دریافت اعلامیه واریز
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: دریافت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: برگشت از واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: استرداد چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: استرداد سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: دریافت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: دریافت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: واگذار به بانک چک
+    source: stated_by_config
+    confidence: high
+  - value: '11'
+    label_fa: واگذار به بانک سفته
+    source: stated_by_config
+    confidence: high
+  - value: '12'
+    label_fa: وصول چک
+    source: stated_by_config
+    confidence: high
+  - value: '13'
+    label_fa: وصول سفته
+    source: stated_by_config
+    confidence: high
+  - value: '14'
+    label_fa: واخواست چک
+    source: stated_by_config
+    confidence: high
+  - value: '15'
+    label_fa: واخواست سفته
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: واخواست بدون اقدام چک
+    source: stated_by_config
+    confidence: high
+  - value: '17'
+    label_fa: واخواست بدون اقدام سفته
+    source: stated_by_config
+    confidence: high
+  - value: '18'
+    label_fa: تضمینی به عادی چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '19'
+    label_fa: تضمینی به عادی سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '20'
+    label_fa: تضمینی به عادی چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '21'
+    label_fa: تضمینی به عادی سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '22'
+    label_fa: تغییر مدت چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '23'
+    label_fa: تغییر مدت سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '24'
+    label_fa: تغییر مدت چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '25'
+    label_fa: تغییر مدت سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '26'
+    label_fa: پرداخت چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '27'
+    label_fa: پرداخت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '28'
+    label_fa: اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '29'
+    label_fa: پرداخت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '30'
+    label_fa: واگذار به غیر چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '31'
+    label_fa: استرداد چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '33'
+    label_fa: پرداخت انتقالی چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '34'
+    label_fa: پرداخت انتقالی سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '35'
+    label_fa: قلم صورت خلاصه تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '36'
+    label_fa: درخواست پرداخت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '37'
+    label_fa: درخواست پرداخت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '38'
+    label_fa: درخواست دریافت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '39'
+    label_fa: درخواست دریافت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '40'
+    label_fa: دستور پرداخت واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '41'
+    label_fa: دستور پرداخت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '42'
+    label_fa: دستور پرداخت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '43'
+    label_fa: استقرار چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '44'
+    label_fa: استقرار سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '45'
+    label_fa: استقرار موجودی حساب بانکی
+    source: stated_by_config
+    confidence: high
+  - value: '46'
+    label_fa: استقرار موجودی صندوق
+    source: stated_by_config
+    confidence: high
+  - value: '47'
+    label_fa: استقرار واگذار به بانک چک
+    source: stated_by_config
+    confidence: high
+  - value: '48'
+    label_fa: استقرار واگذار به بانک سفته
+    source: stated_by_config
+    confidence: high
+  - value: '49'
+    label_fa: استقرار چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '50'
+    label_fa: استقرار سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '51'
+    label_fa: استقرار موجودی اولیه تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '52'
+    label_fa: دریافت انتقالی وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '53'
+    label_fa: دریافت انتقالی اعلامیه واریز
+    source: stated_by_config
+    confidence: high
+  - value: '54'
+    label_fa: پرداخت انتقالی وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '55'
+    label_fa: پرداخت انتقالی اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '56'
+    label_fa: پرداخت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '57'
+    label_fa: دستور پرداخت چک
+    source: stated_by_config
+    confidence: high
+  - value: '58'
+    label_fa: دستور پرداخت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '59'
+    label_fa: دستور پرداخت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '60'
+    label_fa: دستور  اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '61'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '62'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '63'
+    label_fa: انتقال وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: انتقال اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '65'
+    label_fa: انتقال چک پرداختی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '66'
+    label_fa: انتقال چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '67'
+    label_fa: انتقال سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '68'
+    label_fa: ضمانت نامه به عهده شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '69'
+    label_fa: ضمانت نامه به نفع شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '70'
+    label_fa: واگذاری چک به مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '71'
+    label_fa: نقد کردن چک
+    source: stated_by_config
+    confidence: high
+  - value: '72'
+    label_fa: استرداد چک به صندوق
+    source: stated_by_config
+    confidence: high
+  - value: '73'
+    label_fa: واخواست چک توسط مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '74'
+    label_fa: تفاوت تبدیل ارز
+    source: stated_by_config
+    confidence: high
+  - value: '84'
+    label_fa: استقرار واگذاری چک به مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '88'
+    label_fa: حقوقی کردن چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '89'
+    label_fa: حقوقی کردن سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '90'
+    label_fa: نقد شدن چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '91'
+    label_fa: نقد شدن سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '92'
+    label_fa: تسویه سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '93'
+    label_fa: تسویه سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '94'
+    label_fa: انتقال استرداد چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '95'
+    label_fa: لیست دستور پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '96'
+    label_fa: دستور واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '97'
+    label_fa: دستور واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '98'
+    label_fa: استقرار واگذار به غیر چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '99'
+    label_fa: سوخت شدن چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '100'
+    label_fa: کارمزد پرداخت و انتقال
+    source: stated_by_config
+    confidence: high
+  - value: '103'
+    label_fa: کارمزد قلم اعلامیه برداشت اعلامیه پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '104'
+    label_fa: کارمزد قلم اعلامیه برداشت انتقال
+    source: stated_by_config
+    confidence: high
+  - value: '192'
+    label_fa: دستور تسویه سفته پرداختی
+    source: stated_by_config
+    confidence: high
+- table: PayableNoteTransaction
+  column: DocumentState
+  lookup_type: DocumentState
+  type_title_fa: DocumentState
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '3'
+    label_fa: در حال پلاک گذاری
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: پلاک شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: در حال تحویل
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: تحویل شده
+    source: stated_by_config
+    confidence: high
+- table: PayableNoteTransaction
+  column: DurationType
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: PayableNoteTransaction
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: PayableNoteTransaction
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '11'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+  - value: '28'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: Payment
+  column: ApproveState
+  lookup_type: ApproveState
+  type_title_fa: وضعیت تایید
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 38
+  - value: '3'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: باطل شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: دریافت شده
+    source: stated_by_config
+    confidence: high
+- table: Payment
+  column: ItemType
+  lookup_type: ItemType
+  type_title_fa: نوع قلم
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: اعلامیه واریز/برداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 34
+  - value: '16'
+    label_fa: استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: برگشت از واگذار غیر
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+- table: Payment
+  column: PaymentType
+  nullable: true
+  lookup_type: PaymentType
+  type_title_fa: LookupTitleEmptyToken
+  values:
+  - value: '1'
+    label_fa: عادی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تنخواه
+    source: stated_by_config
+    confidence: high
+- table: Payment
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '710006'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 34
+- table: PaymentDeposit
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: PaymentPayableNote
+  column: ApproveState
+  lookup_type: ApproveState
+  type_title_fa: وضعیت تایید
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '3'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: باطل شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: دریافت شده
+    source: stated_by_config
+    confidence: high
+- table: PaymentPayableNote
+  column: DurationType
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: PaymentPayableNote
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: PettyCash
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: Prosecution
+  column: ActionType
+  lookup_type: ProsecutionActionType
+  type_title_fa: انواع اقدام
+  values:
+  - value: '1'
+    label_fa: کیفری
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: حقوقی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: Prosecution
+  column: ApproveState
+  lookup_type: ApproveState
+  type_title_fa: وضعیت تایید
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: تایید شده
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: باطل شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: دریافت شده
+    source: stated_by_config
+    confidence: high
+- table: Prosecution
+  column: ItemType
+  lookup_type: ItemType
+  type_title_fa: نوع قلم
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: اعلامیه واریز/برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: برگشت از واگذار غیر
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+- table: ProsecutionReceivableNote
+  column: DurationType
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: ProsecutionReceivableNote
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: Receipt
+  column: ApproveState
+  lookup_type: ApproveState
+  type_title_fa: وضعیت تایید
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: proven_by_data
+    confidence: high
+    observed_count: 18
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '3'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: باطل شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: دریافت شده
+    source: stated_by_config
+    confidence: high
+- table: Receipt
+  column: ItemType
+  lookup_type: ItemType
+  type_title_fa: نوع قلم
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: اعلامیه واریز/برداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 21
+  - value: '16'
+    label_fa: استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: برگشت از واگذار غیر
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+- table: Receipt
+  column: ReceiptType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: Receipt
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '720004'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 18
+- table: ReceiptAndPaymentCause
+  column: DocumentType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ReceiptAndPaymentCause
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: ReceiptDeposit
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: ReceiptReceivableNote
+  column: DurationType
+  nullable: true
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: ReceiptReceivableNote
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: ReceiptReceivableNote
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: ReceivableCollateral
+  column: DeploymentState
+  nullable: true
+  lookup_type: null
+  values: []
+- table: ReceivableCollateral
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: ReceivableCollateral
+  column: State
+  lookup_type: ReceivableCollateralState
+  type_title_fa: وضعیت ضمانتنامه به نفع
+  values:
+  - value: '1'
+    label_fa: ثبت شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 22
+  - value: '2'
+    label_fa: تحویل شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 13
+  - value: '3'
+    label_fa: دریافت شده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: باطل شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: ReceivableCollateralAccountingInformation
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 36
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 36
+- table: ReceivableCollateralTransaction
+  column: CollateralOperationType
+  lookup_type: CollateralOperationType
+  type_title_fa: نوع عملیات ضمانتنامه
+  values:
+  - value: '1'
+    label_fa: افزایش مبلغ
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: کاهش مبلغ
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: تغییر تاریخ سررسید
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: تغییر وضعیت به ابطال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: ReceivableNote
+  column: DurationType
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: ReceivableNote
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: ReceivableNote
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '-17'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ReceivableNoteTransaction
+  column: DocumentItemType
+  lookup_type: DocumentItemType
+  type_title_fa: نوع اقلام سند
+  values:
+  - value: '1'
+    label_fa: دریافت چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: دریافت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: دریافت اعلامیه واریز
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: دریافت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: برگشت از واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: استرداد چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: استرداد سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: دریافت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: دریافت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: واگذار به بانک چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '11'
+    label_fa: واگذار به بانک سفته
+    source: stated_by_config
+    confidence: high
+  - value: '12'
+    label_fa: وصول چک
+    source: stated_by_config
+    confidence: high
+  - value: '13'
+    label_fa: وصول سفته
+    source: stated_by_config
+    confidence: high
+  - value: '14'
+    label_fa: واخواست چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '15'
+    label_fa: واخواست سفته
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: واخواست بدون اقدام چک
+    source: stated_by_config
+    confidence: high
+  - value: '17'
+    label_fa: واخواست بدون اقدام سفته
+    source: stated_by_config
+    confidence: high
+  - value: '18'
+    label_fa: تضمینی به عادی چک دریافتی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '19'
+    label_fa: تضمینی به عادی سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '20'
+    label_fa: تضمینی به عادی چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '21'
+    label_fa: تضمینی به عادی سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '22'
+    label_fa: تغییر مدت چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '23'
+    label_fa: تغییر مدت سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '24'
+    label_fa: تغییر مدت چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '25'
+    label_fa: تغییر مدت سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '26'
+    label_fa: پرداخت چک
+    source: stated_by_config
+    confidence: high
+  - value: '27'
+    label_fa: پرداخت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '28'
+    label_fa: اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '29'
+    label_fa: پرداخت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '30'
+    label_fa: واگذار به غیر چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '31'
+    label_fa: استرداد چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '32'
+    label_fa: استرداد سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '33'
+    label_fa: پرداخت انتقالی چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '34'
+    label_fa: پرداخت انتقالی سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '35'
+    label_fa: قلم صورت خلاصه تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '36'
+    label_fa: درخواست پرداخت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '37'
+    label_fa: درخواست پرداخت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '38'
+    label_fa: درخواست دریافت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '39'
+    label_fa: درخواست دریافت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '40'
+    label_fa: دستور پرداخت واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '41'
+    label_fa: دستور پرداخت استرداد چک
+    source: stated_by_config
+    confidence: high
+  - value: '42'
+    label_fa: دستور پرداخت استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '43'
+    label_fa: استقرار چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '44'
+    label_fa: استقرار سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '45'
+    label_fa: استقرار موجودی حساب بانکی
+    source: stated_by_config
+    confidence: high
+  - value: '46'
+    label_fa: استقرار موجودی صندوق
+    source: stated_by_config
+    confidence: high
+  - value: '47'
+    label_fa: استقرار واگذار به بانک چک
+    source: stated_by_config
+    confidence: high
+  - value: '48'
+    label_fa: استقرار واگذار به بانک سفته
+    source: stated_by_config
+    confidence: high
+  - value: '49'
+    label_fa: استقرار چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '50'
+    label_fa: استقرار سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '51'
+    label_fa: استقرار موجودی اولیه تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '52'
+    label_fa: دریافت انتقالی وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '53'
+    label_fa: دریافت انتقالی اعلامیه واریز
+    source: stated_by_config
+    confidence: high
+  - value: '54'
+    label_fa: پرداخت انتقالی وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '55'
+    label_fa: پرداخت انتقالی اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '56'
+    label_fa: پرداخت انتقالی چک
+    source: stated_by_config
+    confidence: high
+  - value: '57'
+    label_fa: دستور پرداخت چک
+    source: stated_by_config
+    confidence: high
+  - value: '58'
+    label_fa: دستور پرداخت سفته
+    source: stated_by_config
+    confidence: high
+  - value: '59'
+    label_fa: دستور پرداخت وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '60'
+    label_fa: دستور  اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '61'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '62'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '63'
+    label_fa: انتقال وجه نقد
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: انتقال اعلامیه برداشت
+    source: stated_by_config
+    confidence: high
+  - value: '65'
+    label_fa: انتقال چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '66'
+    label_fa: انتقال چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '67'
+    label_fa: انتقال سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '68'
+    label_fa: ضمانت نامه به عهده شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '69'
+    label_fa: ضمانت نامه به نفع شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '70'
+    label_fa: واگذاری چک به مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '71'
+    label_fa: نقد کردن چک
+    source: stated_by_config
+    confidence: high
+  - value: '72'
+    label_fa: استرداد چک به صندوق
+    source: stated_by_config
+    confidence: high
+  - value: '73'
+    label_fa: واخواست چک توسط مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '74'
+    label_fa: تفاوت تبدیل ارز
+    source: stated_by_config
+    confidence: high
+  - value: '84'
+    label_fa: استقرار واگذاری چک به مامور وصول
+    source: stated_by_config
+    confidence: high
+  - value: '88'
+    label_fa: حقوقی کردن چک دریافتی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '89'
+    label_fa: حقوقی کردن سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '90'
+    label_fa: نقد شدن چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '91'
+    label_fa: نقد شدن سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '92'
+    label_fa: تسویه سفته پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '93'
+    label_fa: تسویه سفته دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '94'
+    label_fa: انتقال استرداد چک پرداختی
+    source: stated_by_config
+    confidence: high
+  - value: '95'
+    label_fa: لیست دستور پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '96'
+    label_fa: دستور واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '97'
+    label_fa: دستور واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '98'
+    label_fa: استقرار واگذار به غیر چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '99'
+    label_fa: سوخت شدن چک دریافتی
+    source: stated_by_config
+    confidence: high
+  - value: '100'
+    label_fa: کارمزد پرداخت و انتقال
+    source: stated_by_config
+    confidence: high
+  - value: '103'
+    label_fa: کارمزد قلم اعلامیه برداشت اعلامیه پرداخت
+    source: stated_by_config
+    confidence: high
+  - value: '104'
+    label_fa: کارمزد قلم اعلامیه برداشت انتقال
+    source: stated_by_config
+    confidence: high
+  - value: '192'
+    label_fa: دستور تسویه سفته پرداختی
+    source: stated_by_config
+    confidence: high
+- table: ReceivableNoteTransaction
+  column: DocumentState
+  lookup_type: DocumentState
+  type_title_fa: DocumentState
+  values:
+  - value: '1'
+    label_fa: ثبت موقت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: تایید شده
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '3'
+    label_fa: در حال پلاک گذاری
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: پلاک شده
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: سند صادر شده
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: در حال تحویل
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: تحویل شده
+    source: stated_by_config
+    confidence: high
+- table: ReceivableNoteTransaction
+  column: DurationType
+  nullable: true
+  lookup_type: DurationType
+  type_title_fa: نوع مدت
+  values:
+  - value: '1'
+    label_fa: روز
+    source: proven_by_data
+    confidence: high
+    observed_count: 5
+  - value: '2'
+    label_fa: کوتاه مدت
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: بلند مدت
+    source: stated_by_config
+    confidence: high
+- table: ReceivableNoteTransaction
+  column: NoteType
+  lookup_type: NoteType
+  type_title_fa: نوع سند
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 6
+  - value: '2'
+    label_fa: سفته
+    source: stated_by_config
+    confidence: high
+- table: ReceivableNoteTransaction
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '-17'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: ReconciliationReason
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 12
+- table: Transfer
+  column: SourceType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: Transfer
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: Transfer
+  column: TransferType
+  lookup_type: TransferType
+  type_title_fa: نوع انتقال
+  values:
+  - value: '1'
+    label_fa: بانک به بانک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: بانک به صندوق
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: صندوق به بانک
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: صندوق به صندوق
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: تنخواه به تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: بانک به تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: صندوق به تنخواه
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: تنخواه به بانک
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: تنخواه به صندوق
+    source: stated_by_config
+    confidence: high
+- table: TransferPayableCheque
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: VoucherReconciliation
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1

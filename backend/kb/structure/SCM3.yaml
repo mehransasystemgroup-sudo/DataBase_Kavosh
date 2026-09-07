@@ -1,0 +1,1623 @@
+schema: SCM3
+table_count: 41
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: Approval
+  columns:
+  - name: ApprovalID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrderConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TraceID
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Comments
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ApprovalID
+- name: ApprovalItem
+  columns:
+  - name: ApprovalItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ApprovalRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OrderConfirmationItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: DeviationReason
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Comments
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ApprovalItemID
+- name: Catalog
+  columns:
+  - name: CatalogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SupplierRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: Name
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: LastVersion
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: PublishedDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: DownloadDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: TraceID
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: Message
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 10
+  - name: SupplierNationalID
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 11
+  - name: SupplierName
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 12
+  primary_key:
+  - CatalogID
+- name: CatalogItem
+  columns:
+  - name: CatalogItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CatalogRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Name
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 3
+  - name: Code
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 4
+  - name: Barcode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: TechnicalSpecification
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: UnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: UnitAbbreviation
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 8
+  - name: Price
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: ConsumerPrice
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: CurrencyAbbreviation
+    type: nvarchar(10)
+    nullable: true
+    ordinal: 12
+  - name: LeadTime
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: ManufacturerName
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 14
+  - name: ManufacturerPartID
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 15
+  - name: EffectiveDate
+    type: datetime
+    nullable: true
+    ordinal: 16
+  - name: ExpirationDate
+    type: datetime
+    nullable: true
+    ordinal: 17
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 18
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 19
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 20
+  - name: Message
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 21
+  primary_key:
+  - CatalogItemID
+- name: DeliveryExtension
+  columns:
+  - name: DeliveryExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DeliveryRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SupplierRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EstimatedDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Transporter
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: VehicleType
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: PlateNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 7
+  - name: TransportDocumentNumber
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 8
+  - name: SupplierReferenceCode
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 9
+  - name: IssuerName
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 10
+  - name: Note
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - DeliveryExtensionID
+- name: DeliveryItemExtension
+  columns:
+  - name: DeliveryItemExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DeliveryExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: AsnItemRowNumber
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - DeliveryItemExtensionID
+- name: DocumentProcessLog
+  columns:
+  - name: DocumentProcessLogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ReferenceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Message
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 4
+  - name: LogLevel
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: FilePath
+    type: nvarchar(1024)
+    nullable: false
+    ordinal: 6
+  - name: LineNumber
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Timestamp
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: MemberName
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - DocumentProcessLogID
+- name: DownloadHistory
+  columns:
+  - name: DownloadHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DocumentType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ContentLength
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DocumentsCount
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: DownloadedAt
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: Duration
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Message
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - DownloadHistoryID
+- name: DownloadSettings
+  columns:
+  - name: DownloadSettingsID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DocumentType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Enabled
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: LastTimestamp
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: Url
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - DownloadSettingsID
+- name: ExtrinsicField
+  columns:
+  - name: ExtrinsicFieldID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 2
+  - name: Value
+    type: nvarchar(400)
+    nullable: false
+    ordinal: 3
+  - name: EntityType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: EntityRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ExtrinsicFieldID
+- name: GoodsReceiptNotice
+  columns:
+  - name: GoodsReceiptNoticeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrderRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: ReferenceType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ReferenceRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - GoodsReceiptNoticeID
+- name: HandshakeHistory
+  columns:
+  - name: HandshakeHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 2
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Message
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - HandshakeHistoryID
+- name: InquiryExtension
+  columns:
+  - name: InquiryExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InquiryRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DontUseOpeningEvent
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - InquiryExtensionID
+- name: InquirySupplierExtension
+  columns:
+  - name: InquirySupplierExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InquiryExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InquirySupplierRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Message
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - InquirySupplierExtensionID
+- name: Message
+  columns:
+  - name: MessageID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 4
+  - name: PartyRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: SenderUserName
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 6
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - MessageID
+- name: MessageRecipient
+  columns:
+  - name: MessageRecipientID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MessageRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Message
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - MessageRecipientID
+- name: NotificationExtension
+  columns:
+  - name: NotificationExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - NotificationExtensionID
+- name: NotificationTaskExtension
+  columns:
+  - name: NotificationTaskExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: NotificationTaskRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: TaskID
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 4
+  - name: TaskTitle
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 5
+  - name: Owner
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 6
+  - name: Processor
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 7
+  - name: ProcessorId
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 8
+  - name: CompletedBy
+    type: nvarchar(1)
+    nullable: true
+    ordinal: 9
+  - name: CompletedByUserId
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 10
+  - name: CompletedDate
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - NotificationTaskExtensionID
+- name: OrderConfirmation
+  columns:
+  - name: OrderConfirmationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: OrderRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: OrderCode
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 11
+  - name: TraceID
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 12
+  - name: ScmNumber
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 13
+  - name: AttachmentsReceived
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - OrderConfirmationID
+- name: OrderConfirmationItem
+  columns:
+  - name: OrderConfirmationItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrderConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: OrderItemRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ApprovedAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 6
+  - name: EstimatedDeliveryDate
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: Fee
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: TraceID
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - OrderConfirmationItemID
+- name: OrderExtension
+  columns:
+  - name: OrderExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OCInstruction
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: AsnInstruction
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: AmountToleranceType
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: AmountToleranceHighLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: AmountToleranceLowLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: DateToleranceType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: DateToleranceHighLimit
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: DateToleranceLowLimit
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: FeeToleranceType
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: FeeToleranceHighLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: FeeToleranceLowLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: CanIgnoreTolerance
+    type: bit
+    nullable: true
+    ordinal: 14
+  - name: SubcontractorRef
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: SubcontractorStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: SubcontractorAddressRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: SubcontractorAddress
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - OrderExtensionID
+- name: OrderItemExtension
+  columns:
+  - name: OrderItemExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrderExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OrderItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: OCInstruction
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: AsnInstruction
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: AmountToleranceType
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: AmountToleranceHighLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: AmountToleranceLowLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: DateToleranceType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: DateToleranceHighLimit
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: DateToleranceLowLimit
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: FeeToleranceType
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: FeeToleranceHighLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: FeeToleranceLowLimit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: DemandDate
+    type: datetime
+    nullable: true
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - OrderItemExtensionID
+- name: OrderStatusRequest
+  columns:
+  - name: OrderStatusRequestID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: CreatorRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: OrderRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - OrderStatusRequestID
+- name: OrderStatusUpdate
+  columns:
+  - name: OrderStatusUpdateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: Status
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: Comment
+    type: nvarchar(1000)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - OrderStatusUpdateID
+- name: PurchaseItemMapping
+  columns:
+  - name: PurchaseItemMappingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PurchaseItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SupplierRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SupplierProductCode
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 4
+  - name: SupplierProductDescription
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 5
+  - name: Barcode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: TechnicalSpecification
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - PurchaseItemMappingID
+- name: QNNote
+  columns:
+  - name: QNNoteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EntityCode
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: EntityRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 4
+  - name: User
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - QNNoteID
+- name: QNNoteAttachment
+  columns:
+  - name: QNNoteAttachmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: QNNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: AttachmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - QNNoteAttachmentID
+- name: QNVersion
+  columns:
+  - name: QNVersionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VersionNumber
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: NetworkID
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  - name: IsFinal
+    type: bit
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - QNVersionID
+- name: QuotationExtension
+  columns:
+  - name: QuotationExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: QuotationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Tax
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 3
+  - name: Duty
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Discount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: TransportationCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: QuotationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - QuotationExtensionID
+- name: QuotationItemExtension
+  columns:
+  - name: QuotationItemExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: QuotationExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: QuotationItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SupplierProductCode
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - QuotationItemExtensionID
+- name: QuoteMessageOpeningEvent
+  columns:
+  - name: QuoteMessageOpeningEventID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: InquiryRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ManagerUserRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: ExecutionDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - QuoteMessageOpeningEventID
+- name: QuoteMessageOpeningEventAttender
+  columns:
+  - name: QuoteMessageOpeningEventAttenderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: QuoteMessageOpeningEventRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UserRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ApprovalState
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: ApprovalDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - QuoteMessageOpeningEventAttenderID
+- name: QuoteMessagePayload
+  columns:
+  - name: QuoteMessagePayloadID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InquiryRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SupplierRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SupplierNationalID
+    type: nvarchar(15)
+    nullable: false
+    ordinal: 4
+  - name: Payload
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 5
+  - name: LastProcessingDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Message
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - QuoteMessagePayloadID
+- name: ReceivedDocument
+  columns:
+  - name: ReceivedDocumentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DocumentType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: TargetType
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: TargetRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Payload
+    type: ntext
+    nullable: true
+    ordinal: 7
+  - name: Timestamp
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: TraceID
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 9
+  - name: SupplierNationalID
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 10
+  - name: DownloadedAt
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: AttachmentsReceived
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: Message
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - ReceivedDocumentID
+- name: ReceivedDocumentAttachment
+  columns:
+  - name: ReceivedDocumentAttachmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReceivedDocumentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: FileName
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: Size
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: TraceID
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 7
+  - name: IsReceived
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ReceivedDocumentAttachmentID
+- name: ReceivedDocumentReference
+  columns:
+  - name: ReceivedDocumentReferenceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReceivedDocumentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReferenceType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ReferenceRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ReceivedDocumentReferenceID
+- name: ReceivedDocumentTarget
+  columns:
+  - name: ReceivedDocumentTargetID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReceivedDocumentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TargetType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: TargetRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ReceivedDocumentTargetID
+- name: SentDocument
+  columns:
+  - name: SentDocumentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DocumentType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: SourceType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: SourceRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: TraceID
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 5
+  - name: Timestamp
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: UploadedAt
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: ExpirationBaseTime
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Message
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 10
+  - name: Locked
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - SentDocumentID
+- name: SupplierAssessmentExtension
+  columns:
+  - name: SupplierAssessmentExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FinalScore
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 2
+  - name: Rating
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: SupplierAssessmentRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - SupplierAssessmentExtensionID
+- name: UploadHistory
+  columns:
+  - name: UploadHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContentLength
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DocumentsCount
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: UploadedAt
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Duration
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Message
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - UploadHistoryID
+- name: UploadSettings
+  columns:
+  - name: UploadSettingsID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DocumentType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Enabled
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: LastTimestamp
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: Url
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - UploadSettingsID

@@ -1,0 +1,335 @@
+schema: WFE3
+source: extracted
+indexes:
+- table: Assignment
+  name: PK_WFE3_Assignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentID
+- table: Assignment
+  name: IX_WFE3_Assignment_PersonRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PersonRef
+  - State
+  - TaskRef
+  included:
+  - AssignmentID
+  - ParentAssignmentRef
+  - AcceptTime
+  - InnerAssignmentsDescription
+  - Description
+  - HasShareDescription
+  - CompletionResult
+  - CompletionNote
+  - CompletionTime
+  - Version
+  - FolderID
+- table: Assignment
+  name: IX_WFE3_Assignment_TaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskRef
+- table: EntityLog
+  name: PK_WFE3_EntityLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityLogID
+- table: EntityLog
+  name: IX_WFE3_EntityLog_EntityKey
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityKey
+  included:
+  - WorkflowGuid
+- table: InstanceState
+  name: IX_WFE3_InstanceState_uidInstanceID
+  type: CLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - uidInstanceID
+- table: InstanceState
+  name: PK_WFE3_InstanceState
+  type: NONCLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstanceStateID
+- table: InstanceState
+  name: IX_WFE3_InstanceState_nextTimer_status
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - nextTimer
+  - status
+- table: Job
+  name: PK_WFE3_Job
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - JobID
+- table: Job
+  name: UIX_WFE3_Job_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Job
+  name: UIX_WFE3_Job_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: OrganizationElement
+  name: PK_WFE3_OrganizationElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrganizationElementID
+- table: OrganizationElement
+  name: UIX_WFE3_OrganizationElement_Code_ElementType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - ElementType
+- table: OrganizationType
+  name: PK_WFE3_OrganizationType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrganizationTypeID
+- table: OrganizationUnit
+  name: PK_WFE3_OrganizationUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrganizationUnitID
+- table: Person
+  name: PK_WFE3_Person
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PersonID
+- table: PersonalFolder
+  name: PK_PersonalFolder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PersonalFolderID
+- table: Position
+  name: PK_WFE3_Position
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PositionID
+- table: PositionJob
+  name: PK_WFE3_PositionJob
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PositionJobID
+- table: ProcessDefinition
+  name: PK_WFE3_ProcessDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessDefinitionID
+- table: ProcessDefinitionVersion
+  name: PK_WFE3_ProcessDefinitionVersion
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessDefinitionVersionID
+- table: ProcessEvent
+  name: PK_ProcessEvent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessEventID
+- table: ProcessInstance
+  name: PK_WFE3_ProcessInstance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessInstanceID
+- table: ProcessInstance
+  name: IX_WFE3_ProcessInstance_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+- table: ProcessInstance
+  name: IX_WFE3_ProcessInstance_WorkflowGuid
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkflowGuid
+- table: SemiStatute
+  name: PK_WFE3_SemiStatute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SemiStatuteID
+- table: SemiStatute
+  name: IX_WFE3_SemiStatute_StructureRef_OrganizationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StructureRef
+  - OrganizationUnitRef
+  - PersonRef
+  - PositionRef
+- table: Structure
+  name: PK_WFE3_Structure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StructureID
+- table: StructureElement
+  name: PK_WFE3_StructureElement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StructureElementID
+- table: StructureElement
+  name: IX_WFE3_StructureElement_ManagerOrganizationUnitRef_ManagerPositionRef_StructureVersionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ManagerOrganizationUnitRef
+  - ManagerPositionRef
+  - StructureVersionRef
+  included:
+  - OrganizationElementRef
+- table: StructureVersion
+  name: PK_WFE3_StructureVersion
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StructureVersionID
+- table: Task
+  name: PK_WFE3_Task
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskID
+- table: Task
+  name: IX_WFE3_Task_ActivityGuid
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ActivityGuid
+  - WorkflowTaskState
+  included:
+  - TaskID
+- table: Task
+  name: IX_WFE3_Task_ProcessInstanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcessInstanceRef
+  included:
+  - TaskID
+  - TaskName
+  - Description
+  - CreationTime
+  - DueTime
+  - WorkflowTaskState
+- table: TempStorage
+  name: PK_WFE3_TempStorage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TempStorageID
+- table: TempStorage
+  name: IX_WFE3_TempStorage_Key
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Key
+  included:
+  - Value
+- table: WaitingActivity
+  name: PK_WFE3_WaitingActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WaitingActivityID
+- table: WaitingActivity
+  name: IX_WFE3_WaitingActivity_ActivityGuid
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ActivityGuid
+- table: WaitingActivity
+  name: IX_WFE3_WaitingActivity_InterfaceEventArgType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InterfaceEventArgType
+- table: WaitingActivity
+  name: IX_WFE3_WaitingActivity_InterfaceEventArgType_ExpressionText
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InterfaceEventArgType
+  - ExpressionText
+  included:
+  - ExpressionValue
+  - WorkflowGuid
+  - ActivityGuid
+  - HandleAsyncronous
+  - Version
+- table: WaitingActivity
+  name: IX_WFE3_WaitingActvitiy_WorkflowGuid_InterfaceEventArgType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkflowGuid
+  - InterfaceEventArgType

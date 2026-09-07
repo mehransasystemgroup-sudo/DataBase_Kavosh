@@ -1,0 +1,1966 @@
+schema: PRC3
+source: extracted
+indexes:
+- table: AccountGroupDLSourceTypeRelation
+  name: PK_PRC3_AccountGroupDLSourceTypeRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupDLSourceTypeRelationID
+- table: AccountGroupLedger
+  name: PK_PRC3_AccountGroupLedger
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupLedgerID
+- table: AccountGroupLedgerParameterValue
+  name: PK_PRC3_AccountGroupLedgerParameterValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupLedgerParameterValueID
+- table: AccountGroupParameterRelation
+  name: PK_PRC3_AccountGroupParameterRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupParameterRelationID
+- table: AccountingVoucherTemplate
+  name: PK_PRC3_AccountingVoucherTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountingVoucherTemplateID
+- table: AccountingVoucherTemplateParameterValue
+  name: PK_AccountingVoucherTemplateParameterValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountingVoucherTemplateParameterValueID
+- table: Agreement
+  name: PK_PRC3_Agreement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AgreementID
+- table: AgreementPolicy
+  name: PK_PRC3_AgreementPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AgreementPolicyID
+- table: AgreementPolicy
+  name: IX_PRC3_AgreementPolicy_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: AgreementPolicy
+  name: IX_PRC3_AgreementPolicy_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AgreementRef
+- table: BusinessPolicyExtraProperty
+  name: PK_PRC3_BusinessPolicyExtraPropertyID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BusinessPolicyExtraPropertyID
+- table: CompanyAdminUser
+  name: PK_PRC3_CompanyAdminUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CompanyAdminUserID
+- table: CompanyAdminUserItem
+  name: PK_PRC3_CompanyAdminUserItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CompanyAdminUserItemID
+- table: Contract
+  name: PK_PRC3_Contract
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractID
+- table: ContractAmendment
+  name: PK_PRC3_ContractAmendment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractAmendmentID
+- table: ContractAmendment
+  name: UIX_PRC3_ContractAmendment_ContractRefVersionNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractRef
+  - VersionNumber
+- table: ContractItem
+  name: PK_PRC3_ContractItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractItemID
+- table: ContractItem
+  name: IX_PRC3_ContractItem_ParentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentItemRef
+- table: ContractItem
+  name: IX_PRC3_ContractItem_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: ContractPolicy
+  name: PK_PRC3_ContractPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractPolicyID
+- table: ContractPolicy
+  name: IX_PRC3_ContractPolicy_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ContractPolicy
+  name: IX_PRC3_ContractPolicy_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: ContractPolicyContextItem
+  name: PK_ContractPolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractPolicyContextItemID
+- table: ContractPolicyContextItem
+  name: IX_PRC3_ContractPolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ContractPolicyResult
+  name: PK_ContractPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractPolicyResultID
+- table: ContractPolicyResult
+  name: IX_PRC3_ContractPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: ContractPolicyResult
+  name: IX_PRC3_ContractPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: ContractRenewalHistory
+  name: PK_PRC3_ContractRenewalHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractRenewalHistoryID
+- table: ContractTemplate
+  name: PK_PRC3_ContractTemplateID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractTemplateID
+- table: ContractTemplate
+  name: IX_PRC3_ContractTemplate_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: ContractTemplateDetailLedger
+  name: PK_ContractTemplateDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractTemplateDetailLedgerID
+- table: ContractTemplateDetailLedgerType
+  name: PK_ContractTemplateDetailLedgerType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractTemplateDetailLedgerTypeID
+- table: ContractTemplateRelatedOrderType
+  name: PK_PRC3_ContractTemplateRelatedOrderType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractTemplateRelatedOrderTypeID
+- table: ContractTemplateRelatedOrderType
+  name: IX_PRC3_ContractTemplateRelatedOrderType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReferenceCode
+  - ContractTemplateRef
+- table: ContractTemplateUser
+  name: PK_PRC3_ContractTemplateUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractTemplateUserID
+- table: ContractTemplateUser
+  name: IX_PRC3_ContractTemplateUser
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UserRef
+  - GroupRef
+  - ContractTemplateRef
+- table: CostRepository
+  name: PK_PRC3_CostRepository
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostRepositoryId
+- table: CostRepository
+  name: IX_PRC3_CostRepository_EntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityCode
+- table: CostRepository
+  name: IX_PRC3_CostRepository_EntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityRef
+- table: CostRepository
+  name: IX_PRC3_CostRepository_EntityHeaderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityHeaderRef
+- table: Delivery
+  name: PK_PRC3_Delivery
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeliveryID
+- table: Delivery
+  name: IX_PRC3_Delivery_DelivererRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererRef
+- table: DeliveryItem
+  name: PK_PRC3_DeliveryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeliveryItemID
+- table: DeliveryItem
+  name: IX_PRC3_DeliveryItem_DeliveryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryRef
+- table: DeliveryItem
+  name: IX_PRC3_DeliveryItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: DeliveryItem
+  name: IX_PRC3_DeliveryItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: DeliveryItem
+  name: IX_PRC3_DeliveryItem_CounterpartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartRef
+- table: DeliveryItem
+  name: IX_PRC3_DeliveryItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: DeliveryReturn
+  name: PK_PRC3_DeliveryReturn
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeliveryReturnID
+- table: DeliveryReturn
+  name: IX_PRC3_DeliveryReturn_DeliveryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryRef
+- table: DeliveryReturnItem
+  name: PK_PRC3_DeliveryReturnItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeliveryReturnItemID
+- table: DeliveryReturnItem
+  name: IX_PRC3_DeliveryReturnItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: DeliveryReturnItem
+  name: IX_PRC3_DeliveryReturnItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: DeliveryReturnItem
+  name: IX_PRC3_DeliveryReturnItem_DeliveryReturnRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryReturnRef
+- table: DeliveryReturnItem
+  name: IX_PRC3_DeliveryReturnItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: DeliveryReturnItemDraftVoucher
+  name: PK_DeliveryReturnItemDraftVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeliveryReturnItemDraftVoucherID
+- table: DirectDeliveryReceipt
+  name: PK_PRC3_DirectDeliveryReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DirectDeliveryReceiptID
+- table: DirectDeliveryReceiptItem
+  name: PK_PRC3_DirectDeliveryReceiptItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DirectDeliveryReceiptItemID
+- table: DirectDeliveryReceiptItemDraftVoucher
+  name: PK_DirectDeliveryReceiptItemDraftVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DirectDeliveryReceiptItemDraftVoucherID
+- table: DraftVoucher
+  name: PK_PRC3_DraftVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DraftVoucherID
+- table: DraftVoucherItem
+  name: PK_PRC3_DraftVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DraftVoucherItemID
+- table: DraftVoucherItemDetail
+  name: PK_DraftVoucherItemDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DraftVoucherItemDetailID
+- table: EntityDLLevelInfo
+  name: PK_PRC3_EntityDLLevelInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityDLLevelInfoID
+- table: Inquiry
+  name: PK_PRC3_Inquiry
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InquiryID
+- table: InquiryItem
+  name: PK_PRC3_InquiryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InquiryItemID
+- table: InquirySupplier
+  name: PK_PRC3_InquirySupplier
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InquirySupplierID
+- table: InventoryVoucherItemTag
+  name: PK_PRC3_InventoryVoucherItemTag
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryVoucherItemTagID
+- table: InventoryVoucherItemTag
+  name: UIX_PRC3_InventoryVoucherItemTag_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+- table: Invoice
+  name: PK_PRC3_Invoice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoiceID
+- table: Invoice
+  name: IX_PRC3_Invoice_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: Invoice
+  name: IX_PRC3_Invoice_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Invoice
+  name: IX_PRC3_Invoice_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: InvoiceItem
+  name: PK_PRC3_InvoiceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoiceItemID
+- table: InvoiceItem
+  name: IX_PRC3_InvoiceItem_InvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoiceRef
+- table: InvoiceItem
+  name: IX_PRC3_InvoiceItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: InvoiceItem
+  name: IX_PRC3_InvoiceItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: InvoiceItem
+  name: IX_PRC3_InvoiceItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: InvoicePolicyContextItem
+  name: PK_InvoicePolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoicePolicyContextItemID
+- table: InvoicePolicyContextItem
+  name: IX_PRC3_InvoicePolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: InvoicePolicyResult
+  name: PK_InvoicePolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoicePolicyResultID
+- table: InvoicePolicyResult
+  name: IX_PRC3_InvoicePolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: InvoicePolicyResult
+  name: IX_PRC3_InvoicePolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: LandedCost
+  name: PK_PRC3_LandedCost
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LandedCostId
+- table: LandedCostItem
+  name: PK_PRC3_LandedCostItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LandedCostItemId
+- table: LandedCostItem
+  name: IX_PRC3_LandedCostItem_CostRepositoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostRepositoryRef
+- table: LandedCostItem
+  name: IX_PRC3_LandedCostItem_OwnerCostRepositoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OwnerCostRepositoryRef
+- table: LandedCostItem
+  name: IX_PRC3_LandedCostItem_AnalysisCostRepositoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AnalysisCostRepositoryRef
+- table: MiscCost
+  name: PK_PRC3_MiscCost
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MiscCostID
+- table: MiscCostTargetEntity
+  name: PK_PRC3_MiscCostTargetEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MiscCostTargetEntityID
+- table: Order
+  name: PK_PRC3_Order
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderID
+- table: OrderAllocationInfo
+  name: PK_PRC3_OrderAllocationInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderAllocationInfoID
+- table: OrderingSuggestion
+  name: PK_OrderingSuggestion
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderingSuggestionID
+- table: OrderingSuggestionInfo
+  name: PK_OrderingSuggestionInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderingSuggestionInfoID
+- table: OrderingSuggestionInfoItem
+  name: PK_OrderingSuggestionInfoItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderingSuggestionInfoItemID
+- table: OrderingSuggestionItem
+  name: PK_OrderingSuggestionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderingSuggestionItemID
+- table: OrderingSuggestionItemAllocationInfo
+  name: PK_PRC3_OrderingSuggestionItemAllocationInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderingSuggestionItemAllocationInfoID
+- table: OrderingSuggestionItemAllocationInfoItem
+  name: PK_PRC3_OrderingSuggestionItemAllocationInfoItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderingSuggestionItemAllocationInfoItemID
+- table: OrderItem
+  name: PK_PRC3_OrderItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderItemID
+- table: OrderItem
+  name: IX_PRC3_OrderItem_OrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderRef
+- table: OrderItem
+  name: IX_PRC3_OrderItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: OrderItem
+  name: IX_PRC3_OrderItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: OrderItem
+  name: IX_PRC3_OrderItem_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: OrderItem
+  name: IX_PRC3_OrderItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: OrderItem
+  name: IX_PRC3_OrderItem_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: OrderItem
+  name: IX_PRC3_OrderItem_PurchasingAgentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchasingAgentRef
+- table: OrderItemDeliverySchedule
+  name: PK_PRC3_OrderItemDeliverySchedule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderItemDeliveryScheduleID
+- table: OrderPolicyContextItem
+  name: PK_PRC3_OrderPolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderPolicyContextItemID
+- table: OrderPolicyContextItem
+  name: IX_PRC3_OrderPolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: OrderPolicyResult
+  name: PK_PRC3_OrderPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrderPolicyResultID
+- table: OrderPolicyResult
+  name: IX_PRC3_OrderPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: OrderPolicyResult
+  name: IX_PRC3_OrderPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: PartNoticeSchedulingOperation
+  name: PK_PartNoticeSchedulingOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartNoticeSchedulingOperationID
+- table: PartNoticeTiming
+  name: PK_PartNoticeTiming
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartNoticeTimingID
+- table: PaymentInformation
+  name: PK_PRC3_PaymentInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentInformationID
+- table: PaymentInformation
+  name: IX_PRC3_PaymentInformation_CounterpartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartRef
+- table: PaymentInformationItem
+  name: PK_PRC3_PaymentInformationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentInformationItemID
+- table: PaymentSettlement
+  name: PK_PRC3_PaymentSettlement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentSettlementID
+- table: PaymentSettlement
+  name: UIX_PRC3_PaymentSettlement_Title_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - Number
+- table: PaymentSettlementPhase
+  name: PK_PRC3_PaymentSettlementPhase
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentSettlementPhaseID
+- table: PreOrder
+  name: PK_PRC3_PreOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PreOrderID
+- table: PreOrder
+  name: IX_PRC3_PreOrder_OrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderRef
+- table: PreOrder
+  name: IX_PRC3_PreOrder_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: PreOrder
+  name: IX_PRC3_PreOrder_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: PreOrder
+  name: IX_PRC3_PreOrder_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PreOrder
+  name: IX_PRC3_PreOrder_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: PreOrder
+  name: IX_PRC3_PreOrder_PurchasingDepartmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchasingDepartmentRef
+- table: PreOrderItem
+  name: PK_PRC3_PreOrderItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PreOrderItemID
+- table: PreOrderItem
+  name: IX_PRC3_PreOrderItem_PreOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PreOrderRef
+- table: PreOrderItem
+  name: IX_PRC3_PreOrderItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: PriceList
+  name: PK_PRC3_PriceList
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceListID
+- table: PriceListItem
+  name: PK_PRC3_PriceListItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceListItemID
+- table: PurchaseItem
+  name: PK_PRC3_PurchaseItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseItemID
+- table: PurchaseItem
+  name: UIX_PRC3_PurchaseItem_Type_PartRef_ServiceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Type
+  - PartRef
+  - ServiceRef
+- table: PurchaseItem
+  name: IX_PRC3_PurchaseItem_Type
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Type
+- table: PurchaseItem
+  name: IX_PRC3_PurchaseItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PurchaseItem
+  name: IX_PRC3_PurchaseItem_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: PurchaseItemGroupMembers
+  name: PK_PurchaseItemGroupMembers
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: PurchaseItemToSupplierRelationship
+  name: PK_PRC3_PurchaseItemToSupplierRelationship
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseItemToSupplierRelationshipID
+- table: PurchaseMiscCost
+  name: PK_PRC3_PurchaseMiscCost
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseMiscCostID
+- table: PurchaseMiscCostItem
+  name: PK_PRC3_PurchaseMiscCostItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseMiscCostItemID
+- table: PurchaseMiscCostPolicyContextItem
+  name: PK_PRC3_PurchaseMiscCostPolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseMiscCostPolicyContextItemID
+- table: PurchaseMiscCostPolicyContextItem
+  name: IX_PRC3_PurchaseMiscCostPolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: PurchaseMiscCostPolicyResult
+  name: PK_PRC3_PurchaseMiscCostPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseMiscCostPolicyResultID
+- table: PurchaseMiscCostPolicyResult
+  name: IX_PRC3_PurchaseMiscCostPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: PurchaseMiscCostPolicyResult
+  name: IX_PRC3_PurchaseMiscCostPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: PurchaseOrder
+  name: PK_PRC3_PurchaseOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseOrderID
+- table: PurchaseOrderItem
+  name: PK_PRC3_PurchaseOrderItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseOrderItemID
+- table: PurchaseOrderItem
+  name: IX_PRC3_PurchaseOrderItem_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: PurchaseOrderItem
+  name: IX_PRC3_PurchaseOrderItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: PurchaseOrderItem
+  name: IX_PRC3_PurchaseOrderItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: PurchaseOrderItem
+  name: IX_PRC3_PurchaseOrderItem_PurchaseOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseOrderRef
+- table: PurchaseOrderItem
+  name: IX_PRC3_PurchaseOrderItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: PurchaseOrderItem
+  name: IX_PRC3_PurchaseOrderItem_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PurchaseOrderItem
+  name: IX_PRC3_PurchaseOrderItem_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PurchaseOrderPolicyContextItem
+  name: PK_PurchaseOrderPolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseOrderPolicyContextItemID
+- table: PurchaseOrderPolicyContextItem
+  name: IX_PRC3_PurchaseOrderPolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: PurchaseOrderPolicyResult
+  name: PK_PurchaseOrderPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseOrderPolicyResultID
+- table: PurchaseOrderPolicyResult
+  name: IX_PRC3_PurchaseOrderPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: PurchaseOrderPolicyResult
+  name: IX_PRC3_PurchaseOrderPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: PurchaseRequest
+  name: PK_PRC3_PurchaseRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseRequestID
+- table: PurchaseRequest
+  name: IX_PRC3_PurchaseRequest_RequestingCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RequestingCenterRef
+- table: PurchaseRequest
+  name: IX_PRC3_PurchaseRequest_RequesterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RequesterRef
+- table: PurchaseRequestAmendment
+  name: PK_PurchaseRequestAmendment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseRequestAmendmentID
+- table: PurchaseRequestAmendmentItem
+  name: PK_PRC3_PurchaseRequestAmendmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseRequestAmendmentItemID
+- table: PurchaseRequestItem
+  name: PK_PRC3_PurchaseRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseRequestItemID
+- table: PurchaseRequestItem
+  name: IX_PRC3_PurchaseRequestItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: PurchaseRequestItem
+  name: IX_PRC3_PurchaseRequestItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: PurchaseRequestItem
+  name: IX_PRC3_PurchaseRequestItem_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: PurchaseRequestItem
+  name: IX_PRC3_PurchaseRequestItem_PurchasingAgentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchasingAgentRef
+- table: PurchaseRequestItem
+  name: IX_PRC3_PurchaseRequestItem_PurchaseRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseRequestRef
+- table: PurchaseRequestItem
+  name: IX_PRC3_PurchaseRequestItem_VerificationStepRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VerificationStepRef
+- table: PurchaseRequestItem
+  name: IX_PRC3_PurchaseRequestItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: PurchaseRequestItem
+  name: IX_PRC3_PurchaseRequestItem_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PurchaseRequestItemSupplier
+  name: PK_PRC3_PurchaseRequestItemSupplierID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseRequestItemSupplierID
+- table: PurchaseRequestItemVerification
+  name: PK_PRC3_PurchaseRequestItemVerification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseRequestItemVerificationID
+- table: PurchaseRequestPolicyContextItem
+  name: PK_PurchaseRequestPolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseRequestPolicyContextItemID
+- table: PurchaseRequestPolicyContextItem
+  name: IX_PRC3_PurchaseRequestPolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: PurchaseRequestPolicyResult
+  name: PK_PurchaseRequestPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseRequestPolicyResultID
+- table: PurchaseRequestPolicyResult
+  name: IX_PRC3_PurchaseRequestPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: PurchaseRequestPolicyResult
+  name: IX_PRC3_PurchaseRequestPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: PurchasingAdminUser
+  name: PK_PRC3_PurchasingAdminUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchasingAdminUserID
+- table: PurchasingAdminUser
+  name: IX_PRC3_PurchasingAdminUser
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UserRef
+- table: PurchasingAgent
+  name: PK_PRC3_PurchasingAgent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchasingAgentID
+- table: PurchasingAgent
+  name: UIX_PRC3_PurchasingAgent_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: PurchasingDepartment
+  name: PK_PurchasingDepartment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchasingDepartmentID
+- table: PurchasingDepartmentAgreement
+  name: PK_PRC3_PurchasingDepartmentAgreement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchasingDepartmentAgreementID
+- table: PurchasingDepartmentAgreement
+  name: UIX_PRC3_PurchasingDepartmentAgreement_AgreementRef_PurchasingDepartmentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AgreementRef
+  - PurchasingDepartmentRef
+- table: PurchasingDepartmentContract
+  name: PK_PRC3_PurchasingDepartmentContract
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchasingDepartmentContractID
+- table: PurchasingDepartmentContract
+  name: UIX_PRC3_PurchasingDepartmentContract_ContractRef_PurchasingDepartmentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractRef
+  - PurchasingDepartmentRef
+- table: PurchasingDepartmentPurchasingAgent
+  name: PK_PurchasingDepartmentPurchasingAgent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchasingDepartmentPurchasingAgentID
+- table: Quotation
+  name: PK_PRC3_Quotation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuotationID
+- table: Quotation
+  name: IX_PRC3_Quotation_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: Quotation
+  name: IX_PRC3_Quotation_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Quotation
+  name: IX_PRC3_Quotation_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: QuotationItem
+  name: PK_PRC3_QuotationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuotationItemID
+- table: QuotationItem
+  name: IX_PRC3_QuotationItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: QuotationItem
+  name: IX_PRC3_QuotationItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: QuotationItem
+  name: IX_PRC3_QuotationItem_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: QuotationItem
+  name: IX_PRC3_QuotationItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: QuotationItem
+  name: IX_PRC3_QuotationItem_QuotationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - QuotationRef
+- table: QuotationPolicyContextItem
+  name: PK_QuotationPolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuotationPolicyContextItemID
+- table: QuotationPolicyContextItem
+  name: IX_PRC3_QuotationPolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: QuotationPolicyResult
+  name: PK_QuotationPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - QuotationPolicyResultID
+- table: QuotationPolicyResult
+  name: IX_PRC3_QuotationPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: QuotationPolicyResult
+  name: IX_PRC3_QuotationPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: Refund
+  name: PK_PRC3_Refund
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RefundID
+- table: Refund
+  name: IX_PRC3_Refund_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: Refund
+  name: IX_PRC3_Refund_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Refund
+  name: IX_PRC3_Refund_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: RefundItem
+  name: PK_PRC3_RefundItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RefundItemID
+- table: RefundItem
+  name: IX_PRC3_RefundItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: RefundItem
+  name: IX_PRC3_RefundItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: RefundItem
+  name: IX_PRC3_RefundItem_RefundRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RefundRef
+- table: RefundItem
+  name: IX_PRC3_RefundItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: RefundPolicyContextItem
+  name: PK_RefundPolicyContextItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RefundPolicyContextItemID
+- table: RefundPolicyContextItem
+  name: IX_PRC3_RefundPolicyContextItem_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: RefundPolicyResult
+  name: PK_RefundPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RefundPolicyResultID
+- table: RefundPolicyResult
+  name: IX_PRC3_RefundPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: RefundPolicyResult
+  name: IX_PRC3_RefundPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: SelfServiceKeyValueConfiguration
+  name: PK_PRC3_SelfServiceKeyValueConfiguration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SelfServiceKeyValueConfigurationID
+- table: SelfServiceKeyValueConfiguration
+  name: PRC3_UX_SelfServiceKeyValueConfiguration
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ConfigKey
+- table: SelfServiceSecurityPolicy
+  name: PK_PRC3_SelfServiceSecurityPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SelfServiceSecurityPolicyID
+- table: SelfServiceSecurityPolicy
+  name: IX_PRC3_SelfServiceSecurityPolicy_UserRef_SecurityKey
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SelfServiceUserRef
+  included:
+  - SecurityKey
+- table: SelfServiceSecurityPolicy
+  name: IX_PRC3_SelfServiceSecurityPolicy_GroupRef_SecurityKey
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SelfServiceUserGroupRef
+  included:
+  - SecurityKey
+- table: SelfServiceUser
+  name: PK_PRC3_SelfServiceUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SelfServiceUserID
+- table: SelfServiceUser
+  name: UIX_PRC3_SelfServiceUser_UserName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UserName
+- table: SelfServiceUser
+  name: IX_PRC3_SelfServiceUser_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: SelfServiceUserGroup
+  name: PK_PRC3_SelfServiceUserGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SelfServiceUserGroupID
+- table: SelfServiceUserGroup
+  name: UIX_PRC3_SelfServiceUserGroup_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: SelfServiceUserGroupMember
+  name: PK_PRC3_SelfServiceUserGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SelfServiceUserGroupMemberID
+- table: SelfServiceUserGroupMember
+  name: UIX_PRC3_SelfServiceUserGroupMember_UserRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SelfServiceUserRef
+- table: SelfServiceUserGroupMember
+  name: IX_PRC3_SelfServiceUserGroupMember_SelfServiceUserGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SelfServiceUserGroupRef
+- table: SelfServiceUserGroupPermission
+  name: PK_PRC3_SelfServiceUserGroupPermission
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SelfServiceUserGroupPermissionID
+- table: SelfServiceUserGroupPermission
+  name: IX_PRC3_SelfServiceUserGroupPermission_SelfServiceUserGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SelfServiceUserGroupRef
+- table: SelfServiceUserPermission
+  name: PK_PRC3_SelfServiceUserPermission
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SelfServiceUserPermissionID
+- table: SelfServiceUserPermission
+  name: IX_PRC3_SelfServiceUserPermission_SelfServiceUserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SelfServiceUserRef
+- table: SelfServiceUserProfile
+  name: PK_PRC3_SelfServiceUserProfile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SelfServiceUserProfileID
+- table: SelfServiceUserProfile
+  name: IX_PRC3_SelfServiceUserRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SelfServiceUserRef
+- table: ShippingNotification
+  name: PK_PRC3_ShippingNotification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShippingNotificationID
+- table: ShippingNotificationItem
+  name: PK_PRC3_ShippingNotificationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShippingNotificationItemID
+- table: ShippingNotificationItem
+  name: IX_PRC3_ShippingNotificationItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: ShippingNotificationItem
+  name: IX_PRC3_ShippingNotificationItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: ShippingNotificationItem
+  name: IX_PRC3_ShippingNotificationItem_ShippingNotificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingNotificationRef
+- table: Supplier
+  name: PK_PRC3_Supplier
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierID
+- table: Supplier
+  name: UIX_PRC3_Supplier_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: SupplierAssessment
+  name: PK_PRC3_SupplierAssessment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierAssessmentID
+- table: SupplierAssessmentGroupingInfo
+  name: PK_PRC3_SupplierAssessmentGroupingInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierAssessmentGroupingInfoID
+- table: SupplierAssessmentItem
+  name: PK_PRC3_SupplierAssessmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierAssessmentItemID
+- table: SupplierAssessmentParameter
+  name: PK_PRC3_SupplierAssessmentParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierAssessmentParameterID
+- table: SupplierAssessmentParameter
+  name: UIX_PRC3_SupplierAssessmentParameter_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SupplierGroupMembers
+  name: PK_SupplierGroupMembers
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: SupplierPartCode
+  name: PK_PRC3_SupplierPartCode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierPartCodeID
+- table: SupplierQuotation
+  name: PK_PRC3_SupplierQuotation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierQuotationID
+- table: SupplierQuotation
+  name: IX_PRC3_SupplierQuotation_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+  included:
+  - PurchasingDepartmentRef
+- table: SupplierQuotation
+  name: IX_PRC3_SupplierQuotation_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: SupplierQuotationItem
+  name: PK_PRC3_SupplierQuotationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierQuotationItemID
+- table: SupplierQuotationItem
+  name: IX_PRC3_SupplierQuotationItem_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: SupplierQuotationItem
+  name: IX_PRC3_SupplierQuotationItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: SupplierQuotationItem
+  name: IX_PRC3_SupplierQuotationItem_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: SupplierQuotationItem
+  name: IX_PRC3_SupplierQuotationItem_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: SupplierQuotationItem
+  name: IX_PRC3_SupplierQuotationItem_SupplierQuotationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierQuotationRef
+- table: SupplierRating
+  name: PK_PRC3_SupplierRating
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierRatingID
+- table: SupplierRatingItem
+  name: PK_PRC3_SupplierRatingItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SupplierRatingItemID
+- table: TechinicalProposalNonSendingReason
+  name: PK_TechinicalProposalNonSendingReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TechinicalProposalNonSendingReasonID
+- table: TechnicalAgent
+  name: PK_PRC3_TechnicalAgent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TechnicalAgentID
+- table: TechnicalInquiry
+  name: PK_TechnicalInquiry
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TechnicalInquiryID
+- table: TechnicalInquiryItem
+  name: PK_TechnicalInquiryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TechnicalInquiryItemID
+- table: TimingSchedule
+  name: PK_TimingSchedule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TimingScheduleID
+- table: TimingSchedule
+  name: UIX_PRC3_TimingSchedule
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: TimingSchedule
+  name: IX_PRC3_TimingSchedule_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: TimingSchedule
+  name: IX_PRC3_TimingSchedule_JobRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - JobRef
+- table: UserPurchaseType
+  name: PK_PRC3_UserPurchaseType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserPurchaseTypeID
+- table: UserPurchaseType
+  name: UIX_PRC3_UserPurchaseType_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: VerificationStep
+  name: PK_PRC3_VerificationStep
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VerificationStepID
+- table: VerificationStep
+  name: UIX_PRC3_VerificationStep_Step
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Step
+- table: VerificationStep
+  name: UIX_PRC3_VerificationStep_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: VoucherPricingFailureLog
+  name: PK_PRC3_VoucherPricingFailureLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherPricingFailureLogID

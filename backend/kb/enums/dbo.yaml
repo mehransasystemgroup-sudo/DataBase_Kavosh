@@ -1,0 +1,340 @@
+schema: dbo
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: COSTCENTER07051402
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 88
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 29
+- table: COSTCENTER07051402
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 117
+- table: DLTypeRelationOLD
+  column: Level
+  lookup_type: null
+  values:
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 685
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 461
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 317
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 416
+  - value: '8'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 344
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 246
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 387
+  - value: '11'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 402
+  - value: '12'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 337
+  - value: '13'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 111
+- table: accountgroupOLD
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 17
+- table: accountgroupOLD
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 17
+- table: accountgroupOLD
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 12
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 5
+- table: dl14020324
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 861
+- table: dl27031402
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 863
+- table: dlOLD
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 27
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 2270
+- table: glOLD
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 101
+- table: glOLD
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 101
+- table: glOLD
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 78
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 23
+- table: slOLD
+  column: Nature
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 25
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 461
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 217
+- table: slOLD
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 703
+- table: slOLD
+  column: TaxAccountType
+  nullable: true
+  lookup_type: TaxAccountType
+  type_title_fa: TaxAccountType
+  values:
+  - value: '1'
+    label_fa: مالیات بر ارزش افزوده پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: عوارض پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: پیش پرداخت مالیات بر ارزش افزوده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: پیش پرداخت عوارض
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: مالیات تکلیفی
+    source: stated_by_config
+    confidence: high
+- table: slOLD
+  column: Type
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 328
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 334
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 41
+- table: slOLD
+  column: VATSLType
+  nullable: true
+  lookup_type: VATSLType
+  type_title_fa: VATSLType
+  values:
+  - value: '1'
+    label_fa: معین مالیاتی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: معین مالیات پذیر
+    source: stated_by_config
+    confidence: high
+- table: voucheritem23071402
+  column: TaxAccountType
+  nullable: true
+  lookup_type: TaxAccountType
+  type_title_fa: TaxAccountType
+  values:
+  - value: '1'
+    label_fa: مالیات بر ارزش افزوده پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: عوارض پرداختنی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: پیش پرداخت مالیات بر ارزش افزوده
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: پیش پرداخت عوارض
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: مالیات تکلیفی
+    source: stated_by_config
+    confidence: high
+- table: voucheritem23071402
+  column: TaxStateType
+  nullable: true
+  lookup_type: null
+  values: []
+- table: voucheritem23071402
+  column: TransactionType
+  nullable: true
+  lookup_type: TransactionType
+  type_title_fa: TransactionType
+  values:
+  - value: '1'
+    label_fa: داخلی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: خارجی
+    source: stated_by_config
+    confidence: high

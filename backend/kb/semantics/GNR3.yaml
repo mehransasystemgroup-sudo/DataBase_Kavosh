@@ -1,0 +1,6 @@
+schema: GNR3
+tables:
+- name: FiscalYear
+  title_fa: سال مالی
+  source: stated_by_user
+  confidence: high

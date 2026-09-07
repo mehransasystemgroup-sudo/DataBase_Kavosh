@@ -1,0 +1,4731 @@
+schema: CAC3
+table_count: 88
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: AccountGroupConfiguration
+  columns:
+  - name: AccountGroupConfigurationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: AccountGroupCode
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - AccountGroupConfigurationID
+- name: AccountingVoucher
+  columns:
+  - name: AccountingVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: VoucherRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - AccountingVoucherID
+- name: ActualMaterialFee
+  columns:
+  - name: ActualMaterialFeeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Price
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ActualMaterialFeeID
+- name: ActualMaterialFeeItem
+  columns:
+  - name: ActualMaterialFeeItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ActualMaterialFeeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InputTransactionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Price
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ActualMaterialFeeItemID
+- name: BeginningMaterial
+  columns:
+  - name: BeginningMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: WithoutReferenceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Price
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 7
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - BeginningMaterialID
+- name: BeginningMaterialWithReference
+  columns:
+  - name: BeginningMaterialWithReferenceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BeginningMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - BeginningMaterialWithReferenceID
+- name: BeginningWorkInProcess
+  columns:
+  - name: BeginningWorkInProcessID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: LabourCompletePercentage
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 9
+  - name: OverheadCompletePercentage
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 10
+  - name: LabourPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: OverheadPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 13
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 18
+  primary_key:
+  - BeginningWorkInProcessID
+- name: BeginningWorkInProcessMaterial
+  columns:
+  - name: BeginningWorkInProcessMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BeginningWorkInProcessRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Price
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: UsedPrecentage
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BeginningWorkInProcessMaterialID
+- name: BillOfMaterial
+  columns:
+  - name: BillOfMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 4
+  - name: DecompositionQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 6
+  - name: IsMajor
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: AllowAddMaterial
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - BillOfMaterialID
+- name: BillOfMaterialAlternativeNode
+  columns:
+  - name: BillOfMaterialAlternativeNodeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BillOfMaterialNodeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Priority
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Ratio
+    type: decimal(18,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BillOfMaterialAlternativeNodeID
+- name: BillOfMaterialMap
+  columns:
+  - name: BillOfMaterialMapID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: RoutingRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: BomRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BillOfMaterialMapID
+- name: BillOfMaterialMapItem
+  columns:
+  - name: BillOfMaterialMapItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BillOfMaterialMapRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RoutingOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - BillOfMaterialMapItemID
+- name: BillOfMaterialMapItemRelatedOperation
+  columns:
+  - name: BillOfMaterialMapItemRelatedOperationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BillOfMaterialMapItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RoutingOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ScrapCompletePercentage
+    type: decimal(18,9)
+    nullable: false
+    ordinal: 4
+  - name: ConversionRatio
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BillOfMaterialMapItemRelatedOperationID
+- name: BillOfMaterialNode
+  columns:
+  - name: BillOfMaterialNodeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StandardConsumption
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 3
+  - name: StandardConsumptionPercent
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: WastageConsumption
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: WastageConsumptionPercent
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: IsIneffective
+    type: bit
+    nullable: true
+    ordinal: 7
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: ParentNodeRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: Left
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Right
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: varbinary(50)
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - BillOfMaterialNodeID
+- name: BillOfMaterialRecyclingNode
+  columns:
+  - name: BillOfMaterialRecyclingNodeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BillOfMaterialNodeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - BillOfMaterialRecyclingNodeID
+- name: BillOfMaterialSideProductNode
+  columns:
+  - name: BillOfMaterialSideProductNodeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BillOfMaterialNodeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IsByProduct
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BillOfMaterialSideProductNodeID
+- name: CalcPeriod
+  columns:
+  - name: CalcPeriodID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 5
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 6
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 7
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: Description_En
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 9
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: PlanningPeriodRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: ConsumptionCalculationType
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: SeparationCalculationType
+    type: int
+    nullable: false
+    ordinal: 14
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 16
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - CalcPeriodID
+- name: CalculationLogCatalog
+  columns:
+  - name: CalculationLogCatalogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CatalogType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Editable
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CalculationLogCatalogID
+- name: CalculationStep
+  columns:
+  - name: CalculationStepID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Key
+    type: varchar(255)
+    nullable: false
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Config
+    type: xml
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - CalculationStepID
+- name: CalculationStepLog
+  columns:
+  - name: CalculationStepLogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationStepRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: CalculationLogCatalogRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: JobRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: IsLast
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: ParentRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: RootRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: StartTime
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: FinishTime
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: Message
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 11
+  - name: Exception
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 12
+  - name: Data
+    type: varbinary(max)
+    nullable: true
+    ordinal: 13
+  - name: Type
+    type: varchar(1000)
+    nullable: true
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - CalculationStepLogID
+- name: ConsumptionFeeCalculation
+  columns:
+  - name: ConsumptionFeeCalculationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 2
+  - name: FeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 3
+  - name: DurationFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ConsumptionFeeCalculationID
+- name: Contractor
+  columns:
+  - name: ContractorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 2
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 4
+  - name: IsActive
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ContractorID
+- name: ContractorProduction
+  columns:
+  - name: ContractorProductionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ContractorRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: LabourFeeStandard
+    type: decimal(24,10)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ContractorProductionID
+- name: ContractorProductionFeeActual
+  columns:
+  - name: ContractorProductionFeeActualID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ContractorProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EffectiveDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: LabourFeeActual
+    type: decimal(24,10)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ContractorProductionFeeActualID
+- name: ContractorWorkstation
+  columns:
+  - name: ContractorWorkstationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ContractorRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ContractorWorkstationID
+- name: ConversionSL
+  columns:
+  - name: ConversionSLID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: ConversionSLCategoryRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: FixPercentage
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 8
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - ConversionSLID
+- name: ConversionSLCategory
+  columns:
+  - name: ConversionSLCategoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ConversionSLCategoryID
+- name: CostCenterConversionSL
+  columns:
+  - name: CostCenterConversionSLID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ConversionSLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SecondCostDriverRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: FixPercentage
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - CostCenterConversionSLID
+- name: CostCenterConversionSLDetail
+  columns:
+  - name: CostCenterConversionSLDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 2
+  - name: Month
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: CostCenterConversionSLRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CostCenterConversionSLDetailID
+- name: CostCenterConversionSLVoucherItem
+  columns:
+  - name: CostCenterConversionSLVoucherItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CostCenterConversionSLRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 3
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 4
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: Debit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: Credit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - CostCenterConversionSLVoucherItemID
+- name: CostCenterDelivery
+  columns:
+  - name: CostCenterDeliveryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: IsReturned
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - CostCenterDeliveryID
+- name: CostCenterDeliveryItem
+  columns:
+  - name: CostCenterDeliveryItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CostCenterDeliveryRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: QuantityInSelectedUnit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: SourceWorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: DestinationType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: DestinationStoreRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: DestinationCostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: DestinationWorkstationRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - CostCenterDeliveryItemID
+- name: CostCenterEx
+  columns:
+  - name: CostCenterExID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: FirstCostDriverRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - CostCenterExID
+- name: CostDriver
+  columns:
+  - name: CostDriverID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: Name
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 3
+  - name: Name_En
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 5
+  - name: WorkstationAssignment
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - CostDriverID
+- name: CostDriverAssignment
+  columns:
+  - name: CostDriverAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: CostDriverRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - CostDriverAssignmentID
+- name: DeliveryConfirmation
+  columns:
+  - name: DeliveryConfirmationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ConfirmationNumber
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: ConfirmationDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: DeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: ActualDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: ProductionOrderNumber
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 8
+  - name: ConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: SourceCostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: SourceWorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: DestinationCostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: RoutingOperationRef
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: CostCenterDeliveryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: ConfirmationFiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 18
+  - name: CostCenterDeliveryFiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 19
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 20
+  primary_key:
+  - DeliveryConfirmationID
+- name: DirectCostAllocation
+  columns:
+  - name: DirectCostAllocationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceCalcPeriodRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: CostCenterConversionSLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Rate
+    type: float
+    nullable: false
+    ordinal: 5
+  - name: FixLabourCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: VariableLabourCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: FixOverheadCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: VariableOverheadCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - DirectCostAllocationID
+- name: DirectInputMaterial
+  columns:
+  - name: DirectInputMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - DirectInputMaterialID
+- name: DirectInputMaterialItem
+  columns:
+  - name: DirectInputMaterialItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DirectInputMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Fee
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - DirectInputMaterialItemID
+- name: EndingMaterial
+  columns:
+  - name: EndingMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: WithoutReferenceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - EndingMaterialID
+- name: EndingMaterialWithReference
+  columns:
+  - name: EndingMaterialWithReferenceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EndingMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - EndingMaterialWithReferenceID
+- name: EndingWorkInProcess
+  columns:
+  - name: EndingWorkInProcessID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: LabourCompletePercentage
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 7
+  - name: OverheadCompletePercentage
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - EndingWorkInProcessID
+- name: EndingWorkInProcessMaterial
+  columns:
+  - name: EndingWorkInProcessMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EndingWorkInProcessRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: UsedPrecentage
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - EndingWorkInProcessMaterialID
+- name: IgnoredCostAllocationArea
+  columns:
+  - name: IgnoredCostAllocationAreaID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CostCenterConversionSLRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: CostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IgnoredCostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: IgnoredWorkstationRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - IgnoredCostAllocationAreaID
+- name: IndirectCostAllocation
+  columns:
+  - name: IndirectCostAllocationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceCalcPeriodRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: DonorCostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: AcceptorCostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: AcceptorWorkstationRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Rate
+    type: float
+    nullable: false
+    ordinal: 6
+  - name: FixCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: VariableCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: Cost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - IndirectCostAllocationID
+- name: IndirectCostAllocationBySL
+  columns:
+  - name: IndirectCostAllocationBySLDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DonorCostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: AcceptorCostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: AcceptorWorkstationRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ConversionSLRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Rate
+    type: float
+    nullable: false
+    ordinal: 7
+  - name: FixCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: VariableCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: Cost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - IndirectCostAllocationBySLDetailID
+- name: IndirectCostAllocationBySLState
+  columns:
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IsCalculated
+    type: bit
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - CalcPeriodRef
+- name: IndirectCostAllocationDetail
+  columns:
+  - name: IndirectCostAllocationDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IndirectCostAllocationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CostCenterConventionSLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: FixCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: VariableCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Cost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - IndirectCostAllocationDetailID
+- name: InputTransaction
+  columns:
+  - name: InputTransactionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BeginnigMaterialQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: EndingMaterialQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: WithReferenceInventoryConsumeQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: WithReferenceReturnedInventoryConsumeQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: WithoutReferenceInventoryConsumeQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: WithoutReferenceReturnedInventoryConsumeQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: WithReferenceInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: WithReferenceReturnedInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: WithoutReferenceInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: WithoutReferenceReturnedInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: RecycleQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  - name: ReturnedRecycleQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 15
+  - name: DeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 16
+  - name: ReturnedDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 17
+  - name: DirectInputMaterialQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 18
+  - name: NetQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 19
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 20
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 21
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 22
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 23
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 24
+  primary_key:
+  - InputTransactionID
+- name: InputTransactionItem
+  columns:
+  - name: InputTransactionItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InputTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CostCenterDeliveryRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: CostCenterDeliveryItemRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: InventoryVoucherRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: InventoryVoucherItemRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: ProductionRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: RootReferenceType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: RootReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: RootReferenceNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: ReturnableVoucherItemRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: DirectInputMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: DirectInputMaterialItemRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 14
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - InputTransactionItemID
+- name: InputTransactionItemProduction
+  columns:
+  - name: InputTransactionItemProductionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InputTransactionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - InputTransactionItemProductionID
+- name: InputTransactionSource
+  columns:
+  - name: InputTransactionSourceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InputTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - InputTransactionSourceID
+- name: InputTransactionSourcePrice
+  columns:
+  - name: InputTransactionSourcePriceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: InputTransactionSourceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: FeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 4
+  - name: FeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - InputTransactionSourcePriceID
+- name: InputTransactionWorkstation
+  columns:
+  - name: InputTransactionWorkstationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: InputTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: WithReferenceInventoryConsumeProduceNetQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: WithoutReferenceInventoryConsumeProduceNetQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: RecycleQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: DeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: NetQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - InputTransactionWorkstationID
+- name: InventoryCalculation
+  columns:
+  - name: InventoryCalculationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: InventoryVoucherItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Price
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Rank
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: CardexRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: TrackingFactorRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: IsOtherSoldPart
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: Step
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  - name: TrackingFactor
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 12
+  primary_key:
+  - InventoryCalculationID
+- name: OutputTransaction
+  columns:
+  - name: OutputTransactionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CostCenterExRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: WithReferenceInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: WithReferenceReturnedInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: WithoutReferenceInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: WithoutReferenceReturnedInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: DeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: DeliveryDiscard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: ReturnedDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: NetIntactQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: WithReferenceInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: WithReferenceReturnedInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: WithoutReferenceInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  - name: WithoutReferenceReturnedInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 15
+  - name: NetDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 16
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 18
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 19
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 20
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 21
+  primary_key:
+  - OutputTransactionID
+- name: OutputTransactionDetail
+  columns:
+  - name: OutputTransactionDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OutputTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: WithReferenceInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: WithReferenceReturnedInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: WithoutReferenceInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: WithoutReferenceReturnedInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: DeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: DeliveryDiscard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: ReturnedDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: NetIntactQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: WithReferenceInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: WithReferenceReturnedInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: WithoutReferenceInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  - name: WithoutReferenceReturnedInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 15
+  - name: NetDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - OutputTransactionDetailID
+- name: OutputTransactionItem
+  columns:
+  - name: OutputTransactionItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OutputTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CostCenterDeliveryRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: CostCenterDeliveryItemRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: WorkstationRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: RootReferenceType
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: RootReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: RootReferenceNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: ReturnableVoucherItemRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: InventoryVoucherRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: InventoryVoucherItemRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: OutputTransactionDetailRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - OutputTransactionItemID
+- name: OutputTransactionItemPrice
+  columns:
+  - name: OutputTransactionItemPriceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OutputTransactionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: FeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 4
+  - name: FeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - OutputTransactionItemPriceID
+- name: OutputTransactionItemProduction
+  columns:
+  - name: OutputTransactionItemProductionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OutputTransactionItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - OutputTransactionItemProductionID
+- name: OutputTransactionWorkstation
+  columns:
+  - name: OutputTransactionWorkstationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OutputTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: WithReferenceInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: WithReferenceReturnedInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: WithoutReferenceInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: WithoutReferenceReturnedInventoryProduceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: DeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: DeliveryDiscard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: ReturnedDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: NetIntactQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: WithReferenceInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: WithReferenceReturnedInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  - name: WithoutReferenceInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 15
+  - name: WithoutReferenceReturnedInventoryDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 16
+  - name: NetDiscardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 17
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 18
+  primary_key:
+  - OutputTransactionWorkstationID
+- name: ProductCostCalculation
+  columns:
+  - name: ProductCostCalculationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: JointProductPartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ProductEquivalentUnitCalculationRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: LabourTimeStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: LabourFixCostActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: LabourFixCostStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: LabourVariableCostActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: LabourVariableCostStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: LabourRateVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: LabourEfficiencyVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: OverheadTimeStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: OverheadFixCostStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  - name: OverheadFixCostActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 15
+  - name: OverheadVariableCostActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 16
+  - name: OverheadVariableCostStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 17
+  - name: OverheadCostVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 18
+  - name: OverheadUnusedCapacityVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 19
+  - name: OverheadEfficiencyVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 20
+  - name: OverheadControllableVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 21
+  - name: OverheadVolumeVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 22
+  - name: ShareOfSecondaryProductActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 23
+  - name: ShareOfSecondaryProductStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 24
+  - name: LabourBeginningFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 25
+  - name: LabourBeginningFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 26
+  - name: OverheadBeginningFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 27
+  - name: OverheadBeginningFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 28
+  - name: LabourFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 29
+  - name: LabourFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 30
+  - name: OverheadFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 31
+  - name: OverheadFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 32
+  - name: MaterialFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 33
+  - name: MaterialFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 34
+  - name: SemiProductFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 35
+  - name: SemiProductFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 36
+  - name: LabourDeliveryFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 37
+  - name: LabourDeliveryFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 38
+  - name: OverheadDeliveryFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 39
+  - name: OverheadDeliveryFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 40
+  - name: MaterialDeliveryFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 41
+  - name: MaterialDeliveryFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 42
+  - name: SemiProductDeliveryFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 43
+  - name: SemiProductDeliveryFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 44
+  - name: DeliveryFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 45
+  - name: DeliveryFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 46
+  - name: LabourAbnormalWastageFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 47
+  - name: OverheadAbnormalWastageFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 48
+  - name: LabourEndingFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 49
+  - name: OverheadEndingFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 50
+  - name: LabourProducedFeeWithNormalWastage
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 51
+  - name: OverheadProducedFeeWithNormalWastage
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 52
+  - name: LabourProducedFeeWithoutNormalWastage
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 53
+  - name: OverheadProducedFeeWithoutNormalWastage
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 54
+  - name: LabourAppliedVarianceFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 55
+  - name: OverheadAppliedVarianceFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 56
+  - name: LabourBeginningPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 57
+  - name: LabourBeginningPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 58
+  - name: OverheadBeginningPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 59
+  - name: OverheadBeginningPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 60
+  - name: MaterialPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 61
+  - name: MaterialPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 62
+  - name: SemiProductPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 63
+  - name: SemiProductPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 64
+  - name: PriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 65
+  - name: PriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 66
+  - name: LabourDeliveryPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 67
+  - name: LabourDeliveryPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 68
+  - name: LabourDeliveryShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 69
+  - name: LabourDeliveryAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 70
+  - name: OverheadDeliveryPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 71
+  - name: OverheadDeliveryPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 72
+  - name: OverheadDeliveryShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 73
+  - name: OverheadDeliveryAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 74
+  - name: MaterialDeliveryPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 75
+  - name: MaterialDeliveryPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 76
+  - name: SemiProductDeliveryPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 77
+  - name: SemiProductDeliveryPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 78
+  - name: DeliveryPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 79
+  - name: DeliveryPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 80
+  - name: LabourAbnormalWastagePriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 81
+  - name: LabourAbnormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 82
+  - name: LabourAbnormalShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 83
+  - name: LabourAbnormalAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 84
+  - name: OverheadAbnormalWastagePriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 85
+  - name: OverheadAbnormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 86
+  - name: OverheadAbnormalAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 87
+  - name: OverheadAbnormalShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 88
+  - name: LabourEndingPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 89
+  - name: LabourEndingPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 90
+  - name: LabourEndingShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 91
+  - name: LabourEndingAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 92
+  - name: OverheadEndingPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 93
+  - name: OverheadEndingPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 94
+  - name: OverheadEndingAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 95
+  - name: OverheadEndingShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 96
+  - name: LabourAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 97
+  - name: OverheadAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 98
+  - name: MaterialRecyclingPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 99
+  - name: MaterialRecyclingPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 100
+  - name: SemiProductRecyclingPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 101
+  - name: SemiProductRecyclingPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 102
+  - name: MaterialRecyclingPriceVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 103
+  - name: SemiProductRecyclingPriceVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 104
+  - name: SeperationCalculationType
+    type: int
+    nullable: true
+    ordinal: 105
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 106
+  primary_key:
+  - ProductCostCalculationID
+- name: ProductCostCalculationMaterial
+  columns:
+  - name: ProductCostCalculationMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductCostCalculationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductEquivalentUnitCalculationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ProductionConsumptionCalculationRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: AlternativeOfPartRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: ConsumptionVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: ConsumptionRateVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: ConsumptionFeeCalculationRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: ProducedFeeWithNormalWastage
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 10
+  - name: ProducedFeeWithoutNormalWastage
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 11
+  - name: BeginningFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 12
+  - name: BeginningFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 13
+  - name: FeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 14
+  - name: FeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 15
+  - name: DeliveryFeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 16
+  - name: DeliveryFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 17
+  - name: AbnormalWastageFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 18
+  - name: EndingFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 19
+  - name: AppliedVarianceFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 20
+  - name: DurationFeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 21
+  - name: BeginningPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 22
+  - name: BeginningPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 23
+  - name: PriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 24
+  - name: PriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 25
+  - name: DeliveryPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 26
+  - name: DeliveryShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 27
+  - name: DeliveryAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 28
+  - name: DeliveryPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 29
+  - name: AbnormalWastagePriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 30
+  - name: AbnormalAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 31
+  - name: AbnormalShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 32
+  - name: AbnormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 33
+  - name: EndingPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 34
+  - name: EndingAppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 35
+  - name: EndingShareOfNormalWastagePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 36
+  - name: EndingPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 37
+  - name: AppliedVariancePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 38
+  - name: DurationPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 39
+  - name: RecyclingPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 40
+  - name: RecyclingPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 41
+  - name: RecyclingPriceVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 42
+  - name: ByProductPriceStandard
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 43
+  - name: ByProductPriceActual
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 44
+  - name: ByProductPriceVariance
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 45
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 46
+  primary_key:
+  - ProductCostCalculationMaterialID
+- name: ProductCostCalculationMaterialDetail
+  columns:
+  - name: ProductCostCalculationMaterialDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductCostCalculationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: InputTransactionSourceRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: FeeStandard
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 7
+  - name: FeeActual
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 8
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: ActualConsumptionQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ProductCostCalculationMaterialDetailID
+- name: ProductCostCalculationSeperation
+  columns:
+  - name: ProductCostCalculationSeperationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductCostCalculationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RelatedProductCostCalculationRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Level
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: LabourFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 8
+  - name: FixLabourFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 9
+  - name: VariableLabourFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 10
+  - name: OverheadFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 11
+  - name: FixOverheadFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 12
+  - name: VariableOverheadFee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 13
+  - name: LabourPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  - name: FixLabourPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 15
+  - name: VariableLabourPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 16
+  - name: OverheadPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 17
+  - name: FixOverheadPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 18
+  - name: VariableOverheadPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 19
+  - name: MaterialPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 20
+  - name: Price
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 21
+  - name: ParentRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: TotalLabourPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 23
+  - name: TotalFixLabourPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 24
+  - name: TotalVariableLabourPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 25
+  - name: TotalOverheadPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 26
+  - name: TotalFixOverheadPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 27
+  - name: TotalVariableOverheadPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 28
+  - name: TotalMaterialPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 29
+  - name: TotalPrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 30
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 31
+  - name: RegulatedRatio
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 32
+  - name: InvRegulatedRatio
+    type: decimal(28,15)
+    nullable: false
+    ordinal: 33
+  - name: SolidAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 34
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 35
+  primary_key:
+  - ProductCostCalculationSeperationID
+- name: ProductCostCalculationSeperationMaterial
+  columns:
+  - name: ProductCostCalculationSeperationMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductCostCalculationSeperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Fee
+    type: decimal(28,10)
+    nullable: false
+    ordinal: 5
+  - name: Price
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ProductCostCalculationSeperationMaterialID
+- name: ProductEquivalentUnitCalculation
+  columns:
+  - name: ProductEquivalentUnitCalculationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: JointProductPartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: NormalDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: WastageDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: LabourBeginningQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: LabourEndingQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: LabourAbnormalWastageQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: LabourNormalWastageQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: LabourProductQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: OverheadBeginningQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: OverheadEndingQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: OverheadAbnormalWastageQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  - name: OverheadNormalWastageQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 15
+  - name: OverheadProductQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - ProductEquivalentUnitCalculationID
+- name: ProductEquivalentUnitCalculationMaterial
+  columns:
+  - name: ProductEquivalentUnitCalculationMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductEquivalentUnitCalculationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MaterialProductQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: MaterialNormalWastageQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: MaterialAbnormalWastageQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: ConsumeStandardQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: ConsumptionRatio
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: BeginningQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: EndingQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ProductEquivalentUnitCalculationMaterialID
+- name: Production
+  columns:
+  - name: ProductionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ServiceRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: NormalWastagePercentage
+    type: decimal(9,6)
+    nullable: false
+    ordinal: 6
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: LabourTime
+    type: decimal(25,9)
+    nullable: false
+    ordinal: 8
+  - name: OverheadTime
+    type: decimal(25,9)
+    nullable: false
+    ordinal: 9
+  - name: PlanningServiceCount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 11
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - ProductionID
+- name: ProductionCalcPeriodInfo
+  columns:
+  - name: ProductionCalcPeriodInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IsSideProduct
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: IsRecycling
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: IsGroupingProduct
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: GroupingCompleted
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: MaterialCompleted
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ProductionCalcPeriodInfoID
+- name: ProductionConsumptionCalculation
+  columns:
+  - name: ProductionConsumptionCalculationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductEquivalentUnitCalculationMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: JointProductPartRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: InputTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: InputTransactionWorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: WithoutReferenceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: WithReferenceQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ProductionConsumptionCalculationID
+- name: ProductionJointProductRatio
+  columns:
+  - name: ProductionJointProductRatioID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: UnifiedProductionRatio
+    type: float
+    nullable: false
+    ordinal: 5
+  - name: ProportionalSalePrice
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: MaterialProductionQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: LabourProductionQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: OverheadProductionQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: MaterialShareRatio
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: LabourShareRatio
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: OverheadShareRatio
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: IsByProduct
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: JointProductType
+    type: int
+    nullable: false
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - ProductionJointProductRatioID
+- name: ProductionMaterial
+  columns:
+  - name: ProductionMaterialID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: StandardConsumption
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: WastageConsumption
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: IsIneffective
+    type: bit
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ProductionMaterialID
+- name: ProductionMaterialAlternative
+  columns:
+  - name: ProductionMaterialAlternativeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Priority
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Ratio
+    type: decimal(18,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ProductionMaterialAlternativeID
+- name: ProductionRecycling
+  columns:
+  - name: ProductionRecyclingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: RecyclableRatio
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ProductionRecyclingID
+- name: RecyclingFee
+  columns:
+  - name: RecyclingFeeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Fee
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - RecyclingFeeID
+- name: ServiceTransfer
+  columns:
+  - name: ServiceTransferID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ServiceTransferID
+- name: ServiceTransferItem
+  columns:
+  - name: ServiceTransferItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServiceTransferRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ServiceTransferItemID
+- name: StandardFee
+  columns:
+  - name: StandardFeeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Fee
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - StandardFeeID
+- name: TempDeliveryConfirmation
+  columns:
+  - name: TempDeliveryConfirmationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BillOfMaterialRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductionOrderNumber
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: ConfirmationNumber
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 4
+  - name: ConfirmationRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: SourceCostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: SourceWorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: DeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: DeliverableQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: ActualDeliveryQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 16
+  - name: ConfirmationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: RoutingOperationRef
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 19
+  - name: DestinationCostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 20
+  - name: DissimilarScrap
+    type: decimal(28,15)
+    nullable: true
+    ordinal: 21
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 22
+  primary_key:
+  - TempDeliveryConfirmationID
+- name: TempPacConfirmation
+  columns:
+  - name: TempPacConfirmationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+    identity: true
+  - name: ProductionOrderOperationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Yield
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 3
+  - name: Scrap
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: ConfirmationID
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: ConfirmationNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: ConfirmationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: DissimilarScrap
+    type: decimal(28,15)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - TempPacConfirmationID
+- name: WorkCenterWorkstationMap
+  columns:
+  - name: WrokCenterWorkstationMapID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - WrokCenterWorkstationMapID
+- name: WorkCenterWorkstationMapItem
+  columns:
+  - name: WorkCenterWorkstationMapItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterWorkstationMapRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ConversionSLType
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: ConversionRatio
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - WorkCenterWorkstationMapItemID
+- name: Workstation
+  columns:
+  - name: WorkstationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 4
+  - name: CostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: DLRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: BasisOfMeasurement
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: BasisOfMeasurementOfLabour
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: BasisOfMeasurementOfOverhead
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: DefaultAuditStartPoint
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - WorkstationID
+- name: WorkstationAbsorbedRate
+  columns:
+  - name: WorkstationAbsorbedRateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: FixOverheadAbsorbedRate
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: VariableOverheadAbsorbedRate
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: VariableLabourAbsorbedRate
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: FixLabourAbsorbedRate
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: LabourBudgetedCapacity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: OverheadBudgetedCapacity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - WorkstationAbsorbedRateID
+- name: WorkstationCapacity
+  columns:
+  - name: WorkstationCapacityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: LabourCapacity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: OverheadCapacity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: ExpectedCapacity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - WorkstationCapacityID
+- name: WorkstationCapacityItem
+  columns:
+  - name: WorkstationCapacityItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkstationCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Month
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: LabourCapacity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: OverheadCapacity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: ExpectedCapacity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - WorkstationCapacityItemID
+- name: WorkstationCostAllocation
+  columns:
+  - name: WorkstationCostAllocationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceCalcPeriodRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: WorkstationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: DirectVariableLabourCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: DirectFixLabourCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: DirectVariableOverheadCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: DirectFixOverheadCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: IndirectVariableCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 9
+  - name: IndirectFixCost
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - WorkstationCostAllocationID

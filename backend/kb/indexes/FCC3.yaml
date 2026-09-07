@@ -1,0 +1,311 @@
+schema: FCC3
+source: extracted
+indexes:
+- table: ContractActivityType
+  name: PK_FCC3_ContractActivityType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractActivityTypeID
+- table: ContractActivityType
+  name: UIX_FCC3_ContractActivityType_ContractActivityTypeCode
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractActivityTypeCode
+- table: ContractActivityType
+  name: UIX_FCC3_ContractActivityType_ContractActivityTypeTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractActivityTypeTitle
+- table: ContractAmount
+  name: PK_FCC3_ContractAmount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractAmountID
+- table: ContractCollateral
+  name: PK_FCC3_ContractCollateral
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractCollateralID
+- table: ContractFactor
+  name: PK_FCC3_ContractFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractFactorID
+- table: ContractHeader
+  name: PK_FCC3_ContractHeader
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractHeaderID
+- table: ContractHeader
+  name: IX_FCC3_ContractHeader_ContractorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractorRef
+- table: ContractHeader
+  name: IX_FCC3_ContractHeader_ContractTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractTypeRef
+- table: ContractHeader
+  name: IX_FCC3_ContractHeader_ContractActivityTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractActivityTypeRef
+- table: ContractHeader
+  name: IX_FCC3_ContractHeader_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ContractHeader
+  name: IX_FCC3_ContractHeader_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: ContractHeader
+  name: IX_FCC3_ContractHeader_TenderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TenderRef
+- table: ContractHeader
+  name: IX_FCC3_ContractHeader_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ContractInvoice
+  name: PK_FCC3_ContractInvoice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractInvoiceID
+- table: ContractInvoice
+  name: IX_FCC3_ContractInvoice_ContractHeaderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractHeaderRef
+- table: ContractInvoiceItemFactor
+  name: PK_FCC3_ContractInvoiceItemFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractInvoiceItemFactorID
+- table: ContractInvoiceItemObligation
+  name: PK_FCC3_ContractInvoiceItemObligation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractInvoiceItemObligationID
+- table: ContractorType
+  name: PK_FCC3_ContractorType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractorTypeID
+- table: ContractorType
+  name: UIX_FCC3_ContractorType_ContractorTypeCode
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractorTypeCode
+- table: ContractorType
+  name: UIX_FCC3_ContractorType_ContractorTypeTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractorTypeTitle
+- table: ContractPayCommitment
+  name: PK_FCC3_ContractPayCommitment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractPayCommitmentID
+- table: ContractPayCommitment
+  name: IX_FCC3_ContractPayCommitment_ContractHeaderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractHeaderRef
+- table: ContractPayCommitment
+  name: IX_FCC3_ContractPayCommitment_PayCommitmentTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayCommitmentTypeRef
+- table: ContractType
+  name: PK_FCC3_ContractType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractTypeID
+- table: ContractType
+  name: UIX_FCC3_ContractType_ContractTypeCode
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractTypeCode
+- table: ContractType
+  name: UIX_FCC3_ContractType_ContractTypeTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractTypeTitle
+- table: Factor
+  name: PK_FCC3_Factor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FactorId
+- table: Factor
+  name: UIX_FCC3_Factor_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: IndetermineReceiptAndPayment
+  name: PK_FCC3_IndetermineReceiptAndPayment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndetermineReceiptAndPaymentID
+- table: IndetermineReceiptAndPaymentCollateral
+  name: PK_FCC3_IndetermineReceiptAndPaymentCollateral
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndetermineReceiptAndPaymentCollateralID
+- table: IndetermineReceiptAndPaymentExchange
+  name: PK_FCC3_IndetermineReceiptAndPaymentExchange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndetermineReceiptAndPaymentExchangeID
+- table: IndetermineReceiptAndPaymentItemObligation
+  name: PK_FCC3_IndetermineReceiptAndPaymentItemObligation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndetermineReceiptAndPaymentItemObligationID
+- table: PayCommitmentType
+  name: PK_FCC3_PayCommitmentType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayCommitmentTypeId
+- table: PayCommitmentTypeFactor
+  name: PK_FCC3_PayCommitmentTypeFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayCommitmentTypeFactorID
+- table: PaymentInfo
+  name: PK_FCC3_PaymentInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentInfoID
+- table: PaymentInfoItem
+  name: PK_FCC3_PaymentInfoItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentInfoItemID
+- table: PaymentInfoItemType
+  name: PK_FCC3_PaymentInfoItemType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentInfoItemTypeID
+- table: RelatedContract
+  name: PK_FCC3_RelatedContract
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RelatedContractID
+- table: Tender
+  name: PK_FCC3_Tender
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TenderID
+- table: Tender
+  name: IX_FCC3_Tender_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Date
+- table: Tender
+  name: IX_FCC3_Tender_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: TenderParticipant
+  name: PK_FCC3_TenderParticipant
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TenderParticipantID
+- table: TenderParticipant
+  name: IX_FCC3_TenderParticipant_BidderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BidderRef

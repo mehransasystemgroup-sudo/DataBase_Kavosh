@@ -1,0 +1,2143 @@
+schema: MMG3
+table_count: 57
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: CapacityType
+  columns:
+  - name: CapacityTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 4
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  - name: FactoryCalendarRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: CapacityGroup
+    type: int
+    nullable: true
+    ordinal: 8
+  primary_key:
+  - CapacityTypeID
+- name: CapacityTypeExceptionDate
+  columns:
+  - name: CapacityTypeExceptionDateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CapacityTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ExceptionDateType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - CapacityTypeExceptionDateID
+- name: Defect
+  columns:
+  - name: DefectID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: DefectType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - DefectID
+- name: DefectCharacteristic
+  columns:
+  - name: DefectCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RecordingType
+    type: tinyint
+    nullable: false
+    ordinal: 2
+  - name: DefectRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: UnitRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - DefectCharacteristicID
+- name: DefectGroupMember
+  columns:
+  - name: DefectGroupMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MemberID
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - DefectGroupMemberID
+- name: DefectReason
+  columns:
+  - name: DefectReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - DefectReasonID
+- name: DefectRecording
+  columns:
+  - name: DefectRecordingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 2
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: ScopeEntityCode
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: ScopeEntityRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ScopeEntityText
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  - name: Date
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 9
+  - name: DefectQuantity
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: DefectSeverity
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: DefectOccurrenceLocation
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: DefectRef
+    type: bigint
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - DefectRecordingID
+- name: DefectRecordingCharacteristic
+  columns:
+  - name: DefectRecordingCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 2
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 3
+  - name: DefectRecordingRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: DefectCharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - DefectRecordingCharacteristicID
+- name: DefectRecordingReason
+  columns:
+  - name: DefectRecordingReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 2
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 3
+  - name: DefectRecordingRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: DefectReasonRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - DefectRecordingReasonID
+- name: Equipment
+  columns:
+  - name: EquipmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: IsMovable
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: FunctionalLocationStructureType
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: AlternationGroup
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: CostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 13
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 14
+  - name: ParentEquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: ResponsibleWorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: StartUpDate
+    type: datetime
+    nullable: true
+    ordinal: 19
+  - name: ABCIndicator
+    type: int
+    nullable: true
+    ordinal: 20
+  - name: InstallDismantleDate
+    type: datetime
+    nullable: true
+    ordinal: 21
+  - name: InstallDismantleReason
+    type: int
+    nullable: true
+    ordinal: 22
+  - name: ShowingPriority
+    type: int
+    nullable: true
+    ordinal: 23
+  - name: Left
+    type: int
+    nullable: false
+    ordinal: 24
+  - name: Right
+    type: int
+    nullable: false
+    ordinal: 25
+  - name: ElectronicIdentity
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 26
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 27
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 28
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 29
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 30
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 31
+  primary_key:
+  - EquipmentID
+- name: EquipmentCategory
+  columns:
+  - name: EquipmentCategoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - EquipmentCategoryID
+- name: EquipmentCategoryAssignment
+  columns:
+  - name: EquipmentCategoryAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentCategoryItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - EquipmentCategoryAssignmentID
+- name: EquipmentCategoryItem
+  columns:
+  - name: EquipmentCategoryItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: ParentRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: EquipmentCategoryRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Left
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Right
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - EquipmentCategoryItemID
+- name: EquipmentHistory
+  columns:
+  - name: EquipmentHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: WorkCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: CostCenterRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: ProjectRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: ParentEquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: InstallDismantleDate
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: InstallDismantleReason
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  - name: ResponsiblePartyRef
+    type: bigint
+    nullable: true
+    ordinal: 16
+  primary_key:
+  - EquipmentHistoryID
+- name: EquipmentProfile
+  columns:
+  - name: EquipmentProfileID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentProfileTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - EquipmentProfileID
+- name: EquipmentProfileCharacteristic
+  columns:
+  - name: EquipmentProfileCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentProfileRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentProfileTemplateCharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - EquipmentProfileCharacteristicID
+- name: EquipmentProfileTemplate
+  columns:
+  - name: EquipmentProfileTemplateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - EquipmentProfileTemplateID
+- name: EquipmentProfileTemplateCharacteristic
+  columns:
+  - name: EquipmentProfileTemplateCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EquipmentProfileTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: UnitRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - EquipmentProfileTemplateCharacteristicID
+- name: FactoryCalendar
+  columns:
+  - name: FactoryCalendarID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: ValidFrom
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: ValidTo
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: WorkDays
+    type: tinyint
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - FactoryCalendarID
+- name: FactoryCalendarSpecialDate
+  columns:
+  - name: FactoryCalendarSpecialDateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FactoryCalendarRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 3
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: IsOffDay
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: PublicHolidayRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - FactoryCalendarSpecialDateID
+- name: Holiday
+  columns:
+  - name: HolidayID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 2
+  - name: Description
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - HolidayID
+- name: MaterialControlPolicy
+  columns:
+  - name: MaterialControlPolicyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 3
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - MaterialControlPolicyID
+- name: MaterialControlPolicyItem
+  columns:
+  - name: MaterialControlPolicyItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MaterialControlPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CharacteristicOperator
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: CharacteristicValue
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 5
+  - name: DynamicValue
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 6
+  - name: CharacteristicSortType
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: StockOperator
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: StockValue
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 9
+  - name: StockSortType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: GroupNumber
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: Priority
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - MaterialControlPolicyItemID
+- name: MaterialControlPolicyPart
+  columns:
+  - name: MaterialControlPolicyPartID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MaterialControlPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - MaterialControlPolicyPartID
+- name: PartCapacityProfile
+  columns:
+  - name: PartCapacityProfileID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: ProductionBaseQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - PartCapacityProfileID
+- name: PartCapacityProfileStandardValue
+  columns:
+  - name: PartCapacityProfileStandardValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartCapacityProfileRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PartCapacityProfileStandardValueID
+- name: PartCapacityProfileWorkCenter
+  columns:
+  - name: PartCapacityProfileWorkCenterID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartCapacityProfileRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ParticipationPercentage
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PartCapacityProfileWorkCenterID
+- name: PartCapacityProfileWorkCenterCapacityType
+  columns:
+  - name: PartCapacityProfileWorkCenterCapacityTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartCapacityProfileWorkCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: UsagePercentage
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - PartCapacityProfileWorkCenterCapacityTypeID
+- name: PartDefectExtension
+  columns:
+  - name: PartDefectExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - PartDefectExtensionID
+- name: PartDefectExtensionRelatedDefectGroup
+  columns:
+  - name: PartDefectExtensionRelatedDefectGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartDefectExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EntityGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - PartDefectExtensionRelatedDefectGroupID
+- name: PublicHoliday
+  columns:
+  - name: PublicHolidayID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: CalendarType
+    type: tinyint
+    nullable: false
+    ordinal: 4
+  - name: Month
+    type: tinyint
+    nullable: false
+    ordinal: 5
+  - name: Day
+    type: tinyint
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - PublicHolidayID
+- name: RCCP
+  columns:
+  - name: RCCPID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 2
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ShiftGroupingRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ShiftRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: FactoryCalendarRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: ViewType
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - RCCPID
+- name: RCCPCapacity
+  columns:
+  - name: RCCPCapacityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalculationTypeName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 3
+  - name: WorkCenterName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 4
+  - name: CapacityTypeTitle
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 5
+  - name: CapacityGroupName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 6
+  - name: CalendarTitle
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 7
+  - name: ShiftGroupingTitle
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 8
+  - name: ShiftGroupingValidityStartDate
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: ShiftGroupingValidityEndDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: ValidFrom
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: ValidTo
+    type: datetime
+    nullable: true
+    ordinal: 12
+  - name: CalculationStartDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: CalculationEndDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: UnitName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 15
+  - name: CalendarID
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: WorkDays
+    type: float
+    nullable: false
+    ordinal: 17
+  - name: CalculationType
+    type: int
+    nullable: false
+    ordinal: 18
+  - name: WorkCenterID
+    type: bigint
+    nullable: false
+    ordinal: 19
+  - name: ShiftGroupingID
+    type: bigint
+    nullable: false
+    ordinal: 20
+  - name: AvailableCapacity
+    type: int
+    nullable: false
+    ordinal: 21
+  - name: TotalAvailableCapacity
+    type: int
+    nullable: false
+    ordinal: 22
+  - name: CapacityGroup
+    type: int
+    nullable: true
+    ordinal: 23
+  - name: CapacityTypeID
+    type: bigint
+    nullable: false
+    ordinal: 24
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 25
+  primary_key:
+  - RCCPCapacityID
+- name: RCCPCapacityDetail
+  columns:
+  - name: RCCPCapacityDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ShiftTitle
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 3
+  - name: WeekDayName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 4
+  - name: StartTime
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: StartTimeEdit
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: EndTime
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: EndTimeEdit
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: BreakTime
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: BreakTimeEdit
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: ParallelQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 11
+  - name: ParallelQuantityEdit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 12
+  - name: UtilizationPercent
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: UtilizationPercentEdit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 14
+  - name: DetailAvailableCapacity
+    type: int
+    nullable: false
+    ordinal: 15
+  - name: Day
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: DayOfWeekCount
+    type: int
+    nullable: false
+    ordinal: 17
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 18
+  primary_key:
+  - RCCPCapacityDetailID
+- name: RCCPCapacityGroup
+  columns:
+  - name: RCCPCapacityGroup
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CapacityGroup
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - RCCPCapacityGroup
+- name: RCCPCapacityShiftDate
+  columns:
+  - name: RCCPCapacityShiftDateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: TotalActualCapacity
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - RCCPCapacityShiftDateID
+- name: RCCPCapacityShiftOffDate
+  columns:
+  - name: RCCPCapacityShiftOffDateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - RCCPCapacityShiftOffDateID
+- name: RCCPCapacityType
+  columns:
+  - name: RCCPCapacityTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CapacityTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - RCCPCapacityTypeID
+- name: RCCPWorkCenter
+  columns:
+  - name: RCCPWorkCenterID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WorkCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - RCCPWorkCenterID
+- name: ResourceTool
+  columns:
+  - name: ResourceToolID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: EquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: StartOffset
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: StartOffsetUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: EndOffset
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: EndOffsetUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 14
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 15
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 18
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 20
+  primary_key:
+  - ResourceToolID
+- name: ResourceToolRelatedModule
+  columns:
+  - name: ResourceToolRelatedModuleID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ResourceToolRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ModuleKey
+    type: varchar(100)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ResourceToolRelatedModuleID
+- name: Shift
+  columns:
+  - name: ShiftID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: StartTime
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: EndTime
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Duration
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: BreakDuration
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: AvailableDuration
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - ShiftID
+- name: ShiftBreak
+  columns:
+  - name: ShiftBreakID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 2
+  - name: Description
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ShiftBreakID
+- name: ShiftGrouping
+  columns:
+  - name: ShiftGroupingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: StartValidityDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: EndValidityDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ShiftGroupingID
+- name: ShiftGroupingDay
+  columns:
+  - name: ShiftGroupingDayID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ShiftGroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ShiftRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Day
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ShiftGroupingDayID
+- name: ShiftShiftBreak
+  columns:
+  - name: ShiftShiftBreakID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ShiftRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ShiftBreakRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StartTime
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: EndTime
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ShiftShiftBreakID
+- name: StandardValue
+  columns:
+  - name: StandardValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Scalable
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: DimensionUnit
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - StandardValueID
+- name: WorkCenter
+  columns:
+  - name: WorkCenterID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Name
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: SupervisorRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: CostCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 7
+  - name: WorkCenterType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - WorkCenterID
+- name: WorkCenterCapacity
+  columns:
+  - name: WorkCenterCapacityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CapacityTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CalculationType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: AvailableCapacity
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: ShiftGroupingRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - WorkCenterCapacityID
+- name: WorkCenterCapacityConsumption
+  columns:
+  - name: WorkCenterCapacityConsumptionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ConsumptionPercent
+    type: decimal(18,9)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - WorkCenterCapacityConsumptionID
+- name: WorkCenterCapacityDetail
+  columns:
+  - name: WorkCenterCapacityDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: WorkCenterCapacityShiftGroupingAndFactoryCalendarRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Day
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: ShiftRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: StartTime
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: EndTime
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: BreakTime
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: ParallelQuantity
+    type: decimal(26,2)
+    nullable: false
+    ordinal: 9
+  - name: UtilizationPercent
+    type: decimal(5,2)
+    nullable: false
+    ordinal: 10
+  - name: AvailableCapacity
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - WorkCenterCapacityDetailID
+- name: WorkCenterCapacityEquipment
+  columns:
+  - name: WorkCenterCapacityEquipmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - WorkCenterCapacityEquipmentID
+- name: WorkCenterCapacityPersonnel
+  columns:
+  - name: WorkCenterCapacityPersonnelID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - WorkCenterCapacityPersonnelID
+- name: WorkCenterCapacityShiftGroupingAndFactoryCalendar
+  columns:
+  - name: WorkCenterCapacityShiftGroupingAndFactoryCalendarID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterCapacityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ShiftGroupingRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: FactoryCalendarRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ValidFrom
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: ValidTo
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - WorkCenterCapacityShiftGroupingAndFactoryCalendarID
+- name: WorkCenterInterStore
+  columns:
+  - name: WorkCenterInterStoreID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StoreRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - WorkCenterInterStoreID
+- name: WorkCenterPersonnel
+  columns:
+  - name: WorkCenterPersonnelID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 2
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: WorkCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - WorkCenterPersonnelID
+- name: WorkCenterStandardValue
+  columns:
+  - name: WorkCenterStandardValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WorkCenterRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StandardValueRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - WorkCenterStandardValueID

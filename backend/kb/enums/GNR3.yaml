@@ -1,0 +1,399 @@
+schema: GNR3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: BusinessPolicyParameter
+  column: ComputationType
+  nullable: true
+  lookup_type: BusinessPolicyParameterComputationType
+  type_title_fa: نوع محاسبه پارامتر سیاست
+  values:
+  - value: '1'
+    label_fa: مجموع
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: تعداد
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: تعداد خالص
+    source: stated_by_config
+    confidence: high
+- table: Company
+  column: Status
+  lookup_type: CompanyStatus
+  type_title_fa: وضعیت شرکت
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: معلق
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high
+- table: CostCenter
+  column: State
+  lookup_type: CostCenterState
+  type_title_fa: وضعیت مرکز هزینه
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 17
+  - value: '2'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high
+- table: CostCenter
+  column: Type
+  lookup_type: CostCenterType
+  type_title_fa: نوع مرکز هزینه
+  values:
+  - value: '1'
+    label_fa: اداری
+    source: proven_by_data
+    confidence: high
+    observed_count: 17
+  - value: '2'
+    label_fa: تولیدی
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: خدماتی
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: پیمانکار خارجی
+    source: stated_by_config
+    confidence: high
+- table: EntityGrouping
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+- table: Fund
+  column: ArrangementType
+  lookup_type: ArrangementType
+  type_title_fa: طبقه اعتبار
+  values:
+  - value: '0'
+    label_fa: بدون طبقه
+    source: proven_by_data
+    confidence: high
+    observed_count: 8
+  - value: '1'
+    label_fa: هزینه ای
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: سرمایه ای
+    source: stated_by_config
+    confidence: high
+- table: Fund
+  column: Status
+  lookup_type: Status
+  type_title_fa: وضعيت
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 8
+  - value: '2'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+- table: Ledger
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: LedgerFiscalYear
+  column: ClosingState
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 10
+  - value: '4'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+- table: MiddlewareInformation
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: Party
+  column: CompanyType
+  nullable: true
+  lookup_type: CompanyType
+  type_title_fa: نوع شرکت
+  values:
+  - value: '0'
+    label_fa: سهامی عام
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: سهامی خاص
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: با مسئولیت محدود
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: تعاونی
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: سازمان
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: اداره کل
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: ارگان دولتی
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: وزارتخانه
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: تضامنی
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: سایر
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: ''
+    source: stated_by_config
+    confidence: high
+- table: Party
+  column: MaritalStatus
+  nullable: true
+  lookup_type: MaritalStatus
+  type_title_fa: وضعیت تاهل
+  values:
+  - value: '1'
+    label_fa: مجرد
+    source: proven_by_data
+    confidence: high
+    observed_count: 17
+  - value: '2'
+    label_fa: متأهل
+    source: proven_by_data
+    confidence: high
+    observed_count: 53
+  - value: '3'
+    label_fa: معیل
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: سایر
+    source: stated_by_config
+    confidence: high
+- table: Party
+  column: Type
+  lookup_type: PartyType
+  type_title_fa: نوع طرف تجاری
+  values:
+  - value: '0'
+    label_fa: شخص
+    source: proven_by_data
+    confidence: high
+    observed_count: 666
+  - value: '1'
+    label_fa: شرکت
+    source: proven_by_data
+    confidence: high
+    observed_count: 156
+- table: Party_14020317
+  column: CompanyType
+  nullable: true
+  lookup_type: CompanyType
+  type_title_fa: نوع شرکت
+  values:
+  - value: '0'
+    label_fa: سهامی عام
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: سهامی خاص
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: با مسئولیت محدود
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: تعاونی
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: سازمان
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: اداره کل
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: ارگان دولتی
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: وزارتخانه
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: تضامنی
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: سایر
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: ''
+    source: stated_by_config
+    confidence: high
+- table: Party_14020317
+  column: MaritalStatus
+  nullable: true
+  lookup_type: MaritalStatus
+  type_title_fa: وضعیت تاهل
+  values:
+  - value: '1'
+    label_fa: مجرد
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: متأهل
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: معیل
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: سایر
+    source: stated_by_config
+    confidence: high
+- table: Party_14020317
+  column: Type
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 35
+- table: RegionalDivision
+  column: Type
+  lookup_type: RegionalDivisionType
+  type_title_fa: نوع تقسیم بندی جغرافیایی
+  values:
+  - value: '1'
+    label_fa: کشور
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: استان
+    source: proven_by_data
+    confidence: high
+    observed_count: 34
+  - value: '3'
+    label_fa: شهر
+    source: proven_by_data
+    confidence: high
+    observed_count: 503
+  - value: '4'
+    label_fa: شهرستان
+    source: proven_by_data
+    confidence: high
+    observed_count: 10
+  - value: '5'
+    label_fa: منطقه
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+- table: TaxPayerSellerInformation
+  column: PartyType
+  lookup_type: PartyType
+  type_title_fa: نوع طرف تجاری
+  values:
+  - value: '0'
+    label_fa: شخص
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: شرکت
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+- table: Unit
+  column: State
+  lookup_type: UnitState
+  type_title_fa: LookupTitleEmptyToken
+  ambiguous_type: true
+  values:
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 11
+  - value: '2'
+    label_fa: غیرفعال
+    source: stated_by_config
+    confidence: high

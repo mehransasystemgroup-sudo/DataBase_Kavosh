@@ -1,0 +1,5916 @@
+schema: LGS3
+source: extracted
+indexes:
+- table: AccountGroupConfiguration
+  name: PK_LGS3_AccountGroupConfiguration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupConfigurationID
+- table: AccountGroupConfiguration
+  name: UIX_LGS3_AccountGroupConfiguration_AccountGroupName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AccountGroupName
+- table: AccountGroupConfiguration
+  name: UIX_LGS3_AccountGroupConfiguration_AccountGroupRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AccountGroupRef
+- table: AccountGroupConfigurationParameter
+  name: PK_LGS3_AccountGroupConfigurationParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupConfigurationParameterID
+- table: AdditionalSerial
+  name: PK_AdditionalSerial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdditionalSerialID
+- table: AlternativePart
+  name: PK_AlternativePart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AlternativePartID
+- table: AssignmentTerminal
+  name: PK_LGS3_AssignmentTerminal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentTerminalID
+- table: AssignmentTerminal
+  name: UIX_LGS3_AssignmentTerminal_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: AssignmentTerminalItem
+  name: PK_LGS3_AssignmentTerminalItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentTerminalItemID
+- table: AssignmentTerminalItem
+  name: IX_LGS3_AssignmentTerminalItem_AssignmentTerminalRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentTerminalRef
+- table: AssignmentTerminalItem
+  name: UIX_LGS3_AssignmentTerminalItem_CarrierRef_PlantRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CarrierRef
+  - PlantRef
+- table: BarCodeBlock
+  name: PK_LGS3_BarCodeBlock
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BarCodeBlockID
+- table: BarCodeInventoryVoucherProperty
+  name: PK_LGS3_BarCodeInventoryVoucherProperty
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BarCodeInventoryVoucherPropertyID
+- table: BarCodeInventoryVoucherProperty
+  name: UIX_LGS3_BarCodeInventoryVoucherProperty_InventoryVoucherProperty
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BarcodeTemplateRef
+  - InventoryVoucherProperty
+- table: BarCodeTemplate
+  name: PK_LGS3_BarCodeTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BarcodeTemplateID
+- table: BarCodeTemplate
+  name: UIX_LGS3_BarCodeTemplate_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: BarCodeTemplate
+  name: UIX_LGS3_BarCodeTemplate_RegularExperssion
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - RegularExperssion
+- table: Bascule
+  name: PK_LGS3_Bascule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BasculeID
+- table: Bascule
+  name: UIX_LGS3_Bascule_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: BasculePaper
+  name: PK_LGS3_BasculePaper
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BasculePaperID
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_LoadingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoadingPointRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_RecipientOrDelivererRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientOrDelivererRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_TransporterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransporterRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_TransportationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationUnitRef
+- table: BasculePaper
+  name: IX_LGS3_BasculePaper_ReferenceRef_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: BasculePaperItem
+  name: PK_LGS3_BasculePaperItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BasculePaperItemID
+- table: BasculePaperItem
+  name: IX_LGS3_BasculePaperItem_BasculePaperRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BasculePaperRef
+- table: BasculePaperItem
+  name: IX_LGS3_BasculePaperItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: BasculePaperItem
+  name: IX_LGS3_BasculePaperItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: BasculePaperItem
+  name: IX_LGS3_BasculePaperItem_BasculeUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BasculeUnitRef
+- table: BasculePaperItem
+  name: IX_LGS3_BasculePaperItem_FirstMeasureUserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FirstMeasureUserRef
+- table: BasculePaperItem
+  name: IX_LGS3_BasculePaperItem_SecondMeasureUserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SecondMeasureUserRef
+- table: BasculePaperItem
+  name: IX_LGS3_BasculePaperItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: BasculePaperItemDetail
+  name: PK_LGS3_BasculePaperItemDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BasculePaperItemDetailID
+- table: BasculePaperItemDetail
+  name: IX_LGS3_BasculePaperItemDetail_BasculePaperItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BasculePaperItemRef
+- table: BasculePaperItemDetail
+  name: IX_LGS3_BasculePaperItemDetail_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: BasculePaperItemDetail
+  name: IX_LGS3_BasculePaperItemDetail_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: BasculePaperItemDetail
+  name: IX_LGS3_BasculePaperItemDetail_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: BasculePaperItemDetail
+  name: IX_LGS3_BasculePaperItemDetail_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: BasculePaperItemHistory
+  name: PK_LGS3.BasculePaperItemHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BasculePaperItemHistoryID
+- table: Batch
+  name: PK_LGS3_Batch
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchID
+- table: Batch
+  name: IXLGS3_Batch_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: BatchCharacteristic
+  name: PK_LGS3_BatchCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchCharacteristicID
+- table: BatchCharacteristic
+  name: UIX_LGS3_BatchRef_CharacteristicRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BatchRef
+  - CharacteristicRef
+- table: BatchCharacteristic
+  name: IX_LGS3_BatchCharacteristic_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: BatchCharacteristic
+  name: IX_LGS3_BatchCharacteristic_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: BatchCharacteristicHistory
+  name: PK_BatchCharacteristicHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchCharacteristicHistoryID
+- table: BatchCharacteristicHistory
+  name: IX_LGS3_BatchCharacteristicHistory_BatchCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchCharacteristicRef
+- table: BatchCharacteristicHistory
+  name: IX_LGS3_BatchCharacteristicHistory_BatchHistoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchHistoryRef
+- table: BatchHistory
+  name: PK_BatchHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchHistoryID
+- table: BatchHistory
+  name: IXLGS3_BatchHistory_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: BatchHistory
+  name: IXLGS3_BatchHistory_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: BatchProfileTemplate
+  name: PK_LGS3_BatchProfileTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchProfileTemplateID
+- table: BatchProfileTemplate
+  name: UIX_LGS3_BatchProfileTemplateTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: BatchProfileTemplateItem
+  name: PK_LGS3_BatchProfileTemplateItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchProfileTemplateItemID
+- table: BatchProfileTemplateItem
+  name: IX_LGS3_BatchProfileTemplateItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: BatchProfileTemplatePart
+  name: PK_LGS3_BatchProfileTemplatePart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchProfileTemplatePartID
+- table: BatchProfileTemplatePart
+  name: UIX_LGS3_BatchProfileTemplatePartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: BatchProfileTemplateVisibleCharactristic
+  name: PK_LGS3_BatchProfileTemplateVisibleCharactristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchProfileTemplateVisibleCharactristicID
+- table: BatchRelation
+  name: PK_LGS3_BatchRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BatchRelationID
+- table: BudgetEntityInventoryVoucherRelation
+  name: PK_LGS3_BudgetEntityInventoryVoucherRelationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityInventoryVoucherRelationID
+- table: BudgetEntityInventoryVoucherRelation
+  name: IX_LGS3_BudgetEntityInventoryVoucherRelation_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+- table: Cardex
+  name: PK_Cardex
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CardexID
+- table: Cardex
+  name: IX_LGS3_Cardex_PartRef_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - LedgerFiscalYearRef
+- table: CardexPeriodicRate
+  name: PK_CardexPeriodicRate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CardexPeriodicRateID
+- table: CardexPeriodicRate
+  name: IX_LGS3_CardexPeriodicRate_PricingPeriodRef_CategoryRef_StoreRef_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PricingPeriodRef
+  - CategoryRef
+  - StoreRef
+  - PartRef
+- table: CardexPeriodicRate
+  name: IX_LGS3_CardexPeriodicRate_StoreRef_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  - PartRef
+  included:
+  - PricingPeriodRef
+- table: CardexPeriodicRate
+  name: IX_LGS3_CardexPeriodicRate_PricingPeriodRef_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PricingPeriodRef
+  - PartRef
+- table: CardexRemaining
+  name: PK_LGS3_CardexRemaining
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: CardexRemaining
+  name: UK_LGS3_CardexRemaining
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CardexItemType
+  - TypeOfEffectOnStock
+  - FiscalYearRef
+  - PlantRef
+  - StoreRef
+  - PartRef
+  - PartTrackingFactorRef1
+  - PartTrackingFactorRef2
+  - PartTrackingFactorRef3
+  - PartTrackingFactorRef4
+  - PartTrackingFactorRef5
+  - TrackingFactorValue1
+  - TrackingFactorValue2
+  - TrackingFactorValue3
+  - TrackingFactorValue4
+  - TrackingFactorValue5
+- table: Carrier
+  name: PK_LGS3_Carrier
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CarrierID
+- table: Carrier
+  name: IX_LGS3_Carrier_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: Carrier
+  name: IX_LGS3_Carrier_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: Category
+  name: PK_Category
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CategoryID
+- table: Category
+  name: UIX_LGS3_Category_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Category
+  name: UIX_LGS3_Category_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: CodeBlock
+  name: PK_CodeBlock
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodeBlockID
+- table: CodeGroupCounter
+  name: PK_CodeGroupCounter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodeGroupCounterID
+- table: CodeGroupCounter
+  name: UIX_LGS3_ControlCodeGroupCounter
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CodeTemplateRef
+  - EntityGroupRef
+- table: CodeTemplate
+  name: PK_CodeTemplate_1
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodeTemplateID
+- table: CodeTemplate
+  name: UIX_LGS3_CodeTemplate_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: ContainerType
+  name: PK_LGS3_ContainerType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContainerTypeID
+- table: ContainerType
+  name: UIX_LGS3_ContainerType_Type
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Type
+- table: ContainerType
+  name: IX_LGS3_ContainerType_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: ContainerType
+  name: IX_LGS3_ContainerType_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: Custom
+  name: PK_LGS3_Custom
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomID
+- table: Custom
+  name: IX_LGS3_Custom_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: CustomAddress
+  name: PK_LGS3_CustomAddress
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomAddressID
+- table: CustomAddress
+  name: IX_LGS3_CustomAddress_CustomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomRef
+- table: CustomAddress
+  name: IX_LGS3_CustomAddress_PartyAddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyAddressRef
+- table: DefaultPricingFactorsSharedMethod
+  name: PK_DefaultPricingFactorsSharedMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DefaultPricingFactorsSharedMethodID
+- table: EmptiesConflict
+  name: PK_LGS3_EmptiesConflict
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmptiesConflictID
+- table: EmptiesConflictItem
+  name: PK_LGS3_EmptiesConflictItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmptiesConflictItemID
+- table: EmptiesConsignPrice
+  name: PK_LGS3_EmptiesConsignPrice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmptiesConsignPriceID
+- table: EmptiesConsignPrice
+  name: UIX_LGS3_EmptiesConsignPrice_EmptiesRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EmptiesRef
+- table: EmptiesFixRelation
+  name: PK_LGS3_EmptiesFixRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmptiesFixRelationID
+- table: EmptiesFixRelation
+  name: UIX_LGS3_EmptiesFixRelation_ContainerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContainerRef
+- table: EmptiesFixRelation
+  name: UIX_LGS3_EmptiesFixRelation_EmptiesRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EmptiesRef
+- table: EmptiesVoucher
+  name: PK_LGS3_EmptiesVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmptiesVoucherID
+- table: EmptiesVoucher
+  name: IX_LGS3_EmptiesVoucher_InventoryVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherRef
+- table: EmptiesVoucher
+  name: IX_LGS3_EmptiesVoucher_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: EmptiesVoucher
+  name: IX_LGS3_EmptiesVoucher_CounterpartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartRef
+- table: EmptiesVoucher
+  name: IX_LGS3_EmptiesVoucher_DelivererRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererRef
+- table: EmptiesVoucher
+  name: IX_LGS3_EmptiesVoucher_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: EmptiesVoucher
+  name: IX_LGS3_EmptiesVoucher_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: EmptiesVoucher
+  name: IX_LGS3_EmptiesVoucher_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: EmptiesVoucherItem
+  name: PK_LGS3_EmptiesVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmptiesVoucherItemID
+- table: EntityDLLevelInfo
+  name: PK_EntityDLLevelInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EntityDLLevelInfoID
+- table: EntityDLLevelInfo
+  name: IX_EntityDLLevelInfo_DLRef1
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLRef1
+- table: EntityDLLevelInfo
+  name: IX_EntityDLLevelInfo_DLRef2
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLRef2
+- table: EntityDLLevelInfo
+  name: IX_EntityDLLevelInfo_DLRef3
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLRef3
+- table: EntityDLLevelInfo
+  name: UIX_EntityDLLevelInfo_EntityCode_EntityRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EntityCode
+  - EntityRef
+- table: FinalizationQuantitativeHistory
+  name: PK_LGS3_FinalizationQuantitativeHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FinalizationQuantitativeHistoryID
+- table: FinalizationQuantitativeHistory
+  name: IX_LGS3_FinalizationQuantitativeHistory_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: FinalizationQuantitativeHistory
+  name: IX_LGS3_FinalizationQuantitativeHistory_LedgerFiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerFiscalYearRef
+- table: FinalizationQuantitativeHistoryDetail
+  name: PK_LGS3_FinalizationQuantitativeHistoryDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FinalizationQuantitativeHistoryDetailID
+- table: FinalizationQuantitativeHistoryDetail
+  name: IX_LGS3_FinalizationQuantitativeHistoryDetail_FinalizationQuantitativeHistoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FinalizationQuantitativeHistoryRef
+- table: FinalizationQuantitativeHistoryDetail
+  name: IX_LGS3_FinalizationQuantitativeHistoryDetail_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: FinalVerificationHistory
+  name: PK_LGS3_FinalVerificationHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FinalVerificationHistoryID
+- table: FinancialVoucherTemplate
+  name: PK_FinancialVoucherTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FinancialVoucherTemplateID
+- table: FinancialVoucherTemplate
+  name: UIX_FinancialVoucherTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: FinancialVoucherTemplate
+  name: IX_LGS3_FinancialVoucherTemplate_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+  included:
+  - IsDefault
+  - VoucherType
+- table: FinancialVoucherTemplateItem
+  name: PK_FinancialVoucherTemplateItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FinancialVoucherTemplateItemID
+- table: HandheldBaseDataBag
+  name: PK_HandheldBaseDataBag_HandheldBaseDataBagID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldBaseDataBagID
+- table: HandheldBaseDataBag
+  name: UIX_LGS3_HandheldBaseDataBag_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: HandheldBaseDataBag
+  name: UIX_LGS3_HandheldBaseDataBag_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: HandheldBaseDataBagInventoryVoucherSpecification
+  name: PK_HandheldBaseDataBagInventoryVoucherSpecification_HandheldBaseDataBagInventoryVoucherSpecificationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldBaseDataBagInventoryVoucherSpecificationID
+- table: HandheldBaseDataBagStocktakingPeriod
+  name: PK_HandheldBaseDataBagStocktakingPeriod_HandheldBaseDataBagStocktakingPeriodID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldBaseDataBagStocktakingPeriodID
+- table: HandheldBaseDataBagStore
+  name: PK_HandheldBaseDataBagStore_HandheldBaseDataBagStoreID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldBaseDataBagStoreID
+- table: HandheldBaseDataBagStore
+  name: IX_LGS3_HandheldBaseDataBagStore_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: HandheldBaseDataBagUser
+  name: PK_HandheldBaseDataBagUser_HandheldBaseDataBagUserID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldBaseDataBagUserID
+- table: HandheldStocktakingList
+  name: PK_HandheldStocktakingList_HandheldStocktakingListID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldStocktakingListID
+- table: HandheldStocktakingList
+  name: IX_StocktakingPeriodRef_StocktakingListRef_CountNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - StocktakingListRef
+  - StocktakingPeriodRef
+  - CountNumber
+- table: HandheldVoucher
+  name: PK_HandheldVoucher_HandheldVoucherID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldVoucherID
+- table: HandheldVoucher
+  name: IX_LGS3_HandheldVoucher_Date_StoreRef_VoucherSpecificationRef_Number_FiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - Date
+  - FiscalYearRef
+  - VoucherSpecificationRef
+  - StoreRef
+- table: HandheldVoucher
+  name: IX_LGS3_HandheldVoucher_DelivererOrReceiverPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererOrReceiverPartyRef
+- table: HandheldVoucher
+  name: IDX_LGS3_HandheldVoucher_HandheldSpecificId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HandheldSpecificId
+- table: HandheldVoucher
+  name: IX_LGS3_HandheldVoucher_InventoryVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherRef
+- table: HandheldVoucherItem
+  name: PK_LGS3_HandheldVoucherItem_HandheldVoucherItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldVoucherItemID
+- table: HandheldVoucherItem
+  name: IX_LGS3_HandheldVoucherItem_HandheldVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HandheldVoucherRef
+- table: HandheldVoucherItem
+  name: IX_LGS3_HandheldVoucherItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: HandheldVoucherReferenceAssignment
+  name: PK_HandheldVoucherReferenceAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldVoucherReferenceAssignmentID
+- table: IndependentContainer
+  name: PK_IndependentContainer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndependentContainerID
+- table: IndependentContainer
+  name: UC_IndependentContainer
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+  - PartUnitRef
+- table: InventoryCounting
+  name: PK_LGS3_InventoryCounting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryCountingID
+- table: InventoryCounting
+  name: UIX_LGS3_InventoryCounting_FiscalYearRef_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - Title
+- table: InventoryCounting
+  name: UIX_LGS3_InventoryCounting_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: InventoryCountingItem
+  name: PK_LGS3_InventoryCountingItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryCountingItemID
+- table: InventoryCountingVoucher
+  name: PK_LGS3_InventoryCountingVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryCountingVoucherID
+- table: InventoryScheduledJob
+  name: PK_LGS3_InventoryScheduledJob
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryScheduledJobID
+- table: InventoryScheduledTask
+  name: PK_LGS3_InventoryScheduledTask
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryScheduledTaskID
+- table: InventorySerialProfile
+  name: PK_InventorySerialProfile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventorySerialProfileID
+- table: InventorySerialProfileVoucherSpecification
+  name: PK_InventorySerialProfileVoucherSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventorySerialProfileVoucherSpecificationID
+- table: InventoryTransactionSerialRange
+  name: PK_InventoryTransactionSerialRange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryTransactionSerialRangeID
+- table: InventoryTransactionSerialRange
+  name: IX_LGS_InventoryTransactionSerialRange_EntityID_EntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityID
+  - EntityCode
+- table: InventoryTransactionSerialRange
+  name: IX_LGS_InventoryTransactionSerialRange_StartSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartSerialRef
+- table: InventoryTransactionSerialRange
+  name: IX_LGS_InventoryTransactionSerialRange_SerialPackageRef_StartSerialIndex_EndSerialIndex
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialPackageRef
+  - StartSerialIndex
+  - EndSerialIndex
+- table: InventoryTransactionSerialRange
+  name: IX_LGS_InventoryTransactionSerialRange_SerialPackageRef_StartSerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialPackageRef
+  - StartSerialRef
+- table: InventoryVoucher
+  name: PK_InventoryVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryVoucherID
+- table: InventoryVoucher
+  name: IDX_LGS3_InventoryVoucher_HandheldSpecificId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HandheldSpecificId
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_StoreRef_LedgerRef_FiscalYearRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  - LedgerRef
+  - FiscalYearRef
+  - Date
+  included:
+  - InventoryVoucherID
+  - CounterpartStoreRef
+  - CreationDate
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_FiscalYearRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - Date
+  included:
+  - InventoryVoucherID
+  - Editable
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_StoreRef_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  - FiscalYearRef
+  included:
+  - InventoryVoucherID
+  - InventoryVoucherSpecificationRef
+  - Date
+  - CreationDate
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_CounterpartStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartStoreRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_DelivererOrReceiverPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererOrReceiverPartyRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_FiscalYear_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - State
+  - Date
+  included:
+  - InventoryVoucherID
+  - InventoryVoucherSpecificationRef
+  - StoreRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_LedgerRef_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+  - FiscalYearRef
+  included:
+  - Date
+  - Number
+  - InventoryVoucherSpecificationRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+  included:
+  - InventoryVoucherSpecificationRef
+  - StoreRef
+  - LedgerRef
+  - FiscalYearRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_SlRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_State_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+  - Date
+  included:
+  - InventoryVoucherID
+  - InventoryVoucherSpecificationRef
+  - StoreRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: InventoryVoucher
+  name: LGS3.IX_InventoryVoucher_BranchRef_LedgerRef_FiscalYearRef_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+  - LedgerRef
+  - FiscalYearRef
+  included:
+  - InventoryVoucherID
+  - InventoryVoucherSpecificationRef
+  - StoreRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_CreationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreationDate
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+  included:
+  - Number
+  - BranchRef
+  - Editable
+  - LedgerRef
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_CounterpartDLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartDLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level5DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level5DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level6DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level6DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level7DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level7DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level8DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level8DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level9DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level9DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level10DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level10DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level11DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level11DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level12DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level12DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level13DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level13DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level14DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level14DLCode
+- table: InventoryVoucher
+  name: IX_LGS3_InventoryVoucher_Level15DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level15DLCode
+- table: InventoryVoucherItem
+  name: PK_InventoryVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryVoucherItemID
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_FiscalYearRef_State_InventoryVoucherSpecificationRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - State
+  - InventoryVoucherSpecificationRef
+  - Date
+  included:
+  - PartRef
+  - MajorUnitQuantity
+  - StoreRef
+  - ReturnableVoucherItemRef
+  - InventoryVoucherRef
+  - SecondUnitQuantity
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_VoucherSpecificationRef_FiscalYearRef_Store_ReturnableVoucherItem
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+  - FiscalYearRef
+  - StoreRef
+  - ReturnableVoucherItemRef
+  included:
+  - PartRef
+  - Date
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_DelivererOrReceiverPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelivererOrReceiverPartyRef
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_InventoryVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherRef
+  included:
+  - PartRef
+  - MajorUnitQuantity
+  - SLRef
+  - CounterpartEntityRef
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_PartRef_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - PartUnitRef
+  included:
+  - InventoryVoucherRef
+  - CounterpartEntityText
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+  included:
+  - InventoryVoucherRef
+  - PartRef
+  - State
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_PartRef_StoreRef_State_FiscalYearRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - StoreRef
+  - State
+  - FiscalYearRef
+  - Date
+  included:
+  - VoucherCreationDate
+  - MajorUnitQuantity
+  - InventoryVoucherRef
+  - InventoryVoucherSpecificationRef
+  - SecondUnitQuantity
+  - CounterpartEntityCode
+  - CounterpartEntityRef
+  - ReturnableVoucherItemRef
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+  included:
+  - State
+  - MajorUnitQuantity
+  - InventoryVoucherRef
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_ReferenceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  included:
+  - InventoryVoucherRef
+  - PartUnitRef
+  - Quantity
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_ReferenceRef_InventoryVoucherItemID_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - InventoryVoucherItemID
+  - State
+  included:
+  - ReferenceType
+  - ReturnableVoucherItemRef
+  - MajorUnitQuantity
+  - Quantity
+  - SecondUnitQuantity
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_ReturnableVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReturnableVoucherItemRef
+  included:
+  - PartRef
+  - MajorUnitQuantity
+  - InventoryVoucherRef
+  - State
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_CounterpartDLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartDLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level5DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level5DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level6DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level6DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level7DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level7DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level8DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level8DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level9DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level9DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level10DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level10DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level11DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level11DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level12DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level12DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level13DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level13DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level14DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level14DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_Level15DLCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Level15DLCode
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_SlRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+  included:
+  - InventoryVoucherRef
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_PartRef_ReturnAbleRef_VchSpecRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  included:
+  - PartRef
+  - ReturnableVoucherItemRef
+  - InventoryVoucherSpecificationRef
+  - Date
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_StoreRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  - Date
+  included:
+  - PartRef
+  - InventoryVoucherSpecificationRef
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_PartRef_PartUnitRef_StoreRef_Date_VoucherCreationDate_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - PartUnitRef
+  - StoreRef
+  - Date
+  - VoucherCreationDate
+  - InventoryVoucherSpecificationRef
+- table: InventoryVoucherItem
+  name: IX_LGS3_InventoryVoucherItem_PartRef_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - InventoryVoucherSpecificationRef
+  included:
+  - InventoryVoucherRef
+  - State
+  - MajorUnitQuantity
+- table: InventoryVoucherItem
+  name: IX_LGS_InventoryVoucherItem_InventoryVoucherSpecificationRef_StoreRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+  - StoreRef
+  - Date
+  included:
+  - InventoryVoucherRef
+  - State
+  - PartRef
+  - MajorUnitQuantity
+  - FiscalYearRef
+- table: InventoryVoucherItem
+  name: IX_LGS_InventoryVoucherItem_PartRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - Date
+  included:
+  - State
+  - InventoryVoucherSpecificationRef
+- table: InventoryVoucherItem
+  name: IX_LGS_InventoryVoucherItem_State_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+  - Date
+  included:
+  - PartRef
+  - ReturnableVoucherItemRef
+  - InventoryVoucherSpecificationRef
+- table: InventoryVoucherItemTrackingFactor
+  name: PK_InventoryVoucherTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryVoucherTrackingFactorID
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_1stPartInvTrackingFactor_TrackingFactor1_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - 1stPartInvTrackingFactor
+  - TrackingFactor1
+  - InventoryVoucherItemRef
+  included:
+  - Quantity
+  - SecondUnitQuantity
+  - MajorUnitQuantity
+  - TrackingFactor2
+  - TrackingFactor3
+  - TrackingFactor4
+  - TrackingFactor5
+  - 2ndPartInvTrackingFactor
+  - 3rdPartInvTrackingFactor
+  - 4thPartInvTrackingFactor
+  - 5thPartInvTrackingFactor
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_2ndPartInvTrackingFactor_TrackingFactor2
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - 2ndPartInvTrackingFactor
+  - TrackingFactor2
+  included:
+  - Quantity
+  - SecondUnitQuantity
+  - MajorUnitQuantity
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_3rdPartInvTrackingFactor_TrackingFactor3
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - 3rdPartInvTrackingFactor
+  - TrackingFactor3
+  included:
+  - Quantity
+  - SecondUnitQuantity
+  - MajorUnitQuantity
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_4thPartInvTrackingFactor_TrackingFactor4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - 4thPartInvTrackingFactor
+  - TrackingFactor4
+  included:
+  - Quantity
+  - SecondUnitQuantity
+  - MajorUnitQuantity
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_5thPartInvTrackingFactor_TrackingFactor5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - 5thPartInvTrackingFactor
+  - TrackingFactor5
+  included:
+  - Quantity
+  - SecondUnitQuantity
+  - MajorUnitQuantity
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_InventoryVoucherItemRef_TrackingFactorN_NthPartInvTrackingFactor
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  - TrackingFactor1
+  - 1stPartInvTrackingFactor
+  - 2ndPartInvTrackingFactor
+  - 3rdPartInvTrackingFactor
+  - 4thPartInvTrackingFactor
+  - 5thPartInvTrackingFactor
+  - TrackingFactor2
+  - TrackingFactor3
+  - TrackingFactor4
+  - TrackingFactor5
+  included:
+  - MajorUnitQuantity
+  - SecondUnitQuantity
+  - BatchRef
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_InventoryVoucherItemRef_TrackingFactor1_1stPartInvTrackingFactor
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  - TrackingFactor1
+  - 1stPartInvTrackingFactor
+  - 2ndPartInvTrackingFactor
+  - 3rdPartInvTrackingFactor
+  - 4thPartInvTrackingFactor
+  - 5thPartInvTrackingFactor
+  included:
+  - MajorUnitQuantity
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherTrackingFactor_PartRef_StoreRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - StoreRef
+  - Date
+  included:
+  - VoucherCreationDate
+  - MajorUnitQuantity
+  - InventoryVoucherItemRef
+  - InventoryVoucherSpecificationRef
+  - SecondUnitQuantity
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherTrackingFactor_PartRef_StoreRef_FiscalYearRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - StoreRef
+  - FiscalYearRef
+  - Date
+  included:
+  - VoucherCreationDate
+  - MajorUnitQuantity
+  - InventoryVoucherItemRef
+  - InventoryVoucherSpecificationRef
+  - SecondUnitQuantity
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherTrackingFactor_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  included:
+  - InventoryVoucherTrackingFactorID
+  - TrackingFactor1
+  - TrackingFactor2
+  - TrackingFactor3
+  - TrackingFactor4
+  - TrackingFactor5
+  - MajorUnitQuantity
+  - PartRef
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherItemTrackingFactor_InventoryVoucherItemRef_1stPartInvTrackingFactor_TrackingFactor1
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  - 1stPartInvTrackingFactor
+  - TrackingFactor1
+  included:
+  - Quantity
+  - SecondUnitQuantity
+  - MajorUnitQuantity
+- table: InventoryVoucherItemTrackingFactor
+  name: IX_LGS3_InventoryVoucherTrackingFactor_InventoryVoucherItemRef_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  - SLRef
+- table: InventoryVoucherSerial
+  name: PK_LGS3_InventoryVoucherSerial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryVoucherSerialID
+- table: InventoryVoucherSerial
+  name: IDX_LGS3_InventoryVoucherSerial_Index
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Index
+- table: InventoryVoucherSerial
+  name: IX_LGS3_InventoryVoucherSerial_SerialPackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialPackageRef
+- table: InventoryVoucherSerial
+  name: IX_LGS3_InventoryVoucherSerial_SerialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialRef
+- table: InventoryVoucherSerial
+  name: IX_LGS3_InventoryVoucherSerial_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+- table: InventoryVoucherSerial
+  name: IX_LGS3_InventoryVoucherSerial_Value
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Value
+- table: InventoryVoucherSerial
+  name: UIX_LGS3_InventoryVoucherSerial_UniqueSerialPerPart
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+  - Value
+- table: InventoryVoucherSpecification
+  name: PK_InventoryVoucherSpecificationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryVoucherSpecificationID
+- table: InventoryVoucherSpecification
+  name: IX_InventoryVoucherSpecification_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: InventoryVoucherSpecification
+  name: IX_LGS3_InventoryVoucherSpecification_Directory_Category_TypeOfEffectOnStrock
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Direction
+  - Category
+  - TypeOfEffectOnStock
+- table: InventoryVoucherSpecificationDetailLedger
+  name: PK_InventoryVoucherSpecificationDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryVoucherSpecificationDetailLedgerID
+- table: InventoryVoucherSpecificationDetailLedgerType
+  name: PK_InventoryVoucherSpecificationDetailLedgerType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryVoucherSpecificationDetailLedgerTypeID
+- table: IssuePermit
+  name: PK_LGS3_IssuePermit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IssuePermitID
+- table: IssuePermit
+  name: IX_LGS3_IssuePemit_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: IssuePermit
+  name: IX_LGS3_IssuePermit_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: IssuePermit
+  name: IX_LGS3_IssuePermit_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+  included:
+  - PlantRef
+- table: IssuePermit
+  name: IX_LGS3_IssuePermit_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: IssuePermit
+  name: IX_LGS3_IssuePermit_RecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientRef
+- table: IssuePermit
+  name: IX_LGS3_IssuePermit_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: IssuePermit
+  name: IX_LGS3_IssuePermit_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: IssuePermit
+  name: IX_LGS3_IssuePermit_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: IssuePermit
+  name: IX_LGS3_IssuePermit_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: IssuePermitItem
+  name: PK_LGS3_IssuePermitItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IssuePermitItemID
+- table: IssuePermitItem
+  name: IX_LGS3_IssuePermitItem_IssuePermitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IssuePermitRef
+  included:
+  - PartRef
+  - UnitRef
+  - Quantity
+- table: IssuePermitItem
+  name: IX_LGS3_IssuePermitItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  included:
+  - Quantity
+- table: IssuePermitItem
+  name: IX_LGS3_IssuePermitItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: IssuePermitItem
+  name: IX_LGS3_IssuePermitItem_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: IssuePermitItem
+  name: IX_LGS3_IssuePermitItem_ReferenceType_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - State
+  included:
+  - IssuePermitItemID
+  - IssuePermitRef
+  - ReferenceRef
+  - PartRef
+  - PartUnitRef
+  - Quantity
+  - MajorUnitQuantity
+  - CounterpartEntityCode
+  - CounterpartEntityRef
+  - CounterpartEntityText
+- table: IssuePermitItemTrackingFactor
+  name: PK_IssuePermitItemTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IssuePermitItemTrackingFactorID
+- table: IssuePermitItemTrackingFactor
+  name: IX_LGS3_IssuePermitItemTrackingFactor_IssuePermitItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IssuePermitItemRef
+  included:
+  - TrackingFactor1
+  - TrackingFactor2
+  - TrackingFactor3
+  - TrackingFactor4
+  - TrackingFactor5
+  - 1stPartInvTrackingFactor
+  - 2ndPartInvTrackingFactor
+  - 3rdPartInvTrackingFactor
+  - 4thPartInvTrackingFactor
+  - 5thPartInvTrackingFactor
+  - Version
+  - Quantity
+  - MajorUnitQuantity
+  - IssuePermitTolerancePercent
+  - MaxMajorUnitQuantity
+  - BatchRef
+  - Description
+- table: ItemPrice
+  name: PK_ItemPrice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ItemPriceID
+- table: ItemPrice
+  name: IX_LGS3_ItemPrice_InventoryVoucherItemRef_TrackingFactor_Date_VoucherDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  - TrackingFactor
+  - Date
+  - VoucherDate
+  included:
+  - Price
+  - Quantity
+  - Fee
+  - PriceType
+  - SortingNumerator
+  - Effect
+- table: ItemPrice
+  name: IX_ItemPrice_Effect
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Effect
+  included:
+  - InventoryVoucherItemRef
+  - TrackingFactor
+  - PriceType
+  - NetFee
+- table: ItemPrice
+  name: IX_LGS3_ItemPrice_PriceType_Cur
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceType
+  included:
+  - InventoryVoucherItemRef
+  - CurrencyRef
+  - CurrencyExchangeRate
+  - CurrencyExchangeRateRef
+- table: ItemPrice
+  name: IX_LGS3_ItemPrice_PricingFactorItemPriceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PricingFactorItemPriceRef
+- table: ItemPrice
+  name: IX_LGS3_ItemPrice_VoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherItemRef
+- table: ItemPrice
+  name: IX_LGS3_ItemPrice_CardexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CardexRef
+- table: ItemPrice
+  name: IX_LGS3_ItemPrice_PricingFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PricingFactorRef
+  included:
+  - InventoryVoucherItemRef
+- table: ItemPrice
+  name: IX_LGS3_ItemPrice_VoucherItemRef_CardexRef_PriceType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherItemRef
+  - CardexRef
+  - PriceType
+  included:
+  - InventoryVoucherItemRef
+- table: ItemPrice
+  name: IX_LGS3_ItemPrice_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: ItemPriceTravelingHistory
+  name: PK_ItemPriceTravelingHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ItemPriceTravelingHistoryID
+- table: ItemPriceTravelingHistory
+  name: IX_LGS3_ItemPriceTravelingHistory_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+- table: ItemPriceTravelingHistory
+  name: IX_LGS3_ItemPriceTravelingHistory_ReturnInventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReturnInventoryVoucherItemRef
+- table: ItemPriceTravelingHistory
+  name: IX_LGS3_ItemPriceTravelingHistory_ReturnItemPriceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReturnItemPriceRef
+- table: ItemPriceTravelingHistory
+  name: UIX_LGS3_ItemPriceTravelingHistory_ItemPriceRef_ReturnItemPriceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ItemPriceRef
+  - ReturnItemPriceRef
+- table: LedgerStore
+  name: PK_LedgerStore_LedgerStoreID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LedgerStoreID
+- table: LedgerStore
+  name: IX_LGS3_LedgerStore_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: LoadingPoint
+  name: PK_LGS3_LoadingPoint
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LoadingPointID
+- table: LoadingPoint
+  name: UIX_LGS3_LoadingPoint_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ShippingPointRef
+  - Code
+- table: LoadingPoint
+  name: UIX_LGS3_LoadingPoint_ShippingPointRef_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ShippingPointRef
+  - Name
+- table: MaterialClass
+  name: PK_LGS3_MaterialClass
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassID
+- table: MaterialClass
+  name: UIX_LGS3_MaterialClass_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: MaterialClass
+  name: IX_LGS3_MaterialClass_GrandParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GrandParentRef
+- table: MaterialClass
+  name: IX_LGS3_MaterialClass_MaterialClassProposalItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaterialClassProposalItemRef
+- table: MaterialClassAmendment
+  name: PK_LGS3_MaterialClassAmendment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassAmendmentID
+- table: MaterialClassAmendmentItem
+  name: PK_LGS3_MaterialClassAmendmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassAmendmentItemID
+- table: MaterialClassChangeLog
+  name: PK_LGS3_MaterialClassChangeLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassChangeLogID
+- table: MaterialClassChangeLog
+  name: IX_LGS3_MaterialClassChangeLog_MaterialClassCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaterialClassCode
+- table: MaterialClassDeletionRequest
+  name: PK_LGS3_MaterialClassDeletionRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassDeletionRequestID
+- table: MaterialClassDeletionRequestItem
+  name: PK_LGS3_MaterialClassDeletionRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassDeletionRequestItemID
+- table: MaterialClassProposal
+  name: PK_LGS3_MaterialClassProposal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassProposalID
+- table: MaterialClassProposalAmendment
+  name: PK_LGS3_MaterialClassProposalAmendment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassProposalAmendmentID
+- table: MaterialClassProposalAmendmentItem
+  name: PK_LGS3_MaterialClassProposalAmendmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassProposalAmendmentItemID
+- table: MaterialClassProposalChangeLog
+  name: PK_LGS3_MaterialClassProposalChangeLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassProposalChangeLogID
+- table: MaterialClassProposalItem
+  name: PK_LGS3_MaterialClassProposalItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassProposalItemID
+- table: MaterialClassSpecification
+  name: PK_MaterialClassSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassSpecificationID
+- table: MaterialClassSpecification
+  name: IX_LGS3_MaterialClassSpecification_MaterialClassRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaterialClassRef
+- table: MaterialClassSpecificationAmendment
+  name: PK_MaterialClassSpecificationAmendment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassSpecificationAmendmentID
+- table: MaterialClassStore
+  name: PK_LGS3_MaterialClassStore
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassStoreID
+- table: MaterialClassStoreAmendment
+  name: PK_LGS3_MaterialClassStoreAmendment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassStoreAmendmentID
+- table: MaterialClassStoreAmendmentItem
+  name: PK_MaterialClassStoreAmendmentItem_MaterialClassStoreAmendmentItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassStoreAmendmentItemID
+- table: MaterialClassStoreChangeLog
+  name: PK_LGS3_MaterialClassStoreChangeLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassStoreChangeLogID
+- table: MaterialClassStoreItem
+  name: PK_LGS3_MaterialClassStoreItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialClassStoreItemID
+- table: MaterialClassStoreItem
+  name: IX_LGS3_MaterialClassStoreItem_ConvertedPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConvertedPartRef
+- table: MaterialControlPolicy
+  name: PK_LGS3_MaterialControlPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialControlPolicyID
+- table: MaterialControlPolicy
+  name: UIX_LGS3_MaterialControlPolicy_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: MaterialControlPolicyItem
+  name: PK_LGS3_MaterialControlPolicyItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialControlPolicyItemID
+- table: MaterialControlPolicyPart
+  name: PK_LGS3_MaterialControlPolicyPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialControlPolicyPartID
+- table: MedicalGenericSpec
+  name: PK_LGS3_MedicalGenericSpec
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MedicalGenericSpecID
+- table: MedicalGenericSpec
+  name: UIX_LGS3_MedicalGenericSpec_GenericCode
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - GenericCode
+- table: Package
+  name: PK_LGS3_Package
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PackageID
+- table: Package
+  name: IX_LGS3_Package_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: Package
+  name: IX_LGS3_Package_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: Package
+  name: IX_LGS3_Package_DimUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DimUnitRef
+- table: Part
+  name: PK_Part
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartID
+- table: Part
+  name: UIX_LGS3_Part_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Part
+  name: IX_LGS3_Part_CategoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CategoryRef
+  included:
+  - PartID
+  - Code
+  - Name
+- table: Part
+  name: IX_LGS3_Part_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+- table: Part
+  name: IX_LGS3_Part_Name_TechnicalSpecification
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Name
+  - TechnicalSpecification
+- table: PartBarcode
+  name: PK_LGS3_PartBarcode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartBarcodeID
+- table: PartBarcode
+  name: IX_LGS3_IPartBarcode_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PartBarcode
+  name: IX_LGS3_IPartBarcode_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: PartBarcodeTemplate
+  name: PK_PartBarcodeTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartBarcodeTemplateID
+- table: PartContainer
+  name: PK_PartContainer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartContainerID
+- table: PartContainer
+  name: UIX_LGS3_PartContainer_PartRef_UnitRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+  - UnitRef
+- table: PartContainerDefaultInfo
+  name: PK_PartContainerDefaultInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartContainerDefaultInfoID
+- table: PartContainerItem
+  name: PK_PartContainerItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartContainerItemID
+- table: PartDetail
+  name: PK_LGS3_PartDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartDetailID
+- table: PartDetail
+  name: UIX_LGS3_PartDetail_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: PartDetailFormula
+  name: PK_LGS3_PartDetailFormula
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartDetailFormulaID
+- table: PartDetailFormula
+  name: UIX_LGS3_PartDetailFormula_PartRef_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+  - Code
+- table: PartDetailFormulaItem
+  name: PK_LGS3_PartDetailFormulaItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartDetailFormulaItemID
+- table: PartDetailFormulaItem
+  name: UIX_LGS3_PartDetailFormulaItem_PartRef_PartDetailFormulaRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+  - PartDetailFormulaRef
+- table: PartDisplayInformation
+  name: PK_PartDisplayInformation_PartDisplayInformationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartDisplayInformationID
+- table: PartDisplayInformationItem
+  name: PK_LGS3_PartDisplayInformationItem_PartDisplayInformationItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartDisplayInformationItemID
+- table: PartFilterItem
+  name: PK_LGS3_PartFilterItem_PartFilterItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartFilterItemID
+- table: PartFixedBarcode
+  name: PK_LGS3_PartFixedBarcode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartFixedBarcodeID
+- table: PartGroupMember
+  name: PK_LGS3_PartGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: PartGroupMember
+  name: IX_LGS3_PartGroupMembe_MemberID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MemberID
+- table: PartLocation
+  name: PK_PartLocation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartLocationID
+- table: PartLocation
+  name: UIX_LGS3_PartLocation_Part_Shelf
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ShelfRef
+  - PartRef
+- table: PartLocation
+  name: UIX_LGS3_PartLocation_Part_Section
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SectionRef
+  - PartRef
+- table: PartLocation
+  name: UIX_LGS3_PartLocation_Part_Zone
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ZoneRef
+  - PartRef
+- table: PartLocation
+  name: UIX_LGS3_PartLocation_Part_StoreStructure
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - StoreStructureRef
+  - PartRef
+- table: PartLocation
+  name: IX_LGS3_PartLocation_PartID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  included:
+  - StoreStructureRef
+  - ZoneRef
+  - SectionRef
+  - ShelfRef
+- table: PartLocation
+  name: IX_LGS3_PartLocation_StoreStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreStructureRef
+  included:
+  - PartRef
+  - ZoneRef
+  - SectionRef
+  - ShelfRef
+  - Version
+- table: PartMedicalSpecification
+  name: PK_LGS3_PartMedicalSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartMedicalSpecificationID
+- table: PartNotice
+  name: PK_LGS3_PartNotice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartNoticeID
+- table: PartNotice
+  name: UIX_LGS3_PartNotice_NoticeType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - NoticeType
+- table: PartQualityControl
+  name: PK_LGS3_PartQualityControl
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartQualityControlID
+- table: PartQualityControl
+  name: IX_PartQualityControl_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PartQualityControlDocument
+  name: PK_LGS3_PartQualityControlDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartQualityControlDocumentID
+- table: PartQualityControlDocument
+  name: IX_PartQualityControlDocument_PartQualityControlRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartQualityControlRef
+  - EntityCode
+- table: PartRequest
+  name: PK_PartRequest_1
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartRequestID
+- table: PartRequest
+  name: IX_LGS3_PartRequest_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: PartRequest
+  name: IX_LGS3_PartRequest_ReceiverStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiverStoreRef
+- table: PartRequest
+  name: IX_LGS3_PartRequest_SenderStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SenderStoreRef
+- table: PartRequest
+  name: IX_LGS3_PartRequest_RequestFromPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RequestFromPartyRef
+- table: PartRequestItem
+  name: PK_PartRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartRequestItemID
+- table: PartRequestItem
+  name: IX_LGS3_PartRequestItem_PartRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRequestRef
+- table: PartRequestItemTrackingFactor
+  name: PK_PartRequestItemTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartRequestItemTrackingFactorID
+- table: PartRequestItemTrackingFactor
+  name: IX_LGS3_PartRequestItemTrackingFactor_PartRequestItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRequestItemRef
+- table: PartShipmentSchedulingProperties
+  name: PK_LGS3_PartShipmentSchedulingProperties
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartShipmentSchedulingPropertiesID
+- table: PartShipmentSchedulingProperties
+  name: IX_LGS3_PartShipmentSchedulingProperties_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PartShipmentSchedulingProperties
+  name: IX_LGS3_PartShipmentSchedulingProperties_DefaultUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefaultUnitRef
+- table: PartShipmentSchedulingProperties
+  name: IX_LGS3_PartShipmentSchedulingProperties_DefaultEntityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefaultEntityUnitRef
+- table: PartSpecification
+  name: PK_PartSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartSpecificationID
+- table: PartSpecification
+  name: UIX_LGS3_PartSpecification_PartRef_Spec_SpecItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+  - SpecificationRef
+- table: PartStore
+  name: PK_PartStore
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartStoreID
+- table: PartStore
+  name: IX_LGS3_PartStore_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+  included:
+  - PartRef
+- table: PartStore
+  name: IX_LGS3_PartStore_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  included:
+  - StoreRef
+  - State
+- table: PartStore
+  name: IX_LGS3_PartStore_PositionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PositionRef
+- table: PartStore
+  name: IX_LGS3_PartStore_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: PartStore
+  name: IX_LGS3_PartStore_StoreRef_PartRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  - PartRef
+  - State
+- table: PartStore
+  name: IX_LGS3_PartStore_StoreRef_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  - PartRef
+- table: PartTechnicalSpecification
+  name: PK_LGS3_PartTechnicalSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartTechnicalSpecificationID
+- table: PartTemplate
+  name: PK_PartTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartTemplateID
+- table: PartTemplate
+  name: UIX_LGS3_PartTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: PartTemplateSpecification
+  name: PK_LGS3_PartTemplateSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartTemplateSpecificationID
+- table: PartTemplateStore
+  name: PK_LGS3_PartTemplateStore
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartTemplateStoreID
+- table: PartTrackingFactor
+  name: PK_PartTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartTrackingFactorID
+- table: PartTrackingFactor
+  name: IX_LGS3_PartTrackingFactor_Priority
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Priority
+- table: PartTrackingFactor
+  name: IX_LGS3_PartTrackingFactor_PartRef_TrackingFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - TrackingFactorRef
+- table: PartTrackingFactor
+  name: IX_LGS3_PartTrackingFactor_PartRef_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - CharacteristicRef
+- table: PartTrackingFactor
+  name: IX_LGS3_PartTrackingFactor_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  included:
+  - PartTrackingFactorID
+  - Priority
+  - IsStocktakingFactor
+- table: PartUnit
+  name: PK_LGS3_PartUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartUnitID
+- table: PartUnit
+  name: IX_LGS3_PartUnit_PartID_PartUnitID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartID
+  - PartUnitID
+- table: PartUnit
+  name: IX_LGS3_PartUnit_PartID_UnitID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartID
+  - UnitID
+  included:
+  - Name
+  - Weight
+  - WeightUnitRef
+  - IsMajorUnit
+  - DSRatio
+  - SDRatio
+- table: PartUnitProposal
+  name: PK_LGS3_PartUnitProposal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartUnitProposalID
+- table: PartUnitProposal
+  name: UIX_LGS3_PartUnitProposal_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartUnitProposalID
+  - PartRef
+- table: PartUnitProposalItem
+  name: PK_PartUnitProposalItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartUnitProposalItemID
+- table: PartUnitProposalItem
+  name: UIX_LGS3_PartUnitProposalItem_UnitRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartUnitProposalRef
+  - UnitRef
+- table: Plant
+  name: PK_LGS3_Plant
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlantID
+- table: Plant
+  name: IX_LGS3_Plant_AddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AddressRef
+- table: Plant
+  name: UIX_SLS3_Plant_CompanyRef_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CompanyRef
+  - Name
+- table: PriceChange
+  name: PK_LGS3_PriceChange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceChangeID
+- table: PriceChange
+  name: UIX_LGS3_PriceChange_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: PriceChange
+  name: UIX_LGS3_PriceChange_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: PriceChangeItem
+  name: PK_LGS3_PriceChangeItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceChangeItemID
+- table: PriceList
+  name: PK_LGS3_PriceList
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceListID
+- table: PriceList
+  name: UIX_LGS3_PriceList_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: PriceList
+  name: UIX_LGS3_PriceList_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: PriceList
+  name: IX_LGS3_PriceList_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  included:
+  - LedgerRef
+- table: PriceListItem
+  name: PK_LGS3_PriceListItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PriceListItemID
+- table: PriceListItem
+  name: IX_LGS3_PriceListItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PriceListItem
+  name: IX_LGS3_PriceListItem_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: PricingCheckResult
+  name: PK_PricingCheckResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PricingCheckResultID
+- table: PricingFactor
+  name: PK_LGS3_PricingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PricingFactorID
+- table: PricingFactor
+  name: IX_LGS3_PricingFactor_InventoryVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherRef
+  included:
+  - PricingFactorType
+  - PercentAmount
+- table: PricingHistory
+  name: PK_PricingHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PricingHistoryID
+- table: PricingPeriod
+  name: PK_PricingPeriod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PricingPeriodID
+- table: PricingYear
+  name: PK_PricingYear
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PricingYearID
+- table: ProcessesScheduling
+  name: PK_ProcessesScheduling
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcessesSchedulingID
+- table: ProcessesScheduling
+  name: IX_LGS3_ProcessesScheduling_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: ProcessesScheduling
+  name: IX_LGS3_ProcessesScheduling_JobRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - JobRef
+- table: ReceiptPermit
+  name: PK_LGS3_ReceiptPermit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptPermitID
+- table: ReceiptPermit
+  name: IX_LGS3_ReceiptPermit_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ReceiptPermit
+  name: IX_LGS3_ReceiptPermit_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ReceiptPermit
+  name: IX_LGS3_ReceiptPermit_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+- table: ReceiptPermit
+  name: IX_LGS3_ReceiptPermit_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+- table: ReceiptPermitItem
+  name: PK_LGS3_ReceiptPermitItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptPermitItemID
+- table: ReceiptPermitItem
+  name: IX_LGS3_ReceiptPermitItem_ReceiptPermitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptPermitRef
+- table: ReceiptPermitItem
+  name: IX_LGS3_ReceiptPermitItem_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: ReceiptPermitItemTrackingFactor
+  name: PK_ReceiptPermitItemTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptPermitItemTrackingFactorID
+- table: Reserve
+  name: PK_LGS3_Reserve
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReserveID
+- table: Reserve
+  name: IX_LGS3_Reserve_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  included:
+  - ReserveID
+  - CreationDate
+- table: Reserve
+  name: IX_LGS3_Reserve_Date_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Date
+  - StoreRef
+  included:
+  - ReserveID
+- table: Reserve
+  name: IX_LGS3_Reserve_FiscalYearRef_PlantRef_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - PlantRef
+  - Number
+- table: Reserve
+  name: IX_LGS3_Reserve_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+  included:
+  - State
+  - PlantRef
+  - StoreRef
+  - Date
+  - ExpirationDate
+  - Number
+  - CreationDate
+  - LastModificationDate
+  - Creator
+  - LastModifier
+  - CounterpartEntityCode
+  - CounterpartEntityRef
+  - CounterpartEntityText
+  - LedgerRef
+  - FiscalYearRef
+  - Description
+  - BranchRef
+  - Version
+  - ReserveType
+  - ReferenceNumber
+- table: Reserve
+  name: IX_LGS3_Reserve_StoreRef_ReserveID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  - ReserveID
+- table: ReserveDelivery
+  name: PK_LGS3_ReserveDelivery
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReserveDeliveryID
+- table: ReserveDelivery
+  name: IX_LGS3_ReserveDelivery_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+- table: ReserveDelivery
+  name: IX_LGS3_ReserveDelivery_ReserveItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReserveItemRef
+  included:
+  - InventoryVoucherItemRef
+- table: ReserveDelivery
+  name: IX_LGS3_ReserveDelivery_ReserveItemRef_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReserveItemRef
+  - InventoryVoucherItemRef
+- table: ReserveDelivery
+  name: IX_LGS3_ReserveDelivery_ReserveItemTrackingFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReserveItemTrackingFactorRef
+  included:
+  - InventoryVoucherItemTrackingFactorRef
+  - InventoryVoucherItemRef
+- table: ReserveItem
+  name: PK_LGS3_ReserveItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReserveItemID
+- table: ReserveItem
+  name: IX_LGS3_ReserveItem_Date_StoreRef_PartRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Date
+  - StoreRef
+  - PartRef
+  - State
+- table: ReserveItem
+  name: IX_LGS3_ReserveItem_StoreRef_PartRef_State_Quantities
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+  - PartRef
+  - State
+  included:
+  - ReserveItemID
+  - MajorUnitQuantity
+  - Date
+  - ReserveRef
+  - EffectedMajorQuantity
+  - SecondUnitQuantity
+  - PlantRef
+  - ReserveCreationDate
+  - CreationDate
+- table: ReserveItem
+  name: IX_LGS3_ReserveItem_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: ReserveItem
+  name: IX_LGS3_ReserveItem_ReserveRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReserveRef
+  included:
+  - ReserveItemID
+  - PartRef
+- table: ReserveItem
+  name: IX_LGS3_ReserveItem_PartRef_PlantRef_StoreRef_State_DatesAsNumber
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - PlantRef
+  - StoreRef
+  - State
+  - DatesAsNumber
+  included:
+  - ReserveItemID
+  - Date
+  - EffectedMajorQuantity
+  - CreationDate
+  - TolerancePercent
+- table: ReserveItem
+  name: IX_LGS3_ReserveItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ReserveItemTrackingFactor
+  name: PK_LGS3_ReserveItemTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReserveItemTrackingFactorID
+- table: ReserveItemTrackingFactor
+  name: IX_LGS3_ReserveItemTrackingFactor_ReserveItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReserveItemRef
+- table: ReserveItemTrackingFactor
+  name: IX_LGS3_ReserveItemTrackingFactor_EffectedMajorQuantity_ReserveItemRef_1stPartInvTrackingFactor_TrackingFactor1
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EffectedMajorQuantity
+  - ReserveItemRef
+  - 1stPartInvTrackingFactor
+  - TrackingFactor1
+- table: SchedulePricing
+  name: PK_SchedulePricing
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SchedulePricingID
+- table: SchedulePricing
+  name: UIX_LGS3_SchedulePricing
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SchedulePricing
+  name: IX_LGS3_SchedulePricing_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: SchedulePricing
+  name: IX_LGS3_SchedulePricing_JobRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - JobRef
+- table: Seaport
+  name: PK_LGS3_Seaport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SeaportID
+- table: Seaport
+  name: UIX_GNR3_Seaport_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: Seaport
+  name: UIX_GNR3_Seaport_Name_En
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name_En
+- table: Seaport
+  name: IX_LGS3_Seaport_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: Section
+  name: PK_LGS3_Section
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SectionID
+- table: Section
+  name: UIX_LGS3_Section_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - ZoneRef
+- table: Section
+  name: UIX_LGS3_Section_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - ZoneRef
+- table: Serial
+  name: PK_LGS3_Serial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialID
+- table: Serial
+  name: UIX_LGS3_Serial_UniqueSerialPerPart
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+  - Value
+- table: Serial
+  name: IX_LGS3_Serial_SerialPackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialPackageRef
+- table: Serial
+  name: IX_LGS3_Serial_Value
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Value
+- table: SerialPackage
+  name: PK_LGS3_SerialPackage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialPackageID
+- table: SerialPackage
+  name: IX_LGS3_SerialPackage_SerialTemplatePartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialTemplatePartRef
+- table: SerialPackage
+  name: IX_LGS3_SerialPackage_SerialTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialTemplateRef
+- table: SerialPrint
+  name: PK_SerialPrint
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialPrintID
+- table: SerialPrintHistory
+  name: PK_SerialPrintHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialPrintHistoryID
+- table: SerialPrintItem
+  name: PK_LGS3_SerialPrintItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialPrintItemID
+- table: SerialProfile
+  name: PK_LGS3_SerialProfile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialProfileID
+- table: SerialProfile
+  name: IX_LGS3_SerialProfile_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: SerialProfile
+  name: IX_LGS3_SerialProfile_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: SerialProfile
+  name: UIX_LGS3_SerialProfile_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SerialProfilePart
+  name: PK_LGS3_SerialProfilePart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialProfilePartID
+- table: SerialProfilePart
+  name: IX_LGS3_SerialProfilePart_SerialProfileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialProfileRef
+- table: SerialProfilePart
+  name: UIX_LGS3_SerialProfilePart_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: SerialProfileSubscribingModule
+  name: PK_LGS3_SerialProfileSubscribingModule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialProfileSubscribingModuleID
+- table: SerialProfileSubscribingModule
+  name: IX_LGS3_SerialProfileSubscribingModule_SerialProfileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialProfileRef
+- table: SerialProfileSubscribingModule
+  name: IX_LGS3_SerialProfileSubscribingModule_SerialSubscribingModuleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialSubscribingModuleRef
+- table: SerialSubscribingModule
+  name: PK_LGS3_SerialSubscribingModule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialSubscribingModuleID
+- table: SerialTemplate
+  name: PK_LGS3_SerialTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialTemplateID
+- table: SerialTemplate
+  name: IX_LGS3_SerialTemplate_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: SerialTemplate
+  name: IX_LGS3_SerialTemplate_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: SerialTemplate
+  name: UIX_LGS3_SerialTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SerialTemplatePart
+  name: PK_LGS3_SerialTemplatePart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialTemplatePartID
+- table: SerialTemplatePart
+  name: IX_LGS3_SerialTemplatePart_SerialTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialTemplateRef
+- table: SerialTemplatePart
+  name: IX_LGS3_SerialTemplatePart_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: SerialTemplatePart
+  name: IX_LGS3_SerialTemplatePart_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: SerialTemplatePart
+  name: IX_LGS3_SerialTemplatePart_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: SerialTemplateSegment
+  name: PK_LGS3_SerialTemplateSegment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialTemplateSegmentID
+- table: SerialTemplateSegment
+  name: IX_LGS3_SerialTemplateSegment_SerialTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialTemplateRef
+- table: SerialValidation
+  name: PK_LGS3_SerialValidation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialValidationID
+- table: SerialValidation
+  name: UIX_LGS3_SerialValidation_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SerialValidationCondition
+  name: PK_LGS3_SerialValidationCondition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialValidationConditionID
+- table: SerialValidationCondition
+  name: IX_LGS3_SerialValidationCondition_SerialValidationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialValidationRef
+- table: SerialValidationPart
+  name: PK_LGS3_SerialValidationPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialValidationPartID
+- table: SerialValidationPart
+  name: IX_LGS3_SerialValidationPart_SerialValidationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialValidationRef
+- table: SerialValidationPart
+  name: UIX_LGS3_SerialValidationPart_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: Service
+  name: PK_LGS3_Service
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceID
+- table: Service
+  name: IX_LGS3_Service_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: Service
+  name: IX_LGS3_Service_ServiceGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceGroupRef
+- table: Service
+  name: UIX_LGS3_Service_Name_CompanyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+  - CompanyRef
+- table: ServiceCategory
+  name: PK_LGS3_ServiceCategory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceCategoryID
+- table: ServiceCategoryItem
+  name: PK_LGS3_ServiceCategoryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceCategoryItemID
+- table: ServiceGroup
+  name: PK_LGS3_ServiceGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceGroupID
+- table: ServiceGroup
+  name: UIX_LGS3_ServiceGroup_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: Shelf
+  name: PK_Shelf
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShelfID
+- table: Shelf
+  name: IX_LGS3_Shelf_SectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SectionRef
+- table: Shelf
+  name: UIX_LGS3_Shelf_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - SectionRef
+- table: Shelf
+  name: UIX_LGS3_Shelf_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - SectionRef
+- table: ShelfHandheldVoucher
+  name: PK_ShelfHandheldVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShelfHandheldVoucherID
+- table: ShelfHandheldVoucher
+  name: UIX_LGS3_ShelfHandheldVoucher_HandheldVoucherRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - HandheldVoucherRef
+- table: ShelfHandheldVoucherItem
+  name: PK_ShelfHandheldVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShelfHandheldVoucherItemID
+- table: ShelfSpecification
+  name: PK_LGS3_ShelfSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShelfSpecificationID
+- table: ShelfSpecification
+  name: UIX_LGS3_ShelfSpecification_ShelfRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ShelfRef
+- table: ShelfSpecification
+  name: IX_LGS3_ShelfSpecification_LengthUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LengthUnitRef
+- table: ShelfSpecification
+  name: IX_LGS3_ShelfSpecification_TolerableWeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TolerableWeightUnitRef
+- table: ShelfVoucher
+  name: PK_ShelfVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShelfVoucherID
+- table: ShelfVoucher
+  name: UIX_LGS3_ShelfVoucher_InventoryVoucherRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InventoryVoucherRef
+- table: ShelfVoucher
+  name: LGS3_IX_ShelfVoucher_ShelfVoucherEffectType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShelfVoucherEffectType
+- table: ShelfVoucherItem
+  name: PK_ShelfVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShelfVoucherItemID
+- table: ShelfVoucherItem
+  name: LGS3_IX_ShelfVoucherItem_FiscalYearRef_StoreStructureRef_PartRef_ShelfRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - StoreStructureRef
+  - PartRef
+  - ShelfRef
+- table: ShelfVoucherItem
+  name: LGS3_IX_ShelfVoucherItem_ShelfRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShelfRef
+  included:
+  - PartRef
+- table: ShelfVoucherItem
+  name: LGS3_IX_ShelfVoucherItem_InventoryVoucherItemRef_FiscalYearRef_StoreStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  - FiscalYearRef
+  - StoreStructureRef
+  included:
+  - MajorUnitQuantity
+  - ShelfVoucherRef
+- table: ShelfVoucherItem
+  name: LGS3_IX_ShelfVoucherItem_FiscalYearRef_StoreStructureRef_PartRef_ShelfRef_Trackingfactor1_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - StoreStructureRef
+  - PartRef
+  - ShelfRef
+  - TrackingFactor1
+  - InventoryVoucherItemRef
+- table: ShelfVoucherItem
+  name: LGS3_IX_ShelfVoucherItem_ShelfRef_2
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShelfRef
+  included:
+  - PartRef
+  - FiscalYearRef
+  - StoreStructureRef
+  - InventoryVoucherItemRef
+  - UnitRef
+  - MajorUnitQuantity
+  - Direction
+  - TrackingFactor1
+  - TrackingFactor2
+  - TrackingFactor3
+  - TrackingFactor4
+  - TrackingFactor5
+  - PartInvTrackingFactor1
+  - PartInvTrackingFactor2
+  - PartInvTrackingFactor3
+  - PartInvTrackingFactor4
+  - PartInvTrackingFactor5
+  - ShelfVoucherRef
+- table: ShipmentCapacity
+  name: PK_LGS3_ShipmentCapacity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentCapacityID
+- table: ShipmentCapacity
+  name: IX_LGS3_ShipmentCapacity_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ShipmentCapacity
+  name: IX_LGS3_ShipmentCapacity_ShipmentPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentPointRef
+- table: ShipmentCapacity
+  name: IX_LGS3_ShipmentCapacity_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ShipmentCapacity
+  name: IX_LGS3_ShipmentCapacity_EntityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityUnitRef
+- table: ShipmentCapacityItem
+  name: PK_LGS3_ShipmentCapacityItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentCapacityItemID
+- table: ShipmentCapacityItem
+  name: IX_LGS3_ShipmentCapacityItem_ShipmentCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentCapacityRef
+- table: ShipmentPoint
+  name: PK_LGS3_ShipmentPoint
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentPointID
+- table: ShipmentPoint
+  name: IX_LGS3_ShipmentPoint_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ShipmentPoint
+  name: IX_LGS3_ShipmentPoint_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: ShipmentPoint
+  name: IX_LGS3_ShipmentPoint_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ShipmentPointParameter
+  name: PK_LGS3_ShipmentPointParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentPointParameterID
+- table: ShipmentPointParameter
+  name: IX_LGS3_ShipmentPointParameter_ShipmentPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentPointRef
+- table: ShipmentPointParameter
+  name: IX_LGS3_ShipmentPointParameter_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: ShipmentPointParameter
+  name: IX_LGS3_ShipmentPointParameter_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: ShipmentPointParameter
+  name: IX_LGS3_ShipmentPointParameter_ShipmentPointRef_ShippingPointRef_InventoryRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ShipmentPointRef
+  - ShippingPointRef
+  - InventoryRef
+- table: ShipmentPolicy
+  name: PK_LGS3_ShipmentPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentPolicyID
+- table: ShipmentPolicy
+  name: IX_LGS3_ShipmentPolicy_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ShipmentPolicy
+  name: IX_LGS3_ShipmentPolicy_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: ShipmentPolicy
+  name: IX_LGS3_ShipmentPolicy_ShipmentPolicyTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentPolicyTemplateRef
+- table: ShipmentPolicy
+  name: IX_LGS3_ShipmentPolicy_EntityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityUnitRef
+- table: ShipmentPolicy
+  name: IX_LGS3_ShipmentPolicy_TransportationVehicleType1Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleType1Ref
+- table: ShipmentPolicy
+  name: IX_LGS3_ShipmentPolicy_TransportationVehicleType2Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleType2Ref
+- table: ShipmentPolicyTemplate
+  name: PK_LGS3_ShipmentPolicyTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentPolicyTemplateID
+- table: ShipmentPolicyTemplate
+  name: IX_LGS3_ShipmentPolicyTemplate_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ShipmentPolicyTemplate
+  name: IX_LGS3_ShipmentPolicyTemplate_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: ShipmentPriority
+  name: PK_LGS3_ShipmentPriority
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentPriorityID
+- table: ShipmentPriority
+  name: IX_LGS3_ShipmentPriority_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ShipmentPriorityParameter
+  name: PK_LGS3_ShipmentPriorityParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentPriorityParameterID
+- table: ShipmentPriorityParameter
+  name: IX_LGS3_ShipmentPriorityParameter_ShipmentPriorityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentPriorityRef
+- table: ShipmentSchedule
+  name: PK_LGS3_ShipmentSchedule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentScheduleID
+- table: ShipmentSchedule
+  name: IX_LGS3_ShipmentSchedule_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ShipmentSchedule
+  name: IX_LGS3_ShipmentSchedule_ShipmentPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentPointRef
+- table: ShipmentSchedule
+  name: IX_LGS3_ShipmentSchedule_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ShipmentSchedule
+  name: IX_LGS3_ShipmentSchedule_EntityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityUnitRef
+- table: ShipmentScheduleItem
+  name: PK_LGS3_ShipmentScheduleItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentScheduleItemID
+- table: ShipmentScheduleItem
+  name: IX_LGS3_ShipmentScheduleItem_ShipmentScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentScheduleRef
+- table: ShipmentScheduleItem
+  name: UIX_LGS3_ShipmentScheduleItem_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: ShipmentScheduleItemDetail
+  name: PK_LGS3_ShipmentScheduleItemDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentScheduleItemDetailID
+- table: ShipmentScheduleItemDetail
+  name: IX_LGS3_ShipmentScheduleItemDetail_ShipmentScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentScheduleRef
+- table: ShipmentScheduleItemDetail
+  name: IX_LGS3_ShipmentScheduleItemDetail_ShipmentScheduleItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentScheduleItemRef
+- table: ShipmentScheduleItemDetail
+  name: IX_LGS3_ShipmentScheduleItemDetail_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: ShipmentScheduleItemDetail
+  name: IX_LGS3_ShipmentScheduleItemDetail_Quantity
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Quantity
+  - ExpirationDate
+  - State
+  included:
+  - ShipmentScheduleItemDetailID
+  - ShipmentScheduleItemRef
+- table: ShipmentScheduleItemDetailHistory
+  name: PK_LGS3_ShipmentScheduleItemDetailHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentScheduleItemDetailHistoryID
+- table: ShipmentScheduleItemDetailHistory
+  name: IX_LGS3_ShipmentScheduleItemDetailHistory_ShipmentScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentScheduleRef
+- table: ShipmentScheduleItemDetailHistory
+  name: IX_LGS3_ShipmentScheduleItemDetailHistory_ShipmentScheduleItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentScheduleItemRef
+- table: ShipmentScheduleItemDetailHistory
+  name: IX_LGS3_ShipmentScheduleItemDetailHistory_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: ShipmentScheduleItemPolicy
+  name: PK_LGS3_ShipmentScheduleItemPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentScheduleItemPolicyID
+- table: ShipmentScheduleItemPolicy
+  name: IX_LGS3_ShipmentScheduleItemPolicy_ShipmentScheduleItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentScheduleItemRef
+- table: ShipmentScheduleItemPolicy
+  name: IX_LGS3_ShipmentScheduleItemPolicy_EntityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityUnitRef
+- table: ShipmentScheduleItemPolicy
+  name: IX_LGS3_ShipmentScheduleItemPolicy_TransportationVehicleType1Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleType1Ref
+- table: ShipmentScheduleItemPolicy
+  name: IX_LGS3_ShipmentScheduleItemPolicy_TransportationVehicleType2Ref
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleType2Ref
+- table: ShipmentScheduleUsage
+  name: PK_LGS3_ShipmentScheduleUsage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShipmentScheduleUsageID
+- table: ShipmentScheduleUsage
+  name: IX_LGS3_ShipmentScheduleUsage_ShipmentScheduleItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentScheduleItemRef
+- table: ShipmentScheduleUsage
+  name: IX_LGS3_ShipmentScheduleUsage_ShipmentScheduleItemDetailRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShipmentScheduleItemDetailRef
+- table: ShipmentScheduleUsage
+  name: IX_LGS3_ShipmentScheduleUsage_EntityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityUnitRef
+- table: ShipmentScheduleUsage
+  name: IX_LGS3_ShipmentScheduleUsage_ReferenceEntityCode_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceEntityCode
+  - ReferenceRef
+- table: ShipmentScheduleUsage
+  name: IX_LGS3_ShipmentScheduleUsage_ReferenceEntityCode_ShipmentScheduleItemDetailRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceEntityCode
+  - ShipmentScheduleItemDetailRef
+  included:
+  - ActualQuantity
+- table: ShippingOrder
+  name: PK_LGS3_ShippingOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShippingOrderID
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_LoadingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoadingPointRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_TransportationSequenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationSequenceRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_TransporterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransporterRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_RecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_Complex
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Status
+  - PlantRef
+  - InventoryRef
+  - CompanyRef
+  - BranchRef
+  - ShippingPointRef
+  - Date
+  - ExpirationDate
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_TransportationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationUnitRef
+- table: ShippingOrder
+  name: IX_LGS3_ShippingOrder_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ShippingOrderItem
+  name: PK_LGS3_ShippingOrderItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShippingOrderItemID
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_ShippingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingOrderRef
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_DeliveryAddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryAddressRef
+  - DeliveryAddressType
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+  - CustomerType
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_CustomerPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerPartyRef
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: ShippingOrderItem
+  name: IX_LGS3_ShippingOrderItem_PackagingWeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingWeightUnitRef
+- table: ShippingPoint
+  name: PK_LGS3_ShippingPoint
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShippingPointID
+- table: ShippingPoint
+  name: UIX_LGS3_ShippingPoint_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PlantRef
+  - Code
+- table: ShippingPoint
+  name: UIX_LGS3_ShippingPoint_PlantRef_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PlantRef
+  - Name
+- table: ShippingPointInventory
+  name: PK_ShippingPointInventory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ShippingPointInventoryID
+- table: ShippingPointInventory
+  name: UIX_LGS3_ShippingPointInventory_InventoryRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InventoryRef
+  - ShippingPointRef
+- table: SmartDevice
+  name: PK_LGS3_SmartDevice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SmartDeviceID
+- table: SmartDevice
+  name: UIX_LGS3_SmartDevice_DeviceIDAndDeviceType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DeviceID
+  - DeviceType
+- table: Specification
+  name: PK_Specification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SpecificationID
+- table: Specification
+  name: UIX_LGS3_Specification_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: SpecificationItem
+  name: PK_SpecificationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SpecificationItemID
+- table: SpecificationItem
+  name: UIX_LGS3_SpecificationItem_Value
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - StringValue
+  - DecimalValue
+  - DateValue
+  - SpecificationRef
+- table: SpecificationItem
+  name: UIX_LGS3_SpecificationItem_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - SpecificationRef
+- table: StationStraightPath
+  name: PK_LGS3_StationStraightPath
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StationStraightPathID
+- table: StationStraightPath
+  name: IX_LGS3_StationStraightPath_FirstWarehouseStationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FirstWarehouseStationRef
+- table: StationStraightPath
+  name: IX_LGS3_StationStraightPath_SecondWarehouseStationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SecondWarehouseStationRef
+- table: StocktakingCount
+  name: PK_LGS3_StocktakingCount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingCountID
+- table: StocktakingCount
+  name: UIX_LGS3_StocktakingCount_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: StocktakingCount
+  name: IX_LGS3_StocktakingCount_StocktakingPeriodZoneRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StocktakingPeriodZoneRef
+- table: StocktakingCountItem
+  name: PK_LGS3_StocktakingCountItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingCountItemID
+- table: StocktakingCountItem
+  name: IX_LGS3_StocktakingCountItem_StocktakingPeriodRef_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StocktakingPeriodRef
+  - PartRef
+  included:
+  - StocktakingCountRef
+- table: StocktakingCountItem
+  name: IX_LGS3_StocktakingCountItem_StocktakingCountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StocktakingCountRef
+  included:
+  - StocktakingPeriodRef
+  - PartRef
+- table: StocktakingCountItem
+  name: IX_LGS3_StocktakingCountItem_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+  included:
+  - PartRef
+  - TrackingFactor1
+  - TrackingFactor2
+  - PartTrackingFactorRef1
+  - PartTrackingFactorRef2
+  - StocktakingCountRef
+- table: StocktakingItem
+  name: PK_LGS3_StocktakingItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingItemID
+- table: StocktakingItem
+  name: IX_StocktakingItem_PartRef_StocktakingPeriodRef_Count1_Count2_Count3_TagNumber_IsWhiteTag
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  - StocktakingPeriodRef
+  - Count1
+  - Count2
+  - Count3
+  - TagNumber
+  - IsWhiteTag
+  included:
+  - StocktakingListRef
+- table: StocktakingItem
+  name: IX_StocktakingItem_StocktakingPeriodRef_Count1_Count2_Count3_IsWhiteTag
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StocktakingPeriodRef
+  - Count1
+  - Count2
+  - Count3
+  - IsWhiteTag
+  included:
+  - PartRef
+  - TagNumber
+  - TrackingFactor1
+  - PartTrackingFactorRef1
+  - TrackingFactor2
+  - PartTrackingFactorRef2
+  - StocktakingListRef
+- table: StocktakingList
+  name: PK_LGS3_StocktakingList
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingListID
+- table: StocktakingPeriod
+  name: PK_LGS3_StocktakingPeriod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingPeriodID
+- table: StocktakingPeriod
+  name: UIX_LGS3_StocktakingPeriod_FiscalYearRef_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - Name
+- table: StocktakingPeriodPartCategory
+  name: PK_LGS3_StocktakingPeriodPartCategory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingPeriodPartCategoryID
+- table: StocktakingPeriodVoucher
+  name: PK_LGS3_StocktakingPeriodVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingPeriodVoucherID
+- table: StocktakingPeriodZone
+  name: PK_LGS3_StocktakingPeriodZone
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingPeriodZoneID
+- table: StocktakingPolicy
+  name: PK_LGS3_StocktakingPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingPolicyID
+- table: StocktakingPolicy
+  name: UIX_LGS3_StocktakingPolicy_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: StocktakingPolicySerial
+  name: PK_StocktakingPolicySerial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingPolicySerialID
+- table: StocktakingVoucherItemCountStage
+  name: PK_LGS3_StocktakingVoucherItemCountStage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StocktakingVoucherItemCountStageID
+- table: StocktakingVoucherItemCountStage
+  name: IX_LGS3_StocktakingVoucherItemCountStage_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+- table: Store
+  name: PK_Store
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StoreID
+- table: Store
+  name: IX_LGS3_Store_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Store
+  name: UIX_LGS3_Store_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: Store
+  name: UIX_LGS3_Store_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: StorePosition
+  name: PK_StorePosition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StorePositionID
+- table: StoreStructure
+  name: PK_LGS3_StoreStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StoreStructureID
+- table: StoreStructureFinalizationState
+  name: PK_LGS3_StoreStructureFinalizationState
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StoreStructureFinalizationStateID
+- table: StoreStructureFinalizationState
+  name: UIX_LGS3_StoreStructureFinalizationState_StoreStructureRef_FiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - StoreStructureRef
+  - FiscalYearRef
+- table: TaxGrouping
+  name: PK_TaxGrouping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxGroupingID
+- table: TaxGroupingItem
+  name: PK_TaxGroupingItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxGroupingItemID
+- table: Terminal
+  name: PK_LGS3_Terminal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TerminalID
+- table: Terminal
+  name: UIX_GNR3_Terminal_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: TermOfDelivery
+  name: PK_LGS3_TermOfDelivery
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TermOfDeliveryID
+- table: TrackingFactorCharacteristic
+  name: PK_TrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TrackingFactorID
+- table: TrackingFactorCharacteristic
+  name: UIX_LGS3_TrackingFactor_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: TransportationManagementPortalAssignment
+  name: PK_LGS3_TransportationManagementPortalAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationManagementPortalAssignmentID
+- table: TransportationManagementPortalAssignment
+  name: IX_LGS3_TransportationManagementPortalAssignment_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Date
+- table: TransportationManagementPortalAssignment
+  name: IX_LGS3_TransportationManagementPortalAssignment_TransportationVehicleTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleTypeRef
+- table: TransportationManagementPortalAssignment
+  name: IX_LGS3_TransportationManagementPortalAssignment_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: TransportationManagementPortalAssignment
+  name: IX_LGS3_TransportationManagementPortalAssignment_TransporterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransporterRef
+- table: TransportationManagementPortalAssignment
+  name: IX_LGS3_TransportationManagementPortalAssignment_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: TransportationManagementPortalAssignment
+  name: IX_LGS3_TransportationManagementPortalAssignment_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: TransportationManagementPortalAssignmentItem
+  name: PK_LGS3_TransportationManagementPortalAssignmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationManagementPortalAssignmentItemID
+- table: TransportationManagementPortalAssignmentItem
+  name: IX_LGS3_TransportationManagementPortalAssignmentItem_TransportationManagementPortalAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationManagementPortalAssignmentRef
+- table: TransportationManagementPortalAssignmentItem
+  name: IX_LGS3_TransportationManagementPortalAssignmentItem_TransportationManagementPortalDistributionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationManagementPortalDistributionRef
+- table: TransportationManagementPortalCarrier
+  name: PK_LGS3_TransportationManagementPortalCarrier
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationManagementPortalCarrierID
+- table: TransportationManagementPortalCarrier
+  name: UIX_LGS3_TransportationManagementPortalCarrier_CarrierRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: TransportationManagementPortalConfiguration
+  name: PK_LGS3_TransportationManagementPortalConfiguration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationManagementPortalConfigurationID
+- table: TransportationManagementPortalDistribution
+  name: PK_LGS3_TransportationManagementPortalDistribution
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationManagementPortalDistributionID
+- table: TransportationManagementPortalDistribution
+  name: IX_LGS3_TransportationManagementPortalDistribution_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: TransportationManagementPortalDistribution
+  name: IX_LGS3_TransportationManagementPortalDistribution_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Date
+- table: TransportationManagementPortalDistribution
+  name: IX_LGS3_TransportationManagementPortalDistribution_DeliveryAddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryAddressRef
+- table: TransportationManagementPortalDistribution
+  name: IX_LGS3_TransportationManagementPortalDistribution_TransportationVehicleTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleTypeRef
+- table: TransportationManagementPortalDistribution
+  name: IX_LGS3_TransportationManagementPortalDistribution_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: TransportationManagementPortalDistribution
+  name: IX_LGS3_TransportationManagementPortalDistribution_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: TransportationManagementPortalDistribution
+  name: LGS3_TransportationManagementPortalDistribution_ReferenceTypeAndRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: TransportationManagementPortalShippingOrderRelation
+  name: PK_LGS3_TransportationManagementPortalShippingOrderRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationManagementPortalShippingOrderRelationID
+- table: TransportationManagementPortalShippingOrderRelation
+  name: UIX_LGS3_TransportationManagementPortalShippingOrderRelation_OrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: TransportationManagementPortalShippingOrderRelation
+  name: UIX_LGS3_TransportationManagementPortalShippingOrderRelation_ShippingOrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingOrderItemRef
+- table: TransportationManagementPortalShippingOrderRelation
+  name: UIX_LGS3_TransportationManagementPortalShippingOrderRelation_ShippingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingOrderRef
+- table: TransportationManagementPortalShippingOrderRelation
+  name: UIX_LGS3_TransportationManagementPortalShippingOrderRelation_TransportationManagementPortalAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationManagementPortalAssignmentRef
+- table: TransportationManagementPortalShippingOrderRelation
+  name: UIX_LGS3_TransportationManagementPortalShippingOrderRelation_TransportationManagementPortalAssignmentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationManagementPortalAssignmentItemRef
+- table: TransportationManagementPortalShippingOrderRelation
+  name: UIX_LGS3_TransportationManagementPortalShippingOrderRelation_TransportationManagementPortalDistributionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationManagementPortalDistributionRef
+- table: TransportationManagementPortalUser
+  name: PK_LGS3_TransportationManagementPortalUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationManagementPortalUserID
+- table: TransportationManagementPortalUser
+  name: UIX_LGS3_TransportationManagementPortalUser_UserName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UserName
+- table: TransportationManagementPortalUser
+  name: IX_LGS3_TransportationManagementPortalUser_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: TransportationManagementPortalUserPermission
+  name: PK_LGS3_TransportationManagementPortalUserPermission
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationManagementPortalUserPermissionID
+- table: TransportationManagementPortalUserPermission
+  name: IX_LGS3_TransportationManagementPortalUserPermission_TransportationManagementPortalUserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationManagementPortalUserRef
+- table: TransportationSequence
+  name: PK_LGS3_TransportationSequence
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationSequenceID
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_LoadingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoadingPointRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_TransporterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransporterRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_RecipientRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecipientRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_AddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AddressRef
+  - AddressType
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_TransportationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationUnitRef
+- table: TransportationSequence
+  name: IX_LGS3_TransportationSequence_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: TransportationUnit
+  name: PK_LGS3_TransportationUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationUnitID
+- table: TransportationVehicle
+  name: PK_LGS3_TransportationVehicle
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationVehicleID
+- table: TransportationVehicle
+  name: IX_LGS3_TransportationVehicle_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: TransportationVehicle
+  name: IX_LGS3_TransportationVehicle_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: TransportationVehicle
+  name: IX_LGS3_TransportationVehicle_WeightCapacityUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightCapacityUnitRef
+- table: TransportationVehicle
+  name: IX_LGS3_TransportationVehicle_TransportationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationUnitRef
+- table: TransportationVehicle
+  name: IX_LGS3_TransportationVehicle_TransportationVehicleTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleTypeRef
+- table: TransportationVehicle
+  name: IX_LGS3_TransportationVehicle_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: TransportationVehicleType
+  name: PK_LGS3_TransportationVehicleType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransportationVehicleTypeID
+- table: Transporter
+  name: PK_LGS3_Transporter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransporterID
+- table: Transporter
+  name: IX_LGS3_Transporter_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: Transporter
+  name: IX_LGS3_Transporter_CompanyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyRef
+- table: Transporter
+  name: IX_LGS3_Transporter_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: Transporter
+  name: UIX_LGS3_Transporter_Name_DrivingLicenseNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LastName
+  - FirstName
+  - DrivingLicenseNumber
+- table: Transporter
+  name: UIX_LGS3_Transporter_DrivingLicenseNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DrivingLicenseNumber
+- table: Transporter
+  name: IX_LGS3_Transporter_TransportationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationUnitRef
+- table: UncommittedCardexRemaining
+  name: PK_LGS3_UncommittedCardexRemaining
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: UnloadingOrder
+  name: PK_LGS3_UnloadingOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UnloadingOrderID
+- table: UnloadingOrderItem
+  name: PK_LGS3_UnloadingOrderItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UnloadingOrderItemID
+- table: UnloadingOrderItem
+  name: IX_LGS3_UnloadingOrderItem_PackageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackageRef
+- table: UnloadingOrderItem
+  name: IX_LGS3_UnloadingOrderItem_
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PackagingWeightUnitRef
+- table: UnloadingOrderItem
+  name: IX_LGS3_UnloadingOrderItem_ReferenceType_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+- table: VehicleTransporter
+  name: PK_LGS3_VehicleTransporter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VehicleTransporterID
+- table: VehicleTransporter
+  name: IX_LGS3_VehicleTransporter_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: VehicleTransporter
+  name: UIX_LGS3_VehicleTransporter_TransportationVehicleRef_TransporterRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+  - TransporterRef
+- table: WarehouseStation
+  name: PK_LGS3_WarehouseStation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WarehouseStationID
+- table: WarehouseStation
+  name: UIX_LGS3_WarehouseStation_Code_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - Title
+  - StoreStructureRef
+- table: WarehouseStation
+  name: IX_LGS3_WarehouseStation_StoreStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreStructureRef
+- table: WarehouseStationLocation
+  name: PK_LGS3_WarehouseStationLocation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WarehouseStationLocationID
+- table: WarehouseStationLocation
+  name: IX_LGS3_WarehouseStationLocation_WarehouseStationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WarehouseStationRef
+- table: WarehouseStationLocation
+  name: IX_LGS3_WarehouseStationLocation_ZoneRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ZoneRef
+- table: WarehouseStationLocation
+  name: IX_LGS3_WarehouseStationLocation_SectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SectionRef
+- table: WarehouseStationLocation
+  name: IX_LGS3_WarehouseStationLocation_ShelfRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShelfRef
+- table: WeighInToLoadingTolerance
+  name: PK_LGS3_WeighInToLoadingTolerance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WeighInToLoadingToleranceID
+- table: Zone
+  name: PK_LGS3_Zone
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ZoneID
+- table: Zone
+  name: IX_LGS3_Zone_StoreStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreStructureRef
+- table: Zone
+  name: UIX_LGS3_Zone_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - StoreStructureRef
+- table: Zone
+  name: UIX_LGS3_Zone_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - StoreStructureRef

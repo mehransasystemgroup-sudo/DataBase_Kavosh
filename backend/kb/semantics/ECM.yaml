@@ -1,0 +1,373 @@
+schema: ECM
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: ArchiveProcess
+  title_fa: ArchiveProcess
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ArchiveShard
+  title_fa: ArchiveShard
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AssignedSerial
+  title_fa: سریال اختصاص داده شده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Attachment
+  title_fa: Attachment
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: AuthorityDelegation
+  title_fa: تفویض اختیار
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ContentAnnotation
+  title_fa: محتویات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Correspondent
+  title_fa: مخاطب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CorrespondentGroup
+  title_fa: گروه مخاطب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: CorrespondentGroupMember
+  title_fa: عضو گروه مخاطب
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DelegationGrant
+  title_fa: مجوز تفویض
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Document
+  title_fa: سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DocumentDetail
+  title_fa: دیتیل سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DocumentField
+  title_fa: فیلد سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: DocumentPermission
+  title_fa: دسترسی سند
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ECEEmail
+  title_fa: پست الکترونیک ECE
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ECEEmailTransceiver
+  title_fa: طرف های مکاتبه ECE
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ECEOrganizationMap
+  title_fa: نگاشت سازمان ECE
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ECEParticipantMap
+  title_fa: نگاشت طرف مکاتبه ECE
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Email
+  title_fa: پست الکترونیک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EmailAccount
+  title_fa: حساب پست الکترونیک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EmailAttachment
+  title_fa: پیوست پست الکترونیک
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EventAttendee
+  title_fa: مشارکت‌کننده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: EventInstance
+  title_fa: رویداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FaxCenter
+  title_fa: مرکز دورنویس
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FaxDocument
+  title_fa: محتوای دورنویس
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: FaxFolder
+  title_fa: پوشه دورنویس
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: File
+  title_fa: File
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: IncomingFax
+  title_fa: دورنویس دریافتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Letter
+  title_fa: نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterAccelator
+  title_fa: شتابگر نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterClientMetadata
+  title_fa: متادیتای نامه های ارباب رجوع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterContent
+  title_fa: محتویات
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterDistribution
+  title_fa: LetterDistribution
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterEmail
+  title_fa: پست الکترونیک نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterFax
+  title_fa: دورنویس نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterForm
+  title_fa: فرم های راهکارانی نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterLog
+  title_fa: رویداد
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterReceiver
+  title_fa: طرف های مقابل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterRelation
+  title_fa: LetterRelation
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterRelationType
+  title_fa: LetterRelationType
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterReturnRelation
+  title_fa: نامه های مقابل
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterScan
+  title_fa: پویش نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterSecuretyLevel
+  title_fa: LetterSecuretyLevel
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterSigner
+  title_fa: امضا کننده ی نامه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterTextPdfHistory
+  title_fa: LetterTextPdfHistory
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: LetterUrgency
+  title_fa: LetterUrgency
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: NumberingMethod
+  title_fa: روش شماره گذاری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: NumberingMethodCondition
+  title_fa: شرط روش شماره گذاری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: NumberingPattern
+  title_fa: الگوی شماره گذاری
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: NumberingReservation
+  title_fa: رزرو شماره
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: OrganizationServer
+  title_fa: سرور سازمانی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Organizer
+  title_fa: سازمانده
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: OutgoingFax
+  title_fa: دورنویس ارسالی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: PersonalFileForm
+  title_fa: فرم های پرونده شخصی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Position
+  title_fa: نماینده شرکت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: RecordMap
+  title_fa: RecordMap
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Referring
+  title_fa: ارجاع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReferringAttachment
+  title_fa: پیوست ارجاع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReferringCondition
+  title_fa: قوانین ارجاع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReferringForm
+  title_fa: فرم های راهکارانی ارجاع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReferringLetter
+  title_fa: نامه متصل به ارجاع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReferringReason
+  title_fa: جهت مکاتبه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReferringSecurityLevel
+  title_fa: طبقه بندی اطلاعاتی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReferringTransceiver
+  title_fa: طرف ارجاع
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ReferringUrgency
+  title_fa: فوریت
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Scan
+  title_fa: پویش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ScanCenter
+  title_fa: مرکز پویش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ScanCenterDefaultSetting
+  title_fa: تنظیمات پیش فرض مرکز پویش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: ScanContent
+  title_fa: محتوای پویش
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: Secretariat
+  title_fa: دبیرخانه
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: SerialPool
+  title_fa: مخزن سریال
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: TransceiverMetadata
+  title_fa: TransceiverMetadata
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: UserFavoritLetter
+  title_fa: UserFavoritLetter
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: WatermarkHandeler
+  title_fa: WatermarkHandeler
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog

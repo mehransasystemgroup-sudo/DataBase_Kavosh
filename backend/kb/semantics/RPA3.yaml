@@ -1,0 +1,14 @@
+schema: RPA3
+tables:
+- name: Receipt
+  title_fa: سند دریافت
+  description_fa: این جدول اسناد دریافت وجه از مشتریان را نگهداری می‌کند.
+  kind: ledger
+  grain: یک ردیف به‌ازای هر سند دریافت
+  gotchas:
+  - اسناد باطل‌شده هم در همین جدول می‌مانند؛ باید State فیلتر شود.
+  source: stated_by_user
+  confidence: high
+  updated_at: '2026-07-25'
+  updated_by: user
+  _manual: true

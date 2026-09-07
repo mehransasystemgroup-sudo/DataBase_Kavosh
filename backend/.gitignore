@@ -1,0 +1,6 @@
+index/
+static/
+__pycache__/
+*.pyc
+.venv/
+kb/audit.log

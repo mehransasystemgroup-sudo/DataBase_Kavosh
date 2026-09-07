@@ -1,0 +1,979 @@
+schema: QAM3
+table_count: 25
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: FMEA
+  columns:
+  - name: FMEAID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: RiskPriorityCalculationMethod
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: EquipmentRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - FMEAID
+- name: FMEADamage
+  columns:
+  - name: FMEADamageID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FMEARef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Routing
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 3
+  - name: EquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Problem
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 5
+  - name: FailureConsequence
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 6
+  - name: SeverityOfFailureConsequenceNumber
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: DamageReason
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 8
+  - name: FailureLikelihood
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 9
+  - name: FailureLikelihoodNumber
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: FailureDetectionMethod
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 11
+  - name: FailureDetectionMethodNumber
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: ProposalTaskRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: DoneTaskRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: PostSeverityOfFailureConsequenceNumber
+    type: int
+    nullable: true
+    ordinal: 15
+  - name: PostFailureLikelihoodNumber
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: PostFailureDetectionMethodNumber
+    type: int
+    nullable: true
+    ordinal: 17
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - FMEADamageID
+- name: FMEATeamMember
+  columns:
+  - name: FMEATeamMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FMEARef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Role
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - FMEATeamMemberID
+- name: Notification
+  columns:
+  - name: NotificationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: PartRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: EquipmentRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: TopicDescription
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 8
+  - name: BatchRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: Priority
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: Category
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 14
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 15
+  - name: ProblemCategory
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: ProblemDescription
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 17
+  - name: ProblemExtraData
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 18
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 19
+  - name: DefectiveQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 20
+  - name: UnitRef
+    type: bigint
+    nullable: true
+    ordinal: 21
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 22
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 23
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 24
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 25
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 26
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 27
+  primary_key:
+  - NotificationID
+- name: NotificationCharacteristic
+  columns:
+  - name: NotificationCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: NotificationTemplateCharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CharacteristicValue
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - NotificationCharacteristicID
+- name: NotificationCounterPart
+  columns:
+  - name: NotificationCounterPartID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: NotificationTemplateCounterPartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ValueRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - NotificationCounterPartID
+- name: NotificationDefectRecording
+  columns:
+  - name: NotificationDefectRecordingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DefectRecordingRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - NotificationDefectRecordingID
+- name: NotificationTask
+  columns:
+  - name: NotificationTaskID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TaskRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IsManual
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  - name: DefectRecordingRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  primary_key:
+  - NotificationTaskID
+- name: NotificationTemplate
+  columns:
+  - name: NotificationTemplateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: NotificationType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: RelatedEntityCode
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: HasTask
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: HasQuantitativeInformation
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: ShowBatch
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: RelatedToDefect
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - NotificationTemplateID
+- name: NotificationTemplateCharacteristic
+  columns:
+  - name: NotificationTemplateCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Required
+    type: bit
+    nullable: false
+    ordinal: 2
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: NotificationTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - NotificationTemplateCharacteristicID
+- name: NotificationTemplateCounterPart
+  columns:
+  - name: NotificationTemplateCounterPartID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: CounterPartTypeCode
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Required
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: RelatedToTeam
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: NotificationTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - NotificationTemplateCounterPartID
+- name: NotificationTemplateReference
+  columns:
+  - name: NotificationTemplateReferenceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceEntityCode
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: NotificationTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - NotificationTemplateReferenceID
+- name: NotificationTemplateTaskCatalog
+  columns:
+  - name: NotificationTemplateTaskCatalogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NotificationTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TaskCatalogRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - NotificationTemplateTaskCatalogID
+- name: RCA
+  columns:
+  - name: RCAID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ReferenceNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: ProblemCategory
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: ProblemDescription
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 7
+  - name: Date
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 9
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - RCAID
+- name: RCAItem
+  columns:
+  - name: RCAItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCARef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ParentRCAItemRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Code
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 5
+  - name: NatureType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - RCAItemID
+- name: RCAItemCorrectionAction
+  columns:
+  - name: RCAItemCorrectionActionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCAItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TaskRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - RCAItemCorrectionActionID
+- name: RCAItemStopReason
+  columns:
+  - name: RCAItemStopReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCAItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StopReason
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - RCAItemStopReasonID
+- name: Task
+  columns:
+  - name: TaskID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaskTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 5
+  - name: Type
+    type: smallint
+    nullable: false
+    ordinal: 6
+  - name: Priority
+    type: smallint
+    nullable: false
+    ordinal: 7
+  - name: Category
+    type: smallint
+    nullable: false
+    ordinal: 8
+  - name: RequiredTime
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: DueDate
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: StartDateTime
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: EndDateTime
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: Doer
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: Effectiveness
+    type: int
+    nullable: true
+    ordinal: 15
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 18
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 20
+  - name: RealDoer
+    type: bigint
+    nullable: true
+    ordinal: 21
+  - name: RealStartDateTime
+    type: datetime
+    nullable: true
+    ordinal: 22
+  - name: RealEndDateTime
+    type: datetime
+    nullable: true
+    ordinal: 23
+  - name: RealDescription
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 24
+  primary_key:
+  - TaskID
+- name: TaskCatalog
+  columns:
+  - name: TaskCatalogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaskTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 5
+  - name: Type
+    type: smallint
+    nullable: false
+    ordinal: 6
+  - name: Priority
+    type: smallint
+    nullable: false
+    ordinal: 7
+  - name: RequiredTime
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: DueDate
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Category
+    type: smallint
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - TaskCatalogID
+- name: TaskCatalogCharacteristic
+  columns:
+  - name: TaskCatalogCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaskCatalogRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TaskTemplateCharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CharacteristicValue
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - TaskCatalogCharacteristicID
+- name: TaskCharacteristic
+  columns:
+  - name: TaskCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaskRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TaskTemplateCharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CharacteristicValue
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - TaskCharacteristicID
+- name: TaskCounterPart
+  columns:
+  - name: TaskCounterPartID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaskRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TaskTemplateCounterPartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ValueRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - TaskCounterPartID
+- name: TaskTemplate
+  columns:
+  - name: TaskTemplateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - TaskTemplateID
+- name: TaskTemplateCharacteristic
+  columns:
+  - name: TaskTemplateCharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaskTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IsRequired
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - TaskTemplateCharacteristicID
+- name: TaskTemplateCounterPart
+  columns:
+  - name: TaskTemplateCounterPartID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaskTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: CounterPartType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: IsRequired
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - TaskTemplateCounterPartID

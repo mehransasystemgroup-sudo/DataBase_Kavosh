@@ -1,0 +1,534 @@
+schema: QAM3
+source: extracted
+indexes:
+- table: FMEA
+  name: PK_QAM3_FMEA
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FMEAID
+- table: FMEA
+  name: IX_QAM3_FMEA_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: FMEA
+  name: IX_QAM3_FMEA_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: FMEADamage
+  name: PK_QAM3_FMEADamage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FMEADamageID
+- table: FMEADamage
+  name: IX_QAM3_FMEADamage_FMEARef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FMEARef
+- table: FMEADamage
+  name: IX_QAM3_FMEADamage_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: FMEADamage
+  name: IX_QAM3_FMEADamage_ProposalTaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProposalTaskRef
+- table: FMEADamage
+  name: IX_QAM3_FMEADamage_DoneTaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DoneTaskRef
+- table: FMEATeamMember
+  name: PK_QAM3_FMEATeamMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FMEATeamMemberID
+- table: FMEATeamMember
+  name: IX_QAM3_FMEATeamMember_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: FMEATeamMember
+  name: IX_QAM3_FMEATeamMember_FMEARef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FMEARef
+- table: Notification
+  name: PK_QAM3_Notification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationID
+- table: Notification
+  name: IX_QAM3_Notification_NotificationTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationTemplateRef
+- table: Notification
+  name: IX_QAM3_Notification_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: Notification
+  name: IX_QAM3_Notification_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: Notification
+  name: IX_QAM3_Notification_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: Notification
+  name: IX_QAM3_Notification_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Notification
+  name: IX_QAM3_Notification_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: Notification
+  name: IX_QAM3_Notification_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Notification
+  name: IX_QAM3_Notification_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: NotificationCharacteristic
+  name: PK_QAM3_NotificationCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationCharacteristicID
+- table: NotificationCharacteristic
+  name: IX_QAM3_NotificationCharacteristic_NotificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationRef
+- table: NotificationCharacteristic
+  name: IX_QAM3_NotificationCharacteristic_NotificationTemplateCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationTemplateCharacteristicRef
+- table: NotificationCounterPart
+  name: PK_QAM3_NotificationCounterPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationCounterPartID
+- table: NotificationCounterPart
+  name: IX_QAM3_NotificationCounterPart_NotificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationRef
+- table: NotificationCounterPart
+  name: IX_QAM3_NotificationCounterPart_NotificationTemplateCounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationTemplateCounterPartRef
+- table: NotificationDefectRecording
+  name: PK_QAM3_NotificationDefectRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationDefectRecordingID
+- table: NotificationTask
+  name: PK_QAM3_NotificationTask
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationTaskID
+- table: NotificationTemplate
+  name: PK_QAM3_NotificationTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationTemplateID
+- table: NotificationTemplate
+  name: UIX_QAM3_NotificationTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: NotificationTemplateCharacteristic
+  name: PK_QAM3_NotificationTemplateCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationTemplateCharacteristicID
+- table: NotificationTemplateCharacteristic
+  name: IX_QAM3_NotificationTemplateCharacteristic_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: NotificationTemplateCharacteristic
+  name: UIX_NotificationTemplateCharacteristic_NotificationTemplateRefCharacteristicRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - NotificationTemplateRef
+  - CharacteristicRef
+- table: NotificationTemplateCounterPart
+  name: PK_QAM3_NotificationTemplateCounterPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationTemplateCounterPartID
+- table: NotificationTemplateCounterPart
+  name: UIX_QAM3_NotificationTemplateCounterPart_NotificationTemplateRefTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - NotificationTemplateRef
+  - Title
+- table: NotificationTemplateReference
+  name: PK_QAM3_NotificationTemplateReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationTemplateReferenceID
+- table: NotificationTemplateReference
+  name: UIX_QAM3_NotificationTemplateReference_NotificationTemplateRefReferenceEntityCode
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - NotificationTemplateRef
+  - ReferenceEntityCode
+- table: NotificationTemplateTaskCatalog
+  name: PK_QAM3_NotificationTemplateTaskCatalog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationTemplateTaskCatalogID
+- table: NotificationTemplateTaskCatalog
+  name: IX_QAM3_NotificationTemplateTaskCatalog_TaskCatalogRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskCatalogRef
+- table: NotificationTemplateTaskCatalog
+  name: IX_QAM3_NotificationTemplateTaskCatalog_NotificationTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationTemplateRef
+- table: RCA
+  name: PK_QAM3_RCA
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCAID
+- table: RCA
+  name: IX_QAM3_RCA_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: RCA
+  name: IX_QAM3_RCA_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: RCAItem
+  name: PK_QAM3_RCAItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCAItemID
+- table: RCAItem
+  name: IX_QAM3_RCAItem_RCARef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCARef
+- table: RCAItem
+  name: IX_QAM3_RCAItem_ParentRCAItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRCAItemRef
+- table: RCAItemCorrectionAction
+  name: PK_QAM3_RCAItemCorrectionAction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCAItemCorrectionActionID
+- table: RCAItemCorrectionAction
+  name: IX_QAM3_RCAItemCorrectionAction_RCAItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCAItemRef
+- table: RCAItemCorrectionAction
+  name: IX_QAM3_RCAItemCorrectionAction_TaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskRef
+- table: RCAItemStopReason
+  name: PK_QAM3_RCAItemStopReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCAItemStopReasonID
+- table: RCAItemStopReason
+  name: IX_QAM3_RCAItemStopReason_RCAItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCAItemRef
+- table: Task
+  name: PK_QAM3_Task
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskID
+- table: Task
+  name: IX_QAM3_Task_TaskTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskTemplateRef
+- table: Task
+  name: IX_QAM3_Task_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Task
+  name: IX_QAM3_Task_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Task
+  name: IX_QAM3_Task_Doer
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Doer
+- table: Task
+  name: IX_QAM3_Task_RealDoer
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RealDoer
+- table: TaskCatalog
+  name: PK_QAM3_TaskCatalog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskCatalogID
+- table: TaskCatalog
+  name: IX_TaskCatalog_TaskTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskTemplateRef
+- table: TaskCatalog
+  name: UIX_QAM3_TaskCatalog_TitleTaskTemplateRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TaskTemplateRef
+  - Title
+- table: TaskCatalogCharacteristic
+  name: PK_QAM3_TaskCatalogCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskCatalogCharacteristicID
+- table: TaskCatalogCharacteristic
+  name: IX_TaskCatalogCharacteristic_TaskCatalogRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskCatalogRef
+- table: TaskCatalogCharacteristic
+  name: IX_TaskCatalogCharacteristic_TaskTemplateCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskTemplateCharacteristicRef
+- table: TaskCharacteristic
+  name: PK_QAM3_TaskCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskCharacteristicID
+- table: TaskCharacteristic
+  name: IX_QAM3_TaskCharacteristic_TaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskRef
+- table: TaskCharacteristic
+  name: IX_QAM3_TaskCharacteristic_TaskTemplateCharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskTemplateCharacteristicRef
+- table: TaskCounterPart
+  name: PK_TaskCounterPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskCounterPartID
+- table: TaskCounterPart
+  name: IX_QAM3_TaskCounterPart_TaskRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskRef
+- table: TaskCounterPart
+  name: IX_QAM3_TaskCounterPart_TaskTemplateCounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaskTemplateCounterPartRef
+- table: TaskTemplate
+  name: PK_QAM3_TaskTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskTemplateID
+- table: TaskTemplate
+  name: UIX_QAM3_TaskTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: TaskTemplateCharacteristic
+  name: PK_QAM3_TaskTemplateCharacteristic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskTemplateCharacteristicID
+- table: TaskTemplateCharacteristic
+  name: UIX_QAM3_TaskTemplateCharacteristic_TaskTemplateRefCharacteristicRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TaskTemplateRef
+  - CharacteristicRef
+- table: TaskTemplateCounterPart
+  name: PK_QAM3_TaskTemplateCounterPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaskTemplateCounterPartID
+- table: TaskTemplateCounterPart
+  name: UIX_QAM3_TaskTemplateCounterPart_TaskTemplateRefTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TaskTemplateRef
+  - Title

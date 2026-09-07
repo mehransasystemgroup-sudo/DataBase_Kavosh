@@ -1,0 +1,4536 @@
+schema: GNR3
+table_count: 92
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: Address
+  columns:
+  - name: AddressID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 2
+  - name: Details
+    type: nvarchar(2048)
+    nullable: false
+    ordinal: 3
+  - name: Details_EN
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 4
+  - name: ZipCode
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 5
+  - name: Phone
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 6
+  - name: Fax
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: Email
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: WebPage
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 9
+  - name: RegionalDivisionRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: Latitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: Longitude
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  primary_key:
+  - AddressID
+- name: ArchiveConfig
+  columns:
+  - name: ArchiveConfigID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ServerName
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: AuthenticationType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: UserName
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: Password
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 5
+  - name: DatabaseName
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 6
+  - name: ArchiveBatchSize
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ArchiveConfigID
+- name: ArchiveJob
+  columns:
+  - name: ArchiveJobID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Identifier
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: ToDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ArchiveJobID
+- name: ArchiveJobExecutionLog
+  columns:
+  - name: ArchiveJobExecutionLogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ArchiveJobRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ToDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: ProductVersion
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: ReleaseNumber
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: UserName
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 6
+  - name: JobRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: ExecutionDate
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ArchiveJobExecutionLogID
+- name: Branch
+  columns:
+  - name: BranchID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: IsStatic
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: TaxPayerSystemBranchCode
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - BranchID
+- name: BranchGrouping
+  columns:
+  - name: BranchGroupingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ParentRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: Code
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: IsAssigned
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BranchGroupingID
+- name: BranchGroupingDetail
+  columns:
+  - name: BranchGroupingDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BranchGroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - BranchGroupingDetailID
+- name: BusinessPolicy
+  columns:
+  - name: BusinessPolicyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Name
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Type
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: TargetBaseConcept
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 5
+  - name: TargetConcept
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 6
+  - name: IsInternal
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: SupportsMultipleResults
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: CalculationMethod
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: Definitiveness
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: Enforcement
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 13
+  - name: IsApplicableOnWholeDocument
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 15
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 18
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 20
+  - name: EffectType
+    type: int
+    nullable: true
+    ordinal: 21
+  primary_key:
+  - BusinessPolicyID
+- name: BusinessPolicyCondition
+  columns:
+  - name: BusinessPolicyConditionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ConditionModel
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - BusinessPolicyConditionID
+- name: BusinessPolicyConditionRow
+  columns:
+  - name: BusinessPolicyConditionRowID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BusinessPolicyConditionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Index
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: Title
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 4
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: EndDateModifiedManually
+    type: bit
+    nullable: true
+    ordinal: 7
+  - name: BusinessPolicyInputRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: BusinessPolicyOutputRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: LastModificationManualEndDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: ForceToUnload
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - BusinessPolicyConditionRowID
+- name: BusinessPolicyEnforcementProcedure
+  columns:
+  - name: BusinessPolicyEnforcementProcedureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Concept
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BusinessPolicyEnforcementProcedureID
+- name: BusinessPolicyEnforcementProcedureRow
+  columns:
+  - name: BusinessPolicyEnforcementProcedureRowID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BusinessPolicyEnforcementProcedureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PolicyType
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 3
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: ShrinkMethod
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: ShrinkBaseProperty
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 6
+  - name: ConflictResolutionPolicy
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Inherited
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - BusinessPolicyEnforcementProcedureRowID
+- name: BusinessPolicyEnforcementProcedureRowDependency
+  columns:
+  - name: BusinessPolicyDependencyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BusinessPolicyEnforcementProcedureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DependantPolicyEnforcementProcedureRowRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DependencyPolicyEnforcementProcedureRowRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: IsNegative
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BusinessPolicyDependencyID
+- name: BusinessPolicyInputValue
+  columns:
+  - name: BusinessPolicyInputValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Value
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 2
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - BusinessPolicyInputValueID
+- name: BusinessPolicyMeasure
+  columns:
+  - name: BusinessPolicyMeasureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Index
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Name
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 4
+  - name: MeasureCategory
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 5
+  - name: MeasureUID
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 6
+  - name: MeasureBinding
+    type: xml
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - BusinessPolicyMeasureID
+- name: BusinessPolicyOutputValue
+  columns:
+  - name: BusinessPolicyOutputValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Value
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 2
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - BusinessPolicyOutputValueID
+- name: BusinessPolicyParameter
+  columns:
+  - name: BusinessPolicyParameterID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: BaseConcept
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Concept
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: ConceptProperty
+    type: nvarchar(40)
+    nullable: false
+    ordinal: 5
+  - name: EntityGroupingRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: AssignmentMethod
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: IsDefaultParameter
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: DrillThroughProperty
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 10
+  - name: DrillThroughFieldRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: DrillThroughPrimitiveIndex
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: DrillThroughPropertyDisplay
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 13
+  - name: DrillThroughProviderProperty
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 14
+  - name: ProviderFullName
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 15
+  - name: IsInternal
+    type: bit
+    nullable: false
+    ordinal: 16
+  - name: IsComputational
+    type: bit
+    nullable: false
+    ordinal: 17
+  - name: ComputationType
+    type: int
+    nullable: true
+    ordinal: 18
+  - name: GroupingLevel
+    type: int
+    nullable: true
+    ordinal: 19
+  primary_key:
+  - BusinessPolicyParameterID
+- name: BusinessPolicyParameterAssociation
+  columns:
+  - name: BusinessPolicyParameterAssociationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BusinessPolicyParameterRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Priority
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  - name: IsDefault
+    type: bit
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - BusinessPolicyParameterAssociationID
+- name: BusinessPolicyTargetEntity
+  columns:
+  - name: BusinessPolicyTargetEntityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ComponentName
+    type: nvarchar(300)
+    nullable: false
+    ordinal: 3
+  - name: EntityName
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - BusinessPolicyTargetEntityID
+- name: Characteristic
+  columns:
+  - name: CharacteristicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: IsList
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: MetadataType
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 4
+  - name: DataType
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Validation
+    type: xml
+    nullable: false
+    ordinal: 6
+  - name: Type
+    type: nvarchar(20)
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - CharacteristicID
+- name: CharacteristicItem
+  columns:
+  - name: CharacteristicItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CharacteristicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Value
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CharacteristicItemID
+- name: Company
+  columns:
+  - name: CompanyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IsEnterprise
+    type: bit
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: Name
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: Name_EN
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 5
+  - name: CurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: IsCompanyGroup
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: MainOrgCode
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 10
+  - name: MainOrgID
+    type: nvarchar(11)
+    nullable: true
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - CompanyID
+- name: CompanyItem
+  columns:
+  - name: CompanyItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MasterCompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CompanyItemID
+- name: CompanyLedger
+  columns:
+  - name: CompanyLedgerID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CompanyLedgerID
+- name: CorporateStructure
+  columns:
+  - name: CorporateStructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: PublishDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - CorporateStructureID
+- name: CorporateStructureNode
+  columns:
+  - name: CorporateStructureNodeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ParentNodeRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CorporateStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 5
+  - name: OrderInSiblings
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - CorporateStructureNodeID
+- name: CostCenter
+  columns:
+  - name: CostCenterID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Name_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - CostCenterID
+- name: Currency
+  columns:
+  - name: CurrencyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 2
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 3
+  - name: Unit
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Precision
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: FractionTitle
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 6
+  - name: FractionTitle_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 7
+  - name: RoundingMethod
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Symbol
+    type: nvarchar(8)
+    nullable: true
+    ordinal: 9
+  - name: Abbreviation
+    type: nchar(3)
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - CurrencyID
+- name: CurrencyExchangeRate
+  columns:
+  - name: CurrencyExchangeRateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BaseCurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Rate
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: ReverseCalculation
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - CurrencyExchangeRateID
+- name: CurrencyGroupMember
+  columns:
+  - name: CurrencyGroupMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MemberID
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CurrencyGroupMemberID
+- name: DependantCustomerAncestorInformation
+  columns:
+  - name: DependantCustomerAncestorInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CustomerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CustomerGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PostalCodeAncestorRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: BranchCodeAncestorRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: PostalCodeAncestorLevel
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: BranchCodeAncestorLevel
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - DependantCustomerAncestorInformationID
+- name: DependantCustomerInformationSource
+  columns:
+  - name: DependantCustomerInformationSourceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GroupingRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: DefaultPostalCodeSource
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: DefaultBranchCodeSource
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - DependantCustomerInformationSourceID
+- name: DependantCustomerInformationSourceItem
+  columns:
+  - name: DependantCustomerInformationSourceItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: DependantCustomerInformationSourceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PostalCodeSource
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: OtherCustomerPostalCodeRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: BranchCodeSource
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: OtherCustomerBranchCodeRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: GroupRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - DependantCustomerInformationSourceItemID
+- name: EntityGroup
+  columns:
+  - name: EntityGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: EntityGroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ParentRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Left
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Right
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: varbinary(50)
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - EntityGroupID
+- name: EntityGrouping
+  columns:
+  - name: EntityGroupingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: ComponentName
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: EntityName
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: SubtypeKey
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 5
+  - name: SubtypeTitle
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 6
+  - name: IsDisjoint
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: IsInternal
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: IntermediateGroupMembershipEnabled
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - EntityGroupingID
+- name: EntitySegmentAssignment
+  columns:
+  - name: EntitySegmentAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EntitySegmentSettingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EntityID
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CompanyRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: LedgerRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - EntitySegmentAssignmentID
+- name: EntitySegmentSetting
+  columns:
+  - name: EntitySegmentSettingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: EntityCode
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Discriminator
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: IsShared
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: IsCompanyBase
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: IsLedgerBase
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - EntitySegmentSettingID
+- name: EntityUnit
+  columns:
+  - name: EntityUnitID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MeasurableEntityRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IsDefault
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  - name: IsMasterUnit
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: IsSecondUnit
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: EntityName
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 8
+  - name: ComponentName
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 9
+  - name: Length
+    type: decimal(16,6)
+    nullable: true
+    ordinal: 10
+  - name: Width
+    type: decimal(16,6)
+    nullable: true
+    ordinal: 11
+  - name: Height
+    type: decimal(16,6)
+    nullable: true
+    ordinal: 12
+  - name: Volume
+    type: decimal(24,6)
+    nullable: true
+    ordinal: 13
+  - name: Weight
+    type: decimal(16,6)
+    nullable: true
+    ordinal: 14
+  - name: VolumeUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: WeightUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: DimensionUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  primary_key:
+  - EntityUnitID
+- name: EntityUnitRate
+  columns:
+  - name: EntityUnitRateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SourceEntityUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DestinationEntityUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SDRatio
+    type: decimal(16,6)
+    nullable: false
+    ordinal: 4
+  - name: DSRatio
+    type: decimal(16,6)
+    nullable: false
+    ordinal: 5
+  - name: Tolerance
+    type: decimal(16,6)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  - name: IsAutomaticCalculated
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Priority
+    type: smallint
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - EntityUnitRateID
+- name: FiscalYear
+  columns:
+  - name: FiscalYearID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 2
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 3
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - FiscalYearID
+- name: Fund
+  columns:
+  - name: FundID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FundTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 4
+  - name: Code
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 5
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: FundClass
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: ArrangementType
+    type: int
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - FundID
+- name: FundType
+  columns:
+  - name: FundTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - FundTypeID
+- name: GroupMember
+  columns:
+  - name: GroupMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: GroupingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MemberID
+    type: bigint
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - GroupMemberID
+- name: IndependentUnitCategory
+  columns:
+  - name: IndependentUnitCategoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - IndependentUnitCategoryID
+- name: Ledger
+  columns:
+  - name: LedgerID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: IsLeading
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: IsFinancial
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 7
+  - name: State
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - LedgerID
+- name: LedgerFiscalYear
+  columns:
+  - name: LedgerFiscalYearID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: IsGregorian
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: ClosingState
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  - name: CapitalSupplementaryPeriodEndDate
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: CurrentSupplementaryPeriodEndDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  primary_key:
+  - LedgerFiscalYearID
+- name: LoyaltyCreditTransaction
+  columns:
+  - name: LoyaltyCreditTransactionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyProgramRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LoyaltyMemberRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: BusinessPolicyConditionRowRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: CurrencyRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: TransactionType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: DataRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: DataRefType
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: SourceRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: SourceRefType
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: ValidFromDate
+    type: datetime
+    nullable: true
+    ordinal: 13
+  - name: ValidToDate
+    type: datetime
+    nullable: true
+    ordinal: 14
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 15
+  - name: TransactionDescription
+    type: nvarchar(1000)
+    nullable: true
+    ordinal: 16
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 18
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 19
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 20
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 21
+  - name: BaseLoyaltyCreditTransactionRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: LoyaltyCreditTransactionGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 23
+  primary_key:
+  - LoyaltyCreditTransactionID
+- name: LoyaltyCreditTransactionGroup
+  columns:
+  - name: LoyaltyCreditTransactionGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - LoyaltyCreditTransactionGroupID
+- name: LoyaltyCreditTransactionItem
+  columns:
+  - name: LoyaltyCreditTransactionItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyCreditTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BusinessPolicyConditionRowRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: TransactionType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: DataRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DataRefType
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - LoyaltyCreditTransactionItemID
+- name: LoyaltyHoldInTierCalculation
+  columns:
+  - name: LoyaltyHoldInTierCalculationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyMemberRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LoyaltyTierRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: LastCalculationDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - LoyaltyHoldInTierCalculationID
+- name: LoyaltyMember
+  columns:
+  - name: LoyaltyMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyMemberPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FirstName
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: LastName
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: Gender
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: IsReceivingSuspended
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: IsUsageSuspended
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: Type
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: NationalID
+    type: nvarchar(16)
+    nullable: true
+    ordinal: 9
+  - name: BirthDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: MarriageDate
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: TelephoneNo
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 12
+  - name: EmailAddress
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 13
+  - name: RecommenderRef
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 16
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 17
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 18
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: MappedRecordRef
+    type: bigint
+    nullable: true
+    ordinal: 20
+  - name: MembershipType
+    type: int
+    nullable: false
+    ordinal: 21
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 22
+  primary_key:
+  - LoyaltyMemberID
+- name: LoyaltyMemberAttribute
+  columns:
+  - name: LoyaltyMemberAttributeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyMemberRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LoyaltyMemberPatternAttributeRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: StringValue
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 4
+  - name: NumberValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: DateTimeValue
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: BooleanValue
+    type: bit
+    nullable: true
+    ordinal: 7
+  - name: LookupValue
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: ReferenceValue
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - LoyaltyMemberAttributeID
+- name: LoyaltyMemberCard
+  columns:
+  - name: LoyaltyMemberCardID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyMemberRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CardRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - LoyaltyMemberCardID
+- name: LoyaltyMemberPattern
+  columns:
+  - name: LoyaltyMemberPatternID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: MappedEntity
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 3
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - LoyaltyMemberPatternID
+- name: LoyaltyMemberPatternAttribute
+  columns:
+  - name: LoyaltyMemberPatternAttributeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyMemberPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Name
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: DataType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: TypeMetadata
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  - name: IsIdentifier
+    type: bit
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - LoyaltyMemberPatternAttributeID
+- name: LoyaltyMemberPatternEntityAttribute
+  columns:
+  - name: LoyaltyMemberPatternEntityAttributeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyMemberPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Name
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: MappedAttribute
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: IsIdentifier
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - LoyaltyMemberPatternEntityAttributeID
+- name: LoyaltyMemberSuspensionHistory
+  columns:
+  - name: LoyaltyMemberSuspensionHistoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyMemberRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IsReceivingSuspended
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: IsUsageSuspended
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: ModifiedProperties
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - LoyaltyMemberSuspensionHistoryID
+- name: LoyaltyPointTransaction
+  columns:
+  - name: LoyaltyPointTransactionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyProgramRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LoyaltyMemberRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: BusinessPolicyConditionRowRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: PointTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: TransactionType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: DataRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: DataRefType
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: SourceRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: SourceRefType
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: ValidFromDate
+    type: datetime
+    nullable: true
+    ordinal: 13
+  - name: ValidToDate
+    type: datetime
+    nullable: true
+    ordinal: 14
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 15
+  - name: TransactionDescription
+    type: nvarchar(1000)
+    nullable: true
+    ordinal: 16
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 18
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 19
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 20
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 21
+  - name: BaseLoyaltyPointTransactionRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: LoyaltyPointTransactionGroupRef
+    type: bigint
+    nullable: true
+    ordinal: 23
+  primary_key:
+  - LoyaltyPointTransactionID
+- name: LoyaltyPointTransactionGroup
+  columns:
+  - name: LoyaltyPointTransactionGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - LoyaltyPointTransactionGroupID
+- name: LoyaltyPointTransactionItem
+  columns:
+  - name: LoyaltyPointTransactionItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyPointTransactionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BusinessPolicyConditionRowRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Amount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: TransactionType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: DataRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DataRefType
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - LoyaltyPointTransactionItemID
+- name: LoyaltyPointType
+  columns:
+  - name: LoyaltyPointTypeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 2
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - LoyaltyPointTypeID
+- name: LoyaltyPolicyEnforcementProcedure
+  columns:
+  - name: LoyaltyPolicyEnforcementProcedureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 2
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - LoyaltyPolicyEnforcementProcedureID
+- name: LoyaltyPolicyEnforcementProcedureRow
+  columns:
+  - name: LoyaltyPolicyEnforcementProcedureRowID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyPolicyEnforcementProcedureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DependentLoyaltyActionType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ReliantLoyaltyActionType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - LoyaltyPolicyEnforcementProcedureRowID
+- name: LoyaltyProgram
+  columns:
+  - name: LoyaltyProgramID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 2
+  - name: IsPointProfitType
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: LoyaltyPointTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: IsCreditProfitType
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: ValidFromDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: ValidToDate
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: AutomaticMembership
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: AddCollectedPointAfterDowngrade
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: LoyaltyMemberPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: IsDefault
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  - name: LoyaltyEnvironmentKey
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 17
+  - name: IsNegativePointAmountAcceptable
+    type: bit
+    nullable: false
+    ordinal: 18
+  - name: IsNegativeCreditAmountAcceptable
+    type: bit
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - LoyaltyProgramID
+- name: LoyaltyProgramMember
+  columns:
+  - name: LoyaltyProgramMemberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LoyaltyProgramRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: LoyaltyMemberRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - LoyaltyProgramMemberID
+- name: LoyaltyProgramPolicyEventActionMap
+  columns:
+  - name: LoyaltyProgramPolicyEventActionMapID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: LoyaltyProgramRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BusinessPolicyRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: EventKey
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 5
+  - name: ActionKey
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 6
+  - name: CalculateForRecommender
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: ValidFromDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: ValidToDate
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: ScheduleRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: IsActive
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  - name: TargetConceptOnLoyaltyPolicy
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: PolicyAuthenticationType
+    type: int
+    nullable: true
+    ordinal: 14
+  - name: LoyaltyPolicyOutputUsageStartBasis
+    type: int
+    nullable: true
+    ordinal: 15
+  - name: LoyaltyPolicyOutputUsageStartOffsetDays
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: LoyaltyPolicyOutputUsageDeadlineDays
+    type: bigint
+    nullable: true
+    ordinal: 17
+  primary_key:
+  - LoyaltyProgramPolicyEventActionMapID
+- name: LoyaltyTier
+  columns:
+  - name: LoyaltyTierID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: LoyaltyProgramRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: LoyaltyPointTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: EntrancePoint
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: HoldInTierPoint
+    type: decimal(26,6)
+    nullable: false
+    ordinal: 6
+  - name: EndOfValidity
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: SpecificDateValidityDurationDays
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: SpecificDateValidityDurationDaysBasis
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: DowngradeMethod
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: FixedPointAmountOfDowngrade
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  - name: SpecificLoyaltyTierRef
+    type: bigint
+    nullable: true
+    ordinal: 18
+  primary_key:
+  - LoyaltyTierID
+- name: MiddlewareInformation
+  columns:
+  - name: MiddlewareInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: LastReceiveDateTime
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: MiddlewareVersion
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: ComputerName
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 5
+  - name: MiddlewarePath
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 6
+  - name: IPAddresses
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - MiddlewareInformationID
+- name: Party
+  columns:
+  - name: PartyID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: int
+    nullable: true
+    ordinal: 2
+  - name: FirstName
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 3
+  - name: LastName
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 4
+  - name: FullName
+    type: nvarchar(101)
+    nullable: true
+    ordinal: 5
+    computed: true
+  - name: Alias
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 7
+  - name: NationalID
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 8
+  - name: Gender
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: Nationality
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 10
+  - name: Allegiance
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 11
+  - name: Religion
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: Subreligion
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: Mobile
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 14
+  - name: Email
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 15
+  - name: IDNumber
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 16
+  - name: IDSerial
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 17
+  - name: FatherName
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 18
+  - name: BirthPlaceRef
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: BirthDate
+    type: datetime
+    nullable: true
+    ordinal: 20
+  - name: IssuanceDate
+    type: datetime
+    nullable: true
+    ordinal: 21
+  - name: IssuancePlaceRef
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: CompanyCode
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 23
+  - name: Abbreviation
+    type: nchar(10)
+    nullable: true
+    ordinal: 24
+  - name: EconomicCode
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 25
+  - name: RegistrationCode
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 26
+  - name: CompanyType
+    type: int
+    nullable: true
+    ordinal: 27
+  - name: ActivityType
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 28
+  - name: Website
+    type: nvarchar(30)
+    nullable: true
+    ordinal: 29
+  - name: ReferenceCompany
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 30
+  - name: Group
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 31
+  - name: CompanyName
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 32
+  - name: Number
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 33
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 34
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 35
+  - name: FirstName_EN
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 36
+  - name: LastName_EN
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 37
+  - name: CompanyName_EN
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 38
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 39
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 40
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 41
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 42
+  - name: Tel
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 43
+  - name: FidaRegistration
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 44
+  - name: MaritalStatus
+    type: int
+    nullable: true
+    ordinal: 45
+  - name: EducationDegree
+    type: int
+    nullable: true
+    ordinal: 46
+  - name: MarriageDate
+    type: datetime
+    nullable: true
+    ordinal: 47
+  - name: VATCertificateValidityDate
+    type: datetime
+    nullable: true
+    ordinal: 48
+  - name: IsPharmaceuticalSupplier
+    type: bit
+    nullable: false
+    ordinal: 49
+  - name: FullName_EN
+    type: nvarchar(101)
+    nullable: true
+    ordinal: 50
+    computed: true
+  primary_key:
+  - PartyID
+- name: PartyAddress
+  columns:
+  - name: PartyAddressID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: AddressRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IsMainAddress
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: GLNCode
+    type: varchar(13)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - PartyAddressID
+- name: Project
+  columns:
+  - name: ProjectID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ProjectID
+- name: RegionalDivision
+  columns:
+  - name: RegionalDivisionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 2
+  - name: Title_EN
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 3
+  - name: ParentRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Code
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: Abbreviation
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 7
+  - name: LocalCode
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 8
+  - name: FinanceCode
+    type: nvarchar(32)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: varbinary(50)
+    nullable: false
+    ordinal: 10
+  - name: Left
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: Right
+    type: int
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - RegionalDivisionID
+- name: SessionLock
+  columns:
+  - name: SessionLockID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SessionKey
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: UserRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: BranchRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  primary_key:
+  - SessionLockID
+- name: SignatureAssignment
+  columns:
+  - name: SignatureAssignmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SignatureRequestRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SignatoryRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Date
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: ActDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Order
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - SignatureAssignmentID
+- name: SignatureRequest
+  columns:
+  - name: SignatureRequestID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SignatureTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EntityCode
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: EntityRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: DiscriminatorFieldValue
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: RequesterRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: RequestDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: ConclusionDate
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Statement
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 10
+  - name: SignableStates
+    type: nvarchar(1000)
+    nullable: false
+    ordinal: 11
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - SignatureRequestID
+- name: SignatureTemplate
+  columns:
+  - name: SignatureTemplateID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 2
+  - name: EntityCode
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Query
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 4
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: SignableStates
+    type: nvarchar(1000)
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - SignatureTemplateID
+- name: SignatureTemplateSignatory
+  columns:
+  - name: SignatureTemplateSignatoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SignatureTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Order
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - SignatureTemplateSignatoryID
+- name: SignedDocument
+  columns:
+  - name: SignedDocumentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SignatureTemplateRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EntityCode
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: EntityRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: DiscriminatorFieldValue
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: SignatureDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: LastVerificationDate
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: LastVerifierRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: Statement
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 10
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - SignedDocumentID
+- name: StandardDescription
+  columns:
+  - name: StandardDescriptionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Description
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 2
+  - name: EntityCode
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: Discriminator
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - StandardDescriptionID
+- name: TaxPayerBill
+  columns:
+  - name: TaxPayerBillID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaxPayerDataLogRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: ReferenceType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ReferenceRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: ReferenceDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: ActionType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: EntityNumber
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 8
+  - name: BillType
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: BillPattern
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: SerialNumber
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: SellerEconomicCode
+    type: nvarchar(20)
+    nullable: false
+    ordinal: 12
+  - name: CustomerRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: CustomerType
+    type: int
+    nullable: true
+    ordinal: 14
+  - name: CustomerNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 15
+  - name: CustomerFirstName
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 16
+  - name: CustomerLastName
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 17
+  - name: CustomerFullName
+    type: nvarchar(101)
+    nullable: true
+    ordinal: 18
+  - name: CustomerNationalID
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 19
+  - name: CustomerEconomicCode
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 20
+  - name: CustomsLicenseNumber
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 21
+  - name: CustomsCodePlaceOfDeclaration
+    type: nvarchar(20)
+    nullable: true
+    ordinal: 22
+  - name: TotalAmountBeforeDiscount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 23
+  - name: TotalDiscounts
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 24
+  - name: TotalAmountAfterDiscount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 25
+  - name: TotalTax
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 26
+  - name: TotalOtherAmounts
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 27
+  - name: TotalAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 28
+  - name: SettlementType
+    type: int
+    nullable: true
+    ordinal: 29
+  - name: TotalLoanAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 30
+  - name: LoanPaymentAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 31
+  - name: TotalLoanTaxAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 32
+  - name: TotalLoanOtherAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 33
+  - name: TotalCashPaymentAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 34
+  - name: CashPaymentAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 35
+  - name: TotalTaxPaymentOfCash
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 36
+  - name: TotalOtherPaymentOfCash
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 37
+  - name: UniqueBillNumber
+    type: nvarchar(30)
+    nullable: true
+    ordinal: 38
+  - name: UniqueBillNumberRef
+    type: nvarchar(30)
+    nullable: true
+    ordinal: 39
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 40
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 41
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 42
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 43
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 44
+  - name: SendUID
+    type: uniqueidentifier
+    nullable: true
+    ordinal: 45
+  - name: ReferenceNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 46
+  - name: FinalReferenceNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 47
+  - name: ErrorMessage
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 48
+  - name: MiddlewareVersion
+    type: nvarchar(10)
+    nullable: true
+    ordinal: 49
+  - name: SerialNumberRef
+    type: bigint
+    nullable: true
+    ordinal: 50
+  - name: PendingForTaxPayerBillRef
+    type: bigint
+    nullable: true
+    ordinal: 51
+  - name: SourceEntityRef
+    type: bigint
+    nullable: false
+    ordinal: 52
+  - name: SourceEntityType
+    type: int
+    nullable: false
+    ordinal: 53
+  - name: SourceActionType
+    type: int
+    nullable: false
+    ordinal: 54
+  - name: ActualReferenceDate
+    type: datetime
+    nullable: false
+    ordinal: 55
+  - name: ActualCreationDate
+    type: datetime
+    nullable: false
+    ordinal: 56
+  - name: PostalCode
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 57
+  - name: SellerBranchCode
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 58
+  - name: BuyerBranchCode
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 59
+  - name: CottageDeclarationCustomsNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 60
+  - name: CottageDeclarationCustomsDate
+    type: datetime
+    nullable: true
+    ordinal: 61
+  - name: ContractRegistrationNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 62
+  - name: TotalOfNetWeight
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 63
+  - name: TotalOfRialValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 64
+  - name: TotalOfCurrencyValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 65
+  - name: Reason
+    type: int
+    nullable: true
+    ordinal: 66
+  - name: FreeProductStatus
+    type: int
+    nullable: false
+    ordinal: 67
+  - name: RecallPriceFromInvoice
+    type: bit
+    nullable: true
+    ordinal: 68
+  - name: ForceCashSettlement
+    type: bit
+    nullable: false
+    ordinal: 69
+  - name: TaxpayerSystemStatus
+    type: int
+    nullable: false
+    ordinal: 70
+  - name: IgnoreInCollection
+    type: bit
+    nullable: false
+    ordinal: 71
+  - name: ManualyCreatedFor
+    type: bigint
+    nullable: true
+    ordinal: 72
+  - name: HasNegativeAmount
+    type: bit
+    nullable: false
+    ordinal: 73
+  - name: TaxpayerSystemRejectReason
+    type: int
+    nullable: true
+    ordinal: 74
+  - name: TaxpayerSystemRejectStrategy
+    type: int
+    nullable: true
+    ordinal: 75
+  primary_key:
+  - TaxPayerBillID
+- name: TaxPayerBillBatchJobScheduling
+  columns:
+  - name: TaxPayerBillBatchJobSchedulingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 2
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: RunTime
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: OperationExecutionInterval
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Operations
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: LastExecutionDate
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: TaxActionType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: BillPattern
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: BillType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - TaxPayerBillBatchJobSchedulingID
+- name: TaxPayerBillConfigSnapshot
+  columns:
+  - name: TaxPayerBillConfigSnapshotID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaxPayerBillRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Key
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 3
+  - name: Value
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 4
+  - name: Type
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - TaxPayerBillConfigSnapshotID
+- name: TaxPayerBillItem
+  columns:
+  - name: TaxPayerBillItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceItemType
+    type: int
+    nullable: true
+    ordinal: 2
+  - name: ReferenceItemRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: RelatedReferenceItemType
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: RelatedReferenceItemRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: TaxPayerBillRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: ProductIdentifier
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Quantity
+    type: decimal(28,8)
+    nullable: false
+    ordinal: 8
+  - name: UnitAmount
+    type: decimal(28,8)
+    nullable: false
+    ordinal: 9
+  - name: CashAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: LoanAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: CurrencyAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: CurrencyType
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 13
+  - name: ExchangeRateWithRial
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: AmountBeforeDiscount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: InvoiceAmountBeforeDiscount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 16
+  - name: PriceRoundingState
+    type: int
+    nullable: false
+    ordinal: 17
+  - name: PriceContradictionState
+    type: int
+    nullable: false
+    ordinal: 18
+  - name: DiscountAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 19
+  - name: AmountAfterDiscount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 20
+  - name: TaxRate
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 21
+  - name: TaxAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 22
+  - name: InvoiceTaxAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 23
+  - name: OtherAmountTitle
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 24
+  - name: OtherAmountRate
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 25
+  - name: OtherAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 26
+  - name: OtherLegalAmountTitle
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 27
+  - name: OtherLegalAmountRate
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 28
+  - name: OtherLegalAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 29
+  - name: CashSharePaymentAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 30
+  - name: CashSharePaymentTaxAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 31
+  - name: CashSharePaymentOtherAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 32
+  - name: LoanShareAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 33
+  - name: LoanShareTaxAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 34
+  - name: LoanShareOtherAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 35
+  - name: ProductTotalAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 36
+  - name: MeasurementUnit
+    type: int
+    nullable: true
+    ordinal: 37
+  - name: NetWeight
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 38
+  - name: RialValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 39
+  - name: CurrencyValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 40
+  - name: ProductName
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 41
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 42
+  - name: ProductType
+    type: int
+    nullable: false
+    ordinal: 43
+  - name: ProductRef
+    type: bigint
+    nullable: true
+    ordinal: 44
+  - name: UnitRef
+    type: bigint
+    nullable: true
+    ordinal: 45
+  - name: TaxPayerUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 46
+  - name: UnitName
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 47
+  - name: TaxpayerUnitName
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 48
+  - name: TaxPayerUnitCode
+    type: bigint
+    nullable: true
+    ordinal: 49
+  - name: TaxPayerCurrencyTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 50
+  - name: TaxPayerCurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 51
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 52
+  - name: FactorageID
+    type: nvarchar(16)
+    nullable: true
+    ordinal: 53
+  - name: HasQuantityDifference
+    type: bit
+    nullable: false
+    ordinal: 54
+  primary_key:
+  - TaxPayerBillItemID
+- name: TaxPayerBillLog
+  columns:
+  - name: TaxPayerBillLogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaxPayerBillItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TaxPayerDataLogRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - TaxPayerBillLogID
+- name: TaxPayerBillPaymentInformation
+  columns:
+  - name: TaxPayerBillPaymentInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TaxPayerBillRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PaymentType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Amount
+    type: decimal(30,0)
+    nullable: false
+    ordinal: 4
+  - name: PaymentDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: IsManual
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - TaxPayerBillPaymentInformationID
+- name: TaxPayerCancellationBill
+  columns:
+  - name: TaxPayerCancellationBillID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: UniqueBillNumber
+    type: nvarchar(30)
+    nullable: true
+    ordinal: 2
+  - name: UniqueBillNumberRef
+    type: nvarchar(30)
+    nullable: false
+    ordinal: 3
+  - name: ReferenceDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: CancellationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: ReferenceActionType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: ErrorMessage
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 14
+  - name: ReferenceNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 15
+  - name: FinalReferenceNumber
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 16
+  - name: MiddlewareVersion
+    type: nvarchar(10)
+    nullable: true
+    ordinal: 17
+  - name: SerialNumber
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: SellerEconomicCode
+    type: nvarchar(20)
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - TaxPayerCancellationBillID
+- name: TaxPayerDataLog
+  columns:
+  - name: TaxPayerDataLogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ReferenceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ReferenceDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: ActionType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: IgnoredForTaxPayerDataLogRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ProcessingDate
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: FinalActionType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: UniqueTaxRef
+    type: nvarchar(30)
+    nullable: true
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  - name: RelatedReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: RelatedReferenceType
+    type: int
+    nullable: true
+    ordinal: 14
+  - name: RelatedActionType
+    type: int
+    nullable: true
+    ordinal: 15
+  primary_key:
+  - TaxPayerDataLogID
+- name: TaxPayerSellerInformation
+  columns:
+  - name: TaxPayerSellerInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartyType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: NationalID
+    type: nvarchar(16)
+    nullable: true
+    ordinal: 3
+  - name: NationalCode
+    type: nvarchar(16)
+    nullable: true
+    ordinal: 4
+  - name: EconomicID
+    type: nvarchar(16)
+    nullable: true
+    ordinal: 5
+  - name: CivilParticipationID
+    type: nvarchar(16)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - TaxPayerSellerInformationID
+- name: TaxPayerSerialNumber
+  columns:
+  - name: TaxPayerSerialNumberID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReferenceType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ReferenceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ActionType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: SourceEntityType
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: SourceEntityRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  - name: SourceActionType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: ActualReferenceDate
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: Ignore
+    type: bit
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - TaxPayerSerialNumberID
+- name: TaxPaymentProfile
+  columns:
+  - name: TaxPaymentProfileID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SendingType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(300)
+    nullable: true
+    ordinal: 3
+  - name: DirectTaxMemoryID
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 4
+  - name: DirectPrivateKey
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 5
+  - name: DirectCertificate
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 6
+  - name: IndirectUserName
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 7
+  - name: IndirectServicePass
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 8
+  - name: IndirectServiceKey
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 9
+  - name: IndirectServiceAddress
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 10
+  - name: IndirectCompany
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: UniqueKey
+    type: uniqueidentifier
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  - name: DirectTaxIsOnline
+    type: bit
+    nullable: true
+    ordinal: 14
+  - name: DirectTaxStatusLastUpdated
+    type: datetime
+    nullable: true
+    ordinal: 15
+  primary_key:
+  - TaxPaymentProfileID
+- name: TransformedQuantity
+  columns:
+  - name: TransformedQuantityID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TrackerCode
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 3
+  - name: TransformerCode
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: OperationType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: TargetMasterType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: TargetMasterRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: TargetType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: TargetRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: SourceType
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: SourceRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: OperationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: SourceInfo
+    type: xml
+    nullable: true
+    ordinal: 13
+  - name: TargetInfo
+    type: xml
+    nullable: true
+    ordinal: 14
+  - name: SourceInfoID1
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: SourceInfoID2
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: TargetInfoID1
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: TargetInfoID2
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - TransformedQuantityID
+- name: Unit
+  columns:
+  - name: UnitID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: AbbreviatedName
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: Dimension
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - UnitID

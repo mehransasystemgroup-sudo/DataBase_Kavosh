@@ -1,0 +1,647 @@
+schema: BDG3
+source: extracted
+indexes:
+- table: AdjustmentFactor
+  name: PK_BDG3_AdjustmentFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentFactorID
+- table: AdjustmentFactorManagement
+  name: PK_BDG3_AdjustmentFactorManagement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentFactorManagementID
+- table: AdjustmentFactorManagementItem
+  name: PK_BDG3_AdjustmentFactorManagementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentFactorManagementItemID
+- table: AdjustmentFactorManagementItem
+  name: IX_BDG3_AdjustmentFactorManagementItem_BudgetEntityItemAdjutmentFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityItemAdjutmentFactorRef
+- table: AdjustmentFactorPaymentInformation
+  name: PK_BDG3_AdjustmentFactorPaymentInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentFactorPaymentInformationID
+- table: AdjustmentFactorReceiptInformation
+  name: PK_BDG3_AdjustmentFactorReceiptInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AdjustmentFactorReceiptInformationID
+- table: AmountControlDefinition
+  name: PK_BDG3_AmountControlDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AmountControlDefinitionID
+- table: AmountControlDefinitionEntity
+  name: PK_BDG3_AmountControlDefinitionEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AmountControlDefinitionEntityID
+- table: AmountControlDefinitionEntityDLType
+  name: PK_BDG3_AmountControlDefinitionEntityDLType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AmountControlDefinitionEntityDLTypeID
+- table: BudgetEntity
+  name: PK_BDG3_BudgetEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityID
+- table: BudgetEntity
+  name: IX_BDG3_BudgetEntity_BasisBudgetEntityRef_ClassificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityClassificationRef
+  - BasisBudgetEntityRef
+- table: BudgetEntity
+  name: IX_BDG3_BudgetEntity_AmendedBudgetEntityRef_ClassificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityClassificationRef
+  - AmendedBudgetEntityRef
+- table: BudgetEntity
+  name: IX_BDG3_BudgetEntity_RegisterType_State_Include_ClassificationRef_IsAmended
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RegisterType
+  - State
+  included:
+  - BudgetEntityClassificationRef
+  - IsAmended
+- table: BudgetEntity
+  name: IX_BDG3_BudgetEntity_ClassificationRef_BasisRootID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityClassificationRef
+  - BasisBudgetEntityRootID
+- table: BudgetEntity
+  name: IX_BDG3_BudgetEntity_RootId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RootID
+- table: BudgetEntity
+  name: IX_BDG3_BudgetEntity_PaymentReferenceType_PaymentReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentReferenceType
+  - PaymentReferenceRef
+- table: BudgetEntityCategory
+  name: PK_BDG3_BudgetEntityCategory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityCategoryID
+- table: BudgetEntityCategory
+  name: UX_BDG3_BudgetEntityCategory_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: BudgetEntityCategory
+  name: UX_BDG3_BudgetEntityCategory_DisplayOrder
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DisplayOrder
+- table: BudgetEntityClassification
+  name: PK_BDG3_BudgetEntityClassification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityClassificationID
+- table: BudgetEntityClassification
+  name: UX_BDG3_BudgetEntityClassification_DisplayOrder
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DisplayOrder
+- table: BudgetEntityDefinition
+  name: PK_BDG3_BudgetEntityDefinition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityDefinitionID
+- table: BudgetEntityItem
+  name: PK_BDG3_BudgetEntityItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityItemID
+- table: BudgetEntityItem
+  name: UIX_BDG3_BudgetEntityItem_ReturnedBudgetEntityItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReturnedBudgetEntityItemRef
+  included:
+  - BudgetEntityRef
+  - Amount
+- table: BudgetEntityItem
+  name: UIX_BDG3_BudgetEntityItem_DirectReferenceRootID_Include_BudgetEntityRef_Amount
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DirectReferenceRootID
+  included:
+  - BudgetEntityRef
+  - Amount
+- table: BudgetEntityItem
+  name: IX_BDG3_BudgetEntityItem_BudgetEntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityRef
+- table: BudgetEntityItem
+  name: IX_BDG3_BudgetEntityItem_DirectReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DirectReferenceRef
+- table: BudgetEntityItem
+  name: IX_BDG3_BudgetEntityItem_AdjustedBudgetEntityItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AdjustedBudgetEntityItemRef
+- table: BudgetEntityItem
+  name: IX_BDG3_BudgetEntityItem_AmendedBudgetEntityItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AmendedBudgetEntityItemRef
+- table: BudgetEntityItemAdjustmentFactor
+  name: PK_BDG3_BudgetEntityItemAdjustmentFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityItemAdjustmentFactorID
+- table: BudgetEntityItemAdjustmentFactor
+  name: IX_BDG3_BudgetEntityItemAdjustmentFactor_BudgetEntityItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityItemRef
+- table: BudgetEntityItemAdjustmentFactor
+  name: IX_BDG3_BudgetEntityItemAdjustmentFactor_BudgetEntityItemAdjustmentFactorID_Version
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityItemAdjustmentFactorID
+  - Version
+- table: BudgetEntitySourceInformationItem
+  name: PK_BudgetEntitySourceInformationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntitySourceInformationItemID
+- table: BudgetEntitySourceInformationItem
+  name: IX_BDG3_BudgetEntitySourceInformationItem_BudgetEntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityRef
+- table: BudgetEntityStandardDescription
+  name: PK_BDG3_BudgetEntityStandardDescription
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityStandardDescriptionID
+- table: BudgetEntityType
+  name: PK_BDG3_BudgetEntityType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetEntityTypeID
+- table: BudgetingBatchAmending
+  name: PK_BudgetingBatchAmending_BudgetingBatchAmendingID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetingBatchAmendingID
+- table: BudgetingBatchAmendingFilter
+  name: PK_BudgetingBatchAmendingFilter_BudgetingBatchAmendingFilterID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetingBatchAmendingFilterID
+- table: BudgetingConfig
+  name: PK_BDG3_BudgetingConfig
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetingConfigID
+- table: BudgetingConfig
+  name: UK_BDG3_BudgetingConfig_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: BudgetingDefault
+  name: PK_BDG3_BudgetingDefault
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetingDefaultID
+- table: BudgetingDefaultItem
+  name: PK_BDG3_BudgetingDefaultItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BudgetingDefaultItemID
+- table: CheckingRequest
+  name: PK_BDG3_CheckingRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CheckingRequestID
+- table: CheckingRequest
+  name: UIX_BDG3_CheckingRequest_ReferenceType_ReferenceRef_INCLUDE_State_Amount
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReferenceRef
+  - ReferenceType
+  included:
+  - State
+  - Amount
+- table: CheckingRequestCommitment
+  name: PK_BDG3_CheckingRequestCommitment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CheckingRequestCommitmentID
+- table: CheckingRequestCommitment
+  name: IX_BDG3_CheckingRequestCommitment_BudgetEntityItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityItemRef
+- table: ComputationalFormula
+  name: PK_BDG3_ComputationalFormula
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ComputationalFormulaID
+- table: ComputationalFormula
+  name: UIX_BDG3_ComputationalFormula_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ConfigurationAssignment
+  name: PK_BDG3_ConfigurationAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfigurationAssignmentID
+- table: ConfigurationAssignment
+  name: UK_BDG3_ConfigurationAssignment
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BudgetingConfigRef
+  - FiscalYearRef
+  - LedgerRef
+- table: ControlTolerance
+  name: PK_BDG3_ControlTolerance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ControlToleranceID
+- table: DLTypeArrangement
+  name: PK_BDG3_DLTypeArrangement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLTypeArrangementID
+- table: DLTypeArrangementItem
+  name: PK_BDG3_DLTypeArrangementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLTypeArrangementItemID
+- table: EncumbranceRequest
+  name: PK_BDG3_EncumbranceRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EncumbranceRequestID
+- table: EncumbranceRequestItem
+  name: PK_BDG3_EncumbranceRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EncumbranceRequestItemID
+- table: ExcludedControl
+  name: PK_BDG3_ExcludedControl
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExcludedControlID
+- table: FilterDLType
+  name: PK_BDG3_FilterDLType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FilterDLTypeID
+- table: FilterEntity
+  name: PK_BDG3_FilterEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FilterEntityID
+- table: Formula
+  name: PK_BDG3_Formula
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FormulaID
+- table: Formula
+  name: UIX_BDG3_Formula_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: FormulaEntity
+  name: PK_BDG3_FormulaEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FormulaEntityID
+- table: FormulaEntityFilter
+  name: PK_BDG3_FormulaEntityFilter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FormulaEntityFilterID
+- table: PaymentInformationItem
+  name: PK_BDG3_PaymentInformationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentInformationItemID
+- table: PaymentInformationItem
+  name: IX_BDG3_PaymentInformationItem_BudgetEntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityRef
+- table: PaymentTypeSL
+  name: PK_BDG3_PaymentTypeSL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentTypeSLID
+- table: PaymentTypeSLItem
+  name: PK_BDG3_PaymentTypeSLItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentTypeSLItemID
+- table: ReceiptInformationItem
+  name: PK_BDG3_ReceiptInformationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptInformationItemID
+- table: ReceiptInformationItem
+  name: IX_BDG3_ReceiptInformationItem_BudgetEntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BudgetEntityRef
+- table: RegularReportTemplate
+  name: PK_BDG3_RegularReportTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RegularReportTemplateID
+- table: RegularReportTemplateItem
+  name: PK_BDG3_RegularReportTemplateItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RegularReportTemplateItemID
+- table: RegularReportTemplateItemBodyColumn
+  name: PK_BDG3_RegularReportTemplateItemBodyColumn
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RegularReportTemplateItemBodyColumnID
+- table: RegularReportTemplateItemParameter
+  name: PK_BDG3_RegularReportTemplateItemParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RegularReportTemplateItemParameterID
+- table: RegularReportTemplateItemParameterGrouping
+  name: PK_BDG3_RegularReportTemplateItemParameterGrouping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RegularReportTemplateItemParameterGroupingID
+- table: RepresentativeAmount
+  name: PK_BDG3_RepresentativeAmount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RepresentativeAmountID
+- table: ReviewTemplate
+  name: PK_ReviewTemplate_ReviewTemplateID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReviewTemplateID
+- table: ReviewTemplate
+  name: UX_BDG3_ReviewTemplate_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ReviewTemplateItem
+  name: PK_ReviewTemplateItem_ReviewTemplateItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReviewTemplateItemID
+- table: SLFormula
+  name: PK_BDG3_SLFormula
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLFormulaID
+- table: SLFormula
+  name: UIX_BDG3_SLFormula_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: SLFormulaItem
+  name: PK_BDG3_SLFormulaItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLFormulaItemID
+- table: SLFormulaItemFilter
+  name: PK_BDG3_SLFormulaItemFilter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLFormulaItemFilterID
+- table: TransposeLog
+  name: PK_BDG3_TransposeLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransposeLogID
+- table: TransposePattern
+  name: PK_BDG3_TransposePattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransposePatternID
+- table: TransposePattern
+  name: UIX_BDG3_TransposePattern_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: TransposePatternItem
+  name: PK_BDG3_TransposePatternItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransposePatternItemID
+- table: TransposeSetting
+  name: PK_BDG3_TransposeSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransposeSettingID
+- table: TransposeSettingEntity
+  name: PK_BDG3_TransposeSettingEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransposeSettingEntityID
+- table: TransposeTransferSetting
+  name: PK_BDG3_TransposeTransferSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransposeTransferSettingID
+- table: TransposeTransferSettingFilter
+  name: PK_BDG3_TransposeTransferSettingFilter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransposeTransferSettingFilterID

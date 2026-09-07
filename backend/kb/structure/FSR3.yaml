@@ -1,0 +1,5290 @@
+schema: FSR3
+table_count: 79
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: AccountNote
+  columns:
+  - name: AccountNoteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: AccountType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: DLCalculationType
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: DLLevel
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: ImportanceAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: CalculationInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: IsMajor
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 11
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 12
+  - name: TempNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - AccountNoteID
+- name: AccountNoteImportanceInfo
+  columns:
+  - name: AccountNoteImportanceInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AccountNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TempAccountNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: GLRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SLRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: DLTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DLLevel
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: ImportanceType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - AccountNoteImportanceInfoID
+- name: AccountNoteItem
+  columns:
+  - name: AccountNoteItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AccountNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GLRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: SLRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: DLTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: DLCode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: TopicTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 8
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - AccountNoteItemID
+- name: AccountNoteStructure
+  columns:
+  - name: AccountNoteStructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: AccountType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: DLCalculationType
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: DLLevel
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: ImportanceAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: IsMajor
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 11
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - AccountNoteStructureID
+- name: AccountNoteStructureImportanceInfo
+  columns:
+  - name: AccountNoteStructureImportanceInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AccountNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ImportanceType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: GLRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SLRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: DLTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DLLevel
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - AccountNoteStructureImportanceInfoID
+- name: AdjustmentClassification
+  columns:
+  - name: AdjustmentClassificationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - AdjustmentClassificationID
+- name: AdjustmentClassificationItem
+  columns:
+  - name: AdjustmentClassificationItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AdjustmentClassificationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ItemType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: BranchRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 6
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 12
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 22
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 23
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 24
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 38
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 39
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 40
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 41
+  - name: AdjustmentDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 44
+  - name: AdjustmentCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 45
+  - name: AdjustmentCurrencyDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 46
+  - name: AdjustmentCurrencyCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 47
+  - name: RelationNumber
+    type: int
+    nullable: true
+    ordinal: 48
+  - name: RelationLevel
+    type: int
+    nullable: false
+    ordinal: 49
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 50
+  - name: RelationNumberLevel
+    type: int
+    nullable: false
+    ordinal: 51
+  - name: IsAdjustment
+    type: bit
+    nullable: true
+    ordinal: 52
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 53
+  primary_key:
+  - AdjustmentClassificationItemID
+- name: AdjustmentVoucher
+  columns:
+  - name: AdjustmentVoucherID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 4
+  - name: AuxiliaryNumber
+    type: nvarchar(16)
+    nullable: true
+    ordinal: 5
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: VoucherTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 8
+  - name: Description_En
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 9
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: IsCurrencyBased
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: ReferenceNumber
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: ShowCurrencyFields
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 16
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 18
+  - name: StatementsOperationType
+    type: int
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - AdjustmentVoucherID
+- name: AdjustmentVoucherItem
+  columns:
+  - name: AdjustmentVoucherItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: AdjustmentVoucherRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: AccountGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: GLRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 8
+  - name: Debit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: Credit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 11
+  - name: BaseCurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: TargetCurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: TargetCurrencyDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: TargetCurrencyCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: IsCurrencyBased
+    type: bit
+    nullable: false
+    ordinal: 16
+  - name: OperationalCurrencyExchangeRateRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: OperationalCurrencyExchangeRate
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 18
+  - name: BaseCurrencyExchangeRateRef
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: BaseCurrencyExchangeRate
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 20
+  - name: CurrencyDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 21
+  - name: CurrencyCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 22
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 23
+  - name: Description_En
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 24
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 25
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 26
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 27
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 28
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 29
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 37
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 38
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 39
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 40
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 41
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 42
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 43
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 44
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 45
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 46
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 47
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 48
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 49
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 50
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 51
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 52
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 53
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 54
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 55
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 56
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 57
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 58
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 59
+  - name: GroupNumber
+    type: int
+    nullable: true
+    ordinal: 60
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 61
+  primary_key:
+  - AdjustmentVoucherItemID
+- name: AssignComparitiveReportingPeriod
+  columns:
+  - name: AssignComparitiveReportingPeriodID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RowNumber
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: AssignedReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - AssignComparitiveReportingPeriodID
+- name: BalanceSheet
+  columns:
+  - name: BalanceSheetID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 2
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 3
+  - name: CalculationInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - BalanceSheetID
+- name: BalanceSheetItem
+  columns:
+  - name: BalanceSheetItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: BalanceSheetRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 6
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: ColumnType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: ShowTitle
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - BalanceSheetItemID
+- name: BookletComparitiveReportingPeriodPresentation
+  columns:
+  - name: BookletComparitiveReportingPeriodPresentationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrderNumber
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: StatementType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: NoteNumber
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 5
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: StatementRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: ShowComparativeReportingPeriod1
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: ShowComparativeReportingPeriod2
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: ShowComparativeReportingPeriod3
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: ShowComparativeReportingPeriod4
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - BookletComparitiveReportingPeriodPresentationID
+- name: BookletStatementOrder
+  columns:
+  - name: BookletStatementOrderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrderNumber
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: StatementType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: NoteNumber
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 5
+  - name: StructureRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: GroupNumber
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: NoteStructureRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - BookletStatementOrderID
+- name: CalculationDescription
+  columns:
+  - name: CalculationDescriptionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StatementType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: NoteNumber
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 4
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 5
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 6
+  - name: TempHeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 7
+  - name: TempFooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - CalculationDescriptionID
+- name: CalculationInformation
+  columns:
+  - name: CalculationInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StructureRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - CalculationInformationID
+- name: CashFlowAdjustment
+  columns:
+  - name: CashFlowAdjustmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - CashFlowAdjustmentID
+- name: CashFlowAdjustmentItem
+  columns:
+  - name: CashFlowAdjustmentItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CashFlowAdjustmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: AdjustmentAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CashFlowAdjustmentItemID
+- name: CashFlowStatement
+  columns:
+  - name: CashFlowStatementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 2
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 3
+  - name: CalculationInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CashFlowStatementID
+- name: CashFlowStatementItem
+  columns:
+  - name: CashFlowStatementItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CashFlowStatementRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 6
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: ColumnType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: ShowTitle
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - CashFlowStatementItemID
+- name: CollectiveInformation
+  columns:
+  - name: CollectiveInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: LedgerRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: GLRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 8
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 12
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 22
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 23
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 24
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 25
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 38
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 39
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 40
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 41
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 42
+  - name: BeginningDebit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 43
+  - name: BeginningCredit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 44
+  - name: TurnoverDebit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 45
+  - name: TurnoverCredit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 46
+  - name: AdjustmentDebit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 47
+  - name: AdjustmentCredit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 48
+  - name: NatureAdjustmentDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 49
+  - name: NatureAdjustmentCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 50
+  - name: BeginningCurrencyDebit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 51
+  - name: BeginningCurrencyCredit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 52
+  - name: TurnoverCurrencyDebit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 53
+  - name: TurnoverCurrencyCredit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 54
+  - name: AdjustmentCurrencyDebit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 55
+  - name: AdjustmentCurrencyCredit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 56
+  - name: NatureAdjustmentCurrencyDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 57
+  - name: NatureAdjustmentCurrencyCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 58
+  - name: IsAdjustmentClassification
+    type: bit
+    nullable: false
+    ordinal: 59
+  - name: IsNatureAdjustment
+    type: bit
+    nullable: false
+    ordinal: 60
+  - name: IsWriteOffStatement
+    type: bit
+    nullable: false
+    ordinal: 61
+  - name: WriteOffStatementDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 62
+  - name: WriteOffStatementCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 63
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 64
+  primary_key:
+  - CollectiveInformationID
+- name: ComprehensiveIncomeStatement
+  columns:
+  - name: ComprehensiveIncomeStatementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 2
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 3
+  - name: CalculationInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ComprehensiveIncomeStatementID
+- name: ComprehensiveIncomeStatementItem
+  columns:
+  - name: ComprehensiveIncomeStatementItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ComprehensiveIncomeStatementRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 6
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: ColumnType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: ShowTitle
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - ComprehensiveIncomeStatementItemID
+- name: ConstantTopicInfo
+  columns:
+  - name: ConstantTopicInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: TempAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: TempNature
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - ConstantTopicInfoID
+- name: DetailSetting
+  columns:
+  - name: DetailSettingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ItemType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: ReportTitle
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 4
+  - name: ReportingPeriodFormat
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 5
+  - name: Orientation
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: SeperateAmountByTotalType
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: SeperateAmountByColumnType
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: SeperateTitleByColumnType
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - DetailSettingID
+- name: FSRCalcPeriod
+  columns:
+  - name: FSRCalcPeriodID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalcPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - FSRCalcPeriodID
+- name: FinancialStatement
+  columns:
+  - name: FinancialStatementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 3
+  - name: Guid
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 4
+  - name: Content
+    type: varbinary(max)
+    nullable: false
+    ordinal: 5
+  - name: Description
+    type: nvarchar(250)
+    nullable: false
+    ordinal: 6
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - FinancialStatementID
+- name: FinancialStatementsStateLog
+  columns:
+  - name: FinancialStatementsStateLogID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - FinancialStatementsStateLogID
+- name: GeneralSetting
+  columns:
+  - name: GeneralSettingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: FixedEndingExpression
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 2
+  - name: ShowNoteColumn
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: HeaderTextAlign
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: ReportTextAlign
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: FixedEndingExpressionTextAlign
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: HeaderDescriptionTextAlign
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: FooterDescriptionTextAlign
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: NoteTitleTextAlign
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: ShowNotesOnSeperatedPages
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: ApplyNoteGrouping
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - GeneralSettingID
+- name: IncomeStatement
+  columns:
+  - name: IncomeStatementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 2
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 3
+  - name: CalculationInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - IncomeStatementID
+- name: IncomeStatementItem
+  columns:
+  - name: IncomeStatementItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IncomeStatementRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 6
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: ColumnType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: ShowTitle
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - IncomeStatementItemID
+- name: MatrixAccountNote
+  columns:
+  - name: MatrixAccountNoteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: MatrixNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: AccountType
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: DLCalculationType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: DLLevel
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: ImportanceAmount
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - MatrixAccountNoteID
+- name: MatrixAccountNoteItem
+  columns:
+  - name: MatrixAccountNoteItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixAccountNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GLRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: SLRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: DLTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: DLCode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: AccountRowType
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: GLDescriptor
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: SLDescriptor
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: DL4Descriptor
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DL5Descriptor
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DL6Descriptor
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DL7Descriptor
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DL8Descriptor
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DL9Descriptor
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 22
+  primary_key:
+  - MatrixAccountNoteItemID
+- name: MatrixAccountNoteItemImportanceInfo
+  columns:
+  - name: MatrixAccountNoteItemImportanceInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixAccountNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TempNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: GLRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SLRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: DLTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DLLevel
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: ImportanceType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - MatrixAccountNoteItemImportanceInfoID
+- name: MatrixNote
+  columns:
+  - name: MatrixNoteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: IsMajor
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: ShowRowTotalInBooklet
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: ShowColumnTotalInBooklet
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: MatrixNoteType
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: CalculationInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: TempNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: ComparativeShowType
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: AccountType
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: DLCalculationType
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: DLLevel
+    type: int
+    nullable: true
+    ordinal: 14
+  - name: NoteDisplayLocation
+    type: int
+    nullable: false
+    ordinal: 15
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 16
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 17
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 18
+  primary_key:
+  - MatrixNoteID
+- name: MatrixNoteColumnHeaderArrange
+  columns:
+  - name: MatrixNoteColumnHeaderArrangeID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: MatrixNoteStructureInfoRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Text
+    type: nvarchar(512)
+    nullable: false
+    ordinal: 4
+  - name: ParentRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: NodeOrder
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - MatrixNoteColumnHeaderArrangeID
+- name: MatrixNoteDescriptor
+  columns:
+  - name: MatrixNoteDescriptorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GLTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: SLTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: DL4Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: DL5Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: DL6Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: DL7Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 8
+  - name: DL8Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 9
+  - name: DL9Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 10
+  - name: GLChecked
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: SLChecked
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: DL4Checked
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: DL5Checked
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: DL6Checked
+    type: bit
+    nullable: false
+    ordinal: 15
+  - name: DL7Checked
+    type: bit
+    nullable: false
+    ordinal: 16
+  - name: DL8Checked
+    type: bit
+    nullable: false
+    ordinal: 17
+  - name: DL9Checked
+    type: bit
+    nullable: false
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - MatrixNoteDescriptorID
+- name: MatrixNoteInfo
+  columns:
+  - name: MatrixNoteInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StructureType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Index
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 5
+  - name: RelatedToAccount
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: ShowComparativeAmount
+    type: bit
+    nullable: true
+    ordinal: 7
+  - name: BaseColumn
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: GLTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 9
+  - name: SLTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 10
+  - name: DL4Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 11
+  - name: DL5Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 12
+  - name: DL6Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 13
+  - name: DL7Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 14
+  - name: DL8Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 15
+  - name: DL9Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - MatrixNoteInfoID
+- name: MatrixNoteItem
+  columns:
+  - name: MatrixNoteItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 5
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - MatrixNoteItemID
+- name: MatrixNoteStructure
+  columns:
+  - name: MatrixNoteStructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: IsMajor
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: ShowRowTotalInBooklet
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: ShowColumnTotalInBooklet
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: MatrixNoteType
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: ComparativeShowType
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: AccountType
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: DLCalculationType
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: DLLevel
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 14
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  - name: NoteDisplayLocation
+    type: int
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - MatrixNoteStructureID
+- name: MatrixNoteStructureDescriptor
+  columns:
+  - name: MatrixNoteStructureDescriptorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GLTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 3
+  - name: SLTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: DL4Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: DL5Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: DL6Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: DL7Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 8
+  - name: DL8Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 9
+  - name: DL9Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 10
+  - name: GLChecked
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: SLChecked
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: DL4Checked
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: DL5Checked
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: DL6Checked
+    type: bit
+    nullable: false
+    ordinal: 15
+  - name: DL7Checked
+    type: bit
+    nullable: false
+    ordinal: 16
+  - name: DL8Checked
+    type: bit
+    nullable: false
+    ordinal: 17
+  - name: DL9Checked
+    type: bit
+    nullable: false
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  primary_key:
+  - MatrixNoteStructureDescriptorID
+- name: MatrixNoteStructureInfo
+  columns:
+  - name: MatrixNoteStructureInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StructureType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Index
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 5
+  - name: RelatedToAccount
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: ShowComparativeAmount
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: BaseColumn
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - MatrixNoteStructureInfoID
+- name: MatrixNoteStructureItem
+  columns:
+  - name: MatrixNoteStructureItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: ImportanceAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  - name: InferredTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 11
+    computed: true
+  primary_key:
+  - MatrixNoteStructureItemID
+- name: MatrixNoteStructureItemImportanceInfo
+  columns:
+  - name: MatrixNoteStructureItemImportanceInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MatrixNoteStructureItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ImportanceType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: GLRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SLRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: DLTypeRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DLLevel
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - MatrixNoteStructureItemImportanceInfoID
+- name: ModularTopicInfo
+  columns:
+  - name: ModularTopicInfoID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 3
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - ModularTopicInfoID
+- name: NatureAdjustment
+  columns:
+  - name: NatureAdjustmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - NatureAdjustmentID
+- name: NatureAdjustmentItem
+  columns:
+  - name: NatureAdjustmentItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: NatureAdjustmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 4
+  - name: CurrencyRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: BranchRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 12
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 22
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 23
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 38
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 39
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 40
+  - name: AdjustmentDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 41
+  - name: AdjustmentCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 42
+  - name: AdjustmentCurrencyDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 43
+  - name: AdjustmentCurrencyCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 44
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 45
+  primary_key:
+  - NatureAdjustmentItemID
+- name: PriorYearAdjustment
+  columns:
+  - name: PriorYearAdjustmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: VoucherRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: Number
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: Description
+    type: nvarchar(512)
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: BranchRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - PriorYearAdjustmentID
+- name: PriorYearAdjustmentAccount
+  columns:
+  - name: PriorYearAdjustmentAccountID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PriorYearAdjustmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 4
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 12
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 23
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 38
+  - name: Debit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 39
+  - name: Credit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 40
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 41
+  - name: PriorYearAdjustmentAccountType
+    type: int
+    nullable: false
+    ordinal: 42
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 43
+  primary_key:
+  - PriorYearAdjustmentAccountID
+- name: PriorYearAdjustmentCollectiveInformation
+  columns:
+  - name: PriorYearAdjustmentCollectiveInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EffectiveReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: GLRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 6
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 12
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 22
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 23
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 38
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 39
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 40
+  - name: BeginningDebit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 41
+  - name: BeginningCredit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 42
+  - name: TurnoverDebit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 43
+  - name: TurnoverCredit
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 44
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 45
+  primary_key:
+  - PriorYearAdjustmentCollectiveInformationID
+- name: PriorYearAdjustmentItem
+  columns:
+  - name: PriorYearAdjustmentItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PriorYearAdjustmentRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: VoucherRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: VoucherItemRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 6
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 12
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 22
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 23
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 38
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 39
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 40
+  - name: VoucherDate
+    type: datetime
+    nullable: false
+    ordinal: 41
+  - name: SequenceNumber
+    type: int
+    nullable: false
+    ordinal: 42
+  - name: Debit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 43
+  - name: Credit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 44
+  - name: PriorYearAdjustmentItemType
+    type: int
+    nullable: false
+    ordinal: 45
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 46
+  primary_key:
+  - PriorYearAdjustmentItemID
+- name: PriorYearAdjustmentItemDetail
+  columns:
+  - name: PriorYearAdjustmentItemDetailID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PriorYearAdjustmentItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 4
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 12
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 23
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 38
+  - name: Debit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 39
+  - name: Credit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 40
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 41
+  - name: PriorYearAdjustmentAccountType
+    type: int
+    nullable: false
+    ordinal: 42
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 43
+  primary_key:
+  - PriorYearAdjustmentItemDetailID
+- name: ReportStructure
+  columns:
+  - name: ReportStructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: StructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 4
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ReportStructureID
+- name: ReportStructureItem
+  columns:
+  - name: ReportStructureItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: ColumnType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: ShowTitle
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  - name: TopicCalculationSourceType
+    type: int
+    nullable: true
+    ordinal: 12
+    computed: true
+  - name: InferredTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 13
+    computed: true
+  primary_key:
+  - ReportStructureItemID
+- name: ReportTopic
+  columns:
+  - name: ReportTopicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 3
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: CalculationType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: CalculationSourceType
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: AmountFeature
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 10
+  - name: TopicID
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: IsCashFlowAdjustment
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 14
+  primary_key:
+  - ReportTopicID
+- name: ReportTopicToSLRelation
+  columns:
+  - name: ReportTopicToSLRelationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportTopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SLRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: FullySelected
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ReportTopicToSLRelationID
+- name: ReportTopicToSLRelationDL
+  columns:
+  - name: ReportTopicToSLRelationDLID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportTopicToSLRelationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DLCode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 3
+  - name: DLLevelNo
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: DLTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ReportTopicToSLRelationDLID
+- name: ReportTopicToTopicRelation
+  columns:
+  - name: ReportTopicToTopicRelationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MainReportTopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UsedReportTopicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: UsedReportTopicNature
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ReportTopicToTopicRelationID
+- name: ReportTypeSetting
+  columns:
+  - name: ReportTypeSettingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: OperationalCurrencyAmountFormat
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: AmountFormat
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: ShowAmountFormat
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: ShowCompanyName
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ReportTypeSettingID
+- name: ReportingPeriod
+  columns:
+  - name: ReportingPeriodID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title_En
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: FiscalYearRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CashFlowBaseReportingPeriodRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - ReportingPeriodID
+- name: ReportingStyle
+  columns:
+  - name: ReportingStyleID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CategoryType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: ReportType
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: ItemType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: FontName
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 5
+  - name: FontSize
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: FontColor
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 7
+  - name: BackGroundColor
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: IsBold
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: IsItalic
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - ReportingStyleID
+- name: SimpleNote
+  columns:
+  - name: SimpleNoteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 2
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 3
+  - name: CalculationInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 5
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Type
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: IsMajor
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: BasedOnMasterTopicStructure
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: ShowTotalValue
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: TempNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - SimpleNoteID
+- name: SimpleNoteItem
+  columns:
+  - name: SimpleNoteItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SimpleNoteRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 6
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: ColumnType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: ShowTitle
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  primary_key:
+  - SimpleNoteItemID
+- name: SimpleNoteStructure
+  columns:
+  - name: SimpleNoteStructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: IsMajor
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: BasedOnMasterTopicStructure
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: ShowTotalValue
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: HeaderFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 8
+  - name: FooterFixedText
+    type: nvarchar(4000)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - SimpleNoteStructureID
+- name: SimpleNoteStructureItem
+  columns:
+  - name: SimpleNoteStructureItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: SimpleNoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: TopicNature
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: Title
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: ColumnNo
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: ColumnType
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: TotalType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: ShowTitle
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 11
+  - name: TopicCalculationSourceType
+    type: int
+    nullable: true
+    ordinal: 12
+    computed: true
+  - name: InferredTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 13
+    computed: true
+  primary_key:
+  - SimpleNoteStructureItemID
+- name: Structure
+  columns:
+  - name: StructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - StructureID
+- name: Topic
+  columns:
+  - name: TopicID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: CalculationType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: CalculationSourceType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: AmountFeature
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: ModuleKey
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: IsPriorYearAdjustment
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: IsCashFlowAdjustment
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: IsWriteOffStatement
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - TopicID
+- name: TopicAdjustment
+  columns:
+  - name: TopicAdjustmentID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Value
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: Nature
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: TempValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: TempNature
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - TopicAdjustmentID
+- name: TopicCalculation
+  columns:
+  - name: TopicCalculationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CompanyRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: InitialAmount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: Amount
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 6
+  - name: ComparativeAmount1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 7
+  - name: ComparativeAmount2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: ComparativeAmount3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: ComparativeAmount4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: Priority
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: TopicNature
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: TopicCalculationSourceType
+    type: int
+    nullable: false
+    ordinal: 13
+  - name: TopicCalculationType
+    type: int
+    nullable: false
+    ordinal: 14
+  - name: CashFlowAdjustment
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: AdjustmentClassification
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 16
+  - name: PriorYearAdjustment
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 17
+  - name: NatureAdjustment
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 18
+  - name: WriteOffAdjustment
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 19
+  - name: CurrentBalanceWithoutCashFlow
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 20
+  - name: PreviousBalanceWithoutCashFlow
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 21
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 22
+  primary_key:
+  - TopicCalculationID
+- name: TopicNoteRelation
+  columns:
+  - name: TopicNoteRelationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: NoteRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: NoteType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: ReportRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: FinancialStatementType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - TopicNoteRelationID
+- name: TopicNoteRelationStructure
+  columns:
+  - name: TopicNoteRelationStructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: NoteStructureRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: NoteType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: StructureRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: FinancialStatementType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - TopicNoteRelationStructureID
+- name: TopicToSLRelation
+  columns:
+  - name: TopicToSLRelationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: GLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SLRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: SLCode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: FullySelected
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - TopicToSLRelationID
+- name: TopicToSLRelationDL
+  columns:
+  - name: TopicToSLRelationDLID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: TopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TopicToSLRelationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DLCode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 4
+  - name: DLLevelNo
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: DLTypeRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - TopicToSLRelationDLID
+- name: TopicToTopicRelation
+  columns:
+  - name: TopicToTopicRelationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MainTopicRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UsedTopicRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: UsedTopicNature
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  - name: RowNo
+    type: int
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - TopicToTopicRelationID
+- name: WriteOffPattern
+  columns:
+  - name: WriteOffPatternID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Code
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(128)
+    nullable: false
+    ordinal: 3
+  - name: Title_En
+    type: nvarchar(128)
+    nullable: true
+    ordinal: 4
+  - name: LedgerRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: IsDefault
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  primary_key:
+  - WriteOffPatternID
+- name: WriteOffPatternAccount
+  columns:
+  - name: WriteOffPatternAccountID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WriteOffPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: DebitSLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DebitDLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: DebitDLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: DebitDLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: DebitDLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: DebitDLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: DebitDLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DebitDLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: DebitDLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DebitDLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: DebitDLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DebitDLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 14
+  - name: DebitDLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DebitDLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 16
+  - name: DebitDLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DebitDLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 18
+  - name: DebitDLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DebitDLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 20
+  - name: DebitDLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 21
+  - name: DebitDLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: DebitDLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 23
+  - name: DebitDLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: DebitDLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 25
+  - name: DebitDLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DebitDLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 27
+  - name: DebitDLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DebitDLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 29
+  - name: DebitDLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DebitDLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 31
+  - name: DebitDLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DebitDLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 33
+  - name: DebitDLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DebitDLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 35
+  - name: DebitDLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DebitDLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 37
+  - name: CreditSLRef
+    type: bigint
+    nullable: false
+    ordinal: 38
+  - name: CreditDLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 39
+  - name: CreditDLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 40
+  - name: CreditDLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 41
+  - name: CreditDLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 42
+  - name: CreditDLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 43
+  - name: CreditDLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 44
+  - name: CreditDLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 45
+  - name: CreditDLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 46
+  - name: CreditDLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 47
+  - name: CreditDLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 48
+  - name: CreditDLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 49
+  - name: CreditDLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 50
+  - name: CreditDLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 51
+  - name: CreditDLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 52
+  - name: CreditDLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 53
+  - name: CreditDLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 54
+  - name: CreditDLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 55
+  - name: CreditDLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 56
+  - name: CreditDLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 57
+  - name: CreditDLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 58
+  - name: CreditDLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 59
+  - name: CreditDLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 60
+  - name: CreditDLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 61
+  - name: CreditDLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 62
+  - name: CreditDLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 63
+  - name: CreditDLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 64
+  - name: CreditDLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 65
+  - name: CreditDLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 66
+  - name: CreditDLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 67
+  - name: CreditDLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 68
+  - name: CreditDLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 69
+  - name: CreditDLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 70
+  - name: CreditDLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 71
+  - name: CreditDLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 72
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 73
+  primary_key:
+  - WriteOffPatternAccountID
+- name: WriteOffPatternAccountSource
+  columns:
+  - name: WriteOffPatternAccountSourceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WriteOffPatternAccountRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DLLevel
+    type: tinyint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - WriteOffPatternAccountSourceID
+- name: WriteOffStatement
+  columns:
+  - name: WriteOffStatementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportingPeriodRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: WriteOffPatternRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - WriteOffStatementID
+- name: WriteOffStatementItem
+  columns:
+  - name: WriteOffStatementItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: WriteOffStatementRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SLRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: DLLevel4
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 4
+  - name: DLLevel5
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 5
+  - name: DLLevel6
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 6
+  - name: DLLevel7
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: DLLevel8
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 8
+  - name: DLLevel9
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 9
+  - name: DLLevel10
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 10
+  - name: DLLevel11
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 11
+  - name: DLLevel12
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 12
+  - name: DLLevel13
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 13
+  - name: DLLevel14
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 14
+  - name: DLLevel15
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 15
+  - name: DLLevel16
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 16
+  - name: DLLevel17
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 17
+  - name: DLLevel18
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 18
+  - name: DLLevel19
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 19
+  - name: DLLevel20
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 20
+  - name: DLTypeRef4
+    type: bigint
+    nullable: true
+    ordinal: 21
+  - name: DLTypeRef5
+    type: bigint
+    nullable: true
+    ordinal: 22
+  - name: DLTypeRef6
+    type: bigint
+    nullable: true
+    ordinal: 23
+  - name: DLTypeRef7
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: DLTypeRef8
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: DLTypeRef9
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: DLTypeRef10
+    type: bigint
+    nullable: true
+    ordinal: 27
+  - name: DLTypeRef11
+    type: bigint
+    nullable: true
+    ordinal: 28
+  - name: DLTypeRef12
+    type: bigint
+    nullable: true
+    ordinal: 29
+  - name: DLTypeRef13
+    type: bigint
+    nullable: true
+    ordinal: 30
+  - name: DLTypeRef14
+    type: bigint
+    nullable: true
+    ordinal: 31
+  - name: DLTypeRef15
+    type: bigint
+    nullable: true
+    ordinal: 32
+  - name: DLTypeRef16
+    type: bigint
+    nullable: true
+    ordinal: 33
+  - name: DLTypeRef17
+    type: bigint
+    nullable: true
+    ordinal: 34
+  - name: DLTypeRef18
+    type: bigint
+    nullable: true
+    ordinal: 35
+  - name: DLTypeRef19
+    type: bigint
+    nullable: true
+    ordinal: 36
+  - name: DLTypeRef20
+    type: bigint
+    nullable: true
+    ordinal: 37
+  - name: Debit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 38
+  - name: Credit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 39
+  - name: WriteOffDebit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 40
+  - name: WriteOffCredit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 41
+  - name: WriteOffAccountType
+    type: int
+    nullable: false
+    ordinal: 42
+  - name: WriteOffDebitBalance
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 43
+  - name: WriteOffCreditBalance
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 44
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 45
+  primary_key:
+  - WriteOffStatementItemID

@@ -1,0 +1,134 @@
+schema: WFE3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: Job
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: OrganizationElement
+  column: ElementType
+  lookup_type: ElementType
+  type_title_fa: ElementType
+  values:
+  - value: '1'
+    label_fa: واحد سازمانی
+    source: proven_by_data
+    confidence: high
+    observed_count: 35
+  - value: '2'
+    label_fa: سمت
+    source: proven_by_data
+    confidence: high
+    observed_count: 124
+- table: OrganizationUnit
+  column: OrganizationUnitType
+  lookup_type: OrganizationUnitType
+  type_title_fa: OrganizationUnitType
+  values:
+  - value: '1'
+    label_fa: دپارتمان
+    source: proven_by_data
+    confidence: high
+    observed_count: 32
+  - value: '2'
+    label_fa: پروژه
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: محصول
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: تیم
+    source: stated_by_config
+    confidence: high
+- table: OrganizationUnit
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 32
+- table: Person
+  column: InteractionType
+  lookup_type: PersonInteractionType
+  type_title_fa: PersonInteractionType
+  values:
+  - value: '1'
+    label_fa: پست الکترونیک
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '2'
+    label_fa: کارتابل
+    source: proven_by_data
+    confidence: high
+    observed_count: 208
+  - value: '3'
+    label_fa: غیره
+    source: stated_by_config
+    confidence: high
+- table: Position
+  column: FormalType
+  lookup_type: FormalType
+  type_title_fa: FormalType
+  values:
+  - value: '1'
+    label_fa: رسمی
+    source: proven_by_data
+    confidence: high
+    observed_count: 114
+  - value: '2'
+    label_fa: غیر رسمی
+    source: stated_by_config
+    confidence: high
+- table: Position
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 114
+- table: SemiStatute
+  column: SemiStatuteType
+  lookup_type: SemiStatuteType
+  type_title_fa: SemiStatuteType
+  values:
+  - value: '0'
+    label_fa: اصلی
+    source: proven_by_data
+    confidence: high
+    observed_count: 182
+  - value: '1'
+    label_fa: فرعی
+    source: stated_by_config
+    confidence: high
+  - value: '2'
+    label_fa: جانشینی
+    source: stated_by_config
+    confidence: high

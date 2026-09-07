@@ -1,0 +1,823 @@
+schema: OGOM3
+table_count: 25
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: IssuePermitExtension
+  columns:
+  - name: IssuePermitExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IssuePermitRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - IssuePermitExtensionID
+- name: IssuePermitExtensionOperationalReport
+  columns:
+  - name: IssuePermitExtensionOperationalReportID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IssuePermitExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IssuePermitItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - IssuePermitExtensionOperationalReportID
+- name: OperationalReport
+  columns:
+  - name: OperationalReportID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: ProductionUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ReportType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: StartReportDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: EndReportDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 8
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 13
+  primary_key:
+  - OperationalReportID
+- name: OperationalReportComplementaryInformation
+  columns:
+  - name: OperationalReportComplementaryInformationID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductionUnitComplementaryInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: ProductionUnitSectionRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: Description
+    type: nvarchar(2048)
+    nullable: true
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - OperationalReportComplementaryInformationID
+- name: OperationalReportComplementaryInformationItem
+  columns:
+  - name: OperationalReportComplementaryInformationItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportComplementaryInformationRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductionUnitComplementaryInformationItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Value
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - OperationalReportComplementaryInformationItemID
+- name: OperationalReportExtraFormulaDynamicFactor
+  columns:
+  - name: OperationalReportExtraFormulaDynamicFactorID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationalReportDetailRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: FormulaFactorRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Value
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - OperationalReportExtraFormulaDynamicFactorID
+- name: OperationalReportExtraFormulaInputParameter
+  columns:
+  - name: OperationalReportExtraFormulaInputParameterID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationalReportDetailRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: FormulaFactorRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Value
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - OperationalReportExtraFormulaInputParameterID
+- name: OperationalReportFeed
+  columns:
+  - name: OperationalReportFeedID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: FeedRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ConsumptionQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: FinalConsumptionQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: MassPartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - OperationalReportFeedID
+- name: OperationalReportProduct
+  columns:
+  - name: OperationalReportProductID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ProductionQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: FinalProductionQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: MassPartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: PlanQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 7
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - OperationalReportProductID
+- name: OperationalReportProductVarianceReason
+  columns:
+  - name: OperationalReportProductVarianceReasonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportProductRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: VarianceReasonGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ProductionVarianceReason
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 4
+  - name: StartStopDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: EndStopDate
+    type: datetime
+    nullable: true
+    ordinal: 6
+  - name: StopDuration
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: VarianceQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 8
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - OperationalReportProductVarianceReasonID
+- name: OperationalReportReceipt
+  columns:
+  - name: OperationalReportReceiptID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReceiptRecordingSourceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ReceiverType
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: ReceiverRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ReceiptQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 6
+  - name: FinalReceiptQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 7
+  - name: MassPartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - OperationalReportReceiptID
+- name: OperationalReportRelatedMovementRecording
+  columns:
+  - name: OperationalReportRelatedMovementRecordingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: MovementRecordingRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: MovementRecordingRecordingDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: MovementRecordingLastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: MovementRecordingVersion
+    type: varbinary(max)
+    nullable: false
+    ordinal: 6
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - OperationalReportRelatedMovementRecordingID
+- name: OperationalReportSend
+  columns:
+  - name: OperationalReportSendID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: SendRecordingSourceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: SenderType
+    type: int
+    nullable: true
+    ordinal: 4
+  - name: SenderRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: SendQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 6
+  - name: FinalSendQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 7
+  - name: MassPartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - OperationalReportSendID
+- name: OperationalReportTankInventory
+  columns:
+  - name: OperationalReportTankInventoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TankAssignmentItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: TankInventoryQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: FinalTankInventoryQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: MassPartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - OperationalReportTankInventoryID
+- name: OperationalReportUtilityService
+  columns:
+  - name: OperationalReportUtilityServiceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UtilityServiceRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ConsumptionQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: FinalConsumptionQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 5
+  - name: MassPartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - OperationalReportUtilityServiceID
+- name: ProductionBalance
+  columns:
+  - name: ProductionBalanceID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: StartBalanceDate
+    type: datetime
+    nullable: false
+    ordinal: 3
+  - name: EndBalanceDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: SendReceiptShowTemplate
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - ProductionBalanceID
+- name: ProductionBalanceComplex
+  columns:
+  - name: ProductionBalanceComplexID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionBalanceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ComplexRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ProductionBalanceComplexID
+- name: ProductionBalanceConsumption
+  columns:
+  - name: ProductionBalanceConsumptionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionBalanceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationalReportFeedRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EditedQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ProductionBalanceConsumptionID
+- name: ProductionBalanceProduction
+  columns:
+  - name: ProductionBalanceProductionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionBalanceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationalReportProductRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EditedQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ProductionBalanceProductionID
+- name: ProductionBalanceProductionUnit
+  columns:
+  - name: ProductionBalanceProductionUnitID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionBalanceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ProductionUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - ProductionBalanceProductionUnitID
+- name: ProductionBalanceReceipt
+  columns:
+  - name: ProductionBalanceReceiptID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionBalanceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationalReportReceiptRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EditedQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ProductionBalanceReceiptID
+- name: ProductionBalanceSend
+  columns:
+  - name: ProductionBalanceSendID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionBalanceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationalReportSendRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EditedQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ProductionBalanceSendID
+- name: ProductionBalanceTankInventory
+  columns:
+  - name: ProductionBalanceTankInventoryID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ProductionBalanceRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: OperationalReportTankInventoryRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: EditedQty
+    type: decimal(18,6)
+    nullable: true
+    ordinal: 4
+  - name: Description
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ProductionBalanceTankInventoryID
+- name: ReceiptPermitExtension
+  columns:
+  - name: ReceiptPermitExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReceiptPermitRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - ReceiptPermitExtensionID
+- name: ReceiptPermitExtensionOperationalReport
+  columns:
+  - name: ReceiptPermitExtensionOperationalReportID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReceiptPermitExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ReceiptPermitItemRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: OperationalReportRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - ReceiptPermitExtensionOperationalReportID

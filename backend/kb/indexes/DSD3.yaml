@@ -1,0 +1,2566 @@
+schema: DSD3
+source: extracted
+indexes:
+- table: AppliedVisitPattern
+  name: PK_DSD3_AppliedVisitPattern_AppliedVisitPatternID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AppliedVisitPatternID
+- table: AppliedVisitPattern
+  name: IDX_DSD3_AppliedVisitPattern_VisitPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitPatternRef
+- table: AppliedVisitPattern
+  name: IDX_DSD3_AppliedVisitPattern_VisitScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitScheduleRef
+- table: Assignment
+  name: PK_DSD3_Assignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentID
+- table: Assignment
+  name: IX_DSD3_Assignment_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: Assignment
+  name: IX_DSD3_Assignment_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: Assignment
+  name: IX_DSD3_Assignment_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Assignment
+  name: IX_DSD3_Assignment_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: Assignment
+  name: IX_DSD3_Assignment_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Date
+  - TransporterRef
+  included:
+  - State
+  - BrokerRef
+  - TransportationVehicleRef
+- table: Assignment
+  name: IX_DSD3_Assignment_RouteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RouteRef
+- table: Assignment
+  name: IX_DSD3_Assignment_ShippingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShippingPointRef
+- table: Assignment
+  name: IX_DSD3_Assignment_LoadingPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LoadingPointRef
+- table: Assignment
+  name: IX_DSD3_Assignment_TransporterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransporterRef
+- table: Assignment
+  name: IX_DSD3_Assignment_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: Assignment
+  name: IX_DSD3_Assignment_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: Assignment
+  name: IX_DSD3_Assignment_TransportationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationUnitRef
+- table: Assignment
+  name: IX_DSD3_Assignment_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Assignment
+  name: IX_DSD3_Assignment_SalesOfficeRef_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+  - Number
+- table: Assignment
+  name: IX_DSD3_Assignment_Date_State_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Date
+  - State
+  - TransportationVehicleRef
+  included:
+  - BrokerRef
+  - Number
+- table: Assignment
+  name: IX_DSD3_Assignment_HotSalesAreaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HotSalesAreaRef
+- table: Assignment
+  name: IX_DSD3_Assignment_HotSalesAreaGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HotSalesAreaGroupRef
+- table: AssignmentDeliveryItem
+  name: PK_DSD3_AssignmentDeliveryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentDeliveryItemID
+- table: AssignmentDeliveryItem
+  name: IX_DSD3_AssignmentDeliveryItem_AssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentRef
+  included:
+  - OrderRef
+  - InvoiceRef
+  - SaleRequestRef
+- table: AssignmentDeliveryItem
+  name: IX_DSD3_AssignmentDeliveryItem_OrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderRef
+  included:
+  - AssignmentRef
+- table: AssignmentDeliveryItem
+  name: IX_DSD3_AssignmentDeliveryItem_SaleRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SaleRequestRef
+  included:
+  - CustomerRef
+  - AssignmentRef
+  - DeliveryState
+  - RowNumber
+- table: AssignmentDeliveryItem
+  name: IX_DSD3_AssignmentDeliveryItem_InvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoiceRef
+  included:
+  - CustomerRef
+  - AssignmentRef
+  - DeliveryState
+  - RowNumber
+- table: AssignmentDeliveryItem
+  name: UIX_DSD3_AssignmentDeliveryItem_Uniqueness
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InvoiceRef
+  - AssignmentRef
+  - OrderRef
+  - SaleRequestRef
+- table: AssignmentDeliveryItem
+  name: IX_DSD3_AssignmentDeliveryItem_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: AssignmentDeliveryItem
+  name: IX_DSD3_AssignmentDeliveryItem_VolumeUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VolumeUnitRef
+- table: AssignmentDeliveryItem
+  name: IX_DSD3_AssignmentDeliveryItem_UnexecutedActivityReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnexecutedActivityReasonRef
+- table: AssignmentDeliveryItem
+  name: IX_DSD3_AssignmentDeliveryItem_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+  included:
+  - AssignmentRef
+  - OrderRef
+  - RowNumber
+- table: AssignmentHotSalesItem
+  name: PK_DSD3_AssignmentHotSalesItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentHotSalesItemID
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_AssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentRef
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_VolumeUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VolumeUnitRef
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_PartTrackingFactorRef1
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef1
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_PartTrackingFactorRef2
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef2
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_PartTrackingFactorRef3
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef3
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_PartTrackingFactorRef4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef4
+- table: AssignmentHotSalesItem
+  name: IX_DSD3_AssignmentHotSalesItem_PartTrackingFactorRef5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef5
+- table: AssignmentItemChange
+  name: PK_DSD3_AssignmentItemChange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentItemChangeID
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_AssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentRef
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_PartTrackingFactorRef1
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef1
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_PartTrackingFactorRef2
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef2
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_PartTrackingFactorRef3
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef3
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_PartTrackingFactorRef4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef4
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_PartTrackingFactorRef5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef5
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_FeeBusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FeeBusinessPolicyRef
+  included:
+  - FeeBusinessPolicyConditionRef
+  - FeeBusinessPolicyConditionRowRef
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_FeeBusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FeeBusinessPolicyConditionRef
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_FeeBusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FeeBusinessPolicyConditionRowRef
+- table: AssignmentItemChange
+  name: IX_DSD3_AssignmentItemChange_VehicleRemainingDocumentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VehicleRemainingDocumentItemRef
+- table: AssignmentItemChange
+  name: UIX_DSD3_AssignmentItemChange_VehicleRemainingDocumentItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - VehicleRemainingDocumentItemRef
+- table: AssignmentItemPolicyResult
+  name: PK_DSD3_AssignmentItemPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentItemPolicyResultID
+- table: AssignmentItemPolicyResult
+  name: IX_DSD3_AssignmentItemPolicyResult_AssignmentItemChangeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentItemChangeRef
+- table: AssignmentItemPolicyResult
+  name: IX_DSD3_AssignmentItemPolicyResult_AssignmentPolicyResultRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentPolicyResultRef
+- table: AssignmentItemPolicyResult
+  name: IX_DSD3_AssignmentItemPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: AssignmentItemPolicyResult
+  name: IX_DSD3_AssignmentItemPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: AssignmentItemPolicyResult
+  name: IX_DSD3_AssignmentItemPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: AssignmentPolicyResult
+  name: PK_DSD3_AssignmentPolicyResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentPolicyResultID
+- table: AssignmentPolicyResult
+  name: IX_DSD3_AssignmentPolicyResult_BusinessPolicyConditionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRef
+- table: AssignmentPolicyResult
+  name: IX_DSD3_AssignmentPolicyResult_BusinessPolicyConditionRowRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyConditionRowRef
+- table: AssignmentPolicyResult
+  name: IX_DSD3_AssignmentPolicyResult_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+  included:
+  - BusinessPolicyConditionRef
+  - BusinessPolicyConditionRowRef
+- table: AssignmentPolicyResult
+  name: IX_DSD3_AssignmentPolicyResult_AssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentRef
+- table: AssignmentReturnItem
+  name: PK_DSD3_AssignmentReturnItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignmentReturnItemID
+- table: AssignmentReturnItem
+  name: IX_DSD3_AssignmentReturnItem_AssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentRef
+- table: AssignmentReturnItem
+  name: IX_DSD3_AssignmentReturnItem_ReurnPermitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReturnPermitRef
+- table: AssignmentReturnItem
+  name: UIX_DSD3_AssignmentReturnItem_Uniqueness
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AssignmentRef
+  - ReturnPermitRef
+- table: AssignmentReturnItem
+  name: IX_DSD3_AssignmentReturnItem_WeightUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WeightUnitRef
+- table: AssignmentReturnItem
+  name: IX_DSD3_AssignmentReturnItem_VolumeUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VolumeUnitRef
+- table: AssignmentReturnItem
+  name: IX_DSD3_AssignmentReturnItem_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: AssignmentReturnItem
+  name: IX_DSD3_AssignmentReturnItem_UnexecutedActivityReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnexecutedActivityReasonRef
+- table: BrokerRoute
+  name: PK_BrokerRoute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BrokerRouteID
+- table: BrokerRoute
+  name: IX_DSD3_BrokerRoute_RouteRef_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+  - RouteRef
+- table: BrokerRoute
+  name: IX_DSD3_BrokerRoute_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: BrokerRoute
+  name: IX_DSD3_BrokerRoute_RouteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RouteRef
+- table: CollectionList
+  name: PK_CollectionList
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectionListID
+- table: CollectionList
+  name: IX_DSD3_CollectionList_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: CollectionList
+  name: IX_DSD3_CollectionList_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: CollectionListItem
+  name: PK_CollectionListItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectionListItemID
+- table: CollectionListItem
+  name: IX_DSD3_CollectionListItem_CollectionListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectionListRef
+- table: CollectionListItem
+  name: IX_DSD3_CollectionListItem_InvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoiceRef
+- table: CollectionListItem
+  name: IX_DSD3_CollectionListItem_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: CustomerSurveyData
+  name: PK_DSD3_CustomerSurveyData
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerSurveyDataID
+- table: CustomerSurveyData
+  name: IX_DSD3_CustomerSurveyData_CustomerSurveyStructureFieldSpecRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerSurveyStructureFieldSpecRef
+- table: CustomerSurveyData
+  name: IX_DSD3_CustomerSurveyData_TourItemSurveyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourItemSurveyRef
+- table: CustomerSurveyStructure
+  name: PK_CustomerSurveyStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerSurveyStructureID
+- table: CustomerSurveyStructureBrokerGroup
+  name: PK_CustomerSurveyStructureBrokerGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerSurveyStructureBrokerGroupID
+- table: CustomerSurveyStructureBrokerGroup
+  name: IX_DSD3_CustomerSurveyStructureBrokerGroup_CustomerSurveyStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerSurveyStructureRef
+- table: CustomerSurveyStructureBrokerGroup
+  name: IX_DSD3_CustomerSurveyStructureBrokerGroup_BrokerGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerGroupRef
+- table: CustomerSurveyStructureEntity
+  name: PK_CustomerSurveyStructureEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerSurveyStructureEntityID
+- table: CustomerSurveyStructureFieldSpec
+  name: PK_CustomerSurveyStructureFieldSpec
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerSurveyStructureFieldSpecID
+- table: CustomerSurveyStructureSalesOffice
+  name: PK_CustomerSurveyStructureSalesOffice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerSurveyStructureSalesOfficeID
+- table: CustomerSurveyStructureSalesOffice
+  name: IX_DSD3_CustomerSurveyStructureSalesOffice_CustomerSurveyStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerSurveyStructureRef
+- table: CustomerSurveyStructureSalesOffice
+  name: IX_DSD3_CustomerSurveyStructureSalesOffice_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: CustomerSurveyStructureTourActivity
+  name: PK_CustomerSurveyStructureTourActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerSurveyStructureTourActivityID
+- table: CustomerUnavailabilityInfo
+  name: PK_DSD3_CustomerUnavailabilityInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CustomerUnavailabilityInfoId
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_ActivityType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ActivityType
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_Friday
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Friday
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_Monday
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Monday
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_Saturday
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Saturday
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_Sunday
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Sunday
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_Thursday
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Thursday
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_Tuesday
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Tuesday
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_Wednesday
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Wednesday
+- table: CustomerUnavailabilityInfo
+  name: IX_DSD3_CustomerUnavailabilityInfo_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: DistributerReceivableNote
+  name: PK_DSD3_DistributerReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DistributerReceivableNoteID
+- table: DistributerReceivableNote
+  name: IX_DSD3_DistributerReceivableNote_DistributerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DistributerRef
+- table: DistributerReceivableNote
+  name: IX_DSD3_DistributerReceivableNote_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: DistributerReceivableNote
+  name: IX_DSD3_DistributerReceivableNote_BrokerReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerReceivableNoteRef
+- table: DistributionShift
+  name: PK_DSD3_DistributionShift
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DistributionShiftID
+- table: DistributionShift
+  name: UIX_DSD3_DistributionShift_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DistributionShiftTransportationVehicle
+  name: PK_DSD3_DistributionShiftTransportationVehicle
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DistributionShiftTransportationVehicleID
+- table: DistributionShiftTransportationVehicleBroker
+  name: PK_DSD3_DistributionShiftTransportationVehicleBroker
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DistributionShiftTransportationVehicleBrokerID
+- table: HandheldBrokerApplyBusinessPolicyAccess
+  name: PK_HandheldBrokerApplyBusinessPolicyAccess
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldBrokerApplyBusinessPolicyAccessID
+- table: HandheldBrokerApplyBusinessPolicyAccess
+  name: IX_DSD3_HandheldBrokerApplyBusinessPolicyAccess_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: HandheldBrokerApplyBusinessPolicyAccess
+  name: IX_DSD3_HandheldBrokerApplyBusinessPolicyAccess_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: HandheldBrokerChangeNonDefinitiveBusinessPolicyAccess
+  name: PK_HandheldBrokerChangeNonDefinitiveBusinessPolicyAccess
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldBrokerChangeNonDefinitiveBusinessPolicyAccessID
+- table: HandheldBrokerChangeNonDefinitiveBusinessPolicyAccess
+  name: IX_DSD3_HandheldBrokerChangeNonDefinitiveBusinessPolicyAccess_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: HandheldBrokerChangeNonDefinitiveBusinessPolicyAccess
+  name: IX_DSD3_HandheldBrokerChangeNonDefinitiveBusinessPolicyAccess_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: HandheldBrokerPriceListAccess
+  name: PK_HandheldBrokerPriceListAccess
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldBrokerPriceListAccessID
+- table: HandheldBrokerPriceListAccess
+  name: IX_DSD3_HandheldBrokerPriceListAccess_PriceListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceListRef
+- table: HandheldBrokerPriceListAccess
+  name: IX_DSD3_HandheldBrokerPriceListAccess_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: HandheldClearDataLog
+  name: PK_DSD3_HandheldClearDataLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldClearDataLogID
+- table: HandheldClearDataLog
+  name: IX_DSD3_HandheldClearDataLog_HandheldDeviceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HandheldDeviceRef
+- table: HandheldExcludedPriceList
+  name: PK_HandheldExcludedPriceList
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldExcludedPriceListID
+- table: HandheldExcludedPriceList
+  name: IX_DSD3_HandheldExcludedPriceList_PriceListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PriceListRef
+- table: HandheldLocationTrackingInfo
+  name: PK_HandheldLocationTrackingInfoID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldLocationTrackingInfoID
+- table: HandheldLocationTrackingInfo
+  name: IX_DSD3_HandheldLocationTrackingInfo_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: HandheldLocationTrackingInfo
+  name: IX_DSD3_HandheldLocationTrackingInfo_HandheldDeviceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HandheldDeviceRef
+- table: HandheldLocationTrackingInfo
+  name: IX_DSD3_HandheldLocationTrackingInfo_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: HandheldMessage
+  name: PK_DSD3_HandheldMessage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldMessageID
+- table: HandheldMessageAttachment
+  name: PK_DSD3.HandheldMessageAttachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldMessageAttachmentID
+- table: HandheldMessageAttachment
+  name: IX_DSD3_HandheldMessageAttachment_HandheldMessageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HandheldMessageRef
+- table: HandheldMessageBroker
+  name: PK_HandheldMessageBroker
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldMessageBrokerID
+- table: HandheldMessageBroker
+  name: IX_DSD3_HandheldMessageBroker_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: HandheldMessageBroker
+  name: IX_DSD3_HandheldMessageBroker_HandheldMessageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HandheldMessageRef
+- table: HandheldOperationsAcknowledge
+  name: PK_HandheldOperationsAcknowledgeID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldOperationsAcknowledgeID
+- table: HandheldOperationsAcknowledge
+  name: IX_DSD3_HandheldOperationsAcknowledge_GUID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - GUID
+- table: HandheldProductDefaultUnit
+  name: PK_DSD3_HandheldProductDefaultUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldProductDefaultUnitID
+- table: HandheldProductDefaultUnit
+  name: IX_DSD3_HandheldProductDefaultUnit_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: HandheldProductDefaultUnit
+  name: IX_DSD3_HandheldProductDefaultUnit_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: HandheldProductDefaultUnit
+  name: IX_DSD3_HandheldProductDefaultUnit_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: HandheldProductDefaultUnit
+  name: UIX_DSD3_HandheldProductDefaultUnit_ProductRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ProductRef
+- table: HandheldReport
+  name: PK_HandheldReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldReportID
+- table: HandheldReportParameter
+  name: PK_HandheldReportParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldReportParameterID
+- table: HandheldReportParameter
+  name: IX_DSD3_HandheldReportParameter_HandheldReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HandheldReportRef
+- table: HandheldReturnPermit
+  name: PK_HandheldReturnPermitID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldReturnPermitID
+- table: HandheldReturnPermit
+  name: IX_DSD3_HandheldReturnPermit_ReturnPermitRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReturnPermitRef
+- table: HandheldReturnPermit
+  name: IX_DSD3_HandheldReturnPermit_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: HandheldReturnPermit
+  name: IX_DSD3_HandheldReturnPermit_GUID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - GUID
+- table: HandheldSaleRequest
+  name: PK_HandheldSaleRequestID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - HandheldSaleRequestID
+- table: HandheldSaleRequest
+  name: IX_DSD3_HandheldSaleRequest_SaleRequestRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SaleRequestRef
+- table: HandheldSaleRequest
+  name: IX_DSD3_HandheldSaleRequest_GUID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - GUID
+- table: Invoice
+  name: PK_DSD3_Invoice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InvoiceID
+- table: Invoice
+  name: IX_DSD3_Invoice_SalesInvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesInvoiceRef
+  included:
+  - Type
+  - TourRef
+- table: Invoice
+  name: IX_DSD3_Invoice_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: Invoice
+  name: IX_DSD3_Invoice_GUID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GUID
+  included:
+  - SalesInvoiceRef
+- table: Invoice
+  name: IX_DSD3_Invoice_OrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderRef
+- table: Invoice
+  name: IX_DSD3_Invoice_SaleRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SaleRequestRef
+- table: Invoice
+  name: IX_DSD3_Invoice_Type
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Type
+- table: Invoice
+  name: UIX_DSD3_Invoice_GUID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - GUID
+- table: PaymentServiceProviderCompanyBarcodeTemplate
+  name: PK_DSD3_PaymentServiceProviderCompanyBarcodeTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentServiceProviderCompanyBarcodeTemplateID
+- table: PaymentServiceProviderCompanyBarcodeTemplate
+  name: IX_DSD3_PaymentServiceProviderCompanyBarcodeTemplate_PaymentServiceProviderCompanyID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentServiceProviderCompanyRef
+- table: PaymentServiceProviderCompanyBarcodeTemplatePart
+  name: PK_DSD3_PaymentServiceProviderCompanyBarcodeTemplatePart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentServiceProviderCompanyBarcodeTemplatePartID
+- table: PaymentServiceProviderCompanyBarcodeTemplatePart
+  name: IX_DSD3_PaymentServiceProviderCompanyBarcodeTemplatePart_PaymentServiceProviderCompanyBarcodeTemplateID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentServiceProviderCompanyBarcodeTemplateRef
+- table: ProductConflictAcceptanceTolerance
+  name: PK_ProductConflictAcceptanceTolerance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductConflictAcceptanceToleranceID
+- table: ProductConflictAcceptanceTolerance
+  name: UC_DSD3_ProductConflictAcceptanceTolerance_ProductRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ProductRef
+- table: ProductPriority
+  name: PK_DSD3_ProductPriority
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductPriorityID
+- table: ProductPriority
+  name: UIX_DSD3_ProductPriority_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ProductPriorityItem
+  name: PK_DSD3_ProductPriorityItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductPriorityItemID
+- table: ProductUnitTolerance
+  name: DSD3_PK_ProductUnitTolerance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductUnitToleranceID
+- table: ProductUnitTolerance
+  name: IX_DSD3_ProductUnitTolerance_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: ProductUnitTolerance
+  name: IX_DSD3_ProductUnitTolerance_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: ReturnInvoice
+  name: PK_DSD3_ReturnInvoice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReturnInvoiceID
+- table: ReturnInvoice
+  name: IX_DSD3_ReturnInvoice_SalesReturnInvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesReturnInvoiceRef
+- table: ReturnInvoice
+  name: IX_DSD3_ReturnInvoice_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: ReturnInvoice
+  name: IX_DSD3_ReturnInvoice_ReturnPermitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReturnPermitRef
+- table: ReturnInvoice
+  name: IX_DSD3_ReturnInvoice_GUID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GUID
+- table: Route
+  name: PK_DSD3_Route
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RouteID
+- table: Route
+  name: IX_DSD3_Route_CarrierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CarrierRef
+- table: Route
+  name: IX_DSD3_Route_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: Route
+  name: UC_DSD3_Route_SalesOfficeRef_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+  - Number
+- table: Route
+  name: UC_DSD3_Route_SalesOfficeRef_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+  - Title
+- table: Route
+  name: IX_DSD3_Route_TransportationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationUnitRef
+- table: RouteStep
+  name: PK_DSD3_RouteStep
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RouteStepId
+- table: RouteStep
+  name: IX_DSD3_RouteStep_CustomerAddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerAddressRef
+- table: RouteStep
+  name: IX_DSD3_RouteStep_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: RouteStep
+  name: IX_DSD3_RouteStep_RouteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RouteRef
+  included:
+  - CustomerRef
+- table: RouteStep
+  name: IX_DSD3_RouteStep_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: RouteStep
+  name: UC_DSD3_RouteStep_RouteRef_CustomerAddressRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - RouteRef
+  - CustomerAddressRef
+- table: SaleRequestTour
+  name: PK_SaleRequestTour
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SaleRequestTourID
+- table: SaleRequestTour
+  name: IX_DSD3_SaleRequestTour_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+  included:
+  - SaleRequestRef
+- table: SaleRequestTour
+  name: IX_DSD3_SaleRequestTour_SaleRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SaleRequestRef
+  included:
+  - TourRef
+  - Version
+- table: SalesEmployeeDSDExtraInfo
+  name: PK_SalesEmployeeDSDExtraInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesEmployeeDSDExtraInfoID
+- table: SalesEmployeeDSDExtraInfo
+  name: IX_SalesEmployeeDSDExtraInfo_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+  included:
+  - CannotRegisterSaleRequestsWithoutTourInfo
+  - MaxUnPlannedSalesRequestPerTour
+- table: SalesEmployeeDSDExtraInfoBroker
+  name: PK_SalesEmployeeDSDExtraInfoBroker
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesEmployeeDSDExtraInfoBrokerID
+- table: SalesEmployeeDSDExtraInfoBroker
+  name: IX_DSD3_SalesEmployeeDSDExtraInfoBroker_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: SalesEmployeeDSDExtraInfoBroker
+  name: IX_DSD3_SalesEmployeeDSDExtraInfoBroker_SalesGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesGroupRef
+- table: SalesGroupRoute
+  name: PK_SalesGroupRoute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesGroupRouteID
+- table: SalesGroupRoute
+  name: IX_DSD3_SalesGroupRoute_SalesGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesGroupRef
+- table: SalesGroupRoute
+  name: IX_DSD3_SalesGroupRoute_RouteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RouteRef
+- table: SalesOfficeAutoTourGeneration
+  name: PK_DSD3_SalesOfficeAutoTourGeneration_SalesOfficeAutoTourGenerationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesOfficeAutoTourGenerationID
+- table: SalesOfficeAutoTourGeneration
+  name: IDX_DSD3_SalesOfficeAutoTourGeneration_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: SalesOfficeNoneWorkingDay
+  name: PK_SalesOfficeNoneWorkingDay_SalesOfficeNoneWorkingDayID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesOfficeNoneWorkingDayID
+- table: SmartOrderSuggestion
+  name: PK_DSD3_SmartOrderSuggestion
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SmartOrderSuggestionID
+- table: SmartOrderSuggestion
+  name: IX_DSD3_SmartOrderSuggestion_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: SmartOrderSuggestion
+  name: IX_DSD3_SmartOrderSuggestion_CustomerRef_EffectiveDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+  - EffectiveDate
+- table: SmartOrderSuggestionItem
+  name: PK_DSD3_SmartOrderSuggestionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SmartOrderSuggestionItemID
+- table: SmartOrderSuggestionItem
+  name: IX_DSD3_SmartOrderSuggestionItem_SmartOrderSuggestionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SmartOrderSuggestionRef
+- table: SmartOrderSuggestionItem
+  name: IX_DSD3_SmartOrderSuggestionItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: SmartOrderSuggestionItem
+  name: IX_DSD3_SmartOrderSuggestionItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: Tour
+  name: PK_Tour
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourID
+- table: Tour
+  name: IX_DSD3_Tour_BrokerRef_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+  - SalesOfficeRef
+  included:
+  - StartDate
+  - EndDate
+- table: Tour
+  name: IX_DSD3_Tour_SalesOfficeRef_BrokerRef_State_TourID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+  - BrokerRef
+  - State
+  - TourID
+  included:
+  - StartDate
+  - EndDate
+- table: Tour
+  name: IX_DSD3_Tour_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: Tour
+  name: IX_DSD3_Tour_BrokerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BrokerRef
+- table: Tour
+  name: IX_DSD3_Tour_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Tour
+  name: IX_DSD3_Tour_Number_SalesOfficeRef_TourID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+  - SalesOfficeRef
+  - TourID
+- table: TourAssignmentItem
+  name: PK_TourAssignmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourAssignmentItemID
+- table: TourAssignmentItem
+  name: IX_DSD3_TourAssignmentItem_AssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AssignmentRef
+  included:
+  - TourRef
+- table: TourAssignmentItem
+  name: IX_DSD3_TourAssignmentItem_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+  included:
+  - AssignmentRef
+  - Version
+- table: TourClosingLogInfo
+  name: PK_TourClosingLogInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourClosingLogInfoID
+- table: TourClosingLogInfo
+  name: IX_DSD3_TourClosingLogInfo_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: TourClosingLogInfo
+  name: IX_DSD3_TourClosingLogInfo_EntityCode_EntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityCode
+  - EntityRef
+  included:
+  - State
+- table: TourCollectionListItem
+  name: PK_TourCollectionListItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourCollectionListItemID
+- table: TourCollectionListItem
+  name: IX_DSD3_TourCollectionListItem_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: TourCollectionListItem
+  name: IX_DSD3_TourCollectionListItem_CollectionListRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectionListRef
+- table: TourInventoryVoucher
+  name: PK_TourInventoryVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourInventoryVoucherID
+- table: TourInventoryVoucher
+  name: IX_DSD3_TourInventoryVoucher_TourRef_InventoryVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherRef
+  - TourRef
+- table: TourInventoryVoucher
+  name: IX_DSD3_TourInventoryVoucher_InventoryVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherRef
+- table: TourInventoryVoucher
+  name: IX_DSD3_TourInventoryVoucher_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: TourItem
+  name: PK_TourItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourItemID
+- table: TourItem
+  name: IX_DSD3_TourItem_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: TourItem
+  name: DSD3_TourItem_TourRef_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+  - CustomerRef
+  included:
+  - RowNumber
+  - CustomerAddressRef
+  - HasDistribution
+  - HasReturn
+  - HasCollection
+  - HasHotSales
+  - HasOrderTaking
+  - IsOrderTakingNonscheduled
+  - IsHotSalesNonscheduled
+  - IsCollectionNonscheduled
+  - IsReturnNonscheduled
+  - Version
+- table: TourItem
+  name: IX_DSD3_TourItem_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: TourItem
+  name: IX_DSD3_TourItem_CustomerAddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerAddressRef
+- table: TourItem
+  name: IX_DSD3_TourItem_TourRef_CustomerRef_HasCollection
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+  - CustomerRef
+  - HasCollection
+- table: TourItemSurvey
+  name: PK_DSD3_TourItemSurvey
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourItemSurveyID
+- table: TourItemSurvey
+  name: IX_DSD3_TourItemSurvey_TourItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourItemRef
+- table: TourItemSurvey
+  name: IX_DSD3_TourItemSurvey_CustomerSurveyStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerSurveyStructureRef
+- table: TourItemUnexecutedActivityReason
+  name: PK_TourItemUnexecutedActivityReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourItemUnexecutedActivityReasonID
+- table: TourItemUnexecutedActivityReason
+  name: IX_DSD3_TourItemUnexecutedActivityReason_UnexecutedHotSalesReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnexecutedHotSalesReasonRef
+- table: TourItemUnexecutedActivityReason
+  name: IX_DSD3_TourItemUnexecutedActivityReason_UnexecutedOrderTakingReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnexecutedOrderTakingReasonRef
+- table: TourItemUnexecutedActivityReason
+  name: IX_DSD3_TourItemUnexecutedActivityReason_TourItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourItemRef
+  included:
+  - UnexecutedHotSalesReasonRef
+  - UnexecutedOrderTakingReasonRef
+  - Version
+- table: TourPayment
+  name: PK_TourPayment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourPaymentID
+- table: TourPayment
+  name: IX_DSD3_TourPayment_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: TourPayment
+  name: IX_DSD3_TourPayment_PaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentRef
+- table: TourProductConflict
+  name: PK_TourProductConflict
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourProductConflictID
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_MajorUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MajorUnitRef
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_PartTrackingFactorRef1
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef1
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_PartTrackingFactorRef2
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef2
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_PartTrackingFactorRef3
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef3
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_PartTrackingFactorRef4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef4
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_PartTrackingFactorRef5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartTrackingFactorRef5
+- table: TourProductConflict
+  name: IX_DSD3_TourProductConflict_CounterpartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterpartRef
+- table: TourProductConflictItem
+  name: PK_TourProductConflictItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourProductConflictItemID
+- table: TourProductConflictItem
+  name: IX_DSD3_TourProductConflictItem_TourProductConflictRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourProductConflictRef
+- table: TourProductConflictItem
+  name: IX_DSD3_TourProductConflictItem_MajorUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MajorUnitRef
+- table: TourProductConflictItem
+  name: IX_DSD3_TourProductConflictItem_EntityName_EntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComponentName
+  - EntityName
+  - EntityRef
+- table: TourReceipt
+  name: PK_TourReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourReceiptID
+- table: TourReceipt
+  name: IX_DSD3_TourReceipt_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+  included:
+  - ReceiptRef
+- table: TourReceipt
+  name: IX_DSD3_TourReceipt_ReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptRef
+  included:
+  - TourRef
+- table: TourReceiptMoneyInfo
+  name: PK_TourReceiptMoneyInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourReceiptMoneyInfoID
+- table: TourReceiptMoneyInfo
+  name: IX_DSD3_TourReceiptMoneyInfo_InvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InvoiceRef
+- table: TourReceiptMoneyInfo
+  name: IX_DSD3_TourReceiptMoneyInfo_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: TourReceiptMoneyInfo
+  name: IX_DSD3_TourReceiptMoneyInfo_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+  included:
+  - InvoiceRef
+  - IsOutOfTour
+- table: TourReceiptMoneyInfo
+  name: IX_DSD3_TourReceiptMoneyInfo_ReceiptReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptReceivableNoteRef
+- table: TourReceiptMoneyInfo
+  name: IX_DSD3_TourReceiptMoneyInfo_ReceiptDepositRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptDepositRef
+- table: TourReceiptMoneyInfo
+  name: IX_DSD3_TourReceiptMoneyInfo_PayerPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayerPartyRef
+- table: TourReceiptMoneyInfo
+  name: IX_DSD3_TourReceiptMoneyInfo_ReceivedChequeBankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivedChequeBankRef
+- table: TourReceiptMoneyInfo
+  name: IX_DSD3_TourReceiptMoneyInfo_UnexecutedActivityReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnexecutedActivityReasonRef
+- table: TourRemainedContainerInfo
+  name: PK_TourRemainedContainerInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourRemainedContainerInfoID
+- table: TourRemainedContainerInfo
+  name: IX_DSD3_TourRemainedContainerInfo_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: TourRemainedContainerInfo
+  name: IX_DSD3_TourRemainedContainerInfo_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: TourRemainedContainerInfo
+  name: IX_DSD3_TourRemainedContainerInfo_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: TourRemainedProductInfo
+  name: PK_TourRemainedProductInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourRemainedProductInfoID
+- table: TourRemainedProductInfo
+  name: IX_DSD3_TourRemainedProductInfo_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: TourRemainedProductInfo
+  name: IX_DSD3_TourRemainedProductInfo_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: TourRemainedProductInfo
+  name: IX_DSD3_TourRemainedProductInfo_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: TourRemainedProductInfo
+  name: IX_DSD3_TourRemainedProductInfo_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: TourReturnInvoiceSettlement
+  name: PK_TourReturnInvoiceSettlement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TourReturnInvoiceSettlementID
+- table: TourReturnInvoiceSettlement
+  name: IX_DSD3_TourReturnInvoiceSettlement_ReturnInvoiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReturnInvoiceRef
+- table: TourReturnInvoiceSettlement
+  name: IX_DSD3_TourReturnInvoiceSettlement_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: UnexecutedActivityReason
+  name: PK_DSD3_UnexecutedActivityReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UnexecutedActivityReasonID
+- table: UnsuccessfulInventoryVoucherItem
+  name: PK_DSD3_UnsuccessfulInventoryVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UnsuccessfulInventoryVoucherItemID
+- table: UnsuccessfulInventoryVoucherItem
+  name: IX_DSD3_UnsuccessfulInventoryVoucherItem_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+- table: UnsuccessfulInventoryVoucherItem
+  name: IX_DSD3_UnsuccessfulInventoryVoucherItem_RationableStockRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RationableStockRef
+- table: VehicleRemainingDocument
+  name: PK_DSD3_VehicleRemainingDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VehicleRemainingDocumentID
+- table: VehicleRemainingDocument
+  name: IX_DSD3_VehicleRemainingDocument_TourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TourRef
+- table: VehicleRemainingDocument
+  name: IX_DSD3_VehicleRemainingDocument_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: VehicleRemainingDocument
+  name: IX_DSD3_VehicleRemainingDocument_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: VehicleRemainingDocument
+  name: IX_DSD3_VehicleRemainingDocument_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: VehicleRemainingDocumentEmptiesItem
+  name: PK_DSD3_VehicleRemainingDocumentEmptiesItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VehicleRemainingDocumentEmptiesItemID
+- table: VehicleRemainingDocumentEmptiesItem
+  name: IX_DSD3_VehicleRemainingDocumentEmptiesItem_VehicleRemainingDocumentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VehicleRemainingDocumentRef
+- table: VehicleRemainingDocumentEmptiesItem
+  name: IX_DSD3_VehicleRemainingDocumentEmptiesItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: VehicleRemainingDocumentEmptiesItem
+  name: IX_DSD3_VehicleRemainingDocumentEmptiesItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: VehicleRemainingDocumentEmptiesItemReduction
+  name: PK_DSD3_VehicleRemainingDocumentEmptiesItemReduction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VehicleRemainingDocumentEmptiesItemReductionID
+- table: VehicleRemainingDocumentEmptiesItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentEmptiesItemReduction_VehicleRemainingDocumentEmptiesItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VehicleRemainingDocumentEmptiesItemRef
+- table: VehicleRemainingDocumentEmptiesItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentEmptiesItemReduction_ReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReasonRef
+- table: VehicleRemainingDocumentEmptiesItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentEmptiesItemReduction_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: VehicleRemainingDocumentEmptiesItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentEmptiesItemReduction_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: VehicleRemainingDocumentItem
+  name: PK_DSD3_VehicleRemainingDocumentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VehicleRemainingDocumentItemID
+- table: VehicleRemainingDocumentItem
+  name: IX_DSD3_VehicleRemainingDocumentItem_BatchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BatchRef
+- table: VehicleRemainingDocumentItem
+  name: IX_DSD3_VehicleRemainingDocumentItem_VehicleRemainingDocumentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VehicleRemainingDocumentRef
+- table: VehicleRemainingDocumentItem
+  name: IX_DSD3_VehicleRemainingDocumentItem_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: VehicleRemainingDocumentItem
+  name: IX_DSD3_VehicleRemainingDocumentItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: VehicleRemainingDocumentItemReduction
+  name: PK_DSD3_VehicleRemainingDocumentItemReduction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VehicleRemainingDocumentItemReductionID
+- table: VehicleRemainingDocumentItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentItemReduction_VehicleRemainingDocumentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VehicleRemainingDocumentItemRef
+- table: VehicleRemainingDocumentItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentItemReduction_ReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReasonRef
+- table: VehicleRemainingDocumentItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentItem_ProductUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductUnitRef
+- table: VehicleRemainingDocumentItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentItem_TransportationVehicleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransportationVehicleRef
+- table: VehicleRemainingDocumentItemReduction
+  name: IX_DSD3_VehicleRemainingDocumentItem_InventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryRef
+- table: VisitPattern
+  name: PK_DSD3_VisitPattern_VisitPatternID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitPatternID
+- table: VisitPattern
+  name: IDX_DSD3_VisitPattern_SalesOfficeRef_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+  - Title
+- table: VisitPatternDate
+  name: PK_DSD3_VisitPatternDate_VisitPatternDateID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitPatternDateID
+- table: VisitPatternDate
+  name: IDX_DSD3_VisitPatternDate_VisitPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitPatternRef
+- table: VisitPatternItem
+  name: PK_DSD3_VisitPatternItem_VisitPatternItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitPatternItemID
+- table: VisitPatternItem
+  name: IDX_DSD3_VisitPatternItem_VisitPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitPatternRef
+- table: VisitPlan
+  name: PK_VisitPlan
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitPlanID
+- table: VisitPlan
+  name: UC_DSD3_VisitPlan_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - SalesOfficeRef
+- table: VisitPlan
+  name: IX_DSD3_VisitPlan_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: VisitPlanCustomer
+  name: PK_DSD3_VisitPlanCustomer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitPlanCustomerID
+- table: VisitPlanCustomer
+  name: IX_DSD3_VisitPlanCustomer_VisitPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitPlanRef
+- table: VisitPlanCustomer
+  name: IX_DSD3_VisitPlanCustomer_CustomerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerRef
+- table: VisitPlanCustomer
+  name: IX_DSD3_VisitPlanCustomer_CustomerAddressRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CustomerAddressRef
+- table: VisitPlanDay
+  name: PK_DSD3_VisitPlanDay
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitPlanDayID
+- table: VisitPlanDay
+  name: IX_DSD3_VisitPlanDay_VisitPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitPlanRef
+- table: VisitPlanRoute
+  name: PK_VisitPlanRoute
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitPlanRouteID
+- table: VisitPlanRoute
+  name: IX_DSD3_VisitPlanRoute_VisitPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitPlanRef
+- table: VisitPlanRoute
+  name: IX_DSD3_VisitPlanRoute_RouteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RouteRef
+- table: VisitPlanSalesTerritory
+  name: PK_VisitPlanSalesTerritory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitPlanSalesTerritoryID
+- table: VisitPlanSalesTerritory
+  name: IX_DSD3_VisitPlanSalesTerritory_VisitPlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitPlanRef
+- table: VisitPlanSalesTerritory
+  name: IX_DSD3_VisitPlanSalesTerritory_SalesTerritoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesTerritoryRef
+- table: VisitSchedule
+  name: PK_DSD3_VisitSchedule_VisitScheduleID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitScheduleID
+- table: VisitSchedule
+  name: IDX_DSD3_VisitSchedule_SalesOfficeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SalesOfficeRef
+- table: VisitScheduleDate
+  name: PK_VisitScheduleDate_VisitScheduleDateID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitScheduleDateID
+- table: VisitScheduleDate
+  name: IDX_DSD3_VisitScheduleDate_VisitScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitScheduleRef
+- table: VisitScheduleItem
+  name: PK_DSD3_VisitScheduleItem_VisitScheduleItemID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VisitScheduleItemID
+- table: VisitScheduleItem
+  name: IDX_DSD3_VisitScheduleItem_VisitScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VisitScheduleRef
+- table: VisitScheduleItem
+  name: IX_DSD3_VisitScheduleItem_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Date

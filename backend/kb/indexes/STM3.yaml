@@ -1,0 +1,1186 @@
+schema: STM3
+source: extracted
+indexes:
+- table: Complex
+  name: PK_STM3_Complex
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ComplexID
+- table: Complex
+  name: UIX_STM3_Complex_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Complex
+  name: IX_STM3_Complex_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Feed
+  name: PK_STM3_Feed
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FeedID
+- table: Feed
+  name: UIX_STM3_Feed_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Feed
+  name: IX_STM3_Feed_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: Feed
+  name: IX_STM3_Feed_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: FeedProductionUnit
+  name: PK_STM3_FeedProductionUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FeedProductionUnitID
+- table: FeedProductionUnit
+  name: IX_STM3_FeedProductionUnit_FeedRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FeedRef
+- table: FeedProductionUnit
+  name: IX_STM3_FeedProductionUnit_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: FeedProductionUnit
+  name: IX_STM3_FeedProductionUnit_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: FeedProductionUnit
+  name: IX_STM3_FeedProductionUnit_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: FeedSenderSource
+  name: PK_STM3_FeedSenderSource
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FeedSenderSourceID
+- table: FeedSenderSource
+  name: IX_STM3_FeedSenderSource_FeedRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FeedRef
+- table: FeedSenderSource
+  name: IX_STM3_FeedSenderSource_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: FeedSenderSource
+  name: IX_STM3_FeedSenderSource_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: FeedSenderSource
+  name: IX_STM3_FeedSenderSource_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: FeedSenderSource
+  name: IX_STM3_FeedSenderSource_SourceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceRef
+- table: FeedStoreConfig
+  name: PK_STM3_FeedStoreConfig
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FeedStoreConfigID
+- table: FeedStoreConfig
+  name: IX_STM3_FeedStoreConfig_FeedRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FeedRef
+- table: FeedStoreConfig
+  name: IX_STM3_FeedStoreConfig_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: FeedStoreConfig
+  name: IX_STM3_FeedStoreConfig_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: FeedStoreConfig
+  name: IX_STM3_FeedStoreConfig_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: FlowMeter
+  name: PK_STM3_FlowMeter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FlowMeterID
+- table: FlowMeter
+  name: IX_STM3_FlowMeter_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: FlowMeter
+  name: IX_STM3_FlowMeter_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: FlowMeter
+  name: IX_STM3_FlowMeter_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: FlowMeter
+  name: IX_STM3_FlowMeter_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: FlowMeter
+  name: IX_STM3_FlowMeter_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: FlowMeterAssignmentItem
+  name: PK_STM3_FlowMeterAssignmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FlowMeterAssignmentItemID
+- table: FlowMeterAssignmentItem
+  name: IX_STM3_FlowMeterAssignmentItem_FlowMeterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FlowMeterRef
+- table: FlowMeterCorrectiveFactor
+  name: PK_STM3_FlowMeterCorrectiveFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FlowMeterCorrectiveFactorID
+- table: FlowMeterCorrectiveFactor
+  name: IX_STM3_FlowMeterCorrectiveFactor_FlowMeterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FlowMeterRef
+- table: FlowMeterCorrectiveFactor
+  name: IX_STM3_FlowMeterCorrectiveFactor_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: FormulaFactor
+  name: PK_STM3_FormulaFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FormulaFactorID
+- table: FormulaFactor
+  name: UIX_STM3_FormulaFactor_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: FormulaFactor
+  name: IX_STM3_FormulaFactor_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: FormulaFactorProperty
+  name: PK_STM3_FormulaFactorProperty
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FormulaFactorPropertyID
+- table: FormulaFactorProperty
+  name: IX_STM3_FormulaFactorProperty_FormulaRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FormulaRef
+- table: FormulaFactorProperty
+  name: IX_STM3_FormulaFactorProperty_FormulaFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FormulaFactorRef
+- table: FormulaFactorPropertyExtra
+  name: PK_STM3_FormulaFactorPropertyExtra
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FormulaFactorPropertyExtraID
+- table: FormulaFactorPropertyExtra
+  name: IX_STM3_FormulaFactorPropertyExtra_FormulaFactorPropertyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FormulaFactorPropertyRef
+- table: MovementRecording
+  name: PK_STM3_MovementRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingID
+- table: MovementRecording
+  name: IX_STM3_MovementRecording_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: MovementRecording
+  name: IX_STM3_MovementRecording_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: MovementRecording
+  name: IX_STM3_MovementRecording_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: MovementRecording
+  name: IX_STM3_MovementRecording_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: MovementRecordingComplementaryInformation
+  name: PK_STM3_MovementRecordingComplementaryInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingComplementaryInformationID
+- table: MovementRecordingComplementaryInformation
+  name: IX_STM3_MovementRecordingComplementaryInformation_MovementRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingRef
+- table: MovementRecordingComplementaryInformation
+  name: IX_STM3_MovementRecordingComplementaryInformation_ProductionUnitComplementaryInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitComplementaryInformationRef
+- table: MovementRecordingComplementaryInformation
+  name: IX_STM3_MovementRecordingComplementaryInformation_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: MovementRecordingComplementaryInformationItem
+  name: PK_STM3_MovementRecordingComplementaryInformationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingComplementaryInformationItemID
+- table: MovementRecordingComplementaryInformationItem
+  name: IX_STM3_MovementRecordingComplementaryInformationItem_MovementRecordingComplementaryInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingComplementaryInformationRef
+- table: MovementRecordingComplementaryInformationItem
+  name: IX_STM3_MovementRecordingComplementaryInformationItem_ProductionUnitComplementaryInformationItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitComplementaryInformationItemRef
+- table: MovementRecordingExtraFormulaDynamicFactor
+  name: PK_STM3_MovementRecordingExtraFormulaDynamicFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingExtraFormulaDynamicFactorID
+- table: MovementRecordingExtraFormulaDynamicFactor
+  name: IX_STM3_MovementRecordingExtraFormulaDynamicFactor_MovementRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingRef
+- table: MovementRecordingExtraFormulaDynamicFactor
+  name: IX_STM3_MovementRecordingExtraFormulaDynamicFactor_FormulaFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FormulaFactorRef
+- table: MovementRecordingExtraFormulaInputParameter
+  name: PK_STM3_MovementRecordingExtraFormulaInputParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingExtraFormulaInputParameterID
+- table: MovementRecordingExtraFormulaInputParameter
+  name: IX_STM3_MovementRecordingExtraFormulaInputParameter_MovementRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingRef
+- table: MovementRecordingExtraFormulaInputParameter
+  name: IX_STM3_MovementRecordingExtraFormulaInputParameter_FormulaFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FormulaFactorRef
+- table: MovementRecordingFlowMeterReading
+  name: PK_STM3_MovementRecordingFlowMeterReading
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingFlowMeterReadingID
+- table: MovementRecordingFlowMeterReading
+  name: IX_STM3_MovementRecordingFlowMeterReading_MovementRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingRef
+- table: MovementRecordingFlowMeterReading
+  name: IX_STM3_MovementRecordingFlowMeterReading_FlowMeterAssignmentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FlowMeterAssignmentItemRef
+- table: MovementRecordingFlowMeterReading
+  name: IX_STM3_MovementRecordingFlowMeterReading_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: MovementRecordingReceiptRecording
+  name: PK_STM3_MovementRecordingReceiptRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingReceiptRecordingID
+- table: MovementRecordingReceiptRecording
+  name: IX_STM3_MovementRecordingReceiptRecording_MovementRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingRef
+- table: MovementRecordingReceiptRecording
+  name: IX_STM3_MovementRecordingReceiptRecording_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: MovementRecordingSendRecording
+  name: PK_STM3_MovementRecordingSendRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingSendRecordingID
+- table: MovementRecordingSendRecording
+  name: IX_STM3_MovementRecordingSendRecording_MovementRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingRef
+- table: MovementRecordingSendRecording
+  name: IX_STM3_MovementRecordingSendRecording_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: MovementRecordingTankReading
+  name: PK_STM3_MovementRecordingTankReading
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MovementRecordingTankReadingID
+- table: MovementRecordingTankReading
+  name: IX_STM3_MovementRecordingTankReading_MovementRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingRef
+- table: MovementRecordingTankReading
+  name: IX_STM3_MovementRecordingTankReading_TankAssignmentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TankAssignmentItemRef
+- table: MovementRecordingTankReading
+  name: IX_STM3_MovementRecordingTankReading_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: MovementRecordingTankReading
+  name: IX_STM3_MovementRecordingTankReading_TankStrappingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TankStrappingRef
+- table: Product
+  name: PK_STM3_Product
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductID
+- table: Product
+  name: UIX_STM3_Product_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Product
+  name: IX_STM3_Product_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: Product
+  name: IX_STM3_Product_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProductFeedComposition
+  name: PK_STM3_ProductFeedComposition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductFeedCompositionID
+- table: ProductFeedComposition
+  name: IX_STM3_ProductFeedComposition_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductFeedComposition
+  name: IX_STM3_ProductFeedComposition_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProductFeedComposition
+  name: IX_STM3_ProductFeedComposition_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ProductFeedComposition
+  name: IX_STM3_ProductFeedComposition_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ProductFeedCompositionItem
+  name: PK_STM3_ProductFeedCompositionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductFeedCompositionItemID
+- table: ProductFeedCompositionItem
+  name: IX_STM3_ProductFeedCompositionItem_ProductFeedCompositionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductFeedCompositionRef
+- table: ProductFeedCompositionItem
+  name: IX_STM3_ProductFeedCompositionItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProductionPlanning
+  name: PK_STM3_ProductionPlanning
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionPlanningID
+- table: ProductionPlanning
+  name: UIX_STM3_ProductionPlanning_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ProductionPlanning
+  name: IX_STM3_ProductionPlanning_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: ProductionPlanning
+  name: IX_STM3_ProductionPlanning_CalendarRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalendarRef
+- table: ProductionPlanning
+  name: IX_STM3_ProductionPlanning_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ProductionPlanning
+  name: IX_STM3_ProductionPlanning_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ProductionPlanning
+  name: IX_STM3_ProductionPlanning_VersionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VersionRef
+- table: ProductionPlanningFeed
+  name: PK_STM3_ProductionPlanningFeed
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionPlanningFeedID
+- table: ProductionPlanningFeed
+  name: IX_STM3_ProductionPlanningFeed_ProductionPlanningRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionPlanningRef
+- table: ProductionPlanningFeed
+  name: IX_STM3_ProductionPlanningFeed_FeedRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FeedRef
+- table: ProductionPlanningFeed
+  name: IX_STM3_ProductionPlanningFeed_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProductionPlanningFeed
+  name: IX_STM3_ProductionPlanningFeed_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductionPlanningProduct
+  name: PK_STM3_ProductionPlanningProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionPlanningProductID
+- table: ProductionPlanningProduct
+  name: IX_STM3_ProductionPlanningProduct_ProductionPlanningRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionPlanningRef
+- table: ProductionPlanningProduct
+  name: IX_STM3_ProductionPlanningProduct_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: ProductionPlanningProduct
+  name: IX_STM3_ProductionPlanningProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProductionPlanningProduct
+  name: IX_STM3_ProductionPlanningProduct_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductionPlanningProductionUnit
+  name: PK_STM3_ProductionPlanningProductionUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionPlanningProductionUnitID
+- table: ProductionPlanningProductionUnit
+  name: IX_STM3_ProductionPlanningProductionUnit_ProductionPlanningRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionPlanningRef
+- table: ProductionPlanningProductionUnit
+  name: IX_STM3_ProductionPlanningProductionUnit_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductionPlanningTimeBucket
+  name: PK_STM3_ProductionPlanningTimeBucket
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionPlanningTimeBucketID
+- table: ProductionPlanningTimeBucket
+  name: IX_STM3_ProductionPlanningTimeBucket_ProductionPlanningRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionPlanningRef
+- table: ProductionPlanningTimeBucketAssignmentItem
+  name: PK_STM3_ProductionPlanningTimeBucketAssignmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionPlanningTimeBucketAssignmentItemID
+- table: ProductionPlanningTimeBucketAssignmentItem
+  name: IX_STM3_ProductionPlanningTimeBucketAssignmentItem_ProductionPlanningTimeBucketRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionPlanningTimeBucketRef
+- table: ProductionUnit
+  name: PK_STM3_ProductionUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionUnitID
+- table: ProductionUnit
+  name: UIX_STM3_ProductionUnit_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ProductionUnit
+  name: IX_STM3_ProductionUnit_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: ProductionUnit
+  name: IX_STM3_ProductionUnit_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: ProductionUnitComplementaryInformation
+  name: PK_STM3_ProductionUnitComplementaryInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionUnitComplementaryInformationID
+- table: ProductionUnitComplementaryInformation
+  name: IX_STM3_ProductionUnitComplementaryInformation_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductionUnitComplementaryInformation
+  name: IX_STM3_ProductionUnitComplementaryInformation_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: ProductionUnitComplementaryInformationItem
+  name: PK_STM3_ProductionUnitComplementaryInformationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionUnitComplementaryInformationItemID
+- table: ProductionUnitComplementaryInformationItem
+  name: IX_STM3_ProductionUnitComplementaryInformationItem_ProductionUnitComplementaryInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitComplementaryInformationRef
+- table: ProductionUnitComplementaryInformationItem
+  name: IX_STM3_ProductionUnitComplementaryInformationItem_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: ProductionUnitSection
+  name: PK_STM3_ProductionUnitSection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionUnitSectionID
+- table: ProductionUnitSection
+  name: IX_STM3_ProductionUnitSection_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductionUnitSection
+  name: IX_STM3_ProductionUnitSection_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: ProductProductionUnit
+  name: PK_STM3_ProductProductionUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductProductionUnitID
+- table: ProductProductionUnit
+  name: IX_STM3_ProductProductionUnit_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: ProductProductionUnit
+  name: IX_STM3_ProductProductionUnit_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: ProductProductionUnit
+  name: IX_STM3_ProductProductionUnit_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductProductionUnit
+  name: IX_STM3_ProductProductionUnit_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: ProductReceiverSource
+  name: PK_STM3_ProductReceiverSource
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductReceiverSourceID
+- table: ProductReceiverSource
+  name: IX_STM3_ProductReceiverSource_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: ProductReceiverSource
+  name: IX_STM3_ProductReceiverSource_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: ProductReceiverSource
+  name: IX_STM3_ProductReceiverSource_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductReceiverSource
+  name: IX_STM3_ProductReceiverSource_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: ProductReceiverSource
+  name: IX_STM3_ProductReceiverSource_SourceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceRef
+- table: ProductStoreConfig
+  name: PK_STM3_ProductStoreConfig
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductStoreConfigID
+- table: ProductStoreConfig
+  name: IX_STM3_ProductStoreConfig_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: ProductStoreConfig
+  name: IX_STM3_ProductStoreConfig_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductStoreConfig
+  name: IX_STM3_ProductStoreConfig_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: ProductStoreConfig
+  name: IX_STM3_ProductStoreConfig_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: Tank
+  name: PK_STM3_Tank
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TankID
+- table: TankAssignmentItem
+  name: PK_STM3_TankAssignmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TankAssignmentItemID
+- table: TankAssignmentItem
+  name: IX_STM3_TankAssignmentItem_TankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TankRef
+- table: TankStrapping
+  name: PK_STM3_TankStrapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TankStrappingID
+- table: TankStrapping
+  name: IX_STM3_TankStrapping_TankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TankRef
+- table: TankStrappingCalibrationInformation
+  name: PK_STM3_TankStrappingCalibrationInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TankStrappingCalibrationInformationID
+- table: TankStrappingCalibrationInformation
+  name: IX_STM3_TankStrappingCalibrationInformation_TankStrappingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TankStrappingRef
+- table: TankStrappingCalibrationInformationStrappingTable
+  name: PK_STM3_TankStrappingCalibrationInformationStrappingTable
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TankStrappingCalibrationInformationStrappingTableID
+- table: TankStrappingCalibrationInformationStrappingTable
+  name: IX_STM3_TankStrappingCalibrationInformationStrappingTable_TankStrappingCalibrationInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TankStrappingCalibrationInformationRef
+- table: UtilityService
+  name: PK_STM3_UtilityService
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UtilityServiceID
+- table: UtilityService
+  name: IX_STM3_UtilityService_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: UtilityService
+  name: UIX_STM3_UtilityService_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: UtilityService
+  name: IX_STM3_UtilityService_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: UtilityServiceProductionUnit
+  name: PK_STM3_UtilityServiceProductionUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UtilityServiceProductionUnitID
+- table: UtilityServiceProductionUnit
+  name: IX_STM3_UtilityServiceProductionUnit_UtilityServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UtilityServiceRef
+- table: UtilityServiceProductionUnit
+  name: IX_STM3_UtilityServiceProductionUnit_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: UtilityServiceProductionUnit
+  name: IX_STM3_UtilityServiceProductionUnit_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: UtilityServiceProductionUnit
+  name: IX_STM3_UtilityServiceProductionUnit_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: UtilityServiceSenderSource
+  name: PK_STM3_UtilityServiceSenderSource
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UtilityServiceSenderSourceID
+- table: UtilityServiceSenderSource
+  name: IX_STM3_UtilityServiceSenderSource_UtilityServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UtilityServiceRef
+- table: UtilityServiceSenderSource
+  name: IX_STM3_UtilityServiceSenderSource_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: UtilityServiceSenderSource
+  name: IX_STM3_UtilityServiceSenderSource_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: UtilityServiceSenderSource
+  name: IX_STM3_UtilityServiceSenderSource_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: UtilityServiceSenderSource
+  name: IX_STM3_UtilityServiceSenderSource_SourceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceRef
+- table: VarianceReason
+  name: PK_STM3_VarianceReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VarianceReasonID
+- table: VarianceReasonGroupMember
+  name: PK_STM3_VarianceReasonGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VarianceReasonGroupMemberID
+- table: VarianceReasonGroupMember
+  name: IX_STM3_VarianceReasonGroupMember_GroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupingRef
+- table: VarianceReasonGroupMember
+  name: IX_STM3_VarianceReasonGroupMember_GroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupRef
+- table: VarianceReasonGroupMember
+  name: IX_STM3_VarianceReasonGroupMember_MemberID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MemberID

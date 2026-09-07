@@ -1,0 +1,43 @@
+schema: MRS3
+table_count: 1
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: PowerBIItem
+  columns:
+  - name: PowerBIItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ReportServerParentFolderRef
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 2
+  - name: ReportServerCatalogItemRef
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 3
+  - name: OrderInSiblings
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Title_En
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 5
+  - name: Description_En
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 6
+  - name: Preview
+    type: varbinary(max)
+    nullable: true
+    ordinal: 7
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 8
+  primary_key:
+  - PowerBIItemID

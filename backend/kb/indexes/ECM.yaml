@@ -1,0 +1,1916 @@
+schema: ECM
+source: extracted
+indexes:
+- table: ArchiveProcess
+  name: PK_ECM_ArchiveProcess
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ArchiveProcessID
+- table: ArchiveShard
+  name: PK_ECM_ArchiveShard
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ArchiveShardID
+- table: AssignedSerial
+  name: PK_ECM_AssignedSerial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AssignedSerialID
+- table: AssignedSerial
+  name: IX_ECM_AssignedSerial_NumberingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NumberingMethodRef
+- table: AssignedSerial
+  name: IX_ECM_AssignedSerial_SerialPoolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialPoolRef
+- table: AssignedSerial
+  name: IX_ECM_AssignedSerial_IssuerCorrespondentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IssuerCorrespondentRef
+- table: AssignedSerial
+  name: IX_ECM_AssignedSerial_SecretariatRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SecretariatRef
+- table: AssignedSerial
+  name: UC_ECM_AssignedSerial_SerialPoolRef_Value_Desc
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SerialPoolRef
+  - Value
+- table: AssignedSerial
+  name: IX_ECM_AssignedSerial_NumberingReservationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NumberingReservationRef
+- table: Attachment
+  name: PK_ECM_Attachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AttachmentID
+- table: Attachment
+  name: UIX_ECM_ATTACHMENT_FILEGUID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - FileGuid
+- table: AuthorityDelegation
+  name: PK_ECM_AuthorityDelegation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AuthorityDelegationID
+- table: AuthorityDelegation
+  name: IX_ECM_AuthorityDelegation_DelegatorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelegatorRef
+- table: AuthorityDelegation
+  name: IX_ECM_AuthorityDelegation_DelegateeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelegateeRef
+- table: AuthorityDelegationGrant
+  name: PK_ECM_AuthorityDelegationGrant
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AuthorityDelegationGrantID
+- table: AuthorityDelegationGrant
+  name: IX_ECM_AuthorityDelegationGrant_AuthorityDelegationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AuthorityDelegationRef
+- table: AuthorityDelegationGrant
+  name: IX_ECM_AuthorityDelegationGrant_DelegationGrantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelegationGrantRef
+- table: AuthorityDelegationReferringFolder
+  name: PK_ECM_AuthorityDelegationReferringFolder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AuthorityDelegationReferringFolderID
+- table: AuthorityDelegationReferringFolder
+  name: IX_ECM_AuthorityDelegationReferringFolder_AuthorityDelegationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AuthorityDelegationRef
+- table: AuthorityDelegationReferringFolder
+  name: IX_ECM_AuthorityDelegationReferringFolder_ReferringFolderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringFolderRef
+- table: CalendarShare
+  name: PK_ECM_CalendarShare
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalendarShareID
+- table: CartableRule
+  name: PK_ECM_CartableRule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CartableRuleID
+- table: CartableRuleLetterSpecification
+  name: PK_ECM_CartableRuleLetterSpecificationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CartableRuleLetterSpecificationID
+- table: CartableRuleReferringReason
+  name: PK_CartableRuleReferringReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CartableRuleReferringReasonID
+- table: CartableRuleReferringUrgency
+  name: PK_CartableRuleReferringUrgency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CartableRuleReferringUrgencyID
+- table: CartableRuleSecurityLevel
+  name: PK_CartableRuleSecurityLevel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CartableRuleSecurityLevelID
+- table: CartableRuleSubject
+  name: PK_CartableRuleSubject
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CartableRuleSubjectID
+- table: CartableRuleTransceiver
+  name: PK_ECM_CartableRuleTransceiver
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CartableRuleTransceiverID
+- table: ContentAnnotation
+  name: PK_ECM_ContentAnnotation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContentAnnotationID
+- table: Correspondent
+  name: PK_ECM_Correspondent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CorrespondentID
+- table: Correspondent
+  name: IX_ECM_Correspondent_Title
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Title
+- table: Correspondent
+  name: IX_ECM_Correspondent_Type
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Type
+- table: Correspondent
+  name: IX_ECM_Correspondent_PostRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PostRef
+- table: Correspondent
+  name: IX_ECM_Correspondent_DepartmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DepartmentRef
+- table: Correspondent
+  name: IX_ECM_Correspondent_EmployeeStatuteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmployeeStatuteRef
+- table: Correspondent
+  name: IX_ECM_Correspondent_EmployeeStatuteTempPostRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmployeeStatuteTempPostRef
+- table: Correspondent
+  name: IX_ECM_Correspondent_CompanyPartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CompanyPartyRef
+- table: Correspondent
+  name: IX_ECM_Correspondent_PositionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PositionRef
+- table: Correspondent
+  name: UIX_ECM_Correspondent_SyncGuid
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SyncGuid
+- table: Correspondent
+  name: IX_ECM_Correspondent_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+  included:
+  - State
+- table: CorrespondentDefaultManager
+  name: PK_ECM_CorrespondentDefaultManager
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CorrespondentDefaultManagerID
+- table: CorrespondentDefaultManager
+  name: UIX_ECM_CorrespondentDefaultManager_UserRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UserRef
+  included:
+  - CorrespondentRef
+- table: CorrespondentGroup
+  name: PK_ECM_CorrespondentGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CorrespondentGroupID
+- table: CorrespondentGroup
+  name: IX_ECM_CorrespondentGroup_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+  - IsPrivate
+  - Type
+- table: CorrespondentGroup
+  name: IX_ECM_CorrespondentGroup_Type
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Type
+- table: CorrespondentGroupMember
+  name: PK_ECM_CorrespondentGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CorrespondentGroupMemberID
+- table: CorrespondentUsageFrequency
+  name: PK_ECM_CorrespondentUsageFrequency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CorrespondentUsageFrequencyID
+- table: CorrespondentUsageFrequency
+  name: IX_ECM_CorrespondentUsageFrequency_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: CorrespondentUsageFrequency
+  name: IX_ECM_CorrespondentUsageFrequency_CorrespondentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CorrespondentRef
+- table: CorrespondentUsageFrequency
+  name: UIX_ECM_CorrespondentUsageFrequency_PartyRefCorrespondentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+  - CorrespondentRef
+- table: DelegationGrant
+  name: PK_ECM_DelegationGrant
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DelegationGrantID
+- table: DocTemplate
+  name: PK_ECM_DocTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocTemplateID
+- table: DocTemplate
+  name: UIX_ECM_DocTemplate_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: DocTemplate
+  name: IX_ECM_DocTemplate_FileName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FileName
+- table: Document
+  name: PK_ECM_Document
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentID
+- table: DocumentDetail
+  name: PK_ECM_DocumentDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentDetailID
+- table: DocumentField
+  name: PK_ECM_DocumentField
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentFieldID
+- table: DocumentPermission
+  name: PK_ECM_DocumentPermission
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentPermissionID
+- table: DocumentTemplate
+  name: PK_ECM_DocumentTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentTemplateID
+- table: DocumentTemplateDetail
+  name: PK_ECM_DocumentTemplateDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentTemplateDetailID
+- table: DocumentTemplateField
+  name: PK_ECM_DocumentTemplateField
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentTemplateFieldID
+- table: ECEEmail
+  name: PK_ECM_ECEEmail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ECEEmailID
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_EmailAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmailAccountRef
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_EmailRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmailRef
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_UniqueId
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UniqueId
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_GroupId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupId
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_Subject
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Subject
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_SenderOrganization
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SenderOrganization
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_ECEType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ECEType
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_SendDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SendDate
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_LetterNo
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterNo
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_SentCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SentCode
+- table: ECEEmail
+  name: IX_ECM_ECEEmail_EmailType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmailType
+- table: ECEEmailTransceiver
+  name: PK_ECM_ECEEmailTransceiver
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ECEEmailTransceiverID
+- table: ECEEmailTransceiver
+  name: IX_ECM_ECEEmailTransceiver_ECERefParRefType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ECEEmailRef
+  - ECEParticipantMapRef
+  - Type
+- table: ECEOrganizationMap
+  name: PK_ECM_ECEOrganizationMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ECEOrganizationMapID
+- table: ECEOrganizationMap
+  name: IX_ECM_ECEOrganizationMap_Guid
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Guid
+- table: ECEOrganizationMap
+  name: IX_ECM_ECEOrganizationMap_GuidName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Guid
+  - Name
+- table: ECEOrganizationMap
+  name: IX_ECM_ECEOrganizationMap_Name
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Name
+- table: ECEOrganizationMap
+  name: IX_ECM_ECEOrganizationMap_NameGuid
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Guid
+  - Name
+- table: ECEParticipantMap
+  name: PK_ECM_ECEParticipantMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ECEParticipantMapID
+- table: ECEParticipantMap
+  name: IX_ECM_ECEParticipantMap_Guid
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Guid
+- table: ECEParticipantMap
+  name: IX_ECM_ECEParticipantMap_OrgRefGuidName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ECEOrganizationMapRef
+  - Guid
+  - Name
+- table: ECEParticipantMap
+  name: IX_ECM_ECEParticipantMap_Name
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Name
+- table: Email
+  name: PK_ECM_Email
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmailID
+- table: Email
+  name: IX_ECM_Email_NewUniqueId
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UniqueId
+- table: Email
+  name: IX_ECM_Email_EmailAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmailAccountRef
+- table: Email
+  name: IX_ECM_Email_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: Email
+  name: IX_ECM_Email_Subject
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Subject
+- table: Email
+  name: IX_ECM_Email_SendDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SendDate
+- table: Email
+  name: IX_ECM_Email_EmailType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmailType
+- table: Email
+  name: IX_ECM_Email_Size
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Size
+- table: EmailAccount
+  name: PK_ECM_EmailAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmailAccountID
+- table: EmailAccount
+  name: IX_ECM_EmailAccount_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: EmailAccount
+  name: IX_ECM_EmailAccount_UserName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UserName
+- table: EmailAccount
+  name: IX_ECM_EmailAccount_Usage
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Usage
+- table: EmailAttachment
+  name: PK_ECM_EmailAttachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EmailAttachmentID
+- table: Event
+  name: PK_ECM_Event
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EventID
+- table: EventAttendee
+  name: PK_ECM_EventAttendee
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EventAttendeeID
+- table: EventFile
+  name: PK_ECM_EventFile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EventFileID
+- table: EventFile
+  name: UQ__EventFil__6DB18C9584E93302
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - FileGuid
+- table: EventInstance
+  name: PK_ECM_EventInstance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EventInstanceID
+- table: EventInstanceMetaData
+  name: PK_ECM_EventInstanceMetaData
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EventInstanceMetaDataID
+- table: EventRoom
+  name: PK_ECM_EventRoom
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EventRoomID
+- table: FaxCenter
+  name: PK_ECM_FaxCenter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FaxCenterID
+- table: FaxCenter
+  name: IX_ECM_FaxCenter_Title
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Title
+- table: FaxCenter
+  name: IX_ECM_FaxCenter_DeviceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeviceID
+- table: FaxCenter
+  name: IX_ECM_FaxCenter_FriendlyName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FriendlyName
+- table: FaxCenter
+  name: UIX_ECM_FaxCenter_DomainName
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DomainName
+- table: FaxDocument
+  name: PK_ECM_FaxDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FaxDocumentID
+- table: FaxDocument
+  name: UQ__FaxDocum__6DB18C956DFAFF3F
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - FileGuid
+- table: FaxFolder
+  name: PK_ECM_FaxFolder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FaxFolderID
+- table: FaxFolder
+  name: IX_ECM_FaxFolder_Title
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Title
+- table: File
+  name: PK_ECM_File
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FileID
+- table: File
+  name: IX_ECM_File_Tag
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Tag
+- table: File
+  name: IX_ECM_File_CreationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreationDate
+- table: File
+  name: IX_ECM_File_ArchiveShardRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ArchiveShardRef
+- table: File
+  name: IX_ECM_File_Content_NOT_NULL
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FileID
+- table: File
+  name: UIX_ECM_File_UniqueId
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - UniqueId
+- table: FrequentWord
+  name: PK_ECM_FrequentWord
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FrequentWordID
+- table: FrequentWord
+  name: IX_ECM_FrequentWord_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: ImportLetterReceipt
+  name: PK_ECM_ImportLetterReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ImportLetterReceiptID
+- table: ImportLetterReceipt
+  name: IX_ECM_ImportLetterReceipt_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: IncomingFax
+  name: PK_ECM_IncomingFax
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IncomingFaxID
+- table: IncomingFax
+  name: IX_ECM_IncomingFax_CallerID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CallerID
+- table: Letter
+  name: PK_ECM_Letter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterID
+- table: Letter
+  name: IX_ECM_Letter_RegistrationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RegistrationDate
+- table: Letter
+  name: IX_ECM_Letter_RegistrationNumber
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RegistrationNumber
+- table: Letter
+  name: IX_ECM_Letter_CreationDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreationDate
+- table: Letter
+  name: IX_ECM_Letter_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - State
+- table: Letter
+  name: IX_ECM_Letter_LetterType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterType
+- table: Letter
+  name: IX_ECM_Letter_BaseLetterDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseLetterDate
+- table: Letter
+  name: IX_ECM_Letter_BaseLetterNumber
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseLetterNumber
+- table: LetterAcceleratorTag
+  name: PK_ECM_LetterAcceleratorTag
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterAcceleratorTagID
+- table: LetterAcceleratorTag
+  name: IX_ECM_LetterAcceleratorTag_UseRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: LetterClientMetadata
+  name: PK_ECM_LetterClientMetadata
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterClientMetadataID
+- table: LetterClientMetadata
+  name: UIX_ECM_LetterClientMetadata_LetterRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LetterRef
+  included:
+  - ClientTrackingCode
+  - ClientState
+  - Description
+- table: LetterContent
+  name: PK_ECM_LetterContent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterContentID
+- table: LetterContent
+  name: IX_ECM_LetterContent_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: LetterDistribution
+  name: PK_ECM_LetterDistribution
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterDistributionID
+- table: LetterEmail
+  name: PK_ECM_LetterEmail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterEmailID
+- table: LetterEmail
+  name: IX_ECM_LetterEmail_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: LetterEmail
+  name: IX_ECM_LetterEmail_EmailRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EmailRef
+- table: LetterEmail
+  name: UIX_ECM_LetterEmail_LetterRef_EmailRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LetterRef
+  - EmailRef
+- table: LetterExportReceipt
+  name: PK_ECM_LetterExportReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterExportReceiptID
+- table: LetterFax
+  name: PK_ECM_LetterFax
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterFaxID
+- table: LetterFax
+  name: IX_ECM_LetterFax_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: LetterFax
+  name: IX_ECM_LetterFax_FaxRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FaxRef
+- table: LetterFax
+  name: UIX_ECM_LetterFax_LetterRef_FaxRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LetterRef
+  - FaxRef
+- table: LetterForm
+  name: PK_ECM_LetterForm
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterFormID
+- table: LetterForm
+  name: IX_ECM_LetterForm_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: LetterLog
+  name: PK_ECM_LetterLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterLogID
+- table: LetterReceiver
+  name: PK_ECM_LetterReceiver
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterReceiverID
+- table: LetterReceiver
+  name: IX_ECM_LetterReceiver_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+  included:
+  - ReceiverRef
+  - ReceiverTitle
+  - Type
+  - Order
+  - Version
+- table: LetterReceiver
+  name: IX_ECM_LetterReceiver_ReceiverRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiverRef
+- table: LetterRelation
+  name: PK_ECM_LetterRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterRelationID
+- table: LetterRelation
+  name: IX_ECM_LetterRelation_SourceLetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceLetterRef
+- table: LetterRelation
+  name: IX_ECM_LetterRelation_TargetLetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TargetLetterRef
+- table: LetterRelationType
+  name: PK_ECM_LetterRelationType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterRelationTypeID
+- table: LetterReturnRelation
+  name: PK_ECM_LetterReturnRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterReturnRelationID
+- table: LetterReturnRelation
+  name: IX_ECM_LetterReturnRelation_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: LetterReturnRelation
+  name: IX_ECM_LetterReturnRelation_RelatedLetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RelatedLetterRef
+- table: LetterScan
+  name: PK_ECM_LetterScan
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterScanID
+- table: LetterScan
+  name: IX_ECM_LetterScan_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: LetterScan
+  name: IX_ECM_LetterScan_ScanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScanRef
+- table: LetterScan
+  name: UIX_ECM_LetterScan_LetterRef_ScanRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LetterRef
+  - ScanRef
+- table: LetterSecuretyLevel
+  name: PK_ECM_LetterSecuretyLevel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterSecuretyLevelID
+- table: LetterSigner
+  name: PK_ECM_LetterSigner
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterSignerID
+- table: LetterSigner
+  name: IX_ECM_LetterSigner_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: LetterSigner
+  name: IX_ECM_LetterSigner_SignerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SignerRef
+- table: LetterSigner
+  name: IX_ECM_LetterSigner_SubstituteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SubstituteRef
+- table: LetterTextPdfHistory
+  name: PK_ECM_LetterTextPdfHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterTextPdfHistoryID
+- table: LetterTextPdfHistory
+  name: IX_ECM_LetterTextPdfHistory_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: LetterUrgency
+  name: PK_ECM_LetterUrgency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LetterUrgencyID
+- table: NumberingMethod
+  name: PK_ECM_NumberingMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingMethodID
+- table: NumberingMethod
+  name: UIX_ECM_NumberingMethod_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: NumberingMethod
+  name: UIX_ECM_NumberingMethod_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: NumberingMethod
+  name: IX_ECM_NumberingMethod_SerialPoolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SerialPoolRef
+- table: NumberingMethod
+  name: IX_ECM_NumberingMethod_SecretariatRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SecretariatRef
+- table: NumberingMethod
+  name: IX_ECM_NumberingMethod_NumberingPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NumberingPatternRef
+- table: NumberingMethodCondition
+  name: PK_ECM_NumberingMethodCondition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingMethodConditionID
+- table: NumberingMethodCondition
+  name: IX_ECM_NumberingMethodCondition_NumberingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NumberingMethodRef
+- table: NumberingPattern
+  name: PK_ECM_NumberingPattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingPatternID
+- table: NumberingReservation
+  name: PK_ECM_NumberingReservation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NumberingReservationID
+- table: NumberingReservation
+  name: IX_ECM_NumberingReservation_NumberingMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NumberingMethodRef
+- table: OrganizationalStructureParentLevelHierarchy
+  name: IX_ECM_OrganizationalStructureParentLevelHierarchy_PostRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PostRef
+- table: OrganizationalStructureParentLevelHierarchy
+  name: IX_ECM_OrganizationalStructureParentLevelHierarchy_DepartmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DepartmentRef
+- table: OrganizationalStructureParentLevelHierarchy
+  name: IX_ECM_OrganizationalStructureParentLevelHierarchy_ParentPostRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentPostRef
+- table: OrganizationalStructureParentLevelHierarchy
+  name: IX_ECM_OrganizationalStructureParentLevelHierarchy_ParentDepartmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentDepartmentRef
+- table: OrganizationServer
+  name: PK_ECM_OrganizationServer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrganizationServerID
+- table: OrganizationServer
+  name: UIX_ECM_OrganizationServer_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: Organizer
+  name: PK_ECM_Organizer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OrganizerID
+- table: OutgoingFax
+  name: PK_ECM_OutgoingFax
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OutgoingFaxID
+- table: OutgoingFax
+  name: UIX_ECM_OutgoingFax_JobID
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - JobID
+- table: PersonalFile
+  name: PK_ECM_PersonalFile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PersonalFileID
+- table: PersonalFile
+  name: UIX_ECM_PersonalFile_Title_ParentRef_Creator
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - ParentRef
+  - Creator
+- table: PersonalFileForm
+  name: PK_ECM_PersonalFileForm
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PersonalFileFormID
+- table: PersonalFileForm
+  name: IX_ECM_PersonalFileForm_PersonalFileRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PersonalFileRef
+- table: Position
+  name: PK_ECM_Position
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PositionID
+- table: PredefinedReferringReceiverPermission
+  name: PK_ECM_PredefinedReferringReceiverPermission
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PredefinedReferringReceiverPermissionID
+- table: RecordMap
+  name: PK__RecordMa__2658AE6279DEDB84
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RecordMapID
+- table: Referring
+  name: PK_ECM_Referring
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringID
+- table: Referring
+  name: IX_ECM_Referring_ReferringParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringParentRef
+- table: Referring
+  name: IX_ECM_Referring_ReferringUrgencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringUrgencyRef
+- table: Referring
+  name: IX_ECM_Referring_ReferringSecurityLevelRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringSecurityLevelRef
+- table: Referring
+  name: IX_ECM_Referring_ReferringRootRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringRootRef
+- table: Referring
+  name: UIX_ECM_Referring_SyncGuid
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SyncGuid
+- table: ReferringAccelerator
+  name: PK_ECM_ReferringAccelerator
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringAcceleratorID
+- table: ReferringAcceleratorTag
+  name: PK_ECM_ReferringAcceleratorTag
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringAcceleratorTagID
+- table: ReferringAcceleratorTag
+  name: IX_ECM_ReferringAcceleratorTag_UseRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: ReferringAttachment
+  name: PK_ECM_ReferringAttachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringAttachmentID
+- table: ReferringAttachment
+  name: IX_ECM_ReferringAttachment_ReferringRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringRef
+- table: ReferringAttachment
+  name: IX_ECM_ReferringAttachment_AttachmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AttachmentRef
+- table: ReferringCondition
+  name: PK_ECM_ReferringCondition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringConditionID
+- table: ReferringFolder
+  name: PK_ECM_ReferringFolder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringFolderID
+- table: ReferringFolder
+  name: IX_ECM_ReferringFolder_Title
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Title
+- table: ReferringFolder
+  name: IX_ECM_ReferringFolder_ParentFolderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentFolderRef
+- table: ReferringFolder
+  name: IX_ECM_ReferringFolder_CorrespondentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CorrespondentRef
+- table: ReferringFolder
+  name: IX_ECM_ReferringFolder_OwnerCorrespondentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OwnerCorrespondentRef
+  included:
+  - CorrespondentRef
+- table: ReferringForm
+  name: PK_ECM_ReferringForm
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringFormID
+- table: ReferringForm
+  name: IX_ECM_ReferringForm_ReferringRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringRef
+- table: ReferringLetter
+  name: PK_ECM_ReferringLetter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringLetterID
+- table: ReferringLetter
+  name: IX_ECM_ReferringLetter_ReferringRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringRef
+  included:
+  - LetterRef
+- table: ReferringLetter
+  name: IX_ECM_ReferringLetter_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+  included:
+  - ReferringRef
+- table: ReferringOpAccelerator
+  name: PK_ECM_ReferringOpAccelerator
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringOpAcceleratorID
+- table: ReferringReason
+  name: PK_ECM_ReferringReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringReasonID
+- table: ReferringReasonCondition
+  name: PK_ECM_ReferringReasonCondition
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringReasonConditionID
+- table: ReferringReceiverPermission
+  name: PK_ECM_ReferringReceiverPermission
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringReceiverPermissionID
+- table: ReferringReceiverPermission
+  name: UC_ECM_SenderRef_ReceiverRef_SenderGroupRef_ReceiverGroupRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SenderRef
+  - ReceiverRef
+  - SenderGroupRef
+  - ReceiverGroupRef
+- table: ReferringSecurityLevel
+  name: PK_ECM_ReferringSecurityLevel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringSecurityLevelID
+- table: ReferringSecurityLevel
+  name: IX_ECM_ReferringSecurityLevel_LetterSecurityLevelRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterSecurityLevelRef
+- table: ReferringSetting
+  name: PK_ECM_ReferringSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringSettingID
+- table: ReferringSetting
+  name: UIX_ECM_ReferringSetting_Key
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Key
+  included:
+  - Value
+- table: ReferringTransceiver
+  name: PK_ECM_ReferringTransceiver
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringTransceiverID
+- table: ReferringTransceiver
+  name: IX_ECM_ReferringTransceiver_CorrespondentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CorrespondentRef
+  included:
+  - ReferringRef
+- table: ReferringTransceiver
+  name: IX_ECM_ReferringTransceiver_DelegateeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelegateeRef
+- table: ReferringTransceiver
+  name: UIX_ECM_ReferringTransceiver_SyncState
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SyncState
+- table: ReferringTransceiver
+  name: IX_ECM_ReferringTransceiver_ReferringRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringRef
+  included:
+  - CorrespondentRef
+  - VisibleReceiverNames
+  - VisibleCCNames
+  - VisibleFollowerNames
+- table: ReferringUrgency
+  name: PK_ECM_ReferringUrgency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReferringUrgencyID
+- table: ReferringUrgency
+  name: IX_ECM_ReferringUrgency_LetterUrgencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterUrgencyRef
+- table: Reminder
+  name: PK_ECM_Reminder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReminderID
+- table: Reminder
+  name: IX_ECM_Reminder_NextOccurrence
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NextOccurrence
+- table: Scan
+  name: PK_ECM_Scan
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScanID
+- table: Scan
+  name: IX_ECM_Scan_ScanDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScanDate
+- table: Scan
+  name: IX_ECM_Scan_ScanVolume
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScanVolume
+- table: ScanCenter
+  name: PK_ECM_ScanCenter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScanCenterID
+- table: ScanCenter
+  name: IX_ECM_ScanCenter_Title
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Title
+- table: ScanCenter
+  name: IX_ECM_ScanCenter_AgentID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AgentID
+- table: ScanCenter
+  name: IX_ECM_ScanCenter_AgentFQDN
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AgentFQDN
+- table: ScanCenter
+  name: IX_ECM_ScanCenter_DeviceName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeviceName
+- table: ScanCenterDefaultSetting
+  name: PK_ECM_ScanCenterDefaultSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScanCenterDefaultSettingID
+- table: ScanCenterDefaultSetting
+  name: UIX_ECM_ScanCenterDefaultSetting_ScanCenterRef_Creator
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ScanCenterRef
+  - Creator
+- table: ScanContent
+  name: PK_ECM_ScanContent
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ScanContentID
+- table: Secretariat
+  name: PK_ECM_Secretariat
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SecretariatID
+- table: SerialPool
+  name: PK_ECM_SerialPool
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SerialPoolID
+- table: SerialPool
+  name: UIX_ECM_SerialPool_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: TransceiverMetadata
+  name: PK_ECM_TransceiverMetadata
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransceiverMetadataID
+- table: TransceiverMetadata
+  name: IX_ECM_TransceiverMetadata_ReferringTransceiverRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringTransceiverRef
+- table: TransceiverMetadata
+  name: IX_ECM_TransceiverMetadata_ReferringFolderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferringFolderRef
+  - SeenDate
+  included:
+  - ReferringTransceiverRef
+- table: TransferLog
+  name: PK_ECM_TransferLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferLogID
+- table: UserFavoritLetter
+  name: PK_ECM_UserFavoritLetter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserFavoritLetterID
+- table: UserFavoritLetter
+  name: IX_ECM_UserFavouriteLetter_LetterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LetterRef
+- table: UserFavoritLetter
+  name: IX_ECM_UserFavouriteLetter_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: UserPersonalFile
+  name: PK_ECM_UserPersonalFile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - UserPersonalFileID
+- table: WatermarkHandeler
+  name: PK_ECM_WatermarkHandeler
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WatermarkHandelerID

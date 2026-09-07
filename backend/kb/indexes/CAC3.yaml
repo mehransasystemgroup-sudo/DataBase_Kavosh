@@ -1,0 +1,1217 @@
+schema: CAC3
+source: extracted
+indexes:
+- table: AccountGroupConfiguration
+  name: PK_CAC3_AccountConfiguration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupConfigurationID
+- table: AccountingVoucher
+  name: PK_CAC3_AccountingVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountingVoucherID
+- table: ActualMaterialFee
+  name: PK_CAC3_ActualMaterialFee
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ActualMaterialFeeID
+- table: ActualMaterialFee
+  name: IX_CAC3_ActualMaterialFee_CostCenterExRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterExRef
+  - PartRef
+- table: ActualMaterialFeeItem
+  name: PK_CAC3_ActualMaterialFeeItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ActualMaterialFeeItemID
+- table: ActualMaterialFeeItem
+  name: IX_CAC3_ActualMaterialFeeItem_ActualMaterialFeeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ActualMaterialFeeRef
+- table: BeginningMaterial
+  name: PK_CAC3_BeginningMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BeginningMaterialID
+- table: BeginningMaterial
+  name: IX_CAC3_BeginningMaterial_FiscalYearRef_BranchRef_CostCenterRef_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - BranchRef
+  - CostCenterRef
+  - PartRef
+- table: BeginningMaterialWithReference
+  name: PK_CAC3_BeginningMaterialWithReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BeginningMaterialWithReferenceID
+- table: BeginningMaterialWithReference
+  name: IX_CAC3_BeginningMaterialWithReference_BeginningMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BeginningMaterialRef
+- table: BeginningWorkInProcess
+  name: PK_CAC3_BeginningWorkInProcess
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BeginningWorkInProcessID
+- table: BeginningWorkInProcess
+  name: IX_CAC3_BeginningWorkInProcess_FiscalYearRef_BranchRef_WorkstationRef_PartRef_BillOfMaterialRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - BranchRef
+  - WorkstationRef
+  - PartRef
+  - BillOfMaterialRef
+- table: BeginningWorkInProcessMaterial
+  name: PK_CAC3_BeginningWorkInProcessMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BeginningWorkInProcessMaterialID
+- table: BillOfMaterial
+  name: PK_CAC3_BillOfMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfMaterialID
+- table: BillOfMaterialAlternativeNode
+  name: PK_CAC3_BillOfMaterialAlternativeNode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfMaterialAlternativeNodeID
+- table: BillOfMaterialAlternativeNode
+  name: IX_CAC3_BillOfMaterialAlternativeNode_BillOfMaterialNodeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfMaterialNodeRef
+  included:
+  - PartRef
+- table: BillOfMaterialMap
+  name: PK_CAC3_BillOfMaterialMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfMaterialMapID
+- table: BillOfMaterialMap
+  name: IX_CAC3_BillOfMaterialMap_BillOfMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfMaterialRef
+  included:
+  - RoutingRef
+  - BomRef
+  - Type
+- table: BillOfMaterialMap
+  name: IX_CAC3_BillOfMaterialMap_RoutingRef_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingRef
+  - BomRef
+  included:
+  - BillOfMaterialRef
+  - Type
+- table: BillOfMaterialMapItem
+  name: PK_CAC3_BillOfMaterialMapItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfMaterialMapItemID
+- table: BillOfMaterialMapItem
+  name: IX_CAC3_BillOfMaterialMapItem_BillOfMaterialMapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfMaterialMapRef
+  included:
+  - RoutingOperationRef
+  - PartRef
+- table: BillOfMaterialMapItemRelatedOperation
+  name: PK_CAC3_BillOfMaterialMapItemRelatedOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfMaterialMapItemRelatedOperationID
+- table: BillOfMaterialMapItemRelatedOperation
+  name: IX_CAC3_BillOfMaterialMapItemRelatedOperation_RoutingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingOperationRef
+  included:
+  - BillOfMaterialMapItemRef
+- table: BillOfMaterialNode
+  name: PK_CAC3_BillOfMaterialNode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfMaterialNodeID
+- table: BillOfMaterialNode
+  name: IX_CAC3_BillOfMaterialNode_ParentNodeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentNodeRef
+  included:
+  - BillOfMaterialRef
+  - PartRef
+- table: BillOfMaterialNode
+  name: IX_CAC3_BillOfMaterialNode_BillOfMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfMaterialRef
+  included:
+  - ParentNodeRef
+  - PartRef
+- table: BillOfMaterialNode
+  name: IX_CAC3_BillOfMaterialNode_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+  included:
+  - BillOfMaterialRef
+  - ParentNodeRef
+- table: BillOfMaterialRecyclingNode
+  name: PK_CAC3_BillOfMaterialRecyclingNode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfMaterialRecyclingNodeID
+- table: BillOfMaterialSideProductNode
+  name: PK_CAC3_BillOfMaterialSideProductNode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BillOfMaterialSideProductNodeID
+- table: BillOfMaterialSideProductNode
+  name: IX_CAC3_BillOfMaterialSideProductNode_BillOfMaterialNodeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfMaterialNodeRef
+  included:
+  - PartRef
+- table: CalcPeriod
+  name: PK_CAC3_CalcPeriod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalcPeriodID
+- table: CalculationLogCatalog
+  name: PK_CAC3_CalculationLogCatalog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationLogCatalogID
+- table: CalculationLogCatalog
+  name: IX_CAC3_CalculationLogCatalog
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: CalculationStep
+  name: PK_CAC3_CalculationStep
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationStepID
+- table: CalculationStep
+  name: IX_CAC3_CalculationStep_CalcPeriodRef_Key
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Key
+  - CalcPeriodRef
+- table: CalculationStepLog
+  name: PK_CAC3_CalculationStepJob
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationStepLogID
+- table: ConsumptionFeeCalculation
+  name: PK_CAC3_ConsumptionFee
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConsumptionFeeCalculationID
+- table: Contractor
+  name: PK_CAC3_Contractor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractorID
+- table: Contractor
+  name: IX_CAC3_Contractor_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: ContractorProduction
+  name: PK_CAC3_ContractorProduction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractorProductionID
+- table: ContractorProduction
+  name: IX_CAC3_ContractorProduction
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractorRef
+  - ProductionRef
+- table: ContractorProductionFeeActual
+  name: PK_CAC3_ContractorProductionFeeActual
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractorProductionFeeActualID
+- table: ContractorWorkstation
+  name: PK_ContractorWorkstation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractorWorkstationID
+- table: ContractorWorkstation
+  name: IX_CAC3_ContractorWorkstation
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+  - WorkstationRef
+  - ContractorRef
+- table: ConversionSL
+  name: PK_CAC3_ConversionSL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConversionSLID
+- table: ConversionSL
+  name: IX_CAC3_ConversionSL_FiscalYearRef_BranchRef_SLRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - FiscalYearRef
+  - BranchRef
+  - SLRef
+- table: ConversionSL
+  name: IX_CAC3_ConversionSL_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: ConversionSLCategory
+  name: PK_CAC3_ConversionSLCategory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConversionSLCategoryID
+- table: CostCenterConversionSL
+  name: PK_CAC3_CostCenterConversionSL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostCenterConversionSLID
+- table: CostCenterConversionSL
+  name: IX_CAC3_CostCenterConversionSL_CostCenterExRef_ConversionSLRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CostCenterExRef
+  - ConversionSLRef
+- table: CostCenterConversionSLDetail
+  name: PK_CAC3_CostCenterConversionSLDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostCenterConversionSLDetailID
+- table: CostCenterConversionSLDetail
+  name: IX_CAC3_CostCenterConversionSLDetail_CostCenterConversionSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterConversionSLRef
+- table: CostCenterConversionSLVoucherItem
+  name: PK_CAC3_CostCenterConversionSLVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostCenterConversionSLVoucherItemID
+- table: CostCenterConversionSLVoucherItem
+  name: IX_CAC3_CostCenterConversionSLVoucherItem_CostCenterConversionSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterConversionSLRef
+- table: CostCenterDelivery
+  name: PK_CAC3_CostCenterDelivery
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostCenterDeliveryID
+- table: CostCenterDelivery
+  name: IX_CAC3_CostCenterDelivery_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: CostCenterDelivery
+  name: IX_CAC3_CostCenterDelivery_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: CostCenterDeliveryItem
+  name: PK_CAC3_CostCenterDeliveryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostCenterDeliveryItemID
+- table: CostCenterEx
+  name: PK_CAC3_CostCenterEx
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostCenterExID
+- table: CostCenterEx
+  name: IX_CAC3_CostCenterEx_CalcPeriodRef_CostCenterRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+  - CostCenterRef
+- table: CostDriver
+  name: PK_CAC3_CostDriver
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostDriverID
+- table: CostDriver
+  name: IX_CAC3_CostDriver_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: CostDriverAssignment
+  name: PK_CAC3_CostDriverAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CostDriverAssignmentID
+- table: CostDriverAssignment
+  name: IX_CAC3_CostDriverAssignment_CostCenterExRef_WorkstationRef_CostDriverRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CostCenterExRef
+  - WorkstationRef
+  - CostDriverRef
+- table: DeliveryConfirmation
+  name: PK_CAC3_DeliveryConfirmation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeliveryConfirmationID
+- table: DeliveryConfirmation
+  name: IX_CAC3_DeliveryConfirmation_CostCenterDeliveryItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CostCenterDeliveryItemRef
+- table: DeliveryConfirmation
+  name: IX_CAC3_DeliveryConfirmation_BillOfMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfMaterialRef
+- table: DeliveryConfirmation
+  name: IX_CAC3_DeliveryConfirmation_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: DeliveryConfirmation
+  name: IX_CAC3_DeliveryConfirmation_DestinationCostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationCostCenterRef
+- table: DeliveryConfirmation
+  name: IX_CAC3_DeliveryConfirmation_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: DeliveryConfirmation
+  name: IX_CAC3_DeliveryConfirmation_SourceCostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceCostCenterRef
+- table: DeliveryConfirmation
+  name: IX_CAC3_DeliveryConfirmation_SourceWorkstationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceWorkstationRef
+- table: DeliveryConfirmation
+  name: IX_CAC3_DeliveryConfirmation_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: DirectCostAllocation
+  name: PK_CAC3_DirectCostAllocation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DirectCostAllocationID
+- table: DirectInputMaterial
+  name: PK_CAC3_DirectInputMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DirectInputMaterialID
+- table: DirectInputMaterialItem
+  name: PK_CAC3_DirectInputMaterialItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DirectInputMaterialItemID
+- table: EndingMaterial
+  name: PK_CAC3_EndingMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EndingMaterialID
+- table: EndingMaterial
+  name: IX_CAC3_EndingMaterial_CostCenterExRef_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CostCenterExRef
+  - PartRef
+- table: EndingMaterialWithReference
+  name: PK_CAC3_EndingMaterialWithReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EndingMaterialWithReferenceID
+- table: EndingMaterialWithReference
+  name: IX_CAC3_EndingMaterialWithReference_EndingMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndingMaterialRef
+- table: EndingWorkInProcess
+  name: PK_CAC3_EndingWorkInProcess
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EndingWorkInProcessID
+- table: EndingWorkInProcessMaterial
+  name: PK_CAC3_EndingWorkInProcessMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EndingWorkInProcessMaterialID
+- table: IgnoredCostAllocationArea
+  name: PK_CAC3_IgnoredCostAllocationArea
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IgnoredCostAllocationAreaID
+- table: IndirectCostAllocation
+  name: PK_CAC3_CostAllocation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndirectCostAllocationID
+- table: IndirectCostAllocationBySL
+  name: PK_CAC3_CostAllocationBySL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndirectCostAllocationBySLDetailID
+- table: IndirectCostAllocationBySLState
+  name: PK_IndirectCostAllocationBySLState
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalcPeriodRef
+- table: IndirectCostAllocationDetail
+  name: PK_CAC3_IndirectCostAllocationDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IndirectCostAllocationDetailID
+- table: InputTransaction
+  name: PK_CAC3_InputTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InputTransactionID
+- table: InputTransactionItem
+  name: PK_CAC3_InputTransactionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InputTransactionItemID
+- table: InputTransactionItem
+  name: IDX_CAC3_InputTransactionItem_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  included:
+  - Type
+- table: InputTransactionItem
+  name: IX_CAC3_InputTransactionItem_ProductionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionRef
+- table: InputTransactionItem
+  name: IX_CAC3_InputTransactionItem_InputTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InputTransactionRef
+  included:
+  - Quantity
+- table: InputTransactionItemProduction
+  name: PK_CAC3_InputTransactionItemProduction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InputTransactionItemProductionID
+- table: InputTransactionItemProduction
+  name: IX_CAC3_InputTransactionItemProduction_InputTransactionItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InputTransactionItemRef
+- table: InputTransactionSource
+  name: PK_CAC3_InputTransactionSource
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InputTransactionSourceID
+- table: InputTransactionSourcePrice
+  name: PK_CAC3_InputTransactionSourcePrice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InputTransactionSourcePriceID
+- table: InputTransactionWorkstation
+  name: PK_CAC3_InputTransactionWorkstation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InputTransactionWorkstationID
+- table: InventoryCalculation
+  name: PK_CAC3_InventoryCalculation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InventoryCalculationID
+- table: InventoryCalculation
+  name: IDX_CAC3_InventoryCalculation_CalcPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+  included:
+  - InventoryVoucherItemRef
+  - Price
+- table: InventoryCalculation
+  name: IDX_CAC3_InventoryCalculation_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+- table: OutputTransaction
+  name: PK_CAC3_OutputTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OutputTransactionID
+- table: OutputTransactionDetail
+  name: PK_CAC3_OutputTransactionDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OutputTransactionDetailID
+- table: OutputTransactionItem
+  name: PK_CAC3_OutputTransactionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OutputTransactionItemID
+- table: OutputTransactionItem
+  name: IDX_CAC3_OutputTransactionItem_InventoryVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherItemRef
+  included:
+  - Type
+- table: OutputTransactionItemPrice
+  name: PK_CAC3_OutputTransactionItemPrice
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OutputTransactionItemPriceID
+- table: OutputTransactionItemProduction
+  name: PK_CAC3_OutputTransactionItemProduction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OutputTransactionItemProductionID
+- table: OutputTransactionItemProduction
+  name: IX_CAC3_OutputTransactionItemProduction_OutputTransactionItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OutputTransactionItemRef
+- table: OutputTransactionWorkstation
+  name: PK_CAC3_OutputTransactionWorkstation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OutputTransactionWorkstationID
+- table: ProductCostCalculation
+  name: PK_CAC3_ProductCostCalculation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductCostCalculationID
+- table: ProductCostCalculation
+  name: IX_CAC3_ProductCostCalculation_CalcPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+- table: ProductCostCalculation
+  name: IX_CAC3_ProductCostCalculation_ProductionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionRef
+- table: ProductCostCalculationMaterial
+  name: PK_CAC3_ProductCostCalculationMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductCostCalculationMaterialID
+- table: ProductCostCalculationMaterial
+  name: IX_CAC3_ProductCostCalculationMaterial_ProductCostCalculationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductCostCalculationRef
+- table: ProductCostCalculationMaterial
+  name: IX_CAC3_ProductCostCalculationMaterial_ProductionConsumptionCalculationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionConsumptionCalculationRef
+- table: ProductCostCalculationMaterial
+  name: IX_CAC3_ProductCostCalculationMaterial_ConsumptionFeeCalculationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConsumptionFeeCalculationRef
+- table: ProductCostCalculationMaterialDetail
+  name: PK_CAC3_ProductCostCalculationMaterialDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductCostCalculationMaterialDetailID
+- table: ProductCostCalculationMaterialDetail
+  name: IX_CAC3_ProductCostCalculationMaterialDetail_ProductCostCalculationMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductCostCalculationMaterialRef
+- table: ProductCostCalculationSeperation
+  name: PK_CAC3_ProductCostCalculationSeperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductCostCalculationSeperationID
+- table: ProductCostCalculationSeperation
+  name: IX_CAC3_ProductCostCalculationSeperation_CalcPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+- table: ProductCostCalculationSeperation
+  name: IX_CAC3_ProductCostCalculationseperation_ProductCostCalculationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductCostCalculationRef
+- table: ProductCostCalculationSeperation
+  name: IX_CAC3_ProductCostCalculationseperation_RelatedProductCostCalculationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RelatedProductCostCalculationRef
+- table: ProductCostCalculationSeperation
+  name: IX_CAC3_ProductCostCalculationSeperation_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: ProductCostCalculationSeperationMaterial
+  name: PK_CAC3_ProductCostCalculationSeperationMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductCostCalculationSeperationMaterialID
+- table: ProductCostCalculationSeperationMaterial
+  name: IX_CAC3_ProductCostCalculationSeperationMaterial_ProductCostCalculationSeperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductCostCalculationSeperationRef
+- table: ProductCostCalculationSeperationMaterial
+  name: IX_CAC3_ProductCostCalculationSeperationMaterial_CalcPeriodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+- table: ProductEquivalentUnitCalculation
+  name: PK_CAC3_ProductEquivalentUnitCalculation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductEquivalentUnitCalculationID
+- table: ProductEquivalentUnitCalculation
+  name: IX_CAC3_ProductEquivalentUnitCalculation_ProductionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionRef
+- table: ProductEquivalentUnitCalculationMaterial
+  name: PK_CAC3_ProductEquivalentUnitCalculationMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductEquivalentUnitCalculationMaterialID
+- table: Production
+  name: PK_CAC3_Production
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionID
+- table: Production
+  name: UC_CAC3_Production_PartWorkstation
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+  - PartRef
+  - BillOfMaterialRef
+  - ServiceRef
+  - WorkstationRef
+- table: Production
+  name: IX_CAC3_Production_CalcPeriod
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+  - WorkstationRef
+  - BillOfMaterialRef
+  included:
+  - PartRef
+  - ServiceRef
+- table: Production
+  name: IX_CAC3_Production_BillOfMaterial
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BillOfMaterialRef
+  included:
+  - CalcPeriodRef
+  - WorkstationRef
+  - PartRef
+- table: ProductionCalcPeriodInfo
+  name: PK_CAC3_ProductionCalcPeriodInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionCalcPeriodInfoID
+- table: ProductionCalcPeriodInfo
+  name: IX_CAC3_ProductionCalcPeriodInfo_ProductionCalcPeriod
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionRef
+  - CalcPeriodRef
+  included:
+  - IsSideProduct
+  - IsGroupingProduct
+  - IsRecycling
+  - GroupingCompleted
+- table: ProductionConsumptionCalculation
+  name: PK_CAC3_ProductionConsumptionCalculation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionConsumptionCalculationID
+- table: ProductionConsumptionCalculation
+  name: IX_CAC3_ProductionConsumptionCalculation_ProductionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionRef
+- table: ProductionJointProductRatio
+  name: PK_CAC3_ProductionJointProductRatio
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionJointProductRatioID
+- table: ProductionJointProductRatio
+  name: IX_CAC3_ProductionJointProductRatio_CalcPeriodProduction
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+  - ProductionRef
+- table: ProductionMaterial
+  name: PK_CAC3_ProductionMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionMaterialID
+- table: ProductionMaterial
+  name: IX_CAC3_ProductionMaterial_ProductionCalcPeriod
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionRef
+  - CalcPeriodRef
+  included:
+  - PartRef
+- table: ProductionMaterialAlternative
+  name: PK_CAC3_ProductionMaterialAlternative
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionMaterialAlternativeID
+- table: ProductionMaterialAlternative
+  name: IX_CAC3_ProductionMaterialAlternative_ProductionMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionMaterialRef
+  included:
+  - PartRef
+- table: ProductionRecycling
+  name: PK_CAC3_ProductionRecycling
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionRecyclingID
+- table: RecyclingFee
+  name: PK_CAC3_RecyclingFee
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RecyclingFeeID
+- table: ServiceTransfer
+  name: PK_CAC3_ServiceTransfer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceTransferID
+- table: ServiceTransferItem
+  name: PK_CAC3_ServiceTransferItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceTransferItemID
+- table: StandardFee
+  name: PK_CAC3_StandardFee
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StandardFeeID
+- table: TempDeliveryConfirmation
+  name: PK_CAC3_TempDeliveryConfirmationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TempDeliveryConfirmationID
+- table: TempPacConfirmation
+  name: PK_CAC3_TempPacConfirmationID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TempPacConfirmationID
+- table: WorkCenterWorkstationMap
+  name: PK_CAC3_WorkCenterWorkstationMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WrokCenterWorkstationMapID
+- table: WorkCenterWorkstationMap
+  name: IX_CAC3_WorkCenterWorkstationMap_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: WorkCenterWorkstationMap
+  name: IX_CAC3_WorkCenterWorkstationMap_WorkstationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkstationRef
+- table: WorkCenterWorkstationMapItem
+  name: PK_CAC3_WorkCenterWorkstationMapItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkCenterWorkstationMapItemID
+- table: WorkCenterWorkstationMapItem
+  name: IX_CAC3_WorkCenterWorkstationMapItem_StandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StandardValueRef
+- table: WorkCenterWorkstationMapItem
+  name: IX_CAC3_WorkCenterWorkstationMapItem_WorkCenterWorkstationMapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterWorkstationMapRef
+- table: Workstation
+  name: PK_CAC3_Workstation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkstationID
+- table: Workstation
+  name: IX_CAC3_Workstation_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: WorkstationAbsorbedRate
+  name: PK_CAC3_WorkstationAbsorbedRate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkstationAbsorbedRateID
+- table: WorkstationCapacity
+  name: PK_CAC3_WorkstationCapacity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkstationCapacityID
+- table: WorkstationCapacity
+  name: IX_CAC3_WorkstationCapacity_CalcPeriodRef_WorkstationRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CalcPeriodRef
+  - WorkstationRef
+- table: WorkstationCapacityItem
+  name: PK_CAC3_WorkstationCapacityItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkstationCapacityItemID
+- table: WorkstationCostAllocation
+  name: PK_CAC3_WorkstationCostAllocation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkstationCostAllocationID

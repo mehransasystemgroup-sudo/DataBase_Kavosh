@@ -1,0 +1,2521 @@
+schema: FIN3
+source: extracted
+indexes:
+- table: Account
+  name: PK_FIN3_Account
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountID
+- table: Account
+  name: IX_FIN3_Account_AccountTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountTypeRef
+- table: Account
+  name: IX_FIN3_Account_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Account
+  name: UIX_FIN3_Account_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: Account
+  name: FIN3_Account_PartyRef_CurrencyRef_AccountTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+  - AccountTypeRef
+  - PartyRef
+  included:
+  - Name
+  - SecondTitle
+  - OwnerID
+  - OwnerType
+  - OwnerCodeProperty
+  - ScopeOwnerRef
+  - CreationDate
+  - ExpirationDate
+  - EffectScope
+  - DebitBalance
+  - CreditBalance
+  - Balance
+  - OnCreditCreditBalance
+  - OnCreditDebitBalance
+  - OnCreditBalance
+  - DebitReserve
+  - CreditReserve
+  - ReserveBalance
+  - Status
+  - Version
+  - IsAutomatic
+  - Number
+- table: Account
+  name: IX_FIN3_Account_OwnerID_OwnerType_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OwnerID
+  - OwnerType
+  - CurrencyRef
+  included:
+  - AccountTypeRef
+  - AccountID
+- table: Account
+  name: IX_FIN3_Account_CurrencyRef_AccountTypeRef_PartyRef_ExpirationDate_Status
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+  - AccountTypeRef
+  - PartyRef
+  - ExpirationDate
+  - Status
+- table: Account
+  name: IX_FIN3_Account_PartyRef_AccountID_Name
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+  included:
+  - Name
+- table: AccountDebitCreditStatement
+  name: PK_FIN3_AccountDebitCreditStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountDebitCreditStatementID
+- table: AccountDebitCreditStatement
+  name: IX_FIN3_AccountDebitCreditStatement_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: AccountDebitCreditStatementItem
+  name: PK_FIN3_AccountDebitCreditStatementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountDebitCreditStatementItemID
+- table: AccountDebitCreditStatementItem
+  name: IX_FIN3_AccountDebitCreditStatementItem_AccountDebitCreditStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountDebitCreditStatementRef
+- table: AccountEstablishment
+  name: PK_FIN3_AccountEstablishment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountEstablishmentID
+- table: AccountEstablishmentItem
+  name: PK_FIN3_AccountEstablishmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountEstablishmentItemID
+- table: AccountGroup
+  name: PK_FIN3_AccountGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupID
+- table: AccountGroup
+  name: UIX_FIN3_AccountGroup_Code_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - LedgerRef
+- table: AccountGroup
+  name: UIX_FIN3_AccountGroup_Title_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - LedgerRef
+- table: AccountGroupConfiguration
+  name: PK_AccountGroupConfiguartion
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupConfigurationID
+- table: AccountGroupConfiguration
+  name: IX_FIN3_AccountGroupConfiguration_BusinessPolicyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BusinessPolicyRef
+- table: AccountGroupConfiguration
+  name: IX_FIN3_AccountGroupConfiguration_DLFourRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLFourRef
+- table: AccountGroupConfiguration
+  name: IX_FIN3_AccountGroupConfiguration_DLFiveRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLFiveRef
+- table: AccountGroupConfiguration
+  name: IX_FIN3_AccountGroupConfiguration_DLSixRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLSixRef
+- table: AccountGroupConfiguration
+  name: IX_FIN3_AccountGroupConfiguration_SubsidiaryLedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SubsidiaryLedgerRef
+- table: AccountGroupConfigurationParameter
+  name: PK_AccountGroupConfigurationParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupConfigurationParameterID
+- table: AccountGroupConfigurationParameter
+  name: IX_FIN3_AccountGroupConfigurationParameter_AccountGroupConfigurationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountGroupConfigurationRef
+- table: AccountGroupGroupMember
+  name: PK_FIN3_AccountGroupGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountGroupGroupMemberID
+- table: AccountingDepartment
+  name: PK_FIN3_AccountingDepartment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountingDepartmentID
+- table: AccountingVoucherTemplate
+  name: PK_FIN3_AccountingVoucherTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountingVoucherTemplateID
+- table: AccountingVoucherTemplateItem
+  name: PK_FIN3_AccountingVoucherTemplateItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountingVoucherTemplateItemID
+- table: AccountMapping
+  name: PK_FIN3_AccountMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountMappingID
+- table: AccountMappingItem
+  name: PK_FIN3_AccountMappingItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountMappingItemID
+- table: AccountProxy
+  name: PK_FIN3_AccountProxy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountProxyID
+- table: AccountProxyItem
+  name: PK_FIN3_AccountProxyItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountProxyItemID
+- table: AccountTransactionAnalysis
+  name: PK_FIN3_AccountTransactionAnalysis
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountTransactionAnalysisID
+- table: AccountTransactionAnalysis
+  name: IX_FIN3_AccountTransactionAnalysis_DebitEntityCode_DebitEntityRef_IsSystematic
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitEntityCode
+  - DebitEntityRef
+  - IsSystematic
+  included:
+  - Amount
+- table: AccountTransactionAnalysis
+  name: IX_FIN3_AccountTransactionAnalysis_CreditEntityCode_CreditEntityRef_IsSystematic
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditEntityCode
+  - CreditEntityRef
+  - IsSystematic
+  included:
+  - Amount
+- table: AccountTransactionAnalysis
+  name: IX_FIN3_AccountTransactionAnalysis_CreditTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditTransactionRef
+  included:
+  - Amount
+  - IsSystematic
+- table: AccountTransactionAnalysis
+  name: IX_FIN3_AccountTransactionAnalysis_DebitTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitTransactionRef
+  included:
+  - Amount
+  - IsSystematic
+- table: AccountTransactionAnalysis
+  name: IX_FIN3_AccountTransactionAnalysis_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+  included:
+  - DebitEntityRef
+  - DebitEntityCode
+  - DebitTransactionRef
+  - Amount
+- table: AccountTransactionAnalysis
+  name: IX_FIN3_AccountTransactionAnalysis_AccountRef_DebitEntityRef_DebitEntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+  - DebitEntityRef
+  - DebitEntityCode
+  included:
+  - Amount
+- table: AccountTransactionAnalysisDetail
+  name: PK_FIN3_AccountTransactionAnalysisDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountTransactionAnalysisDetailID
+- table: AccountTransactionAnalysisDetail
+  name: IX_FIN3_AccountTransactionAnalysisDetail_DebitEntityRef_DebitEntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitEntityRef
+  - DebitEntityCode
+- table: AccountTransactionAnalysisDetail
+  name: IX_FIN3_AccountTransactionAnalysisDetail_AccountTransactionAnalysisRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountTransactionAnalysisRef
+- table: AccountType
+  name: PK_FIN3_AccountType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountTypeID
+- table: AccountType
+  name: UIX_FIN3_AccountType_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: AgingReceivables
+  name: PK_FIN3_AgingReceivables
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AgingReceivablesID
+- table: AgingReceivableSetting
+  name: PK_FIN3_AgingReceivableSetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AgingReceivableSettingID
+- table: Analyse
+  name: PK_FIN3_Analyse
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AnalyseID
+- table: Analyse
+  name: IX_FIN3_Analyse_CreditVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CreditVoucherItemRef
+- table: Analyse
+  name: IX_FIN3_Analyse_DebitVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitVoucherItemRef
+- table: AutomaticVoucherPattern
+  name: PK_FIN3_AutomaticVoucherPattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AutomaticVoucherPatternID
+- table: AutomaticVoucherPattern
+  name: UIX_FIN3_AutomaticVoucherPattern_Code_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - LedgerRef
+- table: AutomaticVoucherPattern
+  name: IX_FIN3_AutomaticVoucherPattern_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: AutomaticVoucherPatternDestinationSL
+  name: PK_FIN3_AutomaticVoucherPatternDestinationSL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AutomaticVoucherPatternDestinationSLID
+- table: AutomaticVoucherPatternDestinationSL
+  name: IX_FIN3_AutomaticVoucherPatternDestinationSL_AutomaticVoucherPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AutomaticVoucherPatternRef
+- table: AutomaticVoucherPatternDestinationSL
+  name: IX_FIN3_AutomaticVoucherPatternDestinationSL_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: AutomaticVoucherPatternSourceSL
+  name: PK_FIN3_AutomaticVoucherPatternSourceSL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AutomaticVoucherPatternSourceSLID
+- table: AutomaticVoucherPatternSourceSL
+  name: IX_FIN3_AutomaticVoucherPatternSourceSL_AutomaticVoucherPatternDestinationSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AutomaticVoucherPatternDestinationSLRef
+- table: BranchCurrentAccount
+  name: PK_FIN3_BranchCurrentAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BranchCurrentAccountID
+- table: ClosingVoucherClosableSL
+  name: PK_FIN3_ClosingVoucherClosableSL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClosingVoucherClosableSLID
+- table: ClosingVoucherClosableSL
+  name: IX_FIN3_ClosingVoucherClosableSL_ClosingVoucherCounterPartSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ClosingVoucherCounterPartSLRef
+- table: ClosingVoucherCounterPartSL
+  name: PK_FIN3_ClosingVoucherCounterPartSL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClosingVoucherCounterPartSLID
+- table: ClosingVoucherCounterPartSL
+  name: IX_FIN3_ClosingVoucherCounterPartSL_ClosingVoucherPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ClosingVoucherPatternRef
+- table: ClosingVoucherCounterPartSL
+  name: IX_FIN3_ClosingVoucherCounterPartSL_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: ClosingVoucherInfo
+  name: PK_ClosingVoucherInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClosingVoucherInfoID
+- table: ClosingVoucherPattern
+  name: PK_FIN3_ClosingVoucherPattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClosingVoucherPatternID
+- table: ClosingVoucherPattern
+  name: UIX_FIN3_ClosingVoucherPattern_Code_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - LedgerRef
+- table: ClosingVoucherPattern
+  name: IX_FIN3_ClosingVoucherPattern_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ClosingVoucherReferences
+  name: PK_FIN3_ClosingVoucherReferences
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ClosingVoucherReferencesID
+- table: ClosingVoucherReferences
+  name: IX_FIN3_ClosingVoucherReferences_ClosingVoucherPatternRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ClosingVoucherPatternRef
+- table: ClosingVoucherReferences
+  name: IX_FIN3_ClosingVoucherReferences_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+- table: COAGrouping
+  name: PK_FIN3_COAGrouping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - COAGroupingID
+- table: COAGrouping
+  name: UIX_FIN3_COAGrouping_Title_ParentRef_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - ParentRef
+  - LedgerRef
+- table: COAGrouping
+  name: UIX_FIN3_COAGrouping_Code_ParentRef_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - ParentRef
+  - LedgerRef
+- table: COAGrouping
+  name: IX_FIN3_COAGrouping_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: COAGrouping
+  name: IX_FIN3_COAGrouping_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: COAGroupingSL
+  name: PK_FIN3_COAGroupingSL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - COAGroupingSLID
+- table: COAGroupingSL
+  name: IX_FIN3_COAGroupingSL_COAGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - COAGroupingRef
+- table: COAGroupingSL
+  name: IX_FIN3_COAGroupingSL_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: COAGroupingSLDL
+  name: PK_FIN3_COAGroupingSLDL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - COAGroupingSLDLID
+- table: COAGroupingSLDL
+  name: IX_FIN3_COAGroupingSLDL_COAGroupingSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - COAGroupingSLRef
+- table: COAGroupingSLDL
+  name: IX_FIN3_COAGroupingSLDL_DLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLRef
+- table: CodingStandard
+  name: PK_FIN3_CodingStandard
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardID
+- table: CodingStandard
+  name: UIX_FIN3_CodingStandard_CodingStandardTitle_ProtocolVersion
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - StandardTitle
+  - ProtocolVersion
+- table: CodingStandardDlSlType
+  name: PK_FIN3_CodingStandardDlSlType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardDLID
+- table: CodingStandardEntity
+  name: PK_FIN3_CodingStandardEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardEntityID
+- table: CodingStandardEntityCode
+  name: PK_FIN3_CodingStandardEntityCode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardEntityCodeID
+- table: CodingStandardEntityCode
+  name: IX_FIN3_CodingStandardEntityCode_CodingStandardEntityRef_CodeName
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CodingStandardEntityRef
+  included:
+  - Code
+  - Name
+- table: CodingStandardEntityCodeMapping
+  name: PK_FIN3_CodingStandardEntityCodeMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardEntityCodeMappingID
+- table: CodingStandardEntityCodeMapping
+  name: IX_FIN3_CodingStandardEntityCodeMapping_CodeRef_CodingStandardEntityCodeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CodeRef
+  included:
+  - CodingStandardEntityCodeRef
+- table: CodingStandardExtraField
+  name: PK_FIN3_CodingStandardExtraField
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardExtraFieldID
+- table: CodingStandardFormula
+  name: PK_FIN3_CodingStandardFormula
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardFormulaID
+- table: CodingStandardFormulaItem
+  name: PK_FIN3_CodingStandardFormulaItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardFormulaItemID
+- table: CodingStandardFormulaItemFilter
+  name: PK_FIN3_CodingStandardFormulaItemFilter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardFormulaItemFilterID
+- table: CodingStandardReportFieldInfo
+  name: PK_Fin3_CodingStandardReportFieldInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardReportFieldInfoID
+- table: CodingStandardReportFieldInfoAttachment
+  name: PK_Fin3_CodingStandardReportFieldInfoAttachment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardReportFieldInfoAttachmentID
+- table: CodingStandardReportFieldInfoAttachment
+  name: UIX_FIN3_CSAttachment_CSReportFieldInfoRef_KeyValue
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CodingStandardReportFieldInfoRef
+  - KeyValue
+- table: CodingStandardReportInfo
+  name: PK_Fin3_CodingStandardReportInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardReportInfoID
+- table: CodingStandardXMLDataInfo
+  name: PK_Fin3_CodingStandardXMLDataInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardXMLDataInfoID
+- table: CodingStandardXMLInfo
+  name: PK_Fin3_CodingStandardXMLInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CodingStandardXMLInfoID
+- table: ContaminationToll
+  name: PK_FIN3_ContaminationToll
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContaminationTollID
+- table: ConversionAccountItem
+  name: PK_FIN3_ConversionAccountItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConversionAccountItemID
+- table: ConversionDocument
+  name: PK_FIN3_ConversionDocument
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConversionDocumentID
+- table: ConversionDocument
+  name: IX_FIN3_ConversionDocument_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ConversionDocument
+  name: IX_FIN3_ConversionDocument_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ConversionDocument
+  name: IX_FIN3_ConversionDocument_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ConversionDocument
+  name: IX_FIN3_ConversionDocument_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: ConversionDocument
+  name: IX_FIN3_ConversionDocument_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ConversionDocument
+  name: IX_FIN3_ConversionDocument_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+- table: ConversionDocumentItem
+  name: PK_FIN3_ConversionDocumentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConversionDocumentItemID
+- table: ConversionDocumentItem
+  name: IX_FIN3_ConversionDocumentItem_ConversionDocumentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConversionDocumentRef
+- table: ConversionDocumentItem
+  name: IX_FIN3_ConversionDocumentItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: ConversionPattern
+  name: PK_FIN3_ConversionPattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConversionPatternID
+- table: ConversionPattern
+  name: UIX_FIN3_ConversionPattern_Code_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - LedgerRef
+- table: ConversionPattern
+  name: IX_FIN3_ConversionPattern_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ConvertibleAccountItem
+  name: PK_FIN3_ConvertibleAccountItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConvertibleAccountItemID
+- table: DebitCreditStatement
+  name: PK_DebitCreditStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DebitCreditStatementID
+- table: DebitCreditStatement
+  name: IX_FIN3_DebitCreditStatement_DLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLRef
+- table: DebitCreditStatement
+  name: IX_FIN3_DebitCreditStatement_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: DebitCreditStatement
+  name: IX_FIN3_DebitCreditStatement_Confirmer
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Confirmer
+- table: DebitCreditStatement
+  name: IX_FIN3_DebitCreditStatement_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: DebitCreditStatement
+  name: IX_FIN3_DebitCreditStatement_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: DebitCreditStatementItem
+  name: PK_DebitCreditStatementItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DebitCreditStatementItemID
+- table: DebitCreditStatementItem
+  name: IX_FIN3_DebitCreditStatementItem_DebitCreditStatementRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DebitCreditStatementRef
+- table: DebitCreditStatementItem
+  name: IX_FIN3_DebitCreditStatementItem_VoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherItemRef
+- table: DebitCreditStatementItem
+  name: IX_FIN3_DebitCreditStatementItem_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+- table: DeletedVoucher
+  name: PK_FIN3_DeletedVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DeletedVoucherID
+- table: DL
+  name: PK_FIN3_DL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLID
+- table: DL
+  name: UIX_FIN3_DL_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: DL
+  name: UIX_FIN3_DL_ClassificationNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ClassificationNumber
+- table: DL
+  name: UC_FIN3_DL_Title_DLTypeRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - DLTypeRef
+- table: DL
+  name: IX_FIN3_DL_ReferenceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceID
+  included:
+  - DLTypeRef
+  - Code
+- table: DL
+  name: IX_FIN3_DL_DLTypeRef_EntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+  - EntityCode
+  included:
+  - DLID
+  - ReferenceID
+  - Code
+- table: DLGrouping
+  name: PK_FIN3_DLGrouping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLGroupingID
+- table: DLGrouping
+  name: UIX_FIN3_DLGrouping_Code_ParentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - ParentRef
+- table: DLGrouping
+  name: UIX_FIN3_DLGrouping_Title_ParentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - ParentRef
+- table: DLGrouping
+  name: IX_FIN3_DLGrouping_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: DLGroupingDetail
+  name: PK_FIN3_DLGroupingDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLGroupingDetailID
+- table: DLGroupingDetail
+  name: IX_FIN3_DLGroupingDetail_DLGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLGroupingRef
+- table: DLGroupingDetail
+  name: IX_FIN3_DLGroupingDetail_DLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLRef
+- table: DLGroupMember
+  name: PK_FIN3_DLGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLGroupMemberID
+- table: DLType
+  name: PK_FIN3_DLType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLTypeID
+- table: DLType
+  name: UIX_FIN3_DLType_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DLTypeConversionInfo
+  name: PK_DLTypeConversionInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLTypeConversionInfoID
+- table: DLTypeRelation
+  name: PK_FIN3_DLTypeRelation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DLTypeRelationID
+- table: DLTypeRelation
+  name: IX_FIN3_DLTypeRelation_DLTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef
+- table: DLTypeRelation
+  name: UIX_FIN3_DLTypeRelation_SLRef_Level_DLTypeRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SLRef
+  - Level
+  - DLTypeRef
+- table: DraftVoucher
+  name: PK_FIN3_DraftVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DraftVoucherID
+- table: DraftVoucherItem
+  name: PK_FIN3_DraftVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DraftVoucherItemID
+- table: DraftVoucherItem
+  name: IX_FIN3_DraftVoucherItem_DraftVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DraftVoucherRef
+  included:
+  - FollowUpNumber
+  - FollowUpDate
+  - Description
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+  - TargetCurrencyRef
+  - DLRef4
+  - DLRef5
+  - DLRef6
+  - DLRef7
+  - DLRef8
+  - DLRef9
+  - DLRef10
+  - DLRef11
+  - DLRef12
+  - DLRef13
+  - DLRef14
+  - DLRef15
+  - DLRef16
+  - DLRef17
+  - DLRef18
+  - DLRef19
+  - DLRef20
+- table: GatheringProvider
+  name: PK_FIN3_GatheringProvider
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GatheringProviderID
+- table: GatheringProvider
+  name: IX_FIN3_GatheringProvider_TaxYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaxYearRef
+- table: GatheringProvider
+  name: UIX_FIN3_GatheringProvider_Key_TaxYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Key
+  - TaxYearRef
+- table: GL
+  name: PK_FIN3_GL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GLID
+- table: GL
+  name: UIX_FIN3_GL_Code_AccountGroupRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - AccountGroupRef
+- table: GL
+  name: UIX_FIN3_GL_Title_AccountGroupRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - AccountGroupRef
+- table: GLGroupMember
+  name: PK_FIN3_GLGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GLGroupMemberID
+- table: GLVoucher
+  name: PK_FIN3_GLVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GLVoucherID
+- table: GLVoucher
+  name: UIX_FIN3_GLVoucher_LedgerRef_FiscalYearRef_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - LedgerRef
+  - FiscalYearRef
+  - Number
+- table: GLVoucher
+  name: IX_FIN3_GLVoucher_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: GLVoucher
+  name: IX_FIN3_GLVoucher_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: GLVoucherItem
+  name: PK_FIN3_GLVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GLVoucherItemID
+- table: GLVoucherItem
+  name: IX_FIN3_GLVoucherItem_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: GLVoucherItem
+  name: IX_FIN3_GLVoucherItem_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: GLVoucherItem
+  name: IX_FIN3_GLVoucherItem_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: GLVoucherItem
+  name: IX_FIN3_GLVoucherItem_GLVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLVoucherRef
+- table: GLVoucherReference
+  name: PK_FIN3_GLVoucherReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GLVoucherReferenceID
+- table: GLVoucherReference
+  name: IX_FIN3_GLVoucherReference_GLVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLVoucherRef
+- table: GLVoucherReference
+  name: IX_FIN3_GLVoucherReference_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+- table: LookupMap
+  name: PK_Fin3_LookupMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LookupMapID
+- table: PeriodicOppositNatureAccounts
+  name: PK_FIN3_PeriodicOppositNatureAccounts
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PeriodicOppositNatureAccountsID
+- table: PeriodNature
+  name: PK_PeriodNature
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PeriodNatureID
+- table: PurchaseOrImportGoodOrService
+  name: PK_FIN3_PurchaseOrImportGoodOrService
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PurchaseOrImportGoodOrServiceID
+- table: RefundableOrDeductiblePaidTaxAndToll
+  name: PK_FIN3_RefundableOrDeductiblePaidTaxAndToll
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RefundableOrDeductiblePaidTaxAndTollID
+- table: SaleOrExportGoodOrService
+  name: PK_FIN3_SaleOrExportGoodOrService
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SaleOrExportGoodOrServiceID
+- table: SeasonalCurrency
+  name: PK_FIN3_SeasonalCurrency
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SeasonalCurrencyID
+- table: SeasonalCurrencyMap
+  name: PK_FIN3_CurrencyArzMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CurrencyArzMapID
+- table: SeasonalCurrencyMap
+  name: UIX_FIN3_CurrencyArzMap_CurrencyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: SeasonalNationalIDMap
+  name: PK_FIN3_SeasonalNationalIDMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SeasonalNationalIDMapID
+- table: SeasonalNationalIDMap
+  name: UIX_FIN3_SeasonalNationalIDMap_PartyRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+- table: SeasonalReport
+  name: PK_FIN3_SeasonalReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SeasonalReportID
+- table: SeasonalReport
+  name: UIX_FIN3_SeasonalReport_TaxYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - TaxYearRef
+- table: SeasonalReportLog
+  name: PK_SeasonalReportLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SeasonalReportLogID
+- table: SeasonalReportMergePattern
+  name: PK_VATCollectiveInformationMergePattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SeasonalReportMergePatternID
+- table: SeasonalReportMergePatternItem
+  name: PK_VATCollectiveInformationMergePatternItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SeasonalReportMergePatternItemID
+- table: SeasonalZone
+  name: PK_FIN3_SeasonalZone
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SeasonalZoneID
+- table: SeasonalZone
+  name: UIX_FIN3_SeasonalZone_CityCode
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - CityCode
+- table: SeasonalZoneMap
+  name: PK_FIN3_RegionalDivisionZoneMap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RegionalDivisionZoneMapID
+- table: SeasonalZoneMap
+  name: UIX_FIN3_RegionalDivisionZoneMap_RegionalDivisionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - RegionalDivisionRef
+- table: SL
+  name: PK_FIN3_SL
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLID
+- table: SL
+  name: UIX_FIN3_SL_Code_GLRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+  - GLRef
+- table: SL
+  name: UIX_FIN3_SL_Title_GLRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - GLRef
+- table: SL
+  name: IX_FIN3_SL_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+- table: SL
+  name: IX_FIN3_SL_DefaultCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DefaultCurrencyRef
+- table: SLCounterPart
+  name: PK_FIN3_SLCounterPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLCounterPartID
+- table: SLCounterPart
+  name: IX_FIN3_SLCounterPart_SLCounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLCounterPartRef
+- table: SLCounterPart
+  name: IX_FIN3_SLCounterPart_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: SLDefaultVat
+  name: PK_SLDefaultVat
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLDefaultVatID
+- table: SLDLFlow
+  name: PK_FIN3_SLDLFlow
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLDLFlowID
+- table: SLGroupMember
+  name: PK_FIN3_SLGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLGroupMemberID
+- table: SLMapping
+  name: PK_FIN3_SLMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLMappingID
+- table: SLMapping
+  name: IX_FIN3_SLMapping_LeadingSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LeadingSLRef
+- table: SLMapping
+  name: IX_FIN3_SLMapping_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: SLStandardDesc
+  name: PK_FIN3_SLStandardDesc
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SLStandardDescID
+- table: StandardVoucherTypeEntity
+  name: PK_FIN3_StandardVoucherTypeEntity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StandardVoucherTypeEntityID
+- table: StandardVoucherTypeMapping
+  name: PK_FIN3_StandardVoucherTypeMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StandardVoucherTypeMappingID
+- table: StandardVoucherTypeMapping
+  name: UIX_FIN3_StandardVoucherTypeMapping_CodingStandardRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CodingStandardRef
+- table: StandardVoucherTypeMappingItem
+  name: PK_FIN3_StandardVoucherTypeMappingItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StandardVoucherTypeMappingItemID
+- table: StandardVoucherTypeMappingItem
+  name: UIX_FIN3_StandardVoucherTypeMappingItem_StandardVoucherTypeMappingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StandardVoucherTypeMappingRef
+- table: StandardVoucherTypeMappingItem
+  name: UIX_FIN3_StandardVoucherTypeMappingItem_StandardVoucherTypeEntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StandardVoucherTypeEntityRef
+- table: StandardVoucherTypeMappingItem
+  name: UIX_FIN3_StandardVoucherTypeMappingItem_VoucherTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherTypeRef
+- table: TaxAndTollRemaining
+  name: PK_FIN3_TaxAndTollRemaining
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxAndTollRemainingID
+- table: TaxInformation
+  name: PK_TaxInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxInformationID
+- table: TaxYear
+  name: PK_FIN3_TaxYear
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TaxYearID
+- table: TaxYear
+  name: UIX_FIN3_TaxYear_Title_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - LedgerRef
+- table: Transaction
+  name: PK_FIN3_Transaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransactionID
+- table: Transaction
+  name: IX_FIN3_Transaction_ReferenceTypeComponentName_ReferenceTypeEntityName_ReferenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceTypeComponentName
+  - ReferenceTypeEntityName
+  - ReferenceRef
+  included:
+  - EntryAmount
+  - EntryType
+  - IsCredit
+- table: Transaction
+  name: IX_FIN3_Transaction_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+  included:
+  - EntryAmount
+  - ReferenceTypeComponentName
+  - ReferenceTypeEntityName
+  - ReferenceRef
+- table: Transaction
+  name: IX_FIN3_Transaction_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: Transaction
+  name: IX_FIN3_Transaction_ParentTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentTransactionRef
+  included:
+  - Quantity
+  - InitialQuantity
+- table: Transaction
+  name: IX_FIN3_Transaction_AffectingTransactionRef_IS_NOT_NULL
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AffectingTransactionRef
+- table: Transaction
+  name: IX_FIN3_Transaction_ReferenceTypeComponentName_ReferenceItemTypeEntityName_ReferenceItemRef_EntryType_EntryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceTypeComponentName
+  - ReferenceItemTypeEntityName
+  - ReferenceItemRef
+  - EntryType
+  - EntryRef
+- table: Transaction
+  name: IX_FIN3_Transaction_Component_Entity_EntryType_BookingDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceTypeComponentName
+  - ReferenceTypeEntityName
+  - EntryType
+  - BookingDate
+  included:
+  - TransactionID
+  - ReferenceRef
+  - ReferenceItemTypeEntityName
+  - ReferenceItemRef
+  - EntryAmount
+  - Effect
+  - EntryRef
+  - AccountRef
+- table: Transaction
+  name: IX_FIN3_Transaction_EntryType_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntryType
+  - AccountRef
+  included:
+  - Effect
+  - EntryAmount
+- table: Transaction
+  name: IX_FIN3_Transaction_AccountRef_AnalyzeEntityCode_AnalyzeEntityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+  - AnalyzeEntityCode
+  - AnalyzeEntityRef
+  included:
+  - EntryAmount
+  - Effect
+  - BookingDate
+  - IsCredit
+- table: Transaction
+  name: IX_FIN3_Transaction_IsCredit_AnalyzeEntityRef_AnalyzeEntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IsCredit
+  - AnalyzeEntityRef
+  - AnalyzeEntityCode
+  included:
+  - TransactionID
+  - EntryType
+  - EntryRef
+  - EntryAmount
+  - AccountRef
+  - ReferenceRef
+  - AffectingTransactionRef
+  - Effect
+- table: Transaction
+  name: FIN3_Transaction_EntryType_EntryRef_AffectingTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntryRef
+  - AffectingTransactionRef
+  included:
+  - ParentTransactionRef
+  - ReferenceTypeComponentName
+  - ReferenceTypeEntityName
+  - ReferenceItemTypeEntityName
+  - ReferenceRef
+  - ReferenceItemRef
+  - Effect
+  - EntryAmount
+  - GLAmount
+  - AccountRef
+  - BookingDate
+  - SettlementDate
+  - Description
+  - ExtraData
+  - ReserveReferenceType
+  - ReserveReferenceID
+  - Status
+  - Version
+  - Quantity
+  - Fee
+  - UserRef
+  - IsCredit
+  - OperationalCurrencyExchangeRateRef
+  - OperationalCurrencyExchangeRate
+  - OperationalCurrencyExchangeRateIsReverse
+  - EntryType
+- table: TransactionAffectedAccount
+  name: PK_FIN3_TransactionAffectedAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransactionAffectedAccountID
+- table: TransactionAffectedAccount
+  name: UIX_FIN3_TransactionAffectedAccount
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - AffectingTransactionRef
+  - AffectedAccountRef
+- table: TransactionAffectedAccount
+  name: IX_FIN3_TransactionAffectedAccount_AffectedAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AffectedAccountRef
+- table: TransactionAffectedAccount
+  name: IX_FIN3_TransactionAffectedAccount_AffectingTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AffectingTransactionRef
+- table: VATBaseInformation
+  name: PK_FIN3_VATBaseInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VATBaseInformationID
+- table: VATCollectiveExtraInformation
+  name: PK_FIN3_VATCollectiveExtraInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VATCollectiveExtraInformationID
+- table: VATCollectiveInformation
+  name: PK_FIN3_VATCollectiveInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VATCollectiveInformationID
+- table: VATCollectiveInformation
+  name: IX_FIN3_VATCollectiveInformation_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: VATCollectiveInformation
+  name: IX_FIN3_VATCollectiveInformation_GatheringProviderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GatheringProviderRef
+- table: VATCollectiveInformation
+  name: IX_FIN3_VATCollectiveInformation_RegionalDivisonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRegionalDivisionRef
+- table: VATCollectiveInformation
+  name: IX_FIN3_VATCollectiveInformation_TaxYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TaxYearRef
+- table: VATCollectiveInformation
+  name: IX_FIN3_VATCollectiveInformation_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+- table: VATCollectiveInformation
+  name: UIX_FIN3_VATCollectiveInformation_UniqueKey
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UniqueKey
+- table: VATCollectiveInformation
+  name: IX_FIN3_VATCollectiveInformation_GroupingTag_TaggingAgentKey
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupingTag
+  - TaggingAgentKey
+- table: VATCollectiveInformationHistory
+  name: PK_FIN3_VATCollectiveInformationHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VATCollectiveInformationHistoryID
+- table: VatContractCollectiveInformation
+  name: PK_FIN3_VatContractCollectiveInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VatContractCollectiveInformationID
+- table: VATParty
+  name: PK_FIN3_VATParty
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VATPartyID
+- table: VATParty
+  name: UIX_FIN3_VATParty_PartyRef_VATCategory
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+  - VATCategory
+- table: VATStatement
+  name: PK_FIN3_VATStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VATStatementID
+- table: Voucher
+  name: PK_FIN3_Voucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherID
+- table: Voucher
+  name: UIX_FIN3_Voucher_BranchRef_LedgerRef_FiscalYearRef_Date_DailyNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DailyNumber
+  - Date
+  - LedgerRef
+  - BranchRef
+  - FiscalYearRef
+- table: Voucher
+  name: UIX_FIN3_Voucher_BranchRef_LedgerRef_FiscalYearRef_Sequence
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Sequence
+  - LedgerRef
+  - BranchRef
+  - FiscalYearRef
+- table: Voucher
+  name: IX_FIN3_Voucher_LedgerRef_FiscalYearRef_BranchRef_State_IsTemporary
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+  - FiscalYearRef
+  - BranchRef
+  - State
+  - IsTemporary
+  included:
+  - VoucherID
+  - Number
+  - Date
+- table: Voucher
+  name: IX_FIN3_Voucher_LedgerRef_State_IsTemporary
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+  - State
+  - IsTemporary
+  included:
+  - VoucherID
+- table: Voucher
+  name: IX_FIN3_Voucher_LedgerRef_FiscalYearRef_IsTemporary_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+  - FiscalYearRef
+  - IsTemporary
+  - State
+  included:
+  - VoucherID
+  - BranchRef
+  - DailyNumber
+  - Date
+  - Number
+- table: Voucher
+  name: IX_FIN3_Voucher_LedgerRef_FiscalYearRef_VoucherTypeRef_IsTemporary
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+  - FiscalYearRef
+  - VoucherTypeRef
+  - IsTemporary
+- table: VoucherHistory
+  name: PK_FIN3_VoucherHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherHistoryID
+- table: VoucherItem
+  name: PK_FIN3_VoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherItemID
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+  - TargetCurrencyRef
+  included:
+  - VoucherItemID
+  - VoucherRef
+  - RowNumber
+  - SLRef
+  - Debit
+  - Credit
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+  - OperationalCurrencyExchangeRate
+  - Description
+  - FollowUpNumber
+  - FollowUpDate
+  - TaxAccountType
+  - TaxStateType
+  - TransactionType
+  - PurchaseOrSale
+  - ItemOrService
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_AccountGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountGroupRef
+  included:
+  - VoucherItemID
+  - VoucherRef
+  - BranchRef
+  - RowNumber
+  - SLRef
+  - Debit
+  - Credit
+  - TargetCurrencyRef
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+  - OperationalCurrencyExchangeRate
+  - Description
+  - FollowUpNumber
+  - FollowUpDate
+  - TaxAccountType
+  - TaxStateType
+  - TransactionType
+  - PurchaseOrSale
+  - ItemOrService
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+  included:
+  - SLRef
+  - Debit
+  - Credit
+  - DLLevel4
+  - DLLevel5
+  - DLLevel6
+  - DLLevel7
+  - DLLevel8
+  - DLLevel9
+  - DLLevel10
+  - DLLevel11
+  - DLLevel12
+  - DLLevel13
+  - DLLevel14
+  - DLLevel15
+  - DLLevel16
+  - DLLevel17
+  - DLLevel18
+  - DLLevel19
+  - DLLevel20
+  - AccountGroupRef
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+  - BranchRef
+  - GLRef
+  - SLCode
+  - TargetCurrencyRef
+  - Description
+  - Description_En
+  - FollowUpNumber
+  - FollowUpDate
+  - DLTypeRef4
+  - DLTypeRef5
+  - DLTypeRef6
+  - DLTypeRef7
+  - DLTypeRef8
+  - DLTypeRef9
+  - DLTypeRef10
+  - DLTypeRef11
+  - DLTypeRef12
+  - DLTypeRef13
+  - DLTypeRef14
+  - DLTypeRef15
+  - DLTypeRef16
+  - DLTypeRef17
+  - DLTypeRef18
+  - DLTypeRef19
+  - DLTypeRef20
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel7
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel8
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel9
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel10
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel10
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel11
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel11
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel12
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel12
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel13
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel13
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel14
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel14
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel15
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel15
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel16
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel16
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel17
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel17
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel18
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel18
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel19
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel19
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel20
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel20
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel4_Debit_Credit_TargetCurrencyDebit_TargetCurrencyCredit
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel4
+  included:
+  - VoucherRef
+  - Debit
+  - Credit
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel5_Debit_Credit_TargetCurrencyDebit_TargetCurrencyCredit
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel5
+  included:
+  - VoucherRef
+  - Debit
+  - Credit
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_DLLevel6_Debit_Credit_TargetCurrencyDebit_TargetCurrencyCredit
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLLevel6
+  included:
+  - VoucherRef
+  - Debit
+  - Credit
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+- table: VoucherItem
+  name: IX_FIN3_VoucherItem_GLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GLRef
+  included:
+  - VoucherItemID
+  - VoucherRef
+  - BranchRef
+  - RowNumber
+  - SLRef
+  - Debit
+  - Credit
+  - TargetCurrencyRef
+  - TargetCurrencyDebit
+  - TargetCurrencyCredit
+  - OperationalCurrencyExchangeRate
+  - Description
+  - FollowUpNumber
+  - FollowUpDate
+  - TaxAccountType
+  - TaxStateType
+  - TransactionType
+  - PurchaseOrSale
+  - ItemOrService
+- table: VoucherItemOffline
+  name: IX_FIN3_voucherItemOffline_columnStore
+  type: CLUSTERED COLUMNSTORE
+  unique: false
+  is_pk: false
+  columns: []
+  included:
+  - VoucherItemID
+  - RowNumber
+  - VoucherRef
+  - BranchRef
+  - AccountGroupRef
+  - GLRef
+  - SLRef
+  - SLCode
+  - Debit
+  - Credit
+  - CurrencyRef
+  - BaseCurrencyRef
+  - CurrencyDebit
+  - CurrencyCredit
+  - FollowUpNumber
+  - FollowUpDate
+  - DLLevel4
+  - DLLevel5
+  - DLLevel6
+  - DLLevel7
+  - DLLevel8
+  - DLLevel9
+  - DLTypeRef4
+  - DLTypeRef5
+  - DLTypeRef6
+  - DLTypeRef7
+  - DLTypeRef8
+  - DLTypeRef9
+  - TaxAccountType
+  - TaxStateType
+  - TransactionType
+  - PurchaseOrSale
+  - ItemOrService
+  - IsCurrencyBased
+  - Quantity
+  - PartyRef
+  - Date
+  - VoucherTypeRef
+  - AuxiliaryNumber
+  - FiscalYearRef
+  - LedgerRef
+  - Number
+  - Sequence
+  - IsTraceable
+  - IsQuantifiable
+  - IsMultiCurrency
+  - SLType
+  - TargetCurrencyCredit
+  - TargetCurrencyDebit
+  - TargetCurrencyRef
+  - VoucherCreator
+  - DailyNumber
+  - VoucherSequence
+  - IsExternal
+  - VoucherState
+  - DLLevel10
+  - DLLevel11
+  - DLLevel12
+  - DLLevel13
+  - DLLevel14
+  - DLLevel15
+  - DLLevel16
+  - DLLevel17
+  - DLLevel18
+  - DLLevel19
+  - DLLevel20
+  - DLTypeRef10
+  - DLTypeRef11
+  - DLTypeRef12
+  - DLTypeRef13
+  - DLTypeRef14
+  - DLTypeRef15
+  - DLTypeRef16
+  - DLTypeRef17
+  - DLTypeRef18
+  - DLTypeRef19
+  - DLTypeRef20
+- table: VoucherLock
+  name: PK_VoucherLock
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherLockID
+- table: VoucherReference
+  name: PK_FIN3_VoucherReference
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherReferenceID
+- table: VoucherReference
+  name: IX_FIN3__VoucherReference_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+- table: VoucherReference
+  name: IX_FIN3_VoucherReference_MasterEntityCode_MasterReferenceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MasterEntityCode
+  - MasterReferenceID
+  included:
+  - VoucherRef
+- table: VoucherReference
+  name: IX_FIN3_VoucherReference_OriginalEntityCode_MasterEntityCode_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OriginalEntityCode
+  - MasterEntityCode
+  - VoucherRef
+- table: VoucherReference
+  name: IX_FIN3_VoucherReference_MasterReferenceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MasterReferenceID
+  included:
+  - VoucherRef
+- table: VoucherReference
+  name: IX_FIN3_VoucherReference_OriginalEntityCode_OriginalReferenceID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OriginalEntityCode
+  - OriginalReferenceID
+- table: VoucherReviewRecord
+  name: PK_FIN3_VoucherReviewRecord
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherReviewRecordID
+- table: VoucherReviewRecord
+  name: IX_FIN3_VoucherReviewRecord_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+- table: VoucherReviewRecord
+  name: IX_FIN3_VoucherReviewRecord_Reviewer
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Reviewer
+- table: VoucherTemplate
+  name: PK_VoucherTemplate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherTemplateID
+- table: VoucherTemplateDescription
+  name: PK_VoucherTemplateDescription
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherTemplateDescriptionID
+- table: VoucherTemplateDescription
+  name: IX_FIN3_VoucherTemplateDescription_VoucherTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherTemplateRef
+- table: VoucherTemplateItem
+  name: PK_VoucherTemplateItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherTemplateItemID
+- table: VoucherTemplateItem
+  name: IX_FIN3_VoucherTemplateItem_VoucherTemplateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherTemplateRef
+- table: VoucherType
+  name: PK_FIN3_VoucherType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherTypeID
+- table: VoucherType
+  name: UIX_FIN3_VoucherType_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title

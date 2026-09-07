@@ -1,0 +1,54 @@
+schema: RLS3
+source: extracted
+indexes:
+- table: Installation
+  name: PK_Installation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: InstallationLog
+  name: PK_InstallationLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: InstalledArtifact
+  name: PK_InstalledArtifact
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: InstalledModule
+  name: PK_InstalledModule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID
+- table: RahkaranInstallationJobStep
+  name: PK_RahkaranInstallationJobStep
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RahkaranInstallationJobStepID
+- table: RahkaranInstallationJobStep
+  name: UIX_RLS3_RahkaranInstallationJobStep_StepName_Target
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - StepName
+  - TargetMachineName
+  - TargetComponentName
+- table: TierStatus
+  name: PK_TierStatus
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ID

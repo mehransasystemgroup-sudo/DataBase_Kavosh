@@ -1,0 +1,257 @@
+schema: RLS3
+table_count: 6
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: Installation
+  columns:
+  - name: ID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+    identity: true
+  - name: PackageID
+    type: uniqueidentifier
+    nullable: false
+    ordinal: 2
+  - name: PackageTitle
+    type: nvarchar(500)
+    nullable: false
+    ordinal: 3
+  - name: SelectedModules
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 4
+  - name: MasterServerName
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 5
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: FinishDate
+    type: datetime
+    nullable: true
+    ordinal: 7
+  - name: ProductVersion
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: ReleaseNumber
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: SourceReleaseNumber
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: Succeeded
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: RuntimeParametersValues
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 12
+  primary_key:
+  - ID
+- name: InstallationLog
+  columns:
+  - name: ID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+    identity: true
+  - name: InstallationID
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TierName
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 3
+  - name: Sevirity
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Message
+    type: nvarchar(max)
+    nullable: false
+    ordinal: 5
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - ID
+- name: InstalledArtifact
+  columns:
+  - name: ID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+    identity: true
+  - name: Name
+    type: nvarchar(1000)
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: Crc
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: InsertDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: InstallationID
+    type: bigint
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ID
+- name: InstalledModule
+  columns:
+  - name: ID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: InstallationID
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: InsertDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ID
+- name: RahkaranInstallationJobStep
+  columns:
+  - name: RahkaranInstallationJobStepID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+    identity: true
+  - name: StepName
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 2
+  - name: StepName_fa
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: TargetMachineName
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 4
+  - name: TargetComponentName
+    type: nvarchar(300)
+    nullable: true
+    ordinal: 5
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: StatusText
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 7
+  - name: ProductVersion
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 8
+  - name: ReleaseNumber
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: HotFixNumber
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: VersionName
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 11
+  - name: StartTime
+    type: datetime2
+    nullable: true
+    ordinal: 12
+  - name: EndTime
+    type: datetime2
+    nullable: true
+    ordinal: 13
+  - name: SetupToolMachineName
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 14
+  - name: SetupToolPath
+    type: nvarchar(200)
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - RahkaranInstallationJobStepID
+- name: TierStatus
+  columns:
+  - name: ID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+    identity: true
+  - name: InstallationID
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TierName
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 3
+  - name: ServerName
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 4
+  - name: Status
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Reason
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 6
+  - name: LastStatusReportDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  primary_key:
+  - ID

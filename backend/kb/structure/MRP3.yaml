@@ -1,0 +1,1944 @@
+schema: MRP3
+table_count: 38
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: CalculationRun
+  columns:
+  - name: CalculationRunID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationRunRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: Number
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 3
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: CalculationState
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: CalculationScenarioRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CalculationRunType
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: CalculationStartTime
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: CalculationEndTime
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: PartPermanentInventory
+    type: bit
+    nullable: true
+    ordinal: 10
+  - name: PartTemporaryInventory
+    type: bit
+    nullable: true
+    ordinal: 11
+  - name: PlannedOrderInway
+    type: bit
+    nullable: true
+    ordinal: 12
+  - name: ProductionOrderInway
+    type: bit
+    nullable: true
+    ordinal: 13
+  - name: PurchaseRequestInway
+    type: bit
+    nullable: true
+    ordinal: 14
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 15
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 16
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 18
+  - name: SaveJobID
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: SaveJobStatus
+    type: int
+    nullable: true
+    ordinal: 20
+  - name: CentralizedCalc
+    type: bit
+    nullable: false
+    ordinal: 21
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 22
+  primary_key:
+  - CalculationRunID
+- name: CalculationRunBom
+  columns:
+  - name: CalculationRunBomID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: ParentID
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: CalculationRunRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: BomID
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: RoutingID
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: ExplosionPlantID
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: PlantID
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: ExplosionPlantName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 8
+  - name: ExplosionUsagePercentage
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: DeepLevel
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 10
+  - name: LevelNo
+    type: nvarchar(50)
+    nullable: false
+    ordinal: 11
+  - name: PartID
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: PartCode
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 13
+  - name: PartName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 14
+  - name: BomUnitID
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: BomUnitName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 16
+  - name: LotSizeSettingUnitID
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: LotSizeSettingUnitName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 18
+  - name: BaseQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 19
+  - name: BomTitle
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 20
+  - name: LotSizeProcedure
+    type: int
+    nullable: true
+    ordinal: 21
+  - name: LotSizeProcedureName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 22
+  - name: MinimumLotSizing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 23
+  - name: MaximumLotSizing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 24
+  - name: RoundingValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 25
+  - name: FixedLotSizing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 26
+  - name: PeriodCalculationType
+    type: int
+    nullable: true
+    ordinal: 27
+  - name: PeriodCalculationTypeName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 28
+  - name: PeriodValue
+    type: int
+    nullable: true
+    ordinal: 29
+  - name: EstimatedLeadTime
+    type: int
+    nullable: true
+    ordinal: 30
+  - name: MRPType
+    type: int
+    nullable: true
+    ordinal: 31
+  - name: MRPTypeName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 32
+  - name: SafetyStock
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 33
+  - name: LeadTimeCalculationType
+    type: int
+    nullable: true
+    ordinal: 34
+  - name: LeadTimeCalculationTypeName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 35
+  - name: PartRecieveLeadTime
+    type: int
+    nullable: true
+    ordinal: 36
+  - name: SafetyTime
+    type: int
+    nullable: true
+    ordinal: 37
+  - name: Description
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 38
+  - name: ItemID
+    type: bigint
+    nullable: true
+    ordinal: 39
+  - name: ItemQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 40
+  - name: ItemUnitID
+    type: bigint
+    nullable: true
+    ordinal: 41
+  - name: ItemUnitName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 42
+  - name: ItemGroupNumber
+    type: int
+    nullable: true
+    ordinal: 43
+  - name: ItemPriority
+    type: int
+    nullable: true
+    ordinal: 44
+  - name: ItemAlternativeStrategy
+    type: int
+    nullable: true
+    ordinal: 45
+  - name: ItemUsagePercentage
+    type: decimal(18,15)
+    nullable: true
+    ordinal: 46
+  - name: StartValidityDate
+    type: datetime
+    nullable: true
+    ordinal: 47
+  - name: EndValidityDate
+    type: datetime
+    nullable: true
+    ordinal: 48
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 49
+  primary_key:
+  - CalculationRunBomID
+- name: CalculationRunDynamicSS
+  columns:
+  - name: CalculationRunDynamicSSID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationRunRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: SafetyStock
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - CalculationRunDynamicSSID
+- name: CalculationRunIRPItem
+  columns:
+  - name: CalculationRunIRPItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationRunRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IRPID
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: IRPNumber
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 4
+  - name: IRPTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 5
+  - name: IRPState
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: IRPStateName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 7
+  - name: IRPPlantID
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: IRPPlantName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 9
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: IRPItemID
+    type: bigint
+    nullable: true
+    ordinal: 12
+  - name: ItemPartID
+    type: bigint
+    nullable: true
+    ordinal: 13
+  - name: ItemPartCode
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 14
+  - name: ItemPartName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 15
+  - name: ItemPeriodNo
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: ItemQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 17
+  - name: Description
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 18
+  - name: ItemUnitID
+    type: bigint
+    nullable: true
+    ordinal: 19
+  - name: ItemUnitName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 20
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 21
+  primary_key:
+  - CalculationRunIRPItemID
+- name: CalculationRunLowLevelCoding
+  columns:
+  - name: CalculationRunLowLevelCodingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationRunBomRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: CalculationRunRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: LowLevel
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 6
+  - name: Description
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 7
+  - name: CentralizedCalc
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: CentralizedParentRef
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: Order
+    type: int
+    nullable: true
+    ordinal: 10
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 11
+  - name: ProductionPercentage
+    type: tinyint
+    nullable: true
+    ordinal: 12
+  primary_key:
+  - CalculationRunLowLevelCodingID
+- name: CalculationRunNewBomExplosion
+  columns:
+  - name: CalculationRunNewBomExplosionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationRunBomRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: BomRef
+    type: bigint
+    nullable: true
+    ordinal: 3
+  - name: StartValidityDate
+    type: datetime
+    nullable: true
+    ordinal: 4
+  - name: EndValidityDate
+    type: datetime
+    nullable: true
+    ordinal: 5
+  - name: NewPercentage
+    type: decimal(18,15)
+    nullable: false
+    ordinal: 6
+  - name: Type
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: ReferenceID
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 9
+  primary_key:
+  - CalculationRunNewBomExplosionID
+- name: CalculationRunPlant
+  columns:
+  - name: CalculationRunPlantID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationRunRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalculationScenarioPlantRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CalculationRunPlantID
+- name: CalculationRunRCCPRequirement
+  columns:
+  - name: CalculationRunRCCPRequirementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RoutingID
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: RequirementCapacityQuantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: RequirementCapacityQuantityEdit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 5
+  - name: SectionNumber
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: WorkCenterID
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: WorkCenterName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 8
+  - name: CapacityTypeID
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: CapacityTypeTitle
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 10
+  - name: CapacityGroup
+    type: int
+    nullable: true
+    ordinal: 11
+  - name: CapacityGroupName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 12
+  - name: PartID
+    type: bigint
+    nullable: false
+    ordinal: 14
+  - name: PartCode
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 15
+  - name: PartName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 16
+  - name: UnitID
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: UnitName
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 18
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 19
+  - name: StartDateEdit
+    type: datetime
+    nullable: true
+    ordinal: 20
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 21
+  - name: EndDateEdit
+    type: datetime
+    nullable: true
+    ordinal: 22
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 23
+  - name: QuantityEdit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 24
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 25
+  - name: ReferenceID
+    type: bigint
+    nullable: true
+    ordinal: 26
+  - name: ReferenceNumber
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 27
+  - name: PlannedOrderReferenceNumber
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 28
+  - name: MPSEdited
+    type: bit
+    nullable: true
+    ordinal: 29
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 30
+  primary_key:
+  - CalculationRunRCCPRequirementID
+- name: CalculationRunRCCPRequirementCalculationMethod
+  columns:
+  - name: CalculationRunRCCPRequirementCalculationMethodID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalculationMethod
+    type: int
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CalculationRunRCCPRequirementCalculationMethodID
+- name: CalculationRunRCCPRequirementMPS
+  columns:
+  - name: CalculationRunRCCPRequirementMPSID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationRunRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CalculationRunRCCPRequirementMPSID
+- name: CalculationRunRCCPRequirementPart
+  columns:
+  - name: CalculationRunRCCPRequirementPartID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CalculationRunRCCPRequirementPartID
+- name: CalculationRunRCCPRequirementPlannedOrder
+  columns:
+  - name: CalculationRunRCCPRequirementPlannedOrderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlannedOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RCCPRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CalculationRunRCCPRequirementPlannedOrderID
+- name: CalculationRunResult
+  columns:
+  - name: CalculationRunResultID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationRunLowLevelCodingRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: CalculationRunResultType
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: CalculationRunResultTypeID
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: Date
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: MRPElement
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 6
+  - name: MRPElementData
+    type: nvarchar(max)
+    nullable: true
+    ordinal: 7
+  - name: InitialPlannedOrderStartDate
+    type: datetime
+    nullable: true
+    ordinal: 8
+  - name: InitialPlannedOrderStartDateEdit
+    type: datetime
+    nullable: true
+    ordinal: 9
+  - name: InitialPlannedOrderEndDate
+    type: datetime
+    nullable: true
+    ordinal: 10
+  - name: InitialPlannedOrderEndDateEdit
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: SignQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: RequirementInWayQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: RequirementInWayQuantityEdit
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: AvailableQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: Description
+    type: nvarchar(500)
+    nullable: true
+    ordinal: 16
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 17
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 18
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 19
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 20
+  - name: FromPlantID
+    type: bigint
+    nullable: true
+    ordinal: 21
+  - name: FromPlantName
+    type: nvarchar(250)
+    nullable: true
+    ordinal: 22
+  - name: BaseBomID
+    type: bigint
+    nullable: true
+    ordinal: 23
+  - name: PlannedOrderRef
+    type: bigint
+    nullable: true
+    ordinal: 24
+  - name: CalculationRunNewBomExplosionRef
+    type: bigint
+    nullable: true
+    ordinal: 25
+  - name: RequirementStartDate
+    type: datetime
+    nullable: true
+    ordinal: 26
+  - name: RequirementEndDate
+    type: datetime
+    nullable: true
+    ordinal: 27
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 28
+  primary_key:
+  - CalculationRunResultID
+- name: CalculationScenario
+  columns:
+  - name: CalculationScenarioID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(64)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: PartPermanentInventory
+    type: bit
+    nullable: false
+    ordinal: 4
+  - name: PartTemporaryInventory
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: PartReservedInventory
+    type: bit
+    nullable: false
+    ordinal: 6
+  - name: ReservedInterStoreDeliveryRequest
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: PurchaseRequestInway
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: ProductionOrderInway
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: PlannedOrderInway
+    type: bit
+    nullable: false
+    ordinal: 10
+  - name: PurchasePlannedOrder
+    type: bit
+    nullable: false
+    ordinal: 11
+  - name: ProductionPlannedOrder
+    type: bit
+    nullable: false
+    ordinal: 12
+  - name: AutomaticTimeFence
+    type: bit
+    nullable: false
+    ordinal: 13
+  - name: SafetyStock
+    type: bit
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - CalculationScenarioID
+- name: CalculationScenarioIRPProgram
+  columns:
+  - name: CalculationScenarioIRPProgramID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationScenarioRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IRPProgramRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CalculationScenarioIRPProgramID
+- name: CalculationScenarioIRPProgramIRP
+  columns:
+  - name: CalculationScenarioIRPProgramIRPID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationScenarioIRPProgramRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: ApplyInCalculations
+    type: bit
+    nullable: false
+    ordinal: 3
+  - name: IRPRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - CalculationScenarioIRPProgramIRPID
+- name: CalculationScenarioPartGroup
+  columns:
+  - name: CalculationScenarioPartGroupID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationScenarioRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartGroupRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CalculationScenarioPartGroupID
+- name: CalculationScenarioPlant
+  columns:
+  - name: CalculationScenarioPlantID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationScenarioRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  - name: IsCentralizedPlant
+    type: bit
+    nullable: true
+    ordinal: 5
+  primary_key:
+  - CalculationScenarioPlantID
+- name: CalculationScenarioPlantStore
+  columns:
+  - name: CalculationScenarioPlantStoreID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: CalculationScenarioPlantRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StoreRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - CalculationScenarioPlantStoreID
+- name: IRP
+  columns:
+  - name: IRPID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: DurationType
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Frequency
+    type: int
+    nullable: false
+    ordinal: 8
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 12
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 13
+  - name: IRPGrouping
+    type: int
+    nullable: true
+    ordinal: 14
+  - name: IRPProgramRef
+    type: bigint
+    nullable: true
+    ordinal: 15
+  - name: MatchesTheCalendar
+    type: bit
+    nullable: true
+    ordinal: 16
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 17
+  primary_key:
+  - IRPID
+- name: IRPItem
+  columns:
+  - name: IRPItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IRPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - IRPItemID
+- name: IRPItemValue
+  columns:
+  - name: IRPItemValueID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IRPItemRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: IRPTimeBucketRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - IRPItemValueID
+- name: IRPItemValueRoutingBOMAssignmentUsage
+  columns:
+  - name: IRPItemValueRoutingBOMAssignmentUsageID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IRPItemValueRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RoutingBomAssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: UsagePercentage
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: UsageValue
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - IRPItemValueRoutingBOMAssignmentUsageID
+- name: IRPProgram
+  columns:
+  - name: IRPProgramID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Title
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 2
+  - name: Description
+    type: nvarchar(2500)
+    nullable: true
+    ordinal: 3
+  - name: Number
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 4
+  - name: PeriodType
+    type: int
+    nullable: true
+    ordinal: 5
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 7
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - IRPProgramID
+- name: IRPReport
+  columns:
+  - name: IRPReportID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IRPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UserRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: ReportTime
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: PartTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 6
+  - name: PartCode
+    type: nvarchar(64)
+    nullable: true
+    ordinal: 7
+  - name: MajorUnitTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 8
+  - name: TimeBucketID
+    type: bigint
+    nullable: true
+    ordinal: 9
+  - name: TimeBucketTitle
+    type: nvarchar(256)
+    nullable: true
+    ordinal: 10
+  - name: TimeBucketRemainingQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: RemainingQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 12
+  - name: PermenantRemaing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 13
+  - name: TemporaryRemaing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: ReserveRemaing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: ApprovedNotReservedRequestQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 16
+  - name: SafetyStock
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 17
+  - name: ExtraValue1
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 18
+  - name: ExtraValue2
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 19
+  - name: ExtraValue3
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 20
+  - name: ExtraValue4
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 21
+  - name: ExtraValue5
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 22
+  - name: EffectiveQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 23
+  - name: DeficiencyExcessQuantityInCurrentTimeBucket
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 24
+  - name: DeficiencyExcessQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 25
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 26
+  primary_key:
+  - IRPReportID
+- name: IRPTimeBucket
+  columns:
+  - name: IRPTimeBucketID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: IRPRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: TimeBucketNo
+    type: int
+    nullable: false
+    ordinal: 3
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 4
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - IRPTimeBucketID
+- name: LotSizingSetting
+  columns:
+  - name: LotSizingSettingID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: LotSizingSettingPartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: MRPType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: LotSizeProcedure
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: PartUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: SafetyStockProfileRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: MinimumLotSizing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 9
+  - name: MaximumLotSizing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 10
+  - name: FixedLotSizing
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: PeriodCalculationType
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: PeriodValue
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: MaximumStockLevel
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: RoundingValue
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: TimeFence
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: IssuePlannedOrdersIndividually
+    type: bit
+    nullable: true
+    ordinal: 17
+  - name: Description
+    type: nvarchar(2500)
+    nullable: true
+    ordinal: 18
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 19
+  - name: PlanningStrategy
+    type: int
+    nullable: true
+    ordinal: 20
+  - name: ProductionPercentage
+    type: tinyint
+    nullable: true
+    ordinal: 21
+  primary_key:
+  - LotSizingSettingID
+- name: LotSizingSettingPart
+  columns:
+  - name: LotSizingSettingPartID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - LotSizingSettingPartID
+- name: MRPPartExtension
+  columns:
+  - name: MRPPartExtensionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 3
+  primary_key:
+  - MRPPartExtensionID
+- name: MRPPartExtensionRoutingBOMAssignmentUsage
+  columns:
+  - name: MRPPartExtensionRoutingBOMAssignmentUsageID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MRPPartExtensionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: RoutingBomAssignmentRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: UsagePercentage
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 5
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 6
+  primary_key:
+  - MRPPartExtensionRoutingBOMAssignmentUsageID
+- name: MaterialRequirement
+  columns:
+  - name: MaterialRequirementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MaterialRequirementProfileRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PlantRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 6
+  - name: EffectiveInventory
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 7
+  - name: DailyUsage
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 8
+  - name: CoverageRange
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - MaterialRequirementID
+- name: MaterialRequirementPlannedOrder
+  columns:
+  - name: MaterialRequirementPlannedOrderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MaterialRequirementRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PlannedOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - MaterialRequirementPlannedOrderID
+- name: MaterialRequirementProfile
+  columns:
+  - name: MaterialRequirementProfileID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 2
+  - name: PlantRefs
+    type: xml
+    nullable: false
+    ordinal: 3
+  - name: DaysOff
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 5
+  - name: EndDate
+    type: datetime
+    nullable: false
+    ordinal: 6
+  - name: ReservedInventory
+    type: bit
+    nullable: false
+    ordinal: 7
+  - name: TemporaryInventory
+    type: bit
+    nullable: false
+    ordinal: 8
+  - name: PermanentInventory
+    type: bit
+    nullable: false
+    ordinal: 9
+  - name: PlannedOrderRefs
+    type: xml
+    nullable: true
+    ordinal: 10
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 11
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 12
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 13
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 14
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 15
+  primary_key:
+  - MaterialRequirementProfileID
+- name: MaterialRequirementProfilePlannedOrder
+  columns:
+  - name: MaterialRequirementProfilePlannedOrderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MaterialRequirementProfileRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: PlannedOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 4
+  primary_key:
+  - MaterialRequirementProfilePlannedOrderID
+- name: PartQuantityControl
+  columns:
+  - name: PartQuantityControlID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: MinQty
+    type: decimal(16,4)
+    nullable: true
+    ordinal: 2
+  - name: MaxQty
+    type: decimal(16,4)
+    nullable: true
+    ordinal: 3
+  - name: EconomicOrderQty
+    type: decimal(16,4)
+    nullable: true
+    ordinal: 4
+  - name: LeadTimeCalculationType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: ReorderPoint
+    type: decimal(16,4)
+    nullable: true
+    ordinal: 6
+  - name: PartRecieveLeadTime
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: SafetyTime
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 9
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: SafetyStock
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 11
+  - name: PlanningCode
+    type: int
+    nullable: true
+    ordinal: 12
+  - name: EstimatedLeadTime
+    type: int
+    nullable: true
+    ordinal: 13
+  - name: EstimatedAnnualUsage
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: PreviousPlanningCode
+    type: int
+    nullable: true
+    ordinal: 15
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 16
+  - name: StartPeriodMonth
+    type: int
+    nullable: true
+    ordinal: 17
+  - name: StartPeriodDay
+    type: int
+    nullable: true
+    ordinal: 18
+  - name: EndPeriodMonth
+    type: int
+    nullable: true
+    ordinal: 19
+  - name: EndPeriodDay
+    type: int
+    nullable: true
+    ordinal: 20
+  - name: Description
+    type: nvarchar(1024)
+    nullable: true
+    ordinal: 21
+  primary_key:
+  - PartQuantityControlID
+- name: PlannedOrder
+  columns:
+  - name: PlannedOrderID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: Number
+    type: nvarchar(255)
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: PlantRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: BomRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: RoutingRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  - name: ReferenceType
+    type: int
+    nullable: true
+    ordinal: 9
+  - name: ReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 10
+  - name: ReferenceNumber
+    type: nvarchar(255)
+    nullable: true
+    ordinal: 11
+  - name: PlannedOrderType
+    type: int
+    nullable: false
+    ordinal: 12
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 13
+  - name: ConvertedQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 14
+  - name: RemainingQuantity
+    type: decimal(28,6)
+    nullable: true
+    ordinal: 15
+  - name: SecondReferenceType
+    type: int
+    nullable: true
+    ordinal: 16
+  - name: SecondReferenceRef
+    type: bigint
+    nullable: true
+    ordinal: 17
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 18
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 19
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 20
+  primary_key:
+  - PlannedOrderID
+- name: PlannedOrderBomItem
+  columns:
+  - name: PlannedOrderBomItemID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PlannedOrderRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: UnitRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: PartRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: Quantity
+    type: decimal(28,6)
+    nullable: false
+    ordinal: 5
+  - name: GroupNumber
+    type: int
+    nullable: true
+    ordinal: 6
+  - name: Priority
+    type: int
+    nullable: true
+    ordinal: 7
+  - name: AlternativeStrategy
+    type: int
+    nullable: true
+    ordinal: 8
+  - name: UsagePercentage
+    type: decimal(18,15)
+    nullable: true
+    ordinal: 9
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 10
+  primary_key:
+  - PlannedOrderBomItemID
+- name: SafetyStockProfile
+  columns:
+  - name: SafetyStockProfileID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Number
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 2
+  - name: Title
+    type: nvarchar(256)
+    nullable: false
+    ordinal: 3
+  - name: PeriodIndicator
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: NumberOfPeriod
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: EffectType
+    type: int
+    nullable: false
+    ordinal: 6
+  - name: SSDays
+    type: int
+    nullable: false
+    ordinal: 7
+  - name: Creator
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: CreationDate
+    type: datetime
+    nullable: false
+    ordinal: 9
+  - name: LastModifier
+    type: bigint
+    nullable: false
+    ordinal: 10
+  - name: LastModificationDate
+    type: datetime
+    nullable: false
+    ordinal: 11
+  - name: Version
+    type: timestamp
+    nullable: false
+    ordinal: 12
+  primary_key:
+  - SafetyStockProfileID

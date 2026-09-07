@@ -1,0 +1,570 @@
+schema: OGOM3
+source: extracted
+indexes:
+- table: IssuePermitExtension
+  name: PK_OGOM3_IssuePermitExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IssuePermitExtensionID
+- table: IssuePermitExtension
+  name: IX_OGOM3_IssuePermitExtension_IssuePermitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IssuePermitRef
+- table: IssuePermitExtensionOperationalReport
+  name: PK_OGOM3_IssuePermitExtensionOperationalReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IssuePermitExtensionOperationalReportID
+- table: IssuePermitExtensionOperationalReport
+  name: IX_OGOM3_IssuePermitExtensionOperationalReport_IssuePermitExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IssuePermitExtensionRef
+- table: IssuePermitExtensionOperationalReport
+  name: IX_OGOM3_IssuePermitExtensionOperationalReport_IssuePermitItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IssuePermitItemRef
+- table: IssuePermitExtensionOperationalReport
+  name: IX_OGOM3_IssuePermitExtensionOperationalReport_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReport
+  name: PK_OGOM3_OperationalReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportID
+- table: OperationalReport
+  name: IX_OGOM3_OperationalReport_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: OperationalReport
+  name: IX_OGOM3_OperationalReport_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: OperationalReport
+  name: IX_OGOM3_OperationalReport_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: OperationalReportComplementaryInformation
+  name: PK_OGOM3_OperationalReportComplementaryInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportComplementaryInformationID
+- table: OperationalReportComplementaryInformation
+  name: IX_OGOM3_OperationalReportComplementaryInformation_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportComplementaryInformation
+  name: IX_OGOM3_OperationalReportComplementaryInformation_ProductionUnitComplementaryInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitComplementaryInformationRef
+- table: OperationalReportComplementaryInformation
+  name: IX_OGOM3_OperationalReportComplementaryInformation_ProductionUnitSectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitSectionRef
+- table: OperationalReportComplementaryInformationItem
+  name: PK_OGOM3_OperationalReportComplementaryInformationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportComplementaryInformationItemID
+- table: OperationalReportComplementaryInformationItem
+  name: IX_OGOM3_OperationalReportComplementaryInformationItem_OperationalReportComplementaryInformationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportComplementaryInformationRef
+- table: OperationalReportComplementaryInformationItem
+  name: IX_OGOM3_OperationalReportComplementaryInformationItem_ProductionUnitComplementaryInformationItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitComplementaryInformationItemRef
+- table: OperationalReportExtraFormulaDynamicFactor
+  name: PK_OGOM3_OperationalReportExtraFormulaDynamicFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportExtraFormulaDynamicFactorID
+- table: OperationalReportExtraFormulaDynamicFactor
+  name: IX_OGOM3_OperationalReportExtraFormulaDynamicFactor_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportExtraFormulaDynamicFactor
+  name: IX_OGOM3_OperationalReportExtraFormulaDynamicFactor_FormulaFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FormulaFactorRef
+- table: OperationalReportExtraFormulaInputParameter
+  name: PK_OGOM3_OperationalReportExtraFormulaInputParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportExtraFormulaInputParameterID
+- table: OperationalReportExtraFormulaInputParameter
+  name: IX_OGOM3_OperationalReportExtraFormulaInputParameter_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportExtraFormulaInputParameter
+  name: IX_OGOM3_OperationalReportExtraFormulaInputParameter_FormulaFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FormulaFactorRef
+- table: OperationalReportFeed
+  name: PK_OGOM3_OperationalReportFeed
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportFeedID
+- table: OperationalReportFeed
+  name: IX_OGOM3_OperationalReportFeed_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportFeed
+  name: IX_OGOM3_OperationalReportFeed_FeedRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FeedRef
+- table: OperationalReportFeed
+  name: IX_OGOM3_OperationalReportFeed_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: OperationalReportProduct
+  name: PK_OGOM3_OperationalReportProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportProductID
+- table: OperationalReportProduct
+  name: IX_OGOM3_OperationalReportProduct_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportProduct
+  name: IX_OGOM3_OperationalReportProduct_ProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductRef
+- table: OperationalReportProduct
+  name: IX_OGOM3_OperationalReportProduct_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: OperationalReportProductVarianceReason
+  name: PK_OGOM3_OperationalReportProductVarianceReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportProductVarianceReasonID
+- table: OperationalReportProductVarianceReason
+  name: IX_OGOM3_OperationalReportProductVarianceReason_OperationalReportProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportProductRef
+- table: OperationalReportProductVarianceReason
+  name: IX_OGOM3_OperationalReportProductVarianceReason_VarianceReasonGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VarianceReasonGroupRef
+- table: OperationalReportReceipt
+  name: PK_OGOM3_OperationalReportReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportReceiptID
+- table: OperationalReportReceipt
+  name: IX_OGOM3_OperationalReportReceipt_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportReceipt
+  name: IX_OGOM3_OperationalReportReceipt_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: OperationalReportRelatedMovementRecording
+  name: PK_OGOM3_OperationalReportRelatedMovementRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportRelatedMovementRecordingID
+- table: OperationalReportRelatedMovementRecording
+  name: IX_OGOM3_OperationalReportRelatedMovementRecording_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportRelatedMovementRecording
+  name: IX_OGOM3_OperationalReportRelatedMovementRecording_MovementRecordingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MovementRecordingRef
+- table: OperationalReportSend
+  name: PK_OGOM3_OperationalReportSend
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportSendID
+- table: OperationalReportSend
+  name: IX_OGOM3_OperationalReportSend_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportSend
+  name: IX_OGOM3_OperationalReportSend_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: OperationalReportTankInventory
+  name: PK_OGOM3_OperationalReportTankInventory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportTankInventoryID
+- table: OperationalReportTankInventory
+  name: IX_OGOM3_OperationalReportTankInventory_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportTankInventory
+  name: IX_OGOM3_OperationalReportTankInventory_TankAssignmentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TankAssignmentItemRef
+- table: OperationalReportTankInventory
+  name: IX_OGOM3_OperationalReportTankInventory_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: OperationalReportUtilityService
+  name: PK_OGOM3_OperationalReportUtilityService
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationalReportUtilityServiceID
+- table: OperationalReportUtilityService
+  name: IX_OGOM3_OperationalReportUtilityService_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef
+- table: OperationalReportUtilityService
+  name: IX_OGOM3_OperationalReportUtilityService_UtilityServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UtilityServiceRef
+- table: OperationalReportUtilityService
+  name: IX_OGOM3_OperationalReportUtilityService_MassPartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MassPartUnitRef
+- table: ProductionBalance
+  name: PK_OGOM3_ProductionBalance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionBalanceID
+- table: ProductionBalance
+  name: IX_OGOM3_ProductionBalance_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ProductionBalance
+  name: IX_OGOM3_ProductionBalance_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ProductionBalanceComplex
+  name: PK_OGOM3_ProductionBalanceComplex
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionBalanceComplexID
+- table: ProductionBalanceComplex
+  name: IX_OGOM3_ProductionBalanceComplex_ProductionBalanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionBalanceRef
+- table: ProductionBalanceComplex
+  name: IX_OGOM3_ProductionBalanceComplex_ComplexRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ComplexRef
+- table: ProductionBalanceConsumption
+  name: PK_OGOM3_ProductionBalanceConsumption
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionBalanceConsumptionID
+- table: ProductionBalanceConsumption
+  name: IX_OGOM3_ProductionBalanceConsumption_ProductionBalanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionBalanceRef
+- table: ProductionBalanceConsumption
+  name: IX_OGOM3_ProductionBalanceConsumption_OperationalReportFeedRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportFeedRef
+- table: ProductionBalanceProduction
+  name: PK_OGOM3_ProductionBalanceProduction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionBalanceProductionID
+- table: ProductionBalanceProduction
+  name: IX_OGOM3_ProductionBalanceProduction_ProductionBalanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionBalanceRef
+- table: ProductionBalanceProduction
+  name: IX_OGOM3_ProductionBalanceProduction_OperationalReportProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportProductRef
+- table: ProductionBalanceProductionUnit
+  name: PK_OGOM3_ProductionBalanceProductionUnit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionBalanceProductionUnitID
+- table: ProductionBalanceProductionUnit
+  name: IX_OGOM3_ProductionBalanceProductionUnit_ProductionBalanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionBalanceRef
+- table: ProductionBalanceProductionUnit
+  name: IX_OGOM3_ProductionBalanceProductionUnit_ProductionUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionUnitRef
+- table: ProductionBalanceReceipt
+  name: PK_OGOM3_ProductionBalanceReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionBalanceReceiptID
+- table: ProductionBalanceReceipt
+  name: IX_OGOM3_ProductionBalanceReceipt_ProductionBalanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionBalanceRef
+- table: ProductionBalanceReceipt
+  name: IX_OGOM3_ProductionBalanceReceipt_OperationalReportReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportReceiptRef
+- table: ProductionBalanceSend
+  name: PK_OGOM3_ProductionBalanceSend
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionBalanceSendID
+- table: ProductionBalanceSend
+  name: IX_OGOM3_ProductionBalanceSend_ProductionBalanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionBalanceRef
+- table: ProductionBalanceSend
+  name: IX_OGOM3_ProductionBalanceSend_OperationalReportSendRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportSendRef
+- table: ProductionBalanceTankInventory
+  name: PK_OGOM3_ProductionBalanceTankInventory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProductionBalanceTankInventoryID
+- table: ProductionBalanceTankInventory
+  name: IX_OGOM3_ProductionBalanceTankInventory_ProductionBalanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProductionBalanceRef
+- table: ProductionBalanceTankInventory
+  name: IX_OGOM3_ProductionBalanceTankInventory_OperationalReportTankInventoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportTankInventoryRef
+- table: ReceiptPermitExtension
+  name: PK_OGOM3_ReceiptPermitExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptPermitExtensionID
+- table: ReceiptPermitExtension
+  name: IX_OGOM3_ReceiptPermitExtension_ReceiptPermitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptPermitRef
+- table: ReceiptPermitExtensionOperationalReport
+  name: PK_OGOM3_ReceiptPermitExtensionOperationalReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptPermitExtensionOperationalReportID
+- table: ReceiptPermitExtensionOperationalReport
+  name: IX_OGOM3_ReceiptPermitExtensionOperationalReport_ReceiptPermitExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptPermitExtensionRef
+- table: ReceiptPermitExtensionOperationalReport
+  name: IX_OGOM3_ReceiptPermitExtensionOperationalReport_ReceiptPermitItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptPermitItemRef
+- table: ReceiptPermitExtensionOperationalReport
+  name: IX_OGOM3_ReceiptPermitExtensionOperationalReport_OperationalReportRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalReportRef

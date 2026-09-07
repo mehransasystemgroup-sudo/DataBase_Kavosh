@@ -1,0 +1,10 @@
+schema: GNR
+source: extracted
+indexes:
+- table: gnrLimitedSession
+  name: PK_GnrLimitedSession
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - Serial

@@ -1,0 +1,1165 @@
+schema: SCR3
+source: extracted
+indexes:
+- table: BufferStoreTrace
+  name: PK_SCR3_BufferStoreTrace
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BufferStoreTraceID
+- table: BufferStoreTrace
+  name: IX_SCR3_BufferStoreTrace_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: BufferStoreTrace
+  name: IX_SCR3_BufferStoreTrace_BufferStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BufferStoreRef
+- table: BufferStoreTrace
+  name: IX_SCR3_BufferStoreTrace_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: BufferStoreTracePartRequest
+  name: PK_SCR3_BufferStoreTracePartRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BufferStoreTracePartRequestID
+- table: BufferStoreTracePartRequest
+  name: IX_SCR3_BufferStoreTracePartRequest_BufferStoreTraceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BufferStoreTraceRef
+- table: BufferStoreTracePartRequest
+  name: IX_SCR3_BufferStoreTracePartRequest_PartRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRequestRef
+- table: BufferStoreTracePartRequest
+  name: IX_SCR3_BufferStoreTracePartRequest_PartRequestItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRequestItemRef
+- table: BufferStoreTraceProcurmentOrderExtensionMaterial
+  name: PK_SCR3_BufferStoreTraceProcurmentOrderExtensionMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BufferStoreTraceProcurmentOrderExtensionMaterialID
+- table: BufferStoreTraceProcurmentOrderExtensionMaterial
+  name: IX_SCR3_BufferStoreTraceProcurmentOrderExtensionMaterial_BufferStoreTraceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BufferStoreTraceRef
+- table: BufferStoreTraceProcurmentOrderExtensionMaterial
+  name: IX_SCR3_BufferStoreTraceProcurmentOrderExtensionMaterial_ProcurmentOrderExtensionMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurmentOrderExtensionMaterialRef
+- table: ProcurementDeliveryExtension
+  name: PK_ProcurementDeliveryExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryExtensionID
+- table: ProcurementDeliveryExtensionLowerGrade
+  name: PK_ProcurementDeliveryExtensionLowerGrade
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryExtensionLowerGradeID
+- table: ProcurementDeliveryExtensionLowerGrade
+  name: IX_SCR3_ProcurementDeliveryExtensionLowerGrade_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: ProcurementDeliveryExtensionLowerGrade
+  name: IX_SCR3_ProcurementDeliveryExtensionLowerGrade_DeliveryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDeliveryExtensionLowerGrade
+  name: IX_SCR3_ProcurementDeliveryExtensionLowerGrade_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDeliveryExtensionLowerGrade
+  name: IX_SCR3_ProcurementDeliveryExtensionLowerGrade_ProcurementDeliveryExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryExtensionRef
+- table: ProcurementDeliveryExtensionLowerGrade
+  name: IX_SCR3_ProcurementDeliveryExtensionLowerGrade_ProcurementOrderExtensionLowerGradeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementOrderExtensionLowerGradeRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: PK_ProcurementDeliveryExtensionMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryExtensionMaterialID
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_DeliveryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_ProcurementDeliveryExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryExtensionRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_ProcurementOrderExtensionMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementOrderExtensionMaterialRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_ProcurementDeliveryReturnExtensionMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryReturnExtensionMaterialRef
+- table: ProcurementDeliveryExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryExtensionMaterial_DeliveryReturnItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryReturnItemRef
+- table: ProcurementDeliveryExtensionMaterialTrackingFactor
+  name: PK_ProcurementDeliveryExtensionMaterialTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryExtensionMaterialTrackingFactorID
+- table: ProcurementDeliveryExtensionProduct
+  name: PK_ProcurementDeliveryExtensionProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryExtensionProductID
+- table: ProcurementDeliveryExtensionProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionProduct_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: ProcurementDeliveryExtensionProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionProduct_DeliveryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDeliveryExtensionProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDeliveryExtensionProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDeliveryExtensionProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionProduct_ProcurementDeliveryExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryExtensionRef
+- table: ProcurementDeliveryExtensionProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionProduct_SubcontractingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SubcontractingOrderRef
+- table: ProcurementDeliveryExtensionProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionProduct_DeliveryReturnItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryReturnItemRef
+- table: ProcurementDeliveryExtensionScrap
+  name: PK_ProcurementDeliveryExtensionScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryExtensionScrapID
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_DeliveryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_ProcurementDeliveryExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryExtensionRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_ProcurementOrderExtensionScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementOrderExtensionScrapRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_ProcurementDeliveryReturnExtensionScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryReturnExtensionScrapRef
+- table: ProcurementDeliveryExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryExtensionScrap_DeliveryReturnItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryReturnItemRef
+- table: ProcurementDeliveryExtensionSideProduct
+  name: PK_ProcurementDeliveryExtensionSideProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryExtensionSideProductID
+- table: ProcurementDeliveryExtensionSideProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionSideProduct_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurementDeliveryExtensionSideProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionSideProduct_OrderItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OrderItemRef
+- table: ProcurementDeliveryExtensionSideProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionSideProduct_DeliveryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDeliveryExtensionSideProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionSideProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDeliveryExtensionSideProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionSideProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDeliveryExtensionSideProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionSideProduct_ProcurementDeliveryExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryExtensionRef
+- table: ProcurementDeliveryExtensionSideProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionSideProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurementDeliveryExtensionSideProduct
+  name: IX_SCR3_ProcurementDeliveryExtensionSideProduct_ProcurementOrderExtensionSideProductRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementOrderExtensionSideProductRef
+- table: ProcurementDeliveryReturnExtension
+  name: PK_ProcurementDeliveryReturnExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryReturnExtensionID
+- table: ProcurementDeliveryReturnExtension
+  name: IX_SCR3_ProcurementDeliveryReturnExtension_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: ProcurementDeliveryReturnExtensionItem
+  name: PK_ProcurementDeliveryReturnExtensionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryReturnExtensionItemID
+- table: ProcurementDeliveryReturnExtensionMaterial
+  name: PK_ProcurementDeliveryReturnExtensionMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryReturnExtensionMaterialID
+- table: ProcurementDeliveryReturnExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionMaterial_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurementDeliveryReturnExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionMaterial_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDeliveryReturnExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDeliveryReturnExtensionMaterial
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionMaterial_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurementDeliveryReturnExtensionScrap
+  name: PK_ProcurementDeliveryReturnExtensionScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDeliveryReturnExtensionScrapID
+- table: ProcurementDeliveryReturnExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionScrap_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurementDeliveryReturnExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDeliveryReturnExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDeliveryReturnExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurementDeliveryReturnExtensionScrap
+  name: IX_SCR3_ProcurementDeliveryReturnExtensionScrap_BomScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomScrapRef
+- table: ProcurementDirectDeliveryReceiptExtension
+  name: PK_ProcurementDirectDeliveryReceiptExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDirectDeliveryReceiptExtensionID
+- table: ProcurementDirectDeliveryReceiptExtension
+  name: IX_ProcurementDirectDeliveryReceiptExtension_DirectDeliveryReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DirectDeliveryReceiptRef
+- table: ProcurementDirectDeliveryReceiptExtensionLowerGrade
+  name: PK_ProcurementDirectDeliveryReceiptExtensionLowerGrade
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDirectDeliveryReceiptExtensionLowerGradeID
+- table: ProcurementDirectDeliveryReceiptExtensionLowerGrade
+  name: IX_ProcurementDirectDeliveryReceiptExtensionLowerGrade_DeliveryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDirectDeliveryReceiptExtensionLowerGrade
+  name: IX_ProcurementDirectDeliveryReceiptExtensionLowerGrade_DirectDeliveryReceiptItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DirectDeliveryReceiptItemRef
+- table: ProcurementDirectDeliveryReceiptExtensionLowerGrade
+  name: IX_ProcurementDirectDeliveryReceiptExtensionLowerGrade_ProcurementOrderExtensionLowerGradeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryExtensionLowerGradeRef
+- table: ProcurementDirectDeliveryReceiptExtensionProduct
+  name: PK_ProcurementDirectDeliveryReceiptExtensionProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDirectDeliveryReceiptExtensionProductID
+- table: ProcurementDirectDeliveryReceiptExtensionProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionProduct_DeliveryItemRef_DeliveryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDirectDeliveryReceiptExtensionProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionProduct_DirectDeliveryReceiptItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DirectDeliveryReceiptItemRef
+- table: ProcurementDirectDeliveryReceiptExtensionProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDirectDeliveryReceiptExtensionProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDirectDeliveryReceiptExtensionProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionProduct_SubcontractingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SubcontractingOrderRef
+- table: ProcurementDirectDeliveryReceiptExtensionScrap
+  name: PK_ProcurementDirectDeliveryReceiptExtensionScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDirectDeliveryReceiptExtensionScrapID
+- table: ProcurementDirectDeliveryReceiptExtensionScrap
+  name: IX_ProcurementDirectDeliveryReceiptExtensionScrap_DeliveryItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDirectDeliveryReceiptExtensionScrap
+  name: IX_ProcurementDirectDeliveryReceiptExtensionScrap_DirectDeliveryReceiptItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DirectDeliveryReceiptItemRef
+- table: ProcurementDirectDeliveryReceiptExtensionScrap
+  name: IX_ProcurementDirectDeliveryReceiptExtensionScrap_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurementDirectDeliveryReceiptExtensionScrap
+  name: IX_ProcurementDirectDeliveryReceiptExtensionScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDirectDeliveryReceiptExtensionScrap
+  name: IX_ProcurementDirectDeliveryReceiptExtensionScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDirectDeliveryReceiptExtensionScrap
+  name: IX_ProcurementDirectDeliveryReceiptExtensionScrap_ProcurementOrderExtensionScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurementDeliveryExtensionScrapRef
+- table: ProcurementDirectDeliveryReceiptExtensionScrap
+  name: IX_ProcurementDirectDeliveryReceiptExtensionScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  name: PK_ProcurementDirectDeliveryReceiptExtensionSideProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurementDirectDeliveryReceiptExtensionSideProductID
+- table: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionSideProduct
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DeliveryItemRef
+- table: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionSideProduct_DirectDeliveryReceiptItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DirectDeliveryReceiptItemRef
+- table: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionSideProduct_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionSideProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionSideProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  name: IX_ProcurementDirectDeliveryReceiptExtensionSideProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurmentOrderExtension
+  name: PK_ProcurmentOrderExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurmentOrderExtensionID
+- table: ProcurmentOrderExtension
+  name: IX_SCR3_ProcurmentOrderExtension_SupplierStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierStoreRef
+- table: ProcurmentOrderExtension
+  name: IX_SCR3_ProcurmentOrderExtension_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: ProcurmentOrderExtensionItem
+  name: PK_ProcurmentOrderExtensionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurmentOrderExtensionItemID
+- table: ProcurmentOrderExtensionLowerGrade
+  name: PK_ProcurmentOrderExtensionLowerGrade
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurmentOrderExtensionLowerGradeID
+- table: ProcurmentOrderExtensionLowerGrade
+  name: IX_SCR3_ProcurmentOrderExtensionLowerGrade_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurmentOrderExtensionMaterial
+  name: PK_ProcurmentOrderExtensionMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurmentOrderExtensionMaterialID
+- table: ProcurmentOrderExtensionMaterial
+  name: IX_SCR3_ProcurmentOrderExtensionMaterial_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurmentOrderExtensionMaterial
+  name: IX_SCR3_ProcurmentOrderExtensionMaterial_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurmentOrderExtensionMaterial
+  name: IX_SCR3_ProcurmentOrderExtensionMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurmentOrderExtensionMaterial
+  name: IX_SCR3_ProcurmentOrderExtensionMaterial_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurmentOrderExtensionScrap
+  name: PK_ProcurmentOrderExtensionScrap
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurmentOrderExtensionScrapID
+- table: ProcurmentOrderExtensionScrap
+  name: IX_SCR3_ProcurmentOrderExtensionScrap_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurmentOrderExtensionScrap
+  name: IX_SCR3_ProcurmentOrderExtensionScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurmentOrderExtensionScrap
+  name: IX_SCR3_ProcurmentOrderExtensionScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurmentOrderExtensionScrap
+  name: IX_SCR3_ProcurmentOrderExtensionScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurmentOrderExtensionScrap
+  name: IX_SCR3_ProcurmentOrderExtensionScrap_BomScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomScrapRef
+- table: ProcurmentOrderExtensionSideProduct
+  name: PK_ProcurmentOrderExtensionSideProduct
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurmentOrderExtensionSideProductID
+- table: ProcurmentOrderExtensionSideProduct
+  name: IX_SCR3_ProcurmentOrderExtensionSideProduct_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ProcurmentOrderExtensionSideProduct
+  name: IX_SCR3_ProcurmentOrderExtensionSideProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ProcurmentOrderExtensionSideProduct
+  name: IX_SCR3_ProcurmentOrderExtensionSideProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ProcurmentOrderExtensionSideProduct
+  name: IX_SCR3_ProcurmentOrderExtensionSideProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ProcurmentSupplierExtension
+  name: PK_SCR3_ProcurmentSupplierExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurmentSupplierExtensionID
+- table: ProcurmentSupplierExtension
+  name: IX_SCR3_ProcurmentSupplierExtension_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: ProcurmentSupplierExtension
+  name: IX_SCR3_ProcurmentSupplierExtension_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: ProcurmentSupplierExtensionStore
+  name: PK_SCR3_ProcurmentSupplierExtensionStore
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProcurmentSupplierExtensionStoreID
+- table: ProcurmentSupplierExtensionStore
+  name: IX_SCR3_ProcurmentSupplierExtensionStore_ProcurmentSupplierExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProcurmentSupplierExtensionRef
+- table: ProcurmentSupplierExtensionStore
+  name: IX_SCR3_ProcurmentSupplierExtensionStore_SupplierStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierStoreRef
+- table: SubcontractingOrder
+  name: PK_SubcontractingOrderID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SubcontractingOrderID
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_ScrapStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapStoreRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_ScrapInventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ScrapInventoryVoucherSpecificationRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_SupplierStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierStoreRef
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: SubcontractingOrder
+  name: IX_SCR3_SubcontractingOrder_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: SubcontractingOrder
+  name: IX_SCR3_ProcurementDeliveryReturnExtension_SupplierStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierStoreRef
+- table: SubcontractingOrderLowerGrade
+  name: PK_SubcontractingOrderLowerGradeID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SubcontractingOrderLowerGradeID
+- table: SubcontractingOrderLowerGrade
+  name: IX_SCR3_SubcontractingOrderLowerGrade_SubcontractingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SubcontractingOrderRef
+- table: SubcontractingOrderLowerGrade
+  name: IX_SCR3_SubcontractingOrderLowerGrade_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: SubcontractingOrderMaterial
+  name: PK_SubcontractingOrderMaterialID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SubcontractingOrderMaterialID
+- table: SubcontractingOrderMaterial
+  name: IX_SCR3_SubcontractingOrderMaterial_SubcontractingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SubcontractingOrderRef
+- table: SubcontractingOrderMaterial
+  name: IX_SCR3_SubcontractingOrderMaterial_BomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomItemRef
+- table: SubcontractingOrderMaterial
+  name: IX_SCR3_SubcontractingOrderMaterial_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: SubcontractingOrderMaterial
+  name: IX_SCR3_SubcontractingOrderMaterial_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: SubcontractingOrderMaterial
+  name: IX_SCR3_SubcontractingOrderMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: SubcontractingOrderMaterial
+  name: IX_SCR3_SubcontractingOrderMaterial_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: SubcontractingOrderScrap
+  name: PK_SubcontractingOrderScrapID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SubcontractingOrderScrapID
+- table: SubcontractingOrderScrap
+  name: IX_SCR3_SubcontractingOrderScrap_SubcontractingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SubcontractingOrderRef
+- table: SubcontractingOrderScrap
+  name: IX_SCR3_SubcontractingOrderScrap_BomScrapRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomScrapRef
+- table: SubcontractingOrderScrap
+  name: IX_SCR3_SubcontractingOrderScrap_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: SubcontractingOrderScrap
+  name: IX_SCR3_SubcontractingOrderScrap_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: SubcontractingOrderScrap
+  name: IX_SCR3_SubcontractingOrderScrap_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: SubcontractingOrderScrap
+  name: IX_SCR3_SubcontractingOrderScrap_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: SubcontractingOrderSideProduct
+  name: PK_SubcontractingOrderSideProductID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SubcontractingOrderSideProductID
+- table: SubcontractingOrderSideProduct
+  name: IX_SCR3_SubcontractingOrderSideProduct_SubcontractingOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SubcontractingOrderRef
+- table: SubcontractingOrderSideProduct
+  name: IX_SCR3_SubcontractingOrderSideProduct_BomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomItemRef
+- table: SubcontractingOrderSideProduct
+  name: IX_SCR3_SubcontractingOrderSideProduct_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: SubcontractingOrderSideProduct
+  name: IX_SCR3_SubcontractingOrderSideProduct_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: SubcontractingOrderSideProduct
+  name: IX_SCR3_SubcontractingOrderSideProduct_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: SubcontractingOrderSideProduct
+  name: IX_SCR3_SubcontractingOrderSideProduct_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef

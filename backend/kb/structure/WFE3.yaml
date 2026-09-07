@@ -1,0 +1,317 @@
+schema: WFE3
+table_count: 10
+source: extracted
+extracted_at: '2026-07-25'
+note: از sys.* استخراج شده — دستی ویرایش نکنید. معنا در kb/semantics/ است.
+tables:
+- name: Job
+  columns:
+  - name: JobID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+    identity: true
+  - name: Code
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 2
+  - name: Name
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 3
+  - name: Description
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 4
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - JobID
+- name: OrganizationElement
+  columns:
+  - name: OrganizationElementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(100)
+    nullable: false
+    ordinal: 2
+  - name: Code
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 3
+  - name: Description
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 4
+  - name: ElementType
+    type: int
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 6
+  primary_key:
+  - OrganizationElementID
+- name: OrganizationUnit
+  columns:
+  - name: OrganizationUnitID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrganizationUnitType
+    type: int
+    nullable: false
+    ordinal: 2
+  - name: OrganizationElementRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 4
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 5
+  primary_key:
+  - OrganizationUnitID
+- name: Person
+  columns:
+  - name: PersonID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PartyRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: EmailAddress
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 3
+  - name: InteractionType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: Code
+    type: nvarchar(50)
+    nullable: true
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 6
+  - name: ReplacedPersonRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  primary_key:
+  - PersonID
+- name: Position
+  columns:
+  - name: PositionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrganizationElementRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 3
+  - name: FormalType
+    type: int
+    nullable: false
+    ordinal: 4
+  - name: MaxPersons
+    type: smallint
+    nullable: false
+    ordinal: 5
+  - name: State
+    type: int
+    nullable: false
+    ordinal: 6
+  primary_key:
+  - PositionID
+- name: PositionJob
+  columns:
+  - name: PositionJobID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PositionRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: JobRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 4
+  primary_key:
+  - PositionJobID
+- name: SemiStatute
+  columns:
+  - name: SemiStatuteID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: PersonRef
+    type: bigint
+    nullable: false
+    ordinal: 2
+  - name: StructureRef
+    type: bigint
+    nullable: false
+    ordinal: 3
+  - name: JobRef
+    type: bigint
+    nullable: true
+    ordinal: 4
+  - name: IsDeleted
+    type: bit
+    nullable: false
+    ordinal: 5
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 6
+  - name: PositionRef
+    type: bigint
+    nullable: false
+    ordinal: 7
+  - name: OrganizationUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 8
+  - name: SemiStatuteType
+    type: int
+    nullable: false
+    ordinal: 9
+  - name: StartDate
+    type: datetime
+    nullable: false
+    ordinal: 10
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 11
+  - name: ConflictDate
+    type: datetime
+    nullable: true
+    ordinal: 12
+  primary_key:
+  - SemiStatuteID
+- name: Structure
+  columns:
+  - name: StructureID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: Name
+    type: nvarchar(100)
+    nullable: true
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 3
+  primary_key:
+  - StructureID
+- name: StructureElement
+  columns:
+  - name: StructureElementID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: OrganizationElementRef
+    type: bigint
+    nullable: true
+    ordinal: 2
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 3
+  - name: StructureVersionRef
+    type: bigint
+    nullable: false
+    ordinal: 4
+  - name: StructureElementRef
+    type: bigint
+    nullable: true
+    ordinal: 5
+  - name: OrganizationUnitRef
+    type: bigint
+    nullable: false
+    ordinal: 6
+  - name: ManagerPositionRef
+    type: bigint
+    nullable: true
+    ordinal: 7
+  - name: ManagerOrganizationUnitRef
+    type: bigint
+    nullable: true
+    ordinal: 8
+  primary_key:
+  - StructureElementID
+- name: StructureVersion
+  columns:
+  - name: StructureVersionID
+    type: bigint
+    nullable: false
+    ordinal: 1
+    is_pk: true
+  - name: StartDate
+    type: datetime
+    nullable: true
+    ordinal: 2
+  - name: EndDate
+    type: datetime
+    nullable: true
+    ordinal: 3
+  - name: Version
+    type: timestamp
+    nullable: true
+    ordinal: 4
+  - name: StructureRef
+    type: bigint
+    nullable: false
+    ordinal: 5
+  - name: VersionNumber
+    type: bigint
+    nullable: true
+    ordinal: 6
+  - name: IsPublished
+    type: bit
+    nullable: true
+    ordinal: 7
+  - name: VersionDescription
+    type: nvarchar(200)
+    nullable: true
+    ordinal: 8
+  primary_key:
+  - StructureVersionID

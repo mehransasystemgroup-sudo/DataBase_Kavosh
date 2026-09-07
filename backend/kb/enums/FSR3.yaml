@@ -1,0 +1,291 @@
+schema: FSR3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: DetailSetting
+  column: ItemType
+  lookup_type: DetailSettingItemType
+  type_title_fa: DetailSettingItemType
+  values:
+  - value: '1'
+    label_fa: ترازنامه
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سود و زیان
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: سود و زیان جامع
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '4'
+    label_fa: گردش وجوه نقد
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '5'
+    label_fa: یادداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: DetailSetting
+  column: ReportType
+  lookup_type: ReportType
+  type_title_fa: ReportType
+  values:
+  - value: '1'
+    label_fa: گزارش
+    source: proven_by_data
+    confidence: high
+    observed_count: 4
+  - value: '2'
+    label_fa: یادداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: DetailSetting
+  column: SeperateAmountByColumnType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+- table: DetailSetting
+  column: SeperateAmountByTotalType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 3
+- table: DetailSetting
+  column: SeperateTitleByColumnType
+  lookup_type: null
+  values:
+  - value: '0'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 4
+- table: FinancialStatementsStateLog
+  column: OperationType
+  lookup_type: OperationType
+  type_title_fa: OperationType
+  values:
+  - value: '1'
+    label_fa: داخل شهری
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: بین شهری
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '3'
+    label_fa: بین المللی
+    source: stated_by_config
+    confidence: high
+- table: ReportTypeSetting
+  column: ReportType
+  lookup_type: ReportType
+  type_title_fa: ReportType
+  values:
+  - value: '1'
+    label_fa: گزارش
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: یادداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: ReportingStyle
+  column: CategoryType
+  lookup_type: ReportingStyleCategoryType
+  type_title_fa: ReportingStyleCategoryType
+  values:
+  - value: '1'
+    label_fa: اطلاعات سربرگ
+    source: proven_by_data
+    confidence: high
+    observed_count: 3
+  - value: '2'
+    label_fa: اطلاعات سرجمع
+    source: proven_by_data
+    confidence: high
+    observed_count: 18
+  - value: '3'
+    label_fa: اطلاعات عمومی
+    source: proven_by_data
+    confidence: high
+    observed_count: 17
+- table: ReportingStyle
+  column: ItemType
+  lookup_type: ItemType
+  type_title_fa: نوع قلم
+  values:
+  - value: '1'
+    label_fa: چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: سفته
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '4'
+    label_fa: وجه نقد
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '5'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '6'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '7'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '8'
+    label_fa: اعلامیه واریز/برداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '9'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '10'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '11'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '12'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '13'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '14'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '15'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '16'
+    label_fa: استرداد چک
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+  - value: '17'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '18'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '19'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '20'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 2
+  - value: '22'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '32'
+    label_fa: استرداد سفته
+    source: stated_by_config
+    confidence: high
+  - value: '64'
+    label_fa: برگشت از واگذار غیر
+    source: stated_by_config
+    confidence: high
+  - value: '128'
+    label_fa: واگذار به غیر
+    source: stated_by_config
+    confidence: high
+  - value: '256'
+    label_fa: واگذاری چک استردادی
+    source: stated_by_config
+    confidence: high
+  - value: '512'
+    label_fa: واگذاری سفته استردادی
+    source: stated_by_config
+    confidence: high
+- table: ReportingStyle
+  column: ReportType
+  nullable: true
+  lookup_type: ReportType
+  type_title_fa: ReportType
+  values:
+  - value: '1'
+    label_fa: گزارش
+    source: proven_by_data
+    confidence: high
+    observed_count: 17
+  - value: '2'
+    label_fa: یادداشت
+    source: proven_by_data
+    confidence: high
+    observed_count: 18

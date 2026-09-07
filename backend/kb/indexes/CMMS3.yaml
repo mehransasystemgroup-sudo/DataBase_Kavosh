@@ -1,0 +1,3700 @@
+schema: CMMS3
+source: extracted
+indexes:
+- table: Bom
+  name: PK_CMMS3_Bom
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomID
+- table: Bom
+  name: IX_CMMS3_Bom_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: Bom
+  name: IX_CMMS3_Bom_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: BomAssembly
+  name: PK_CMMS3_BomAssembly
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomAssemblyID
+- table: BomAssembly
+  name: IX_CMMS3_BomAssembly_BomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomItemRef
+- table: BomItem
+  name: PK_CMMS3_BomItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomItemID
+- table: BomItem
+  name: IX_CMMS3_BomItem_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: BomItem
+  name: IX_CMMS3_BomItem_ParentBomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentBomItemRef
+- table: BomSpare
+  name: PK_CMMS3_BomSpare
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomSpareID
+- table: BomSpare
+  name: IX_CMMS3_BomSpare_BomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomItemRef
+- table: BomSpare
+  name: IX_CMMS3_BomSpare_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: BomSpare
+  name: IX_CMMS3_BomSpare_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: BomSpare
+  name: IX_CMMS3_BomSpare_PartStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartStoreRef
+- table: BomSpareInventoryVoucher
+  name: PK_CMMS3_BomSpareInventoryVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BomSpareInventoryVoucherID
+- table: BomSpareInventoryVoucher
+  name: IX_CMMS3_BomSpareInventoryVoucher_BomSpareRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomSpareRef
+- table: BomSpareInventoryVoucher
+  name: IX_CMMS3_BomSpareInventoryVoucher_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: BomSpareInventoryVoucher
+  name: IX_CMMS3_BomSpareInventoryVoucher_InterStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InterStoreRef
+- table: Confirmation
+  name: PK_CMMS3_Confirmation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationID
+- table: Confirmation
+  name: IX_CMMS3_Confirmation_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: Confirmation
+  name: IX_CMMS3_Confirmation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Confirmation
+  name: IX_CMMS3_Confirmation_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ConfirmationActivity
+  name: PK_CMMS3_ConfirmationActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationActivityID
+- table: ConfirmationActivity
+  name: IX_CMMS3_ConfirmationActivity_ConfirmationEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationEquipmentRef
+- table: ConfirmationActivity
+  name: IX_CMMS3_ConfirmationActivity_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationActivity
+  name: IX_CMMS3_ConfirmationActivity_EquipmentMeasurementPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentMeasurementPointRef
+- table: ConfirmationActivity
+  name: IX_CMMS3_ConfirmationActivity_WorkOrderOperationActivityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationActivityRef
+- table: ConfirmationActivity
+  name: IX_CMMS3_ConfirmationActivity_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: ConfirmationDelayReason
+  name: PK_CMMS3_ConfirmationDelayReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationDelayReasonID
+- table: ConfirmationDelayReason
+  name: IX_CMMS3_ConfirmationDelayReason_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationDelayReason
+  name: IX_CMMS3_ConfirmationDelayReason_DelayReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelayReasonRef
+- table: ConfirmationEquipment
+  name: PK_CMMS3_ConfirmationEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationEquipmentID
+- table: ConfirmationEquipment
+  name: IX_CMMS3_ConfirmationEquipment_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationEquipment
+  name: IX_CMMS3_ConfirmationEquipment_WorkOrderEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderEquipmentRef
+- table: ConfirmationEquipment
+  name: IX_CMMS3_ConfirmationEquipment_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: ConfirmationMaterial
+  name: PK_CMM3_ConfirmationMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationMaterialID
+- table: ConfirmationMaterial
+  name: IX_CMMS3_ConfirmationMaterial_WorkOrderOperationMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationMaterialRef
+- table: ConfirmationMaterial
+  name: IX_CMMS3_ConfirmationMaterial_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ConfirmationMaterial
+  name: IX_CMMS3_ConfirmationMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ConfirmationMaterial
+  name: UIX_CMMS3_ConfirmationMaterial_WorkOrderOperationRefPartRefRealQuantity
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ConfirmationMaterialID
+  - PartRef
+- table: ConfirmationMaterialInventoryVoucher
+  name: PK_CMMS3_ConfirmationMaterialInventoryVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationMaterialInventoryVoucherID
+- table: ConfirmationMaterialInventoryVoucher
+  name: IX_CMMS3_ConfirmationMaterialInventoryVoucher_ConfirmationMaterialRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ConfirmationMaterialRef
+- table: ConfirmationMaterialInventoryVoucher
+  name: IX_CMMS3_ConfirmationMaterialInventoryVoucher_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ConfirmationMaterialInventoryVoucher
+  name: IX_CMMS3_ConfirmationMaterialInventoryVoucher_InterStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InterStoreRef
+- table: ConfirmationMaterialTrackingFactor
+  name: PK_CMM3_ConfirmationMaterialTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationMaterialTrackingFactorID
+- table: ConfirmationMaterialTrackingFactor
+  name: IX_CMMS3_ConfirmationMaterialTrackingFactor_ConfirmationMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationMaterialRef
+- table: ConfirmationPersonnel
+  name: PK_CMMS3_ConfirmationPersonnel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationPersonnelID
+- table: ConfirmationPersonnel
+  name: IX_CMMS3_ConfirmationPersonnel_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationPersonnel
+  name: IX_CMMS3_ConfirmationPersonnel_WorkCenterPersonnelRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterPersonnelRef
+- table: ConfirmationPersonnel
+  name: IX_CMMS3_ConfirmationPersonnel_WorkCenterCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: ConfirmationPersonnel
+  name: IX_CMMS3_ConfirmationPersonnel_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: ConfirmationResourceToolAssignment
+  name: PK_CMMS3_ConfirmationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationResourceToolAssignmentID
+- table: ConfirmationResourceToolAssignment
+  name: IX_CMMS3_ConfirmationResourceToolAssignment_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationResourceToolAssignment
+  name: IX_CMMS3_ConfirmationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: ConfirmationResourceToolAssignment
+  name: IX_CMMS3_ConfirmationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ConfirmationRTAExtension
+  name: PK_CMMS3_ConfirmationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationRTAExtensionID
+- table: ConfirmationRTAExtension
+  name: IX_CMMS3_ConfirmationRTAExtension_ConfirmationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationResourceToolAssignmentRef
+- table: ConfirmationStandardValue
+  name: PK_CMMS3_ConfirmationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ConfirmationStandardValueID
+- table: ConfirmationStandardValue
+  name: IX_CMMS3_ConfirmationStandardValue_ConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ConfirmationRef
+- table: ConfirmationStandardValue
+  name: IX_CMMS3_ConfirmationStandardValue_WorkOrderOperationStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationStandardValueRef
+- table: Damage
+  name: PK_CMMS3_Damage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DamageID
+- table: Damage
+  name: UIX_CMMS3_Damage_NumberTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - Title
+- table: DamageGroupMember
+  name: PK_CMMS3_DamageGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DamageGroupMemberID
+- table: DamageGroupMember
+  name: IX_CMMS3_DamageGroupMember_GroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupingRef
+- table: DamageGroupMember
+  name: IX_CMMS3_DamageGroupMember_GroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupRef
+- table: DamageGroupMember
+  name: IX_CMMS3_DamageGroupMember_MemberID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MemberID
+- table: DamageReason
+  name: PK_CMMS3_DamageReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DamageReasonID
+- table: DamageReason
+  name: UIX_CMMS3_DamageReason_NumberTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - Title
+- table: DamageReasonGroupMember
+  name: PK_CMMS3_DamageReasonGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DamageReasonGroupMemberID
+- table: DamageReasonGroupMember
+  name: IX_CMMS3_DamageReasonGroupMember_GroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupingRef
+- table: DamageReasonGroupMember
+  name: IX_CMMS3_DamageReasonGroupMember_GroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupRef
+- table: DamageReasonGroupMember
+  name: IX_CMMS3_DamageReasonGroupMember_MemberID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MemberID
+- table: DelayReason
+  name: PK_CMMS3_DelayReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DelayReasonID
+- table: DelayReason
+  name: UIX_CMMS3_DelayReason_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: EquipmentDamageGroup
+  name: PK_CMMS3_EquipmentDamageGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentDamageGroupID
+- table: EquipmentDamageGroup
+  name: IX_CMMS3_EquipmentDamageGroup_EquipmentExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentExtensionRef
+- table: EquipmentDamageGroup
+  name: IX_CMMS3_EquipmentDamageGroup_DamageGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageGroupRef
+- table: EquipmentDamageReasonGroup
+  name: PK_CMMS3_EquipmentDamageReasonGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentDamageReasonGroupID
+- table: EquipmentDamageReasonGroup
+  name: IX_CMMS3_EquipmentDamageReasonGroup_EquipmentExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentExtensionRef
+- table: EquipmentDamageReasonGroup
+  name: IX_CMMS3_EquipmentDamageReasonGroup_DamageReasonGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageReasonGroupRef
+- table: EquipmentExtension
+  name: PK_EquipmentExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentExtensionID
+- table: EquipmentExtension
+  name: UIX_CMMS3_EquipmentExtension_EquipmentRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: EquipmentExtensionHistory
+  name: PK_EquipmentExtensionHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentExtensionHistoryID
+- table: EquipmentExtensionHistory
+  name: IX_CMMS3_EquipmentExtensionHistory_EquipmentHistoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentHistoryRef
+- table: EquipmentFunction
+  name: PK_CMMS3_EquipmentFunction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentFunctionID
+- table: EquipmentFunctionalFailure
+  name: PK_CMMS3_EquipmentFunctionalFailure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentFunctionalFailureID
+- table: EquipmentMeasurementPoint
+  name: PK_EquipmentMeasurementPoint
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentMeasurementPointID
+- table: EquipmentMeasurementPoint
+  name: UIX_CMMS3_EquipmentMeasurementPoint_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - EquipmentExtensionRef
+- table: EquipmentMeasurementPointHistory
+  name: PK_CMMS3_EquipmentMeasurementPointHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentMeasurementPointHistoryID
+- table: EquipmentMeasurementPointHistory
+  name: IX_CMMS3_EquipmentMeasurementPointHistory_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: EquipmentMeasurementPointHistory
+  name: IX_CMMS3_EquipmentMeasurementPointHistory_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: EquipmentMeasurementPointHistory
+  name: IX_CMMS3_EquipmentMeasurementPointHistory_EquipmentExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentExtensionRef
+- table: EquipmentMeasurementPointHistory
+  name: IX_CMMS3_EquipmentMeasurementPointHistory_EquipmentMeasurementPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentMeasurementPointRef
+- table: EquipmentMeasurementPointHistory
+  name: IX_CMMS3_EquipmentMeasurementPointHistory_MeasurementParameterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MeasurementParameterRef
+- table: EquipmentProblemGroup
+  name: PK_CMMS3_EquipmentProblemGroup
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EquipmentProblemGroupID
+- table: EquipmentProblemGroup
+  name: IX_CMMS3_EquipmentProblemGroup_EquipmentExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentExtensionRef
+- table: EquipmentProblemGroup
+  name: IX_CMMS3_EquipmentProblemGroup_ProblemGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProblemGroupRef
+- table: FailureConsequence
+  name: PK_CMMS3_FailureConsequence
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FailureConsequenceID
+- table: FailureConsequence
+  name: UIX_CMMS3_FailureConsequence_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: FailureDetectionMethod
+  name: PK_CMMS3_FailureDetectionMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FailureDetectionMethodID
+- table: FailureDetectionMethodType
+  name: PK_CMMS3_FailureDetectionMethodType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FailureDetectionMethodTypeID
+- table: FailureDetectionMethodType
+  name: IX_CMMS3_FailureDetectionMethodType_FailureDetectionMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureDetectionMethodRef
+- table: FailureDetectionMethodTypeMethod
+  name: PK_CMMS3_FailureDetectionMethodTypeMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FailureDetectionMethodTypeMethodID
+- table: FailureDetectionMethodTypeMethod
+  name: IX_CMMS3_FailureDetectionMethodTypeMethod_FailureDetectionMethodTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureDetectionMethodTypeRef
+- table: FailureEffect
+  name: PK_CMMS3_FailureEffect
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FailureEffectID
+- table: FailureLikelihood
+  name: PK_CMMS3_FailureLikelihood
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FailureLikelihoodID
+- table: FailureLikelihood
+  name: UIX_CMMS3_FailureLikelihood_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: FMEADamageInformation
+  name: PK_CMMS3_FMEADamageInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FMEADamageInformationID
+- table: FMEADamageInformation
+  name: IX_CMMS3_FMEADamageInformation_FMEADamageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FMEADamageRef
+- table: FMEADamageInformation
+  name: IX_CMMS3_FMEADamageInformation_ProblemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProblemRef
+- table: FMEADamageInformation
+  name: IX_CMMS3_FMEADamageInformation_FailureConsequenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureConsequenceRef
+- table: FMEADamageInformation
+  name: IX_CMMS3_FMEADamageInformation_DamageReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageReasonRef
+- table: FMEADamageInformation
+  name: IX_CMMS3_FMEADamageInformation_FailureLikelihoodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureLikelihoodRef
+- table: FMEADamageInformation
+  name: IX_CMMS3_FMEADamageInformation_FailureDetectionMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureDetectionMethodRef
+- table: Inspection
+  name: PK_CMMS3_Inspection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionID
+- table: Inspection
+  name: IX_CMMS3_Inspection_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Inspection
+  name: IX_CMMS3_Inspection_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Inspection
+  name: IX_CMMS3_Inspection_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: Inspection
+  name: IX_CMMS3_Inspection_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Inspection
+  name: IX_CMMS3_Inspection_ResponsibleWorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsibleWorkCenterRef
+- table: Inspection
+  name: IX_CMMS3_Inspection_ResponsiblePartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsiblePartyRef
+- table: Inspection
+  name: IX_CMMS3_Inspection_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: InspectionConfirmation
+  name: PK_CMMS3_InspectionConfirmation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationID
+- table: InspectionConfirmation
+  name: IX_CMMS3_InspectionConfirmation_InspectionOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationRef
+- table: InspectionConfirmation
+  name: IX_CMMS3_InspectionConfirmation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: InspectionConfirmation
+  name: IX_CMMS3_InspectionConfirmation_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: InspectionConfirmationActivity
+  name: PK_CMMS3_InspectionConfirmationActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationActivityID
+- table: InspectionConfirmationActivity
+  name: IX_CMMS3_InspectionConfirmationActivity_InspectionConfirmationEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationEquipmentRef
+- table: InspectionConfirmationActivity
+  name: IX_CMMS3_InspectionConfirmationActivity_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationActivity
+  name: IX_CMMS3_InspectionConfirmationActivity_InspectionOperationActivityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationActivityRef
+- table: InspectionConfirmationActivity
+  name: IX_CMMS3_InspectionConfirmationActivity_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: InspectionConfirmationActivityTime
+  name: PK_CMMS3_InspectionConfirmationActivityTime
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationActivityTimeID
+- table: InspectionConfirmationActivityTime
+  name: IX_CMMS3_InspectionConfirmationActivityTime_InspectionConfirmationActivityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationActivityRef
+- table: InspectionConfirmationActivityTime
+  name: IX_CMMS3_InspectionConfirmationActivityTime_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationDelayReason
+  name: PK_CMMS3_InspectionConfirmationDelayReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationDelayReasonID
+- table: InspectionConfirmationDelayReason
+  name: IX_CMMS3_InspectionConfirmationDelayReason_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationDelayReason
+  name: IX_CMMS3_InspectionConfirmationDelayReason_DelayReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DelayReasonRef
+- table: InspectionConfirmationEquipment
+  name: PK_CMMS3_InspectionConfirmationEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationEquipmentID
+- table: InspectionConfirmationEquipment
+  name: IX_CMMS3_InspectionConfirmationEquipment_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationEquipment
+  name: IX_CMMS3_InspectionEquipmentEquipment_InspectionEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionEquipmentRef
+- table: InspectionConfirmationEquipment
+  name: IX_CMMS3_InspectionConfirmationEquipment_InspectionOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationRef
+- table: InspectionConfirmationEquipmentTime
+  name: PK_CMMS3_InspectionConfirmationEquipmentTime
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationEquipmentTimeID
+- table: InspectionConfirmationEquipmentTime
+  name: IX_CMMS3_InspectionEquipmentEquipment_InspectionConfirmationEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationEquipmentRef
+- table: InspectionConfirmationEquipmentTime
+  name: IX_CMMS3_InspectionConfirmationEquipmentTime_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationMaterial
+  name: PK_CMM3_InspectionConfirmationMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationMaterialID
+- table: InspectionConfirmationMaterial
+  name: IX_CMMS3_InspectionConfirmationMaterial_InspectionOperationMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationMaterialRef
+- table: InspectionConfirmationMaterial
+  name: IX_CMMS3_InspectionConfirmationMaterial_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionConfirmationMaterial
+  name: IX_CMMS3_InspectionConfirmationMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: InspectionConfirmationMaterial
+  name: UIX_CMMS3_InspectionConfirmationMaterial_InspectionOperationRefPartRefRealQuantity
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionConfirmationMaterialID
+  - PartRef
+- table: InspectionConfirmationMaterialInventoryVoucher
+  name: PK_CMMS3_InspectionConfirmationMaterialInventoryVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationMaterialInventoryVoucherID
+- table: InspectionConfirmationMaterialInventoryVoucher
+  name: IX_CMMS3_InspectionConfirmationMaterialInventoryVoucher_InspectionConfirmationMaterialRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionConfirmationMaterialRef
+- table: InspectionConfirmationMaterialInventoryVoucher
+  name: IX_CMMS3_InspectionConfirmationMaterialInventoryVoucher_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: InspectionConfirmationMaterialInventoryVoucher
+  name: IX_CMMS3_InspectionConfirmationMaterialInventoryVoucher_InterStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InterStoreRef
+- table: InspectionConfirmationMaterialTrackingFactor
+  name: PK_CMM3_InspectionConfirmationMaterialTrackingFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationMaterialTrackingFactorID
+- table: InspectionConfirmationMaterialTrackingFactor
+  name: IX_CMMS3_InspectionConfirmationMaterialTrackingFactor_InspectionConfirmationMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationMaterialRef
+- table: InspectionConfirmationPersonnel
+  name: PK_CMMS3_InspectionConfirmationPersonnel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationPersonnelID
+- table: InspectionConfirmationPersonnel
+  name: IX_CMMS3_InspectionConfirmationPersonnel_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationPersonnel
+  name: IX_CMMS3_InspectionConfirmationPersonnel_WorkCenterPersonnelRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterPersonnelRef
+- table: InspectionConfirmationPersonnel
+  name: IX_CMMS3_InspectionConfirmationPersonnel_WorkCenterCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: InspectionConfirmationPersonnel
+  name: IX_CMMS3_InspectionConfirmationPersonnel_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: InspectionConfirmationResourceToolAssignment
+  name: PK_InspectionConfirmationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationResourceToolAssignmentID
+- table: InspectionConfirmationResourceToolAssignment
+  name: IX_CMMS3_InspectionConfirmationResourceToolAssignment_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationResourceToolAssignment
+  name: IX_CMMS3_InspectionConfirmationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: InspectionConfirmationResourceToolAssignment
+  name: IX_CMMS3_InspectionConfirmationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionConfirmationRTAExtension
+  name: PK_CMMS3_InspectionConfirmationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationRTAExtensionID
+- table: InspectionConfirmationRTAExtension
+  name: IX_CMMS3_InspectionConfirmationRTAExtension_InspectionConfirmationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationResourceToolAssignmentRef
+- table: InspectionConfirmationStandardValue
+  name: PK_CMMS3_InspectionConfirmationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationStandardValueID
+- table: InspectionConfirmationStandardValue
+  name: IX_CMMS3_InspectionConfirmationStandardValue_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationStandardValue
+  name: IX_CMMS3_InspectionConfirmationStandardValue_InspectionOperationStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationStandardValueRef
+- table: InspectionConfirmationTime
+  name: PK_CMMS3_InspectionConfirmationTime
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionConfirmationTimeID
+- table: InspectionConfirmationTime
+  name: IX_CMMS3_InspectionConfirmationTime_InspectionConfirmationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionConfirmationRef
+- table: InspectionConfirmationTime
+  name: IX_CMMS3_InspectionConfirmationTime_WorkCenterPersonnelConfirmerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterPersonnelConfirmerRef
+- table: InspectionConfirmationTime
+  name: IX_CMMS3_InspectionConfirmationTime_WorkCenterPersonnelAccomplisherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterPersonnelAccomplisherRef
+- table: InspectionEquipment
+  name: PK_CMMS3_InspectionEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionEquipmentID
+- table: InspectionEquipment
+  name: IX_CMMS3_InspectionEquipment_InspectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionRef
+- table: InspectionEquipment
+  name: IX_CMMS3_InspectionEquipment_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: InspectionEquipment
+  name: IX_CMMS3_InspectionEquipment_BomAssemblyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomAssemblyRef
+- table: InspectionEquipment
+  name: IX_CMMS3_InspectionEquipment_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: InspectionEquipment
+  name: IX_CMMS3_InspectionEquipment_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: InspectionEquipment
+  name: IX_CMMS3_InspectionEquipment_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: InspectionEquipmentOperationActivity
+  name: PK_CMMS3_InspectionEquipmentOperationActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionEquipmentOperationActivityID
+- table: InspectionEquipmentOperationActivity
+  name: IX_CMMS3_InspectionEquipmentOperationActivity_InspectionEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionEquipmentRef
+- table: InspectionEquipmentOperationActivity
+  name: IX_CMMS3_InspectionEquipmentOperationActivity_InspectionOperationActivityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationActivityRef
+- table: InspectionEquipmentOperationActivityTime
+  name: PK_CMMS3_InspectionEquipmentOperationActivityTime
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionEquipmentOperationActivityTimeID
+- table: InspectionEquipmentOperationActivityTime
+  name: IX_CMMS3_InspectionEquipmentOperationActivityTime_InspectionEquipmentOperationActivityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionEquipmentOperationActivityRef
+- table: InspectionOperation
+  name: PK_CMMS3_InspectionOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionOperationID
+- table: InspectionOperation
+  name: IX_CMMS3_InspectionOperation_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: InspectionOperation
+  name: IX_CMMS3_InspectionOperation_InspectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionRef
+- table: InspectionOperation
+  name: IX_CMMS3_InspectionOperation_OperationTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationTypeRef
+- table: InspectionOperation
+  name: IX_CMMS3_InspectionOperation_ResponsiblePartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsiblePartyRef
+- table: InspectionOperationActivity
+  name: PK_CMMS3_InspectionOperationActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionOperationActivityID
+- table: InspectionOperationActivity
+  name: IX_CMMS3_InspectionOperationActivity_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: InspectionOperationActivity
+  name: UIX_CMMS3_InspectionOperationActivity_InspectionOperationRefNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionOperationRef
+  - Number
+- table: InspectionOperationActivity
+  name: UIX_CMMS3_InspectionOperationActivity_InspectionOperationRefTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionOperationRef
+  - Title
+- table: InspectionOperationMaterial
+  name: PK_CMM3_InspectionOperationMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionOperationMaterialID
+- table: InspectionOperationMaterial
+  name: IX_CMMS3_InspectionOperationMaterial_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionOperationMaterial
+  name: IX_CMMS3_InspectionOperationMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: InspectionOperationMaterial
+  name: IX_CMMS3_InspectionOperationMaterial_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: InspectionOperationMaterial
+  name: IX_CMMS3_InspectionOperationMaterial_InspectionOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationRef
+- table: InspectionOperationMaterialInventoryVoucher
+  name: PK_CMMS3_InspectionOperationMaterialInventoryVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionOperationMaterialInventoryVoucherID
+- table: InspectionOperationMaterialInventoryVoucher
+  name: IX_CMMS3_InspectionOperationMaterialInventoryVoucher_InspectionOperationMaterialRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionOperationMaterialRef
+- table: InspectionOperationMaterialInventoryVoucher
+  name: IX_CMMS3_InspectionOperationMaterialInventoryVoucher_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: InspectionOperationMaterialInventoryVoucher
+  name: IX_CMMS3_InspectionOperationMaterialInventoryVoucher_InterStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InterStoreRef
+- table: InspectionOperationPersonnel
+  name: PK_CMMS3_InspectionOperationPersonnel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionOperationPersonnelID
+- table: InspectionOperationPersonnel
+  name: IX_CMMS3_InspectionOperationPersonnel_InspectionOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationRef
+- table: InspectionOperationPersonnel
+  name: IX_CMMS3_InspectionOperationPersonnel_WorkCenterPersonnelRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterPersonnelRef
+- table: InspectionOperationPersonnel
+  name: IX_CMMS3_InspectionOperationPersonnel_WorkCenterCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: InspectionOperationPersonnel
+  name: IX_CMMS3_InspectionOperationPersonnel_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: InspectionOperationResourceToolAssignment
+  name: PK_InspectionOperationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionOperationResourceToolAssignmentID
+- table: InspectionOperationResourceToolAssignment
+  name: IX_CMMS3_InspectionOperationResourceToolAssignment_InspectionOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationRef
+- table: InspectionOperationResourceToolAssignment
+  name: IX_CMMS3_InspectionOperationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: InspectionOperationResourceToolAssignment
+  name: IX_CMMS3_InspectionOperationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: InspectionOperationResourceToolAssignment
+  name: IX_CMMS3_InspectionOperationResourceToolAssignment_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: InspectionOperationResourceToolAssignment
+  name: IX_CMMS3_InspectionOperationResourceToolAssignment_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: InspectionOperationRTAExtension
+  name: PK_CMMS3_InspectionOperationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionOperationRTAExtensionID
+- table: InspectionOperationRTAExtension
+  name: IX_CMMS3_InspectionOperationRTAExtension_InspectionOperationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionOperationResourceToolAssignmentRef
+- table: InspectionOperationStandardValue
+  name: PK_CMMS3_InspectionOperationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InspectionOperationStandardValueID
+- table: InspectionOperationStandardValue
+  name: IX_CMMS3_InspectionOperationStandardValue_WorkCenterStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterStandardValueRef
+- table: InspectionOperationStandardValue
+  name: UIX_CMMS3_InspectionOperationStandardValue_InspectionOperationRefWorkCenterStandardValueRefPlannedQuantity
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - InspectionOperationRef
+  - WorkCenterStandardValueRef
+  - PlannedQuantity
+- table: MaintenancePartExtension
+  name: PK_MaintenancePartExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaintenancePartExtensionID
+- table: MaintenancePartExtension
+  name: UIX_CMMS3_MaintenancePartExtension_PartRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartRef
+- table: MaintenanceProject
+  name: PK_CMMS3_MaintenanceProject
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaintenanceProjectID
+- table: MaintenanceProject
+  name: IX_CMMS3_MaintenanceProject_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: MeasurementParameter
+  name: PK_MeasurementParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MeasurementParameterID
+- table: MeasurementParameter
+  name: UIX_CMMS3_MeasurementParameter_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: MeasurementParameter
+  name: IX_CMMS3_MeasurementParameter_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: MeasurementParameter
+  name: IX_CMMS3_MeasurementParameter_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: MeasurementResultRecording
+  name: PK_CMMS3_MeasurementResultRecording
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MeasurementResultRecordingID
+- table: MeasurementResultRecording
+  name: IX_CMMS3_MeasurementResultRecording_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: MeasurementResultRecording
+  name: IX_CMMS3_MeasurementResultRecording_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: MeasurementResultRecording
+  name: IX_CMMS3_MeasurementResultRecording_EquipmentMeasurementPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentMeasurementPointRef
+- table: Notification
+  name: PK_CMMS3_Notification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationID
+- table: Notification
+  name: IX_CMMS3_Notification_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: Notification
+  name: IX_CMMS3_Notification_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: Notification
+  name: IX_CMMS3_Notification_BomAssemblyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomAssemblyRef
+- table: Notification
+  name: IX_CMMS3_Notification_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Notification
+  name: IX_CMMS3_Notification_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Notification
+  name: IX_CMMS3_Notification_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: Notification
+  name: IX_CMMS3_Notification_ResponsibleWorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsibleWorkCenterRef
+- table: NotificationDamage
+  name: PK_NotificationDamage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationDamageID
+- table: NotificationDamage
+  name: IX_CMMS3_NotificationDamage_DamageGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageGroupRef
+- table: NotificationDamage
+  name: IX_CMMS3_NotificationDamage_DamageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageRef
+- table: NotificationDamage
+  name: IX_CMMS3_NotificationDamage_NotificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationRef
+- table: NotificationDamageInfo
+  name: PK_NotificationDamageInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationDamageInfoID
+- table: NotificationDamageInfo
+  name: IX_CMMS3_NotificationDamageInfo_NotificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationRef
+- table: NotificationDamageInfo
+  name: IX_CMMS3_NotificationDamageInfo_BreakdownDurationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BreakdownDurationUnitRef
+- table: NotificationDamageReason
+  name: PK_NotificationDamageReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationDamageReasonID
+- table: NotificationDamageReason
+  name: IX_CMMS3_NotificationDamageReason_NotificationDamageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationDamageRef
+- table: NotificationDamageReason
+  name: IX_CMMS3_NotificationDamageReason_DamageReasonGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageReasonGroupRef
+- table: NotificationDamageReason
+  name: IX_CMMS3_NotificationDamageReason_DamageReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageReasonRef
+- table: NotificationProblem
+  name: PK_NotificationProblem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationProblemID
+- table: NotificationProblem
+  name: IX_CMMS3_NotificationProblem_ProblemGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProblemGroupRef
+- table: NotificationProblem
+  name: IX_CMMS3_NotificationProblem_ProblemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProblemRef
+- table: NotificationProblem
+  name: IX_CMMS3_NotificationProblem_NotificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationRef
+- table: NotificationProblem
+  name: IX_CMMS3_NotificationProblem_FailureDetectionMethodTypeMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureDetectionMethodTypeMethodRef
+- table: NotificationProblem
+  name: IX_CMMS3_NotificationProblem_FailureLikelihoodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureLikelihoodRef
+- table: NotificationProblemFailureConsequence
+  name: PK_CMMS3_NotificationProblemFailureConsequence
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotificationProblemFailureConsequenceID
+- table: NotificationProblemFailureConsequence
+  name: IX_CMMS3_NotificationProblemFailureConsequence_FailureConsequenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureConsequenceRef
+- table: NotificationProblemFailureConsequence
+  name: IX_CMMS3_NotificationProblemFailureConsequence_NotificationProblemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotificationProblemRef
+- table: NotificationProblemFailureConsequence
+  name: UIX_CMMS3_NotificationProblemFailureConsequence_NotificationProblemRefFailureConsequenceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - NotificationProblemRef
+  - FailureConsequenceRef
+- table: OperationType
+  name: PK_CMMS3_OperationType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OperationTypeID
+- table: OperationType
+  name: UIX_CMMS3_OperationType_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: ParentEquipmentMeasurementPointAssignment
+  name: PK_CMMS3_ParentEquipmentMeasurementPointAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ParentEquipmentMeasurementPointAssignmentID
+- table: Permit
+  name: PK_CMMS3_Permit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PermitID
+- table: Permit
+  name: IX_CMMS3_Permit_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Permit
+  name: IX_CMMS3_Permit_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Permit
+  name: IX_CMMS3_Permit_PermitTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PermitTypeRef
+- table: Permit
+  name: IX_CMMS3_Permit_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: PermitHistory
+  name: PK_CMMS3_PermitHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PermitHistoryID
+- table: PermitHistory
+  name: IX_CMMS3_PermitHistory_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PermitHistory
+  name: IX_CMMS3_PermitHistory_PermitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PermitRef
+- table: PermitInspection
+  name: PK_CMMS3_PermitInspection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PermitInspectionID
+- table: PermitInspection
+  name: IX_CMMS3_PermitInspection_InspectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionRef
+- table: PermitInspection
+  name: UIX_CMMS3_PermitInspection_PermitRefInspectionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PermitRef
+  - InspectionRef
+- table: PermitType
+  name: PK_CMMS3_PermitType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PermitTypeID
+- table: PermitType
+  name: UIX_CMMS3_PermitType_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: PermitWorkOrder
+  name: PK_CMMS3_PermitWorkOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PermitWorkOrderID
+- table: PermitWorkOrder
+  name: IX_CMMS3_PermitWorkOrder_WorkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderRef
+- table: PermitWorkOrder
+  name: UIX_CMMS3_PermitWorkOrder_PermitRefWorkOrderRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PermitRef
+  - WorkOrderRef
+- table: Plan
+  name: PK_CMMS3_Plan
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanID
+- table: Plan
+  name: UIX_CMMS3_Plan_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: PlanIndicator
+  name: PK_CMMS3_PlanIndicator
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanIndicatorID
+- table: PlanIndicator
+  name: IX_CMMS3_PlanIndicator_PlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanRef
+- table: PlanIndicator
+  name: IX_CMMS3_PlanIndicator_MeasurementParameterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MeasurementParameterRef
+- table: PlanningAndMonitoringMaintenanceProject
+  name: PK_CMMS3_PlanningAndMonitoringMaintenanceProject
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanningAndMonitoringMaintenanceProjectID
+- table: PlanningAndMonitoringMaintenanceProject
+  name: IX_CMMS3_PlanningAndMonitoringMaintenanceProject_MaintenanceProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaintenanceProjectRef
+- table: PlanningAndMonitoringMaintenanceProject
+  name: IX_CMMS3_PlanningAndMonitoringMaintenance_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: PlanningAndMonitoringMaintenanceProject
+  name: IX_CMMS3_PlanningAndMonitoringMaintenance_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PlanningAndMonitoringMaintenanceProjectNetwork
+  name: PK_CMMS3_PlanningAndMonitoringMaintenanceProjectNetwork
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanningAndMonitoringMaintenanceProjectNetworkID
+- table: PlanningAndMonitoringMaintenanceProjectNetwork
+  name: IX_CMMS3_PlanningAndMonitoringMaintenanceProjectNetwork_PlanningAndMonitoringMaintenanceProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanningAndMonitoringMaintenanceProjectRef
+- table: PlanningAndMonitoringMaintenanceProjectNetwork
+  name: IX_CMMS3_PlanningAndMonitoringMaintenanceProjectNetwork_WorkBreakdownStructureNetworkRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkBreakdownStructureNetworkRef
+- table: PlanningAndMonitoringMaintenanceProjectOperation
+  name: PK_CMMS3_PlanningAndMonitoringMaintenanceProjectOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanningAndMonitoringMaintenanceProjectOperationID
+- table: PlanningAndMonitoringMaintenanceProjectOperation
+  name: IX_CMMS3_PlanningAndMonitoringMaintenanceProjectOperation_PlanningAndMonitoringMaintenanceProjectNetworkRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanningAndMonitoringMaintenanceProjectNetworkRef
+- table: PlanningAndMonitoringMaintenanceProjectOperation
+  name: IX_CMMS3_PlanningAndMonitoringMaintenanceProjectOperation_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: PlanSchedule
+  name: PK_CMMS3_PlanSchedule
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanScheduleID
+- table: PlanSchedule
+  name: IX_CMMS3_PlanSchedule_PlanServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanServiceRef
+- table: PlanSchedule
+  name: IX_CMMS3_PlanSchedule_ServiceEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceEquipmentRef
+- table: PlanSchedule
+  name: IX_CMMS3_PlanSchedule_WorkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderRef
+- table: PlanSchedule
+  name: IX_CMMS3_PlanSchedule_InspectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InspectionRef
+- table: PlanSchedule
+  name: IX_CMMS3_PlanSchedule_NextNotificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NextNotificationRef
+- table: PlanScheduleLog
+  name: PK_CMMS3_PlanScheduleLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanScheduleLogID
+- table: PlanScheduleLog
+  name: IX_CMMS3_PlanScheduleLog_PlanScheduleRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanScheduleRef
+- table: PlanScheduleLog
+  name: IX_CMMS3_PlanScheduleLog_PlanIndicatorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanIndicatorRef
+- table: PlanScheduleLog
+  name: IX_CMMS3_PlanScheduleLog_PlanServiceHierarchyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanServiceHierarchyRef
+- table: PlanService
+  name: PK_CMMS3_PlanService
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanServiceID
+- table: PlanService
+  name: IX_CMMS3_PlanService_PlanRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanRef
+- table: PlanService
+  name: IX_CMMS3_PlanService_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: PlanServiceEquipmentMeasurementPoint
+  name: PK_CMMS3_PlanServiceEquipmentMeasurementPoint
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanServiceEquipmentMeasurementPointID
+- table: PlanServiceEquipmentMeasurementPoint
+  name: IX_CMMS3_PlanServiceEquipmentMeasurementPoint_PlanServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanServiceRef
+- table: PlanServiceEquipmentMeasurementPoint
+  name: IX_CMMS3_PlanServiceEquipmentMeasurementPoint_ServiceEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceEquipmentRef
+- table: PlanServiceEquipmentMeasurementPoint
+  name: IX_CMMS3_PlanServiceEquipmentMeasurementPoint_EquipmentMeasurementPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentMeasurementPointRef
+- table: PlanServiceEquipmentMeasurementPoint
+  name: IX_CMMS3_PlanServiceEquipmentMeasurementPoint_PlanIndicatorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanIndicatorRef
+- table: PlanServiceHierarchy
+  name: PK_CMMS3_PlanServiceHierarchy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanServiceHierachyID
+- table: PlanServiceHierarchy
+  name: IX_CMMS3_PlanServiceHierarchy_HigherLevelHierarchyEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - HigherLevelHierarchyEquipmentRef
+- table: PlanServiceHierarchy
+  name: IX_CMMS3_PlanServiceHierarchy_LowerLevelHierarchyEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LowerLevelHierarchyEquipmentRef
+- table: PlanServiceHierarchy
+  name: IX_CMMS3_PlanServiceHierarchy_LowerLevelHierarchyServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LowerLevelHierarchyServiceRef
+- table: PlanServiceHierarchy
+  name: IX_CMMS3_PlanServiceHierarchy_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: PlanServiceHierarchyHistory
+  name: PK_CMMS3_PlanServiceHierarchyHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanServiceHierarchyHistoryID
+- table: PlanServiceHierarchyTolerance
+  name: PK_CMMS3_PlanServiceHierarchyTolerance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlanServiceHierarchyToleranceID
+- table: PlanServiceHierarchyTolerance
+  name: IX_CMMS3_PlanServiceHierarchyTolerance_PlanIndicatorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanIndicatorRef
+- table: PlanServiceHierarchyTolerance
+  name: IX_CMMS3_PlanServiceHierarchyTolerance_PlanServiceHierarchyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlanServiceHierarchyRef
+- table: Problem
+  name: PK_CMMS3_Problem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProblemID
+- table: Problem
+  name: UIX_CMMS3_Problem_NumberTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - Title
+- table: ProblemGroupMember
+  name: PK_CMMS3_ProblemGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProblemGroupMemberID
+- table: ProblemGroupMember
+  name: IX_CMMS3_ProblemGroupMember_GroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupingRef
+- table: ProblemGroupMember
+  name: IX_CMMS3_ProblemGroupMember_GroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupRef
+- table: ProblemGroupMember
+  name: IX_CMMS3_ProblemGroupMember_MemberID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MemberID
+- table: RCMDecisionLogic
+  name: PK_CMMS3_RCMDecisionLogic
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCMDecisionLogicID
+- table: RCMDecisionLogic
+  name: UIX_CMMS3_RCMDecisionLogic_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: RCMDecisionLogic
+  name: UIX_CMMS3_RCMDecisionLogic_RecommendationRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - RecommendationRef
+- table: RCMDecisionLogicAssessment
+  name: PK_CMMS3_RCMDecisionLogicAssessment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCMDecisionLogicAssessmentID
+- table: RCMDecisionLogicAssessment
+  name: UIX_CMMS3_RCMDecisionLogicAssessment_RCMDecisionLogicNodeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMDecisionLogicNodeRef
+- table: RCMDecisionLogicAssessment
+  name: UIX_CMMS3_RCMDecisionLogicAssessment_RCMEvaluationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMEvaluationRef
+- table: RCMDecisionLogicAssessmentDetail
+  name: PK_CMMS3_RCMDecisionLogicAssessmentDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCMDecisionLogicAssessmentDetailID
+- table: RCMDecisionLogicAssessmentDetail
+  name: UIX_CMMS3_RCMDecisionLogicAssessmentDetail_RCMDecisionLogicNodeNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMDecisionLogicNodeNoteRef
+- table: RCMDecisionLogicAssessmentDetail
+  name: UIX_CMMS3_RCMDecisionLogicAssessmentDetail_RCMDecisionLogicAssessmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMDecisionLogicAssessmentRef
+- table: RCMDecisionLogicNode
+  name: PK_CMMS3_RCMDecisionLogicNode
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCMDecisionLogicNodeID
+- table: RCMDecisionLogicNode
+  name: IX_CMMS3_RCMDecisionLogicNode_RCMDecisionLogicNodeYesRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMDecisionLogicNodeYesRef
+- table: RCMDecisionLogicNode
+  name: IX_CMMS3_RCMDecisionLogicNode_RCMDecisionLogicNodeNoRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMDecisionLogicNodeNoRef
+- table: RCMDecisionLogicNode
+  name: IX_CMMS3_RCMDecisionLogicNode_RecommendationTypeYesRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecommendationTypeYesRef
+- table: RCMDecisionLogicNode
+  name: IX_CMMS3_RCMDecisionLogicNode_RecommendationTypeNoRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecommendationTypeNoRef
+- table: RCMDecisionLogicNode
+  name: IX_CMMS3_RCMDecisionLogicNode_RCMDecisionLogicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMDecisionLogicRef
+- table: RCMDecisionLogicNodeNote
+  name: PK_CMMS3_RCMDecisionLogicNodeNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCMDecisionLogicNodeNoteID
+- table: RCMDecisionLogicNodeNote
+  name: IX_CMMS3_RCMDecisionLogicNodeNote_RCMDecisionLogicNodeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMDecisionLogicNodeRef
+- table: RCMEvaluation
+  name: PK_CMMS3_RCMEvaluation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCMEvaluationID
+- table: RCMEvaluation
+  name: UIX_CMMS3_RCMEvaluation_RCMDecisionLogicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMDecisionLogicRef
+- table: RCMEvaluation
+  name: UIX_CMMS3_RCMEvaluation_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: RCMEvaluation
+  name: UIX_CMMS3_RCMEvaluation_EquipmentFunctionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentFunctionRef
+- table: RCMEvaluation
+  name: UIX_CMMS3_RCMEvaluation_EquipmentFunctionalFailureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentFunctionalFailureRef
+- table: RCMEvaluation
+  name: UIX_CMMS3_RCMEvaluation_FailureEffectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureEffectRef
+- table: RCMEvaluation
+  name: UIX_CMMS3_RCMEvaluation_ProblemGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProblemGroupRef
+- table: RCMEvaluation
+  name: UIX_CMMS3_RCMEvaluation_ProblemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProblemRef
+- table: RCMEvaluation
+  name: UIX_CMMS3_RCMEvaluation_RecommendationTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecommendationTypeRef
+- table: RCMEvaluation
+  name: IX_CMMS3_RCMEvaluation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: RCMEvaluation
+  name: IX_CMMS3_RCMEvaluation_LastModIFier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: RCMFailureConsequence
+  name: PK_CMMS3_RCMFailureConsequence
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RCMFailureConsequenceID
+- table: RCMFailureConsequence
+  name: UIX_CMMS3_RCMFailureConsequence_FailureConsequenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureConsequenceRef
+- table: RCMFailureConsequence
+  name: UIX_CMMS3_RCMFailureConsequence_RCMEvaluationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCMEvaluationRef
+- table: Recommendation
+  name: PK_CMMS3_Recommendation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RecommendationID
+- table: RecommendationType
+  name: PK_CMMS3_RecommendationType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RecommendationTypeID
+- table: RecommendationType
+  name: IX_CMMS3_RecommendationType_RecommendationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RecommendationRef
+- table: ResourceToolExtension
+  name: PK_ResourceToolExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ResourceToolExtensionID
+- table: ResourceToolExtension
+  name: UIX_CMMS3_ResourceToolExtension_ResourceToolRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: ResourceToolExtension
+  name: IX_CMMS3_ResourceToolExtension_EquipmentMeasurementPointRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentMeasurementPointRef
+- table: RiskAndPriorityMapping
+  name: PK_CMMS3_RiskAndPriorityMapping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RiskAndPriorityMappingID
+- table: RiskMatrix
+  name: PK_CMMS3_RiskMatrix
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RiskMatrixID
+- table: RiskMatrix
+  name: IX_CMMS3_RiskMatrix_FailureConsequenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureConsequenceRef
+- table: RiskMatrix
+  name: IX_CMMS3_RiskMatrix_FailureLikelihoodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureLikelihoodRef
+- table: Service
+  name: PK_CMMS3_Service
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceID
+- table: ServiceEquipment
+  name: PK_CMMS3_ServiceEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceEquipmentID
+- table: ServiceEquipment
+  name: IX_CMMS3_ServiceEquipment_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: ServiceEquipment
+  name: IX_CMMS3_ServiceEquipment_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: ServiceEquipment
+  name: IX_CMMS3_ServiceEquipment_BomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomItemRef
+- table: ServiceEquipment
+  name: IX_CMMS3_ServiceEquipment_ResponsibleWorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsibleWorkCenterRef
+- table: ServiceEquipment
+  name: IX_CMMS3_ServiceEquipment_ResponsiblePartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsiblePartyRef
+- table: ServiceEquipmentHistory
+  name: PK_CMMS3_ServiceEquipmentHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceEquipmentHistoryID
+- table: ServiceEquipmentHistory
+  name: IX_CMMS3_ServiceEquipmentHistory_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: ServiceEquipmentHistory
+  name: IX_CMMS3_ServiceEquipmentHistory_BomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomItemRef
+- table: ServiceEquipmentHistory
+  name: IX_CMMS3_ServiceEquipmentHistory_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ServiceEquipmentHistory
+  name: IX_CMMS3_ServiceEquipmentHistory_ServiceEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceEquipmentRef
+- table: ServiceEquipmentOperationActivity
+  name: PK_CMMS3_ServiceEquipmentOperationActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceEquipmentOperationActivityID
+- table: ServiceEquipmentOperationActivity
+  name: IX_CMMS3_ServiceEquipmentOperationActivity_ServiceEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceEquipmentRef
+- table: ServiceEquipmentOperationActivity
+  name: IX_CMMS3_ServiceEquipmentOperationActivity_ServiceOperationActivityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceOperationActivityRef
+- table: ServiceEquipmentPermitType
+  name: PK_CMMS3_ServiceEquipmentPermitType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceEquipmentPermitTypeID
+- table: ServiceEquipmentPermitType
+  name: IX_CMMS3_ServiceEquipmentPermitType_PermitTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PermitTypeRef
+- table: ServiceEquipmentPermitType
+  name: IX_CMMS3_ServiceEquipmentPermitType_ServiceEquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceEquipmentRef
+- table: ServiceEquipmentPermitTypeHistory
+  name: PK_CMMS3_ServiceEquipmentPermitTypeHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceEquipmentPermitTypeHistoryID
+- table: ServiceEquipmentPermitTypeHistory
+  name: IX_CMMS3_ServiceEquipmentPermitTypeHistory_ServiceEquipmentPermitTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceEquipmentPermitTypeRef
+- table: ServiceEquipmentPermitTypeHistory
+  name: IX_CMMS3_ServiceEquipmentPermitTypeHistory_PermitTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PermitTypeRef
+- table: ServiceGroupMember
+  name: PK_CMMS3_ServiceGroupMember
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceGroupMemberID
+- table: ServiceGroupMember
+  name: IX_CMMS3_ServiceGroupMember_GroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupingRef
+- table: ServiceGroupMember
+  name: IX_CMMS3_ServiceGroupMember_GroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GroupRef
+- table: ServiceGroupMember
+  name: IX_CMMS3_ServiceGroupMember_MemberID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MemberID
+- table: ServiceHistory
+  name: PK_CMMS3_ServiceHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceHistoryID
+- table: ServiceHistory
+  name: IX_CMMS3_ServiceHistory_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: ServiceOperation
+  name: PK_CMMS3_ServiceOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationID
+- table: ServiceOperation
+  name: IX_CMMS3_ServiceOperation_OperationTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationTypeRef
+- table: ServiceOperation
+  name: UIX_CMMS3_ServiceOperation_ServiceOperationSetRefTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ServiceOperationSetRef
+  - Title
+- table: ServiceOperationActivity
+  name: PK_ServiceOperationActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationActivityID
+- table: ServiceOperationActivity
+  name: UIX_CMMS3_ServiceOperationActivity_ServiceOperationRefNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ServiceOperationRef
+  - Number
+- table: ServiceOperationActivity
+  name: UIX_CMMS3_ServiceOperationActivity_ServiceOperationRefTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ServiceOperationRef
+  - Title
+- table: ServiceOperationActivity
+  name: IX_CMMS3_ServiceOperationActivity_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: ServiceOperationMaterial
+  name: PK_CMMS3_ServiceOperationMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationMaterialID
+- table: ServiceOperationMaterial
+  name: IX_CMMS3_ServiceOperationMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: ServiceOperationMaterial
+  name: IX_CMMS3_ServiceOperationMaterial_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: ServiceOperationMaterial
+  name: UIX_CMMS3_ServiceOperationMaterial_ServiceOperationRefPart
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ServiceOperationRef
+  - PartRef
+- table: ServiceOperationMaterialInventoryVoucher
+  name: PK_CMMS3_ServiceOperationMaterialInventoryVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationMaterialInventoryVoucherID
+- table: ServiceOperationMaterialInventoryVoucher
+  name: IX_CMMS3_ServiceOperationMaterialInventoryVoucher_ServiceOperationMaterialRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceOperationMaterialRef
+- table: ServiceOperationMaterialInventoryVoucher
+  name: IX_CMMS3_ServiceOperationMaterialInventoryVoucher_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: ServiceOperationMaterialInventoryVoucher
+  name: IX_CMMS3_ServiceOperationMaterialInventoryVoucher_InterStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InterStoreRef
+- table: ServiceOperationResourceToolAssignment
+  name: PK_ServiceOperationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationResourceToolAssignmentID
+- table: ServiceOperationResourceToolAssignment
+  name: IX_CMMS3_ServiceOperationResourceToolAssignment_ServiceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceOperationRef
+- table: ServiceOperationResourceToolAssignment
+  name: IX_CMMS3_ServiceOperationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: ServiceOperationResourceToolAssignment
+  name: IX_CMMS3_ServiceOperationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: ServiceOperationResourceToolAssignment
+  name: IX_CMMS3_ServiceOperationResourceToolAssignment_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: ServiceOperationResourceToolAssignment
+  name: IX_CMMS3_ServiceOperationResourceToolAssignment_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: ServiceOperationResourceToolAssignmentExtension
+  name: PK_CMMS3_ServiceOperationResourceToolAssignmentExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationResourceToolAssignmentExtensionID
+- table: ServiceOperationResourceToolAssignmentExtension
+  name: IX_CMMS3_ServiceOperationResourceToolAssignmentExtension_ServiceOperationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceOperationResourceToolAssignmentRef
+- table: ServiceOperationSet
+  name: PK_ServiceOperationSet
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationSetID
+- table: ServiceOperationSet
+  name: IX_CMMS3_ServiceOperationSet_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: ServiceOperationSet
+  name: IX_CMMS3_ServiceOperationSet_ResponsibleWorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsibleWorkCenterRef
+- table: ServiceOperationSet
+  name: IX_CMMS3_ServiceOperationSet_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: ServiceOperationSet
+  name: IX_CMMS3_ServiceOperationSet_ResponsiblePartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsiblePartyRef
+- table: ServiceOperationStandardValue
+  name: PK_CMMS3_ServiceOperationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationStandardValueID
+- table: ServiceOperationStandardValue
+  name: IX_CMMS3_ServiceOperationStandardValue_ServiceOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceOperationRef
+- table: ServiceOperationStandardValue
+  name: IX_CMMS3_ServiceOperationStandardValue_WorkCenterStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterStandardValueRef
+- table: ServiceOperationSubcontract
+  name: PK_CMMS3_ServiceOperationSubcontract
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServiceOperationSubcontractID
+- table: ServiceOperationSubcontract
+  name: IX_CMMS3_ServiceOperationSubcontract_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: ServiceOperationSubcontract
+  name: IX_CMMS3_ServiceOperationSubcontract_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: ServiceOperationSubcontract
+  name: IX_CMMS3_ServiceOperationSubcontract_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: ServiceOperationSubcontract
+  name: UIX_CMMS3_ServiceOperationSubcontract_ServiceOperationRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ServiceOperationRef
+- table: ServicePermitType
+  name: PK_CMMS3_ServicePermitType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServicePermitTypeID
+- table: ServicePermitType
+  name: IX_CMMS3_ServicePermitType_PermitTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PermitTypeRef
+- table: ServicePermitType
+  name: IX_CMMS3_ServicePermitType_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: ServicePermitTypeHistory
+  name: PK_CMMS3_ServicePermitTypeHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ServicePermitTypeHistoryID
+- table: ServicePermitTypeHistory
+  name: IX_CMMS3_ServicePermitTypeHistory_ServicePermitTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServicePermitTypeRef
+- table: ServicePermitTypeHistory
+  name: IX_CMMS3_ServicePermitTypeHistory_PermitTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PermitTypeRef
+- table: WorkBreakdownStructure
+  name: PK_CMMS3_WorkBreakdownStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkBreakdownStructureID
+- table: WorkBreakdownStructure
+  name: IX_CMMS3_WorkBreakdownStructure_MaintenanceProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaintenanceProjectRef
+- table: WorkBreakdownStructure
+  name: IX_CMMS3_WorkBreakdownStructure_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: WorkBreakdownStructure
+  name: IX_CMMS3_WorkBreakdownStructure_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: WorkBreakdownStructure
+  name: IX_CMMS3_WorkBreakdownStructure_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: WorkBreakdownStructureNetwork
+  name: PK_CMMS3_WorkBreakdownStructureNetwork
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkBreakdownStructureNetworkID
+- table: WorkBreakdownStructureNetwork
+  name: IX_CMMS3_WorkBreakdownStructureNetwork_WorkBreakdownStructureRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkBreakdownStructureRef
+- table: WorkBreakdownStructureNetwork
+  name: IX_CMMS3_WorkBreakdownStructureNetwork_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: WorkBreakdownStructureNetwork
+  name: IX_CMMS3_WorkBreakdownStructureNetwork_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: WorkBreakdownStructureNetworkWorkOrderOperation
+  name: PK_CMMS3_WorkBreakdownStructureNetworkWorkOrderOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkBreakdownStructureNetworkWorkOrderOperationID
+- table: WorkBreakdownStructureNetworkWorkOrderOperation
+  name: IX_CMMS3_WorkBreakdownStructureNetworkWorkOrderOperation_WorkBreakdownStructureNetworkRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkBreakdownStructureNetworkRef
+- table: WorkBreakdownStructureNetworkWorkOrderOperation
+  name: IX_CMMS3_WorkBreakdownStructureNetworkWorkOrderOperation_WorkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderRef
+- table: WorkBreakdownStructureNetworkWorkOrderOperation
+  name: IX_CMMS3_WorkBreakdownStructureNetworkWorkOrderOperation_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: WorkOrder
+  name: PK_CMMS3_WorkOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderID
+- table: WorkOrder
+  name: IX_CMMS3_WorkOrder_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: WorkOrder
+  name: IX_CMMS3_WorkOrder_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: WorkOrder
+  name: IX_CMMS3_WorkOrder_ServiceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ServiceRef
+- table: WorkOrder
+  name: IX_CMMS3_WorkOrder_ResponsibleWorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsibleWorkCenterRef
+- table: WorkOrder
+  name: IX_CMMS3_WorkOrder_ResponsiblePartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsiblePartyRef
+- table: WorkOrder
+  name: IX_CMMS3_WorkOrder_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: WorkOrder
+  name: IX_CMMS3_WorkOrder_ParentWorkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentWorkOrderRef
+- table: WorkOrder
+  name: IX_CMMS3_WorkOrder_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: WorkOrderDamage
+  name: PK_WorkOrderDamage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderDamageID
+- table: WorkOrderDamage
+  name: IX_CMMS3_WorkOrderDamage_DamageGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageGroupRef
+- table: WorkOrderDamage
+  name: IX_CMMS3_WorkOrderDamage_DamageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageRef
+- table: WorkOrderDamage
+  name: IX_CMMS3_WorkOrderDamage_WorkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderRef
+- table: WorkOrderDamageInfo
+  name: PK_WorkOrderDamageInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderDamageInfoID
+- table: WorkOrderDamageInfo
+  name: UIX_CMMS3_WorkOrderDamageInfo_WorkOrderRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - WorkOrderRef
+- table: WorkOrderDamageInfo
+  name: IX_CMMS3_WorkOrderDamageInfo_BreakdownDurationUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BreakdownDurationUnitRef
+- table: WorkOrderDamageReason
+  name: PK_WorkOrderDamageReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderDamageReasonID
+- table: WorkOrderDamageReason
+  name: IX_CMMS3_WorkOrderDamageReason_WorkOrderDamageRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderDamageRef
+- table: WorkOrderDamageReason
+  name: IX_CMMS3_WorkOrderDamageReason_DamageReasonGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageReasonGroupRef
+- table: WorkOrderDamageReason
+  name: IX_CMMS3_WorkOrderDamageReason_DamageReasonRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DamageReasonRef
+- table: WorkOrderEquipment
+  name: PK_CMMS3_WorkOrderEquipment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderEquipmentID
+- table: WorkOrderEquipment
+  name: IX_CMMS3_WorkOrderEquipment_BomItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomItemRef
+- table: WorkOrderEquipment
+  name: IX_CMMS3_WorkOrderEquipment_EquipmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EquipmentRef
+- table: WorkOrderEquipment
+  name: IX_CMMS3_WorkOrderEquipment_WorkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderRef
+- table: WorkOrderEquipment
+  name: IX_CMMS3_WorkOrderEquipment_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: WorkOrderEquipment
+  name: IX_CMMS3_WorkOrderEquipment_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: WorkOrderEquipment
+  name: IX_CMMS3_WorkOrderEquipment_ProjectRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProjectRef
+- table: WorkOrderOperation
+  name: PK_CMMS3_WorkOrderOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationID
+- table: WorkOrderOperation
+  name: IX_CMMS3_WorkOrderOperation_WorkCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterRef
+- table: WorkOrderOperation
+  name: IX_CMMS3_WorkOrderOperation_WorkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderRef
+- table: WorkOrderOperation
+  name: IX_CMMS3_WorkOrderOperation_OperationTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationTypeRef
+- table: WorkOrderOperation
+  name: IX_CMMS3_WorkOrderOperation_ResponsiblePartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResponsiblePartyRef
+- table: WorkOrderOperationActivity
+  name: PK_CMMS3_WorkOrderOperationActivity
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationActivityID
+- table: WorkOrderOperationActivity
+  name: IX_CMMS3_WorkOrderOperationActivity_CharacteristicRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CharacteristicRef
+- table: WorkOrderOperationActivity
+  name: UIX_CMMS3_WorkOrderOperationActivity_WorkOrderOperationRefNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+  - Number
+- table: WorkOrderOperationActivity
+  name: UIX_CMMS3_WorkOrderOperationActivity_WorkOrderOperationRefTitle
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+  - Title
+- table: WorkOrderOperationMaterial
+  name: PK_CMM3_WorkOrderOperationMaterial
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationMaterialID
+- table: WorkOrderOperationMaterial
+  name: IX_CMMS3_WorkOrderOperationMaterial_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: WorkOrderOperationMaterial
+  name: IX_CMMS3_WorkOrderOperationMaterial_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: WorkOrderOperationMaterial
+  name: IX_CMMS3_WorkOrderOperationMaterial_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: WorkOrderOperationMaterial
+  name: IX_CMMS3_WorkOrderOperationMaterial_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: WorkOrderOperationMaterialInventoryVoucher
+  name: PK_CMMS3_WorkOrderOperationMaterialInventoryVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationMaterialInventoryVoucherID
+- table: WorkOrderOperationMaterialInventoryVoucher
+  name: IX_CMMS3_WorkOrderOperationMaterialInventoryVoucher_WorkOrderOperationMaterialRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - WorkOrderOperationMaterialRef
+- table: WorkOrderOperationMaterialInventoryVoucher
+  name: IX_CMMS3_WorkOrderOperationMaterialInventoryVoucher_InventoryVoucherSpecificationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InventoryVoucherSpecificationRef
+- table: WorkOrderOperationMaterialInventoryVoucher
+  name: IX_CMMS3_WorkOrderOperationMaterialInventoryVoucher_InterStoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InterStoreRef
+- table: WorkOrderOperationPersonnel
+  name: PK_CMMS3_WorkOrderOperationPersonnel
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationPersonnelID
+- table: WorkOrderOperationPersonnel
+  name: IX_CMMS3_WorkOrderOperationPersonnel_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: WorkOrderOperationPersonnel
+  name: IX_CMMS3_WorkOrderOperationPersonnel_WorkCenterPersonnelRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterPersonnelRef
+- table: WorkOrderOperationPersonnel
+  name: IX_CMMS3_WorkOrderOperationPersonnel_WorkCenterCapacityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterCapacityRef
+- table: WorkOrderOperationPersonnel
+  name: IX_CMMS3_WorkOrderOperationPersonnel_ShiftRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ShiftRef
+- table: WorkOrderOperationResourceToolAssignment
+  name: PK_WorkOrderOperationResourceToolAssignment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationResourceToolAssignmentID
+- table: WorkOrderOperationResourceToolAssignment
+  name: IX_CMMS3_WorkOrderOperationResourceToolAssignment_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: WorkOrderOperationResourceToolAssignment
+  name: IX_CMMS3_WorkOrderOperationResourceToolAssignment_ResourceToolRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ResourceToolRef
+- table: WorkOrderOperationResourceToolAssignment
+  name: IX_CMMS3_WorkOrderOperationResourceToolAssignment_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: WorkOrderOperationResourceToolAssignment
+  name: IX_CMMS3_WorkOrderOperationResourceToolAssignment_StartOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StartOffsetUnitRef
+- table: WorkOrderOperationResourceToolAssignment
+  name: IX_CMMS3_WorkOrderOperationResourceToolAssignment_EndOffsetUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EndOffsetUnitRef
+- table: WorkOrderOperationRTAExtension
+  name: PK_CMMS3_WorkOrderOperationRTAExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationRTAExtensionID
+- table: WorkOrderOperationRTAExtension
+  name: IX_CMMS3_WorkOrderOperationRTAExtension_WorkOrderOperationResourceToolAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderOperationResourceToolAssignmentRef
+- table: WorkOrderOperationStandardValue
+  name: PK_CMMS3_WorkOrderOperationStandardValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationStandardValueID
+- table: WorkOrderOperationStandardValue
+  name: IX_CMMS3_WorkOrderOperationStandardValue_WorkCenterStandardValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkCenterStandardValueRef
+- table: WorkOrderOperationStandardValue
+  name: UIX_CMMS3_WorkOrderOperationStandardValue_WorkOrderOperationRefWorkCenterStandardValueRefPlannedQuantity
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+  - WorkCenterStandardValueRef
+  - PlannedQuantity
+- table: WorkOrderOperationSubcontract
+  name: PK_WorkOrderOperationSubcontract
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderOperationSubcontractID
+- table: WorkOrderOperationSubcontract
+  name: IX_CMMS3_WorkOrderOperationSubcontract_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: WorkOrderOperationSubcontract
+  name: IX_CMMS3_WorkOrderOperationSubcontract_PurchaseItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PurchaseItemRef
+- table: WorkOrderOperationSubcontract
+  name: IX_CMMS3_WorkOrderOperationSubcontract_SupplierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SupplierRef
+- table: WorkOrderOperationSubcontract
+  name: UIX_CMMS3_WorkOrderOperationSubcontract_WorkOrderOperationRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - WorkOrderOperationRef
+- table: WorkOrderProblem
+  name: PK_WorkOrderProblem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderProblemID
+- table: WorkOrderProblem
+  name: IX_CMMS3_WorkOrderProblem_ProblemGroupRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProblemGroupRef
+- table: WorkOrderProblem
+  name: IX_CMMS3_WorkOrderProblem_ProblemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProblemRef
+- table: WorkOrderProblem
+  name: IX_CMMS3_WorkOrderProblem_WorkOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderRef
+- table: WorkOrderProblem
+  name: IX_CMMS3_WorkOrderProblem_FailureDetectionMethodTypeMethodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureDetectionMethodTypeMethodRef
+- table: WorkOrderProblem
+  name: IX_CMMS3_WorkOrderProblem_FailureLikelihoodRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureLikelihoodRef
+- table: WorkOrderProblemFailureConsequence
+  name: PK_CMMS3_WorkOrderProblemFailureConsequence
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - WorkOrderProblemFailureConsequenceID
+- table: WorkOrderProblemFailureConsequence
+  name: IX_CMMS3_WorkOrderProblemFailureConsequence_FailureConsequenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FailureConsequenceRef
+- table: WorkOrderProblemFailureConsequence
+  name: IX_CMMS3_WorkOrderProblemFailureConsequence_WorkOrderProblemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - WorkOrderProblemRef
+- table: WorkOrderProblemFailureConsequence
+  name: UIX_CMMS3_WorkOrderProblemFailureConsequence_WorkOrderProblemRefFailureConsequenceRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - WorkOrderProblemRef
+  - FailureConsequenceRef

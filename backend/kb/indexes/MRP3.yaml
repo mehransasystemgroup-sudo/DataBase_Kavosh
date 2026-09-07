@@ -1,0 +1,649 @@
+schema: MRP3
+source: extracted
+indexes:
+- table: CalculationRun
+  name: PK_CalculationRun
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunID
+- table: CalculationRun
+  name: IX_MRP3_CalculationRun_CalculationScenarioRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationScenarioRef
+- table: CalculationRun
+  name: IX_MRP3_CalculationRun_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: CalculationRun
+  name: IX_MRP3_CalculationRun_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: CalculationRunBom
+  name: PK_CalculationRunBom
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunBomID
+- table: CalculationRunBom
+  name: IX_CalculationRunBom_CalculationRunRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationRunRef
+  - PlantID
+- table: CalculationRunDynamicSS
+  name: PK_MRP3_CalculationRunDynamicSSID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunDynamicSSID
+- table: CalculationRunIRPItem
+  name: PK_CalculationRunIRPItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunIRPItemID
+- table: CalculationRunIRPItem
+  name: IX_CalculationRunIRPItem
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationRunRef
+- table: CalculationRunLowLevelCoding
+  name: PK_CalculationRunLowLevelCoding
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunLowLevelCodingID
+- table: CalculationRunLowLevelCoding
+  name: IX_CalculationRunLowLevelCoding
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationRunBomRef
+- table: CalculationRunLowLevelCoding
+  name: IX_CalculationRunLowLevelCoding_CalculationRunRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationRunRef
+- table: CalculationRunNewBomExplosion
+  name: PK_CalculationRunNewBomExplosion
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunNewBomExplosionID
+- table: CalculationRunNewBomExplosion
+  name: IX_CalculationRunNewBomExplosion
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationRunBomRef
+- table: CalculationRunPlant
+  name: PK_CalculationRunPlant
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunPlantID
+- table: CalculationRunPlant
+  name: IX_MRP3_CalculationRunPlant_CalculationRunRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationScenarioPlantRef
+- table: CalculationRunPlant
+  name: IX_MRP3_CalculationRunPlant_CalculationScenarioPlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationScenarioPlantRef
+- table: CalculationRunRCCPRequirement
+  name: PK_CalculationRunRCCPRequirement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunRCCPRequirementID
+- table: CalculationRunRCCPRequirement
+  name: IX_CalculationRunRCCPRequirement_RCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: CalculationRunRCCPRequirementCalculationMethod
+  name: PK_CalculationRunRCCPRequirementCalculationMethod
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunRCCPRequirementCalculationMethodID
+- table: CalculationRunRCCPRequirementCalculationMethod
+  name: IX_CalculationRunRCCPRequirementCalculationMethod_RCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: CalculationRunRCCPRequirementMPS
+  name: PK_CalculationRunRCCPRequirementMPS
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunRCCPRequirementMPSID
+- table: CalculationRunRCCPRequirementMPS
+  name: IX_CalculationRunRCCPRequirementMPS_CalculationRunRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationRunRef
+- table: CalculationRunRCCPRequirementMPS
+  name: IX_CalculationRunRCCPRequirementMPS_PCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: CalculationRunRCCPRequirementPart
+  name: PK_CalculationRunRCCPRequirementPart
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunRCCPRequirementPartID
+- table: CalculationRunRCCPRequirementPart
+  name: IX_CalculationRunRCCPRequirementPart_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: CalculationRunRCCPRequirementPart
+  name: IX_CalculationRunRCCPRequirementPart_RCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: CalculationRunRCCPRequirementPlannedOrder
+  name: PK_CalculationRunRCCPRequirementPlannedOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunRCCPRequirementPlannedOrderID
+- table: CalculationRunRCCPRequirementPlannedOrder
+  name: IX_CalculationRunRCCPRequirementPlannedOrder_PlanndOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlannedOrderRef
+- table: CalculationRunRCCPRequirementPlannedOrder
+  name: IX_CalculationRunRCCPRequirementPlannedOrder_RCCPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RCCPRef
+- table: CalculationRunResult
+  name: PK_CalculationRunResult
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationRunResultID
+- table: CalculationRunResult
+  name: IX_CalculationRunResult
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationRunLowLevelCodingRef
+- table: CalculationScenario
+  name: PK_MRP3_CalculationScenarioID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationScenarioID
+- table: CalculationScenarioIRPProgram
+  name: PK_CalculationScenarioIRPProgram
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationScenarioIRPProgramID
+- table: CalculationScenarioIRPProgramIRP
+  name: PK_CalculationScenarioIRPProgramIRP
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationScenarioIRPProgramIRPID
+- table: CalculationScenarioPartGroup
+  name: PK_MRP3_CalculationScenarioPartGroupID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationScenarioPartGroupID
+- table: CalculationScenarioPlant
+  name: PK_MRP3_CalculationScenarioPlantID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationScenarioPlantID
+- table: CalculationScenarioPlant
+  name: IX_MRP3_CalculationScenarioPlant_CalculationScenarioRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationScenarioRef
+- table: CalculationScenarioPlant
+  name: IX_MRP3_CalculationScenarioPlant_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: CalculationScenarioPlantStore
+  name: PK_MRP3_CalculationScenarioPlantStoreID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculationScenarioPlantStoreID
+- table: CalculationScenarioPlantStore
+  name: IX_MRP3_CalculationScenarioPlant_CalculationScenarioPlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculationScenarioPlantRef
+- table: CalculationScenarioPlantStore
+  name: IX_MRP3_CalculationScenarioPlant_StoreRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - StoreRef
+- table: IRP
+  name: PK_MRP3_IRP
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IRPID
+- table: IRP
+  name: UIX_MRP3_IRP_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: IRP
+  name: IX_MRP3_IRP_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: IRP
+  name: IX_MRP3_IRP_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: IRP
+  name: IX_MRP3_IRP_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: IRPItem
+  name: PK_MRP3_IRPItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IRPItemID
+- table: IRPItem
+  name: IX_MRP3_IRPItem_IRPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IRPRef
+- table: IRPItem
+  name: IX_MRP3_IRPItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: IRPItem
+  name: IX_MRP3_IRPItem_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: IRPItemValue
+  name: PK_MRP3_IRPItemValue
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IRPItemValueID
+- table: IRPItemValue
+  name: IX_MRP3_IRPItemValue_IRPItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IRPItemRef
+- table: IRPItemValue
+  name: IX_MRP3_IRPItemValue_IRPTimeBucketRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IRPTimeBucketRef
+- table: IRPItemValueRoutingBOMAssignmentUsage
+  name: PK_MRP3_IRPItemValueRoutingBOMAssignmentUsage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IRPItemValueRoutingBOMAssignmentUsageID
+- table: IRPItemValueRoutingBOMAssignmentUsage
+  name: IX_MRP3_IRPItemValueRoutingBOMAssignmentUsage_IRPItemValueRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IRPItemValueRef
+- table: IRPItemValueRoutingBOMAssignmentUsage
+  name: IX_MRP3_IRPItemValueRoutingBOMAssignmentUsage_RoutingBomAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingBomAssignmentRef
+- table: IRPProgram
+  name: PK_MRP3_IRPProgramID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IRPProgramID
+- table: IRPReport
+  name: PK_MRP3_IRPReport
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IRPReportID
+- table: IRPReport
+  name: IX_MRP3_IRPReport_IRPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IRPRef
+- table: IRPReport
+  name: IX_MRP3_IRPReport_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: IRPReport
+  name: IX_MRP3_IRPReport_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: IRPTimeBucket
+  name: PK_MRP3_IRPTimeBucket
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - IRPTimeBucketID
+- table: IRPTimeBucket
+  name: IX_MRP3_IRPTimeBucket_IRPRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - IRPRef
+- table: LotSizingSetting
+  name: PK_MRP3_LotSizingSettingID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LotSizingSettingID
+- table: LotSizingSetting
+  name: IX_MRP3_LotSizingSetting_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: LotSizingSetting
+  name: IX_MRP3_LotSizingSetting_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: LotSizingSetting
+  name: IX_MRP3_LotSizingSetting_PartUnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartUnitRef
+- table: LotSizingSettingPart
+  name: PK_MRP3_LotSizingSettingPartID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - LotSizingSettingPartID
+- table: MaterialRequirement
+  name: PK_MaterialRequirement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialRequirementID
+- table: MaterialRequirementPlannedOrder
+  name: PK_MaterialRequirementPlannedOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialRequirementPlannedOrderID
+- table: MaterialRequirementProfile
+  name: PK_MaterialRequirementProfile
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialRequirementProfileID
+- table: MaterialRequirementProfilePlannedOrder
+  name: PK_MaterialRequirementProfilePlannedOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaterialRequirementProfilePlannedOrderID
+- table: MRPPartExtension
+  name: PK_MRP3_MRPPartExtension
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MRPPartExtensionID
+- table: MRPPartExtension
+  name: IX_MRP3_MRPPartExtension_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: MRPPartExtensionRoutingBOMAssignmentUsage
+  name: PK_MRP3_MRPPartExtensionRoutingBOMAssignmentUsage
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MRPPartExtensionRoutingBOMAssignmentUsageID
+- table: MRPPartExtensionRoutingBOMAssignmentUsage
+  name: IX_MRP3_MRPPartExtensionRoutingBOMAssignmentUsage_MRPPartExtensionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MRPPartExtensionRef
+- table: MRPPartExtensionRoutingBOMAssignmentUsage
+  name: IX_MRP3_MRPPartExtensionRoutingBOMAssignmentUsage_RoutingBomAssignmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingBomAssignmentRef
+- table: MRPPartExtensionRoutingBOMAssignmentUsage
+  name: IX_MRP3_MRPPartExtensionRoutingBOMAssignmentUsage_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: PartQuantityControl
+  name: PK_MRP3_PartQuantityControl
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartQuantityControlID
+- table: PartQuantityControl
+  name: UIX_MRP3_PartQuantityControl_PlantRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PlantRef
+  - PartRef
+- table: PlannedOrder
+  name: PK_PlannedOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlannedOrderID
+- table: PlannedOrder
+  name: IX_MRP3_PlannedOrder_BomRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BomRef
+- table: PlannedOrder
+  name: IX_MRP3_PlannedOrder_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PlannedOrder
+  name: IX_MRP3_PlannedOrder_PlantRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlantRef
+- table: PlannedOrder
+  name: IX_MRP3_PlannedOrder_RoutingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RoutingRef
+- table: PlannedOrder
+  name: IX_MRP3_PlannedOrder_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: PlannedOrderBomItem
+  name: PK_PlannedOrderBomItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PlannedOrderBomItemID
+- table: PlannedOrderBomItem
+  name: IX_MRP3_PlannedOrderBomItem_PartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartRef
+- table: PlannedOrderBomItem
+  name: IX_MRP3_PlannedOrderBomItem_PlannedOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PlannedOrderRef
+- table: PlannedOrderBomItem
+  name: IX_MRP3_PlannedOrderBomItem_UnitRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UnitRef
+- table: SafetyStockProfile
+  name: PK_MRP3_SafetyStockProfileID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SafetyStockProfileID

@@ -1,0 +1,5939 @@
+schema: RPA3
+source: extracted
+indexes:
+- table: AccountingOperation
+  name: PK_RPA3_AccountingOperation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountingOperationID
+- table: AccountingOperation
+  name: IX_RPA3_AccountingOperation_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: AccountingOperation
+  name: IX_RPA3_AccountingOperation_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: AccountingOperation
+  name: UIX_RPA3_AccountingOperation_LedgerRefNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - LedgerRef
+- table: AccountTransactionScenario
+  name: PK_AccountTransactionScenario
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AccountTransactionScenarioID
+- table: AcquisitionCost
+  name: PK_RPA3_AcquisitionCost
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AcquisitionCostID
+- table: AcquisitionCost
+  name: IX_AcquisitionCost_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: AcquisitionCost
+  name: IX_AcquisitionCost_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: AcquisitionCost
+  name: IX_AcquisitionCost_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: AcquisitionCost
+  name: UIX_RPA3_AcquisitionCost_ContractRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ContractRef
+- table: AcquisitionCostItem
+  name: PK_RPA3_AcquisitionCostItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - AcquisitionCostItemID
+- table: AcquisitionCostItem
+  name: IX_AcquisitionCostItem_AcquisitionCostRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AcquisitionCostRef
+- table: AcquisitionCostItem
+  name: IX_AcquisitionCostItem_PaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentRef
+- table: Bank
+  name: PK_RPA3_Bank
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankID
+- table: Bank
+  name: UIX_RPA3_Bank_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: BankAccount
+  name: PK_RPA3_BankAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankAccountID
+- table: BankAccount
+  name: IX_RPA3_BankAccount_BankBranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankBranchRef
+- table: BankAccount
+  name: IX_RPA3_BankAccount_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: BankAccount
+  name: IX_RPA3_BankAccount_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: BankAccount
+  name: IX_RPA3_BankAccount_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: BankAccount
+  name: IX_RPA3_BankAccount_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: BankAccount
+  name: UIX_RPA3_BankAccount_BankBranchRefNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - BankBranchRef
+- table: BankAccountChequeSigner
+  name: PK_RPA3_BankAccountChequeSigner
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankAccountChequeSignerID
+- table: BankAccountChequeSigner
+  name: IX_RPA3_BankAccountChequeSigner_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountChequeSignerID
+- table: BankAccountChequeSigner
+  name: IX_RPA3_BankAccountChequeSigner_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountChequeSignerID
+- table: BankAccountHistory
+  name: PK_RPA3_BankAccountHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankAccountHistoryID
+- table: BankAccountHistory
+  name: IX_RPA3_BankAccountHistory_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: BankAccountReconciliationSl
+  name: PK_RPA3_BankAccountReconciliationSl
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankAccountReconciliationSlID
+- table: BankAccountTransaction
+  name: PK_RPA3_BankAccountTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankAccountTransactionID
+- table: BankAccountTransaction
+  name: IX_RPA3_BankAccountTransaction_BankAccountRef_IsDeployment
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+  - IsDeployment
+  included:
+  - Debit
+  - Credit
+- table: BankAccountTransaction
+  name: IX_RPA3_BankAccountTransaction_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: BankAccountTransaction
+  name: IX_RPA3_BankAccountTransaction_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: BankAccountTransaction
+  name: IX_RPA3_BankAccountTransaction_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: BankAccountTransaction
+  name: IX_RPA3_BankAccountTransaction_BankAccountRef_LedgerRef_BranchRef_DocumentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+  - LedgerRef
+  - BranchRef
+  - DocumentItemDate
+  included:
+  - BankAccountTransactionID
+  - CreationDate
+- table: BankAccountTransaction
+  name: UIX_RPA3_BankAccountTransaction_DocumentItemTypeDocumentItemRefDebitCredit
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DocumentItemType
+  - DocumenItemtRef
+  - Debit
+  - Credit
+- table: BankAccountType
+  name: PK_RPA3_BankAccountType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankAccountTypeID
+- table: BankAccountType
+  name: UIX_RPA3_BankAccountType_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: BankBill
+  name: PK_RPA3_BankBill
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankBillID
+- table: BankBill
+  name: IX_RPA3_BankBill_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: BankBill
+  name: IX_RPA3_BankBill_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: BankBill
+  name: IX_RPA3_BankBill_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: BankBill
+  name: IX_RPA3_BankBill_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: BankBill
+  name: IX_RPA3_BankBill_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: BankBill
+  name: IX_RPA3_BankBill_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: BankBill
+  name: UIX_PRA3_BankBill_NumberBankAccountRefBranchRefLedgerRefFiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - BankAccountRef
+  - BranchRef
+  - FiscalYearRef
+  - LedgerRef
+- table: BankBillItem
+  name: PK_RPA3_BankBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankBillItemID
+- table: BankBillItem
+  name: IX_RPA3_BankBillItem_BankBillRef_DocumentDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankBillRef
+  - DocumentDate
+- table: BankBranch
+  name: PK_RPA3_BankBranch
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankBranchID
+- table: BankBranch
+  name: IX_RPA3_BankBranch_BankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankRef
+- table: BankTransfer
+  name: PK_RPA3_BankTransfer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankTransferID
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: BankTransfer
+  name: IX_RPA3_BankTransfer_Number_BankTransferID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+  - BankTransferID
+- table: BankTransferDisketteStructure
+  name: PK_RPA3_BankTransferDisketteStructure
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankTransferDisketteStructureID
+- table: BankTransferDisketteStructureItem
+  name: PK_RPA3_BankTransferDisketteItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankTransferDisketteItemID
+- table: BankTransferReceivableNote
+  name: PK_RPA3_BankTransferReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - BankTransferReceivableNoteID
+- table: BankTransferReceivableNote
+  name: IX_RPA3_BankTransferReceivableNote_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: BankTransferReceivableNote
+  name: IX_RPA3_BankTransferReceivableNote_BankTransferRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankTransferRef
+- table: BankTransferReceivableNote
+  name: IX_RPA3_BankTransferReceivableNote_BankTransferRef_NoteType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankTransferRef
+  - NoteType
+  included:
+  - ReceivableNoteRef
+- table: BankTransferReceivableNote
+  name: UIX_RPA3_BankTransferReceivableNote_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: CalculatedInterestAmountAdjustment
+  name: PK_RPA3_CalculatedInterestAmountAdjustment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculatedInterestAmountAdjustmentID
+- table: CalculatedInterestAmountAdjustment
+  name: IX_CalculatedInterestAmountAdjustment_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: CalculatedInterestAmountAdjustment
+  name: IX_CalculatedInterestAmountAdjustment_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: CalculatedInterestAmountAdjustment
+  name: IX_CalculatedInterestAmountAdjustment_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: CalculatedInterestAmountAdjustment
+  name: IX_CalculatedInterestAmountAdjustment_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: CalculatedInterestAmountAdjustmentItem
+  name: PK_RPA3_CalculatedInterestAmountAdjustmentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CalculatedInterestAmountAdjustmentItemID
+- table: CalculatedInterestAmountAdjustmentItem
+  name: IX_CalculatedInterestAmountAdjustmentItem_InstallmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstallmentRef
+- table: CalculatedInterestAmountAdjustmentItem
+  name: IX_CalculatedInterestAmountAdjustmentItem_CalculatedInterestAmountAdjustmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CalculatedInterestAmountAdjustmentRef
+- table: Cash
+  name: PK_RPA3_Cash
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashID
+- table: Cash
+  name: UIX_PRA3_Cash_NameBranchRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+  - BranchRef
+- table: Cash
+  name: IX_RPA3_Cash_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Cash
+  name: IX_RPA3_Cash_CashierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashierRef
+- table: Cash
+  name: IX_RPA3_Cash_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: CashFlowFactor
+  name: PK_RPA3_CashFlowFactor
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowFactorID
+- table: CashFlowFactor
+  name: IX_RPA3_CashFlowFactor_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: CashFlowFactor
+  name: IX_RPA3_CashFlowFactor_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: CashFlowFactor
+  name: UIX_PRA3_CashFlowFactor_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: CashFlowFactorDLInformation
+  name: PK_RPA3_CashFlowFactorDLInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowFactorDLInformationID
+- table: CashFlowFactorDLInformation
+  name: IX_RPA3_CashFlowFactorDLInformation_EntityRef_EntityCode
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - EntityRef
+  - EntityCode
+- table: CashFlowFactorGrouping
+  name: PK_RPA3_CashFlowFactorGrouping
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowFactorGroupingID
+- table: CashFlowFactorGrouping
+  name: UIX_RPA3_CashFlowFactorGrouping_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: CashFlowFactorGroupingDetail
+  name: PK_RPA3_CashFlowFactorGroupingDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowFactorGroupingDetailID
+- table: CashFlowFactorGroupingDetail
+  name: IX_RPA3_CashFlowFactorGroupingDetail_ParentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ParentRef
+- table: CashFlowFactorGroupingDetail
+  name: IX_RPA3_CashFlowFactorGroupingDetail_Code
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Code
+- table: CashFlowFactorGroupingDetail
+  name: IX_RPA3_CashFlowFactorGroupingDetail_CashFlowFactorGroupingRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorGroupingRef
+- table: CashFlowFactorGroupingDetailOfDetail
+  name: PK_RPA3_CashFlowFactorGroupingDetailOfDetail
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowFactorGroupingDetailOfDetailID
+- table: CashFlowFactorGroupingDetailOfDetail
+  name: IX_RPA3_CashFlowFactorGroupingDetailOfDetail_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: CashFlowFactorGroupingDetailOfDetail
+  name: IX_RPA3_CashFlowFactorGroupingDetailOfDetail_CashFlowFactorGroupingDetailRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorGroupingDetailRef
+- table: CashFlowReportEncashedNotesInfo
+  name: PK_CashFlowReportEncashedNotesInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashFlowReportEncashedNotesInfoID
+- table: CashierHistory
+  name: PK_RPA3_CashierHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashierHistoryID
+- table: CashierHistory
+  name: IX_RPA3_CashierHistory_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: CashierHistory
+  name: IX_RPA3_CashierHistory_CashierRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashierRef
+- table: CashierHistoryItem
+  name: PK_RPA3_CashierHistoryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashierHistoryItemID
+- table: CashierHistoryItem
+  name: IX_RPA3_CashierHistoryItem_CashierHistoryRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashierHistoryRef
+- table: CashierHistoryItem
+  name: IX_RPA3_CashierHistoryItem_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: CashTransaction
+  name: PK_RPA3_CashTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CashTransactionID
+- table: CashTransaction
+  name: IX_RPA3_CashTransaction_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: CashTransaction
+  name: IX_RPA3_CashTransaction_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: CashTransaction
+  name: IX_RPA3_CashTransaction_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: CashTransaction
+  name: IX_RPA3_CashTransaction_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: CashTransaction
+  name: IX_RPA3_CashTransaction_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: CashTransaction
+  name: IX_RPA3_CashTransaction_CashRef_CurrencyRef_LedgerRef_BranchRef_Date
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+  - CurrencyRef
+  - LedgerRef
+  - BranchRef
+  - Date
+  included:
+  - Debit
+  - Credit
+  - CreationDate
+- table: CashTransaction
+  name: UIX_RPA3_CashTransaction_DocumentItemTypeDocumentItemRefDebitCredit
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DocumentItemType
+  - DocumentItemRef
+  - Debit
+  - Credit
+- table: ChangeChequeDateHistory
+  name: PK_AgreeDateChangeHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChangeChequeDateHistoryID
+- table: ChequePattern
+  name: PK_RPA3_ChequePattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ChequePatternID
+- table: CollateralPermit
+  name: PK_RPA3_CollateralPermit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollateralPermitID
+- table: CollateralPermit
+  name: UIX_RPA3_CollateralPermit_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: CollateralType
+  name: PK_RPA3_CollateralType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollateralTypeID
+- table: CollateralType
+  name: IX_RPA3_CollateralType_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: CollateralType
+  name: IX_RPA3_CollateralType_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: CollateralType
+  name: UIX_RPA3_CollateralType_Title_LedgerRef_GuaranteeType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - LedgerRef
+  - GuaranteeType
+- table: CollateralType
+  name: IX_RPA3_CollateralType_CounterPartSLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartSLRef
+- table: CollectionRejection
+  name: PK_RPA3_CollectionRejection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectionRejectionID
+- table: CollectionRejection
+  name: IX_RPA3_CollectionRejection_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: CollectionRejection
+  name: IX_RPA3_CollectionRejection_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: CollectionRejection
+  name: IX_RPA3_CollectionRejection_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: CollectionRejection
+  name: IX_RPA3_CollectionRejection_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: CollectionRejection
+  name: IX_RPA3_CollectionRejection_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: CollectionRejection
+  name: IX_RPA3_CollectionRejection_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: CollectionRejection
+  name: IX_RPA3_CollectionRejection_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: CollectionRejectionConfiguration
+  name: PK_RPA3_CollectionRejectionConfiguration
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectionRejectionConfigurationID
+- table: CollectionRejectionReceivableNote
+  name: PK_RPA3_CollectionRejectionReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectionRejectionReceivableNoteID
+- table: CollectionRejectionReceivableNote
+  name: IX_RPA3_CollectionRejectionReceivableNote_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: CollectionRejectionReceivableNote
+  name: IX_RPA3_CollectionRejectionReceivableNote_CollectionRejectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollectionRejectionRef
+- table: CollectionRejectionReceivableNote
+  name: UIX_RPA3_CollectionRejectionReceivableNote_BankTransferReceivableNoteRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BankTransferReceivableNoteRef
+- table: CollectionRejectionReceivableNote
+  name: UIX_RPA3_CollectionRejectionReceivableNote_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: CollectionRejectionReceivableNote
+  name: IX_RPA3_CollectionRejectionReceivableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: Collector
+  name: PK_RPA3_Collector
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CollectorID
+- table: CommittedBank
+  name: PK_CommittedBank
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CommittedBankID
+- table: Contract
+  name: PK_RPA3_Contract
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractID
+- table: Contract
+  name: IX_Contract_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Contract
+  name: IX_Contract_ContractTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractTypeRef
+- table: Contract
+  name: IX_Contract_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: Contract
+  name: IX_Contract_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: Contract
+  name: IX_Contract_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ContractAccountingInformation
+  name: PK_RPA3_ContractAccountingInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractAccountingInformationID
+- table: ContractReceiptStep
+  name: PK_RPA3_ContractReceiptStep
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractReceiptStepID
+- table: ContractType
+  name: PK_RPA3_ContractType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ContractTypeID
+- table: ContractType
+  name: UIX_RPA3_ContractType_Title_LedgerRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - LedgerRef
+- table: ControllingPolicy
+  name: PK_RPA3_ControllingPolicy
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ControllingPolicyID
+- table: ControllingPolicyParameter
+  name: PK_RPA3_ControllingPolicyParameter
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ControllingPolicyParameterID
+- table: ControllingPolicyParameterItem
+  name: PK_RPA3_ControllingPolicyParameterItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ControllingPolicyParameterItemID
+- table: CurrentShare
+  name: PK_RPA3_CurrentShare
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CurrentShareID
+- table: CurrentShareCurrencyExchangeRate
+  name: PK_RPA3_CurrentShareCurrencyExchangeRate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CurrentShareCurrencyExchangeRateID
+- table: CurrentShareCurrencyExchangeRate
+  name: IX_CurrentShareCurrencyExchangeRate_CurrentShareRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrentShareRef
+- table: CurrentShareItem
+  name: PK_RPA3_CurrentShareItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - CurrentShareItemID
+- table: CurrentShareItem
+  name: IX_CurrentShareItem_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: CurrentShareItem
+  name: IX_CurrentShareItem_CurrentShareRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrentShareRef
+- table: DelayFineAllowance
+  name: PK_RPA3_DelayFineAllowance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DelayFineAllowanceID
+- table: DelayFineAllowance
+  name: IX_DelayFineAllowance_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: Deposit
+  name: PK_RPA3_Deposit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DepositID
+- table: DepositDeployment
+  name: PK_RPA3_DepositDeployment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DepositDeploymentID
+- table: DepositDeploymentItem
+  name: PK_RPA3_DepositDeploymentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DepositDeploymentItemID
+- table: DepositItem
+  name: PK_RPA3_DepositItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DepositItemID
+- table: DepositType
+  name: PK_RPA3_DepositType
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DepositTypeID
+- table: DepositType
+  name: UIX_RPA3_DepositType_Title
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+- table: DocumentAnalyze
+  name: PK_RPA3_DocumentAnalyze
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentAnalyzeID
+- table: DocumentAnalyze
+  name: IX_RPA3_DocumentAnalyze_Deliverer
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Deliverer
+- table: DocumentAnalyze
+  name: IX_RPA3_DocumentAnalyze_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: DocumentItemAnalyze
+  name: PK_RPA3_DocumentItemAnalyze
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DocumentItemAnalyzeID
+- table: DocumentItemAnalyze
+  name: IX_RPA3_DocumentItemAnalyze_RequestItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - RequestItemRef
+- table: DocumentItemAnalyze
+  name: RPA3_DocumentItemAnalyze_DocumentRef_DocumentItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DocumentRef
+  - DocumentItemRef
+- table: DocumentItemAnalyze
+  name: IX_RPA3_DocumentItemAnalyze_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: DocumentItemAnalyze
+  name: IX_RPA3_DocumentItemAnalyze_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: DocumentItemAnalyze
+  name: IX_RPA3_DocumentItemAnalyze_DocumentAnalyzeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DocumentAnalyzeRef
+- table: DocumentItemAnalyze
+  name: IX_RPA3_DocumentItemAnalyze_DocumentItemRef_DocumentItemType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DocumentItemRef
+  - DocumentItemType
+  included:
+  - AllocatedAmount
+- table: DraftVoucher
+  name: PK_RPA3_DraftVoucher
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DraftVoucherID
+- table: DraftVoucher
+  name: IX_RPA3_DraftVoucher_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: DraftVoucher
+  name: IX_RPA3_DraftVoucher_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: DraftVoucher
+  name: IX_RPA3_DraftVoucher_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: DraftVoucher
+  name: IX_RPA3_DraftVoucher_VoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherRef
+- table: DraftVoucher
+  name: UIX_RPA3_DraftVoucher_DocumentRef_DocumentType_Discriminator
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DocumentRef
+  - DocumentType
+  - Discriminator
+- table: DraftVoucherItem
+  name: PK_RPA3_DraftVoucherItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DraftVoucherItemID
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DraftVoucherRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DraftVoucherRef
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_PreviousDraftVoucherItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PreviousDraftVoucherItemRef
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_ItemRef_ItemType_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ItemRef
+  - ItemType
+  - AccountingOperationRef
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_ItemType_ItemRef_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ItemType
+  - ItemRef
+  - AccountingOperationRef
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DL4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL4
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DL5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL5
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DL6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL6
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DL7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL7
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DL8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL8
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DL9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL9
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DLTypeRef4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef4
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DLTypeRef5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef5
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DLTypeRef6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef6
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DLTypeRef7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef7
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DLTypeRef8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef8
+- table: DraftVoucherItem
+  name: IX_RPA3_DraftVoucherItem_DLTypeRef9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DLTypeRef9
+- table: DurationChange
+  name: PK_RPA3_DurationChange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DurationChangeID
+- table: DurationChange
+  name: IX_RPA3_DurationChange_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: DurationChange
+  name: IX_RPA3_DurationChange_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: DurationChange
+  name: IX_RPA3_DurationChange_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: DurationChange
+  name: IX_RPA3_DurationChange_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: DurationChange
+  name: IX_RPA3_DurationChange_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: DurationChange
+  name: IX_RPA3_DurationChange_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: DurationChangePayableNote
+  name: PK_RPA3_DurationChangePayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - DurationChangePayableNoteID
+- table: DurationChangePayableNote
+  name: IX_RPA3_DurationChangePayableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: DurationChangePayableNote
+  name: IX_RPA3_DurationChangePayableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: DurationChangePayableNote
+  name: IX_RPA3_DurationChangePayableNote_DurationChangeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DurationChangeRef
+- table: DurationChangePayableNote
+  name: IX_RPA3_DurationChangePayableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: DurationChangePayableNote
+  name: IX_RPA3_DurationChangePayableNote_PayableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableNoteRef
+- table: DurationChangePayableNote
+  name: UIX_RPA3_DurationChangePayableNote_PayableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PayableNoteTransactionRef
+- table: Encash
+  name: PK_RPA3_Encash
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EncashID
+- table: EncashReceivableNote
+  name: PK_RPA3_EncashReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EncashReceivableNoteID
+- table: EPaymentReceipt
+  name: PK_RPA3_EPaymentReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EPaymentReceiptID
+- table: EPaymentReceiptItem
+  name: PK_RPA3_EPaymentReceiptItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - EPaymentReceiptItemID
+- table: ExecutableTask
+  name: PK_RPA3_ExecutableTask
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExecutableTaskID
+- table: ExecutableTask
+  name: IX_RPA3_ExecutableTask_ManagerKey_State_RefrenceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ManagerKey
+  - State
+  - RefrenceRef
+- table: ExternalCreditProviderPreReceipt
+  name: PK_RPA3_ExternalCreditProviderPreReceipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExternalCreditProviderPreReceiptID
+- table: ExternalCreditProviderTransaction
+  name: PK_RPA3_ExternalCreditProviderTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ExternalCreditProviderTransactionID
+- table: FundRequest
+  name: PK_RPA3_FundRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FundRequestID
+- table: FundRequestItem
+  name: PK_RPA3_FundRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - FundRequestItemID
+- table: GuaranteeToNormal
+  name: PK_RPA3_GuaranteeToNormal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GuaranteeToNormalID
+- table: GuaranteeToNormal
+  name: IX_RPA3_GuaranteeToNormal_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: GuaranteeToNormal
+  name: IX_RPA3_GuaranteeToNormal_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: GuaranteeToNormal
+  name: IX_RPA3_GuaranteeToNormal_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: GuaranteeToNormal
+  name: IX_RPA3_GuaranteeToNormal_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: GuaranteeToNormal
+  name: IX_RPA3_GuaranteeToNormal_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: GuaranteeToNormal
+  name: IX_RPA3_GuaranteeToNormal_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: GuaranteeToNormal
+  name: IX_RPA3_GuaranteeToNormal_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: GuaranteeToNormal
+  name: IX_RPA3_GuaranteeToNormal_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: GuaranteeToNormalReceivableNote
+  name: PK_RPA3_GuaranteeToNormalReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GuaranteeToNormalReceivableNoteID
+- table: GuaranteeToNormalReceivableNote
+  name: IX_RPA3_GuaranteeToNormalReceivableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: GuaranteeToNormalReceivableNote
+  name: IX_RPA3_GuaranteeToNormalReceivableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: GuaranteeToNormalReceivableNote
+  name: IX_RPA3_GuaranteeToNormalReceivableNote_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: GuaranteeToNormalReceivableNote
+  name: IX_RPA3_GuaranteeToNormalReceivableNote_GuaranteeToNormalRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GuaranteeToNormalRef
+- table: GuaranteeToNormalReceivableNote
+  name: UIX_RPA3_GuaranteeToNormalReceivableNote_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: GuaranteeToNormalReceivableNote
+  name: IX_RPA3_GuaranteeToNormalReceivableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: GuaranteeToPayable
+  name: PK_RPA3_GuaranteeToPayable
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GuaranteeToPayableID
+- table: GuaranteeToPayable
+  name: IX_RPA3_GuaranteeToPayable_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: GuaranteeToPayable
+  name: IX_RPA3_GuaranteeToPayable_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: GuaranteeToPayable
+  name: IX_RPA3_GuaranteeToPayable_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: GuaranteeToPayable
+  name: IX_RPA3_GuaranteeToPayable_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: GuaranteeToPayable
+  name: IX_RPA3_GuaranteeToPayable_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: GuaranteeToPayable
+  name: IX_RPA3_GuaranteeToPayable_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: GuaranteeToPayable
+  name: IX_RPA3_GuaranteeToPayable_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: GuaranteeToPayableNote
+  name: PK_RPA3_GuaranteeToPayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - GuaranteeToPayableNoteID
+- table: GuaranteeToPayableNote
+  name: IX_RPA3_GuaranteeToPayableNote_GuaranteeToPayableRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - GuaranteeToPayableRef
+- table: GuaranteeToPayableNote
+  name: IX_RPA3_GuaranteeToPayableNote_PayableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableNoteRef
+- table: GuaranteeToPayableNote
+  name: IX_RPA3_GuaranteeToPayableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: GuaranteeToPayableNote
+  name: IX_RPA3_GuaranteeToPayableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: GuaranteeToPayableNote
+  name: UIX_RPA3_GuaranteeToPayableNote_PayableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PayableNoteTransactionRef
+- table: GuaranteeToPayableNote
+  name: IX_RPA3_GuaranteeToPayableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: Installment
+  name: PK_RPA3_Installment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InstallmentID
+- table: InterestAmountChange
+  name: PK_RPA3_InterestAmountChange
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - InterestAmountChangeID
+- table: InterestAmountChange
+  name: IX_InterestAmountChange_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: InterestAmountChange
+  name: IX_InterestAmountChange_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: InterestAmountChange
+  name: IX_InterestAmountChange_CurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyExchangeRateRef
+- table: InterestAmountChange
+  name: IX_InterestAmountChange_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: MaturedSharedInterestAllowance
+  name: PK_RPA3_MaturedSharedInterestAllowance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaturedSharedInterestAllowanceID
+- table: MaturedSharedInterestAllowanceCurrencyExchangeRate
+  name: PK_RPA3_MaturedSharedInterestAllowanceCurrencyExchangeRate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaturedSharedInterestAllowanceCurrencyExchangeRateID
+- table: MaturedSharedInterestAllowanceItem
+  name: PK_RPA3_MaturedSharedInterestAllowanceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - MaturedSharedInterestAllowanceItemID
+- table: MaturedSharedInterestAllowanceItem
+  name: IX_MaturedSharedInterestAllowanceItem_InstallmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstallmentRef
+- table: MaturedSharedInterestAllowanceItem
+  name: IX_MaturedSharedInterestAllowanceItem_MaturedSharedInterestAllowanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - MaturedSharedInterestAllowanceRef
+- table: NotMaturedSharedInterestAllowance
+  name: PK_RPA3_NotMaturedSharedInterestAllowance
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotMaturedSharedInterestAllowanceID
+- table: NotMaturedSharedInterestAllowanceCurrencyExchangeRate
+  name: PK_RPA3_NotMaturedSharedInterestAllowanceCurrencyExchangeRate
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotMaturedSharedInterestAllowanceCurrencyExchangeRateID
+- table: NotMaturedSharedInterestAllowanceItem
+  name: PK_RPA3_NotMaturedSharedInterestAllowanceItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - NotMaturedSharedInterestAllowanceItemID
+- table: NotMaturedSharedInterestAllowanceItem
+  name: IX_NotMaturedSharedInterestAllowanceItem_InstallmentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - InstallmentRef
+- table: NotMaturedSharedInterestAllowanceItem
+  name: IX_NotMaturedSharedInterestAllowanceItem_NotMaturedSharedInterestAllowanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotMaturedSharedInterestAllowanceRef
+- table: NotMaturedSharedInterestAllowanceItem
+  name: IX_NotMaturedSharedInterestAllowanceItem_MaturedSharedInterestAllowanceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - NotMaturedSharedInterestAllowanceRef
+- table: OnlineBankAccount
+  name: PK_OnlineBankAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineBankAccountID
+- table: OnlineBankAccount
+  name: IX_OnlineBankAccount_IBANNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - IBANNumber
+- table: OnlineBankAccountOwner
+  name: PK_OnlineBankAccountOwner
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineBankAccountOwnerID
+- table: OnlineGateway
+  name: PK_RPA3_OnlineGateway
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineGatewayID
+- table: OnlineGateway
+  name: UIX_RPA3_OnlineGateway_GatewayKey
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - GatewayKey
+- table: OnlineGateway
+  name: UIX_RPA3_OnlineGateway_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: OnlineGatewayApi
+  name: PK_RPA3_OnlineGatewayApi
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineGatewayApiID
+- table: OnlineGatewayApi
+  name: UIX_RPA3_OnlineGatewayApi_OnlineGatewayRef_ApiKey
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - OnlineGatewayRef
+  - ApiKey
+- table: OnlineGatewayBank
+  name: PK_RPA3_OnlineGatewayBank
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineGatewayBankID
+- table: OnlineGatewaySetting
+  name: PK_RPA3_OnlineGatewaySetting
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineGatewaySettingID
+- table: OnlineGatewayUserAccount
+  name: PK_RPA3_OnlineGatewayUserAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineGatewayUserAccountID
+- table: OnlineGatewayUserAccount
+  name: UIX_RPA3_OnlineGatewayUserAccount_Name
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Name
+- table: OnlineGatewayUserAccountApi
+  name: PK_RPA3_OnlineGatewayUserAccountApi
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineGatewayUserAccountApiID
+- table: OnlineGatewayUserAccountSpecification
+  name: PK_RPA3_OnlineGatewayUserAccountSpecification
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineGatewayUserAccountSpecificationID
+- table: OnlineMoneyTransfer
+  name: PK_RPA3_OnlineMoneyTransfer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineMoneyTransferID
+- table: OnlineMoneyTransferItem
+  name: PK_RPA3_OnlineMoneyTransferItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineMoneyTransferItemID
+- table: OnlineMoneyTransferUser
+  name: PK_RPA3_OnlineMoneyTransferUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlineMoneyTransferUserID
+- table: OnlinePaymentSimulatorApiCallLog
+  name: PK_OnlinePaymentSimulatorApiCallLog
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlinePaymentSimulatorApiCallLogID
+- table: OnlinePaymentSimulatorBankAccount
+  name: PK_OnlinePaymentSimulatorBankAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlinePaymentSimulatorBankAccountID
+- table: OnlinePaymentSimulatorBankAccountUser
+  name: PK_OnlinePaymentSimulatorBankAccountUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlinePaymentSimulatorBankAccountUserID
+- table: OnlinePaymentSimulatorCartable
+  name: PK_OnlinePaymentSimulatorCartable
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlinePaymentSimulatorCartableID
+- table: OnlinePaymentSimulatorCartableDestination
+  name: PK_OnlinePaymentSimulatorCartableDestination
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlinePaymentSimulatorCartableDestinationID
+- table: OnlinePaymentSimulatorCartableUser
+  name: PK_OnlinePaymentSimulatorCartableUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlinePaymentSimulatorCartableUserID
+- table: OnlinePaymentSimulatorStatement
+  name: PK_OnlinePaymentSimulatorStatement
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlinePaymentSimulatorStatementID
+- table: OnlinePaymentSimulatorUser
+  name: PK_OnlinePaymentSimulatorUser
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - OnlinePaymentSimulatorUserID
+- table: PartyBankAccount
+  name: PK_RPA3_PartyBankAccountID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PartyBankAccountID
+- table: PartyBankAccount
+  name: UIX_RPA3_PartyBankAccount_PartyRef_AccountNumber_BankBranchRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PartyRef
+  - AccountNumber
+  - BankBranchRef
+- table: PayableChequeBook
+  name: PK_RPA3_PayableChequeBook
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableChequeBookID
+- table: PayableChequeBook
+  name: IX_RPA3_PayableChequeBook_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: PayableChequeBook
+  name: IX_RPA3_PayableChequeBook_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PayableChequeBook
+  name: IX_RPA3_PayableChequeBook_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: PayableChequeBook
+  name: IX_RPA3_PayableChequeBook_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PayableChequeBook
+  name: UIX_RPA3_PayableChequeBook_BankAccountRefSeriesFirstSerial
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BankAccountRef
+  - Series
+  - FirstSerial
+- table: PayableChequeBookChequePattern
+  name: PK_RPA3_PayableChequeBookChequePattern
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableChequeBookChequePatternID
+- table: PayableChequeBookItem
+  name: PK_RPA3_PayableChequeBookItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableChequeBookItemID
+- table: PayableChequeBookItem
+  name: IX_RPA3_PayableChequeBookItem_PayableChequeBookRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableChequeBookRef
+- table: PayableChequeBookItem
+  name: UIX_RPA3_PayableChequeBookItem_SayadNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - SayadNumber
+- table: PayableCollateral
+  name: PK_RPA3_PayableCollateral
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableCollateralID
+- table: PayableCollateral
+  name: IX_RPA3_PayableCollateral_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PayableCollateral
+  name: IX_RPA3_PayableCollateral_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: PayableCollateral
+  name: IX_RPA3_PayableCollateral_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PayableCollateral
+  name: IX_RPA3_PayableCollateral_CollateralTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollateralTypeRef
+- table: PayableCollateral
+  name: IX_RPA3_PayableCollateral_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PayableCollateral
+  name: IX_RPA3_PayableCollateral_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PayableCollateral
+  name: UIX_RPA3_PayableCollateral_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: PayableCollateral
+  name: IX_RPA3_PayableCollateral_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PayableCollateralAccountingInformation
+  name: PK_RPA3_PayableCollateralAccountingInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableCollateralAccountingInformationID
+- table: PayableCollateralBlockedBankAccount
+  name: PK_PayableCollateralBlockedBankAccount
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableCollateralBlockedBankAccountID
+- table: PayableCollateralGuaranteeNote
+  name: PK_PayableCollateralPayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableCollateralGuaranteeNoteID
+- table: PayableCollateralOtherCost
+  name: PK_PayableCollateralOtherCost
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableCollateralOtherCostID
+- table: PayableCollateralTransaction
+  name: PK_RPA3_PayableCollateralTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableCollateralTransactionID
+- table: PayableCollateralTransaction
+  name: IX_RPA3_PayableCollateralTransaction_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: PayableCollateralTransaction
+  name: IX_RPA3_PayableCollateralTransaction_PayableCollateralRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableCollateralRef
+- table: PayableNote
+  name: PK_RPA3_PayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableNoteID
+- table: PayableNote
+  name: IX_RPA3_PayableNote_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_BankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_CityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CityRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_PayableChequeBookItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableChequeBookItemRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_PromissoryNoteItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PromissoryNoteItemRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: PayableNote
+  name: IX_RPA3_PayableNote_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PayableNoteTransaction
+  name: PK_RPA3_PayableNoteTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PayableNoteTransactionID
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_PayableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableNoteRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_PreviousTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PreviousTransactionRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PayableNoteTransaction
+  name: IX_RPA3_PayableNoteTransaction_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: Payment
+  name: PK_RPA3_Payment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentID
+- table: Payment
+  name: IX_RPA3_Payment_ItemType_ApproveState
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ItemType
+  - ApproveState
+  included:
+  - PaymentID
+  - Number
+  - Date
+  - Description
+- table: Payment
+  name: IX_RPA3_Payment_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: Payment
+  name: IX_RPA3_Payment_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: Payment
+  name: IX_RPA3_Payment_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Payment
+  name: IX_RPA3_Payment_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Payment
+  name: IX_RPA3_Payment_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Payment
+  name: IX_RPA3_Payment_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Payment
+  name: IX_RPA3_Payment_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: Payment
+  name: IX_RPA3_Payment_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PaymentCashMoney
+  name: PK_RPA3_PaymentCashMoney
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentCashMoneyID
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_PaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentRef
+  included:
+  - Amount
+  - CounterPartRef
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentCashMoney
+  name: IX_RPA3_PaymentCashMoney_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: PaymentDeliverReceivableCheque
+  name: PK_RPA3_PaymentDeliverReceivableCheque
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentDeliverReceivableChequeID
+- table: PaymentDeliverReceivableCheque
+  name: IX_RPA3_PaymentDeliverReceivableCheque_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PaymentDeliverReceivableCheque
+  name: IX_RPA3_PaymentDeliverReceivableCheque_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: PaymentDeliverReceivableCheque
+  name: IX_RPA3_PaymentDeliverReceivableCheque_PaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentRef
+- table: PaymentDeliverReceivableCheque
+  name: IX_RPA3_PaymentDeliverReceivableCheque_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: PaymentDeliverReceivableCheque
+  name: IX_RPA3_PaymentDeliverReceivableCheque_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentDeliverReceivableCheque
+  name: IX_RPA3_PaymentDeliverReceivableCheque_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentDeliverReceivableCheque
+  name: UIX_RPA3_PaymentDeliverReceivableCheque_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: PaymentDeliverReceivableCheque
+  name: IX_RPA3_PaymentDeliverReceivableCheque_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: PaymentDeliverReceivableCheque
+  name: IX_RPA3_PaymentDeliverReceivableCheque_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: PaymentDeliverRestorePayableNote
+  name: PK_RPA3_PaymentDeliverRestorePayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentDeliverRestorePayableNoteID
+- table: PaymentDeliverRestorePayableNote
+  name: IX_RPA3_PaymentDeliverRestorePayableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PaymentDeliverRestorePayableNote
+  name: IX_RPA3_PaymentDeliverRestorePayableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: PaymentDeliverRestorePayableNote
+  name: IX_RPA3_PaymentDeliverRestorePayableNote_PaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentRef
+- table: PaymentDeliverRestorePayableNote
+  name: IX_RPA3_PaymentDeliverRestorePayableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: PaymentDeliverRestorePayableNote
+  name: IX_RPA3_PaymentDeliverRestorePayableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentDeliverRestorePayableNote
+  name: IX_RPA3_PaymentDeliverRestorePayableNote_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: PaymentDeliverRestorePayableNote
+  name: IX_RPA3_PaymentDeliverRestorePayableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentDeliverRestorePayableNote
+  name: IX_RPA3_PaymentDeliverRestorePayableNote_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: PaymentDeliverRestorePayableNote
+  name: UIX_RPA3_PaymentDeliverRestorePayableNote_PayableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PayableNoteTransactionRef
+- table: PaymentDeposit
+  name: PK_RPA3_PaymentDeposit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentDepositID
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_PaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: PaymentDeposit
+  name: IX_RPA3_PaymentDeposit_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: PaymentOrder
+  name: PK_PaymentOrder
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderID
+- table: PaymentOrder
+  name: IX_RPA3_PaymentOrder_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PaymentOrder
+  name: IX_RPA3_PaymentOrder_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: PaymentOrder
+  name: IX_RPA3_PaymentOrder_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PaymentOrder
+  name: IX_RPA3_PaymentOrder_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: PaymentOrder
+  name: IX_RPA3_PaymentOrder_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentOrderCashMoney
+  name: PK_RPA3_PaymentOrderCashMoney
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderCashMoneyID
+- table: PaymentOrderCashMoney
+  name: IX_RPA3_PaymentOrderCashMoney_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: PaymentOrderCashMoney
+  name: IX_RPA3_PaymentOrderCashMoney_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentOrderCashMoney
+  name: IX_RPA3_PaymentOrderCashMoney_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PaymentOrderCashMoney
+  name: IX_RPA3_PaymentOrderCashMoney_PaymentOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOrderRef
+- table: PaymentOrderCashMoney
+  name: IX_RPA3_PaymentOrderCashMoney_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentOrderDeliverReceivableCheque
+  name: PK_RPA3_PaymentOrderDeliverReceivableCheque
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderDeliverReceivableChequeID
+- table: PaymentOrderDeliverReceivableCheque
+  name: IX_RPA3_PaymentOrderDeliverReceivableCheque_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentOrderDeliverReceivableCheque
+  name: IX_RPA3_PaymentOrderDeliverReceivableCheque_PaymentOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOrderRef
+- table: PaymentOrderDeliverReceivableCheque
+  name: IX_RPA3_PaymentOrderDeliverReceivableCheque_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: PaymentOrderDeliverReceivableCheque
+  name: IX_RPA3_PaymentOrderDeliverReceivableCheque_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: PaymentOrderDeliverReceivableCheque
+  name: IX_RPA3_PaymentOrderDeliverReceivableCheque_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentOrderDeliverRestorePayableNote
+  name: PK_RPA3_PaymentOrderDeliverRestorePayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderDeliverRestorePayableNoteID
+- table: PaymentOrderDeliverRestorePayableNote
+  name: IX_RPA3_PaymentOrderDeliverRestorePayableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: PaymentOrderDeliverRestorePayableNote
+  name: IX_RPA3_PaymentOrderDeliverRestorePayableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentOrderDeliverRestorePayableNote
+  name: IX_RPA3_PaymentOrderDeliverRestorePayableNote_PaymentOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOrderRef
+- table: PaymentOrderDeposit
+  name: PK_RPA3_PaymentOrderDeposit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderDepositID
+- table: PaymentOrderDeposit
+  name: IX_RPA3_PaymentOrderDeposit_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: PaymentOrderDeposit
+  name: IX_RPA3_PaymentOrderDeposit_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: PaymentOrderDeposit
+  name: IX_RPA3_PaymentOrderDeposit_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentOrderDeposit
+  name: IX_RPA3_PaymentOrderDeposit_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PaymentOrderDeposit
+  name: IX_RPA3_PaymentOrderDeposit_PaymentOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOrderRef
+- table: PaymentOrderDeposit
+  name: IX_RPA3_PaymentOrderDeposit_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentOrderItemToPaymentItem
+  name: PK_RPA3_PaymentOrderItemToPaymentItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderItemToPaymentItemID
+- table: PaymentOrderList
+  name: PK_RPA3_PaymentOrderList
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderListID
+- table: PaymentOrderPayableNote
+  name: PK_RPA3_PaymentOrderPayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderPayableNoteID
+- table: PaymentOrderPayableNote
+  name: IX_RPA3_PaymentOrderPayableNote_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: PaymentOrderPayableNote
+  name: IX_RPA3_PaymentOrderPayableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentOrderPayableNote
+  name: IX_RPA3_PaymentOrderPayableNote_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PaymentOrderPayableNote
+  name: IX_RPA3_PaymentOrderPayableNote_PaymentOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOrderRef
+- table: PaymentOrderPayableNote
+  name: IX_RPA3_PaymentOrderPayableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentOrderRestoreReceivableNote
+  name: PK_RPA3_PaymentOrderRestoreReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentOrderRestoreReceivableNoteID
+- table: PaymentOrderRestoreReceivableNote
+  name: IX_RPA3_PaymentOrderRestoreReceivableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentOrderRestoreReceivableNote
+  name: IX_RPA3_PaymentOrderRestoreReceivableNote_PaymentOrderRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOrderRef
+- table: PaymentOrderRestoreReceivableNote
+  name: IX_RPA3_PaymentOrderRestoreReceivableNote_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: PaymentOrderRestoreReceivableNote
+  name: IX_RPA3_PaymentOrderRestoreReceivableNote_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: PaymentOrderRestoreReceivableNote
+  name: IX_RPA3_PaymentOrderRestoreReceivableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentPayableNote
+  name: PK_RPA3_PaymentPayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentPayableNoteID
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_PaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_BankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_CityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CityRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentPayableNote
+  name: UIX_RPA3_PaymentPayableNote_PayableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PayableNoteTransactionRef
+- table: PaymentPayableNote
+  name: IX_RPA3_PaymentPayableNote_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: PaymentRefundDepositItem
+  name: PK_RPA3_PaymentRefundDepositItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentRefundDepositItemID
+- table: PaymentRequest
+  name: PK_RPA3_PaymentRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentRequestID
+- table: PaymentRequest
+  name: RPA3_PayementRequest_ReferenceType_RefereceRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+  - State
+  included:
+  - BranchRef
+- table: PaymentRequest
+  name: IX_RPA3_PaymentRequest_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PaymentRequest
+  name: IX_RPA3_PaymentRequest_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: PaymentRequest
+  name: IX_RPA3_PaymentRequest_CostCenterRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CostCenterRef
+- table: PaymentRequest
+  name: IX_RPA3_PaymentRequest_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: PaymentRequest
+  name: IX_RPA3_PaymentRequest_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PaymentRequest
+  name: IX_RPA3_PaymentRequest_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PaymentRequest
+  name: IX_RPA3_PaymentRequest_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: PaymentRequest
+  name: IX_RPA3_PaymentRequest_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentRequestItem
+  name: PK_PaymentRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentRequestItemID
+- table: PaymentRequestItem
+  name: IX_RPA3_PaymentRequestItem_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentRestoreReceivableNote
+  name: PK_RPA3_PaymentRestoreReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentRestoreReceivableNoteID
+- table: PaymentRestoreReceivableNote
+  name: IX_RPA3_PaymentRestoreReceivableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PaymentRestoreReceivableNote
+  name: IX_RPA3_PaymentRestoreReceivableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: PaymentRestoreReceivableNote
+  name: IX_RPA3_PaymentRestoreReceivableNote_PaymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentRef
+  included:
+  - ReceivableNoteRef
+  - CounterPartRef
+- table: PaymentRestoreReceivableNote
+  name: IX_RPA3_PaymentRestoreReceivableNote_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: PaymentRestoreReceivableNote
+  name: IX_RPA3_PaymentRestoreReceivableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PaymentRestoreReceivableNote
+  name: IX_RPA3_PaymentRestoreReceivableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: PaymentRestoreReceivableNote
+  name: UIX_RPA3_PaymentRestoreReceivableNote_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: PaymentServiceProviderCompany
+  name: PK_RPA3_PaymentServiceProviderCompany
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentServiceProviderCompanyID
+- table: PaymentServiceProviderCompany
+  name: IX_RPA3_PaymentServiceProviderCompany_PartyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PartyRef
+- table: PaymentToPublicIncomItem
+  name: PK_RPA3_PaymentToPublicIncomItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentToPublicIncomItemID
+- table: PaymentToTreasuryItem
+  name: PK_RPA3_PaymentToTreasuryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PaymentToTreasuryItemID
+- table: PettyCash
+  name: PK_RPA3_PettyCash
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashID
+- table: PettyCash
+  name: IX_RPA3_PettyCash_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+- table: PettyCash
+  name: IX_RPA3_PettyCash_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: PettyCash
+  name: IX_RPA3_PettyCash_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PettyCash
+  name: IX_RPA3_PettyCash_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PettyCash
+  name: IX_RPA3_PettyCash_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: PettyCash
+  name: IX_RPA3_PettyCash_PettyCashOwnerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashOwnerRef
+- table: PettyCash
+  name: UIX_RPA3_PettyCash_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: PettyCashBill
+  name: PK_RPA3_PettyCashBill
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashBillID
+- table: PettyCashBill
+  name: IX_RPA3_PettyCashBill_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PettyCashBill
+  name: IX_RPA3_PettyCashBill_PettyCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashRef
+- table: PettyCashBill
+  name: IX_RPA3_PettyCashBill_Number
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+- table: PettyCashBill
+  name: IX_RPA3_PettyCashBill_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PettyCashBill
+  name: IX_RPA3_PettyCashBill_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PettyCashBillItem
+  name: PK_RPA3_PettyCashBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashBillItemID
+- table: PettyCashBillItem
+  name: IX_RPA3_PettyCashBillItem_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: PettyCashBillItem
+  name: IX_RPA3_PettyCashBillItem_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: PettyCashBillItem
+  name: IX_RPA3_PettyCashBillItem_PettyCashBillRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashBillRef
+- table: PettyCashBillItem
+  name: IX_RPA3_PettyCashBillItem_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: PettyCashCard
+  name: PK_RPA3_PettyCashCard
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardID
+- table: PettyCashCard
+  name: IX_RPA3_PettyCashCard_PettyCashCardCollectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardCollectionRef
+- table: PettyCashCardBill
+  name: PK_RPA3_PettyCashCardBill
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardBillID
+- table: PettyCashCardBill
+  name: IX_RPA3_PettyCashCardBill_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: PettyCashCardBill
+  name: IX_RPA3_PettyCashCardBill_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PettyCashCardBill
+  name: IX_RPA3_PettyCashCardBill_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PettyCashCardBill
+  name: IX_RPA3_PettyCashCardBill_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PettyCashCardBill
+  name: IX_RPA3_PettyCashCardBill_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: PettyCashCardBill
+  name: UIX_PRA3_PettyCashCardBill_NumberPettyCashCardRefBranchRefLedgerRefFiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - PettyCashCardRef
+  - BranchRef
+  - FiscalYearRef
+  - LedgerRef
+- table: PettyCashCardBillItem
+  name: PK_RPA3_PettyCashCardBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardBillItemID
+- table: PettyCashCardBillItem
+  name: IX_RPA3_PettyCashCardBillItem_PettyCashCardBillRef_DocumentDate
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardBillRef
+  - DocumentDate
+- table: PettyCashCardCollection
+  name: PK_RPA3_PettyCashCardCollection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardCollectionID
+- table: PettyCashCardCollection
+  name: IX_RPA3_PettyCashCardCollection_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: PettyCashCardHistory
+  name: PK_RPA3_PettyCashCardHistory
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardHistoryID
+- table: PettyCashCardHistory
+  name: IX_RPA3_PettyCashCardHistory_PettyCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashRef
+- table: PettyCashCardHistory
+  name: IX_RPA3_PettyCashCardHistory_PettyCashCardRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardRef
+- table: PettyCashCardReconciliation
+  name: PK_RPA3_PettyCashCardReconciliation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardReconciliationID
+- table: PettyCashCardReconciliation
+  name: IX_RPA3_PettyCashCardReconciliation_PettyCashCardRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardRef
+- table: PettyCashCardReconciliation
+  name: IX_RPA3_PettyCashCardReconciliation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: PettyCashCardReconciliation
+  name: IX_RPA3_PettyCashCardReconciliation_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: PettyCashCardReconciliation
+  name: IX_RPA3_PettyCashCardReconciliation_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PettyCashCardReconciliation
+  name: IX_RPA3_PettyCashCardReconciliation_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PettyCashCardReconciliation
+  name: IX_RPA3_PettyCashCardReconciliation_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: PettyCashCardReconciliation
+  name: UIX_PRA3_PettyCashCardReconciliation_NumberPettyCashCardRefBranchRefLedgerRefFiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - PettyCashCardRef
+  - BranchRef
+  - FiscalYearRef
+  - LedgerRef
+- table: PettyCashCardReconciliationOpenItemReason
+  name: PK_PettyCashCardReconciliationOpenItemReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardReconciliationOpenItemReasonID
+- table: PettyCashCardReconciliationOpenItemReason
+  name: IX_RPA3_PettyCashCardReconciliationOpenItemReason_PettyCashCardReconciliationRef_DocumentItemRef_DocumentItemType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardReconciliationRef
+  - DocumentItemRef
+  - DocumentItemType
+- table: PettyCashCardReconciliationOpenItemReason
+  name: IX_RPA3_PettyCashCardReconciliationOpenItemReason_PettyCashCardReconciliationRef_PettyCashCardBillItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardReconciliationRef
+  - PettyCashCardBillItemRef
+- table: PettyCashCardReconciliationPettyCashCardBillAllItem
+  name: PK_RPA3_PettyCashCardReconciliationPettyCashCardBillAllItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardReconciliationPettyCashCardBillAllItemID
+- table: PettyCashCardReconciliationPettyCashCardBillAllItem
+  name: IX_RPA3_PettyCashCardReconciliationPettyCashCardBillAllItem_PettyCashCardRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardRef
+- table: PettyCashCardReconciliationPettyCashCardBillAllItem
+  name: IX_RPA3_PettyCashCardReconciliationPettyCashCardBillAllItem_PettyCashCardReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardReconciliationRef
+- table: PettyCashCardReconciliationPettyCashCardBillItem
+  name: PK_RPA3_PettyCashCardReconciliationPettyCashCardBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardReconciliationPettyCashCardBillItemID
+- table: PettyCashCardReconciliationPettyCashCardBillItem
+  name: IX_RPA3_PettyCashCardReconciliationPettyCashCardBillItem_PettyCashCardReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardReconciliationRef
+- table: PettyCashCardReconciliationReason
+  name: PK_PettyCashCardReconciliationReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardReconciliationReasonID
+- table: PettyCashCardReconciliationReason
+  name: UIX_RPA3_PettyCashCardReconciliationReason_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: PettyCashCardReconciliationTreasuryAllItem
+  name: PK_RPA3_PettyCashCardReconciliationTreasuryAllItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardReconciliationTreasuryAllItemID
+- table: PettyCashCardReconciliationTreasuryAllItem
+  name: IX_RPA3_PettyCashCardReconciliationTreasuryAllItem_PettyCashCardRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardRef
+- table: PettyCashCardReconciliationTreasuryAllItem
+  name: IX_RPA3_PettyCashCardReconciliationTreasuryAllItem_PettyCashCardReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardReconciliationRef
+- table: PettyCashCardReconciliationTreasuryItem
+  name: PK_RPA3_PettyCashCardReconciliationTreasuryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashCardReconciliationTreasuryItemID
+- table: PettyCashCardReconciliationTreasuryItem
+  name: IX_RPA3_PettyCashCardReconciliationTreasuryItem_PettyCashCardReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardReconciliationRef
+- table: PettyCashCardReconciliationTreasuryItem
+  name: UIX_RPA3_PettyCashCardReconciliationTreasuryItem_DocumentItemTypeDocumentItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - DocumentItemType
+  - DocumentItemRef
+- table: PettyCashTransaction
+  name: PK_PettyCashTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PettyCashTransactionID
+- table: PettyCashTransaction
+  name: IX_RPA3_PettyCashTransaction_PettyCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashRef
+- table: PettyCashTransaction
+  name: IX_RPA3_PettyCashTransaction_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PettyCashTransaction
+  name: IX_RPA3_PettyCashTransaction_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: PettyCashTransaction
+  name: IX_RPA3_PettyCashTransaction_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PettyCashTransaction
+  name: IX_RPA3_PettyCashTransaction_PettyCashCardRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PettyCashCardRef
+- table: ProgressiveCollection
+  name: PK_RPA3_ProgressiveCollection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProgressiveCollectionID
+- table: ProgressiveCollection
+  name: IX_RPA3_ProgressiveCollection_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: ProgressiveCollection
+  name: IX_RPA3_ProgressiveCollection_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ProgressiveCollection
+  name: IX_RPA3_ProgressiveCollection_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ProgressiveCollection
+  name: IX_RPA3_ProgressiveCollection_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: ProgressiveCollection
+  name: IX_RPA3_ProgressiveCollection_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: ProgressiveCollection
+  name: IX_RPA3_ProgressiveCollection_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ProgressiveCollection
+  name: IX_RPA3_ProgressiveCollection_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ProgressiveCollectionCreditItem
+  name: PK_RPA3_ProgressiveCollectionCreditItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProgressiveCollectionCreditItemID
+- table: ProgressiveCollectionCreditItem
+  name: IX_RPA3_ProgressiveCollectionCreditItem_ProgressiveCollectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProgressiveCollectionRef
+- table: ProgressiveCollectionItem
+  name: PK_RPA3_ProgressiveCollectionItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProgressiveCollectionItemID
+- table: ProgressiveCollectionItem
+  name: IX_RPA3_ProgressiveCollectionItem_ProgressiveCollectionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ProgressiveCollectionRef
+- table: ProgressiveCollectionItem
+  name: IX_RPA3_ProgressiveCollectionItem_ItemType_ItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ItemType
+  - ItemRef
+- table: PromissoryNote
+  name: PK_RPA3_PromissoryNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PromissoryNoteID
+- table: PromissoryNote
+  name: IX_RPA3_PromissoryNote_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: PromissoryNote
+  name: IX_RPA3_PromissoryNote_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: PromissoryNote
+  name: IX_RPA3_PromissoryNote_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: PromissoryNoteItem
+  name: PK_RPA3_PromissoryNoteItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PromissoryNoteItemID
+- table: PromissoryNoteItem
+  name: IX_RPA3_PromissoryNoteItem_PromissoryNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PromissoryNoteRef
+- table: Prosecution
+  name: PK_RPA3_Prosecution
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProsecutionID
+- table: ProsecutionReceivableNote
+  name: PK_RPA3_ProsecutionReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ProsecutionReceivableNoteID
+- table: PSPBill
+  name: PK_RPA3_PSPBill
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PSPBillID
+- table: PSPBillItem
+  name: PK_RPA3_PSPBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - PSPBillItemID
+- table: Receipt
+  name: PK_RPA3_Receipt
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptID
+- table: Receipt
+  name: IX_RPA3_Receipt_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: Receipt
+  name: IX_RPA3_Receipt_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Receipt
+  name: IX_RPA3_Receipt_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Receipt
+  name: IX_RPA3_Receipt_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Receipt
+  name: IX_RPA3_Receipt_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Receipt
+  name: IX_RPA3_Receipt_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: Receipt
+  name: IX_RPA3_Receipt_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Receipt
+  name: IX_RPA3_Receipt_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: Receipt
+  name: IX_RPA3_Receipt_Number_ReceiptID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+  - ReceiptID
+- table: Receipt
+  name: RPA3_Receipt_ApproveState_SourceType_SourceRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ApproveState
+  - SourceType
+  - SourceRef
+  included:
+  - BranchRef
+- table: Receipt
+  name: IX_RPA3_Receipt_Deliverer
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Deliverer
+- table: ReceiptAndPaymentCause
+  name: PK_RPA3_ReceiptAndPaymentCauseID
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptAndPaymentCauseID
+- table: ReceiptAndPaymentCause
+  name: IX_RPA3_ReceiptAndPaymentCause_Title_DocumentType
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Title
+  - DocumentType
+- table: ReceiptCashMoney
+  name: PK_RPA3_ReceiptCashMoney
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptCashMoneyID
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_ReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptRef
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: ReceiptCashMoney
+  name: IX_RPA3_ReceiptCashMoney_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: ReceiptDeposit
+  name: PK_RPA3_ReceiptDeposit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptDepositID
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_ReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_BankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankRef
+- table: ReceiptDeposit
+  name: IX_RPA3_ReceiptDeposit_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: ReceiptFundRequestItem
+  name: PK_RPA3_ReceiptFundRequestItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptFundRequestItemID
+- table: ReceiptReceivableNote
+  name: PK_RPA3_ReceiptReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptReceivableNoteID
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_ReceivableNoteRef_ReceiptRef_CounterPartRef_Description
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+  included:
+  - ReceiptRef
+  - CounterPartRef
+  - Description
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_ReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_BankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_CityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CityRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: ReceiptReceivableNote
+  name: UIX_RPA3_ReceiptReceivableNote_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_DL4
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL4
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_DL5
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL5
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_DL6
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL6
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_DL7
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL7
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_DL8
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL8
+- table: ReceiptReceivableNote
+  name: IX_RPA3_ReceiptReceivableNote_DL9
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DL9
+- table: ReceiptRequest
+  name: PK_ReceiptRequest
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptRequestID
+- table: ReceiptRequest
+  name: RPA3_ReceiptRequest_ReferenceType_RefereceRef_State
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReferenceType
+  - ReferenceRef
+  - State
+  included:
+  - BranchRef
+  - CurrencyRef
+- table: ReceiptRequest
+  name: IX_RPA3_ReceiptRequest_Approver
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Approver
+- table: ReceiptRequest
+  name: IX_RPA3_ReceiptRequest_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ReceiptRequest
+  name: IX_RPA3_ReceiptRequest_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ReceiptRequest
+  name: IX_RPA3_ReceiptRequest_Number_Creator_ReceiptRequestID
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Number
+  - Creator
+  - ReceiptRequestID
+- table: ReceiptRequest
+  name: IX_RPA3_ReceiptRequest_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceiptRequest
+  name: IX_RPA3_ReceiptRequest_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ReceiptRequestOrdinaryItem
+  name: PK_ReceiptRequestOrdinaryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptRequestOrdinaryItemID
+- table: ReceiptRequestOrdinaryItem
+  name: IX_RPA3_ReceiptRequestOrdinaryItem_ReceiptRequestRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptRequestRef
+  included:
+  - Amount
+  - ReceiptDate
+  - State
+  - Quantity
+- table: ReceiptRequestOrdinaryItem
+  name: IX_RPA3_ReceiptRequestOrdinaryItem_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceiptRestorePayableNote
+  name: PK_RPA3_ReceiptRestorePayableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptRestorePayableNoteID
+- table: ReceiptRestorePayableNote
+  name: IX_RPA3_ReceiptRestorePayableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ReceiptRestorePayableNote
+  name: IX_RPA3_ReceiptRestorePayableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: ReceiptRestorePayableNote
+  name: IX_RPA3_ReceiptRestorePayableNote_ReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptRef
+- table: ReceiptRestorePayableNote
+  name: IX_RPA3_ReceiptRestorePayableNote_PayableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableNoteRef
+- table: ReceiptRestorePayableNote
+  name: IX_RPA3_ReceiptRestorePayableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: ReceiptRestorePayableNote
+  name: IX_RPA3_ReceiptRestorePayableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceiptRestorePayableNote
+  name: UIX_RPA3_ReceiptRestorePayableNote_PayableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PayableNoteTransactionRef
+- table: ReceiptReturnReceivableNote
+  name: PK_RPA3_ReceiptReturnReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceiptReturnReceivableNoteID
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_ReceiptRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptRef
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_AccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountingOperationRef
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_CashFlowFactorRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashFlowFactorRef
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceiptReturnReceivableNote
+  name: UIX_RPA3_ReceiptReturnReceivableNote_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: ReceiptReturnReceivableNote
+  name: IX_RPA3_ReceiptReturnReceivableNote_AccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - AccountRef
+- table: ReceivableCollateral
+  name: PK_RPA3_ReceivableCollateral
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivableCollateralID
+- table: ReceivableCollateral
+  name: IX_RPA3_ReceivableCollateral_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ReceivableCollateral
+  name: IX_RPA3_ReceivableCollateral_BankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankRef
+- table: ReceivableCollateral
+  name: IX_RPA3_ReceivableCollateral_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ReceivableCollateral
+  name: IX_RPA3_ReceivableCollateral_CollateralTypeRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CollateralTypeRef
+- table: ReceivableCollateral
+  name: IX_RPA3_ReceivableCollateral_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceivableCollateral
+  name: IX_RPA3_ReceivableCollateral_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ReceivableCollateral
+  name: UIX_RPA3_ReceivableCollateral_Number
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+- table: ReceivableCollateral
+  name: IX_RPA3_ReceivableCollateral_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ReceivableCollateralAccountingInformation
+  name: PK_RPA3_ReceivableCollateralAccountingInformation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivableCollateralAccountingInformationID
+- table: ReceivableCollateralTransaction
+  name: PK_RPA3_ReceivableCollateralTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivableCollateralTransactionID
+- table: ReceivableCollateralTransaction
+  name: IX_RPA3_ReceivableCollateralTransaction_UserRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - UserRef
+- table: ReceivableCollateralTransaction
+  name: IX_RPA3_ReceivableCollateralTransaction_ReceivableCollateralRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableCollateralRef
+- table: ReceivableNote
+  name: PK_RPA3_ReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivableNoteID
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_BankRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_CityRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CityRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_CurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CurrencyRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ReceivableNote
+  name: IX_RPA3_ReceivableNote_Deliverer
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Deliverer
+- table: ReceivableNoteAccountTransactionScenario
+  name: PK_ReceivableNoteAccountTransactionSenario
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivableNoteAccountTransactionScenarioID
+- table: ReceivableNoteTransaction
+  name: PK_RPA3_ReceivableNoteTransaction
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReceivableNoteTransactionID
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_OperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - OperationalCurrencyExchangeRateRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_BaseCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyExchangeRateRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_ReceivableNoteRef_NoteType
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+  - NoteType
+  included:
+  - State
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_PreviousTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PreviousTransactionRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_CashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CashRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ReceivableNoteTransaction
+  name: IX_RPA3_ReceivableNoteTransaction_BaseCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BaseCurrencyRef
+- table: Reconciliation
+  name: PK_RPA3_Reconciliation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationID
+- table: Reconciliation
+  name: IX_RPA3_Reconciliation_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: Reconciliation
+  name: IX_RPA3_Reconciliation_ReconciliationDeploymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReconciliationDeploymentRef
+- table: Reconciliation
+  name: IX_RPA3_Reconciliation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Reconciliation
+  name: IX_RPA3_Reconciliation_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Reconciliation
+  name: IX_RPA3_Reconciliation_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: Reconciliation
+  name: IX_RPA3_Reconciliation_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Reconciliation
+  name: IX_RPA3_Reconciliation_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Reconciliation
+  name: UIX_PRA3_Reconciliation_NumberBankAccountRefBranchRefLedgerRefFiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - BankAccountRef
+  - BranchRef
+  - FiscalYearRef
+  - LedgerRef
+- table: ReconciliationBankBillAllItem
+  name: PK_RPA3_ReconciliationBankBillAllItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationBankBillAllItemID
+- table: ReconciliationBankBillAllItem
+  name: IX_RPA3_ReconciliationBankBillAllItem_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: ReconciliationBankBillAllItem
+  name: IX_RPA3_ReconciliationBankBillAllItem_ReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReconciliationRef
+- table: ReconciliationBankBillItem
+  name: PK_RPA3_ReconciliationBankBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationBankBillItemID
+- table: ReconciliationBankBillItem
+  name: IX_RPA3_ReconciliationBankBillItem_ReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReconciliationRef
+- table: ReconciliationBankBillItem
+  name: UIX_RPA3_ReconciliationBankBillItem_BankBillItemRefDeploymentBankBillItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BankBillItemRef
+  - DeploymentBankBillItemRef
+- table: ReconciliationDeployment
+  name: PK_RPA3_ReconciliationDeployment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationDeploymentID
+- table: ReconciliationDeployment
+  name: IX_RPA3_ReconciliationDeployment_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: ReconciliationDeployment
+  name: IX_RPA3_ReconciliationDeployment_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: ReconciliationDeployment
+  name: IX_RPA3_ReconciliationDeployment_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: ReconciliationDeployment
+  name: IX_RPA3_ReconciliationDeployment_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: ReconciliationDeployment
+  name: IX_RPA3_ReconciliationDeployment_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: ReconciliationDeployment
+  name: IX_RPA3_ReconciliationDeployment_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: ReconciliationDeployment
+  name: UIX_PRA3_ReconciliationDeployment_NumberBankAccountRefBranchRefLedgerRefFiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - BankAccountRef
+  - BranchRef
+  - FiscalYearRef
+  - LedgerRef
+- table: ReconciliationDeploymentBankBillItem
+  name: PK_RPA3_ReconciliationDeploymentBankBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationDeploymentBankBillItemID
+- table: ReconciliationDeploymentBankBillItem
+  name: IX_RPA3_ReconciliationDeploymentBankBillItem_ReconciliationDeploymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReconciliationDeploymentRef
+- table: ReconciliationDeploymentTreasuryOpenItem
+  name: PK_RPA3_ReconciliationDeploymentTreasuryOpenItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationDeploymentTreasuryOpenItemID
+- table: ReconciliationDeploymentTreasuryOpenItem
+  name: IX_RPA3_ReconciliationDeploymentTreasuryOpenItem_ReconciliationDeploymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReconciliationDeploymentRef
+- table: ReconciliationDeploymentVoucherOpenItem
+  name: PK_RPA3_ReconciliationDeploymentVoucherOpenItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationDeploymentVoucherOpenItemID
+- table: ReconciliationDeploymentVoucherOpenItem
+  name: IX_RPA3_ReconciliationDeploymentVoucherOpenItem_ReconciliationDeploymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReconciliationDeploymentRef
+- table: ReconciliationOpenItemReason
+  name: PK_ReconciliationOpenItemReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationOpenItemReasonID
+- table: ReconciliationOpenItemReason
+  name: UIX_RPA3_ReconciliationOpenItemReason_ReconciliationRef_ReconciliationReasonItemType_ItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - ReconciliationRef
+  - ReconciliationReasonItemType
+  - ItemRef
+- table: ReconciliationReason
+  name: PK_ReconciliationReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationReasonId
+- table: ReconciliationReason
+  name: UIX_RPA3_ReconciliationReason_Code
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Code
+- table: ReconciliationTreasuryAllItem
+  name: PK_RPA3_ReconciliationTreasuryAllItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationTreasuryAllItemID
+- table: ReconciliationTreasuryAllItem
+  name: IX_RPA3_ReconciliationTreasuryAllItem_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: ReconciliationTreasuryAllItem
+  name: IX_RPA3_ReconciliationTreasuryAllItem_ReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReconciliationRef
+- table: ReconciliationTreasuryItem
+  name: PK_RPA3_ReconciliationTreasuryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - ReconciliationTreasuryItemID
+- table: ReconciliationTreasuryItem
+  name: IX_RPA3_ReconciliationTreasuryItem_ReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReconciliationRef
+- table: ReconciliationTreasuryItem
+  name: UIX_RPA3_ReconciliationTreasuryItem_BankAccountTransactionRefDeploymentTreasuryItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BankAccountTransactionRef
+  - DeploymentTreasuryItemRef
+- table: RefundDeposit
+  name: PK_RPA3_RefundDeposit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RefundDepositID
+- table: RefundDepositItem
+  name: PK_RPA3_RefundDepositItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RefundDepositItemID
+- table: Rejection
+  name: PK_RPA3_Rejection
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RejectionID
+- table: RejectionReceivableNote
+  name: PK_RPA3_RejectionReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RejectionReceivableNoteID
+- table: Repayment
+  name: PK_RPA3_Repayment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RepaymentID
+- table: Repayment
+  name: IX_Repayment_ContractRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ContractRef
+- table: RepaymentInstallmentInfo
+  name: PK_RPA3_RepaymentInstallmentInfo
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RepaymentInstallmentInfoID
+- table: RestoreToCash
+  name: PK_RPA3_RestoreToCash
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RestoreToCashID
+- table: RestoreToCashReceivableNote
+  name: PK_RPA3_RestoreToCashReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RestoreToCashReceivableNoteID
+- table: RpaGLComparisonReportDeployment
+  name: PK_RPA3_RpaGLComparisonReportDeployment
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - RpaGLComparisonReportDeploymentID
+- table: RpaGLComparisonReportDeployment
+  name: IX_RPA3_RpaGLComparisonReportDeployment_SLRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SLRef
+- table: SalesTerminal
+  name: PK_SalesTerminal
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - SalesTerminalID
+- table: SalesTerminal
+  name: IX_RPA3_SalesTerminal_MerchantNumber
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - PaymentServiceProviderCompanyRef
+  - TerminalNumber
+- table: Stale
+  name: PK_RPA3_Stale
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StaleID
+- table: StaleReceivableCheque
+  name: PK_RPA3_StaleReceivableCheque
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - StaleReceivableChequeID
+- table: Transfer
+  name: PK_Transfer
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferID
+- table: Transfer
+  name: IX_RPA3_Transfer_SourceBranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceBranchRef
+- table: Transfer
+  name: IX_RPA3_Transfer_DestinationBranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationBranchRef
+- table: Transfer
+  name: IX_RPA3_Transfer_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: Transfer
+  name: IX_RPA3_Transfer_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: Transfer
+  name: IX_RPA3_Transfer_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: Transfer
+  name: IX_RPA3_Transfer_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: Transfer
+  name: IX_RPA3_Transfer_Payer
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Payer
+- table: Transfer
+  name: IX_RPA3_Transfer_Receipient
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Receipient
+- table: TransferCashMoney
+  name: PK_TransferPaymentCashMoney
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferCashMoneyID
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_SourcePettyCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourcePettyCashRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_DestinationPettyCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationPettyCashRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_PaymentOperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOperationalCurrencyExchangeRateRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_ReceiptOperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptOperationalCurrencyExchangeRateRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_DestinationBankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationBankAccountRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_DestinationCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationCashRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_PaymentAccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentAccountingOperationRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_ReceiptAccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptAccountingOperationRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_SourceCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceCashRef
+- table: TransferCashMoney
+  name: IX_RPA3_TransferCashMoney_TransferRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransferRef
+- table: TransferDeposit
+  name: PK_TransferPaymentDeposit
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferDepositID
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_PaymentCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentCurrencyRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_ReceiptCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptCurrencyRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_PaymentOperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOperationalCurrencyExchangeRateRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_ReceiptOperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptOperationalCurrencyExchangeRateRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_DestinationBankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationBankAccountRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_DestinationCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationCashRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_PaymentAccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentAccountingOperationRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_ReceiptAccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptAccountingOperationRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_SourceBankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceBankAccountRef
+- table: TransferDeposit
+  name: IX_RPA3_TransferDeposit_TransferRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransferRef
+- table: TransferPayableCheque
+  name: PK_TransferPayableCheque
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferPayableChequeID
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_PaymentOperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentOperationalCurrencyExchangeRateRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_ReceiptOperationalCurrencyExchangeRateRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptOperationalCurrencyExchangeRateRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_CounterPartRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - CounterPartRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_PaymentCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentCurrencyRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_ReceiptCurrencyRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptCurrencyRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_DestinationBankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationBankAccountRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_DestinationCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationCashRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_PayableChequeBookItemRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableChequeBookItemRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_PayableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableNoteRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_PayableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PayableNoteTransactionRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_PaymentAccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - PaymentAccountingOperationRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_ReceiptAccountingOperationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceiptAccountingOperationRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_SourceBankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceBankAccountRef
+- table: TransferPayableCheque
+  name: IX_RPA3_TransferPayableCheque_TransferRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - TransferRef
+- table: TransferReceivableNote
+  name: PK_TransferReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferReceivableNoteID
+- table: TransferReceivableNote
+  name: IX_RPA3_TransferReceivableNote_DestinationCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - DestinationCashRef
+- table: TransferReceivableNote
+  name: IX_RPA3_TransferReceivableNote_ReceivableNoteRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteRef
+- table: TransferReceivableNote
+  name: IX_RPA3_TransferReceivableNote_ReceivableNoteTransactionRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - ReceivableNoteTransactionRef
+- table: TransferReceivableNote
+  name: IX_RPA3_TransferReceivableNote_SourceCashRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - SourceCashRef
+- table: TransferRestorePayableCheque
+  name: PK_TransferRestorePayableCheque
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferRestorePayableChequeID
+- table: TransferToCollector
+  name: PK_RPA3_TransferToCollector
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferToCollectorID
+- table: TransferToCollectorReceivableNote
+  name: PK_RPA3_TransferToCollectorReceivableNote
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferToCollectorReceivableNoteID
+- table: TransferToPublicIncom
+  name: PK_RPA3_TransferToPublicIncom
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferToPublicIncomID
+- table: TransferToPublicIncomItem
+  name: PK_RPA3_TransferToPublicIncomItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferToPublicIncomItemID
+- table: TransferToTreasury
+  name: PK_RPA3_TransferToTreasury
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferToTreasuryID
+- table: TransferToTreasuryItem
+  name: PK_RPA3_TransferToTreasuryItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - TransferToTreasuryItemID
+- table: VoucherDescription
+  name: PK_RPA3_VoucherDescription
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherDescriptionID
+- table: VoucherReconciliation
+  name: PK_RPA3_VoucherReconciliation
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherReconciliationID
+- table: VoucherReconciliation
+  name: IX_RPA3_VoucherReconciliation_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: VoucherReconciliation
+  name: IX_RPA3_VoucherReconciliation_VoucherReconciliationDeploymentRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherReconciliationDeploymentRef
+- table: VoucherReconciliation
+  name: IX_RPA3_VoucherReconciliation_Creator
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - Creator
+- table: VoucherReconciliation
+  name: IX_RPA3_VoucherReconciliation_LastModifier
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LastModifier
+- table: VoucherReconciliation
+  name: IX_RPA3_VoucherReconciliation_BranchRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BranchRef
+- table: VoucherReconciliation
+  name: IX_RPA3_VoucherReconciliation_LedgerRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - LedgerRef
+- table: VoucherReconciliation
+  name: IX_RPA3_VoucherReconciliation_FiscalYearRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - FiscalYearRef
+- table: VoucherReconciliation
+  name: UIX_PRA3_VoucherReconciliation_NumberBankAccountRefBranchRefLedgerRefFiscalYearRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - Number
+  - BankAccountRef
+  - BranchRef
+  - FiscalYearRef
+  - LedgerRef
+- table: VoucherReconciliationAllItem
+  name: PK_RPA3_VoucherReconciliationAllItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherReconciliationAllItemID
+- table: VoucherReconciliationAllItem
+  name: IX_RPA3_VoucherReconciliationAllItem_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: VoucherReconciliationAllItem
+  name: IX_RPA3_VoucherReconciliationAllItem_VoucherReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherReconciliationRef
+- table: VoucherReconciliationBankBillAllItem
+  name: PK_RPA3_VoucherReconciliationBankBillAllItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherReconciliationBankBillAllItemID
+- table: VoucherReconciliationBankBillAllItem
+  name: IX_RPA3_VoucherReconciliationBankBillAllItem_BankAccountRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - BankAccountRef
+- table: VoucherReconciliationBankBillAllItem
+  name: IX_RPA3_VoucherReconciliationBankBillAllItem_VoucherReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherReconciliationRef
+- table: VoucherReconciliationBankBillItem
+  name: PK_RPA3_VoucherReconciliationBankBillItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherReconciliationBankBillItemID
+- table: VoucherReconciliationBankBillItem
+  name: IX_RPA3_VoucherReconciliationBankBillItem_VoucherReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherReconciliationRef
+- table: VoucherReconciliationBankBillItem
+  name: UIX_RPA3_VoucherReconciliationBankBillItem_BankBillItemRefDeploymentBankBillItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - BankBillItemRef
+  - DeploymentBankBillItemRef
+- table: VoucherReconciliationItem
+  name: PK_RPA3_VoucherReconciliationItem
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherReconciliationItemID
+- table: VoucherReconciliationItem
+  name: IX_RPA3_VoucherReconciliationItem_VoucherReconciliationRef
+  type: NONCLUSTERED
+  unique: false
+  is_pk: false
+  columns:
+  - VoucherReconciliationRef
+- table: VoucherReconciliationItem
+  name: UIX_RPA3_VoucherReconciliationItem_VoucherItemRefDeploymentItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - VoucherItemRef
+  - DeploymentItemRef
+- table: VoucherReconciliationOpenItemReason
+  name: PK_VoucherReconciliationOpenItemReason
+  type: CLUSTERED
+  unique: true
+  is_pk: true
+  columns:
+  - VoucherReconciliationOpenItemReasonID
+- table: VoucherReconciliationOpenItemReason
+  name: UIX_RPA3_VoucherReconciliationOpenItemReason_VoucherReconciliationRef_ReconciliationReasonItemType_ItemRef
+  type: NONCLUSTERED
+  unique: true
+  is_pk: false
+  columns:
+  - VoucherReconciliationRef
+  - ReconciliationReasonItemType
+  - ItemRef

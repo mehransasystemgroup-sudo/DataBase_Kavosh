@@ -1,0 +1,213 @@
+schema: FAM3
+source: SYS3.Lookup + توزیع مشاهده‌شده
+note: ⚠️ lookup-values.csv ستون OrdinalInType دارد که ترتیب نمایش است، نه مقدار ذخیره‌شده. مرجع این فایل SYS3.Lookup.Code است.
+enums:
+- table: AssetTagTemplate
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: Collector
+  column: State
+  lookup_type: State
+  type_title_fa: وضعیت
+  values:
+  - value: '0'
+    label_fa: غیر فعال
+    source: stated_by_config
+    confidence: high
+  - value: '1'
+    label_fa: فعال
+    source: proven_by_data
+    confidence: high
+    observed_count: 2
+- table: DepreciationMethod
+  column: MethodType
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 7
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 28
+- table: DocumentInCalculationArea
+  column: AssetTransactionType
+  lookup_type: AssetTransactionType
+  type_title_fa: AssetTransactionType
+  values:
+  - value: '1'
+    label_fa: تحصیل
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: محاسبه استهلاک
+    source: stated_by_config
+    confidence: high
+  - value: '3'
+    label_fa: تغییر نرخ و روش
+    source: stated_by_config
+    confidence: high
+  - value: '4'
+    label_fa: تجدید ارزیابی
+    source: stated_by_config
+    confidence: high
+  - value: '5'
+    label_fa: فروش
+    source: stated_by_config
+    confidence: high
+  - value: '6'
+    label_fa: کنارگذاری
+    source: stated_by_config
+    confidence: high
+  - value: '7'
+    label_fa: برگشت از کنارگذاری
+    source: stated_by_config
+    confidence: high
+  - value: '8'
+    label_fa: حذف
+    source: stated_by_config
+    confidence: high
+  - value: '9'
+    label_fa: اسقاط
+    source: stated_by_config
+    confidence: high
+  - value: '10'
+    label_fa: برگشت ازاسقاط
+    source: stated_by_config
+    confidence: high
+  - value: '11'
+    label_fa: مخارج پس از تحصیل
+    source: stated_by_config
+    confidence: high
+  - value: '12'
+    label_fa: تغییر قیمت
+    source: stated_by_config
+    confidence: high
+  - value: '13'
+    label_fa: اعلامیه خروج موقت
+    source: stated_by_config
+    confidence: high
+  - value: '14'
+    label_fa: برگشت از خروج موقت
+    source: stated_by_config
+    confidence: high
+  - value: '15'
+    label_fa: ارسال به انبار
+    source: stated_by_config
+    confidence: high
+  - value: '16'
+    label_fa: تحویل از انبار
+    source: stated_by_config
+    confidence: high
+  - value: '17'
+    label_fa: انتقال داخلی
+    source: stated_by_config
+    confidence: high
+  - value: '18'
+    label_fa: استقرار
+    source: stated_by_config
+    confidence: high
+  - value: '19'
+    label_fa: خروج از سازمان
+    source: stated_by_config
+    confidence: high
+  - value: '20'
+    label_fa: انتقال بین شعب
+    source: stated_by_config
+    confidence: high
+  - value: '21'
+    label_fa: اهداء
+    source: stated_by_config
+    confidence: high
+  - value: '22'
+    label_fa: مستهلک کردن دارایی
+    source: stated_by_config
+    confidence: high
+  - value: '23'
+    label_fa: استقرار حوزه محاسباتی
+    source: stated_by_config
+    confidence: high
+  - value: '24'
+    label_fa: انتقال قطعی
+    source: stated_by_config
+    confidence: high
+  - value: '25'
+    label_fa: حادثه دیده
+    source: stated_by_config
+    confidence: high
+  - value: '26'
+    label_fa: اصلاحیه رسید تحصیل
+    source: stated_by_config
+    confidence: high
+  - value: '27'
+    label_fa: درخواست مجوز
+    source: stated_by_config
+    confidence: high
+  - value: '28'
+    label_fa: صورت حساب رسیده پس از اخذ مجوز
+    source: stated_by_config
+    confidence: high
+  - value: '29'
+    label_fa: پروانه خروج
+    source: stated_by_config
+    confidence: high
+- table: InsuranceAccountConfiguration
+  column: InsuranceAccountGroupType
+  lookup_type: InsuranceAccountGroupType
+  type_title_fa: InsuranceAccountGroupType
+  values:
+  - value: '1'
+    label_fa: پیش پرداخت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '2'
+    label_fa: هزینه بیمه
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '3'
+    label_fa: رابط پرداخت
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '4'
+    label_fa: مالیات پرداختنی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+  - value: '5'
+    label_fa: عوارض پرداختنی
+    source: proven_by_data
+    confidence: high
+    observed_count: 1
+- table: SettlementPlace
+  column: StaticSettlementPlaceType
+  nullable: true
+  lookup_type: null
+  values:
+  - value: '1'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1
+  - value: '2'
+    label_fa: null
+    source: unknown
+    confidence: low
+    observed_count: 1

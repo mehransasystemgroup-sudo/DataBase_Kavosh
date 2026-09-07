@@ -1,0 +1,18 @@
+schema: QCM3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: QualityInspectionResult
+  title_fa: سند تایید / رد کیفی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: QualityInspectionResultItem
+  title_fa: قلم تایید / رد کیفی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
+- name: QualityInspectionResultItemTrackingFactor
+  title_fa: عامل کنترل موجودی
+  source: stated_by_user
+  confidence: medium
+  origin: glossary_entity_catalog
