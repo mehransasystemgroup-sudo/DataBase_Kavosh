@@ -1,8 +1,8 @@
 name: ساخت نسخهٔ ویندوز
 
 # نسخهٔ نصب‌شونده روی خودِ ویندوز ساخته می‌شود، نه با شبیه‌ساز: هم بوت‌لودر
-# اصلی PyInstaller به کار می‌رود، هم Inno Setup واقعی، و هم اجرای آزمایشی
-# روی همان سیستم‌عاملی که کاربر نهایی دارد.
+# اصلی PyInstaller به کار می‌رود، هم NSIS واقعی، و هم نصب و اجرا و حذف
+# آزمایشی روی همان سیستم‌عاملی که کاربر نهایی دارد.
 
 on:
   push:
@@ -82,9 +82,55 @@ jobs:
           Write-Host "آزمون دود با موفقیت گذشت — $($health.kb.tables) جدول"
 
       - name: ساخت نصب‌کننده
+        shell: pwsh
         run: |
-          choco install innosetup --no-progress -y
-          & "$env:ProgramFiles(x86)\Inno Setup 6\ISCC.exe" packaging\installer.iss
+          # NSIS روی ایمیج ویندوزی گیت‌هاب از پیش نصب است؛ اگر روزی نبود، نصبش
+          # می‌کنیم تا گردش‌کار به‌خاطر تغییر ایمیج نشکند.
+          $makensis = "${env:ProgramFiles(x86)}\NSIS\makensis.exe"
+          if (-not (Test-Path $makensis)) {
+              choco install nsis --no-progress -y
+          }
+          & $makensis /V2 packaging\installer.nsi
+          if ($LASTEXITCODE -ne 0) { throw "ساخت نصب‌کننده شکست خورد." }
+
+      - name: آزمون نصب و حذف روی خودِ ویندوز
+        shell: pwsh
+        run: |
+          # آنچه اینجا سنجیده می‌شود، خودِ نصب‌کننده است: نصب بی‌صدا، اجرای
+          # برنامه از مسیر نصب‌شده، و حذف کامل بدون آنکه دانش کاربر پاک شود.
+          $setup = Get-Item packaging\output\KavoshDB-Setup-*.exe
+          $dir   = "$env:LOCALAPPDATA\Programs\DataBase Kavosh"
+
+          Start-Process -FilePath $setup.FullName -ArgumentList "/S" -Wait
+          if (-not (Test-Path "$dir\KavoshDB.exe")) { throw "نصب انجام نشد." }
+
+          $shortcut = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\DataBase Kavosh"
+          if (-not (Test-Path $shortcut)) { throw "میان‌بر منوی شروع ساخته نشد." }
+
+          $key = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\DataBaseKavosh"
+          if (-not (Test-Path $key)) { throw "برنامه در فهرست حذف ویندوز ثبت نشد." }
+
+          $env:KAVOSH_NO_BROWSER = "1"
+          $app = Start-Process -FilePath "$dir\KavoshDB.exe" -PassThru
+          $ready = $false
+          foreach ($i in 1..90) {
+              Start-Sleep -Seconds 2
+              try { Invoke-RestMethod "http://127.0.0.1:8321/api/health" -TimeoutSec 3 | Out-Null; $ready = $true; break } catch { }
+          }
+          $app | Stop-Process -Force
+          if (-not $ready) { throw "نسخهٔ نصب‌شده بالا نیامد." }
+
+          # دانش کاربر باید از حذف برنامه جان سالم به در ببرد
+          $data = "$env:LOCALAPPDATA\KavoshDB"
+          if (-not (Test-Path $data)) { throw "پوشهٔ دادهٔ کاربر ساخته نشد." }
+
+          Start-Process -FilePath "$dir\Uninstall.exe" -ArgumentList "/S" -Wait
+          Start-Sleep -Seconds 5
+          if (Test-Path "$dir\KavoshDB.exe") { throw "حذف ناقص بود." }
+          if (Test-Path $key)                 { throw "کلید رجیستری باقی ماند." }
+          if (-not (Test-Path $data))         { throw "حذف برنامه دانش کاربر را پاک کرد." }
+
+          Write-Host "نصب، اجرا و حذف — هر سه درست"
 
       - uses: actions/upload-artifact@v4
         with:
