@@ -98,7 +98,7 @@ jobs:
         run: |
           # آنچه اینجا سنجیده می‌شود، خودِ نصب‌کننده است: نصب بی‌صدا، اجرای
           # برنامه از مسیر نصب‌شده، و حذف کامل بدون آنکه دانش کاربر پاک شود.
-          $setup = Get-Item packaging\output\KavoshDB-Setup-*.exe
+          $setup = Get-Item packaging\KavoshDB-Setup-*.exe
           $dir   = "$env:LOCALAPPDATA\Programs\DataBase Kavosh"
 
           Start-Process -FilePath $setup.FullName -ArgumentList "/S" -Wait
@@ -136,12 +136,12 @@ jobs:
         with:
           name: KavoshDB-windows
           path: |
-            packaging/output/*.exe
+            packaging/*.exe
             dist/KavoshDB/
 
       - name: انتشار در Releases
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: packaging/output/*.exe
+          files: packaging/*.exe
           generate_release_notes: true

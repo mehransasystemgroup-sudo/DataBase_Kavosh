@@ -98,7 +98,7 @@ Releases منتشر می‌کند. دستی هم می‌شود ساخت:
 
 ```
 pyinstaller packaging/kavosh.spec --noconfirm
-makensis packaging/installer.nsi        # خروجی در packaging/output/
+makensis packaging/installer.nsi        # خروجی: packaging/KavoshDB-Setup-1.0.0.exe
 ```
 
 ---

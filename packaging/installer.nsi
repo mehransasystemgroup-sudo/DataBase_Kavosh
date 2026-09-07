@@ -1,7 +1,7 @@
 ﻿; نصب‌کنندهٔ ویندوزی کاوشگر پایگاه داده — NSIS 3
 ;
 ; ساخت:  makensis packaging/installer.nsi
-; خروجی: packaging/output/KavoshDB-Setup-1.0.0.exe
+; خروجی: packaging/KavoshDB-Setup-1.0.0.exe
 ;
 ; نصب برای کاربر جاری انجام می‌شود (بدون UAC): برنامه سروری محلی است، چیزی در
 ; سطح سیستم نمی‌نویسد و دانش کاربر در %LOCALAPPDATA%\KavoshDB می‌ماند. همین
@@ -26,7 +26,9 @@ ManifestDPIAware true
 !endif
 
 Name "${APP_NAME}"
-OutFile "output\KavoshDB-Setup-${APP_VERSION}.exe"
+; خروجی کنار خودِ اسکریپت ساخته می‌شود، نه در زیرپوشه: NSIS پوشهٔ ناموجود
+; را نمی‌سازد و یک کلون تازه زیرپوشه‌ای ندارد، پس ساخت بی‌مقدمه شکست می‌خورد.
+OutFile "KavoshDB-Setup-${APP_VERSION}.exe"
 InstallDir "$LOCALAPPDATA\Programs\${APP_NAME_EN}"
 InstallDirRegKey HKCU "Software\${APP_KEY}" "InstallDir"
 RequestExecutionLevel user
