@@ -1,0 +1,359 @@
+schema: MMG3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: CapacityType
+  title_fa: نوع ظرفیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CapacityTypeExceptionDate
+  title_fa: تاریخ استثنا نوع ظرفیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Defect
+  title_fa: عیب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DefectCharacteristic
+  title_fa: مشخصه عیب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DefectGroupMember
+  title_fa: عضو گروه عیب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DefectReason
+  title_fa: دلیل عیب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DefectRecording
+  title_fa: ثبت عیب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DefectRecordingCharacteristic
+  title_fa: مشخصه ثبت عیب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DefectRecordingReason
+  title_fa: دلیل ثبت عیب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Equipment
+  title_fa: تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentCategory
+  title_fa: دسته تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentCategoryAssignment
+  title_fa: تخصیص دسته تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentCategoryItem
+  title_fa: قلم دسته تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentHistory
+  title_fa: تاریخچه تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentProfile
+  title_fa: شناسنامه تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentProfileCharacteristic
+  title_fa: مشخصه شناسنامه تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EquipmentProfileTemplate
+  title_fa: الگوی شناسنامه تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EquipmentProfileTemplateCharacteristic
+  title_fa: مشخصه الگوی شناسنامه تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: FactoryCalendar
+  title_fa: تقویم کارخانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FactoryCalendarSpecialDate
+  title_fa: تاریخ ویژه تقویم کارخانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Holiday
+  title_fa: تعطیل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaterialControlPolicy
+  title_fa: سیاست کنترل ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialControlPolicyItem
+  title_fa: قلم سیاست کنترل ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialControlPolicyPart
+  title_fa: قطعه سیاست کنترل ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartCapacityProfile
+  title_fa: شناسنامه ظرفیت قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartCapacityProfileStandardValue
+  title_fa: مقدار استاندارد شناسنامه ظرفیت قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartCapacityProfileWorkCenter
+  title_fa: مرکز کار شناسنامه ظرفیت قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartCapacityProfileWorkCenterCapacityType
+  title_fa: نوع ظرفیت مرکز کار شناسنامه ظرفیت قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartDefectExtension
+  title_fa: تمدید عیب قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartDefectExtensionRelatedDefectGroup
+  title_fa: گروه عیب مرتبط تمدید عیب قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PublicHoliday
+  title_fa: تعطیل رسمی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCCP
+  title_fa: RCCP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCCPCapacity
+  title_fa: ظرفیت RCCP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCCPCapacityDetail
+  title_fa: جزئیات ظرفیت RCCP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCCPCapacityGroup
+  title_fa: گروه ظرفیت RCCP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCCPCapacityShiftDate
+  title_fa: تاریخ شیفت ظرفیت RCCP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCCPCapacityShiftOffDate
+  title_fa: تاریخ شیفت ظرفیت RCCP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCCPCapacityType
+  title_fa: نوع ظرفیت RCCP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCCPWorkCenter
+  title_fa: مرکز کار RCCP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ResourceTool
+  title_fa: ابزار منبع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ResourceToolRelatedModule
+  title_fa: ماژول مرتبط ابزار منبع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Shift
+  title_fa: شیفت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShiftBreak
+  title_fa: وقفه شیفت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShiftGrouping
+  title_fa: گروهبندی شیفت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShiftGroupingDay
+  title_fa: روز گروهبندی شیفت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShiftShiftBreak
+  title_fa: وقفه شیفت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: StandardValue
+  title_fa: مقدار استاندارد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenter
+  title_fa: مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterCapacity
+  title_fa: ظرفیت مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterCapacityConsumption
+  title_fa: مصرف ظرفیت مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterCapacityDetail
+  title_fa: جزئیات ظرفیت مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterCapacityEquipment
+  title_fa: تجهیزات ظرفیت مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterCapacityPersonnel
+  title_fa: پرسنل ظرفیت مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterCapacityShiftGroupingAndFactoryCalendar
+  title_fa: تقویم کارخانه گروهبندی شیفت ظرفیت مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterInterStore
+  title_fa: انبار بین مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterPersonnel
+  title_fa: پرسنل مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterStandardValue
+  title_fa: مقدار استاندارد مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

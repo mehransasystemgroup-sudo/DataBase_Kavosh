@@ -46,6 +46,24 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ContractType
+  title_fa: نوع قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractorType
+  title_fa: نوع پیمانکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Factor
+  title_fa: عامل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: IndetermineReceiptAndPayment
   title_fa: دریافت و پرداخت غیر قطعی
   source: stated_by_user
@@ -66,11 +84,35 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PayCommitmentType
+  title_fa: نوع تعهد حقوق
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayCommitmentTypeFactor
+  title_fa: عامل نوع تعهد حقوق
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: PaymentInfo
   title_fa: اطلاعات دریافت/پرداخت
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PaymentInfoItem
+  title_fa: قلم اطلاعات پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentInfoItemType
+  title_fa: نوع قلم اطلاعات پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: RelatedContract
   title_fa: قراردادهای مرتبط
   source: stated_by_user
@@ -81,3 +123,10 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: TenderParticipant
+  title_fa: شرکت‌کننده مناقصه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix

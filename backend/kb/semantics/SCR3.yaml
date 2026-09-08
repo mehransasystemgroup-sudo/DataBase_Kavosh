@@ -1,0 +1,202 @@
+schema: SCR3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: BufferStoreTrace
+  title_fa: ردیابی انبار بافر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BufferStoreTracePartRequest
+  title_fa: درخواست قطعه ردیابی انبار بافر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BufferStoreTraceProcurmentOrderExtensionMaterial
+  title_fa: ماده تمدید سفارش تدارکات ردیابی انبار بافر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDeliveryExtension
+  title_fa: تمدید تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDeliveryExtensionLowerGrade
+  title_fa: درجه پایین تمدید تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDeliveryExtensionMaterial
+  title_fa: ماده تمدید تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDeliveryExtensionMaterialTrackingFactor
+  title_fa: عامل ردیابی ماده تمدید تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDeliveryExtensionProduct
+  title_fa: محصول تمدید تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDeliveryExtensionScrap
+  title_fa: ضایعات تمدید تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDeliveryExtensionSideProduct
+  title_fa: محصول سمت تمدید تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDeliveryReturnExtension
+  title_fa: تمدید برگشت تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProcurementDeliveryReturnExtensionItem
+  title_fa: قلم تمدید برگشت تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProcurementDeliveryReturnExtensionMaterial
+  title_fa: ماده تمدید برگشت تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProcurementDeliveryReturnExtensionScrap
+  title_fa: ضایعات تمدید برگشت تحویل تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProcurementDirectDeliveryReceiptExtension
+  title_fa: تمدید فیش تحویل مستقیم تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDirectDeliveryReceiptExtensionLowerGrade
+  title_fa: درجه پایین تمدید فیش تحویل مستقیم تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDirectDeliveryReceiptExtensionProduct
+  title_fa: محصول تمدید فیش تحویل مستقیم تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDirectDeliveryReceiptExtensionScrap
+  title_fa: ضایعات تمدید فیش تحویل مستقیم تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurementDirectDeliveryReceiptExtensionSideProduct
+  title_fa: محصول سمت تمدید فیش تحویل مستقیم تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurmentOrderExtension
+  title_fa: تمدید سفارش تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurmentOrderExtensionItem
+  title_fa: قلم تمدید سفارش تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurmentOrderExtensionLowerGrade
+  title_fa: درجه پایین تمدید سفارش تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurmentOrderExtensionMaterial
+  title_fa: ماده تمدید سفارش تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurmentOrderExtensionScrap
+  title_fa: ضایعات تمدید سفارش تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurmentOrderExtensionSideProduct
+  title_fa: محصول سمت تمدید سفارش تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProcurmentSupplierExtension
+  title_fa: تمدید تأمین‌کننده تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProcurmentSupplierExtensionStore
+  title_fa: انبار تمدید تأمین‌کننده تدارکات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SubcontractingOrder
+  title_fa: سفارش پیمانکاری فرعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SubcontractingOrderLowerGrade
+  title_fa: درجه پایین سفارش پیمانکاری فرعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SubcontractingOrderMaterial
+  title_fa: ماده سفارش پیمانکاری فرعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SubcontractingOrderScrap
+  title_fa: ضایعات سفارش پیمانکاری فرعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SubcontractingOrderSideProduct
+  title_fa: محصول سمت سفارش پیمانکاری فرعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

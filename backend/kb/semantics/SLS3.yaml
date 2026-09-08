@@ -1,0 +1,1868 @@
+schema: SLS3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: AccountReview
+  title_fa: بازبینی حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AccountReviewCollectDataInfo
+  title_fa: اطلاعات داده وصول بازبینی حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: Agent
+  title_fa: عامل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: AuthorizedCustomerProductGroup
+  title_fa: گروه محصول مشتری مجاز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankPartnerCompany
+  title_fa: شرکت شریک بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BlockedEntity
+  title_fa: موجودیت مسدود
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BlockedProductTrackingFactor
+  title_fa: عامل ردیابی محصول مسدود
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BlockedReason
+  title_fa: دلیل مسدود
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BlockedReasonUser
+  title_fa: کاربر دلیل مسدود
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Broker
+  title_fa: کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BrokerAddress
+  title_fa: نشانی کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BrokerCustomerGroup
+  title_fa: گروه مشتری کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BrokerGroupMember
+  title_fa: عضو گروه کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BrokerReceivableNote
+  title_fa: سفته دریافتنی کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BrokerSalesEmployeeRole
+  title_fa: نقش کارمند فروش کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BrokerSalesOffice
+  title_fa: دفتر فروش کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BrokerSalesTerritory
+  title_fa: قلمرو فروش کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BrokerService
+  title_fa: خدمت کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BrokerServiceCutsAndCosts
+  title_fa: هزینه‌ها کسورات خدمت کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BrokerServiceCutsAndCostsBrokerService
+  title_fa: خدمت کارگزار هزینه‌ها کسورات خدمت کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BrokerServiceDateRanges
+  title_fa: بازه‌ها تاریخ خدمت کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BusinessPolicyGroup
+  title_fa: گروه سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyGroupItem
+  title_fa: قلم گروه سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyUser
+  title_fa: کاربر سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalculationBaseTableStructure
+  title_fa: ساختار جدول پایه محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationPeriod
+  title_fa: دوره محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationPeriodHCMIntegration
+  title_fa: یکپارچگی HCM دوره محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationTableBody
+  title_fa: بدنه جدول محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationTableBodyRow
+  title_fa: ردیف بدنه جدول محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CommissionCalculation
+  title_fa: محاسبه پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CommissionCalculationItem
+  title_fa: قلم محاسبه پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CommissionFactor
+  title_fa: عامل پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommissionFactorItem
+  title_fa: قلم عامل پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommissionReviewSetting
+  title_fa: تنظیم بازبینی پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommissionReviewSettingItem
+  title_fa: قلم تنظیم بازبینی پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommissionVoucher
+  title_fa: سند پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommissionVoucherItem
+  title_fa: قلم سند پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommissionVoucherSpecification
+  title_fa: مشخصات سند پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommissionVoucherSpecificationSL
+  title_fa: معین مشخصات سند پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommissionVoucherSpecificationSLFactor
+  title_fa: عامل معین مشخصات سند پورسانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConsignmentDocument
+  title_fa: سند امانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConsignmentDocumentItem
+  title_fa: قلم سند امانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConsignmentSettlement
+  title_fa: تسویه امانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConsignmentSettlementItem
+  title_fa: قلم تسویه امانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Contract
+  title_fa: قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractHistory
+  title_fa: تاریخچه قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractItem
+  title_fa: قلم قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractItemPolicyResult
+  title_fa: نتیجه سیاست قلم قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractPolicy
+  title_fa: سیاست قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractPolicyResult
+  title_fa: نتیجه سیاست قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractTransformedQuantity
+  title_fa: مقدار تبدیل‌شده قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContributionInTaxPayerBillCollectionLog
+  title_fa: گزارش رویداد وصول صورت‌حساب مؤدی سهم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CreditGrant
+  title_fa: اعطا اعتبار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Customer
+  title_fa: مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerAddress
+  title_fa: نشانی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerAgent
+  title_fa: عامل مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CustomerAttachment
+  title_fa: پیوست مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerBroker
+  title_fa: کارگزار مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerCarrier
+  title_fa: حامل مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerChange
+  title_fa: تغییر مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerChangeDetail
+  title_fa: جزئیات تغییر مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerChangeStateReason
+  title_fa: دلیل وضعیت تغییر مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerCurrency
+  title_fa: ارز مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerEPayment
+  title_fa: پرداخت مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerExtraFields
+  title_fa: فیلدها تکمیلی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerGroupBroker
+  title_fa: کارگزار گروه مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerGroupIcon
+  title_fa: آیکون گروه مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerGroupMembers
+  title_fa: اعضا گروه مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerGroupSalesOffice
+  title_fa: دفتر فروش گروه مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerPaymentAgreement
+  title_fa: موافقتنامه پرداخت مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerProduct
+  title_fa: محصول مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesArea
+  title_fa: حوزه فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesOffice
+  title_fa: دفتر فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalCurrency
+  title_fa: ارز پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalNewsItem
+  title_fa: قلم خبر پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalPaymentAgreement
+  title_fa: موافقتنامه پرداخت پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalProduct
+  title_fa: محصول پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalProductInventoryRemainingSettingLimit
+  title_fa: سقف تنظیم باقی‌مانده انبار محصول پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalProductInventoryRemainingSettingVisibility
+  title_fa: نمایش تنظیم باقی‌مانده انبار محصول پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalProductSpecificationConfig
+  title_fa: پیکربندی مشخصات محصول پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalProductUnit
+  title_fa: واحد محصول پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalReceivedLoad
+  title_fa: بار دریافت‌شده پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalSaleRequest
+  title_fa: درخواست فروش پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalSalesArea
+  title_fa: حوزه فروش پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalSalesOffice
+  title_fa: دفتر فروش پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalSalesType
+  title_fa: نوع فروش پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalShoppingCart
+  title_fa: سبد خرید پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalShoppingCartItem
+  title_fa: قلم سبد خرید پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalStore
+  title_fa: انبار پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalUser
+  title_fa: کاربر پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalUserGroup
+  title_fa: گروه کاربر پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalUserGroupMember
+  title_fa: عضو گروه کاربر پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalUserGroupPermission
+  title_fa: مجوز گروه کاربر پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalUserGroupReportPermission
+  title_fa: مجوز گزارش گروه کاربر پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalUserPermission
+  title_fa: مجوز کاربر پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesPortalUserReportPermission
+  title_fa: مجوز گزارش کاربر پرتال فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSalesType
+  title_fa: نوع فروش مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerTagCategory
+  title_fa: دسته برچسب مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DeliverySchedule
+  title_fa: زمانبندی تحویل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DeliveryScheduleItem
+  title_fa: قلم زمانبندی تحویل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Division
+  title_fa: تقسیمات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DocumentRelatedSalesEmployeeRole
+  title_fa: نقش کارمند فروش مرتبط سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ForcedProductPlan
+  title_fa: طرح محصول اجباری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ForcedProductPlanItem
+  title_fa: قلم طرح محصول اجباری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: FreeProductDetailedProducts
+  title_fa: محصولات تفصیلی محصول رایگان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FreeProductDiscountPolicy
+  title_fa: سیاست تخفیف محصول رایگان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FreeProductReplacementProduct
+  title_fa: محصول جایگزینی محصول رایگان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FreeProductUser
+  title_fa: کاربر محصول رایگان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldDevice
+  title_fa: دستگاه هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldPos
+  title_fa: صندوق فروش هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldPrintableDocument
+  title_fa: سند قابل چاپ هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldPrinter
+  title_fa: چاپگر هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Invoice
+  title_fa: فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceAnalysisAmount
+  title_fa: مبلغ تحلیل فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceBankPartnerCompany
+  title_fa: شرکت شریک بانک فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceCountDailyAverage
+  title_fa: میانگین روزانه تعداد فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceFinalization
+  title_fa: نهایی‌سازی فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceItem
+  title_fa: قلم فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceItemPolicyResult
+  title_fa: نتیجه سیاست قلم فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceItemProductDetail
+  title_fa: جزئیات محصول قلم فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceItemQuantityChange
+  title_fa: تغییر مقدار قلم فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoicePolicyResult
+  title_fa: نتیجه سیاست فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoicePrepaymenAmountAnalysis
+  title_fa: تحلیل مبلغ پیش‌پرداخت فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LostSaleRequestItem
+  title_fa: قلم درخواست فروش مفقود
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ManualCommissionFactorData
+  title_fa: داده عامل پورسانت دستی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ManualCommissionFactorDataItem
+  title_fa: قلم داده عامل پورسانت دستی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MobileServiceUpdateSettings
+  title_fa: تنظیمات به‌روزرسانی خدمت موبایل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: NonDefinitiveBusinessPolicyUser
+  title_fa: کاربر سیاست کسب‌وکار قطعی غیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NonDefinitivePriceListUser
+  title_fa: کاربر لیست قیمت قطعی غیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OneTimeCustomer
+  title_fa: مشتری زمان یک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Order
+  title_fa: سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderCarrier
+  title_fa: حامل سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderCustomAddress
+  title_fa: نشانی سفارشی سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderItem
+  title_fa: قلم سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderItemPolicyResult
+  title_fa: نتیجه سیاست قلم سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderItemProductDetail
+  title_fa: جزئیات محصول قلم سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderPolicyResult
+  title_fa: نتیجه سیاست سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PackagingMethod
+  title_fa: روش بسته‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PackagingMethodItem
+  title_fa: قلم روش بسته‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PartInvoicePermit
+  title_fa: مجوز فاکتور قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PaymentAgreement
+  title_fa: موافقتنامه پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentAgreementItem
+  title_fa: قلم موافقتنامه پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceList
+  title_fa: لیست قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceListConditionRow
+  title_fa: ردیف شرط لیست قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceListItem
+  title_fa: قلم لیست قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceListParameters
+  title_fa: پارامترها لیست قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceListParametersItem
+  title_fa: قلم پارامترها لیست قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceListResultRow
+  title_fa: ردیف نتیجه لیست قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Product
+  title_fa: محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductAttachment
+  title_fa: پیوست محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductBasketProduct
+  title_fa: محصول سبد محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductCharacteristic
+  title_fa: مشخصه محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductCharacteristicPattern
+  title_fa: الگوی مشخصه محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductDependantProduct
+  title_fa: محصول وابسته محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductExtraFields
+  title_fa: فیلدها تکمیلی محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductGroupMember
+  title_fa: عضو گروه محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductInvoicePermit
+  title_fa: مجوز فاکتور محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductList
+  title_fa: لیست محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductListCustomer
+  title_fa: مشتری لیست محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductListGroupCustomer
+  title_fa: مشتری گروه لیست محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductListProduct
+  title_fa: محصول لیست محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductListSalesOffice
+  title_fa: دفتر فروش لیست محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductPack
+  title_fa: بسته محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductPackItem
+  title_fa: قلم بسته محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductPackaging
+  title_fa: بسته‌بندی محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductRationing
+  title_fa: سهمیه‌بندی محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductSupplementaryProduct
+  title_fa: محصول مکمل محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductTagCategory
+  title_fa: دسته برچسب محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductTrackingFactorPriority
+  title_fa: اولویت عامل ردیابی محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductUnit
+  title_fa: واحد محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductUnitTolerance
+  title_fa: رواداری واحد محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Quotation
+  title_fa: استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: QuotationItem
+  title_fa: قلم استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: QuotationItemPolicyResult
+  title_fa: نتیجه سیاست قلم استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: QuotationPolicyResult
+  title_fa: نتیجه سیاست استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RationableStock
+  title_fa: موجودی قابل سهمیه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationableStockIncreaseDecrease
+  title_fa: کاهش افزایش موجودی قابل سهمیه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Rationing
+  title_fa: سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingDocument
+  title_fa: سند سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingException
+  title_fa: استثنا سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingExceptionItem
+  title_fa: قلم استثنا سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingItem
+  title_fa: قلم سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingItemIncreaseDecrease
+  title_fa: کاهش افزایش قلم سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingItemTransformedQuantity
+  title_fa: مقدار تبدیل‌شده قلم سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingParallelSegmentation
+  title_fa: بخش‌بندی موازی سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingPercentTemplate
+  title_fa: الگوی درصد سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RationingPercentTemplateItem
+  title_fa: قلم الگوی درصد سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RationingPeriod
+  title_fa: دوره سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingSegmentationSecurity
+  title_fa: امنیت بخش‌بندی سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RationingSetting
+  title_fa: تنظیم سهمیه‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReturnDocumentAdjustmentData
+  title_fa: داده تعدیل سند برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnInvoice
+  title_fa: فاکتور برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnInvoiceItem
+  title_fa: قلم فاکتور برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnInvoiceItemInvVoucherItemTrackingFactor
+  title_fa: عامل ردیابی قلم سند انبار قلم فاکتور برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnInvoiceItemPolicyResult
+  title_fa: نتیجه سیاست قلم فاکتور برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnInvoicePolicyResult
+  title_fa: نتیجه سیاست فاکتور برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnInvoiceReplacedProduct
+  title_fa: محصول جایگزین‌شده فاکتور برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnPermit
+  title_fa: مجوز برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnPermitItem
+  title_fa: قلم مجوز برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnPermitItemPolicyResult
+  title_fa: نتیجه سیاست قلم مجوز برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnPermitPolicyResult
+  title_fa: نتیجه سیاست مجوز برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReturnReason
+  title_fa: دلیل برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReviewDatabase
+  title_fa: پایگاه داده بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReviewInvoice
+  title_fa: فاکتور بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReviewInvoicePolicyResult
+  title_fa: نتیجه سیاست فاکتور بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReviewOrder
+  title_fa: سفارش بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReviewOrderPolicyResult
+  title_fa: نتیجه سیاست سفارش بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReviewQuotation
+  title_fa: استعلام بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReviewQuotationPolicyResult
+  title_fa: نتیجه سیاست استعلام بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReviewReturnInvoice
+  title_fa: فاکتور برگشت بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReviewReturnInvoicePolicyResult
+  title_fa: نتیجه سیاست فاکتور برگشت بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReviewSalesRequest
+  title_fa: درخواست فروش بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReviewSalesRequestPolicyResult
+  title_fa: نتیجه سیاست درخواست فروش بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReviewSalesStatement
+  title_fa: صورت فروش بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReviewSalesStatementPolicyResult
+  title_fa: نتیجه سیاست صورت فروش بازبینی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SaleRequest
+  title_fa: درخواست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SaleRequestItem
+  title_fa: قلم درخواست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SaleRequestItemPolicyResult
+  title_fa: نتیجه سیاست قلم درخواست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SaleRequestPolicyResult
+  title_fa: نتیجه سیاست درخواست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SaleableWithoutRationingTrackingFactor
+  title_fa: عامل ردیابی سهمیه‌بندی بدون قابل فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesArea
+  title_fa: حوزه فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesAreaGroupMember
+  title_fa: عضو گروه حوزه فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesChannel
+  title_fa: کانال فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesCommissionContext
+  title_fa: زمینه پورسانت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SalesComparisonReportDateRange
+  title_fa: بازه تاریخ گزارش مقایسه فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesDocumentAnalysis
+  title_fa: تحلیل سند فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesDocumentItemQuantityAdjustment
+  title_fa: تعدیل مقدار قلم سند فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesDocumentReservationHistory
+  title_fa: تاریخچه رزرو سند فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesEmployeeRole
+  title_fa: نقش کارمند فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesEmployeeRoleSalesDocument
+  title_fa: سند فروش نقش کارمند فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesGroup
+  title_fa: گروه فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesGroupBroker
+  title_fa: کارگزار گروه فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesGroupSalesTerritory
+  title_fa: قلمرو فروش گروه فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesInventoryAnalysis
+  title_fa: تحلیل انبار فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesMtoSpecification
+  title_fa: مشخصات MTO فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesMtoSpecificationItem
+  title_fa: قلم مشخصات MTO فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesNumberReservation
+  title_fa: رزرو شماره فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOffice
+  title_fa: دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOfficeCurrency
+  title_fa: ارز دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOfficeInventory
+  title_fa: انبار دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOfficePolicy
+  title_fa: سیاست دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOfficeRegionalDivision
+  title_fa: تقسیمات کشوری دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOfficeSalesArea
+  title_fa: حوزه فروش دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOfficeTransportationUnit
+  title_fa: واحد حمل و نقل دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SalesOfficeUser
+  title_fa: کاربر دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOrganization
+  title_fa: سازمان فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesPersonRestrictionRule
+  title_fa: قاعده محدودیت شخص فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesPersonRestrictionRuleItem
+  title_fa: قلم قاعده محدودیت شخص فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesPolicyConditionRowExtraProperty
+  title_fa: خصوصیت تکمیلی ردیف شرط سیاست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesPolicyDocumentExtraProperty
+  title_fa: خصوصیت تکمیلی سند سیاست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesPolicyExtraProperty
+  title_fa: خصوصیت تکمیلی سیاست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesPolicyTextualInterpretation
+  title_fa: تفسیر متنی سیاست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatement
+  title_fa: صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementItem
+  title_fa: قلم صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementItemPolicyResult
+  title_fa: نتیجه سیاست قلم صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementPolicyResult
+  title_fa: نتیجه سیاست صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementWageResult
+  title_fa: نتیجه دستمزد صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesTerritorialization
+  title_fa: قلمروبندی فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesTerritory
+  title_fa: قلمرو فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesTerritoryRegion
+  title_fa: منطقه قلمرو فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesType
+  title_fa: نوع فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesTypeItem
+  title_fa: قلم نوع فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ScriptTemplate
+  title_fa: الگوی اسکریپت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceCurrency
+  title_fa: ارز سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceKeyValueConfiguration
+  title_fa: پیکربندی مقدار کلید سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceNewsItem
+  title_fa: قلم خبر سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServicePanelConfig
+  title_fa: پیکربندی پنل سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServicePaymentAgreement
+  title_fa: موافقتنامه پرداخت سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceProduct
+  title_fa: محصول سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceProductGroupImage
+  title_fa: تصویر گروه محصول سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceProductInventoryRemainingLimit
+  title_fa: سقف باقی‌مانده انبار محصول سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceProductSpecificationConfig
+  title_fa: پیکربندی مشخصات محصول سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceProductUnit
+  title_fa: واحد محصول سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceSaleRequest
+  title_fa: درخواست فروش سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceSalesArea
+  title_fa: حوزه فروش سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceSalesOffice
+  title_fa: دفتر فروش سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceSalesType
+  title_fa: نوع فروش سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceSecurityPolicy
+  title_fa: سیاست امنیت سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceStore
+  title_fa: انبار سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceUser
+  title_fa: کاربر سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceUserGroup
+  title_fa: گروه کاربر سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceUserGroupMember
+  title_fa: عضو گروه کاربر سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceUserGroupPermission
+  title_fa: مجوز گروه کاربر سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceUserPermission
+  title_fa: مجوز کاربر سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceUserProfile
+  title_fa: شناسنامه کاربر سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ShoppingCartItem
+  title_fa: قلم سبد خرید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShoppingCartItemToContractItemMap
+  title_fa: نگاشت قلم قرارداد قلم سبد خرید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerBillSalesFilter
+  title_fa: فیلتر فروش صورت‌حساب مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerCurrency
+  title_fa: ارز مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerCurrencyMap
+  title_fa: نگاشت ارز مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerCurrencyMapHistory
+  title_fa: تاریخچه نگاشت ارز مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerTransportationMap
+  title_fa: نگاشت حمل و نقل مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TaxPayerTransportationMapHistory
+  title_fa: تاریخچه نگاشت حمل و نقل مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TaxPayerUnit
+  title_fa: واحد مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerUnitMap
+  title_fa: نگاشت واحد مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerUnitMapHistory
+  title_fa: تاریخچه نگاشت واحد مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxpayerInvoiceExtraInfo
+  title_fa: اطلاعات تکمیلی فاکتور مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxpayerProductExtraInfo
+  title_fa: اطلاعات تکمیلی محصول مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransformedSalesPolicyResult
+  title_fa: نتیجه سیاست فروش تبدیل‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

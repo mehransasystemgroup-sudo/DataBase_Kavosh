@@ -1,0 +1,550 @@
+schema: CAC3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: AccountGroupConfiguration
+  title_fa: پیکربندی گروه حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AccountingVoucher
+  title_fa: سند حسابداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ActualMaterialFee
+  title_fa: کارمزد ماده واقعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ActualMaterialFeeItem
+  title_fa: قلم کارمزد ماده واقعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BeginningMaterial
+  title_fa: ماده ابتدا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BeginningMaterialWithReference
+  title_fa: مرجع ماده ابتدا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BeginningWorkInProcess
+  title_fa: کار در جریان ساخت ابتدا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BeginningWorkInProcessMaterial
+  title_fa: ماده کار در جریان ساخت ابتدا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BillOfMaterial
+  title_fa: ماده صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfMaterialAlternativeNode
+  title_fa: گره جایگزین ماده صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfMaterialMap
+  title_fa: نگاشت ماده صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfMaterialMapItem
+  title_fa: قلم نگاشت ماده صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfMaterialMapItemRelatedOperation
+  title_fa: عملیات مرتبط قلم نگاشت ماده صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfMaterialNode
+  title_fa: گره ماده صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfMaterialRecyclingNode
+  title_fa: گره بازیافت ماده صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfMaterialSideProductNode
+  title_fa: گره محصول سمت ماده صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalcPeriod
+  title_fa: دوره محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalculationLogCatalog
+  title_fa: کاتالوگ گزارش رویداد محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationStep
+  title_fa: گام محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationStepLog
+  title_fa: گزارش رویداد گام محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ConsumptionFeeCalculation
+  title_fa: محاسبه کارمزد مصرف
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: Contractor
+  title_fa: پیمانکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractorProduction
+  title_fa: تولید پیمانکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractorProductionFeeActual
+  title_fa: واقعی کارمزد تولید پیمانکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractorWorkstation
+  title_fa: ایستگاه کاری پیمانکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConversionSL
+  title_fa: معین تسعیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConversionSLCategory
+  title_fa: دسته معین تسعیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostCenterConversionSL
+  title_fa: معین تسعیر مرکز هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostCenterConversionSLDetail
+  title_fa: جزئیات معین تسعیر مرکز هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostCenterConversionSLVoucherItem
+  title_fa: قلم سند معین تسعیر مرکز هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostCenterDelivery
+  title_fa: تحویل مرکز هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostCenterDeliveryItem
+  title_fa: قلم تحویل مرکز هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostCenterEx
+  title_fa: مرکز هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostDriver
+  title_fa: محرک هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostDriverAssignment
+  title_fa: تخصیص محرک هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DeliveryConfirmation
+  title_fa: تأیید تحویل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DirectCostAllocation
+  title_fa: تخصیص هزینه مستقیم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DirectInputMaterial
+  title_fa: ماده ورودی مستقیم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DirectInputMaterialItem
+  title_fa: قلم ماده ورودی مستقیم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EndingMaterial
+  title_fa: ماده پایان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EndingMaterialWithReference
+  title_fa: مرجع ماده پایان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EndingWorkInProcess
+  title_fa: کار در جریان ساخت پایان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EndingWorkInProcessMaterial
+  title_fa: ماده کار در جریان ساخت پایان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: IgnoredCostAllocationArea
+  title_fa: حوزه تخصیص هزینه نادیده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IndirectCostAllocation
+  title_fa: تخصیص هزینه غیرمستقیم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IndirectCostAllocationBySL
+  title_fa: معین تخصیص هزینه غیرمستقیم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IndirectCostAllocationBySLState
+  title_fa: وضعیت معین تخصیص هزینه غیرمستقیم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IndirectCostAllocationDetail
+  title_fa: جزئیات تخصیص هزینه غیرمستقیم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InputTransaction
+  title_fa: تراکنش ورودی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InputTransactionItem
+  title_fa: قلم تراکنش ورودی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InputTransactionItemProduction
+  title_fa: تولید قلم تراکنش ورودی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InputTransactionSource
+  title_fa: منبع تراکنش ورودی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InputTransactionSourcePrice
+  title_fa: قیمت منبع تراکنش ورودی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InputTransactionWorkstation
+  title_fa: ایستگاه کاری تراکنش ورودی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InventoryCalculation
+  title_fa: محاسبه انبار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: OutputTransaction
+  title_fa: تراکنش خروجی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OutputTransactionDetail
+  title_fa: جزئیات تراکنش خروجی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OutputTransactionItem
+  title_fa: قلم تراکنش خروجی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OutputTransactionItemPrice
+  title_fa: قیمت قلم تراکنش خروجی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OutputTransactionItemProduction
+  title_fa: تولید قلم تراکنش خروجی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OutputTransactionWorkstation
+  title_fa: ایستگاه کاری تراکنش خروجی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductCostCalculation
+  title_fa: محاسبه هزینه محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductCostCalculationMaterial
+  title_fa: ماده محاسبه هزینه محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductCostCalculationMaterialDetail
+  title_fa: جزئیات ماده محاسبه هزینه محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductCostCalculationSeperation
+  title_fa: تفکیک محاسبه هزینه محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductCostCalculationSeperationMaterial
+  title_fa: ماده تفکیک محاسبه هزینه محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductEquivalentUnitCalculation
+  title_fa: محاسبه واحد معادل محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductEquivalentUnitCalculationMaterial
+  title_fa: ماده محاسبه واحد معادل محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: Production
+  title_fa: تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionCalcPeriodInfo
+  title_fa: اطلاعات دوره محاسبه تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionConsumptionCalculation
+  title_fa: محاسبه مصرف تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductionJointProductRatio
+  title_fa: نسبت محصول مشترک تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionMaterial
+  title_fa: ماده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionMaterialAlternative
+  title_fa: جایگزین ماده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionRecycling
+  title_fa: بازیافت تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RecyclingFee
+  title_fa: کارمزد بازیافت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ServiceTransfer
+  title_fa: انتقال خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceTransferItem
+  title_fa: قلم انتقال خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: StandardFee
+  title_fa: کارمزد استاندارد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TempDeliveryConfirmation
+  title_fa: تأیید تحویل موقت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TempPacConfirmation
+  title_fa: تأیید PAC موقت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterWorkstationMap
+  title_fa: نگاشت ایستگاه کاری مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkCenterWorkstationMapItem
+  title_fa: قلم نگاشت ایستگاه کاری مرکز کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Workstation
+  title_fa: ایستگاه کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkstationAbsorbedRate
+  title_fa: نرخ جذب‌شده ایستگاه کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkstationCapacity
+  title_fa: ظرفیت ایستگاه کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkstationCapacityItem
+  title_fa: قلم ظرفیت ایستگاه کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkstationCostAllocation
+  title_fa: تخصیص هزینه ایستگاه کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

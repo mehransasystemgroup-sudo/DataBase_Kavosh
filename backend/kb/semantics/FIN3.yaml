@@ -31,6 +31,18 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AccountGroupConfiguration
+  title_fa: پیکربندی گروه حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AccountGroupConfigurationParameter
+  title_fa: پارامتر پیکربندی گروه حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: AccountGroupGroupMember
   title_fa: گروهِ گروه حساب
   source: stated_by_user
@@ -91,6 +103,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AgingReceivables
+  title_fa: دریافتنی‌ها سنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: Analyse
   title_fa: آنالیز
   source: stated_by_user
@@ -141,16 +159,34 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ClosingVoucherInfo
+  title_fa: اطلاعات سند بستن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ClosingVoucherPattern
   title_fa: تعریف الگو
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ClosingVoucherReferences
+  title_fa: مراجع سند بستن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: CodingStandard
   title_fa: کدینگ استاندارد
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: CodingStandardDlSlType
+  title_fa: نوع معین تفصیلی استاندارد کدینگ
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: CodingStandardEntity
   title_fa: موجودیت استاندارد
   source: stated_by_user
@@ -166,6 +202,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: CodingStandardExtraField
+  title_fa: فیلد تکمیلی استاندارد کدینگ
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: CodingStandardFormula
   title_fa: فرمول کدینگ استاندارد
   source: stated_by_user
@@ -181,6 +223,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: CodingStandardReportFieldInfo
+  title_fa: اطلاعات فیلد گزارش استاندارد کدینگ
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: CodingStandardReportFieldInfoAttachment
   title_fa: پیوست‌ جزئیات گزارش سناما
   source: stated_by_user
@@ -191,6 +239,26 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: CodingStandardValidationError
+  title_fa: خطا اعتبارسنجی استاندارد کدینگ
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CodingStandardXMLDataInfo
+  title_fa: اطلاعات داده XML استاندارد کدینگ
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CodingStandardXMLInfo
+  title_fa: اطلاعات XML استاندارد کدینگ
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ContaminationToll
   title_fa: عوارض آلایندگی
   source: stated_by_user
@@ -311,11 +379,24 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: LookupMap
+  title_fa: نگاشت فهرست
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: PeriodNature
   title_fa: ماهیت دوره
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PeriodicOppositNatureAccounts
+  title_fa: حساب‌ها ماهیت مقابل دوره‌ای
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: PurchaseOrImportGoodOrService
   title_fa: خرید و واردات کالا و خدمات
   source: stated_by_user
@@ -371,6 +452,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: SeasonalNationalIDMap
+  title_fa: نگاشت شناسهٔ ملی فصلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: SeasonalReport
   title_fa: گزارش خرید و فروش فصلی
   source: stated_by_user
@@ -386,6 +473,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: SeasonalReportMergePatternItem
+  title_fa: قلم الگوی ادغام گزارش فصلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: SeasonalZone
   title_fa: منطقه جغرافیایی اداره مالیات
   source: stated_by_user
@@ -461,11 +554,23 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: VATStatement
+  title_fa: صورت ارزش افزوده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: VatContractCollectiveInformation
   title_fa: VatContractCollectiveInformation
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: Voucher
+  title_fa: سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: VoucherHistory
   title_fa: تاریخچه تغییرات سند
   source: stated_by_user
@@ -491,6 +596,33 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: VoucherReviewRecord
+  title_fa: سوابق بازبینی سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VoucherTemplate
+  title_fa: الگوی سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: VoucherTemplateDescription
+  title_fa: شرح الگوی سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: VoucherTemplateItem
+  title_fa: قلم الگوی سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: VoucherType
   title_fa: نوع سند
   source: stated_by_user

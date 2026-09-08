@@ -1,0 +1,82 @@
+schema: CAL3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: CalibrationCharacteristic
+  title_fa: مشخصه کالیبراسیون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalibrationInspection
+  title_fa: بازرسی کالیبراسیون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalibrationInspectionCharacteristic
+  title_fa: مشخصه بازرسی کالیبراسیون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalibrationPlan
+  title_fa: طرح کالیبراسیون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalibrationPlanEquipment
+  title_fa: تجهیزات طرح کالیبراسیون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalibrationPlanSpecification
+  title_fa: مشخصات طرح کالیبراسیون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalibrationResultRecording
+  title_fa: ثبت نتیجه کالیبراسیون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalibrationResultRecordingCharacteristic
+  title_fa: مشخصه ثبت نتیجه کالیبراسیون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EquipmentCalibrationExtension
+  title_fa: تمدید کالیبراسیون تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentCalibrationExtensionInspection
+  title_fa: بازرسی تمدید کالیبراسیون تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ServiceOperationCalibration
+  title_fa: کالیبراسیون عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: WorkOrderOperationCalibration
+  title_fa: کالیبراسیون عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

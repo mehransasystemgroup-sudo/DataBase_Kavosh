@@ -1,0 +1,402 @@
+schema: XLS3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: BillOfLading
+  title_fa: بارنامه صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfLadingItem
+  title_fa: قلم بارنامه صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfLadingItemVehicle
+  title_fa: خودرو قلم بارنامه صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BillOfLadingVehicle
+  title_fa: خودرو بارنامه صورت‌حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BlockedInventoryVoucherItem
+  title_fa: قلم سند انبار مسدود
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Cargo
+  title_fa: بار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CargoItem
+  title_fa: قلم بار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CargoShippingInfo
+  title_fa: اطلاعات حمل بار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CargoTransportationVehicle
+  title_fa: خودرو حمل و نقل بار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CollectionNotice
+  title_fa: اخطار وصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectionNoticeItem
+  title_fa: قلم اخطار وصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectionNoticeItemAnalysis
+  title_fa: تحلیل قلم اخطار وصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContainerType
+  title_fa: نوع کانتینر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomsDeclaration
+  title_fa: اظهارنامه گمرک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomsDeclarationItem
+  title_fa: قلم اظهارنامه گمرک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomsDeclarationItemVehicle
+  title_fa: خودرو قلم اظهارنامه گمرک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomsDeclarationRelatedInvoices
+  title_fa: فاکتورها مرتبط اظهارنامه گمرک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomsDeclarationVehicle
+  title_fa: خودرو اظهارنامه گمرک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IncomingContainer
+  title_fa: کانتینر ورودی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IncomingContainerItem
+  title_fa: قلم کانتینر ورودی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionCompany
+  title_fa: شرکت بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Invoice
+  title_fa: فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceFinVoucherInfo
+  title_fa: اطلاعات سند FIN فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceItem
+  title_fa: قلم فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceItemPolicyResult
+  title_fa: نتیجه سیاست قلم فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoiceItemPriceReferenceItem
+  title_fa: قلم مرجع قیمت قلم فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoicePermit
+  title_fa: مجوز فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InvoicePolicyResult
+  title_fa: نتیجه سیاست فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NegotiableDocument
+  title_fa: سند قابل معامله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NegotiableDocumentPackage
+  title_fa: بسته سند قابل معامله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NegotiableDocumentPackageItem
+  title_fa: قلم بسته سند قابل معامله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Order
+  title_fa: سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderItem
+  title_fa: قلم سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderItemPolicyResult
+  title_fa: نتیجه سیاست قلم سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderPolicyResult
+  title_fa: نتیجه سیاست سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentFollowUp
+  title_fa: پیگیری پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentFollowUpRecipient
+  title_fa: گیرنده پیگیری پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceFormula
+  title_fa: فرمول قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceReference
+  title_fa: مرجع قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceReferenceItem
+  title_fa: قلم مرجع قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceReferenceRegionalArea
+  title_fa: حوزه منطقه‌ای مرجع قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriceReferenceRegionalAreaItem
+  title_fa: قلم حوزه منطقه‌ای مرجع قیمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Proforma
+  title_fa: پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaCondition
+  title_fa: شرط پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaHistory
+  title_fa: تاریخچه پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaItem
+  title_fa: قلم پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaItemDestination
+  title_fa: مقصد قلم پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaItemPolicyResult
+  title_fa: نتیجه سیاست قلم پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaItemPriceReferenceItem
+  title_fa: قلم مرجع قیمت قلم پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaNegotiableDocument
+  title_fa: سند قابل معامله پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaPaymentTerm
+  title_fa: مدت پرداخت پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProformaPolicyResult
+  title_fa: نتیجه سیاست پیش‌فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatement
+  title_fa: صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementDestination
+  title_fa: مقصد صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementItem
+  title_fa: قلم صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementItemPolicyResult
+  title_fa: نتیجه سیاست قلم صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementPolicyResult
+  title_fa: نتیجه سیاست صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesStatementWageResult
+  title_fa: نتیجه دستمزد صورت فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesTypeTermOfPayment
+  title_fa: پرداخت مدت نوع فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShippingOrderContainer
+  title_fa: کانتینر سفارش حمل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TaxpayerInvoiceCorrectionDate
+  title_fa: تاریخ اصلاح فاکتور مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxpayerInvoiceCorrectionDateHistory
+  title_fa: تاریخچه تاریخ اصلاح فاکتور مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TempCollectionNoticeItemAnalysisInfo
+  title_fa: اطلاعات تحلیل قلم اخطار وصول موقت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TermOfDelivery
+  title_fa: تحویل مدت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TermOfPayment
+  title_fa: پرداخت مدت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TermOfPaymentItem
+  title_fa: قلم پرداخت مدت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

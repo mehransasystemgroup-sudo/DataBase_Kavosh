@@ -1,5 +1,927 @@
 schema: RPA3
 tables:
+- name: AccountTransactionScenario
+  title_fa: سناریو تراکنش حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AccountingOperation
+  title_fa: عملیات حسابداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AcquisitionCost
+  title_fa: هزینه تحصیل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: AcquisitionCostItem
+  title_fa: قلم هزینه تحصیل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: Bank
+  title_fa: بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankAccount
+  title_fa: حساب بانکی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankAccountChequeSigner
+  title_fa: امضاکننده چک حساب بانکی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankAccountHistory
+  title_fa: تاریخچه حساب بانکی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankAccountReconciliationSl
+  title_fa: معین مغایرت‌گیری حساب بانکی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankAccountTransaction
+  title_fa: تراکنش حساب بانکی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankAccountType
+  title_fa: نوع حساب بانکی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankBill
+  title_fa: صورت‌حساب بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankBillItem
+  title_fa: قلم صورت‌حساب بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankBranch
+  title_fa: شعبه بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankTransfer
+  title_fa: انتقال بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankTransferDisketteStructure
+  title_fa: ساختار دیسکت انتقال بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankTransferDisketteStructureItem
+  title_fa: قلم ساختار دیسکت انتقال بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BankTransferReceivableNote
+  title_fa: سفته دریافتنی انتقال بانک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalculatedInterestAmountAdjustment
+  title_fa: تعدیل مبلغ سود محاسبه‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalculatedInterestAmountAdjustmentItem
+  title_fa: قلم تعدیل مبلغ سود محاسبه‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Cash
+  title_fa: نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowFactor
+  title_fa: عامل جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowFactorDLInformation
+  title_fa: اطلاعات تفصیلی عامل جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowFactorGrouping
+  title_fa: گروهبندی عامل جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowFactorGroupingDetail
+  title_fa: جزئیات گروهبندی عامل جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowFactorGroupingDetailOfDetail
+  title_fa: جزئیات گروهبندی عامل جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowReportEncashedNotesInfo
+  title_fa: اطلاعات یادداشت‌ها نقدشده گزارش جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashTransaction
+  title_fa: تراکنش نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashierHistory
+  title_fa: تاریخچه صندوق‌دار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashierHistoryItem
+  title_fa: قلم تاریخچه صندوق‌دار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ChangeChequeDateHistory
+  title_fa: تاریخچه تاریخ چک تغییر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ChequePattern
+  title_fa: الگوی چک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollateralPermit
+  title_fa: مجوز وثیقه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollateralType
+  title_fa: نوع وثیقه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectionRejection
+  title_fa: مرجوعی وصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectionRejectionConfiguration
+  title_fa: پیکربندی مرجوعی وصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectionRejectionReceivableNote
+  title_fa: سفته دریافتنی مرجوعی وصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Collector
+  title_fa: وصول‌کننده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommittedBank
+  title_fa: بانک تعهدشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Contract
+  title_fa: قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractAccountingInformation
+  title_fa: اطلاعات حسابداری قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ContractReceiptStep
+  title_fa: گام فیش قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ContractType
+  title_fa: نوع قرارداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ControllingPolicy
+  title_fa: سیاست کنترل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ControllingPolicyParameter
+  title_fa: پارامتر سیاست کنترل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ControllingPolicyParameterItem
+  title_fa: قلم پارامتر سیاست کنترل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CurrentShare
+  title_fa: سهم جاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CurrentShareCurrencyExchangeRate
+  title_fa: نرخ تبادل ارز سهم جاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CurrentShareItem
+  title_fa: قلم سهم جاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DelayFineAllowance
+  title_fa: کمک‌هزینه جریمه تأخیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Deposit
+  title_fa: واریز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DepositDeployment
+  title_fa: استقرار واریز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DepositDeploymentItem
+  title_fa: قلم استقرار واریز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DepositItem
+  title_fa: قلم واریز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DepositType
+  title_fa: نوع واریز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DocumentAnalyze
+  title_fa: تحلیل سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DocumentItemAnalyze
+  title_fa: تحلیل قلم سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DraftVoucher
+  title_fa: سند پیش‌نویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DraftVoucherItem
+  title_fa: قلم سند پیش‌نویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DurationChange
+  title_fa: تغییر مدت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DurationChangePayableNote
+  title_fa: سفته پرداختنی تغییر مدت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EPaymentReceipt
+  title_fa: فیش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EPaymentReceiptItem
+  title_fa: قلم فیش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Encash
+  title_fa: نقد کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EncashReceivableNote
+  title_fa: سفته دریافتنی نقد کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ExecutableTask
+  title_fa: وظیفه اجرایی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ExternalCreditProviderPreReceipt
+  title_fa: فیش پیش ارائه‌دهنده اعتبار بیرونی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ExternalCreditProviderTransaction
+  title_fa: تراکنش ارائه‌دهنده اعتبار بیرونی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FundRequest
+  title_fa: درخواست صندوق
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FundRequestItem
+  title_fa: قلم درخواست صندوق
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: GuaranteeToNormal
+  title_fa: عادی ضمانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: GuaranteeToNormalReceivableNote
+  title_fa: سفته دریافتنی عادی ضمانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: GuaranteeToPayable
+  title_fa: پرداختنی ضمانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: GuaranteeToPayableNote
+  title_fa: سفته پرداختنی ضمانت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Installment
+  title_fa: قسط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InterestAmountChange
+  title_fa: تغییر مبلغ سود
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaturedSharedInterestAllowance
+  title_fa: کمک‌هزینه سود مشترک سررسیدشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaturedSharedInterestAllowanceCurrencyExchangeRate
+  title_fa: نرخ تبادل ارز کمک‌هزینه سود مشترک سررسیدشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaturedSharedInterestAllowanceItem
+  title_fa: قلم کمک‌هزینه سود مشترک سررسیدشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotMaturedSharedInterestAllowance
+  title_fa: کمک‌هزینه سود مشترک سررسیدشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotMaturedSharedInterestAllowanceCurrencyExchangeRate
+  title_fa: نرخ تبادل ارز کمک‌هزینه سود مشترک سررسیدشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotMaturedSharedInterestAllowanceItem
+  title_fa: قلم کمک‌هزینه سود مشترک سررسیدشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineBankAccount
+  title_fa: حساب بانکی برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineBankAccountOwner
+  title_fa: مالک حساب بانکی برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineGateway
+  title_fa: درگاه برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineGatewayApi
+  title_fa: API درگاه برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineGatewayBank
+  title_fa: بانک درگاه برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineGatewaySetting
+  title_fa: تنظیم درگاه برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineGatewayUserAccount
+  title_fa: حساب کاربر درگاه برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineGatewayUserAccountApi
+  title_fa: API حساب کاربر درگاه برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineGatewayUserAccountSpecification
+  title_fa: مشخصات حساب کاربر درگاه برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineMoneyTransfer
+  title_fa: انتقال مبلغ برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineMoneyTransferItem
+  title_fa: قلم انتقال مبلغ برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OnlineMoneyTransferUser
+  title_fa: کاربر انتقال مبلغ برخط
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PSPBill
+  title_fa: صورت‌حساب PSP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PSPBillItem
+  title_fa: قلم صورت‌حساب PSP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PartyBankAccount
+  title_fa: حساب بانکی طرف حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableChequeBook
+  title_fa: دفتر چک پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableChequeBookChequePattern
+  title_fa: الگوی چک دفتر چک پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableChequeBookItem
+  title_fa: قلم دفتر چک پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableCollateral
+  title_fa: وثیقه پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableCollateralAccountingInformation
+  title_fa: اطلاعات حسابداری وثیقه پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableCollateralBlockedBankAccount
+  title_fa: حساب بانکی مسدود وثیقه پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableCollateralGuaranteeNote
+  title_fa: سفته ضمانت وثیقه پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableCollateralOtherCost
+  title_fa: هزینه دیگر وثیقه پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableCollateralTransaction
+  title_fa: تراکنش وثیقه پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableNote
+  title_fa: سفته پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PayableNoteTransaction
+  title_fa: تراکنش سفته پرداختنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Payment
+  title_fa: پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentCashMoney
+  title_fa: مبلغ نقد پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentDeliverReceivableCheque
+  title_fa: چک دریافتنی تحویل پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentDeliverRestorePayableNote
+  title_fa: سفته پرداختنی بازیابی تحویل پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentDeposit
+  title_fa: واریز پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrder
+  title_fa: سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrderCashMoney
+  title_fa: مبلغ نقد سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrderDeliverReceivableCheque
+  title_fa: چک دریافتنی تحویل سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrderDeliverRestorePayableNote
+  title_fa: سفته پرداختنی بازیابی تحویل سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrderDeposit
+  title_fa: واریز سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrderItemToPaymentItem
+  title_fa: قلم پرداخت قلم سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrderList
+  title_fa: لیست سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrderPayableNote
+  title_fa: سفته پرداختنی سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentOrderRestoreReceivableNote
+  title_fa: سفته دریافتنی بازیابی سفارش پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentPayableNote
+  title_fa: سفته پرداختنی پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentRefundDepositItem
+  title_fa: قلم واریز برگشتی پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentRequest
+  title_fa: درخواست پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentRequestItem
+  title_fa: قلم درخواست پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentRestoreReceivableNote
+  title_fa: سفته دریافتنی بازیابی پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentServiceProviderCompany
+  title_fa: شرکت ارائه‌دهنده خدمت پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PaymentToPublicIncomItem
+  title_fa: قلم درآمد عمومی پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentToTreasuryItem
+  title_fa: قلم خزانه‌داری پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCash
+  title_fa: تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashBill
+  title_fa: صورت‌حساب تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashBillItem
+  title_fa: قلم صورت‌حساب تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCard
+  title_fa: کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardBill
+  title_fa: صورت‌حساب کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardBillItem
+  title_fa: قلم صورت‌حساب کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardCollection
+  title_fa: وصول کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardHistory
+  title_fa: تاریخچه کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardReconciliation
+  title_fa: مغایرت‌گیری کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardReconciliationOpenItemReason
+  title_fa: دلیل قلم باز مغایرت‌گیری کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardReconciliationPettyCashCardBillAllItem
+  title_fa: قلم همه صورت‌حساب کارت تنخواه مغایرت‌گیری کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardReconciliationPettyCashCardBillItem
+  title_fa: قلم صورت‌حساب کارت تنخواه مغایرت‌گیری کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardReconciliationReason
+  title_fa: دلیل مغایرت‌گیری کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardReconciliationTreasuryAllItem
+  title_fa: قلم همه خزانه‌داری مغایرت‌گیری کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashCardReconciliationTreasuryItem
+  title_fa: قلم خزانه‌داری مغایرت‌گیری کارت تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PettyCashTransaction
+  title_fa: تراکنش تنخواه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProgressiveCollection
+  title_fa: وصول تصاعدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProgressiveCollectionCreditItem
+  title_fa: قلم اعتبار وصول تصاعدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProgressiveCollectionItem
+  title_fa: قلم وصول تصاعدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PromissoryNote
+  title_fa: سفته
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PromissoryNoteItem
+  title_fa: قلم سفته
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Prosecution
+  title_fa: پیگرد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProsecutionReceivableNote
+  title_fa: سفته دریافتنی پیگرد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: Receipt
   title_fa: سند دریافت
   description_fa: این جدول اسناد دریافت وجه از مشتریان را نگهداری می‌کند.
@@ -12,3 +934,346 @@ tables:
   updated_at: '2026-07-25'
   updated_by: user
   _manual: true
+- name: ReceiptAndPaymentCause
+  title_fa: علت پرداخت فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptCashMoney
+  title_fa: مبلغ نقد فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptDeposit
+  title_fa: واریز فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptFundRequestItem
+  title_fa: قلم درخواست صندوق فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptReceivableNote
+  title_fa: سفته دریافتنی فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptRequest
+  title_fa: درخواست فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptRequestOrdinaryItem
+  title_fa: قلم عادی درخواست فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptRestorePayableNote
+  title_fa: سفته پرداختنی بازیابی فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptReturnReceivableNote
+  title_fa: سفته دریافتنی برگشت فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReceivableCollateral
+  title_fa: وثیقه دریافتنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivableCollateralAccountingInformation
+  title_fa: اطلاعات حسابداری وثیقه دریافتنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivableCollateralTransaction
+  title_fa: تراکنش وثیقه دریافتنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivableNote
+  title_fa: سفته دریافتنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivableNoteAccountTransactionScenario
+  title_fa: سناریو تراکنش حساب سفته دریافتنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivableNoteTransaction
+  title_fa: تراکنش سفته دریافتنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Reconciliation
+  title_fa: مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationBankBillAllItem
+  title_fa: قلم همه صورت‌حساب بانک مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationBankBillItem
+  title_fa: قلم صورت‌حساب بانک مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationDeployment
+  title_fa: استقرار مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationDeploymentBankBillItem
+  title_fa: قلم صورت‌حساب بانک استقرار مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationDeploymentTreasuryOpenItem
+  title_fa: قلم باز خزانه‌داری استقرار مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationDeploymentVoucherOpenItem
+  title_fa: قلم باز سند استقرار مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationOpenItemReason
+  title_fa: دلیل قلم باز مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationReason
+  title_fa: دلیل مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationTreasuryAllItem
+  title_fa: قلم همه خزانه‌داری مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReconciliationTreasuryItem
+  title_fa: قلم خزانه‌داری مغایرت‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RefundDeposit
+  title_fa: واریز برگشتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RefundDepositItem
+  title_fa: قلم واریز برگشتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Rejection
+  title_fa: مرجوعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RejectionReceivableNote
+  title_fa: سفته دریافتنی مرجوعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Repayment
+  title_fa: بازپرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RepaymentInstallmentInfo
+  title_fa: اطلاعات قسط بازپرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RestoreToCash
+  title_fa: نقد بازیابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RestoreToCashReceivableNote
+  title_fa: سفته دریافتنی نقد بازیابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RpaGLComparisonReportDeployment
+  title_fa: استقرار گزارش مقایسه کل RPA
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesTerminal
+  title_fa: پایانه فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Stale
+  title_fa: کهنه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: StaleReceivableCheque
+  title_fa: چک دریافتنی کهنه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Transfer
+  title_fa: انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferCashMoney
+  title_fa: مبلغ نقد انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferDeposit
+  title_fa: واریز انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferPayableCheque
+  title_fa: چک پرداختنی انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferReceivableNote
+  title_fa: سفته دریافتنی انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferRestorePayableCheque
+  title_fa: چک پرداختنی بازیابی انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferToCollector
+  title_fa: وصول‌کننده انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferToCollectorReceivableNote
+  title_fa: سفته دریافتنی وصول‌کننده انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferToPublicIncom
+  title_fa: درآمد عمومی انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferToPublicIncomItem
+  title_fa: قلم درآمد عمومی انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferToTreasury
+  title_fa: خزانه‌داری انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransferToTreasuryItem
+  title_fa: قلم خزانه‌داری انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VoucherDescription
+  title_fa: شرح سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VoucherReconciliation
+  title_fa: مغایرت‌گیری سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VoucherReconciliationAllItem
+  title_fa: قلم همه مغایرت‌گیری سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VoucherReconciliationBankBillAllItem
+  title_fa: قلم همه صورت‌حساب بانک مغایرت‌گیری سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VoucherReconciliationBankBillItem
+  title_fa: قلم صورت‌حساب بانک مغایرت‌گیری سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VoucherReconciliationItem
+  title_fa: قلم مغایرت‌گیری سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VoucherReconciliationOpenItemReason
+  title_fa: دلیل قلم باز مغایرت‌گیری سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

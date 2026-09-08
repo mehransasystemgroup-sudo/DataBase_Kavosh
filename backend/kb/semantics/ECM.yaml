@@ -26,6 +26,61 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AuthorityDelegationGrant
+  title_fa: اعطا تفویض اختیار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AuthorityDelegationReferringFolder
+  title_fa: پوشه ارجاع تفویض اختیار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalendarShare
+  title_fa: سهم تقویم
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CartableRule
+  title_fa: قاعده کارتابل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CartableRuleReferringReason
+  title_fa: دلیل ارجاع قاعده کارتابل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CartableRuleReferringUrgency
+  title_fa: فوریت ارجاع قاعده کارتابل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CartableRuleSecurityLevel
+  title_fa: سطح امنیت قاعده کارتابل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CartableRuleSubject
+  title_fa: موضوع قاعده کارتابل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CartableRuleTransceiver
+  title_fa: فرستنده‌گیرنده قاعده کارتابل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: ContentAnnotation
   title_fa: محتویات
   source: stated_by_user
@@ -36,6 +91,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: CorrespondentDefaultManager
+  title_fa: مدیر پیش‌فرض مخاطب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: CorrespondentGroup
   title_fa: گروه مخاطب
   source: stated_by_user
@@ -51,6 +112,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: DocTemplate
+  title_fa: الگوی سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: Document
   title_fa: سند
   source: stated_by_user
@@ -71,6 +139,27 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: DocumentTemplate
+  title_fa: الگوی سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DocumentTemplateDetail
+  title_fa: جزئیات الگوی سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DocumentTemplateField
+  title_fa: فیلد الگوی سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: ECEEmail
   title_fa: پست الکترونیک ECE
   source: stated_by_user
@@ -106,16 +195,41 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: Event
+  title_fa: رویداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EventAttendee
   title_fa: مشارکت‌کننده
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: EventFile
+  title_fa: فایل رویداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EventInstance
   title_fa: رویداد
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: EventInstanceMetaData
+  title_fa: داده فراداده نمونه رویداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EventRoom
+  title_fa: اتاق رویداد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: FaxCenter
   title_fa: مرکز دورنویس
   source: stated_by_user
@@ -136,6 +250,18 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: FrequentWord
+  title_fa: واژه پرتکرار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ImportLetterReceipt
+  title_fa: فیش نامه واردات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: IncomingFax
   title_fa: دورنویس دریافتی
   source: stated_by_user
@@ -171,6 +297,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: LetterExportReceipt
+  title_fa: فیش صادرات نامه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: LetterFax
   title_fa: دورنویس نامه
   source: stated_by_user
@@ -256,6 +388,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: OrganizationalStructureParentLevelHierarchy
+  title_fa: سلسله‌مراتب سطح والد ساختار سازمانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: Organizer
   title_fa: سازمانده
   source: stated_by_user
@@ -266,6 +404,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PersonalFile
+  title_fa: فایل شخصی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: PersonalFileForm
   title_fa: فرم های پرونده شخصی
   source: stated_by_user
@@ -276,6 +420,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PredefinedReferringReceiverPermission
+  title_fa: مجوز گیرنده ارجاع پیش‌فرض
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: RecordMap
   title_fa: RecordMap
   source: stated_by_user
@@ -286,6 +436,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ReferringAccelerator
+  title_fa: شتاب‌دهنده ارجاع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ReferringAttachment
   title_fa: پیوست ارجاع
   source: stated_by_user
@@ -296,6 +452,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ReferringFolder
+  title_fa: پوشه ارجاع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ReferringForm
   title_fa: فرم های راهکارانی ارجاع
   source: stated_by_user
@@ -306,16 +468,40 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ReferringOpAccelerator
+  title_fa: شتاب‌دهنده عملیات ارجاع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ReferringReason
   title_fa: جهت مکاتبه
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ReferringReasonCondition
+  title_fa: شرط دلیل ارجاع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReferringReceiverPermission
+  title_fa: مجوز گیرنده ارجاع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ReferringSecurityLevel
   title_fa: طبقه بندی اطلاعاتی
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ReferringSetting
+  title_fa: تنظیم ارجاع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ReferringTransceiver
   title_fa: طرف ارجاع
   source: stated_by_user
@@ -326,6 +512,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: Reminder
+  title_fa: یادآور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: Scan
   title_fa: پویش
   source: stated_by_user
@@ -361,11 +553,23 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: TransferLog
+  title_fa: گزارش رویداد انتقال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: UserFavoritLetter
   title_fa: UserFavoritLetter
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: UserPersonalFile
+  title_fa: فایل شخصی کاربر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: WatermarkHandeler
   title_fa: WatermarkHandeler
   source: stated_by_user

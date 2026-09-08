@@ -286,10 +286,16 @@ class KnowledgeBase {
 
     const columns = [];
     const primaryKey = [];
-    for (const c of this.all("SELECT * FROM columns WHERE table_ref=? ORDER BY ordinal", [fullName])) {
+    // برچسب فارسی ستون از واژه‌نامه می‌آید، نه از خود جدول: یک ورودی روی هر
+    // جدولی که آن ستون را دارد اثر می‌گذارد.
+    for (const c of this.all(
+      "SELECT c.*, l.title_fa AS label_fa FROM columns c " +
+      "LEFT JOIN column_labels l ON l.name = c.name " +
+      "WHERE c.table_ref=? ORDER BY c.ordinal", [fullName],
+    )) {
       columns.push({
         name: c.name, type: c.type, nullable: Boolean(c.nullable),
-        is_pk: Boolean(c.is_pk), ordinal: c.ordinal,
+        is_pk: Boolean(c.is_pk), ordinal: c.ordinal, label_fa: c.label_fa ?? null,
       });
       if (c.is_pk) primaryKey.push(c.name);
     }
@@ -362,11 +368,13 @@ class KnowledgeBase {
 
   schemas() {
     return this.all(
-      "SELECT schema AS id, COUNT(*) AS table_count, " +
-      "  SUM(has_data) AS with_data, SUM(n_cols) AS column_count " +
-      "FROM tables GROUP BY schema ORDER BY table_count DESC",
+      "SELECT t.schema AS id, COUNT(*) AS table_count, " +
+      "  SUM(t.has_data) AS with_data, SUM(t.n_cols) AS column_count, " +
+      "  s.title_fa AS title_fa " +
+      "FROM tables t LEFT JOIN schema_titles s ON s.id = t.schema " +
+      "GROUP BY t.schema ORDER BY table_count DESC",
     ).map((r) => ({
-      id: r.id, table_count: r.table_count,
+      id: r.id, title_fa: r.title_fa ?? null, table_count: r.table_count,
       with_data: r.with_data || 0, column_count: r.column_count || 0,
     }));
   }

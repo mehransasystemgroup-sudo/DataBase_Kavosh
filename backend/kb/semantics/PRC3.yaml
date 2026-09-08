@@ -271,6 +271,56 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: OrderingSuggestion
+  title_fa: پیشنهاد سفارش‌گذاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderingSuggestionInfo
+  title_fa: اطلاعات پیشنهاد سفارش‌گذاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderingSuggestionInfoItem
+  title_fa: قلم اطلاعات پیشنهاد سفارش‌گذاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderingSuggestionItem
+  title_fa: قلم پیشنهاد سفارش‌گذاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderingSuggestionItemAllocationInfo
+  title_fa: اطلاعات تخصیص قلم پیشنهاد سفارش‌گذاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderingSuggestionItemAllocationInfoItem
+  title_fa: قلم اطلاعات تخصیص قلم پیشنهاد سفارش‌گذاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PartNoticeSchedulingOperation
+  title_fa: عملیات زمان‌بندی اخطار قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartNoticeTiming
+  title_fa: زمان‌بندی اخطار قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: PaymentInformation
   title_fa: اطلاعات دریافت/پرداخت
   source: stated_by_user
@@ -291,6 +341,18 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PreOrder
+  title_fa: سفارش پیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PreOrderItem
+  title_fa: قلم سفارش پیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: PriceList
   title_fa: لیست قیمت
   source: stated_by_user
@@ -306,6 +368,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PurchaseItemGroupMembers
+  title_fa: اعضا گروه قلم خرید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: PurchaseItemToSupplierRelationship
   title_fa: حوزه خرید و تامین
   source: stated_by_user
@@ -466,6 +534,20 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: SelfServiceSecurityPolicy
+  title_fa: سیاست امنیت سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SelfServiceUser
+  title_fa: کاربر سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: SelfServiceUserGroup
   title_fa: گروه کاربران سلف سرویس
   source: stated_by_user
@@ -526,6 +608,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: SupplierGroupMembers
+  title_fa: اعضا گروه تأمین‌کننده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: SupplierPartCode
   title_fa: کد فاکتور تامین کننده
   source: stated_by_user

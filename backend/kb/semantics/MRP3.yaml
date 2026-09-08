@@ -1,0 +1,254 @@
+schema: MRP3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: CalculationRun
+  title_fa: اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunBom
+  title_fa: درخت محصول اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunDynamicSS
+  title_fa: SS پویا اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunIRPItem
+  title_fa: قلم IRP اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunLowLevelCoding
+  title_fa: کدینگ سطح پایین اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunNewBomExplosion
+  title_fa: بازگشایی درخت محصول جدید اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunPlant
+  title_fa: کارخانه اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunRCCPRequirement
+  title_fa: نیاز RCCP اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunRCCPRequirementCalculationMethod
+  title_fa: روش محاسبه نیاز RCCP اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunRCCPRequirementMPS
+  title_fa: MPS نیاز RCCP اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunRCCPRequirementPart
+  title_fa: قطعه نیاز RCCP اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunRCCPRequirementPlannedOrder
+  title_fa: سفارش برنامه‌ریزی‌شده نیاز RCCP اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationRunResult
+  title_fa: نتیجه اجرا محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationScenario
+  title_fa: سناریو محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationScenarioIRPProgram
+  title_fa: برنامه IRP سناریو محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationScenarioIRPProgramIRP
+  title_fa: IRP برنامه IRP سناریو محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationScenarioPartGroup
+  title_fa: گروه قطعه سناریو محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationScenarioPlant
+  title_fa: کارخانه سناریو محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationScenarioPlantStore
+  title_fa: انبار کارخانه سناریو محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: IRP
+  title_fa: IRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IRPItem
+  title_fa: قلم IRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IRPItemValue
+  title_fa: مقدار قلم IRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IRPItemValueRoutingBOMAssignmentUsage
+  title_fa: مصرف تخصیص درخت محصول مسیر ساخت مقدار قلم IRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IRPProgram
+  title_fa: برنامه IRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IRPReport
+  title_fa: گزارش IRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IRPTimeBucket
+  title_fa: سطل زمان IRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LotSizingSetting
+  title_fa: تنظیم اندازهٔ سری ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LotSizingSettingPart
+  title_fa: قطعه تنظیم اندازهٔ سری ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MRPPartExtension
+  title_fa: تمدید قطعه MRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MRPPartExtensionRoutingBOMAssignmentUsage
+  title_fa: مصرف تخصیص درخت محصول مسیر ساخت تمدید قطعه MRP
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialRequirement
+  title_fa: نیاز ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaterialRequirementPlannedOrder
+  title_fa: سفارش برنامه‌ریزی‌شده نیاز ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaterialRequirementProfile
+  title_fa: شناسنامه نیاز ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaterialRequirementProfilePlannedOrder
+  title_fa: سفارش برنامه‌ریزی‌شده شناسنامه نیاز ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PartQuantityControl
+  title_fa: کنترل مقدار قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlannedOrder
+  title_fa: سفارش برنامه‌ریزی‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PlannedOrderBomItem
+  title_fa: قلم درخت محصول سفارش برنامه‌ریزی‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SafetyStockProfile
+  title_fa: شناسنامه موجودی ایمنی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

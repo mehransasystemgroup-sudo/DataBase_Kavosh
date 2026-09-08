@@ -390,13 +390,18 @@ class KnowledgeBase:
             in_live_db=r["in_live_db"] != 0,
         )
 
+        # برچسب فارسی ستون از واژه‌نامه می‌آید، نه از خود جدول: یک ورودی
+        # («FiscalYearRef» → «سال مالی») روی هر جدولی که آن ستون را دارد اثر
+        # می‌گذارد، پس ۲۰۰ ورودی نیمی از ستون‌های پایگاه داده را نام‌دار می‌کند.
         for c in self.db.execute(
-            "SELECT * FROM columns WHERE table_ref=? ORDER BY ordinal", (full_name,)
+            "SELECT c.*, l.title_fa AS label_fa FROM columns c "
+            "LEFT JOIN column_labels l ON l.name = c.name "
+            "WHERE c.table_ref=? ORDER BY c.ordinal", (full_name,)
         ):
             info.columns.append({
                 "name": c["name"], "type": c["type"],
                 "nullable": bool(c["nullable"]), "is_pk": bool(c["is_pk"]),
-                "ordinal": c["ordinal"],
+                "ordinal": c["ordinal"], "label_fa": c["label_fa"],
             })
             if c["is_pk"]:
                 info.primary_key.append(c["name"])
@@ -461,12 +466,14 @@ class KnowledgeBase:
 
     def schemas(self) -> list[dict]:
         rows = self.db.execute(
-            "SELECT schema AS id, COUNT(*) AS table_count, "
-            "  SUM(has_data) AS with_data, SUM(n_cols) AS column_count "
-            "FROM tables GROUP BY schema ORDER BY table_count DESC"
+            "SELECT t.schema AS id, COUNT(*) AS table_count, "
+            "  SUM(t.has_data) AS with_data, SUM(t.n_cols) AS column_count, "
+            "  s.title_fa AS title_fa "
+            "FROM tables t LEFT JOIN schema_titles s ON s.id = t.schema "
+            "GROUP BY t.schema ORDER BY table_count DESC"
         ).fetchall()
         return [{
-            "id": r["id"], "table_count": r["table_count"],
+            "id": r["id"], "title_fa": r["title_fa"], "table_count": r["table_count"],
             "with_data": r["with_data"] or 0, "column_count": r["column_count"] or 0,
         } for r in rows]
 

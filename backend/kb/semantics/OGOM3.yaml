@@ -1,0 +1,154 @@
+schema: OGOM3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: IssuePermitExtension
+  title_fa: تمدید مجوز خروج
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IssuePermitExtensionOperationalReport
+  title_fa: گزارش عملیاتی تمدید مجوز خروج
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReport
+  title_fa: گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportComplementaryInformation
+  title_fa: اطلاعات مکمل گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportComplementaryInformationItem
+  title_fa: قلم اطلاعات مکمل گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportExtraFormulaDynamicFactor
+  title_fa: عامل پویا فرمول تکمیلی گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportExtraFormulaInputParameter
+  title_fa: پارامتر ورودی فرمول تکمیلی گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportFeed
+  title_fa: خوراک گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportProduct
+  title_fa: محصول گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportProductVarianceReason
+  title_fa: دلیل انحراف محصول گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportReceipt
+  title_fa: فیش گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportRelatedMovementRecording
+  title_fa: ثبت گردش مرتبط گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportSend
+  title_fa: ارسال گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportTankInventory
+  title_fa: انبار مخزن گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationalReportUtilityService
+  title_fa: خدمت سرویس گزارش عملیاتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductionBalance
+  title_fa: مانده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionBalanceComplex
+  title_fa: مجتمع مانده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionBalanceConsumption
+  title_fa: مصرف مانده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionBalanceProduction
+  title_fa: تولید مانده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionBalanceProductionUnit
+  title_fa: واحد تولید مانده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionBalanceReceipt
+  title_fa: فیش مانده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionBalanceSend
+  title_fa: ارسال مانده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionBalanceTankInventory
+  title_fa: انبار مخزن مانده تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptPermitExtension
+  title_fa: تمدید مجوز فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceiptPermitExtensionOperationalReport
+  title_fa: گزارش عملیاتی تمدید مجوز فیش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
