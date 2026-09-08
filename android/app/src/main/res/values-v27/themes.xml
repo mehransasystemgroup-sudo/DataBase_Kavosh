@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      کشیدن صفحه زیر بریدگی نمایشگر، از اندروید ۸.۱ (API 27) به بعد معنا دارد.
+      دستگاه‌های قدیمی‌تر بریدگی ندارند و همان تم پایه را می‌گیرند.
+    -->
+    <style name="Theme.Kavosh" parent="Theme.Kavosh.Base">
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+</resources>
