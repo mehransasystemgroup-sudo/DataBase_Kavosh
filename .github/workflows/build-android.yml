@@ -69,12 +69,20 @@ jobs:
           done
           grep -q "assets/assets/.*\.wasm" /tmp/apk.txt || { echo "موتور SQLite در APK نیست"; exit 1; }
 
-          # برنامه باید کاملاً آفلاین باشد: هیچ مجوزی، حتی اینترنت
+          # برنامه باید کاملاً آفلاین باشد: هیچ مجوز سیستمی، به‌ویژه اینترنت.
+          #
+          # androidx.core خودش یک مجوز خصوصیِ همین برنامه با سطح signature
+          # اضافه می‌کند (DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION) که برای
+          # گیرنده‌های داخلی است و هیچ قابلیتی به برنامه نمی‌دهد؛ پس معیار
+          # درست «هیچ مجوزی» نیست، «هیچ مجوز سیستمی» است.
           "$TOOLS/aapt2" dump badging "$APK" > /tmp/badging.txt
-          grep -E "^package|^application-label|sdkVersion|targetSdkVersion" /tmp/badging.txt
-          if grep -q "uses-permission" /tmp/badging.txt; then
-              echo "برنامه مجوز خواسته است، در حالی که باید بدون مجوز باشد:"
-              grep "uses-permission" /tmp/badging.txt
+          grep -E "^package:|^application-label:|sdkVersion:|targetSdkVersion:" /tmp/badging.txt
+          PERMS=$(grep -oP "uses-permission: name='\K[^']+" /tmp/badging.txt || true)
+          echo "مجوزهای اعلام‌شده: ${PERMS:-(هیچ)}"
+          SYSTEM_PERMS=$(printf '%s\n' "$PERMS" | grep '^android\.permission\.' || true)
+          if [ -n "$SYSTEM_PERMS" ]; then
+              echo "مجوز سیستمی خواسته شده، در حالی که برنامه باید کاملاً آفلاین باشد:"
+              printf '%s\n' "$SYSTEM_PERMS"
               exit 1
           fi
           echo "بازرسی APK درست بود."
