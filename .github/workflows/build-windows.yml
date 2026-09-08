@@ -146,10 +146,15 @@ jobs:
 
       # مثل گردش‌کار اندروید: آرتیفکت پس از ۹۰ روز پاک می‌شود و برای
       # دانلودش باید وارد گیت‌هاب شد، ولی Release لینک ماندگار می‌دهد.
+      #
+      # generate_release_notes عمداً خاموش است: هر دو گردش‌کار روی یک برچسب
+      # منتشر می‌کنند، و اگر هر دو یادداشت بسازند، دومی آن را به بدنهٔ موجود
+      # می‌چسباند و تغییرات دو بار پشت هم دیده می‌شود. تولید یادداشت کارِ
+      # گردش‌کار اندروید است؛ این یکی فقط فایل نصبی را اضافه می‌کند.
       - name: انتشار در Releases
         if: startsWith(github.ref, 'refs/tags/') || inputs.release_tag
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.release_tag || github.ref_name }}
           files: packaging/*.exe
-          generate_release_notes: true
+          generate_release_notes: false
