@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- دانشی که کاربر ثبت می‌کند در حافظهٔ محلی WebView است و باید پشتیبان بگیرد -->
+<full-backup-content>
+    <include domain="database" path="." />
+    <include domain="file" path="app_webview" />
+</full-backup-content>

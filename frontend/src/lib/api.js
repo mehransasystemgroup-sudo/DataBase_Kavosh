@@ -1,10 +1,12 @@
-import axios from "axios";
+// انتخاب لایهٔ انتقال هنگام بیلد انجام می‌شود (vite.config.js): نسخهٔ وب با
+// axios به سرور می‌زند و نسخهٔ موبایل مستقیم روی ایندکس دستگاه. بقیهٔ برنامه
+// تفاوتی نمی‌بیند، چون هر دو همان قرارداد `{ data }` را می‌دهند.
+import { offlineHint, transport } from "@transport";
 
-// در توسعه، Vite مسیر /api را به بک‌اند پروکسی می‌کند؛ در بیلد نهایی
-// همان سروری که فایل‌های استاتیک را می‌دهد API را هم پاسخ می‌دهد.
-const BASE = import.meta.env.VITE_BACKEND_URL || "";
+export const http = transport;
 
-export const http = axios.create({ baseURL: `${BASE}/api`, timeout: 60_000 });
+/** وقتی لایهٔ داده پاسخ نمی‌دهد، کاربر باید بداند دقیقاً چه چیزی را درست کند. */
+export const OFFLINE_HINT = offlineHint;
 
 /** پیام خطای خوانا از پاسخ سرور یا خطای شبکه. */
 export function errorMessage(err, fallback = "خطای نامشخص") {

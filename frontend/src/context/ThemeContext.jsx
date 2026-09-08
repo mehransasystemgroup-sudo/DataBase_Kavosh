@@ -27,6 +27,13 @@ export function ThemeProvider({ children }) {
     } catch {
       // ذخیره نشد؛ تم فقط تا پایان همین نشست می‌ماند
     }
+    // اگر برنامه داخل پوستهٔ اندروید باز شده باشد، نوار وضعیت هم باید با تم
+    // بخواند؛ وگرنه بالای صفحه یک نوار ناهماهنگ می‌ماند.
+    try {
+      window.KavoshShell?.postMessage(theme);
+    } catch {
+      // پوسته‌ای در کار نیست — نسخهٔ وب
+    }
   }, [theme]);
 
   const setTheme = useCallback((next) => {

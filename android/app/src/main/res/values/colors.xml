@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- همان رنگ‌های تم برنامه، تا پشت نوارهای سیستم و پیش از بالا آمدن
+         صفحه، رنگ ناهماهنگ دیده نشود -->
+    <color name="ink">#050806</color>
+    <color name="paper">#F4F8F5</color>
+    <color name="brand">#16A34A</color>
+</resources>

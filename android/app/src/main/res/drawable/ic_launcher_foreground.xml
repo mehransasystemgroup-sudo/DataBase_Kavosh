@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  نماد برنامه: استوانهٔ پایگاه داده.
+
+  در قاب ۱۰۸ واحدی آیکون تطبیقی، فقط ۷۲ واحد میانی همیشه دیده می‌شود؛ طرح
+  داخل همان محدوده می‌ماند تا هیچ لانچری گوشه‌اش را نبُرد.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- بدنه -->
+    <path
+        android:fillColor="#16A34A"
+        android:pathData="M32,34 L32,74 A22,8 0 0,0 76,74 L76,34 Z" />
+
+    <!-- سرِ بالا، روشن‌تر تا حجم دیده شود -->
+    <path
+        android:fillColor="#4ADE80"
+        android:pathData="M32,34 A22,8 0 1,0 76,34 A22,8 0 1,0 32,34 Z" />
+
+    <!-- بندهای میانی -->
+    <path
+        android:pathData="M32,50 A22,8 0 0,0 76,50"
+        android:strokeColor="#05140B"
+        android:strokeWidth="3"
+        android:strokeAlpha="0.45" />
+    <path
+        android:pathData="M32,62 A22,8 0 0,0 76,62"
+        android:strokeColor="#05140B"
+        android:strokeWidth="3"
+        android:strokeAlpha="0.45" />
+</vector>

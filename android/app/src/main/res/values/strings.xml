@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">کاوشگر پایگاه داده</string>
+    <string name="webview_too_old">نمایشگر وب اندروید این دستگاه قدیمی است و این برنامه با آن اجرا نمی‌شود.\n\nلطفاً «Android System WebView» یا «Google Chrome» را از فروشگاه به‌روزرسانی کنید.</string>
+</resources>
