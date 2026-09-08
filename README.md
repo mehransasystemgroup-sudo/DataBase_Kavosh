@@ -51,6 +51,10 @@ backend/
   core/writer.py       ثبت دانش کاربر در kb/
   core/textnorm.py     نرمال‌سازی و ریشه‌یابی متن فارسی
   kb/                  منبع حقیقت دانش (YAML): ساختار، معنا، روابط، enum، ایندکس
+    semantics/<S>.yaml   عنوان و شرح فارسی جدول‌های اسکیمای <S>
+    semantics/_schemas.yaml  نام فارسی ماژول‌ها (اسکیماها)
+    semantics/_columns.yaml  واژه‌نامهٔ نام ستون‌ها — بر پایهٔ نام دقیق ستون
+    joins/user-verified.yaml روابط تأییدشدهٔ کاربر — بر استنتاج اولویت دارند
   instances/live/      آمار ردیف‌های نصب فعلی
   index/               ایندکس مشتق‌شده (در git نیست — خودکار ساخته می‌شود)
 
