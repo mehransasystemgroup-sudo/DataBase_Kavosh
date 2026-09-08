@@ -8,6 +8,11 @@ on:
   push:
     tags: ["v*"]
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "برچسب انتشار — پرش کنید تا فقط ساخته و آزموده شود بدون انتشار"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -139,9 +144,12 @@ jobs:
             packaging/*.exe
             dist/KavoshDB/
 
+      # مثل گردش‌کار اندروید: آرتیفکت پس از ۹۰ روز پاک می‌شود و برای
+      # دانلودش باید وارد گیت‌هاب شد، ولی Release لینک ماندگار می‌دهد.
       - name: انتشار در Releases
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') || inputs.release_tag
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.release_tag || github.ref_name }}
           files: packaging/*.exe
           generate_release_notes: true
