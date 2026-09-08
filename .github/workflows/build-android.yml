@@ -93,6 +93,17 @@ jobs:
           name: KavoshDB-android
           path: android/app/build/outputs/apk/release/*.apk
 
+      - name: آزاد کردن فضای دیسک
+        run: |
+          # شبیه‌ساز برای پارتیشن userdata حدود ۷.۴ گیگابایت می‌خواهد و رانر
+          # گیت‌هاب فقط ۷.۳ گیگابایت آزاد دارد؛ اجرای قبلی دقیقاً با همین
+          # ۱۱۰ مگابایت کسری افتاد. این ابزارها به این پروژه ربطی ندارند.
+          df -h / | tail -1
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost \
+                      /usr/local/lib/android/sdk/ndk /usr/share/swift \
+                      /opt/hostedtoolcache/CodeQL /usr/local/share/powershell
+          df -h / | tail -1
+
       - name: باز کردن دسترسی KVM
         run: |
           # شبیه‌ساز بدون شتاب سخت‌افزاری بالا نمی‌آید و رانر گیت‌هاب به‌طور
@@ -111,6 +122,9 @@ jobs:
           arch: x86_64
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
           emulator-boot-timeout: 900
+          # پیش‌فرض این نسخه ۷.۴ گیگابایت است؛ برای اجرای یک برنامهٔ ۵ مگابایتی
+          # لازم نیست و فقط دیسک رانر را پر می‌کند.
+          disk-size: 4096M
           disable-animations: true
           script: bash .github/scripts/android-smoke.sh
 
