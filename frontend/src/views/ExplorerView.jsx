@@ -17,7 +17,7 @@ import {
 
 import { errorMessage, http } from "@/lib/api";
 import { cn, fa, faCompact, splitTable } from "@/lib/utils";
-import { schemaAccent, schemaLabel } from "@/lib/schemaTheme";
+import { registerSchemaTitles, schemaAccent, schemaLabel } from "@/lib/schemaTheme";
 import { useTheme } from "@/context/ThemeContext";
 import {
   Badge,
@@ -208,7 +208,11 @@ export default function ExplorerView({ health, route, navigate }) {
   useEffect(() => {
     http
       .get("/schemas")
-      .then(({ data }) => setSchemas(data.schemas || []))
+      .then(({ data }) => {
+        const list = data.schemas || [];
+        registerSchemaTitles(list);   // نام فارسی ماژول‌ها از پایگاه دانش
+        setSchemas(list);
+      })
       .catch(() => setSchemas([]));
   }, []);
 

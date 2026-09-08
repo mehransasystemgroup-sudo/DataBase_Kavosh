@@ -1,6 +1,558 @@
 schema: GNR3
 tables:
+- name: Address
+  title_fa: نشانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ArchiveConfig
+  title_fa: پیکربندی بایگانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ArchiveJob
+  title_fa: شغل بایگانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ArchiveJobExecutionLog
+  title_fa: گزارش رویداد اجرا شغل بایگانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Branch
+  title_fa: شعبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BranchGrouping
+  title_fa: گروهبندی شعبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BranchGroupingDetail
+  title_fa: جزئیات گروهبندی شعبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicy
+  title_fa: سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyCondition
+  title_fa: شرط سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyConditionRow
+  title_fa: ردیف شرط سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyEnforcementProcedure
+  title_fa: رویه اجرائیات سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyEnforcementProcedureRow
+  title_fa: ردیف رویه اجرائیات سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyEnforcementProcedureRowDependency
+  title_fa: وابستگی ردیف رویه اجرائیات سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyInputValue
+  title_fa: مقدار ورودی سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyMeasure
+  title_fa: سنجه سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyOutputValue
+  title_fa: مقدار خروجی سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyParameter
+  title_fa: پارامتر سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyParameterAssociation
+  title_fa: تناظر پارامتر سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BusinessPolicyTargetEntity
+  title_fa: موجودیت هدف سیاست کسب‌وکار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Characteristic
+  title_fa: مشخصه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CharacteristicItem
+  title_fa: قلم مشخصه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: Company
+  title_fa: شرکت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CompanyItem
+  title_fa: قلم شرکت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CompanyLedger
+  title_fa: دفتر کل شرکت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CorporateStructure
+  title_fa: ساختار شرکتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CorporateStructureNode
+  title_fa: گره ساختار شرکتی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CostCenter
+  title_fa: مرکز هزینه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Currency
+  title_fa: ارز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CurrencyExchangeRate
+  title_fa: نرخ تبادل ارز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CurrencyGroupMember
+  title_fa: عضو گروه ارز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DependantCustomerAncestorInformation
+  title_fa: اطلاعات نیای مشتری وابسته
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DependantCustomerInformationSource
+  title_fa: منبع اطلاعات مشتری وابسته
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DependantCustomerInformationSourceItem
+  title_fa: قلم منبع اطلاعات مشتری وابسته
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EntityGroup
+  title_fa: گروه موجودیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EntityGrouping
+  title_fa: گروهبندی موجودیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EntitySegmentAssignment
+  title_fa: تخصیص بخش موجودیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EntitySegmentSetting
+  title_fa: تنظیم بخش موجودیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EntityUnit
+  title_fa: واحد موجودیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EntityUnitRate
+  title_fa: نرخ واحد موجودیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: FiscalYear
   title_fa: سال مالی
   source: stated_by_user
   confidence: high
+- name: Fund
+  title_fa: صندوق
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FundType
+  title_fa: نوع صندوق
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: GroupMember
+  title_fa: عضو گروه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IndependentUnitCategory
+  title_fa: دسته واحد مستقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Ledger
+  title_fa: دفتر کل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LedgerFiscalYear
+  title_fa: سال مالی دفتر کل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyCreditTransaction
+  title_fa: تراکنش اعتبار وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyCreditTransactionGroup
+  title_fa: گروه تراکنش اعتبار وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyCreditTransactionItem
+  title_fa: قلم تراکنش اعتبار وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyHoldInTierCalculation
+  title_fa: محاسبه لایه نگه‌داشت وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: LoyaltyMember
+  title_fa: عضو وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyMemberAttribute
+  title_fa: ویژگی عضو وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyMemberCard
+  title_fa: کارت عضو وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyMemberPattern
+  title_fa: الگوی عضو وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyMemberPatternAttribute
+  title_fa: ویژگی الگوی عضو وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyMemberPatternEntityAttribute
+  title_fa: ویژگی موجودیت الگوی عضو وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyMemberSuspensionHistory
+  title_fa: تاریخچه تعلیق عضو وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyPointTransaction
+  title_fa: تراکنش جایگاه وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyPointTransactionGroup
+  title_fa: گروه تراکنش جایگاه وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyPointTransactionItem
+  title_fa: قلم تراکنش جایگاه وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyPointType
+  title_fa: نوع جایگاه وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyPolicyEnforcementProcedure
+  title_fa: رویه اجرائیات سیاست وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyPolicyEnforcementProcedureRow
+  title_fa: ردیف رویه اجرائیات سیاست وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyProgram
+  title_fa: برنامه وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyProgramMember
+  title_fa: عضو برنامه وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyProgramPolicyEventActionMap
+  title_fa: نگاشت اقدام رویداد سیاست برنامه وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LoyaltyTier
+  title_fa: لایه وفاداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MiddlewareInformation
+  title_fa: اطلاعات میان‌افزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Party
+  title_fa: طرف حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PartyAddress
+  title_fa: نشانی طرف حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Project
+  title_fa: پروژه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RegionalDivision
+  title_fa: تقسیمات کشوری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SessionLock
+  title_fa: قفل نشست
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SignatureAssignment
+  title_fa: تخصیص امضا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SignatureRequest
+  title_fa: درخواست امضا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SignatureTemplate
+  title_fa: الگوی امضا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SignatureTemplateSignatory
+  title_fa: امضادار الگوی امضا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SignedDocument
+  title_fa: سند امضاشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: StandardDescription
+  title_fa: شرح استاندارد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerBill
+  title_fa: صورت‌حساب مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerBillBatchJobScheduling
+  title_fa: زمان‌بندی شغل بچ صورت‌حساب مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerBillConfigSnapshot
+  title_fa: تصویر لحظه‌ای پیکربندی صورت‌حساب مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerBillItem
+  title_fa: قلم صورت‌حساب مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerBillLog
+  title_fa: گزارش رویداد صورت‌حساب مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerBillPaymentInformation
+  title_fa: اطلاعات پرداخت صورت‌حساب مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerCancellationBill
+  title_fa: صورت‌حساب ابطال مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerDataLog
+  title_fa: گزارش رویداد داده مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TaxPayerSellerInformation
+  title_fa: اطلاعات فروشنده مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPayerSerialNumber
+  title_fa: شماره سریال مؤدی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TaxPaymentProfile
+  title_fa: شناسنامه پرداخت مالیات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransformedQuantity
+  title_fa: مقدار تبدیل‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Unit
+  title_fa: واحد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

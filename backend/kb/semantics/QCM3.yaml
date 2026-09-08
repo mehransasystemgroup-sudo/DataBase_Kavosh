@@ -1,6 +1,257 @@
 schema: QCM3
 note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
 tables:
+- name: InspectionCharacteristic
+  title_fa: مشخصه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionCharacteristicInspectionMethod
+  title_fa: روش بازرسی مشخصه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionCharacteristicRelatedDefectGroup
+  title_fa: گروه عیب مرتبط مشخصه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionDocumentRules
+  title_fa: قواعد سند بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionDocumentRulesEvaluation
+  title_fa: ارزیابی قواعد سند بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionLot
+  title_fa: سری ساخت بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionLotInventoryVoucherItemTrackingFactor
+  title_fa: عامل ردیابی قلم سند انبار سری ساخت بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionLotOperation
+  title_fa: عملیات سری ساخت بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionLotOperationCharacteristic
+  title_fa: مشخصه عملیات سری ساخت بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionLotOperationCharacteristicExtraTargetValue
+  title_fa: مقدار هدف تکمیلی مشخصه عملیات سری ساخت بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionLotOperationRTAExtension
+  title_fa: تمدید RTA عملیات سری ساخت بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionLotOperationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع عملیات سری ساخت بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionMethod
+  title_fa: روش بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionPlan
+  title_fa: طرح بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPlanOperation
+  title_fa: عملیات طرح بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPlanOperationCharacteristic
+  title_fa: مشخصه عملیات طرح بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPlanOperationCharacteristicDependentValue
+  title_fa: مقدار وابسته مشخصه عملیات طرح بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPlanOperationCharacteristicExtraTargetValue
+  title_fa: مقدار هدف تکمیلی مشخصه عملیات طرح بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPlanOperationRTAExtension
+  title_fa: تمدید RTA عملیات طرح بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPlanOperationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع عملیات طرح بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPlanPart
+  title_fa: قطعه طرح بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPoint
+  title_fa: جایگاه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionPointCharacteristic
+  title_fa: مشخصه جایگاه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPointCharacteristicDefaultValue
+  title_fa: مقدار پیش‌فرض مشخصه جایگاه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPointCharacteristicValue
+  title_fa: مقدار مشخصه جایگاه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPointValue
+  title_fa: مقدار جایگاه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionSchedule
+  title_fa: زمانبندی بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionScheduleItem
+  title_fa: قلم زمانبندی بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InventoryInspectionDocumentRules
+  title_fa: قواعد سند بازرسی انبار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LogicalOperatorMapping
+  title_fa: نگاشت عملگر منطقی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LogicalOperatorMappingOperator
+  title_fa: عملگر نگاشت عملگر منطقی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LogicalOperatorMappingOperatorNotation
+  title_fa: نماد عملگر نگاشت عملگر منطقی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PartQualityControlExtension
+  title_fa: تمدید کنترل کیفی قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartQualityControlInspectionPlanExtension
+  title_fa: تمدید طرح بازرسی کنترل کیفی قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartSupplierProfile
+  title_fa: شناسنامه تأمین‌کننده قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartSupplierProfileCharacteristic
+  title_fa: مشخصه شناسنامه تأمین‌کننده قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartSupplierProfileCharacteristicHistory
+  title_fa: تاریخچه مشخصه شناسنامه تأمین‌کننده قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartSupplierProfileCharacteristicInspectionResult
+  title_fa: نتیجه بازرسی مشخصه شناسنامه تأمین‌کننده قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: QualityInspectionResult
   title_fa: سند تایید / رد کیفی
   source: stated_by_user
@@ -16,3 +267,85 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ResultRecording
+  title_fa: ثبت نتیجه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ResultRecordingCharacteristic
+  title_fa: مشخصه ثبت نتیجه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ResultRecordingCharacteristicHistory
+  title_fa: تاریخچه مشخصه ثبت نتیجه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ResultRecordingCharacteristicSample
+  title_fa: نمونه مشخصه ثبت نتیجه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ResultRecordingCharacteristicSampleValue
+  title_fa: مقدار نمونه مشخصه ثبت نتیجه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ResultRecordingRTAExtension
+  title_fa: تمدید RTA ثبت نتیجه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ResultRecordingResourceToolAssignment
+  title_fa: تخصیص ابزار منبع ثبت نتیجه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SamplingProcedure
+  title_fa: رویه نمونه‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SamplingTable
+  title_fa: جدول نمونه‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SamplingTableItem
+  title_fa: قلم جدول نمونه‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: StandardSamplingTable
+  title_fa: جدول نمونه‌گیری استاندارد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TestProfile
+  title_fa: شناسنامه آزمون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TestProfileInspectionLot
+  title_fa: سری ساخت بازرسی شناسنامه آزمون
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

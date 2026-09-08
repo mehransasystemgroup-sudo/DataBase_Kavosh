@@ -1,0 +1,254 @@
+schema: SCM3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: Approval
+  title_fa: تصویب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ApprovalItem
+  title_fa: قلم تصویب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Catalog
+  title_fa: کاتالوگ
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CatalogItem
+  title_fa: قلم کاتالوگ
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DeliveryExtension
+  title_fa: تمدید تحویل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DeliveryItemExtension
+  title_fa: تمدید قلم تحویل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DocumentProcessLog
+  title_fa: گزارش رویداد فرایند سند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DownloadHistory
+  title_fa: تاریخچه دریافت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DownloadSettings
+  title_fa: تنظیمات دریافت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ExtrinsicField
+  title_fa: فیلد بیرونی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: GoodsReceiptNotice
+  title_fa: اخطار فیش کالا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandshakeHistory
+  title_fa: تاریخچه دست‌دهی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InquiryExtension
+  title_fa: تمدید استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InquirySupplierExtension
+  title_fa: تمدید تأمین‌کننده استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: Message
+  title_fa: پیام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MessageRecipient
+  title_fa: گیرنده پیام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotificationExtension
+  title_fa: تمدید اعلان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotificationTaskExtension
+  title_fa: تمدید وظیفه اعلان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderConfirmation
+  title_fa: تأیید سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderConfirmationItem
+  title_fa: قلم تأیید سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderExtension
+  title_fa: تمدید سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderItemExtension
+  title_fa: تمدید قلم سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderStatusRequest
+  title_fa: درخواست وضعیت سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OrderStatusUpdate
+  title_fa: به‌روزرسانی وضعیت سفارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PurchaseItemMapping
+  title_fa: نگاشت قلم خرید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: QNNote
+  title_fa: سفته QN
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: QNNoteAttachment
+  title_fa: پیوست سفته QN
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: QNVersion
+  title_fa: نسخه QN
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: QuotationExtension
+  title_fa: تمدید استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: QuotationItemExtension
+  title_fa: تمدید قلم استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: QuoteMessageOpeningEvent
+  title_fa: رویداد افتتاحیه پیام استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: QuoteMessageOpeningEventAttender
+  title_fa: حاضر رویداد افتتاحیه پیام استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: QuoteMessagePayload
+  title_fa: محتوا پیام استعلام
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivedDocument
+  title_fa: سند دریافت‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivedDocumentAttachment
+  title_fa: پیوست سند دریافت‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivedDocumentReference
+  title_fa: مرجع سند دریافت‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReceivedDocumentTarget
+  title_fa: هدف سند دریافت‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SentDocument
+  title_fa: سند ارسال‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SupplierAssessmentExtension
+  title_fa: تمدید سنجش تأمین‌کننده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: UploadHistory
+  title_fa: تاریخچه بارگذاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: UploadSettings
+  title_fa: تنظیمات بارگذاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

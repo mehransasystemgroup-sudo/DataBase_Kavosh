@@ -21,6 +21,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AccountConfigurationAssetDLType
+  title_fa: نوع تفصیلی دارایی پیکربندی حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: AccountConfigurationItem
   title_fa: قلم استقرار حساب ها
   source: stated_by_user
@@ -51,6 +57,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AssetBarcode
+  title_fa: بارکد دارایی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: AssetClass
   title_fa: طبقه دارایی
   source: stated_by_user
@@ -81,6 +93,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AssetEquipment
+  title_fa: تجهیزات دارایی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: AssetExtraField
   title_fa: اطلاعات تکمیلی دارایی
   source: stated_by_user
@@ -106,6 +124,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AssetGroupPart
+  title_fa: قطعه گروه دارایی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: AssetInCalculationArea
   title_fa: دارایی در حوزه محاسباتی
   source: stated_by_user
@@ -131,6 +156,19 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AssetOperationSummaryConsiderRevaluation
+  title_fa: تجدید ارزیابی ملاحظه خلاصه عملیات دارایی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: AssetReformExtraFieldValue
+  title_fa: مقدار فیلد تکمیلی اصلاح دارایی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: AssetTagTemplate
   title_fa: مدیریت چاپ برچسب دارایی
   source: stated_by_user
@@ -196,6 +234,18 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: CollectorDefaultCompany
+  title_fa: شرکت پیش‌فرض وصول‌کننده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectorItem
+  title_fa: قلم وصول‌کننده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: CostPart
   title_fa: جز قیمت دارایی
   source: stated_by_user
@@ -346,6 +396,20 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: GasAssetReformItem
+  title_fa: قلم اصلاح دارایی گاز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: GasAssetReformItemInCalculationArea
+  title_fa: حوزه محاسبه قلم اصلاح دارایی گاز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: GasDeployment
   title_fa: استقرار اموال
   source: stated_by_user
@@ -466,11 +530,25 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PermissionRequestItemInCalculationArea
+  title_fa: حوزه محاسبه قلم درخواست مجوز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: PurchasePriceElement
   title_fa: جز قیمت خرید
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PurchasePriceElementInCalculationArea
+  title_fa: حوزه محاسبه عنصر قیمت خرید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: ReassignPlaqueNumber
   title_fa: پلاک گذاری مجدد
   source: stated_by_user
@@ -516,6 +594,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: SalesItemInCalculationArea
+  title_fa: حوزه محاسبه قلم فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: SalesItemSalesPriceElement
   title_fa: اجزای قیمت فروش
   source: stated_by_user
@@ -561,6 +646,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: SettlementPlaceDefaultCompany
+  title_fa: شرکت پیش‌فرض محل تسویه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: SmallDealsQuorum
   title_fa: حدنصاب معاملات کوچک
   source: stated_by_user

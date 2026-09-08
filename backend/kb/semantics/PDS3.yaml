@@ -1,0 +1,99 @@
+schema: PDS3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: CustomerCreditPolicy
+  title_fa: سیاست اعتبار مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerCreditPolicyConfirmation
+  title_fa: تأیید سیاست اعتبار مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerCreditPolicyItem
+  title_fa: قلم سیاست اعتبار مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerCreditPolicyRelation
+  title_fa: رابطه سیاست اعتبار مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerPharma
+  title_fa: دارویی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RemainingUntilProductExpiration
+  title_fa: انقضا محصول تا باقی‌مانده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RemainingUntilProductExpirationItem
+  title_fa: قلم انقضا محصول تا باقی‌مانده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SettlementRespite
+  title_fa: مهلت تسویه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SettlementRespiteItem
+  title_fa: قلم مهلت تسویه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SettlementRespiteRequest
+  title_fa: درخواست مهلت تسویه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SettlementRespiteRequestItem
+  title_fa: قلم درخواست مهلت تسویه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TriplePriceList
+  title_fa: لیست قیمت سه‌گانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TriplePriceListItem
+  title_fa: قلم لیست قیمت سه‌گانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TriplePriceListRelation
+  title_fa: رابطه لیست قیمت سه‌گانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: UserCreditLimit
+  title_fa: سقف اعتبار کاربر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: UserCreditLimitItem
+  title_fa: قلم سقف اعتبار کاربر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

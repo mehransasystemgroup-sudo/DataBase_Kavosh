@@ -1,0 +1,204 @@
+# واژه‌نامهٔ نام ستون‌های پرتکرار — تأییدشدهٔ کاربر در اکسل شهریور ۱۴۰۵.
+# نگاشت بر پایهٔ نام دقیق ستون است، پس یک ورودی روی همهٔ جدول‌هایی که آن
+# ستون را دارند اثر می‌گذارد. ۲۰۰ ورودی ≈ نیمی از کل ستون‌های پایگاه داده.
+columns:
+  Version: نسخه
+  CreationDate: تاریخ ایجاد
+  LastModificationDate: تاریخ آخرین تغییر
+  Creator: ایجادکننده
+  LastModifier: آخرین تغییردهنده
+  Description: شرح
+  State: وضعیت
+  Title: عنوان
+  Number: شماره
+  Date: تاریخ
+  Type: نوع
+  Quantity: مقدار
+  BranchRef: شعبه
+  PartRef: کالا
+  CurrencyRef: ارز
+  FiscalYearRef: سال مالی
+  RowNumber: شمارهٔ ردیف
+  Value: مقدار
+  LedgerRef: دفتر کل
+  Amount: مبلغ
+  Name: نام
+  Code: کد
+  ReferenceType: نوع مرجع
+  Description_En: شرح (انگلیسی)
+  ReferenceRef: مرجع
+  Price: قیمت
+  UnitRef: واحد
+  BusinessPolicyRef: سیاست کسب‌وکار
+  ProductRef: محصول
+  Status: وضعیت
+  EmployeeRef: کارمند
+  CustomerRef: مشتری
+  PlantRef: کارخانه
+  StartDate: تاریخ شروع
+  MajorUnitQuantity: مقدار واحد اصلی
+  SLRef: معین
+  StoreRef: انبار
+  PartUnitRef: واحد کالا
+  EndDate: تاریخ پایان
+  RetailShopRef: فروشگاه خرده‌فروشی
+  OperationalCurrencyExchangeRate: نرخ تبادل ارز عملیاتی
+  Order: سفارش
+  Title_En: عنوان (انگلیسی)
+  CounterPartRef: کالا مقابل
+  OperationalCurrencyExchangeRateRef: نرخ تبادل ارز عملیاتی
+  UserRef: کاربر
+  SalesOfficeRef: دفتر فروش
+  InventoryRef: انبار
+  NetPrice: قیمت خالص
+  TrackingFactor1: factor1 ردیابی
+  TrackingFactor2: factor2 ردیابی
+  TrackingFactor3: factor3 ردیابی
+  TrackingFactor4: factor4 ردیابی
+  TrackingFactor5: factor5 ردیابی
+  BusinessPolicyConditionRowRef: ردیف شرط سیاست کسب‌وکار
+  CompanyRef: شرکت
+  IsDefault: پیش‌فرض
+  PartyRef: طرف حساب
+  BankAccountRef: حساب بانکی
+  ContractRef: قرارداد
+  StandardDescriptionPattern: الگوی شرح استاندارد
+  Fee: کارمزد
+  Priority: اولویت
+  BrokerRef: کارگزار
+  BusinessPolicyConditionRef: شرط سیاست کسب‌وکار
+  ParentRef: والد
+  SalesAreaRef: حوزه فروش
+  PartTrackingFactorRef1: ref1 عامل ردیابی کالا
+  PartTrackingFactorRef2: ref2 عامل ردیابی کالا
+  PartTrackingFactorRef3: ref3 عامل ردیابی کالا
+  PartTrackingFactorRef4: ref4 عامل ردیابی کالا
+  PartTrackingFactorRef5: ref5 عامل ردیابی کالا
+  Approver: تأییدکننده
+  EntityCode: کد موجودیت
+  AdditionAmount: مبلغ اضافه
+  ReductionAmount: مبلغ کسر
+  BatchRef: بچ
+  TrackingFactorValue: مقدار عامل ردیابی
+  SupplierRef: تامین
+  Weight: وزن
+  VoucherRef: سند
+  AssetRef: دارایی
+  InitialQuantity: مقدار اولیه
+  RetailInteriorSectionRef: بخش داخلی خرده‌فروشی
+  CharacteristicRef: بچ
+  EffectiveDate: تاریخ مؤثر
+  ExcludedPolicies: سیاست‌ها مستثنا
+  IncludedPolicies: سیاست‌ها شامل
+  InventoryVoucherSpecificationRef: مشخصات سند انبار
+  SalesTypeRef: نوع فروش
+  ToDate: تاریخ
+  Credit: اعتبار
+  Debit: بدهکار
+  DocumentType: نوع سند
+  ReferenceNumber: شمارهٔ مرجع
+  DLLevel4: level4 تفصیلی
+  DLLevel5: level5 تفصیلی
+  DLLevel6: level6 تفصیلی
+  EffectiveNetPrice: قیمت خالص مؤثر
+  EntityRef: موجودیت
+  ItemType: نوع قلم
+  PayerAccountRef: حساب پرداخت‌کننده
+  ProductUnitRef: واحد محصول
+  CurrencyExchangeRate: نرخ تبادل ارز
+  DocumentRef: سند
+  IssueYearMonth: سال و ماه خروج
+  SourceRef: منبع
+  CalculationAreaRef: حوزه محاسباتی
+  CostCenterRef: مرکز هزینه
+  CurrencyExchangeRateRef: نرخ تبادل ارز
+  FileName: نام فایل
+  IsActive: فعال
+  SLCode: کد معین
+  AccountingOperationRef: عملیات حسابداری
+  FromDate: تاریخ تحویل
+  ShippingPointRef: جایگاه بار
+  WeightUnitRef: واحد وزن
+  BankRef: بانک
+  BaseCurrencyRef: ارز ارسالی
+  NoteType: نوع سفته
+  StartTime: زمان شروع
+  TypeCode: کد نوع
+  DLLevel7: level7 تفصیلی
+  DLLevel8: level8 تفصیلی
+  DLLevel9: level9 تفصیلی
+  DLTypeRef4: ref4 نوع تفصیلی
+  DLTypeRef5: ref5 نوع تفصیلی
+  DocumentDate: تاریخ سند
+  DueDate: تاریخ سررسید
+  DurationType: نوع مدت
+  GroupRef: گروه
+  OfflineID: شناسهٔ برون‌خط
+  PurchaseItemRef: قلم خرید
+  TopicRef: ماژول
+  CalcPeriodRef: دوره محاسبه
+  CashFlowFactorRef: عامل جریان نقد
+  DLTypeRef6: ref6 نوع تفصیلی
+  InvoiceRef: فاکتور
+  BaseCurrencyExchangeRate: نرخ تبادل ارز ارسالی
+  BaseCurrencyExchangeRateRef: نرخ تبادل ارز ارسالی
+  CashierRef: صندوق‌دار
+  ExpirationDate: تاریخ انقضا
+  Key: کلید
+  Nature: ماهیت
+  OrderRef: سفارش
+  SourceType: نوع منبع
+  WorkCenterRef: مرکز کار
+  AccountRef: حساب
+  ConfirmationRef: تأیید
+  DeliveryAddressRef: نشانی تحویل
+  GroupingRef: گروهبندی
+  OperationalCurrencyAmount: مبلغ ارز عملیاتی
+  PaymentAgreementRef: موافقتنامه پرداخت
+  ProductGroupRef: گروه محصول
+  PurchasingDepartmentRef: واحد سازمانی واحد/رمز
+  ApprovalDate: تاریخ تصویب
+  AssetTransactionRef: تراکنش دارایی
+  BatchNumber: شمارهٔ بچ
+  DeliveryAddressType: نوع نشانی تحویل
+  EquipmentRef: تجهیزات
+  FormulaRef: فرمول
+  IssueDate: تاریخ خروج
+  PostRef: پست
+  ProjectRef: پروژه
+  ReceivableNoteRef: سفته دریافتنی
+  ApplyYearMonth: سال و ماه اعمال
+  ApproveDate: تاریخ تأیید
+  BaseCurrencyAmount: مبلغ ارز ارسالی
+  EmploymentTypeRef: نوع استخدام
+  EndTime: زمان پایان
+  RecipientType: نوع گیرنده
+  DLLevel10: level10 تفصیلی
+  DLLevel11: level11 تفصیلی
+  DLLevel12: level12 تفصیلی
+  DLLevel13: level13 تفصیلی
+  DLLevel14: level14 تفصیلی
+  DLLevel15: level15 تفصیلی
+  DLLevel16: level16 تفصیلی
+  DLLevel17: level17 تفصیلی
+  DLLevel18: level18 تفصیلی
+  DLLevel19: level19 تفصیلی
+  DLLevel20: level20 تفصیلی
+  DocumentNumber: شمارهٔ سند
+  JobRef: شغل
+  RecipientPartyRef: طرف حساب گیرنده
+  CalculationDate: تاریخ محاسباتی
+  DLTypeRef7: ref7 نوع تفصیلی
+  DLTypeRef8: ref8 نوع تفصیلی
+  DLTypeRef9: ref9 نوع تفصیلی
+  IsDirectCurrencyExchange: تبادل ارز مستقیم
+  MemberID: شناسهٔ عضو
+  PayerType: نوع پرداخت‌کننده
+  RecipientRef: گیرنده
+  ReportingPeriodRef: دوره گزارشگری
+  SettlementPolicyRef: سیاست تسویه
+  Tax: مالیات
+  CompensationFactorRef: عامل حقوق و مزایا
+  EndDateTime: تاریخ و زمان پایان
+  FreeProductBusinessPolicyRef: سیاست کسب‌وکار محصول رایگان
+  OrderItemRef: قلم سفارش

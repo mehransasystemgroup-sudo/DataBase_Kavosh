@@ -1,0 +1,282 @@
+schema: STM3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: Complex
+  title_fa: مجتمع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Feed
+  title_fa: خوراک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FeedProductionUnit
+  title_fa: واحد تولید خوراک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FeedSenderSource
+  title_fa: منبع فرستنده خوراک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FeedStoreConfig
+  title_fa: پیکربندی انبار خوراک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FlowMeter
+  title_fa: کنتور جریان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FlowMeterAssignmentItem
+  title_fa: قلم تخصیص کنتور جریان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FlowMeterCorrectiveFactor
+  title_fa: عامل اصلاحی کنتور جریان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FormulaFactor
+  title_fa: عامل فرمول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FormulaFactorProperty
+  title_fa: خصوصیت عامل فرمول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FormulaFactorPropertyExtra
+  title_fa: تکمیلی خصوصیت عامل فرمول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecording
+  title_fa: ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecordingComplementaryInformation
+  title_fa: اطلاعات مکمل ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecordingComplementaryInformationItem
+  title_fa: قلم اطلاعات مکمل ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecordingExtraFormulaDynamicFactor
+  title_fa: عامل پویا فرمول تکمیلی ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecordingExtraFormulaInputParameter
+  title_fa: پارامتر ورودی فرمول تکمیلی ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecordingFlowMeterReading
+  title_fa: قرائت کنتور جریان ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecordingReceiptRecording
+  title_fa: ثبت فیش ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecordingSendRecording
+  title_fa: ثبت ارسال ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MovementRecordingTankReading
+  title_fa: قرائت مخزن ثبت گردش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Product
+  title_fa: محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductFeedComposition
+  title_fa: ترکیب خوراک محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductFeedCompositionItem
+  title_fa: قلم ترکیب خوراک محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductProductionUnit
+  title_fa: واحد تولید محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductReceiverSource
+  title_fa: منبع گیرنده محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductStoreConfig
+  title_fa: پیکربندی انبار محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionPlanning
+  title_fa: برنامه‌ریزی تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionPlanningFeed
+  title_fa: خوراک برنامه‌ریزی تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionPlanningProduct
+  title_fa: محصول برنامه‌ریزی تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionPlanningProductionUnit
+  title_fa: واحد تولید برنامه‌ریزی تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionPlanningTimeBucket
+  title_fa: سطل زمان برنامه‌ریزی تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionPlanningTimeBucketAssignmentItem
+  title_fa: قلم تخصیص سطل زمان برنامه‌ریزی تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionUnit
+  title_fa: واحد تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionUnitComplementaryInformation
+  title_fa: اطلاعات مکمل واحد تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionUnitComplementaryInformationItem
+  title_fa: قلم اطلاعات مکمل واحد تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionUnitSection
+  title_fa: بخش واحد تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Tank
+  title_fa: مخزن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TankAssignmentItem
+  title_fa: قلم تخصیص مخزن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TankStrapping
+  title_fa: استرپینگ مخزن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TankStrappingCalibrationInformation
+  title_fa: اطلاعات کالیبراسیون استرپینگ مخزن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TankStrappingCalibrationInformationStrappingTable
+  title_fa: جدول استرپینگ اطلاعات کالیبراسیون استرپینگ مخزن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: UtilityService
+  title_fa: خدمت سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: UtilityServiceProductionUnit
+  title_fa: واحد تولید خدمت سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: UtilityServiceSenderSource
+  title_fa: منبع فرستنده خدمت سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: VarianceReason
+  title_fa: دلیل انحراف
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VarianceReasonGroupMember
+  title_fa: عضو گروه دلیل انحراف
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

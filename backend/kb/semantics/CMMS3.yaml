@@ -1,0 +1,897 @@
+schema: CMMS3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: Bom
+  title_fa: درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BomAssembly
+  title_fa: مونتاژ درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BomItem
+  title_fa: قلم درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BomSpare
+  title_fa: یدکی درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BomSpareInventoryVoucher
+  title_fa: سند انبار یدکی درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Confirmation
+  title_fa: تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationActivity
+  title_fa: فعالیت تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationDelayReason
+  title_fa: دلیل تأخیر تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationEquipment
+  title_fa: تجهیزات تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationMaterial
+  title_fa: ماده تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationMaterialInventoryVoucher
+  title_fa: سند انبار ماده تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationMaterialTrackingFactor
+  title_fa: عامل ردیابی ماده تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationPersonnel
+  title_fa: پرسنل تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationRTAExtension
+  title_fa: تمدید RTA تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationStandardValue
+  title_fa: مقدار استاندارد تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Damage
+  title_fa: خسارت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DamageGroupMember
+  title_fa: عضو گروه خسارت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DamageReason
+  title_fa: دلیل خسارت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DamageReasonGroupMember
+  title_fa: عضو گروه دلیل خسارت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DelayReason
+  title_fa: دلیل تأخیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentDamageGroup
+  title_fa: گروه خسارت تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentDamageReasonGroup
+  title_fa: گروه دلیل خسارت تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentExtension
+  title_fa: تمدید تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentExtensionHistory
+  title_fa: تاریخچه تمدید تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentFunction
+  title_fa: تابع تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentFunctionalFailure
+  title_fa: خرابی عملکردی تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentMeasurementPoint
+  title_fa: جایگاه اندازه‌گیری تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentMeasurementPointHistory
+  title_fa: تاریخچه جایگاه اندازه‌گیری تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EquipmentProblemGroup
+  title_fa: گروه مشکل تجهیزات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FMEADamageInformation
+  title_fa: اطلاعات خسارت FMEA
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FailureConsequence
+  title_fa: پیامد خرابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FailureDetectionMethod
+  title_fa: روش تشخیص خرابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FailureDetectionMethodType
+  title_fa: نوع روش تشخیص خرابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FailureDetectionMethodTypeMethod
+  title_fa: روش نوع روش تشخیص خرابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FailureEffect
+  title_fa: اثر خرابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FailureLikelihood
+  title_fa: احتمال خرابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Inspection
+  title_fa: بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmation
+  title_fa: تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationActivity
+  title_fa: فعالیت تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationActivityTime
+  title_fa: زمان فعالیت تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationDelayReason
+  title_fa: دلیل تأخیر تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationEquipment
+  title_fa: تجهیزات تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationEquipmentTime
+  title_fa: زمان تجهیزات تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationMaterial
+  title_fa: ماده تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationMaterialInventoryVoucher
+  title_fa: سند انبار ماده تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationMaterialTrackingFactor
+  title_fa: عامل ردیابی ماده تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationPersonnel
+  title_fa: پرسنل تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationRTAExtension
+  title_fa: تمدید RTA تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationStandardValue
+  title_fa: مقدار استاندارد تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionConfirmationTime
+  title_fa: زمان تأیید بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionEquipment
+  title_fa: تجهیزات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionEquipmentOperationActivity
+  title_fa: فعالیت عملیات تجهیزات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionEquipmentOperationActivityTime
+  title_fa: زمان فعالیت عملیات تجهیزات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionOperation
+  title_fa: عملیات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionOperationActivity
+  title_fa: فعالیت عملیات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionOperationMaterial
+  title_fa: ماده عملیات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionOperationMaterialInventoryVoucher
+  title_fa: سند انبار ماده عملیات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionOperationPersonnel
+  title_fa: پرسنل عملیات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionOperationRTAExtension
+  title_fa: تمدید RTA عملیات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionOperationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع عملیات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionOperationStandardValue
+  title_fa: مقدار استاندارد عملیات بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaintenancePartExtension
+  title_fa: تمدید قطعه نگهداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaintenanceProject
+  title_fa: پروژه نگهداری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MeasurementParameter
+  title_fa: پارامتر اندازه‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MeasurementResultRecording
+  title_fa: ثبت نتیجه اندازه‌گیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Notification
+  title_fa: اعلان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotificationDamage
+  title_fa: خسارت اعلان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotificationDamageInfo
+  title_fa: اطلاعات خسارت اعلان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotificationDamageReason
+  title_fa: دلیل خسارت اعلان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotificationProblem
+  title_fa: مشکل اعلان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NotificationProblemFailureConsequence
+  title_fa: پیامد خرابی مشکل اعلان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationType
+  title_fa: نوع عملیات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ParentEquipmentMeasurementPointAssignment
+  title_fa: تخصیص جایگاه اندازه‌گیری تجهیزات والد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Permit
+  title_fa: مجوز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PermitHistory
+  title_fa: تاریخچه مجوز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PermitInspection
+  title_fa: بازرسی مجوز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PermitType
+  title_fa: نوع مجوز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PermitWorkOrder
+  title_fa: دستور کار مجوز
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Plan
+  title_fa: طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanIndicator
+  title_fa: شاخص طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanSchedule
+  title_fa: زمانبندی طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanScheduleLog
+  title_fa: گزارش رویداد زمانبندی طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanService
+  title_fa: خدمت طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanServiceEquipmentMeasurementPoint
+  title_fa: جایگاه اندازه‌گیری تجهیزات خدمت طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanServiceHierarchy
+  title_fa: سلسله‌مراتب خدمت طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanServiceHierarchyHistory
+  title_fa: تاریخچه سلسله‌مراتب خدمت طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanServiceHierarchyTolerance
+  title_fa: رواداری سلسله‌مراتب خدمت طرح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PlanningAndMonitoringMaintenanceProject
+  title_fa: پروژه نگهداری پایش برنامه‌ریزی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PlanningAndMonitoringMaintenanceProjectNetwork
+  title_fa: شبکه پروژه نگهداری پایش برنامه‌ریزی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PlanningAndMonitoringMaintenanceProjectOperation
+  title_fa: عملیات پروژه نگهداری پایش برنامه‌ریزی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Problem
+  title_fa: مشکل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProblemGroupMember
+  title_fa: عضو گروه مشکل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCMDecisionLogic
+  title_fa: منطق تصمیم RCM
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCMDecisionLogicAssessment
+  title_fa: سنجش منطق تصمیم RCM
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCMDecisionLogicAssessmentDetail
+  title_fa: جزئیات سنجش منطق تصمیم RCM
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCMDecisionLogicNode
+  title_fa: گره منطق تصمیم RCM
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCMDecisionLogicNodeNote
+  title_fa: سفته گره منطق تصمیم RCM
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RCMEvaluation
+  title_fa: ارزیابی RCM
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RCMFailureConsequence
+  title_fa: پیامد خرابی RCM
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Recommendation
+  title_fa: توصیه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RecommendationType
+  title_fa: نوع توصیه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ResourceToolExtension
+  title_fa: تمدید ابزار منبع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RiskAndPriorityMapping
+  title_fa: نگاشت اولویت ریسک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RiskMatrix
+  title_fa: ماتریس ریسک
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Service
+  title_fa: خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceEquipment
+  title_fa: تجهیزات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceEquipmentHistory
+  title_fa: تاریخچه تجهیزات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceEquipmentOperationActivity
+  title_fa: فعالیت عملیات تجهیزات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceEquipmentPermitType
+  title_fa: نوع مجوز تجهیزات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceEquipmentPermitTypeHistory
+  title_fa: تاریخچه نوع مجوز تجهیزات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceGroupMember
+  title_fa: عضو گروه خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceHistory
+  title_fa: تاریخچه خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperation
+  title_fa: عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperationActivity
+  title_fa: فعالیت عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperationMaterial
+  title_fa: ماده عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperationMaterialInventoryVoucher
+  title_fa: سند انبار ماده عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperationResourceToolAssignmentExtension
+  title_fa: تمدید تخصیص ابزار منبع عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperationSet
+  title_fa: مجموعه عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperationStandardValue
+  title_fa: مقدار استاندارد عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceOperationSubcontract
+  title_fa: پیمانکاری فرعی عملیات خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServicePermitType
+  title_fa: نوع مجوز خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServicePermitTypeHistory
+  title_fa: تاریخچه نوع مجوز خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: WorkBreakdownStructure
+  title_fa: ساختار خرابی کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkBreakdownStructureNetwork
+  title_fa: شبکه ساختار خرابی کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkBreakdownStructureNetworkWorkOrderOperation
+  title_fa: عملیات دستور کار شبکه ساختار خرابی کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrder
+  title_fa: دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderDamage
+  title_fa: خسارت دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderDamageInfo
+  title_fa: اطلاعات خسارت دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderDamageReason
+  title_fa: دلیل خسارت دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderEquipment
+  title_fa: تجهیزات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperation
+  title_fa: عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperationActivity
+  title_fa: فعالیت عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperationMaterial
+  title_fa: ماده عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperationMaterialInventoryVoucher
+  title_fa: سند انبار ماده عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperationPersonnel
+  title_fa: پرسنل عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperationRTAExtension
+  title_fa: تمدید RTA عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperationStandardValue
+  title_fa: مقدار استاندارد عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderOperationSubcontract
+  title_fa: پیمانکاری فرعی عملیات دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderProblem
+  title_fa: مشکل دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WorkOrderProblemFailureConsequence
+  title_fa: پیامد خرابی مشکل دستور کار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

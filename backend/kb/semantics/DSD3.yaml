@@ -1,0 +1,559 @@
+schema: DSD3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: AppliedVisitPattern
+  title_fa: الگوی ویزیت اعمال‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Assignment
+  title_fa: تخصیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AssignmentDeliveryItem
+  title_fa: قلم تحویل تخصیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AssignmentHotSalesItem
+  title_fa: قلم فروش داغ تخصیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AssignmentItemChange
+  title_fa: تغییر قلم تخصیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AssignmentItemPolicyResult
+  title_fa: نتیجه سیاست قلم تخصیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AssignmentPolicyResult
+  title_fa: نتیجه سیاست تخصیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AssignmentReturnItem
+  title_fa: قلم برگشت تخصیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BrokerRoute
+  title_fa: مسیر کارگزار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectionList
+  title_fa: لیست وصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectionListItem
+  title_fa: قلم لیست وصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSurveyData
+  title_fa: داده نظرسنجی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CustomerSurveyStructure
+  title_fa: ساختار نظرسنجی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSurveyStructureBrokerGroup
+  title_fa: گروه کارگزار ساختار نظرسنجی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSurveyStructureEntity
+  title_fa: موجودیت ساختار نظرسنجی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSurveyStructureFieldSpec
+  title_fa: مشخصات فیلد ساختار نظرسنجی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSurveyStructureSalesOffice
+  title_fa: دفتر فروش ساختار نظرسنجی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerSurveyStructureTourActivity
+  title_fa: فعالیت تور ساختار نظرسنجی مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CustomerUnavailabilityInfo
+  title_fa: اطلاعات در دسترس نبودن مشتری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DistributerReceivableNote
+  title_fa: سفته دریافتنی توزیع‌کننده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DistributionShift
+  title_fa: شیفت توزیع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DistributionShiftTransportationVehicle
+  title_fa: خودرو حمل و نقل شیفت توزیع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DistributionShiftTransportationVehicleBroker
+  title_fa: کارگزار خودرو حمل و نقل شیفت توزیع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: HandheldBrokerApplyBusinessPolicyAccess
+  title_fa: دسترسی سیاست کسب‌وکار اعمال کارگزار هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldBrokerChangeNonDefinitiveBusinessPolicyAccess
+  title_fa: دسترسی سیاست کسب‌وکار قطعی غیر تغییر کارگزار هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldBrokerPriceListAccess
+  title_fa: دسترسی لیست قیمت کارگزار هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldClearDataLog
+  title_fa: گزارش رویداد داده پاک هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: HandheldExcludedPriceList
+  title_fa: لیست قیمت مستثنا هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldLocationTrackingInfo
+  title_fa: اطلاعات ردیابی مکان هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldMessage
+  title_fa: پیام هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldMessageAttachment
+  title_fa: پیوست پیام هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldMessageBroker
+  title_fa: کارگزار پیام هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldOperationsAcknowledge
+  title_fa: تأیید دریافت عملیات هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldProductDefaultUnit
+  title_fa: واحد پیش‌فرض محصول هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldReport
+  title_fa: گزارش هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldReportParameter
+  title_fa: پارامتر گزارش هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: HandheldReturnPermit
+  title_fa: مجوز برگشت هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: HandheldSaleRequest
+  title_fa: درخواست فروش هندهلد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Invoice
+  title_fa: فاکتور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PaymentServiceProviderCompanyBarcodeTemplate
+  title_fa: الگوی بارکد شرکت ارائه‌دهنده خدمت پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PaymentServiceProviderCompanyBarcodeTemplatePart
+  title_fa: قطعه الگوی بارکد شرکت ارائه‌دهنده خدمت پرداخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductConflictAcceptanceTolerance
+  title_fa: رواداری پذیرش تداخل محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductPriority
+  title_fa: اولویت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductPriorityItem
+  title_fa: قلم اولویت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductUnitTolerance
+  title_fa: رواداری واحد محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReturnInvoice
+  title_fa: فاکتور برگشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: Route
+  title_fa: مسیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RouteStep
+  title_fa: گام مسیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SaleRequestTour
+  title_fa: تور درخواست فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesEmployeeDSDExtraInfo
+  title_fa: اطلاعات تکمیلی DSD کارمند فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesEmployeeDSDExtraInfoBroker
+  title_fa: کارگزار اطلاعات تکمیلی DSD کارمند فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesGroupRoute
+  title_fa: مسیر گروه فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOfficeAutoTourGeneration
+  title_fa: تولید تور خودکار دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SalesOfficeNoneWorkingDay
+  title_fa: روز کاری هیچ دفتر فروش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SmartOrderSuggestion
+  title_fa: پیشنهاد سفارش هوشمند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SmartOrderSuggestionItem
+  title_fa: قلم پیشنهاد سفارش هوشمند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Tour
+  title_fa: تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourAssignmentItem
+  title_fa: قلم تخصیص تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourClosingLogInfo
+  title_fa: اطلاعات گزارش رویداد بستن تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourCollectionListItem
+  title_fa: قلم لیست وصول تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourInventoryVoucher
+  title_fa: سند انبار تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourItem
+  title_fa: قلم تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourItemSurvey
+  title_fa: نظرسنجی قلم تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourItemUnexecutedActivityReason
+  title_fa: دلیل فعالیت اجرانشده قلم تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourPayment
+  title_fa: پرداخت تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourProductConflict
+  title_fa: تداخل محصول تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourProductConflictItem
+  title_fa: قلم تداخل محصول تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourReceipt
+  title_fa: فیش تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourReceiptMoneyInfo
+  title_fa: اطلاعات مبلغ فیش تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourRemainedContainerInfo
+  title_fa: اطلاعات کانتینر باقی‌مانده تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourRemainedProductInfo
+  title_fa: اطلاعات محصول باقی‌مانده تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TourReturnInvoiceSettlement
+  title_fa: تسویه فاکتور برگشت تور
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: UnexecutedActivityReason
+  title_fa: دلیل فعالیت اجرانشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: UnsuccessfulInventoryVoucherItem
+  title_fa: قلم سند انبار ناموفق
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VehicleRemainingDocument
+  title_fa: سند باقی‌مانده خودرو
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VehicleRemainingDocumentEmptiesItem
+  title_fa: قلم ظروف خالی سند باقی‌مانده خودرو
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VehicleRemainingDocumentEmptiesItemReduction
+  title_fa: کسر قلم ظروف خالی سند باقی‌مانده خودرو
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VehicleRemainingDocumentItem
+  title_fa: قلم سند باقی‌مانده خودرو
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VehicleRemainingDocumentItemReduction
+  title_fa: کسر قلم سند باقی‌مانده خودرو
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VisitPattern
+  title_fa: الگوی ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VisitPatternDate
+  title_fa: تاریخ الگوی ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VisitPatternItem
+  title_fa: قلم الگوی ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VisitPlan
+  title_fa: طرح ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: VisitPlanCustomer
+  title_fa: مشتری طرح ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: VisitPlanDay
+  title_fa: روز طرح ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: VisitPlanRoute
+  title_fa: مسیر طرح ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: VisitPlanSalesTerritory
+  title_fa: قلمرو فروش طرح ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: VisitSchedule
+  title_fa: زمانبندی ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VisitScheduleDate
+  title_fa: تاریخ زمانبندی ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: VisitScheduleItem
+  title_fa: قلم زمانبندی ویزیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

@@ -182,7 +182,10 @@ export default function TableDetail({ table, loading, onSelectTable, onOpenSchem
     const q = columnQuery.trim().toLowerCase();
     if (q) {
       list = list.filter(
-        (c) => c.name.toLowerCase().includes(q) || (c.type || "").toLowerCase().includes(q),
+        (c) =>
+          c.name.toLowerCase().includes(q) ||
+          (c.type || "").toLowerCase().includes(q) ||
+          (c.label_fa || "").includes(q),
       );
     }
     const sorted = [...list];
@@ -818,6 +821,9 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                           <div className="ltr flex items-center gap-1.5 font-mono text-[12px] font-medium text-foreground">
                             {c.name}
                           </div>
+                          {c.label_fa && (
+                            <div className="mt-0.5 text-[11px] text-brand-text/85">{c.label_fa}</div>
+                          )}
                           {enums[c.name] && (
                             <div className="mt-0.5 text-[10px] text-muted-foreground">
                               {fa(enums[c.name].length)} مقدار کددار

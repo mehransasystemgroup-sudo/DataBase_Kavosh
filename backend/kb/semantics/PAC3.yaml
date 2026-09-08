@@ -1,0 +1,993 @@
+schema: PAC3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: Bom
+  title_fa: درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BomItem
+  title_fa: قلم درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BomPhantom
+  title_fa: فانتوم درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BomScrap
+  title_fa: ضایعات درخت محصول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BufferStoreTrace
+  title_fa: ردیابی انبار بافر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BufferStoreTracePartRequest
+  title_fa: درخواست قطعه ردیابی انبار بافر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: BufferStoreTraceProductionOrderMaterial
+  title_fa: ماده سفارش تولید ردیابی انبار بافر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Confirmation
+  title_fa: تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationBatch
+  title_fa: بچ تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationDelayReason
+  title_fa: دلیل تأخیر تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationLowerGradeProduct
+  title_fa: محصول درجه پایین تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationMachine
+  title_fa: ماشین تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationMachineEquipmentMeasurementPoint
+  title_fa: جایگاه اندازه‌گیری تجهیزات ماشین تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationMachineMeasurementPointExtension
+  title_fa: تمدید جایگاه اندازه‌گیری ماشین تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationPersonnel
+  title_fa: پرسنل تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationProductionOrderComponent
+  title_fa: جزء سفارش تولید تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationProductionOrderComponentScrapReason
+  title_fa: دلیل ضایعات جزء سفارش تولید تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationProductionOrderComponentTrackingFactor
+  title_fa: عامل ردیابی جزء سفارش تولید تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationRTAExtension
+  title_fa: تمدید RTA تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationReceiptPermit
+  title_fa: مجوز فیش تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationReworkCause
+  title_fa: علت دوباره‌کاری تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationScrap
+  title_fa: ضایعات تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationScrapReason
+  title_fa: دلیل ضایعات تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationSerial
+  title_fa: سریال تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationSerialScrap
+  title_fa: ضایعات سریال تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationSideProduct
+  title_fa: محصول سمت تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConfirmationStandardValue
+  title_fa: مقدار استاندارد تأیید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CorrectionAction
+  title_fa: اقدام اصلاح
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DamageReason
+  title_fa: دلیل خسارت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DamageRootCause
+  title_fa: علت ریشه خسارت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DelayReason
+  title_fa: دلیل تأخیر
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingConfirmation
+  title_fa: تأیید اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingConfirmationConsumedMaterial
+  title_fa: ماده مصرف‌شده تأیید اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingConfirmationConsumedMaterialTrackingFactor
+  title_fa: عامل ردیابی ماده مصرف‌شده تأیید اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingConfirmationMachine
+  title_fa: ماشین تأیید اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingConfirmationMaterialRelatedSerialSubset
+  title_fa: زیرمجموعه سریال مرتبط ماده تأیید اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingConfirmationPersonnel
+  title_fa: پرسنل تأیید اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingConfirmationReferenceOrder
+  title_fa: سفارش مرجع تأیید اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingConfirmationSerialRelated
+  title_fa: مرتبط سریال تأیید اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOperation
+  title_fa: عملیات اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOperationCharacteristic
+  title_fa: مشخصه عملیات اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DisassemblingOperationSet
+  title_fa: مجموعه عملیات اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOperationStandardValue
+  title_fa: مقدار استاندارد عملیات اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOrder
+  title_fa: سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOrderOperation
+  title_fa: عملیات سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOrderOperationCharacteristic
+  title_fa: مشخصه عملیات سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DisassemblingOrderOperationConsumedMaterial
+  title_fa: ماده مصرف‌شده عملیات سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOrderOperationConsumedMaterialRelatedSerialSubset
+  title_fa: زیرمجموعه سریال مرتبط ماده مصرف‌شده عملیات سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOrderOperationConsumedMaterialTrackingFactor
+  title_fa: عامل ردیابی ماده مصرف‌شده عملیات سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOrderOperationStandardValue
+  title_fa: مقدار استاندارد عملیات سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOrderReferenceOrder
+  title_fa: سفارش مرجع سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: DisassemblingOrderSerialRelated
+  title_fa: مرتبط سریال سفارش اوراق کردن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EngineeringCharacteristicExtension
+  title_fa: تمدید مشخصه مهندسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EngineeringPartBomRoutingExtension
+  title_fa: تمدید مسیر ساخت درخت محصول قطعه مهندسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EngineeringPartExtension
+  title_fa: تمدید قطعه مهندسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EngineeringPartGradeExtension
+  title_fa: تمدید درجه قطعه مهندسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: EngineeringPartStorePriorityExtension
+  title_fa: تمدید اولویت انبار قطعه مهندسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InspectionPointValueSerialRange
+  title_fa: بازه سریال مقدار جایگاه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InspectionPointValueSerialSample
+  title_fa: نمونه سریال مقدار جایگاه بازرسی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ManufacturingOrderOperationMaterialTerminalInputOrder
+  title_fa: سفارش ورودی پایانه ماده عملیات سفارش ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ManufacturingOrderOperationSerialCharacteristic
+  title_fa: مشخصه سریال عملیات سفارش ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ManufacturingOrderOperationTerminal
+  title_fa: پایانه عملیات سفارش ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ManufacturingOrderSerialSetting
+  title_fa: تنظیم سریال سفارش ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ManufacturingOrderSerialStatus
+  title_fa: وضعیت سریال سفارش ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaterialWithdrawalDefaultValuesExtension
+  title_fa: تمدید مقادیر پیش‌فرض برداشت ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MaterialWithdrawalPlantStore
+  title_fa: انبار کارخانه برداشت ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmation
+  title_fa: تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationBatch
+  title_fa: بچ تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationBatchMapping
+  title_fa: نگاشت بچ تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationBatchRelation
+  title_fa: رابطه بچ تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationLowerGradeProduct
+  title_fa: محصول درجه پایین تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationLowerGradeProductInputBatch
+  title_fa: بچ ورودی محصول درجه پایین تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationMachine
+  title_fa: ماشین تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationProductionOrderComponent
+  title_fa: جزء سفارش تولید تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationProductionOrderComponentScrapReason
+  title_fa: دلیل ضایعات جزء سفارش تولید تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationProductionOrderComponentTrackingFactor
+  title_fa: عامل ردیابی جزء سفارش تولید تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationScrap
+  title_fa: ضایعات تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MechanizedConfirmationSideProduct
+  title_fa: محصول سمت تأیید مکانیزه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: OperationType
+  title_fa: نوع عملیات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PartSerialCharacteristicExtension
+  title_fa: تمدید مشخصه سریال قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartSerialCharacteristicExtensionItem
+  title_fa: قلم تمدید مشخصه سریال قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartUnitBatchSize
+  title_fa: اندازه بچ واحد قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductionLineCollectedSerial
+  title_fa: سریال وصول‌شده خط تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionLineCollectedSerialAdditionalSerial
+  title_fa: سریال اضافی سریال وصول‌شده خط تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionLineCollectedSerialMixedProductionOrder
+  title_fa: سفارش تولید ترکیبی سریال وصول‌شده خط تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionLineCollectedSerialProductCharacteristic
+  title_fa: مشخصه محصول سریال وصول‌شده خط تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductionLineCollectedSerialReworkReason
+  title_fa: دلیل دوباره‌کاری سریال وصول‌شده خط تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionLineCollectedSerialScrapReason
+  title_fa: دلیل ضایعات سریال وصول‌شده خط تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionLineCollectedSerialSubset
+  title_fa: زیرمجموعه سریال وصول‌شده خط تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionLineCollectedSerialTerminalCharacteristic
+  title_fa: مشخصه پایانه سریال وصول‌شده خط تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductionOrder
+  title_fa: سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderBaseInfo
+  title_fa: اطلاعات پایه سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductionOrderBatchPartExtension
+  title_fa: تمدید قطعه بچ سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductionOrderComponent
+  title_fa: جزء سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderItem
+  title_fa: قلم سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderLowerGradeProduct
+  title_fa: محصول درجه پایین سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderOperation
+  title_fa: عملیات سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderOperationCharacteristic
+  title_fa: مشخصه عملیات سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ProductionOrderOperationEquipment
+  title_fa: تجهیزات عملیات سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderOperationRTAExtension
+  title_fa: تمدید RTA عملیات سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderOperationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع عملیات سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderOperationStandardValue
+  title_fa: مقدار استاندارد عملیات سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderReleaseFailureReason
+  title_fa: دلیل خرابی آزادسازی سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderScrap
+  title_fa: ضایعات سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ProductionOrderSequence
+  title_fa: توالی سفارش تولید
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: QCRoutingOperationMapping
+  title_fa: نگاشت عملیات مسیر ساخت کنترل کیفیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReferenceOperation
+  title_fa: عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReferenceOperationCharacteristic
+  title_fa: مشخصه عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReferenceOperationRTAExtension
+  title_fa: تمدید RTA عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReferenceOperationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReferenceOperationSet
+  title_fa: مجموعه عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReferenceOperationSetInspectionPlanAssignment
+  title_fa: تخصیص طرح بازرسی مجموعه عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReferenceOperationSetInspectionPlanOperationAssignment
+  title_fa: تخصیص عملیات طرح بازرسی مجموعه عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReferenceOperationSetSerialProductionLine
+  title_fa: خط تولید سریال مجموعه عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReferenceOperationStandardValue
+  title_fa: مقدار استاندارد عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReferenceOperationTerminal
+  title_fa: پایانه عملیات مرجع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ResultRecordingCharacteristicSerialSampleValue
+  title_fa: مقدار نمونه سریال مشخصه ثبت نتیجه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReworkCause
+  title_fa: علت دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReworkCauseGroupMember
+  title_fa: عضو گروه علت دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReworkOrderReferenceOrder
+  title_fa: سفارش مرجع سفارش دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReworkOrderSerialRelated
+  title_fa: مرتبط سریال سفارش دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReworkProductionLineCollectedSerialCorrectionAction
+  title_fa: اقدام اصلاح سریال وصول‌شده خط تولید دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReworkProductionLineCollectedSerialDamageReason
+  title_fa: دلیل خسارت سریال وصول‌شده خط تولید دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReworkProductionLineCollectedSerialDamageRootCause
+  title_fa: علت ریشه خسارت سریال وصول‌شده خط تولید دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReworkProductionLineCollectedSerialPrimaryPLCSInfo
+  title_fa: اطلاعات PLC اصلی سریال وصول‌شده خط تولید دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReworkReason
+  title_fa: دلیل دوباره‌کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Routing
+  title_fa: مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingBomAssignment
+  title_fa: تخصیص درخت محصول مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingComponentAssignment
+  title_fa: تخصیص جزء مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingInspectionPlanOperationAssignment
+  title_fa: تخصیص عملیات طرح بازرسی مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RoutingInspectionPlanProductAssignment
+  title_fa: تخصیص محصول طرح بازرسی مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RoutingOperation
+  title_fa: عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingOperationCharacteristic
+  title_fa: مشخصه عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RoutingOperationMaterialTerminalInputOrder
+  title_fa: سفارش ورودی پایانه ماده عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingOperationRTAExtension
+  title_fa: تمدید RTA عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingOperationReferenceOperationSet
+  title_fa: مجموعه عملیات مرجع عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingOperationResourceToolAssignment
+  title_fa: تخصیص ابزار منبع عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingOperationSerialCharacteristicGroupItem
+  title_fa: قلم گروه مشخصه سریال عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RoutingOperationStandardValue
+  title_fa: مقدار استاندارد عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingOperationTerminal
+  title_fa: پایانه عملیات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingProduct
+  title_fa: محصول مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingProductSerialSetting
+  title_fa: تنظیم سریال محصول مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingScrapAssignment
+  title_fa: تخصیص ضایعات مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingSequence
+  title_fa: توالی مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RoutingSerialProductionLine
+  title_fa: خط تولید سریال مسیر ساخت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ScrapReason
+  title_fa: دلیل ضایعات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SerialCharacteristicExtension
+  title_fa: تمدید مشخصه سریال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SerialCharacteristicExtensionItem
+  title_fa: قلم تمدید مشخصه سریال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SerialCharacteristicGroup
+  title_fa: گروه مشخصه سریال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SerialCharacteristicGroupItem
+  title_fa: قلم گروه مشخصه سریال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: SerialProductionLine
+  title_fa: خط تولید سریال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SerialProductionLineTerminal
+  title_fa: پایانه خط تولید سریال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SerialProfileManufacturingExtension
+  title_fa: تمدید ساخت شناسنامه سریال
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Terminal
+  title_fa: پایانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TerminalCharacteristic
+  title_fa: مشخصه پایانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TerminalInputOrder
+  title_fa: سفارش ورودی پایانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TerminalPrintSetting
+  title_fa: تنظیم چاپ پایانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TerminalReworkReason
+  title_fa: دلیل دوباره‌کاری پایانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TerminalScrapReason
+  title_fa: دلیل ضایعات پایانه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

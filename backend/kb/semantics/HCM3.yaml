@@ -71,6 +71,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AppraisalFormTemplateExtraField
+  title_fa: فیلد تکمیلی الگوی فرم ارزیابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: AppraisalFormTemplateItem
   title_fa: قلم الگوی فرم ارزیابی
   source: stated_by_user
@@ -121,6 +128,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AppraisalQuestionnaireItemHistory
+  title_fa: تاریخچه قلم پرسشنامه ارزیابی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: AttendanceCalc
   title_fa: کارکرد
   source: stated_by_user
@@ -166,6 +180,20 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AttendanceCalculationCalendarMonth
+  title_fa: ماه تقویم محاسبه کارکرد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: AttendanceCalculationCalendarType
+  title_fa: نوع تقویم محاسبه کارکرد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: AttendanceDailyFixedFactorData
   title_fa: مقادیر عوامل ثابت روزانه
   source: stated_by_user
@@ -296,6 +324,18 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: AttendanceViewConfigurationUserWorkingDayInfo
+  title_fa: اطلاعات روز کاری کاربر پیکربندی نمایش کارکرد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AuditLog
+  title_fa: گزارش رویداد ردگیری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: BatchAttendancePermission
   title_fa: درخواست مجوز حضور گروهی
   source: stated_by_user
@@ -431,6 +471,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: CompensationTax
+  title_fa: مالیات حقوق و مزایا
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: Competency
   title_fa: شایستگی
   source: stated_by_user
@@ -636,6 +682,18 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_hcm3
+- name: EmployeeAppraiser
+  title_fa: ارزیاب کارمند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EmployeeAppraiserItem
+  title_fa: قلم ارزیاب کارمند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EmployeeBranchInfo
   title_fa: تعیین شعبه کارمند
   source: stated_by_user
@@ -666,6 +724,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: EmployeeDataAccess
+  title_fa: دسترسی به داده کارمند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EmployeeEducation
   title_fa: تحصیلات کارمند
   source: stated_by_user
@@ -706,6 +770,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_hcm3
+- name: EmployeeLocalSyncData
+  title_fa: داده همگام‌سازی محلی کارمند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: EmployeeMarriage
   title_fa: وضعیت تاهل
   source: stated_by_user
@@ -816,6 +887,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_hcm3
+- name: EmployeeSignature
+  title_fa: امضا کارمند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EmployeeStatute
   title_fa: ثبت حکم کارمند
   source: stated_by_user
@@ -881,11 +958,23 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: EmployeeWorkChangeRequest
+  title_fa: درخواست تغییر کار کارمند
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EmployeeWorkRecord
   title_fa: سوابق کاری کارمند
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: EmployerExemptionException
+  title_fa: استثنا معافیت کارفرما
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EmploymentType
   title_fa: تعریف نوع استخدام
   source: stated_by_user
@@ -896,6 +985,18 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_hcm3
+- name: EntityAppraisal
+  title_fa: ارزیابی موجودیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EntityAppraisalItem
+  title_fa: قلم ارزیابی موجودیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EntityAuditLog
   title_fa: تاریخچه تغییرات
   source: stated_by_user
@@ -936,6 +1037,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: FeedbackType
+  title_fa: نوع بازخورد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: FileCalc
   title_fa: محاسبه فایل
   source: stated_by_user
@@ -996,6 +1103,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: HcmTag
+  title_fa: برچسب HCM
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: Indicator
   title_fa: شاخص عملکرد
   source: stated_by_user
@@ -1126,6 +1239,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: LeaveTypePostExclude
+  title_fa: حذف پست نوع مرخصی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: LeaveTypeProperty
   title_fa: خصوصیت نوع مرخصی
   source: stated_by_user
@@ -1171,6 +1290,19 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: LocalSyncDataPartition
+  title_fa: پارتیشن داده همگام‌سازی محلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: LocalSyncSiteStatus
+  title_fa: وضعیت سایت همگام‌سازی محلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: MajorJobClass
   title_fa: رسته اصلی شغل
   source: stated_by_user
@@ -1196,11 +1328,35 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: MappingInput
+  title_fa: ورودی نگاشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MappingOutput
+  title_fa: خروجی نگاشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: MappingStructure
   title_fa: ساختار نگاشت
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: MappingStructureInput
+  title_fa: ورودی ساختار نگاشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MappingStructureOutput
+  title_fa: خروجی ساختار نگاشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: MissionDocument
   title_fa: ثبت ماموریت
   source: stated_by_user
@@ -1256,6 +1412,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: NSVoucherItem
+  title_fa: قلم سند نفت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: NSVoucherReference
   title_fa: قلم سند حسابداری
   source: stated_by_user
@@ -1266,6 +1428,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: NSVoucherTemplateItem
+  title_fa: قلم الگوی سند نفت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: NegativeRemainderRequest
   title_fa: درخواست پیشخور مرخصی
   source: stated_by_user
@@ -1281,6 +1450,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: OilVoucherDLTypeRelation
+  title_fa: رابطه نوع تفصیلی سند نفت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: OilVoucherFile
   title_fa: فایل نفت جنوب
   source: stated_by_user
@@ -1371,6 +1547,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PairedAttendanceData
+  title_fa: داده کارکرد جفت‌شده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: PayCalc
   title_fa: محاسبه حقوق
   source: stated_by_user
@@ -1571,6 +1754,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ReportSettingStatuteFactor
+  title_fa: عامل حکم تنظیم گزارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: Retirement123FormReportSetting
   title_fa: تنظبم گزارش فرم 1 و 2 و 3 بازنشستگی
   source: stated_by_user
@@ -1626,6 +1815,20 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: RfidAccessTemplate
+  title_fa: الگوی دسترسی RFID
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RfidAccessTemplateDevice
+  title_fa: دستگاه الگوی دسترسی RFID
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: RfidCard
   title_fa: تعریف کارت
   source: stated_by_user
@@ -1651,6 +1854,25 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: RfidEmployeeFace
+  title_fa: چهره کارمند RFID
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: RfidEmployeeFingerprint
+  title_fa: اثر انگشت کارمند RFID
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: RfidEmployeePhone
+  title_fa: تلفن کارمند RFID
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: RfidGate
   title_fa: گیت
   source: stated_by_user
@@ -1691,6 +1913,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: RfidScheduledCommandDevice
+  title_fa: دستگاه فرمان زمان‌بندی‌شده RFID
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: RfidSite
   title_fa: سایت تردد
   source: stated_by_user
@@ -1701,6 +1930,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: SelfServiceLinkAccess
+  title_fa: دسترسی پیوند سلف‌سرویس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: SettlementCalc
   title_fa: تسویه حساب کارمند
   source: stated_by_user
@@ -1711,6 +1947,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: SettlementViewSettingInputValue
+  title_fa: مقدار ورودی تنظیم نمایش تسویه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ShamsiCalendar
   title_fa: تقویم شمسی
   source: stated_by_user
@@ -1801,6 +2043,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_hcm3
+- name: TmpCardLastSync
+  title_fa: همگام‌سازی آخرین کارت موقت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ToDoTask
   title_fa: پیام ها
   source: stated_by_user
@@ -1901,6 +2149,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_hcm3
+- name: TranscriptComment
+  title_fa: یادداشت رونوشت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: TranscriptStructure
   title_fa: ساختار کارنامه
   source: stated_by_user
@@ -2081,6 +2335,20 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: WorkingGroupOrganizingHistoryBase
+  title_fa: پایه تاریخچه سازمان‌دهی گروه کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: WorkingGroupOrganizingHistoryWorkingMinutesBase
+  title_fa: پایه صورت‌جلسه کاری تاریخچه سازمان‌دهی گروه کاری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: WorkingShift
   title_fa: تعریف شیفت
   source: stated_by_user

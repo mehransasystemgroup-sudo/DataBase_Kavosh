@@ -1,0 +1,495 @@
+schema: FSR3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: AccountNote
+  title_fa: سفته حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AccountNoteImportanceInfo
+  title_fa: اطلاعات اهمیت سفته حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AccountNoteItem
+  title_fa: قلم سفته حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AccountNoteStructure
+  title_fa: ساختار سفته حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AccountNoteStructureImportanceInfo
+  title_fa: اطلاعات اهمیت ساختار سفته حساب
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AdjustmentClassification
+  title_fa: طبقه‌بندی تعدیل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AdjustmentClassificationItem
+  title_fa: قلم طبقه‌بندی تعدیل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AdjustmentVoucher
+  title_fa: سند تعدیل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AdjustmentVoucherItem
+  title_fa: قلم سند تعدیل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: AssignComparitiveReportingPeriod
+  title_fa: دوره گزارشگری مقایسه‌ای تخصیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BalanceSheet
+  title_fa: ترازنامه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BalanceSheetItem
+  title_fa: قلم ترازنامه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BookletComparitiveReportingPeriodPresentation
+  title_fa: ارائه دوره گزارشگری مقایسه‌ای دفترچه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: BookletStatementOrder
+  title_fa: سفارش صورت دفترچه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CalculationDescription
+  title_fa: شرح محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CalculationInformation
+  title_fa: اطلاعات محاسبه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: CashFlowAdjustment
+  title_fa: تعدیل جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowAdjustmentItem
+  title_fa: قلم تعدیل جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowStatement
+  title_fa: صورت جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CashFlowStatementItem
+  title_fa: قلم صورت جریان نقد
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CollectiveInformation
+  title_fa: اطلاعات جمعی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ComprehensiveIncomeStatement
+  title_fa: صورت سود و زیان جامع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ComprehensiveIncomeStatementItem
+  title_fa: قلم صورت سود و زیان جامع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ConstantTopicInfo
+  title_fa: اطلاعات موضوع ثابت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: DetailSetting
+  title_fa: تنظیم جزئیات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FSRCalcPeriod
+  title_fa: دوره محاسبه FSR
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FinancialStatement
+  title_fa: صورت مالی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: FinancialStatementsStateLog
+  title_fa: گزارش رویداد وضعیت صورت‌های مالی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: GeneralSetting
+  title_fa: تنظیم عمومی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IncomeStatement
+  title_fa: صورت سود و زیان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: IncomeStatementItem
+  title_fa: قلم صورت سود و زیان
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixAccountNote
+  title_fa: سفته حساب ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixAccountNoteItem
+  title_fa: قلم سفته حساب ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixAccountNoteItemImportanceInfo
+  title_fa: اطلاعات اهمیت قلم سفته حساب ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNote
+  title_fa: سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteColumnHeaderArrange
+  title_fa: چیدن سربرگ ستون سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteDescriptor
+  title_fa: توصیف‌گر سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteInfo
+  title_fa: اطلاعات سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteItem
+  title_fa: قلم سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteStructure
+  title_fa: ساختار سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteStructureDescriptor
+  title_fa: توصیف‌گر ساختار سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteStructureInfo
+  title_fa: اطلاعات ساختار سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteStructureItem
+  title_fa: قلم ساختار سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: MatrixNoteStructureItemImportanceInfo
+  title_fa: اطلاعات اهمیت قلم ساختار سفته ماتریس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ModularTopicInfo
+  title_fa: اطلاعات موضوع ماژول
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: NatureAdjustment
+  title_fa: تعدیل ماهیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: NatureAdjustmentItem
+  title_fa: قلم تعدیل ماهیت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriorYearAdjustment
+  title_fa: تعدیل سال قبلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriorYearAdjustmentAccount
+  title_fa: حساب تعدیل سال قبلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriorYearAdjustmentCollectiveInformation
+  title_fa: اطلاعات جمعی تعدیل سال قبلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PriorYearAdjustmentItem
+  title_fa: قلم تعدیل سال قبلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PriorYearAdjustmentItemDetail
+  title_fa: جزئیات قلم تعدیل سال قبلی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReportStructure
+  title_fa: ساختار گزارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReportStructureItem
+  title_fa: قلم ساختار گزارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReportTopic
+  title_fa: موضوع گزارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReportTopicToSLRelation
+  title_fa: رابطه معین موضوع گزارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReportTopicToSLRelationDL
+  title_fa: تفصیلی رابطه معین موضوع گزارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReportTopicToTopicRelation
+  title_fa: رابطه موضوع گزارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ReportTypeSetting
+  title_fa: تنظیم نوع گزارش
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReportingPeriod
+  title_fa: دوره گزارشگری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ReportingStyle
+  title_fa: سبک گزارشگری
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SimpleNote
+  title_fa: سفته ساده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SimpleNoteItem
+  title_fa: قلم سفته ساده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SimpleNoteStructure
+  title_fa: ساختار سفته ساده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: SimpleNoteStructureItem
+  title_fa: قلم ساختار سفته ساده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Structure
+  title_fa: ساختار
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Topic
+  title_fa: موضوع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TopicAdjustment
+  title_fa: تعدیل موضوع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TopicCalculation
+  title_fa: محاسبه موضوع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TopicNoteRelation
+  title_fa: رابطه سفته موضوع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TopicNoteRelationStructure
+  title_fa: ساختار رابطه سفته موضوع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TopicToSLRelation
+  title_fa: رابطه معین موضوع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TopicToSLRelationDL
+  title_fa: تفصیلی رابطه معین موضوع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TopicToTopicRelation
+  title_fa: رابطه موضوع
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: WriteOffPattern
+  title_fa: الگوی نوشتن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WriteOffPatternAccount
+  title_fa: حساب الگوی نوشتن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WriteOffPatternAccountSource
+  title_fa: منبع حساب الگوی نوشتن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WriteOffStatement
+  title_fa: صورت نوشتن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: WriteOffStatementItem
+  title_fa: قلم صورت نوشتن
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

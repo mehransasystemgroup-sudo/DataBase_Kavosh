@@ -31,11 +31,24 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: BarCodeBlock
+  title_fa: بلوک کد میله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: BarCodeInventoryVoucherProperty
   title_fa: مقادیر سند
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: BarCodeTemplate
+  title_fa: الگوی کد میله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: Bascule
   title_fa: باسکول
   source: stated_by_user
@@ -121,6 +134,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: CardexRemaining
+  title_fa: باقی‌مانده کاردکس
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: Carrier
   title_fa: مؤسسه حمل
   source: stated_by_user
@@ -166,6 +185,42 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: EmptiesConflict
+  title_fa: تداخل ظروف خالی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EmptiesConflictItem
+  title_fa: قلم تداخل ظروف خالی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EmptiesConsignPrice
+  title_fa: قیمت امانی ظروف خالی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EmptiesFixRelation
+  title_fa: رابطه ثابت ظروف خالی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EmptiesVoucher
+  title_fa: سند ظروف خالی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: EmptiesVoucherItem
+  title_fa: قلم سند ظروف خالی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: EntityDLLevelInfo
   title_fa: EntityDLLevelInfo
   source: stated_by_user
@@ -181,6 +236,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: FinalizationQuantitativeHistoryDetail
+  title_fa: جزئیات تاریخچه کمی نهایی‌سازی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: FinancialVoucherTemplate
   title_fa: الگوی سند حسابداری انبار
   source: stated_by_user
@@ -236,6 +297,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: IndependentContainer
+  title_fa: کانتینر مستقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: InventoryCounting
   title_fa: شمارش انبار
   source: stated_by_user
@@ -346,6 +413,132 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: MaterialClass
+  title_fa: طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassAmendment
+  title_fa: اصلاحیه طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassAmendmentItem
+  title_fa: قلم اصلاحیه طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassChangeLog
+  title_fa: گزارش رویداد تغییر طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassDeletionRequest
+  title_fa: درخواست حذف طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassDeletionRequestItem
+  title_fa: قلم درخواست حذف طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassProposal
+  title_fa: پیشنهاد طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassProposalAmendment
+  title_fa: اصلاحیه پیشنهاد طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassProposalAmendmentItem
+  title_fa: قلم اصلاحیه پیشنهاد طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassProposalChangeLog
+  title_fa: گزارش رویداد تغییر پیشنهاد طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassProposalItem
+  title_fa: قلم پیشنهاد طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassSpecification
+  title_fa: مشخصات طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassSpecificationAmendment
+  title_fa: اصلاحیه مشخصات طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassStore
+  title_fa: انبار طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassStoreAmendment
+  title_fa: اصلاحیه انبار طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassStoreAmendmentItem
+  title_fa: قلم اصلاحیه انبار طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassStoreChangeLog
+  title_fa: گزارش رویداد تغییر انبار طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: MaterialClassStoreItem
+  title_fa: قلم انبار طبقه ماده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: MaterialControlPolicy
   title_fa: سیاست خروج کالا
   source: stated_by_user
@@ -381,6 +574,34 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PartBarcodeTemplate
+  title_fa: الگوی بارکد قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartContainer
+  title_fa: کانتینر قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartContainerDefaultInfo
+  title_fa: اطلاعات پیش‌فرض کانتینر قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: PartContainerItem
+  title_fa: قلم کانتینر قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: PartDetail
   title_fa: اجزاء کالا
   source: stated_by_user
@@ -406,6 +627,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PartFilterItem
+  title_fa: قلم فیلتر قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: PartFixedBarcode
   title_fa: بارکد ثابت کالا
   source: stated_by_user
@@ -456,6 +684,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PartShipmentSchedulingProperties
+  title_fa: ویژگی‌ها زمان‌بندی محموله قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: PartSpecification
   title_fa: ویژگی های کالا
   source: stated_by_user
@@ -491,6 +726,13 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: PartUnit
+  title_fa: واحد قطعه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: PartUnitProposal
   title_fa: PartUnitProposal
   source: stated_by_user
@@ -681,6 +923,34 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: Service
+  title_fa: خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceCategory
+  title_fa: دسته خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceCategoryItem
+  title_fa: قلم دسته خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ServiceGroup
+  title_fa: گروه خدمت
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: Shelf
   title_fa: قفسه
   source: stated_by_user
@@ -706,6 +976,91 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: ShipmentCapacity
+  title_fa: ظرفیت محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentCapacityItem
+  title_fa: قلم ظرفیت محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentPoint
+  title_fa: جایگاه محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentPointParameter
+  title_fa: پارامتر جایگاه محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentPolicy
+  title_fa: سیاست محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentPolicyTemplate
+  title_fa: الگوی سیاست محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ShipmentPriority
+  title_fa: اولویت محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentPriorityParameter
+  title_fa: پارامتر اولویت محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentSchedule
+  title_fa: زمانبندی محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentScheduleItem
+  title_fa: قلم زمانبندی محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentScheduleItemDetail
+  title_fa: جزئیات قلم زمانبندی محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentScheduleItemDetailHistory
+  title_fa: تاریخچه جزئیات قلم زمانبندی محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentScheduleItemPolicy
+  title_fa: سیاست قلم زمانبندی محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ShipmentScheduleUsage
+  title_fa: مصرف زمانبندی محموله
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: ShippingOrder
   title_fa: مجوز بارگیری
   source: stated_by_user
@@ -786,6 +1141,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: StocktakingPolicySerial
+  title_fa: سریال سیاست انبارگردانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: StocktakingVoucherItemCountStage
   title_fa: مراحل شمارش انبارگردانی
   source: stated_by_user
@@ -836,6 +1197,62 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: TransportationManagementPortalAssignment
+  title_fa: تخصیص پرتال مدیریت حمل و نقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TransportationManagementPortalAssignmentItem
+  title_fa: قلم تخصیص پرتال مدیریت حمل و نقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TransportationManagementPortalCarrier
+  title_fa: حامل پرتال مدیریت حمل و نقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TransportationManagementPortalConfiguration
+  title_fa: پیکربندی پرتال مدیریت حمل و نقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TransportationManagementPortalDistribution
+  title_fa: توزیع پرتال مدیریت حمل و نقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TransportationManagementPortalShippingOrderRelation
+  title_fa: رابطه سفارش حمل پرتال مدیریت حمل و نقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TransportationManagementPortalUser
+  title_fa: کاربر پرتال مدیریت حمل و نقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TransportationManagementPortalUserPermission
+  title_fa: مجوز کاربر پرتال مدیریت حمل و نقل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
 - name: TransportationSequence
   title_fa: نوبت
   source: stated_by_user
@@ -861,6 +1278,12 @@ tables:
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
+- name: UncommittedCardexRemaining
+  title_fa: باقی‌مانده کاردکس تعهدنشده
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
 - name: UnloadingOrder
   title_fa: مجوز تخلیه
   source: stated_by_user

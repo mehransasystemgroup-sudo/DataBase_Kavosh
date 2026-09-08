@@ -58,6 +58,27 @@ function hashIndex(text) {
   return Math.abs(h) % HUES.length;
 }
 
+/**
+ * نام فارسی ماژول‌ها از پایگاه دانش می‌آید، نه از کد.
+ *
+ * فهرست KNOWN پایین‌تر فقط پشتیبان است: تا وقتی /api/schemas نیامده، رابط
+ * کاربری خالی نماند. به‌محض آمدن پاسخ، نامی که کاربر تأیید کرده جای آن را
+ * می‌گیرد — پس افزودن یا اصلاح یک ماژول دیگر نیازی به تغییر کد ندارد.
+ */
+const fromKnowledge = new Map();
+
+export function registerSchemaTitles(schemas = []) {
+  let changed = false;
+  for (const s of schemas) {
+    if (!s?.id || !s.title_fa) continue;
+    if (fromKnowledge.get(s.id) !== s.title_fa) {
+      fromKnowledge.set(s.id, s.title_fa);
+      changed = true;
+    }
+  }
+  if (changed) cache.clear();   // رنگ و عنوان با هم کش شده‌اند
+}
+
 const cache = new Map();
 
 /**
@@ -92,14 +113,18 @@ export function schemaAccent(schema = "", isDark = true) {
         ring: `hsl(${h} ${s}% 42% / 0.38)`,
       };
 
-  const value = { ...accent, label: known?.label || schema, hue: h };
+  const value = {
+    ...accent,
+    label: fromKnowledge.get(schema) || known?.label || schema,
+    hue: h,
+  };
   cache.set(key, value);
   return value;
 }
 
 /** عنوان فارسی اسکیما، اگر شناخته‌شده باشد. */
 export function schemaLabel(schema = "") {
-  return KNOWN[schema]?.label || "";
+  return fromKnowledge.get(schema) || KNOWN[schema]?.label || "";
 }
 
 /** «FIN3 · مالی» برای نمایش در فهرست‌ها. */

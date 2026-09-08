@@ -96,6 +96,18 @@ CREATE VIRTUAL TABLE fts USING fts5(
     tokenize = 'unicode61 remove_diacritics 2'
 );
 
+-- نام فارسی ماژول‌ها (اسکیماها)
+CREATE TABLE schema_titles (
+    id          TEXT PRIMARY KEY,
+    title_fa    TEXT NOT NULL
+);
+
+-- واژه‌نامهٔ نام ستون‌ها: یک ورودی روی هر جدولی که آن ستون را دارد اثر می‌گذارد
+CREATE TABLE column_labels (
+    name        TEXT PRIMARY KEY,
+    title_fa    TEXT NOT NULL
+);
+
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
 """
 
@@ -191,6 +203,19 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
             )
             n_sem += 1
 
+    # ── نام فارسی ماژول‌ها و ستون‌ها ──
+    # این دو فایل با «_» شروع می‌شوند تا حلقهٔ بالا (که [A-Z]*.yaml می‌خواند و
+    # ساختار schema/tables انتظار دارد) به آن‌ها دست نزند.
+    schema_titles = _load(kb / "semantics" / "_schemas.yaml").get("schemas", {}) \
+        if (kb / "semantics" / "_schemas.yaml").exists() else {}
+    db.executemany("INSERT OR REPLACE INTO schema_titles VALUES (?,?)",
+                   [(k, v) for k, v in schema_titles.items() if v])
+
+    column_labels = _load(kb / "semantics" / "_columns.yaml").get("columns", {}) \
+        if (kb / "semantics" / "_columns.yaml").exists() else {}
+    db.executemany("INSERT OR REPLACE INTO column_labels VALUES (?,?)",
+                   [(k, v) for k, v in column_labels.items() if v])
+
     # ── گراف JOIN ──
     join_rows = _collect_joins(kb)
     db.executemany("INSERT OR REPLACE INTO joins VALUES (?,?,?,?,?,?)", join_rows)
@@ -252,6 +277,8 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
         ("joins", str(len(join_rows))), ("enums", str(len(enum_rows))),
         ("indexes", str(len(index_rows))), ("with_title_fa", str(n_sem)),
         ("active_tables", str(n_active)),
+        ("schema_titles", str(len(schema_titles))),
+        ("column_labels", str(len(column_labels))),
         ("schemas", str(db.execute(
             "SELECT COUNT(DISTINCT schema) FROM tables").fetchone()[0])),
     ])
@@ -264,6 +291,7 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     print(f"  جدول {len(tables)}  ·  ستون {len(columns)}  ·  یال {len(join_rows)}")
     print(f"  عنوان فارسی {n_sem}  ·  enum {len(enum_rows)}  ·  ایندکس {len(index_rows)}")
     print(f"  جدول دارای داده در این نصب: {n_active}")
+    print(f"  نام فارسی ماژول {len(schema_titles)}  ·  واژه‌نامهٔ ستون {len(column_labels)}")
 
 
 def main() -> int:

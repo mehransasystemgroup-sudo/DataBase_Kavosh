@@ -1,0 +1,121 @@
+schema: IPR3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: Clearance
+  title_fa: ترخیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ClearanceItem
+  title_fa: قلم ترخیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ClearancePolicyContextItem
+  title_fa: قلم زمینه سیاست ترخیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ClearancePolicyResult
+  title_fa: نتیجه سیاست ترخیص
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: CommercialOrder
+  title_fa: سفارش بازرگانی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ImportLicence
+  title_fa: پروانه واردات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: ImportLicencePolicyContextItem
+  title_fa: قلم زمینه سیاست پروانه واردات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: ImportLicencePolicyResult
+  title_fa: نتیجه سیاست پروانه واردات
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: Insurance
+  title_fa: بیمه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: InsurancePolicyContextItem
+  title_fa: قلم زمینه سیاست بیمه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: InsurancePolicyResult
+  title_fa: نتیجه سیاست بیمه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: LetterOfCredit
+  title_fa: اعتبار نامه
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PackingList
+  title_fa: لیست بسته‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PackingListItem
+  title_fa: قلم لیست بسته‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: PackingListItemDetail
+  title_fa: جزئیات قلم لیست بسته‌بندی
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransportDocument
+  title_fa: سند حمل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransportDocumentItem
+  title_fa: قلم سند حمل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+- name: TransportDocumentPolicyContextItem
+  title_fa: قلم زمینه سیاست سند حمل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'
+  revised: glossary_fix
+- name: TransportDocumentPolicyResult
+  title_fa: نتیجه سیاست سند حمل
+  source: accepted_suggestion
+  confidence: medium
+  origin: excel_2026_09
+  updated_at: '2026-09-08'

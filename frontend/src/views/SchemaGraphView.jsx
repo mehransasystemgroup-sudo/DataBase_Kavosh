@@ -16,7 +16,7 @@ import {
 
 import { errorMessage, http } from "@/lib/api";
 import { cn, fa, faCompact, splitTable } from "@/lib/utils";
-import { schemaAccent, schemaLabel } from "@/lib/schemaTheme";
+import { registerSchemaTitles, schemaAccent, schemaLabel } from "@/lib/schemaTheme";
 import { Badge, EmptyState } from "@/components/primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -184,7 +184,11 @@ export default function SchemaGraphView({ route, navigate }) {
   useEffect(() => {
     http
       .get("/schemas")
-      .then(({ data }) => setSchemas(data.schemas || []))
+      .then(({ data }) => {
+        const list = data.schemas || [];
+        registerSchemaTitles(list);   // نام فارسی ماژول‌ها از پایگاه دانش
+        setSchemas(list);
+      })
       .catch(() => setSchemas([]));
   }, []);
 
