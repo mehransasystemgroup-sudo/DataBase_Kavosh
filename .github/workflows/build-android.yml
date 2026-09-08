@@ -87,23 +87,40 @@ jobs:
           fi
           echo "بازرسی APK درست بود."
 
+      - name: نگه‌داشتن APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: KavoshDB-android
+          path: android/app/build/outputs/apk/release/*.apk
+
+      - name: باز کردن دسترسی KVM
+        run: |
+          # شبیه‌ساز بدون شتاب سخت‌افزاری بالا نمی‌آید و رانر گیت‌هاب به‌طور
+          # پیش‌فرض /dev/kvm را در اختیار کاربر بیلد نمی‌گذارد.
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm
+
       - name: اجرای واقعی روی شبیه‌ساز اندروید
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
           target: google_apis
           arch: x86_64
-          profile: pixel_6
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
+          emulator-boot-timeout: 900
           disable-animations: true
           script: bash .github/scripts/android-smoke.sh
 
-      - uses: actions/upload-artifact@v4
+      - name: نگه‌داشتن تصویر صفحهٔ شبیه‌ساز
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: KavoshDB-android
-          path: |
-            android/app/build/outputs/apk/release/*.apk
-            emulator-*.png
+          name: KavoshDB-android-screens
+          path: emulator-*.png
+          if-no-files-found: ignore
 
       - name: بررسی ایستا (lint)
         working-directory: android
