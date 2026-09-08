@@ -22,3 +22,13 @@ backend/kb/audit.log
 /dist/
 /build/
 packaging/*.exe
+
+# خروجی‌های بیلد موبایل — ایندکس و بستهٔ وب مشتق‌اند و ساخته می‌شوند
+frontend/dist-mobile/
+frontend/public-mobile/
+
+# اندروید
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties

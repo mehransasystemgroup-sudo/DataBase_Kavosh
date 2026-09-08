@@ -33,6 +33,10 @@
 run.ps1                راه‌انداز ویندوز از روی کد: نصب، بیلد، ایندکس و اجرا
 Start-Kavosh.cmd       پوستهٔ دوبارکلیک برای run.ps1
 
+android/
+  app/                 پوستهٔ اندروید: یک WebView و بس — کل برنامه وب است
+  keystore/            کلید امضای نسخهٔ داخلی
+
 packaging/
   kavosh.spec          پیکربندی PyInstaller برای ساخت KavoshDB.exe
   installer.nsi        اسکریپت NSIS برای ساخت نصب‌کنندهٔ ویندوز
@@ -100,6 +104,40 @@ Releases منتشر می‌کند. دستی هم می‌شود ساخت:
 pyinstaller packaging/kavosh.spec --noconfirm
 makensis packaging/installer.nsi        # خروجی: packaging/KavoshDB-Setup-1.0.0.exe
 ```
+
+---
+
+## نصب روی اندروید
+
+`KavoshDB-1.0.0.apk` را روی گوشی باز کنید و اجازهٔ نصب از منبع ناشناس را بدهید.
+برنامه **کاملاً آفلاین** است و هیچ مجوزی نمی‌خواهد — حتی دسترسی به اینترنت.
+
+چطور کار می‌کند: همان ایندکس SQLite که نسخهٔ دسکتاپ استفاده می‌کند داخل APK
+می‌رود و با موتور رسمی SQLite (نسخهٔ WebAssembly) در خود گوشی باز می‌شود. پس
+جست‌وجو، رتبه‌بندی، گراف روابط و مسیریابی JOIN همان نتیجهٔ نسخهٔ دسکتاپ را
+می‌دهند، بدون هیچ سروری.
+
+دانشی که با «آموزش دانش» ثبت می‌کنید در حافظهٔ خود گوشی می‌ماند و با اجرای
+دوبارهٔ برنامه سر جایش است. (روی گوشی، منبع حقیقت YAML در دسترس نیست، پس این
+دانش محلیِ همان دستگاه است.)
+
+**ساخت از کد:**
+
+```
+cd backend  && python3 -m core.indexer --kb kb --out ../frontend/public-mobile/kb.sqlite --instance instances/live
+cd frontend && npm ci && npm run build:mobile
+cd android  && ./gradlew :app:assembleRelease
+```
+
+خروجی: `android/app/build/outputs/apk/release/app-release.apk`
+
+گردش‌کار `.github/workflows/build-android.yml` همین کار را روی گیت‌هاب انجام
+می‌دهد و بعد APK را روی **شبیه‌ساز واقعی اندروید** نصب و اجرا می‌کند تا معلوم
+شود فقط «ساخته نشده»، بلکه بالا هم می‌آید.
+
+نسخهٔ اندروید کلید امضای داخلی مخزن (`android/keystore/`) را دارد تا نسخهٔ
+جدید روی نسخهٔ قبلی نصب شود. آن کلید هیچ ادعای امنیتی ندارد؛ برای انتشار
+عمومی باید با کلید خصوصی خودتان جایگزین شود.
 
 ---
 

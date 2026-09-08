@@ -192,8 +192,72 @@
     scrollbar-width: none;
   }
 
-  /* ناحیه‌ی امن دستگاه‌های دارای بریدگی */
-  .pb-safe {
+  /*
+    ناحیهٔ امن دستگاه — نوار وضعیت، بریدگی نمایشگر و نوار حرکتی.
+
+    روی بوم بیرونی برنامه می‌نشیند تا یک‌جا حل شود: پس‌زمینهٔ همان بوم زیر
+    نوارها دیده می‌شود، پس رنگش همیشه با تم جاری می‌خواند. روی دسکتاپ همهٔ
+    این مقادیر صفرند و چیزی تغییر نمی‌کند.
+  */
+  .inset-safe {
+    padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+}
+
+/*
+  لایهٔ لمسی — فقط روی دستگاه‌هایی که با انگشت کار می‌کنند.
+
+  طراحی این برنامه برای ماوس فشرده است: دکمهٔ ۳۶ پیکسلی و متن ۱۰ پیکسلی روی
+  نمایشگر بزرگ مرتب و خواناست، ولی روی گوشی نه انگشت به هدف می‌رسد و نه چشم
+  به متن. این اندازه‌ها فقط همین‌جا بزرگ می‌شوند، پس نسخهٔ دسکتاپ دست‌نخورده
+  می‌ماند. مبنا: راهنمای اندروید — هدف لمسی ۴۸dp و متن دست‌کم ۱۲sp.
+*/
+@media (pointer: coarse) {
+  /*
+    `[class]` فقط برای بالا بردن ویژگی (specificity) است: بسیاری از دکمه‌ها
+    کلاس min-h-8/min-h-9 تیلویند را دارند و یک انتخابگر عنصرِ خالی به آن
+    نمی‌چربد. min-width هم روی همه امن است، چون فقط دکمه‌های باریک‌ترِ
+    فقط-آیکون را بزرگ می‌کند و دکمه‌های متن‌دار از قبل پهن‌ترند.
+  */
+  button[class],
+  select[class],
+  summary[class],
+  [role="button"][class],
+  input[class]:not([type="checkbox"]):not([type="radio"]) {
+    min-height: 44px;
+  }
+
+  button[class] {
+    min-width: 44px;
+  }
+
+  /* کوچک‌ترین پله‌های متن به مرز خوانایی روی گوشی می‌آیند */
+  [class*="text-[9px]"],
+  [class*="text-[9.5px]"] {
+    font-size: 11px;
+  }
+
+  [class*="text-[10px]"],
+  [class*="text-[10.5px]"] {
+    font-size: 11.5px;
+  }
+
+  [class*="text-[11px]"],
+  [class*="text-[11.5px]"] {
+    font-size: 12px;
+  }
+
+  /* تأخیر ۳۰۰ میلی‌ثانیه‌ای و هایلایت آبی پیش‌فرض، حس بومی را از بین می‌برد */
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 }

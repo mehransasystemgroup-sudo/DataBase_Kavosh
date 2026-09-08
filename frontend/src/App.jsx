@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { Database, Network, Search, WifiOff } from "lucide-react";
+import { Database, Network, Search, TriangleAlert } from "lucide-react";
 
-import { http } from "@/lib/api";
+import { http, OFFLINE_HINT } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
 import { useHashRoute } from "@/lib/route";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -102,7 +102,7 @@ function AppShell() {
   );
 
   return (
-    <div className="app-canvas flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
+    <div className="app-canvas inset-safe flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
       <Toaster />
 
       <header className="sticky top-0 z-30 shrink-0 border-b border-border bg-background/85 backdrop-blur-xl">
@@ -135,8 +135,8 @@ function AppShell() {
           role="status"
           className="flex shrink-0 items-center justify-center gap-1.5 border-t border-err/40 bg-err/10 px-4 py-2 text-center text-[11px] text-err"
         >
-          <WifiOff className="h-3.5 w-3.5 shrink-0" />
-          ارتباط با سرور دانش برقرار نشد — سرویس بک‌اند را اجرا کنید.
+          <TriangleAlert className="h-3.5 w-3.5 shrink-0" />
+          {OFFLINE_HINT}
         </div>
       )}
     </div>
