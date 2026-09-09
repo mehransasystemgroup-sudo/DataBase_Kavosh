@@ -108,6 +108,30 @@ CREATE TABLE column_labels (
     title_fa    TEXT NOT NULL
 );
 
+/*
+  جدول‌های کد و شرحی (SYS3.Lookup / SYS3.LookupInfo) — فیلدهایی که کاربر در
+  فرم نرم‌افزار از فهرستی از پیش تعریف‌شده انتخاب می‌کند. جدا از enums نگه
+  داشته می‌شوند: enums یک مقدار را به یک ستونِ مشخص می‌بندد، ولی این‌جا خودِ
+  فهرست مرجع است و مستقل از اینکه کدام ستون به آن ارجاع می‌دهد وجود دارد.
+*/
+CREATE TABLE lookup_types (
+    type        TEXT PRIMARY KEY,
+    title_fa    TEXT,
+    module      TEXT,
+    n_values    INTEGER NOT NULL
+);
+
+CREATE TABLE lookup_values (
+    type        TEXT NOT NULL,
+    code        INTEGER,
+    value       TEXT NOT NULL,
+    ordinal     INTEGER,
+    extra       TEXT,
+    PRIMARY KEY (type, code, value)
+);
+
+CREATE INDEX ix_lookup_values_type ON lookup_values(type);
+
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
 """
 
@@ -232,6 +256,18 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
                                   v.get("observed_count")))
     db.executemany("INSERT OR REPLACE INTO enums VALUES (?,?,?,?,?,?)", enum_rows)
 
+    # ── جدول‌های کد و شرحی ──
+    lookup_types, lookup_values = [], []
+    for f in sorted((kb / "lookups").glob("*.yaml")) if (kb / "lookups").exists() else []:
+        for t in _load(f).get("types", []):
+            vals = t.get("values") or []
+            lookup_types.append((t["type"], t.get("title_fa"), t.get("module"), len(vals)))
+            for v in vals:
+                lookup_values.append((t["type"], v.get("code"), str(v["value"]),
+                                      v.get("order", v.get("code")), v.get("extra")))
+    db.executemany("INSERT OR REPLACE INTO lookup_types VALUES (?,?,?,?)", lookup_types)
+    db.executemany("INSERT OR REPLACE INTO lookup_values VALUES (?,?,?,?,?)", lookup_values)
+
     # ── ایندکس‌های واقعی دیتابیس ──
     index_rows = []
     for f in sorted((kb / "indexes").glob("*.yaml")):
@@ -279,6 +315,8 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
         ("active_tables", str(n_active)),
         ("schema_titles", str(len(schema_titles))),
         ("column_labels", str(len(column_labels))),
+        ("lookup_types", str(len(lookup_types))),
+        ("lookup_values", str(len(lookup_values))),
         ("schemas", str(db.execute(
             "SELECT COUNT(DISTINCT schema) FROM tables").fetchone()[0])),
     ])
@@ -292,6 +330,7 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     print(f"  عنوان فارسی {n_sem}  ·  enum {len(enum_rows)}  ·  ایندکس {len(index_rows)}")
     print(f"  جدول دارای داده در این نصب: {n_active}")
     print(f"  نام فارسی ماژول {len(schema_titles)}  ·  واژه‌نامهٔ ستون {len(column_labels)}")
+    print(f"  کد و شرحی: {len(lookup_types)} نوع  ·  {len(lookup_values)} مقدار")
 
 
 def main() -> int:

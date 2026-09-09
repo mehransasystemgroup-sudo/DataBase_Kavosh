@@ -379,6 +379,57 @@ class KnowledgeBase {
     }));
   }
 
+  // ─────────────────── کد و شرحی ───────────────────
+
+  lookups({ q = "", module = "", limit = 400 } = {}) {
+    const where = [];
+    const params = [];
+    if (q) {
+      const like = `%${q.trim()}%`;
+      where.push(
+        "(t.type LIKE ? OR t.title_fa LIKE ? OR EXISTS (" +
+        "  SELECT 1 FROM lookup_values v WHERE v.type = t.type AND v.value LIKE ?))",
+      );
+      params.push(like, like, like);
+    }
+    if (module) {
+      where.push("t.module = ?");
+      params.push(module);
+    }
+    let sql = "SELECT type, title_fa, module, n_values FROM lookup_types t";
+    if (where.length) sql += ` WHERE ${where.join(" AND ")}`;
+    sql += " ORDER BY (t.title_fa IS NULL), t.n_values DESC, t.type LIMIT ?";
+    params.push(limit);
+    return this.all(sql, params);
+  }
+
+  lookup(type) {
+    const head = this.one(
+      "SELECT type, title_fa, module, n_values FROM lookup_types WHERE type = ?",
+      [type],
+    );
+    if (!head) return null;
+    const values = this.all(
+      "SELECT code, value, ordinal, extra FROM lookup_values WHERE type = ? " +
+      "ORDER BY COALESCE(ordinal, code), code",
+      [type],
+    );
+    const usedBy = this.all(
+      "SELECT c.table_ref, c.name FROM columns c " +
+      "WHERE c.name = ? OR c.name = ? OR c.name = ? " +
+      "ORDER BY c.table_ref LIMIT 50",
+      [type, `${type}Ref`, `${type}ID`],
+    );
+    return { ...head, values, used_by: usedBy };
+  }
+
+  lookupModules() {
+    return this.all(
+      "SELECT module AS id, COUNT(*) AS n FROM lookup_types " +
+      "WHERE module IS NOT NULL GROUP BY module ORDER BY n DESC",
+    );
+  }
+
   schemaGraph(schema, { includeExternal = true, onlyWithData = false, maxNodes = 75 } = {}) {
     let where = "t.schema = ?";
     if (onlyWithData) where += " AND t.has_data = 1";
@@ -651,6 +702,18 @@ const ROUTES = [
   }],
 
   [/^\/schemas$/, async (kb) => ({ schemas: kb.schemas() })],
+
+  [/^\/lookups$/, async (kb, m, params = {}) => ({
+    types: kb.lookups({ q: params.q || "", module: params.module || "", limit: params.limit || 400 }),
+    modules: kb.lookupModules(),
+  })],
+
+  [/^\/lookup\/(.+)$/, async (kb, m) => {
+    const type = decodeURIComponent(m[1]);
+    const found = kb.lookup(type);
+    if (!found) throw notFound(`نوع کد و شرحی «${type}» پیدا نشد.`);
+    return found;
+  }],
 
   [/^\/schema\/([^/]+)\/graph$/, async (kb, m, params = {}) => {
     const schema = decodeURIComponent(m[1]);

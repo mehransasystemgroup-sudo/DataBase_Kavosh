@@ -95,11 +95,25 @@
     overscroll-behavior: none;
   }
 
+  /*
+    Vazirmatn عمداً *داخل* پشتهٔ مونواسپیس است و پیش از ui-monospace.
+
+    JetBrains Mono هیچ گلیف فارسی ندارد. بدون این پله، هر حرف فارسی که کنار
+    عدد داخل یک span مونواسپیس بیفتد به مونواسپیسِ عمومیِ سیستم می‌رسد که
+    نه شکل‌دهی اتصالی فارسی را درست انجام می‌دهد و نه فاصله‌ها را؛ نتیجه
+    «۱۶۰ جدول · ۰ با داده» بود که «با داده» را کشیده و شکسته نشان می‌داد.
+
+    حالا لاتین و رقم به JetBrains Mono می‌رسند و فارسی به قلم متن — همان
+    چیزی که به چشم درست می‌آید — و این یک‌جا برای همهٔ جاهای برنامه حل است،
+    نه در هر کامپوننت جداگانه.
+  */
   .font-mono,
   code,
   pre,
   kbd {
-    font-family: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+    font-family:
+      "JetBrains Mono Variable", "JetBrains Mono", "Vazirmatn Variable", "Vazirmatn",
+      ui-monospace, monospace;
     font-feature-settings: "liga" 0;
   }
 
@@ -171,6 +185,54 @@
     unicode-bidi: embed;
   }
 
+  /*
+    لایهٔ حرکت — یک واژگان کوچک و مشترک، نه انیمیشن موردی در هر کامپوننت.
+
+    همه بر پایهٔ animation است نه transition، چون قانون کاهش حرکتِ پایین‌تر
+    مدت انیمیشن را صفر می‌کند و بدون هیچ کار اضافه‌ای در هر کامپوننت،
+    کل این لایه برای کاربرِ حساس به حرکت خاموش می‌شود.
+
+    فاصلهٔ حرکت عمداً کوتاه است (۶ تا ۱۰ پیکسل): روی رابطی با این تراکم،
+    جابه‌جایی بلند حس «پرش» می‌دهد نه روانی.
+  */
+  .anim-rise {
+    animation: rise 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .anim-fade {
+    animation: fade 200ms ease-out both;
+  }
+
+  /*
+    ورود پلکانی برای شبکه‌ها. تأخیر از متغیر --i می‌آید که کامپوننت با
+    اندیس آیتم پرش می‌کند، و سقف ۳۰۰ میلی‌ثانیه دارد تا آیتم چهلم هم
+    بی‌جهت منتظر نماند.
+  */
+  .anim-stagger {
+    animation: rise 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: min(calc(var(--i, 0) * 22ms), 300ms);
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 8px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   /* کاهش حرکت برای کاربرانی که آن را خاموش کرده‌اند */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -179,6 +241,10 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      /* بدون این، آیتمِ پلکانی تا ۳۰۰ میلی‌ثانیه نامرئی می‌ماند و
+         «کاهش حرکت» به «تأخیر بی‌دلیل» تبدیل می‌شود. */
+      animation-delay: 0ms !important;
+      transition-delay: 0ms !important;
     }
   }
 }

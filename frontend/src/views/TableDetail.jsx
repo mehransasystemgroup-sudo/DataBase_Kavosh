@@ -19,7 +19,6 @@ import {
   Route,
   Search,
   ShieldCheck,
-  Sigma,
   Square,
   Type,
   X,
@@ -416,7 +415,13 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+          {/*
+            چهار سنجه، نه پنج. «ردیف‌ها» حذف شد چون تعداد ردیف همین بالا در نشانِ
+            سربرگ آمده و اگر داده‌ای نباشد، هشدارِ زیرش هم دلیلش را می‌گوید — سه
+            بار گفتنِ یک چیز. سود دوم: پنج کارت در شبکهٔ دوستونهٔ موبایل یک کارتِ
+            یتیم به جا می‌گذاشت؛ چهارتا ۲×۲ تمیز می‌بندد.
+          */}
+          <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
             <Stat icon={Columns3} label="ستون‌ها" value={fa(columns.length)} tone="brand" />
             <Stat
               icon={KeyRound}
@@ -436,12 +441,6 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
               label="ایندکس‌ها"
               value={fa((table.indexes || []).length)}
               hint={`${fa(indexed.size)} ستون ایندکس‌دار`}
-            />
-            <Stat
-              icon={Sigma}
-              label="ردیف‌ها"
-              value={table.has_data ? fa(table.row_count) : "۰"}
-              tone={table.has_data ? "ok" : "warn"}
             />
           </div>
 

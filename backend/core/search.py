@@ -477,6 +477,69 @@ class KnowledgeBase:
             "with_data": r["with_data"] or 0, "column_count": r["column_count"] or 0,
         } for r in rows]
 
+    # ─────────────────── کد و شرحی ───────────────────
+
+    def lookups(self, q: str = "", module: str = "", limit: int = 400) -> list[dict]:
+        """
+        فهرست نوع‌های کد و شرحی.
+
+        جست‌وجو هم روی نام لاتین نوع و عنوان فارسی‌اش انجام می‌شود و هم روی
+        خودِ مقادیر: کاربری که «دیپلم» را می‌جوید نام نوع (EducationDegree)
+        را نمی‌داند، فقط مقداری را که در فرم دیده به یاد دارد.
+        """
+        where, params = [], []
+        if q:
+            like = f"%{q.strip()}%"
+            where.append(
+                "(t.type LIKE ? OR t.title_fa LIKE ? OR EXISTS ("
+                "  SELECT 1 FROM lookup_values v WHERE v.type = t.type AND v.value LIKE ?))"
+            )
+            params += [like, like, like]
+        if module:
+            where.append("t.module = ?")
+            params.append(module)
+        sql = "SELECT type, title_fa, module, n_values FROM lookup_types t"
+        if where:
+            sql += " WHERE " + " AND ".join(where)
+        # نوع‌های عنوان‌دار اول: بدون عنوان فارسی، سطر برای کاربر فارسی‌زبان
+        # تقریباً بی‌معناست و نباید بالای فهرست بنشیند.
+        sql += " ORDER BY (t.title_fa IS NULL), t.n_values DESC, t.type LIMIT ?"
+        params.append(limit)
+        return [dict(r) for r in self.db.execute(sql, params).fetchall()]
+
+    def lookup(self, lookup_type: str) -> dict | None:
+        head = self.db.execute(
+            "SELECT type, title_fa, module, n_values FROM lookup_types WHERE type = ?",
+            (lookup_type,),
+        ).fetchone()
+        if head is None:
+            return None
+        values = self.db.execute(
+            "SELECT code, value, ordinal, extra FROM lookup_values WHERE type = ? "
+            "ORDER BY COALESCE(ordinal, code), code",
+            (lookup_type,),
+        ).fetchall()
+        # ستون‌هایی که نامشان به این نوع می‌خورد — پلی از فهرست مرجع به
+        # جایی که واقعاً در پایگاه داده استفاده می‌شود.
+        used_by = self.db.execute(
+            "SELECT c.table_ref, c.name FROM columns c "
+            "WHERE c.name = ? OR c.name = ? OR c.name = ? "
+            "ORDER BY c.table_ref LIMIT 50",
+            (lookup_type, lookup_type + "Ref", lookup_type + "ID"),
+        ).fetchall()
+        return {
+            **dict(head),
+            "values": [dict(v) for v in values],
+            "used_by": [dict(u) for u in used_by],
+        }
+
+    def lookup_modules(self) -> list[dict]:
+        rows = self.db.execute(
+            "SELECT module AS id, COUNT(*) AS n FROM lookup_types "
+            "WHERE module IS NOT NULL GROUP BY module ORDER BY n DESC"
+        ).fetchall()
+        return [dict(r) for r in rows]
+
     def schema_graph(
         self, schema: str, include_external: bool = True,
         only_with_data: bool = False, max_nodes: int = 75,
