@@ -32,6 +32,7 @@ import { Select } from "@/components/ui/select";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "@/components/ui/sonner";
 import TableDetail from "@/views/TableDetail";
+import OverviewPanel from "@/views/OverviewPanel";
 
 const DATA_STATUS = [
   { id: "all", label: "همه" },
@@ -108,13 +109,16 @@ function ResultCard({ hit, selected, active, index, onOpen, isDark }) {
       onClick={() => onOpen(hit.full_name)}
       data-result-index={index}
       aria-current={selected ? "true" : undefined}
+      style={{ "--i": index }}
       className={cn(
-        "group block w-full scroll-mt-2 rounded-lg border p-2.5 text-start transition-colors duration-150",
+        "anim-stagger group block w-full scroll-mt-2 rounded-lg border p-2.5 text-start transition-colors duration-150",
         selected
           ? "border-brand/55 bg-brand/10 shadow-sm"
           : active
             ? "border-brand/35 bg-surfaceHover"
-            : "border-transparent bg-surface/60 hover:border-border hover:bg-surfaceHover",
+            // حالت استراحت هم مرز دارد: بدون آن، حالا که نشان کهربایی از سطرها
+            // برداشته شده، فهرست به یک بلوک متنِ بی‌مرز تبدیل می‌شود.
+            : "border-border/60 bg-surface/60 hover:border-brand/35 hover:bg-surfaceHover",
       )}
     >
       <div className="flex items-start justify-between gap-2">
@@ -134,12 +138,15 @@ function ResultCard({ hit, selected, active, index, onOpen, isDark }) {
             <div className="mt-1 truncate text-[11.5px] text-muted-foreground">{hit.title_fa}</div>
           )}
         </div>
+        {/*
+          «بدون داده» حالتِ عادیِ این پایگاه داده است، نه استثنا: ۳۰۰۸ جدول از
+          ۳۴۲۸ در این نصب خالی‌اند. نشان کهربایی روی تک‌تک سطرها یعنی پررنگ‌ترین
+          چیزِ فهرست، کم‌اهمیت‌ترین خبرش باشد و چشم پیش از نام جدول به هشدار
+          برسد. پس فقط استثناها نشان می‌گیرند: داشتنِ داده، و بیرون بودن از
+          دیتابیس. سطرِ خالی هیچ نشانی ندارد و خودِ سکوت، خبر است.
+        */}
         <div className="flex shrink-0 flex-col items-end gap-1">
-          {hit.has_data ? (
-            <Badge tone="ok">{faCompact(hit.row_count)} ردیف</Badge>
-          ) : (
-            <Badge tone="warn">بدون داده</Badge>
-          )}
+          {hit.has_data && <Badge tone="ok">{faCompact(hit.row_count)} ردیف</Badge>}
           {!hit.in_live_db && <Badge tone="err">خارج از دیتابیس</Badge>}
         </div>
       </div>
@@ -374,7 +381,6 @@ export default function ExplorerView({ health, route, navigate }) {
     [patch, filters.minRows, filters.maxRows],
   );
 
-  const topSchemas = useMemo(() => schemas.slice(0, 8), [schemas]);
 
   const chips = useMemo(() => {
     const out = [];
@@ -724,8 +730,13 @@ export default function ExplorerView({ health, route, navigate }) {
               />
             )}
 
+            {/*
+              روی md به بالا، همین فهرست در صفحهٔ نخستِ ستون جزئیات و با جای
+              بیشتری نشان داده می‌شود؛ نگه‌داشتنش این‌جا فقط تکرار بود. روی
+              موبایل که آن ستون اصلاً دیده نمی‌شود، این تنها راه ورود است.
+            */}
             {!busy && results.length === 0 && !searched && (
-              <div className="p-1">
+              <div className="p-1 md:hidden">
                 <div className="mb-2 flex items-center justify-between px-1 text-[11px] font-semibold text-muted-foreground">
                   <span className="flex items-center gap-1.5">
                     <Compass className="h-3.5 w-3.5 text-brand-text" />
@@ -737,7 +748,7 @@ export default function ExplorerView({ health, route, navigate }) {
                 </div>
 
                 <div className="grid grid-cols-1 gap-1.5 xs:grid-cols-2 sm:grid-cols-2">
-                  {topSchemas.map((s) => {
+                  {schemas.map((s) => {
                     const accent = schemaAccent(s.id, isDark);
                     return (
                       <div
@@ -782,6 +793,37 @@ export default function ExplorerView({ health, route, navigate }) {
                 </p>
               </div>
             )}
+
+            {/*
+              حالت بی‌کارِ ریل روی دسکتاپ. فهرست ماژول‌ها این‌جا تکراری بود، ولی
+              خالی گذاشتنِ ریل هم یعنی جابه‌جا کردن فضای مرده نه حذفش. ریل ابزارِ
+              جست‌وجوست، پس وقتی بی‌کار است همان را یاد می‌دهد: نمونه‌ها با یک
+              کلیک اجرا می‌شوند، نه اینکه فقط نوشته شده باشند.
+            */}
+            {!busy && results.length === 0 && !searched && (
+              <div className="hidden p-2 md:block">
+                <div className="mb-2 flex items-center gap-1.5 px-0.5 text-[11px] font-semibold text-muted-foreground">
+                  <Search className="h-3.5 w-3.5 text-brand-text" />
+                  از این‌جا جست‌وجو کنید
+                </div>
+                <p className="text-[11.5px] leading-relaxed text-muted-foreground">
+                  نام فارسی، نام لاتین جدول یا نام یک ستون را بنویسید؛ نتیجه هم‌زمان
+                  با تایپ به‌روز می‌شود.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {["فاکتور", "سند حسابداری", "انبار", "پرسنل", "Voucher"].map((sample) => (
+                    <button
+                      key={sample}
+                      type="button"
+                      onClick={() => setQ(sample)}
+                      className="rounded-full border border-border bg-surface px-2.5 py-1 text-[11px] text-muted-foreground transition-colors hover:border-brand/45 hover:bg-brand/10 hover:text-brand-text"
+                    >
+                      {sample}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </ScrollArea>
       </aside>
@@ -821,14 +863,13 @@ export default function ExplorerView({ health, route, navigate }) {
               />
             </>
           ) : (
-            <div className="flex min-h-[60dvh] items-center justify-center">
-              <EmptyState
-                icon={Database}
-                title="یک جدول را برای کاوش انتخاب کنید"
-                description="ستون‌ها، کلیدها، ایندکس‌ها، مقادیر کدینگ، روابط ورودی و خروجی و نمودار گرافیکی هر جدول این‌جا نمایش داده می‌شود."
-                className="max-w-lg"
-              />
-            </div>
+            <OverviewPanel
+              health={health}
+              schemas={schemas}
+              isDark={isDark}
+              onOpenSchema={(id) => patch({ schema: id, sortBy: "row_count_desc" })}
+              onOpenGraph={openSchemaGraph}
+            />
           )}
         </div>
       </section>
