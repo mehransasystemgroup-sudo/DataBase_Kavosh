@@ -3,74 +3,88 @@ note: description_fa و gotchas را دستی اضافه کنید؛ ingest بع�
 tables:
 - name: AddressChangeRequest
   title_fa: درخواست تغییر آدرس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AnswerPattern
   title_fa: الگوی جواب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AnswerStructure
   title_fa: ساختار جواب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AnswerStructureItem
   title_fa: قلم ساختار جواب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AnswerTemplate
   title_fa: الگوی جواب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalDistribution
   title_fa: انتشار ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalForm
   title_fa: اطلاعات تکمیلی فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalFormActor
   title_fa: فرم ارزیابی آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalFormAnswerStructure
   title_fa: ساختار جواب فرم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalFormExtraData
   title_fa: فیلدهای اطلاعاتی در اجرا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalFormItem
   title_fa: قلم فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalFormItemActor
   title_fa: جواب های فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalFormItemActorAnswer
   title_fa: جواب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalFormTemplate
   title_fa: الگوی فرم ارزیابی آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalFormTemplateExtraField
   title_fa: فیلد تکمیلی الگوی فرم ارزیابی
   source: accepted_suggestion
@@ -80,54 +94,64 @@ tables:
   revised: glossary_fix
 - name: AppraisalFormTemplateItem
   title_fa: قلم الگوی فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalNote
   title_fa: فایل پیوست قلم فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalPattern
   title_fa: الگوی ارزیابی عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalPatternItem
   title_fa: قلم الگوی ارزیابی عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalPeriod
   title_fa: دوره ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalPeriodItem
   title_fa: قلم دوره ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalQuestionnaire
   title_fa: فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalQuestionnaireItem
   title_fa: قلم فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalQuestionnaireItemAnswer
   title_fa: جواب شاخص های فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalQuestionnaireItemDescription
   title_fa: توضیحات شاخص
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AppraisalQuestionnaireItemHistory
   title_fa: تاریخچه قلم پرسشنامه ارزیابی
   source: accepted_suggestion
@@ -137,49 +161,58 @@ tables:
   revised: glossary_fix
 - name: AttendanceCalc
   title_fa: کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalcApplyInfo
   title_fa: اطلاعات اجرای محاسبه کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalcDailyItem
   title_fa: کارکرد روزانه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalcLog
   title_fa: رویداد محاسبه کارکرد خدمات الکترونیک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalcMonthlyItem
   title_fa: کارکرد ماهانه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalcPropertyInfo
   title_fa: اطلاعات عوامل محاسبه کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalculatedYearMonthDay
   title_fa: اطلاعات اجرای محاسبه کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalculationCalendar
   title_fa: تقویم محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalculationCalendarEmployee
   title_fa: کارمند تقویم محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceCalculationCalendarMonth
   title_fa: ماه تقویم محاسبه کارکرد
   source: accepted_suggestion
@@ -196,134 +229,160 @@ tables:
   revised: glossary_fix
 - name: AttendanceDailyFixedFactorData
   title_fa: مقادیر عوامل ثابت روزانه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceDailyInputFactorData
   title_fa: مقادیر عوامل ورودی روزانه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceData
   title_fa: اطلاعات تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceDataCorrectionRequest
   title_fa: درخواست تصحیح اطلاعات تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceDataCorrectionRequestItem
   title_fa: قلم درخواست تصحیح اطلاعات تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceDataEmployeeViewSetting
   title_fa: تنظیم نمایش اطلاعات حکمی ویرایش تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceDataFactorViewSetting
   title_fa: تنظیم نمایش عوامل ویرایش تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceDataViewSetting
   title_fa: تنظیم نمایش اطلاعات ویرایش تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceDataWorkingDayViewSetting
   title_fa: تنظیم نمایش اطلاعات گروه کاری ویرایش تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceFactor
   title_fa: عوامل کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceFactorProperty
   title_fa: خصوصیت عامل کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceFactorValuePattern
   title_fa: الگوی گزارش جامع کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceFactorValuePatternEmployee
   title_fa: اطلاعات کارمند الگوی عوامل کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceFactorValuePatternFactor
   title_fa: اطلاعات عوامل الگوی عوامل کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceFactorValuePatternWorkingInfo
   title_fa: اطلاعات کاری الگوی عوامل کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceFixedFactorData
   title_fa: مقادیر عوامل ثابت ماهانه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceMonthlyInputFactorData
   title_fa: مقادیر عوامل ورودی ماهانه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendancePermission
   title_fa: درخواست مجوز حضور
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendancePermissionAttendanceData
   title_fa: اطلاعات تردد مجوز حضور
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendancePermissionRequest
   title_fa: درخواست مجوز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendancePermissionRequestStructure
   title_fa: ساختار درخواست مجوز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendancePermissionType
   title_fa: نوع مجوز حضور
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceStatus
   title_fa: وضعیت حضور
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceViewConfiguration
   title_fa: تنظیمات نمایش عوامل کارکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceViewConfigurationFactor
   title_fa: عامل تنظیمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceViewConfigurationUserFactor
   title_fa: عامل تنظیمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AttendanceViewConfigurationUserWorkingDayInfo
   title_fa: اطلاعات روز کاری کاربر پیکربندی نمایش کارکرد
   source: accepted_suggestion
@@ -338,139 +397,166 @@ tables:
   updated_at: '2026-09-08'
 - name: BatchAttendancePermission
   title_fa: درخواست مجوز حضور گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchAttendancePermissionRequest
   title_fa: ثبت درخواست مجوز گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchCorrectiveEmployeeStatute
   title_fa: حکم اصلاحی گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchCorrectiveEmployeeStatuteEmployee
-  title_fa: کارمند حکم اصلاحی گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: کارمندان حکم اصلاحی گروهی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchCorrectiveEmployeeStatuteFactor
-  title_fa: عامل حکم اصلاحی گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عوامل حکم اصلاحی گروهی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchEmployeeStatute
   title_fa: حکم کارگزینی گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchEmployeeStatuteEmployee
-  title_fa: کارمند حکم کارگزینی گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: کارمندان حکم کارگزینی گروهی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchEmployeeStatuteFactor
-  title_fa: عامل حکم کارگزینی گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عوامل حکم کارگزینی گروهی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchMissionDocument
-  title_fa: ثبت ماموریت گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: ماموریت گروهی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchMissionDocumentEmployee
-  title_fa: کارمند ثبت ماموریت گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: کارمندان ماموریت گروهی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchMissionDocumentFactor
-  title_fa: عامل ثبت ماموریت گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عوامل ماموریت گروهی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CalculationBaseTable
-  title_fa: جدول پایه محاسبات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: جدول پایه ‌محاسبات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CalculationBaseTableItem
-  title_fa: مقادیر جدول پایه محاسبات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: آیتم ساختار جدول پایه محاسبات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CalculationBaseTableStructure
   title_fa: ساختار جدول پایه محاسبات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeEmploymentDate
   title_fa: تغییر تاریخ استخدام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationCalcType
   title_fa: تعریف نوع محاسبه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationCalcTypeItem
   title_fa: قلم نوع محاسبه جبران خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationComplementRequest
   title_fa: درخواست متمم پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationComplementRequestEmployee
   title_fa: کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationFactor
-  title_fa: تعریف عامل جبران خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عامل جبران خدمات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationFactorProperty
   title_fa: خصوصیت عامل جبران خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationInsurance
   title_fa: بیمه جبران خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationPaymentRequest
   title_fa: درخواست دستور پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationPaymentRequestEmployee
   title_fa: کارمند دستور پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationPaymentRequestType
   title_fa: نوع درخواست دستور پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationPaymentRequestTypeItem
   title_fa: عامل نوع دستور پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationRelatedDLType
   title_fa: تفصیلی های مرتبط با جبران خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompensationTax
   title_fa: مالیات حقوق و مزایا
   source: accepted_suggestion
@@ -479,209 +565,250 @@ tables:
   updated_at: '2026-09-08'
 - name: Competency
   title_fa: شایستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompetencyGroup
-  title_fa: شایستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: گروه بندی شایستگی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompetencyGroupItem
-  title_fa: گروهبندی شایستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: گروه شایستگی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ComprehensiveReportSetting
   title_fa: تنظیم گزارش جامع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ComprehensiveReportSettingItem
   title_fa: قلم تنظیم نمایش گزارش جامع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CorrectiveEmployeeStatute
-  title_fa: حکم اصلاحی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: حکم اصلاحی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CorrectiveEmployeeStatuteFactor
-  title_fa: عامل حکم اصلاحی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عوامل حکم اصلاحی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CorrectiveEmployeeStatuteStateHistory
-  title_fa: تاریخچه حکم اصلاحی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: تاریخچه تغییر وضعیت حکم اصلاحی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Course
   title_fa: دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseAppraisal
-  title_fa: ارزیابی دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سنجشهای مرتبط دوره آموزشی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseChapter
   title_fa: سرفصل دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseCompetency
-  title_fa: عامل آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: شایستگی های دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseDegree
-  title_fa: مدرک دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مقاطع تحصیلی دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseExpert
   title_fa: کارشناسان دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseInstitute
-  title_fa: موسسه آموزش دهنده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: دوره موسسه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlan
   title_fa: برگزاری دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanAppraisal
-  title_fa: ارزیابی برگزاری دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سنجش های مرتبط برگزاری دوره آموزشی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanChapter
   title_fa: سرفصل برگزاری دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanCompetency
   title_fa: شایستگی های برگزاری دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanDegree
-  title_fa: مدرک دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مقاطع تحصیلی برگزاری دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanExpert
   title_fa: کارشناسان برگزاری دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanHelperUtility
   title_fa: وسایل کمک آموزشی برگزاری دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanParticipant
-  title_fa: شرکت کنندگان دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: شرکت کنندگان برگزاری دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanParticipantAppraisalValue
   title_fa: مقادیر ارزیابی های شرکت کننده برگزاری دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanParticipantSession
-  title_fa: برنامه ریزی جلسات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: حضور و غیاب برگزاری دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanSession
-  title_fa: جلسات دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: جلسات برگزاری دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanTrainer
-  title_fa: مدرس دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مدرس برگزاری دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePlanTrainerAppraisalValue
   title_fa: مقادیر ارزیابی های مدرس برگزاری دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CoursePrerequisite
   title_fa: پیش نیاز دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseRegistration
   title_fa: ثبت‌نام دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseRegistrationParticipant
   title_fa: شرکت کنندگان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseRequest
-  title_fa: ثبت درخواست دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: درخواست دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseRequestParticipant
   title_fa: شرکت کنندگان درخواست دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CourseTrainer
-  title_fa: مدرس دوره آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مدرس دوره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CriticalEvent
   title_fa: وقایع حساس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DefaultTrainingVoucherItem
   title_fa: تنظیم پیش فرض سند آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Department
   title_fa: واحد سازمانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Duty
   title_fa: وظیفه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DutyCompetency
   title_fa: وظیفه-شایستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Employee
-  title_fa: معرفی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeAppraisal
-  title_fa: ارزیابی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سوابق سنجش کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeAppraiser
   title_fa: ارزیاب کارمند
   source: accepted_suggestion
@@ -695,25 +822,29 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: EmployeeBranchInfo
-  title_fa: تعیین شعبه کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: شعبه کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeBranchInfoCondition
   title_fa: مامور
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeCompetency
-  title_fa: شایستگی (قابلیت) کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سوابق شایستگی های کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeCondition
-  title_fa: وضعیت کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: شرط کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeConditionItem
   title_fa: قلم وضعیت کارمند
   source: stated_by_user
@@ -721,9 +852,10 @@ tables:
   origin: glossary_hcm3
 - name: EmployeeContractInfo
   title_fa: تنظیم مشخصات قرارداد کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeDataAccess
   title_fa: دسترسی به داده کارمند
   source: accepted_suggestion
@@ -731,45 +863,53 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: EmployeeEducation
-  title_fa: تحصیلات کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سوابق تحصیلی کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeEducationChangeRequest
   title_fa: درخواست تغییر سوابق تحصیلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeEmploymentNumber
   title_fa: کد مستخدم کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeGroup
   title_fa: گروه کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeGroupEmployee
   title_fa: جزئیات گروه کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeInfo
   title_fa: اطلاعات کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeInfoChangeRequest
   title_fa: درخواست تغییر اطلاعات کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeInfoChangeRequestAttachment
-  title_fa: فایل ضمیمه درخواست تغییر اطلاعات کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: پیوست درخواست تغییر اطلاعات کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeLocalSyncData
   title_fa: داده همگام‌سازی محلی کارمند
   source: accepted_suggestion
@@ -778,115 +918,137 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: EmployeeMarriage
-  title_fa: وضعیت تاهل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: وضعیت تاهل کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeMarriageChangeRequest
   title_fa: درخواست تغییر وضعیت تاهل کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeePaymentLocation
-  title_fa: محل پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: اطلاعات محل پرداخت کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeePriorPeriod
-  title_fa: سابقه سنوات کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: اطلاعات بازخرید سنوات کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRelatedDL
   title_fa: تفصیلی های مرتبط با کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRelatedOrganization
-  title_fa: سازمان مرتبط با کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سازمانهای مرتبط با کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRelative
-  title_fa: اطلاعات بستگان کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: بستگان کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRelativeChangeRequest
   title_fa: درخواست تغییر وابستگان کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRelativeInsurance
-  title_fa: اطلاعات بیمه بستگان کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: اطلاعات بیمه و کفالت بستگان
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeResearch
-  title_fa: سوابق تحقیق ها و نشان ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سوابق تحقیق ها و نشان های کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementForm
   title_fa: تکمیل اطلاعات بازنشستگی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementForm30
   title_fa: جدول 30
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementForm36
   title_fa: جدول 36
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementForm37
   title_fa: جدول 37
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementForm38
   title_fa: جدول 38
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementForm39
   title_fa: جدول 39
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementFormAbsence
   title_fa: غیبت های کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementFormStatute
   title_fa: حکم های کارگزینی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementFormWarriorRecord
   title_fa: سوابق ایثارگری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRetirementFormWorkRecord
   title_fa: سوابق شغلی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRewardPunish
-  title_fa: سوابق تشویق و تنبیه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سوابق تشویق و تنبیه کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeRfidCard
-  title_fa: کارت تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: تخصیص کارت کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeSignature
   title_fa: امضا کارمند
   source: accepted_suggestion
@@ -894,70 +1056,83 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: EmployeeStatute
-  title_fa: ثبت حکم کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: حکم کارگزینی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeStatuteFactor
-  title_fa: عامل حکم کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عامل حکم
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeStatuteReportPattern
   title_fa: تنظیم نمایش گزارش حکم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeStatuteReportPatternFactor
   title_fa: عامل تنظیم نمایش گزارش حکم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeStatuteRequest
-  title_fa: ثبت درخواست حکم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: درخواست حکم کارگزینی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeStatuteRequestStateHistory
-  title_fa: تاریخچه تغییر وضعیت درخواست تغییر حکم کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: تاریخچه تغییر وضعیت درخواست حکم
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeStatuteStateHistory
-  title_fa: تاریخچه وضعیت حکم کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: تاریخچه تغییر وضعیت حکم
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeStatuteTempPost
   title_fa: پست موقت حکم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeSupplementary
-  title_fa: اطلاعات تکمیلی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: اطللاعات تکمیلی کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeTraining
-  title_fa: آموزش کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سوابق آموزشی کارمند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeTrainingChangeRequest
   title_fa: درخواست تغییر سوابق آموزشی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeTrainingCourse
-  title_fa: دوره آموزشی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: دوره آموزشی مرتبط با سوابق آموزشی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeWarriorRecord
   title_fa: سوابق ایثارگری کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployeeWorkChangeRequest
   title_fa: درخواست تغییر کار کارمند
   source: accepted_suggestion
@@ -966,9 +1141,10 @@ tables:
   updated_at: '2026-09-08'
 - name: EmployeeWorkRecord
   title_fa: سوابق کاری کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmployerExemptionException
   title_fa: استثنا معافیت کارفرما
   source: accepted_suggestion
@@ -976,15 +1152,17 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: EmploymentType
-  title_fa: تعریف نوع استخدام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: نوع استخدام
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmploymentTypeItem
-  title_fa: جزئیات نوع استخدام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: آیتم نوع استخدام
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EntityAppraisal
   title_fa: ارزیابی موجودیت
   source: accepted_suggestion
@@ -999,44 +1177,52 @@ tables:
   updated_at: '2026-09-08'
 - name: EntityAuditLog
   title_fa: تاریخچه تغییرات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Expectation
   title_fa: انتظار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExpectationAppraisalDimension
   title_fa: قابلیت فراخوانی در فرم ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FactorViewSetting
   title_fa: تنظیم نمایش عوامل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FactorViewSettingAttendance
-  title_fa: تنظیم نمایش عوامل کارکر (تردد)
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: قلم تنظیم نمایش عوامل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FactorViewSettingCompensation
-  title_fa: تنظیم نمایش عوامل جبران خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: قلم تنظیم نمایش عوامل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FactorViewSettingType
   title_fa: نوع تنظیم نمایش عوامل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Feedback
   title_fa: بازخورد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FeedbackType
   title_fa: نوع بازخورد
   source: accepted_suggestion
@@ -1045,49 +1231,58 @@ tables:
   updated_at: '2026-09-08'
 - name: FileCalc
   title_fa: محاسبه فایل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FileCalcItem
   title_fa: قلم محاسبه فایل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FileStructure
-  title_fa: ایجاد ساختار فایل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: ساختار فایل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FileStructureBank
-  title_fa: ساختار فایل بانک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: بانک های مرتبط با ساختار فایل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FileStructureField
-  title_fa: فیلد تنظیم مدیریت فایل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: فیلدهای ساختار فایل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FileStructureRetirement
   title_fa: اطلاعات ساختار فایل برای بازنشستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FileStructureRetirementLoan
   title_fa: اطلاعات ساختار فایل برای بازنشستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FinancialStatute
-  title_fa: ثبت حکم مالی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: حکم مالی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Formula
-  title_fa: ریز فرمول (متن فرمول)
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: فرمول
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FormulaChangeLog
   title_fa: لاگ تغییر فرمول
   source: stated_by_user
@@ -1095,14 +1290,16 @@ tables:
   origin: glossary_hcm3
 - name: FormulaContext
   title_fa: محتوای فرمول
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FormulaContextObject
   title_fa: متن فرمول نویسی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HcmTag
   title_fa: برچسب HCM
   source: accepted_suggestion
@@ -1111,134 +1308,160 @@ tables:
   updated_at: '2026-09-08'
 - name: Indicator
   title_fa: شاخص عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndicatorAnswerStructure
   title_fa: ساختار جواب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndicatorAnswerStructureItem
   title_fa: اقلام ساختار جواب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndicatorGroup
   title_fa: گروه بندی شاخص عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndicatorGroupItem
   title_fa: اقلام گروه بندی شاخص
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndicatorHistory
   title_fa: شاخص عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Initiative
   title_fa: اقدام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InputFileStructure
   title_fa: ساختار فایل ورودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InputFileStructureField
   title_fa: ستون ساختار فایل ورودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Institute
-  title_fa: معرفی موسسه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: موسسه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InstituteTrainer
-  title_fa: موسسه آموزش دهنده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مدرس موسسه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Job
-  title_fa: معرفی شغل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: شغل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: JobCompetency
   title_fa: شایستگی شغل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: JobCourse
   title_fa: دوره های مرتبط با شغل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: JobDuty
   title_fa: وظایف شغل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: JobQualification
   title_fa: شرایط احراز شغل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: KeyResult
   title_fa: نتایج کلیدی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveRemainder
   title_fa: مانده مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveRemainderHistory
   title_fa: مانده مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveRequest
   title_fa: درخواست مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveRequestAttachment
   title_fa: پیوست مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveRequestAttendanceData
   title_fa: رکوردهای تردد های مرتبط با مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveRequestAttendanceStatus
   title_fa: وضعیت تردد درخواست مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveRequestItem
   title_fa: آیتم درخواست مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveType
   title_fa: نوع مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveTypeAttendanceStatus
   title_fa: تنظیمات متناظر نوع مرخصی در تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LeaveTypePostExclude
   title_fa: حذف پست نوع مرخصی
   source: accepted_suggestion
@@ -1247,49 +1470,58 @@ tables:
   updated_at: '2026-09-08'
 - name: LeaveTypeProperty
   title_fa: خصوصیت نوع مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LoanAdjustment
-  title_fa: تعدیل اقساط وام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: تعدیل وام
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LoanInstalment
-  title_fa: استقرار وام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: قسط وام
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LoanPayment
-  title_fa: تخصیص وام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: پرداخت وام
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LoanSurety
   title_fa: ضامن وام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LoanSuretyDocument
-  title_fa: مستندات ضامن وام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مدرک تضمین وام
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LoanType
   title_fa: نوع وام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LoanTypeDL
-  title_fa: طرف مقابل وام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: طرف مقابل نوع وام
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LocalServerStatus
   title_fa: وضعیت سرورهای تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LocalSyncDataPartition
   title_fa: پارتیشن داده همگام‌سازی محلی
   source: accepted_suggestion
@@ -1305,29 +1537,34 @@ tables:
   updated_at: '2026-09-08'
 - name: MajorJobClass
   title_fa: رسته اصلی شغل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MajorJobClassItem
   title_fa: آیتم رسته اصلی شغل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MandatoryDistributionStructure
   title_fa: ساختار توزیع اجباری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MandatoryDistributionStructureItem
   title_fa: ساختار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Mapping
   title_fa: نگاشت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MappingInput
   title_fa: ورودی نگاشت
   source: accepted_suggestion
@@ -1342,9 +1579,10 @@ tables:
   updated_at: '2026-09-08'
 - name: MappingStructure
   title_fa: ساختار نگاشت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MappingStructureInput
   title_fa: ورودی ساختار نگاشت
   source: accepted_suggestion
@@ -1358,60 +1596,71 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: MissionDocument
-  title_fa: ثبت ماموریت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: ماموریت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MissionDocumentAttendanceData
   title_fa: رکوردهای تردد های مرتبط با ماموریت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MissionDocumentFactor
-  title_fa: عامل ثبت ماموریت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عامل ماموریت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MissionDocumentReport
-  title_fa: گزارش ثبت ماموریت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: گزارشات ماموریت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MissionFactor
-  title_fa: تعریف عامل ماموریت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عامل ماموریت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MissionFactorProperty
   title_fa: خصوصیت عامل ماموریت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MissionType
-  title_fa: تعریف نوع ماموریت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: نوع ماموریت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MissionTypeAttendanceStatus
   title_fa: وضعیت متناظر نوع ماموریت در تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MonthlyFactorData
   title_fa: ثبت مقادیر عوامل ورودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MonthlyFactorDataCompensationItem
   title_fa: مقادیر جبران خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NSVoucher
   title_fa: سند حسابداری نفت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NSVoucherItem
   title_fa: قلم سند نفت
   source: accepted_suggestion
@@ -1420,14 +1669,16 @@ tables:
   updated_at: '2026-09-08'
 - name: NSVoucherReference
   title_fa: قلم سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NSVoucherTemplate
   title_fa: الگوی سند حسابداری نفت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NSVoucherTemplateItem
   title_fa: قلم الگوی سند نفت
   source: accepted_suggestion
@@ -1437,19 +1688,22 @@ tables:
   revised: glossary_fix
 - name: NegativeRemainderRequest
   title_fa: درخواست پیشخور مرخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NewsItem
   title_fa: اخبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OilVoucher
   title_fa: سند حسابداری نفت جنوب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OilVoucherDLTypeRelation
   title_fa: رابطه نوع تفصیلی سند نفت
   source: accepted_suggestion
@@ -1459,74 +1713,88 @@ tables:
   revised: glossary_fix
 - name: OilVoucherFile
   title_fa: فایل نفت جنوب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OilVoucherFileRep
   title_fa: کارمندان رسمی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OilVoucherFileWf
   title_fa: کارمندان قراردادی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OilVoucherItem
   title_fa: قلم سند نفت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OilVoucherReference
   title_fa: قلم سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OilVoucherTemplate
   title_fa: الگوی سند حسابداری نفت جنوب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OilVoucherTemplateItem
   title_fa: آیتم الگوی سند نفت حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Organization
   title_fa: سازمان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrganizationBranch
-  title_fa: شعب سازمان (بیمه، مالیات)
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: شعبه سازمان
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrganizationCompensationFactor
-  title_fa: عامل مرتبط با سازمان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عوامل مرتبط با سازمان
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrganizationalStructure
-  title_fa: تعریف ساختار سازمان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: ساختار سازمانی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrganizationalStructureDescription
-  title_fa: شرح ساختار سازمانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: شرح تغییرات ساختار سازمانی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrganizationalStructureItem
   title_fa: قلم ساختار سازمانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PMSReportFactor
   title_fa: عامل تنظیم نمایش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PMSReportSetting
   title_fa: PMSReportSetting
   source: stated_by_user
@@ -1534,14 +1802,16 @@ tables:
   origin: glossary_entity_catalog
 - name: PYSalaryReceipt
   title_fa: فیش حقوق نفت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PYSalaryReceiptItem
   title_fa: قلم فیش حقوق نفت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PairAttendanceData
   title_fa: PairAttendanceData
   source: stated_by_user
@@ -1556,204 +1826,244 @@ tables:
   revised: glossary_fix
 - name: PayCalc
   title_fa: محاسبه حقوق
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayCalcItem
-  title_fa: قلم محاسبه حقوق
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: آیتم محاسبه حقوق
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PerformanceAgreement
   title_fa: موافقتنامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PerformanceManagementProcess
   title_fa: فرآیند مدیریت عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PerformancePeriod
   title_fa: دوره مدیریت عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PerformancePeriodCalculation
   title_fa: محاسبه دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PerformancePeriodCalculationItem
   title_fa: قلم محاسبه دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PerformancePeriodFactor
   title_fa: عامل ارزیابی عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PerformancePeriodFactorProperty
   title_fa: خصوصیت عامل ارزیابی عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PeriodAgreementStep
   title_fa: موافقتنامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PeriodEvaluationStep
   title_fa: ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PeriodEvaluationStepType
   title_fa: تعیین ابعاد ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PeriodicCalc
   title_fa: محاسبه دوره ای
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PeriodicCalcItem
-  title_fa: قلم محاسبه دوره ای
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: آیتم محاسبات دوره ای
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Phrase
   title_fa: شاخص
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PhraseGroup
   title_fa: گروه بندی شاخص
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PhraseGroupItem
   title_fa: گروه شاخص
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Post
-  title_fa: تعریف پست
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: پست
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PostAuthority
   title_fa: اختیارات پست
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PostCompetency
   title_fa: شایستگی پست
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PostCourse
-  title_fa: دوره آموزشی پست
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: دوره های مرتبط با پست
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PostDuty
-  title_fa: وظیفه پست
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: وظایف پست
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PostJob
-  title_fa: شغل پست (ارتباط شغل و پست)
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: پست های مرتبط با شغل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PostQualification
   title_fa: شرایط احراز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ProcessAgreementStep
   title_fa: گام اجرای موافقتنامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ProcessEvaluationStep
   title_fa: گام اجرای ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ProcessEvaluationStepType
   title_fa: ابعاد گام ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PromotionProcess
   title_fa: اجرای ارتقا و ترفیع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PromotionProcessItem
-  title_fa: قلم اجرای ارتقا و ترفیع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: آیتم اجرای ارتقا و ترفیع
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PromotionStructure
-  title_fa: تعریف ساختار ارتقا و ترفیع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: ساختار ارتقا و ترفیع
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PromotionStructureFactor
   title_fa: عامل ساختار ارتقا و ترفیع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PromotionStructureParameter
   title_fa: پارا متر ساختار ارتقا و ترفیع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PunchInHistory
   title_fa: تاریخچه پایش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportConfiguration
   title_fa: تنظیمات نمایش عوامل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportConfigurationFactor
   title_fa: عامل تنظیمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportConfigurationUserFactor
   title_fa: عامل تنظیمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportSetting
   title_fa: تنظیم گزارش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportSettingAttendanceFactor
   title_fa: عامل کارکرد تنظیم گزارش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportSettingCompensationFactor
   title_fa: عامل جبران خدمات تنظیم گزارش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportSettingItem
   title_fa: قلم تنظیم گزارش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportSettingStatuteFactor
   title_fa: عامل حکم تنظیم گزارش
   source: accepted_suggestion
@@ -1762,24 +2072,28 @@ tables:
   updated_at: '2026-09-08'
 - name: Retirement123FormReportSetting
   title_fa: تنظبم گزارش فرم 1 و 2 و 3 بازنشستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Retirement123FormReportSettingStatuteType
   title_fa: طبقه حکم گزارش فرم 1 و 2 و 3 بازنشستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RetirementCalc
   title_fa: محاسبه بازنشستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RetirementCalcItem
   title_fa: آیتم محاسبه بازنشستگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RetirementReceiptReportSetting
   title_fa: RetirementReceiptReportSetting_RetirementReceiptReportSetting
   source: stated_by_user
@@ -1787,9 +2101,10 @@ tables:
   origin: glossary_entity_catalog
 - name: RetirementReceiptReportSettingLoanType
   title_fa: تنظیم گزارش های فیش جامع مرتبط با وام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RetirementReportSetting
   title_fa: ReportSetting_RetirementReportSetting
   source: stated_by_user
@@ -1807,14 +2122,16 @@ tables:
   origin: glossary_entity_catalog
 - name: RfidAccessModel
   title_fa: مدل دسترسی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidAccessModelGate
   title_fa: گیت های مدل دسترسی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidAccessTemplate
   title_fa: الگوی دسترسی RFID
   source: accepted_suggestion
@@ -1831,29 +2148,34 @@ tables:
   revised: glossary_fix
 - name: RfidCard
   title_fa: تعریف کارت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidCardReader
   title_fa: کارت خوان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidDevice
   title_fa: تعریف دستگاه ثبت تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidDeviceAccess
   title_fa: تخصیص دسترسی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidDeviceSdk
   title_fa: SDK دستگاه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidEmployeeFace
   title_fa: چهره کارمند RFID
   source: accepted_suggestion
@@ -1875,24 +2197,28 @@ tables:
   updated_at: '2026-09-08'
 - name: RfidGate
   title_fa: گیت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidGateAccess
   title_fa: اطلاعات دسترسی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidGateGroup
   title_fa: گروه بندی گیت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidGateGroupGate
   title_fa: گیت های گروه بندی گیت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidMessage
   title_fa: RfidMessage
   source: stated_by_user
@@ -1900,9 +2226,10 @@ tables:
   origin: glossary_entity_catalog
 - name: RfidMessageProgress
   title_fa: پیشرفت فرمان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidResponse
   title_fa: RfidResponse
   source: stated_by_user
@@ -1910,9 +2237,10 @@ tables:
   origin: glossary_entity_catalog
 - name: RfidScheduledCommand
   title_fa: برنامه ریزی فرامین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidScheduledCommandDevice
   title_fa: دستگاه فرمان زمان‌بندی‌شده RFID
   source: accepted_suggestion
@@ -1922,14 +2250,16 @@ tables:
   revised: glossary_fix
 - name: RfidSite
   title_fa: سایت تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RfidTrafficLog
   title_fa: رویداد تردد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SelfServiceLinkAccess
   title_fa: دسترسی پیوند سلف‌سرویس
   source: accepted_suggestion
@@ -1938,15 +2268,17 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: SettlementCalc
-  title_fa: تسویه حساب کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: تسویه حساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SettlementCalcItem
   title_fa: آیتم تسویه حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SettlementViewSettingInputValue
   title_fa: مقدار ورودی تنظیم نمایش تسویه
   source: accepted_suggestion
@@ -1955,59 +2287,70 @@ tables:
   updated_at: '2026-09-08'
 - name: ShamsiCalendar
   title_fa: تقویم شمسی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SpecialDay
   title_fa: روز خاص
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StatuteFactor
-  title_fa: تعریف عامل حکمی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عامل حکمی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StatuteFactorDisplayOrder
-  title_fa: ترتیب نمایش عوامل حکمی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: ترتیب عوامل حکمی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StatuteFactorProperty
   title_fa: خصوصیت عامل حکمی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StatuteType
   title_fa: نوع حکم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StatuteTypeFactor
-  title_fa: تعریف نوع عامل حکمی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عوامل نوع حکم
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StatuteTypeParameter
   title_fa: پارامترهای نوع حکم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StrategicObjective
   title_fa: گروهبندی هدف سازمانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StrategicObjectiveItem
   title_fa: موارد اهداف
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StrategicObjectiveType
   title_fa: نوع هدف
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Tabsare21ReportSetting
   title_fa: ReportSetting_Tabsare21ReportSetting
   source: stated_by_user
@@ -2015,34 +2358,40 @@ tables:
   origin: glossary_entity_catalog
 - name: TargetGroupExecutive
   title_fa: ارتباط اجرا کنندگان شرایط هدف
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TargetGroupExecutiveAgreementStep
   title_fa: موافقتنامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TargetGroupExecutiveEvaluationStep
   title_fa: ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TargetGroupExecutiveEvaluationStepType
   title_fa: ابعاد ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxTable
-  title_fa: معرفی جدول مالیات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: جدول مالیات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxTableItem
-  title_fa: اقلام جدول مالیات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مقادیر جدول مالیات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TmpCardLastSync
   title_fa: همگام‌سازی آخرین کارت موقت
   source: accepted_suggestion
@@ -2051,104 +2400,124 @@ tables:
   updated_at: '2026-09-08'
 - name: ToDoTask
   title_fa: پیام ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Trainer
-  title_fa: معرفی مدرس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مدرس
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingAssessmentFactor
   title_fa: عامل سنجش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingAssessmentFactorData
   title_fa: مقادیر عوامل سنجش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingAssessmentFactorDataItem
   title_fa: مقادیر عوامل سنجش در سطح برگزاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingAssessmentFactorDataParticipantItem
   title_fa: مقادیر عوامل سنجش در سطح فراگیر
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingAssessmentFactorDataStateHistory
   title_fa: تاریخچه تغییر وضعیت مقادیر عوامل سنجش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingAssessmentFactorDataTrainerItem
   title_fa: مقادیر عوامل سنجش در سطح مدرس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingAssessmentFactorDisplayOrder
   title_fa: ترتیب عوامل سنجش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingAssessmentFactorProperty
   title_fa: خصوصیت عامل سنجش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingFactor
-  title_fa: تعریف عامل آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عامل آموزش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingFactorData
-  title_fa: ثبت عوامل مقادیر آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: مقادیر عوامل آموزشی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingFactorDataItem
   title_fa: مقادیر عوامل آموزشی در سطح برگزاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingFactorDataParticipantItem
   title_fa: مقادیر عوامل آموزشی در سطح فراگیر
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingFactorDataStateHistory
   title_fa: تاریخچه تغییر وضعیت مقادیر عوامل آموزشی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingFactorDisplayOrder
   title_fa: ترتیب عوامل آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingFactorProperty
   title_fa: خصوصیت عامل آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingReportViewSetting
   title_fa: تنظیم نمایش گزارش آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingReportViewSettingFactor
   title_fa: عامل سنجش تنظیم نمایش گزارش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrainingVoucher
   title_fa: سند حسابداری آموزش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TranscriptComment
   title_fa: یادداشت رونوشت
   source: accepted_suggestion
@@ -2157,184 +2526,219 @@ tables:
   updated_at: '2026-09-08'
 - name: TranscriptStructure
   title_fa: ساختار کارنامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TranscriptStructureItem
   title_fa: عوامل ارزیابی عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferVoucher
-  title_fa: سند انتقالی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: سند حسابداری انتقالی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferVoucherEmployee
-  title_fa: سند انتقالی کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: کارمندان مرتبط با سند حسابداری انتقالی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferVoucherSpecification
   title_fa: تنظیم سند انتقالی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferVoucherSpecificationSL
   title_fa: حسابهای معین مرتبط با تنظیمات سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferVoucherSpecificationSLFactor
   title_fa: عامل های مرتبط با حساب معین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferVoucherSpecificationSLLoan
   title_fa: وامهای مرتبط با حساب معین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferVoucherSpecificationSLRelatedAccount
   title_fa: شعبه معین های مرتبط با معین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TreasuryReportSetting
   title_fa: ReportSetting_TreasuryReportSetting
   source: stated_by_user
   confidence: medium
   origin: glossary_entity_catalog
 - name: UserDefinedCalc
-  title_fa: محاسبات خاص کاربر
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: محاسبه خاص کاربر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: UserDefinedCalcItem
-  title_fa: قلم محاسبات خاص کاربر
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: آیتم محاسبه خاص کاربر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Voucher
   title_fa: سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherBranch
   title_fa: شعبه کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherEmployee
-  title_fa: کارمندان دارای سند (به تفکیک ماه)
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: کارمندان مرتبط با سند حسابداری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherInsuranceBranch
   title_fa: اطلاعات سازمان شعب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherSpecification
   title_fa: الگوی سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherSpecificationCalcType
   title_fa: نوع محاسبه الگو سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherSpecificationSL
-  title_fa: معین های مرتبط با سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: حسابهای معین مرتبط با تنظیمات سند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherSpecificationSLFactor
-  title_fa: عامل مرتبط با معین سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: عامل های مرتبط با حساب معین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherSpecificationSLLoan
-  title_fa: معین وام در سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: وامهای مرتبط با حساب معین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherSpecificationSLRelatedDL
   title_fa: تفصیلی های مرتبط
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WGSalaryReceipt
   title_fa: فیش حقوق دستمزدی نفت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WGSalaryReceiptItem
   title_fa: قلم فیش حقوق دستمزدی نفت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkbookStructure
   title_fa: ساختار کارنامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkbookStructureDetail
   title_fa: جزئیات ساختار کارنامه ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkbookStructureViewConfig
   title_fa: تنظیم نحوه نمایش نتایج
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingCalendar
   title_fa: تقویم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingCalendarDay
   title_fa: شیفت تقویم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingGroup
-  title_fa: تعریف گروه کاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: گروه کاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingGroupChangeRequest
   title_fa: درخواست تغییر گروه کاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingGroupChangeRequestItem
   title_fa: قلم درخواست تغییر گروه کاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingGroupEmployee
-  title_fa: گروه کاری کارمند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: کارمندان گروه کاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingGroupOrganizing
   title_fa: برنامه ریزی گروه کاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingGroupOrganizingEmployee
   title_fa: کارمند عضو برنامه ریزی گروه کاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingGroupOrganizingEmployeeDay
   title_fa: روز برنامه ریزی شده کارمند عضو برنامه ریزی گروه کاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingGroupOrganizingHistoryBase
   title_fa: پایه تاریخچه سازمان‌دهی گروه کاری
   source: accepted_suggestion
@@ -2350,17 +2754,20 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: WorkingShift
-  title_fa: تعریف شیفت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: شیفت کاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingShiftDay
-  title_fa: روز شیفت کاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: روز
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WorkingShiftSpecialDay
-  title_fa: روز خاص شیفت کاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_hcm3
+  title_fa: روز خاص
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'

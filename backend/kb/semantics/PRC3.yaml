@@ -8,14 +8,16 @@ tables:
   origin: glossary_entity_catalog
 - name: AccountGroupLedger
   title_fa: استقرار حسابهای خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountGroupLedgerParameterValue
   title_fa: مقادیر پارامتریک استقرار حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountGroupParameterRelation
   title_fa: AccountGroupParameterRelation
   source: stated_by_user
@@ -23,34 +25,40 @@ tables:
   origin: glossary_entity_catalog
 - name: AccountingVoucherTemplate
   title_fa: الگوی سند حسابداری خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountingVoucherTemplateParameterValue
   title_fa: قلم الگوی سند حسابداری خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Agreement
   title_fa: تفاهم نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AgreementPolicy
   title_fa: سیاستهای خاص تفاهم نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyExtraProperty
   title_fa: تنظیمات انتقال سیاست خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompanyAdminUser
   title_fa: کاربر ارشد بنگاه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompanyAdminUserItem
   title_fa: CompanyAdminUserItem
   source: stated_by_user
@@ -58,89 +66,106 @@ tables:
   origin: glossary_entity_catalog
 - name: Contract
   title_fa: قرارداد خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractAmendment
   title_fa: اصلاحیه قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractItem
   title_fa: اقلام قرارداد خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractPolicy
   title_fa: سیاستهای خاص قرارداد خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractPolicyContextItem
   title_fa: سیاست های اعمال شده روی قرارداد خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractPolicyResult
   title_fa: نتیجه اعمال سیاست بر روی قراداد خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractRenewalHistory
   title_fa: تاریخچه تمدید مدت قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractTemplate
   title_fa: الگوی قرارداد خرید/تفاهم نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractTemplateDetailLedger
   title_fa: تفصیل قرارداد خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractTemplateDetailLedgerType
   title_fa: نوع تفصیل قرارداد خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractTemplateRelatedOrderType
   title_fa: سند خرید مرتبط با الگوی قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractTemplateUser
   title_fa: کاربران مجاز الگوی قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CostRepository
   title_fa: هزینه های سیستم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Delivery
   title_fa: تحویل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DeliveryItem
   title_fa: اقلام تحویل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DeliveryReturn
   title_fa: برگه مرجوعی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DeliveryReturnItem
   title_fa: اقلام برگه مرجوعی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DeliveryReturnItemDraftVoucher
   title_fa: DeliveryReturnItemDraftVoucher
   source: stated_by_user
@@ -148,14 +173,16 @@ tables:
   origin: glossary_entity_catalog
 - name: DirectDeliveryReceipt
   title_fa: رسید تحویل مستقیم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DirectDeliveryReceiptItem
   title_fa: اقلام رسید تحویل مستقیم
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DirectDeliveryReceiptItemDraftVoucher
   title_fa: DirectDeliveryReceiptItemDraftVoucher
   source: stated_by_user
@@ -163,19 +190,22 @@ tables:
   origin: glossary_entity_catalog
 - name: DraftVoucher
   title_fa: اطلاعات حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DraftVoucherItem
   title_fa: قلم اطلاعات حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DraftVoucherItemDetail
   title_fa: جزئیات قلم اطلاعات حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EntityDLLevelInfo
   title_fa: EntityDLLevelInfo
   source: stated_by_user
@@ -183,84 +213,100 @@ tables:
   origin: glossary_entity_catalog
 - name: Inquiry
   title_fa: استعلام بها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InquiryItem
   title_fa: قلم استعلام
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InquirySupplier
   title_fa: تأمین کننده استعلام بها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryVoucherItemTag
   title_fa: تگ محموله کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Invoice
   title_fa: فاکتور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InvoiceItem
   title_fa: قلم فاکتور
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InvoicePolicyContextItem
   title_fa: سیاست های اعمال شده روی فاکتور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InvoicePolicyResult
   title_fa: نتیجه اعمال سیاست بر روی فاکتور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LandedCost
   title_fa: بهای تمام شده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LandedCostItem
   title_fa: قلم بهای تمام شده خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MiscCost
   title_fa: نوع هزینه تکمیلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MiscCostTargetEntity
   title_fa: سند نوع هزینه تکمیلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Order
   title_fa: سفارش خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrderAllocationInfo
   title_fa: اطلاعات سهم بری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrderItem
   title_fa: قلم سفارش خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrderItemDeliverySchedule
   title_fa: زمانبندی تحویل اقلام سفارش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrderPolicyContextItem
   title_fa: OrderPolicyContextItem
   source: stated_by_user
@@ -323,24 +369,28 @@ tables:
   revised: glossary_fix
 - name: PaymentInformation
   title_fa: اطلاعات دریافت/پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentInformationItem
   title_fa: قلم اطلاعات دریافت/پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentSettlement
   title_fa: روش تسویه حساب خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentSettlementPhase
   title_fa: روش تسویه حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PreOrder
   title_fa: سفارش پیش
   source: accepted_suggestion
@@ -355,19 +405,22 @@ tables:
   updated_at: '2026-09-08'
 - name: PriceList
   title_fa: لیست قیمت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriceListItem
   title_fa: اقلام لیست قیمت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseItem
   title_fa: قلم خریدنی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseItemGroupMembers
   title_fa: اعضا گروه قلم خرید
   source: accepted_suggestion
@@ -376,159 +429,190 @@ tables:
   updated_at: '2026-09-08'
 - name: PurchaseItemToSupplierRelationship
   title_fa: حوزه خرید و تامین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseMiscCost
   title_fa: هزینه تکمیلی خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseMiscCostItem
   title_fa: قلم هزینه تکمیلی خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseMiscCostPolicyContextItem
   title_fa: سیاست های اعمال شده روی هزینه تکمیلی خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseMiscCostPolicyResult
   title_fa: نتیجه اعمال سیاست در هزینه تکمیلی خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseOrder
   title_fa: دستور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseOrderItem
   title_fa: قلم دستور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseOrderPolicyContextItem
   title_fa: سیاست های اعمال شده روی دستور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseOrderPolicyResult
   title_fa: نتیجه اعمال سیاست بر روی دستور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseRequest
   title_fa: درخواست خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseRequestAmendment
   title_fa: اصلاحیه درخواست خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseRequestAmendmentItem
   title_fa: قلم اصلاحیه درخواست خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseRequestItem
   title_fa: قلم درخواست خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseRequestItemSupplier
   title_fa: تامین کننده قلم درخواست خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseRequestItemVerification
   title_fa: بررسی اقلام درخواست
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseRequestPolicyContextItem
   title_fa: سیاست های اعمال شده روی درخواست خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchaseRequestPolicyResult
   title_fa: نتیجه اعمال سیاست بر روی درخواست خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchasingAdminUser
   title_fa: کاربر ارشد تدارکات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchasingAgent
   title_fa: کارشناس خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchasingDepartment
   title_fa: واحد/رمز تامین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchasingDepartmentAgreement
   title_fa: واحد/رمز تامین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchasingDepartmentContract
   title_fa: واحد/رمز تامین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchasingDepartmentPurchasingAgent
   title_fa: کارشناس خرید واحد/رمز تامین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Quotation
   title_fa: پیش فاکتور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: QuotationItem
   title_fa: قلم پیش فاکتور
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: QuotationPolicyContextItem
   title_fa: سیاست های اعمال شده روی پیش فاکتور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: QuotationPolicyResult
   title_fa: نتیجه اعمال سیاست بر روی پیش فاکتور خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Refund
   title_fa: فاکتور برگشتی خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RefundItem
   title_fa: اقلام فاکتور برگشتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RefundPolicyContextItem
   title_fa: سیاست های اعمال شده روی فاکتور برگشتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RefundPolicyResult
   title_fa: نتیجه اعمال سیاست بر روی فاکتور برگشتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SelfServiceKeyValueConfiguration
   title_fa: SelfServiceKeyValueConfiguration
   source: stated_by_user
@@ -550,64 +634,76 @@ tables:
   revised: glossary_fix
 - name: SelfServiceUserGroup
   title_fa: گروه کاربران سلف سرویس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SelfServiceUserGroupMember
   title_fa: اعضای گروه کاربران
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SelfServiceUserGroupPermission
   title_fa: مجوز گروه کاربر خدمات الکترونیک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SelfServiceUserPermission
   title_fa: مجوز کاربر خدمات الکترونیک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SelfServiceUserProfile
   title_fa: اطلاعات پروفایل کاربر سلف سرویس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ShippingNotification
   title_fa: اعلام بار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ShippingNotificationItem
   title_fa: قلم اعلام بار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Supplier
   title_fa: تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierAssessment
   title_fa: ارزیابی تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierAssessmentGroupingInfo
   title_fa: گروه بندی تامین کنندگان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierAssessmentItem
   title_fa: اقلام ارزیابی تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierAssessmentParameter
   title_fa: شاخص ارزیابی تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierGroupMembers
   title_fa: اعضا گروه تأمین‌کننده
   source: accepted_suggestion
@@ -617,66 +713,79 @@ tables:
   revised: glossary_fix
 - name: SupplierPartCode
   title_fa: کد فاکتور تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierQuotation
   title_fa: پیش فاکتور تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierQuotationItem
   title_fa: قلم پیش فاکتور تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierRating
   title_fa: رتبه تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SupplierRatingItem
   title_fa: قلم معرفی رتبه تامین کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TechinicalProposalNonSendingReason
   title_fa: علت عدم ارسال پیشنهاد فنی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TechnicalAgent
   title_fa: کارشناس فنی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TechnicalInquiry
   title_fa: استعلام فنی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TechnicalInquiryItem
   title_fa: اقلام استعلام فنی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TimingSchedule
   title_fa: زمانبندی ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: UserPurchaseType
   title_fa: نوع خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VerificationStep
   title_fa: مرحله بررسی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherPricingFailureLog
   title_fa: لاگ نتیجه ارسال قیمت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'

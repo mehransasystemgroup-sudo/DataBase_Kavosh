@@ -3,34 +3,40 @@ note: description_fa و gotchas را دستی اضافه کنید؛ ingest بع�
 tables:
 - name: AccountGroupConfiguration
   title_fa: استقرار گروه حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountGroupConfigurationParameter
   title_fa: پارامتر تنظیمات گروه حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AdditionalSerial
   title_fa: شناسه رهگیری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AlternativePart
   title_fa: کالای جایگزین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssignmentTerminal
   title_fa: پایانه تخصیص
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssignmentTerminalItem
   title_fa: قلم پایانه تخصیص
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BarCodeBlock
   title_fa: بلوک کد میله
   source: accepted_suggestion
@@ -39,9 +45,10 @@ tables:
   updated_at: '2026-09-08'
 - name: BarCodeInventoryVoucherProperty
   title_fa: مقادیر سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BarCodeTemplate
   title_fa: الگوی کد میله
   source: accepted_suggestion
@@ -51,74 +58,88 @@ tables:
   revised: glossary_fix
 - name: Bascule
   title_fa: باسکول
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BasculePaper
   title_fa: برگ توزین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BasculePaperItem
   title_fa: اقلام برگ توزین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BasculePaperItemDetail
   title_fa: ریز اقلام برگ توزین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BasculePaperItemHistory
   title_fa: تاریخچه برگ توزین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Batch
   title_fa: بچ
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchCharacteristic
   title_fa: ویژگی بچ
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchCharacteristicHistory
   title_fa: تاریخچه ویژگی بچ
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchHistory
   title_fa: تاریخچه بچ
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchProfileTemplate
   title_fa: الگوی شناسنامه کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchProfileTemplateItem
   title_fa: قلم الگوی شناسنامه کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchProfileTemplatePart
   title_fa: الگوی شناسنامه کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchProfileTemplateVisibleCharactristic
   title_fa: ویژگی قابل نمایش الگوی شناسنامه کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BatchRelation
   title_fa: بچ های استفاده شده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BudgetEntityInventoryVoucherRelation
   title_fa: BudgetEntityInventoryVoucherRelation
   source: stated_by_user
@@ -126,9 +147,10 @@ tables:
   origin: glossary_entity_catalog
 - name: Cardex
   title_fa: کاردکس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CardexPeriodicRate
   title_fa: CardexPeriodicRate
   source: stated_by_user
@@ -142,49 +164,58 @@ tables:
   updated_at: '2026-09-08'
 - name: Carrier
   title_fa: مؤسسه حمل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Category
   title_fa: طبقه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodeBlock
   title_fa: اجزای کد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodeGroupCounter
   title_fa: اجزای کد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodeTemplate
   title_fa: الگوی کد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContainerType
   title_fa: نوع کانتینر
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Custom
   title_fa: گمرک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CustomAddress
   title_fa: آدرس گمرک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DefaultPricingFactorsSharedMethod
   title_fa: روش تسهیم پیش فرض عوامل مبلغی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmptiesConflict
   title_fa: تداخل ظروف خالی
   source: accepted_suggestion
@@ -228,14 +259,16 @@ tables:
   origin: glossary_entity_catalog
 - name: FinalVerificationHistory
   title_fa: تاریخچه قطعی شدن انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FinalizationQuantitativeHistory
   title_fa: تاریخچه بستن تعدادی انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FinalizationQuantitativeHistoryDetail
   title_fa: جزئیات تاریخچه کمی نهایی‌سازی
   source: accepted_suggestion
@@ -244,59 +277,70 @@ tables:
   updated_at: '2026-09-08'
 - name: FinancialVoucherTemplate
   title_fa: الگوی سند حسابداری انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FinancialVoucherTemplateItem
   title_fa: قلم الگوی سند حسابداری انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldBaseDataBag
   title_fa: بسته داده ارسالی هندهلد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldBaseDataBagInventoryVoucherSpecification
   title_fa: الگوی سند بسته داده ارسالی هندهلد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldBaseDataBagStocktakingPeriod
   title_fa: دوره انبارگردانی بسته داده ارسالی هندهلد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldBaseDataBagStore
   title_fa: انبار بسته داده ارسالی هندهلد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldBaseDataBagUser
   title_fa: کاربر بسته داده ارسالی هندهلد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldStocktakingList
   title_fa: لیست انبارگردانی هندهلدی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldVoucher
   title_fa: سند هندهلد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldVoucherItem
   title_fa: قلم سند هندهلد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: HandheldVoucherReferenceAssignment
   title_fa: تخصیص مبنای سند هندهلد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndependentContainer
   title_fa: کانتینر مستقل
   source: accepted_suggestion
@@ -305,29 +349,34 @@ tables:
   updated_at: '2026-09-08'
 - name: InventoryCounting
   title_fa: شمارش انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryCountingItem
   title_fa: قلم شمارش انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryCountingVoucher
   title_fa: سند شمارش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryScheduledJob
   title_fa: اجرای زمانبندی عملیات انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryScheduledTask
   title_fa: زمانبندی عملیات انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventorySerialProfile
   title_fa: InventorySerialProfile
   source: stated_by_user
@@ -340,69 +389,82 @@ tables:
   origin: glossary_entity_catalog
 - name: InventoryTransactionSerialRange
   title_fa: قلم بازه سریال سند انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryVoucher
   title_fa: سند انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryVoucherItem
   title_fa: قلم سند انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryVoucherItemTrackingFactor
   title_fa: قلم عامل کنترل موجودی سند انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryVoucherSerial
   title_fa: وضعیت سریال در سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryVoucherSpecification
   title_fa: الگوی سند انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryVoucherSpecificationDetailLedger
   title_fa: تفصیل سند انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InventoryVoucherSpecificationDetailLedgerType
   title_fa: نوع تفصیل سند انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IssuePermit
   title_fa: مجوز خروج
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IssuePermitItem
   title_fa: قلم مجوز خروج کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IssuePermitItemTrackingFactor
   title_fa: قلم عامل کنترل موجودی مجوز خروج
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ItemPrice
   title_fa: قیمت قلم سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ItemPriceTravelingHistory
   title_fa: تاریخچه جابجائی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LedgerStore
   title_fa: LedgerStore
   source: stated_by_user
@@ -410,9 +472,10 @@ tables:
   origin: glossary_entity_catalog
 - name: LoadingPoint
   title_fa: جایگاه بارگیری / تخلیه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaterialClass
   title_fa: طبقه ماده
   source: accepted_suggestion
@@ -541,39 +604,46 @@ tables:
   revised: glossary_fix
 - name: MaterialControlPolicy
   title_fa: سیاست خروج کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaterialControlPolicyItem
   title_fa: قلم سیاست خروج کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaterialControlPolicyPart
   title_fa: کالای سیاست خروج
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MedicalGenericSpec
   title_fa: اطلاعات ژنریک کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Package
   title_fa: نوع بسته بندی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Part
   title_fa: کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartBarcode
   title_fa: قلم بارکد ثابت کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartBarcodeTemplate
   title_fa: الگوی بارکد قطعه
   source: accepted_suggestion
@@ -604,29 +674,34 @@ tables:
   revised: glossary_fix
 - name: PartDetail
   title_fa: اجزاء کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartDetailFormula
   title_fa: فرمول کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartDetailFormulaItem
   title_fa: اجزاء کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartDisplayInformation
   title_fa: اطلاعات نمایشی کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartDisplayInformationItem
   title_fa: قلم اطلاعات نمایشی کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartFilterItem
   title_fa: قلم فیلتر قطعه
   source: accepted_suggestion
@@ -636,54 +711,64 @@ tables:
   revised: glossary_fix
 - name: PartFixedBarcode
   title_fa: بارکد ثابت کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartGroupMember
   title_fa: گروه کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartLocation
   title_fa: کالا-ساختار انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartMedicalSpecification
   title_fa: اطلاعات دارویی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartNotice
   title_fa: توصیه عملکرد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartQualityControl
   title_fa: کنترل کیفی کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartQualityControlDocument
   title_fa: نوع سند کنترل کیفی کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartRequest
   title_fa: درخواست کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartRequestItem
   title_fa: قلم درخواست کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartRequestItemTrackingFactor
   title_fa: قلم عامل کنترل موجودی درخواست
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartShipmentSchedulingProperties
   title_fa: ویژگی‌ها زمان‌بندی محموله قطعه
   source: accepted_suggestion
@@ -693,39 +778,46 @@ tables:
   revised: glossary_fix
 - name: PartSpecification
   title_fa: ویژگی های کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartStore
   title_fa: کالای انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartTechnicalSpecification
   title_fa: مشخصات فنی کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartTemplate
   title_fa: الگوی کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartTemplateSpecification
   title_fa: ارتباط الگوی کالا با ویژگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartTemplateStore
   title_fa: ارتباط الگوی کالا با انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartTrackingFactor
   title_fa: عامل کنترل موجودی کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartUnit
   title_fa: واحد قطعه
   source: accepted_suggestion
@@ -740,49 +832,58 @@ tables:
   origin: glossary_entity_catalog
 - name: PartUnitProposalItem
   title_fa: استقرار واحد سنجش خروج کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Plant
   title_fa: مرکز نگهداری کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriceChange
   title_fa: تغییر قیمت موجودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriceChangeItem
   title_fa: قلم تغییر قیمت موجودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriceList
   title_fa: فهرست بها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriceListItem
   title_fa: قلم فهرست بها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PricingCheckResult
   title_fa: نتیجه قیمت گذاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PricingFactor
   title_fa: عوامل مبلغی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PricingHistory
   title_fa: سابقه قیمت گذاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PricingPeriod
   title_fa: PricingPeriod
   source: stated_by_user
@@ -790,172 +891,196 @@ tables:
   origin: glossary_entity_catalog
 - name: PricingYear
   title_fa: دوره قیمت‌گذاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ProcessesScheduling
   title_fa: زمانبندی عملیات گروهی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptPermit
   title_fa: مجوز ورود
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptPermitItem
   title_fa: قلم مجوز ورود کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptPermitItemTrackingFactor
   title_fa: قلم عامل کنترل موجودی مجوز ورود
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Reserve
   title_fa: رزرو موجودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReserveDelivery
   title_fa: تحویل رزرو
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReserveItem
   title_fa: قلم رزرو موجودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReserveItemTrackingFactor
   title_fa: قلم عامل کنترل موجودی رزرو موجودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SchedulePricing
   title_fa: زمانبندی قیمت گذاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Seaport
   title_fa: بندر
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Section
   title_fa: بخش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Serial
   title_fa: سریال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialPackage
   title_fa: بسته سریال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialPrint
   title_fa: چاپ سریال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialPrintHistory
   title_fa: تاریخچه چاپ
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialPrintItem
   title_fa: موارد چاپ
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialProfile
   title_fa: پروفایل سریال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialProfilePart
   title_fa: کالاهای مرتبط
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialProfileSubscribingModule
   title_fa: ماژول‌های مرتبط
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialSubscribingModule
   title_fa: ماژولهای سریالی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialTemplate
   title_fa: الگوی سریال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialTemplatePart
   title_fa: الگوی سریال کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialTemplateSegment
   title_fa: قطعه الگو
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialValidation
   title_fa: شرط‌ اعتبارسنجی سریال کالا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialValidationCondition
   title_fa: شرط اعتبارسنجی سریال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialValidationPart
   title_fa: کالای مرتبط با شرط اعتبار سنجی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Service
   title_fa: خدمت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ServiceCategory
-  title_fa: دسته خدمت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: طبقه خدمت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ServiceCategoryItem
-  title_fa: قلم دسته خدمت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: قلم طبقه خدمت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ServiceGroup
   title_fa: گروه خدمت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Shelf
   title_fa: قفسه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ShelfHandheldVoucher
   title_fa: ShelfHandheldVoucher
   source: stated_by_user
@@ -968,14 +1093,16 @@ tables:
   origin: glossary_entity_catalog
 - name: ShelfVoucher
   title_fa: سند قفسه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ShelfVoucherItem
   title_fa: قلم سند قفسه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ShipmentCapacity
   title_fa: ظرفیت محموله
   source: accepted_suggestion
@@ -1063,84 +1190,100 @@ tables:
   updated_at: '2026-09-08'
 - name: ShippingOrder
   title_fa: مجوز بارگیری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ShippingOrderItem
   title_fa: قلم مجوز بارگیری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ShippingPoint
   title_fa: جایگاه ارسال و دریافت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ShippingPointInventory
   title_fa: انبار جایگاه ارسال و دریافت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SmartDevice
   title_fa: دستگاه ارتباطی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Specification
   title_fa: ویژگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SpecificationItem
   title_fa: مقدار ویژگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingCount
   title_fa: شمارش انبارگردانی هندهلدی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingCountItem
   title_fa: قلم شمارش انبارگردانی هندهلدی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingItem
   title_fa: قلم لیست انبارگردانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingList
   title_fa: لیست انبارگردانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingPeriod
   title_fa: دوره انبارگردانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingPeriodPartCategory
   title_fa: دوره انبارگردانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingPeriodVoucher
   title_fa: سند حین انبارگردانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingPeriodZone
   title_fa: ناحیه انبارگردانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingPolicy
   title_fa: پرونده انبارگردانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StocktakingPolicySerial
   title_fa: سریال سیاست انبارگردانی
   source: accepted_suggestion
@@ -1149,54 +1292,64 @@ tables:
   updated_at: '2026-09-08'
 - name: StocktakingVoucherItemCountStage
   title_fa: مراحل شمارش انبارگردانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Store
   title_fa: انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StorePosition
   title_fa: بخش داخلی انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StoreStructure
   title_fa: ساختار انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StoreStructureFinalizationState
   title_fa: وضعیت بستن قفسه ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxGrouping
   title_fa: گروه بندی مالیاتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxGroupingItem
   title_fa: قلم گروه بندی مالیاتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TermOfDelivery
   title_fa: روش تحویل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Terminal
   title_fa: پایانه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TrackingFactorCharacteristic
   title_fa: عامل کنترل موجودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransportationManagementPortalAssignment
   title_fa: تخصیص پرتال مدیریت حمل و نقل
   source: accepted_suggestion
@@ -1255,29 +1408,34 @@ tables:
   revised: glossary_fix
 - name: TransportationSequence
   title_fa: نوبت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransportationUnit
   title_fa: واحد حمل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransportationVehicle
   title_fa: وسیله حمل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransportationVehicleType
   title_fa: نوع وسیله حمل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Transporter
   title_fa: حمل کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: UncommittedCardexRemaining
   title_fa: باقی‌مانده کاردکس تعهدنشده
   source: accepted_suggestion
@@ -1286,26 +1444,31 @@ tables:
   updated_at: '2026-09-08'
 - name: UnloadingOrder
   title_fa: مجوز تخلیه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: UnloadingOrderItem
   title_fa: قلم مجوز تخلیه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VehicleTransporter
   title_fa: حمل کننده-وسیله حمل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WeighInToLoadingTolerance
   title_fa: تلرانس توزین نسبت به بارگیری/ تخلیه (برگشت از فروش)
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Zone
   title_fa: ناحیه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'

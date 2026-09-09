@@ -2,82 +2,82 @@ schema: GNR3
 tables:
 - name: Address
   title_fa: نشانی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ArchiveConfig
-  title_fa: پیکربندی بایگانی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تنظیمات آرشیو
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ArchiveJob
-  title_fa: شغل بایگانی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: عملیات آرشیو
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ArchiveJobExecutionLog
-  title_fa: گزارش رویداد اجرا شغل بایگانی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: لاگ آرشیو
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Branch
   title_fa: شعبه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BranchGrouping
   title_fa: گروهبندی شعبه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BranchGroupingDetail
-  title_fa: جزئیات گروهبندی شعبه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: جزئیات گروه بندی شعبه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicy
-  title_fa: سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سیاست کسب و کار
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyCondition
-  title_fa: شرط سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: جدول شرط
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyConditionRow
-  title_fa: ردیف شرط سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سطر جدول شرایط اعمال سیاست
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyEnforcementProcedure
-  title_fa: رویه اجرائیات سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: رویه اعمال سیاست
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyEnforcementProcedureRow
-  title_fa: ردیف رویه اجرائیات سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سطر اعمال رویه سیاست کاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyEnforcementProcedureRowDependency
-  title_fa: وابستگی ردیف رویه اجرائیات سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: وابستگی سطر اعمال رویه سیاست کاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyInputValue
   title_fa: مقدار ورودی سیاست کسب‌وکار
   source: accepted_suggestion
@@ -85,11 +85,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: BusinessPolicyMeasure
-  title_fa: سنجه سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اندازه سیاست کاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyOutputValue
   title_fa: مقدار خروجی سیاست کسب‌وکار
   source: accepted_suggestion
@@ -97,43 +97,41 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: BusinessPolicyParameter
-  title_fa: پارامتر سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: پارامتر کسب و کار
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyParameterAssociation
-  title_fa: تناظر پارامتر سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: پارامتر سیاست کسب و کار
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BusinessPolicyTargetEntity
-  title_fa: موجودیت هدف سیاست کسب‌وکار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: هدف موجودیت سیاست کاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Characteristic
-  title_fa: مشخصه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: ویژگی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CharacteristicItem
-  title_fa: قلم مشخصه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: قلم ویژگی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Company
-  title_fa: شرکت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: بنگاه زیرمجموعه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CompanyItem
   title_fa: قلم شرکت
   source: accepted_suggestion
@@ -147,11 +145,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: CorporateStructure
-  title_fa: ساختار شرکتی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ساختار بنگاه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CorporateStructureNode
   title_fa: گره ساختار شرکتی
   source: accepted_suggestion
@@ -160,28 +158,28 @@ tables:
   updated_at: '2026-09-08'
 - name: CostCenter
   title_fa: مرکز هزینه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Currency
   title_fa: ارز
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CurrencyExchangeRate
-  title_fa: نرخ تبادل ارز
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نسبت تبدیل ارز
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CurrencyGroupMember
   title_fa: عضو گروه ارز
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DependantCustomerAncestorInformation
   title_fa: اطلاعات نیای مشتری وابسته
   source: accepted_suggestion
@@ -201,57 +199,59 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: EntityGroup
-  title_fa: گروه موجودیت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گروه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EntityGrouping
   title_fa: گروهبندی موجودیت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-- name: EntitySegmentAssignment
-  title_fa: تخصیص بخش موجودیت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-- name: EntitySegmentSetting
-  title_fa: تنظیم بخش موجودیت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-- name: EntityUnit
-  title_fa: واحد موجودیت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-- name: EntityUnitRate
-  title_fa: نرخ واحد موجودیت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-- name: FiscalYear
-  title_fa: سال مالی
-  source: stated_by_user
+  source: software_entity_catalogue
   confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
+- name: EntitySegmentAssignment
+  title_fa: مقدار اشتراک موجودیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
+- name: EntitySegmentSetting
+  title_fa: تنظیمات اشتراک گذاری اطلاعات پایه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
+- name: EntityUnit
+  title_fa: واحدهای موجودیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
+- name: EntityUnitRate
+  title_fa: نرخ تبدیل واحدهای وابسته به موجودیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
+- name: FiscalYear
+  title_fa: دوره مالی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Fund
-  title_fa: صندوق
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: منبع تأمین اعتبار
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FundType
-  title_fa: نوع صندوق
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نوع منبع تأمین اعتبار
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GroupMember
   title_fa: عضو گروه
   source: accepted_suggestion
@@ -259,23 +259,23 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: IndependentUnitCategory
-  title_fa: دسته واحد مستقل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: واحدهای استاندارد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Ledger
   title_fa: دفتر کل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LedgerFiscalYear
-  title_fa: سال مالی دفتر کل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دوره مالی دفتر کل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LoyaltyCreditTransaction
   title_fa: تراکنش اعتبار وفاداری
   source: accepted_suggestion
@@ -404,11 +404,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: MiddlewareInformation
-  title_fa: اطلاعات میان‌افزار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اطلاعات میدلور
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Party
   title_fa: طرف حساب
   source: accepted_suggestion
@@ -423,41 +423,40 @@ tables:
   updated_at: '2026-09-08'
 - name: Project
   title_fa: پروژه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RegionalDivision
-  title_fa: تقسیمات کشوری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مناطق جغرافیایی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SessionLock
-  title_fa: قفل نشست
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قفل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SignatureAssignment
-  title_fa: تخصیص امضا
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: منتظر امضاء
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SignatureRequest
-  title_fa: درخواست امضا
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: درخواست امضاء
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SignatureTemplate
-  title_fa: الگوی امضا
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: الگوی امضای سند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SignatureTemplateSignatory
   title_fa: امضادار الگوی امضا
   source: accepted_suggestion
@@ -466,59 +465,59 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: SignedDocument
-  title_fa: سند امضاشده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سند امضاء شده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StandardDescription
   title_fa: شرح استاندارد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerBill
-  title_fa: صورت‌حساب مؤدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صورتحساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerBillBatchJobScheduling
-  title_fa: زمان‌بندی شغل بچ صورت‌حساب مؤدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: زمانبندی عملیات دسته جمعی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerBillConfigSnapshot
-  title_fa: تصویر لحظه‌ای پیکربندی صورت‌حساب مؤدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تنظیمات لحظه جمع آوری صورتحساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerBillItem
-  title_fa: قلم صورت‌حساب مؤدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورتحساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerBillLog
-  title_fa: گزارش رویداد صورت‌حساب مؤدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: لاگ قلم
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerBillPaymentInformation
-  title_fa: اطلاعات پرداخت صورت‌حساب مؤدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اطلاعات پرداخت صورتحساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerCancellationBill
-  title_fa: صورت‌حساب ابطال مؤدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صورتحساب ابطال
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerDataLog
   title_fa: گزارش رویداد داده مؤدی
   source: accepted_suggestion
@@ -527,11 +526,11 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: TaxPayerSellerInformation
-  title_fa: اطلاعات فروشنده مؤدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اطلاعات فروشنده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxPayerSerialNumber
   title_fa: شماره سریال مؤدی
   source: accepted_suggestion
@@ -539,11 +538,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: TaxPaymentProfile
-  title_fa: شناسنامه پرداخت مالیات
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تنظیمات ارسال صورت حساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransformedQuantity
   title_fa: مقدار تبدیل‌شده
   source: accepted_suggestion
@@ -551,8 +550,8 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: Unit
-  title_fa: واحد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: واحد سنجش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'

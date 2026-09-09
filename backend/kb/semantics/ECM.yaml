@@ -13,9 +13,10 @@ tables:
   origin: glossary_entity_catalog
 - name: AssignedSerial
   title_fa: سریال اختصاص داده شده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Attachment
   title_fa: Attachment
   source: stated_by_user
@@ -23,9 +24,10 @@ tables:
   origin: glossary_entity_catalog
 - name: AuthorityDelegation
   title_fa: تفویض اختیار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AuthorityDelegationGrant
   title_fa: اعطا تفویض اختیار
   source: accepted_suggestion
@@ -83,14 +85,16 @@ tables:
   revised: glossary_fix
 - name: ContentAnnotation
   title_fa: محتویات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Correspondent
   title_fa: مخاطب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CorrespondentDefaultManager
   title_fa: مدیر پیش‌فرض مخاطب
   source: accepted_suggestion
@@ -99,19 +103,22 @@ tables:
   updated_at: '2026-09-08'
 - name: CorrespondentGroup
   title_fa: گروه مخاطب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CorrespondentGroupMember
   title_fa: عضو گروه مخاطب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DelegationGrant
   title_fa: مجوز تفویض
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DocTemplate
   title_fa: الگوی سند
   source: accepted_suggestion
@@ -121,24 +128,28 @@ tables:
   revised: glossary_fix
 - name: Document
   title_fa: سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DocumentDetail
   title_fa: دیتیل سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DocumentField
   title_fa: فیلد سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DocumentPermission
   title_fa: دسترسی سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DocumentTemplate
   title_fa: الگوی سند
   source: accepted_suggestion
@@ -162,39 +173,46 @@ tables:
   revised: glossary_fix
 - name: ECEEmail
   title_fa: پست الکترونیک ECE
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ECEEmailTransceiver
   title_fa: طرف های مکاتبه ECE
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ECEOrganizationMap
   title_fa: نگاشت سازمان ECE
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ECEParticipantMap
   title_fa: نگاشت طرف مکاتبه ECE
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Email
   title_fa: پست الکترونیک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmailAccount
   title_fa: حساب پست الکترونیک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EmailAttachment
   title_fa: پیوست پست الکترونیک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Event
   title_fa: رویداد
   source: accepted_suggestion
@@ -203,9 +221,10 @@ tables:
   updated_at: '2026-09-08'
 - name: EventAttendee
   title_fa: مشارکت‌کننده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EventFile
   title_fa: فایل رویداد
   source: accepted_suggestion
@@ -214,9 +233,10 @@ tables:
   updated_at: '2026-09-08'
 - name: EventInstance
   title_fa: رویداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EventInstanceMetaData
   title_fa: داده فراداده نمونه رویداد
   source: accepted_suggestion
@@ -232,19 +252,22 @@ tables:
   updated_at: '2026-09-08'
 - name: FaxCenter
   title_fa: مرکز دورنویس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FaxDocument
   title_fa: محتوای دورنویس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FaxFolder
   title_fa: پوشه دورنویس
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: File
   title_fa: File
   source: stated_by_user
@@ -264,29 +287,34 @@ tables:
   updated_at: '2026-09-08'
 - name: IncomingFax
   title_fa: دورنویس دریافتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Letter
   title_fa: نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterAccelator
   title_fa: شتابگر نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterClientMetadata
   title_fa: متادیتای نامه های ارباب رجوع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterContent
   title_fa: محتویات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterDistribution
   title_fa: LetterDistribution
   source: stated_by_user
@@ -294,9 +322,10 @@ tables:
   origin: glossary_entity_catalog
 - name: LetterEmail
   title_fa: پست الکترونیک نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterExportReceipt
   title_fa: فیش صادرات نامه
   source: accepted_suggestion
@@ -305,24 +334,28 @@ tables:
   updated_at: '2026-09-08'
 - name: LetterFax
   title_fa: دورنویس نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterForm
   title_fa: فرم های راهکارانی نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterLog
   title_fa: رویداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterReceiver
   title_fa: طرف های مقابل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterRelation
   title_fa: LetterRelation
   source: stated_by_user
@@ -335,14 +368,16 @@ tables:
   origin: glossary_entity_catalog
 - name: LetterReturnRelation
   title_fa: نامه های مقابل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterScan
   title_fa: پویش نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterSecuretyLevel
   title_fa: LetterSecuretyLevel
   source: stated_by_user
@@ -350,9 +385,10 @@ tables:
   origin: glossary_entity_catalog
 - name: LetterSigner
   title_fa: امضا کننده ی نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterTextPdfHistory
   title_fa: LetterTextPdfHistory
   source: stated_by_user
@@ -365,29 +401,34 @@ tables:
   origin: glossary_entity_catalog
 - name: NumberingMethod
   title_fa: روش شماره گذاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NumberingMethodCondition
   title_fa: شرط روش شماره گذاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NumberingPattern
   title_fa: الگوی شماره گذاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NumberingReservation
   title_fa: رزرو شماره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrganizationServer
   title_fa: سرور سازمانی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OrganizationalStructureParentLevelHierarchy
   title_fa: سلسله‌مراتب سطح والد ساختار سازمانی
   source: accepted_suggestion
@@ -396,14 +437,16 @@ tables:
   updated_at: '2026-09-08'
 - name: Organizer
   title_fa: سازمانده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OutgoingFax
   title_fa: دورنویس ارسالی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PersonalFile
   title_fa: فایل شخصی
   source: accepted_suggestion
@@ -412,14 +455,16 @@ tables:
   updated_at: '2026-09-08'
 - name: PersonalFileForm
   title_fa: فرم های پرونده شخصی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Position
   title_fa: نماینده شرکت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PredefinedReferringReceiverPermission
   title_fa: مجوز گیرنده ارجاع پیش‌فرض
   source: accepted_suggestion
@@ -433,9 +478,10 @@ tables:
   origin: glossary_entity_catalog
 - name: Referring
   title_fa: ارجاع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReferringAccelerator
   title_fa: شتاب‌دهنده ارجاع
   source: accepted_suggestion
@@ -444,14 +490,16 @@ tables:
   updated_at: '2026-09-08'
 - name: ReferringAttachment
   title_fa: پیوست ارجاع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReferringCondition
   title_fa: قوانین ارجاع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReferringFolder
   title_fa: پوشه ارجاع
   source: accepted_suggestion
@@ -460,14 +508,16 @@ tables:
   updated_at: '2026-09-08'
 - name: ReferringForm
   title_fa: فرم های راهکارانی ارجاع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReferringLetter
   title_fa: نامه متصل به ارجاع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReferringOpAccelerator
   title_fa: شتاب‌دهنده عملیات ارجاع
   source: accepted_suggestion
@@ -476,9 +526,10 @@ tables:
   updated_at: '2026-09-08'
 - name: ReferringReason
   title_fa: جهت مکاتبه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReferringReasonCondition
   title_fa: شرط دلیل ارجاع
   source: accepted_suggestion
@@ -493,9 +544,10 @@ tables:
   updated_at: '2026-09-08'
 - name: ReferringSecurityLevel
   title_fa: طبقه بندی اطلاعاتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReferringSetting
   title_fa: تنظیم ارجاع
   source: accepted_suggestion
@@ -504,14 +556,16 @@ tables:
   updated_at: '2026-09-08'
 - name: ReferringTransceiver
   title_fa: طرف ارجاع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReferringUrgency
   title_fa: فوریت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Reminder
   title_fa: یادآور
   source: accepted_suggestion
@@ -520,34 +574,40 @@ tables:
   updated_at: '2026-09-08'
 - name: Scan
   title_fa: پویش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ScanCenter
   title_fa: مرکز پویش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ScanCenterDefaultSetting
   title_fa: تنظیمات پیش فرض مرکز پویش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ScanContent
   title_fa: محتوای پویش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Secretariat
   title_fa: دبیرخانه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SerialPool
   title_fa: مخزن سریال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransceiverMetadata
   title_fa: TransceiverMetadata
   source: stated_by_user

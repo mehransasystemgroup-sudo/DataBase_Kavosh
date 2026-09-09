@@ -254,19 +254,22 @@ tables:
   revised: glossary_fix
 - name: QualityInspectionResult
   title_fa: سند تایید / رد کیفی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: QualityInspectionResultItem
   title_fa: قلم تایید / رد کیفی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: QualityInspectionResultItemTrackingFactor
   title_fa: عامل کنترل موجودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ResultRecording
   title_fa: ثبت نتیجه
   source: accepted_suggestion

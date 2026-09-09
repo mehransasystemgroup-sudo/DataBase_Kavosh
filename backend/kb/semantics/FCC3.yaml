@@ -3,49 +3,58 @@ note: description_fa و gotchas را دستی اضافه کنید؛ ingest بع�
 tables:
 - name: ContractActivityType
   title_fa: نوع فعالیت قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractAmount
   title_fa: مبالغ قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractCollateral
   title_fa: ضمانتنامه قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractFactor
   title_fa: عامل قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractHeader
   title_fa: قرارداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractInvoice
   title_fa: صورت وضعیت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractInvoiceItemFactor
   title_fa: عامل صورت وضعیت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractInvoiceItemObligation
   title_fa: تعهدات پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractPayCommitment
   title_fa: نوع تعهد پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractType
   title_fa: نوع قرارداد
   source: accepted_suggestion
@@ -66,24 +75,28 @@ tables:
   updated_at: '2026-09-08'
 - name: IndetermineReceiptAndPayment
   title_fa: دریافت و پرداخت غیر قطعی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndetermineReceiptAndPaymentCollateral
   title_fa: ضمانتنامه دریافت پرداخت غیر قطعی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndetermineReceiptAndPaymentExchange
   title_fa: تهاتر دریافت و پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IndetermineReceiptAndPaymentItemObligation
   title_fa: تعهد پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayCommitmentType
   title_fa: نوع تعهد حقوق
   source: accepted_suggestion
@@ -98,9 +111,10 @@ tables:
   updated_at: '2026-09-08'
 - name: PaymentInfo
   title_fa: اطلاعات دریافت/پرداخت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentInfoItem
   title_fa: قلم اطلاعات پرداخت
   source: accepted_suggestion
@@ -115,14 +129,16 @@ tables:
   updated_at: '2026-09-08'
 - name: RelatedContract
   title_fa: قراردادهای مرتبط
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Tender
   title_fa: مناقصه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TenderParticipant
   title_fa: شرکت‌کننده مناقصه
   source: accepted_suggestion

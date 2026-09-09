@@ -3,6 +3,7 @@ import {
   AlertTriangle,
   ArrowDownLeft,
   ArrowUpRight,
+  Boxes,
   Calendar,
   CheckSquare,
   Coins,
@@ -388,6 +389,22 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                 <p className="max-w-3xl text-xs leading-relaxed text-muted-foreground">
                   {table.description_fa}
                 </p>
+              )}
+
+              {/*
+                موجودیتِ نرم‌افزاری که این جدول پیاده‌سازی‌اش می‌کند. ماژولش
+                بخش‌بندیِ خودِ نرم‌افزار است (HCM.Staff) نه اسکیمای پایگاه داده
+                (HCM3) — همان محوری که کاربر در منوی نرم‌افزار می‌بیند، پس پلی
+                است از چیزی که می‌شناسد به جدولی که نمی‌شناسد.
+              */}
+              {table.entity?.component && (
+                <div className="flex flex-wrap items-center gap-1.5 pt-0.5 text-[11px] text-muted-foreground">
+                  <Boxes className="h-3.5 w-3.5 shrink-0 text-brand-text" />
+                  <span>موجودیت نرم‌افزار:</span>
+                  <span className="ltr font-mono text-foreground">{table.entity.name}</span>
+                  <span className="text-borderStrong">·</span>
+                  <span>{table.entity.component}</span>
+                </div>
               )}
 
               <div className="flex flex-wrap items-center gap-1.5 pt-0.5">

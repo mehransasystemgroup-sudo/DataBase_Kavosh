@@ -168,6 +168,7 @@ def table(full_name: str) -> dict:
         "outgoing": [j.to_dict() for j in t.outgoing],
         "incoming": [j.to_dict() for j in t.incoming],
         "schema_neighbors": kb.schema_neighbors(t.full_name),
+        "entity": kb.entity_for(t.full_name),
     }
 
 
