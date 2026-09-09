@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Database, Network, Search, TriangleAlert } from "lucide-react";
+import { Database, ListChecks, Network, Search, TriangleAlert } from "lucide-react";
 
 import { http, OFFLINE_HINT } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
@@ -9,10 +9,12 @@ import ThemeToggle from "@/components/ThemeToggle";
 import { Toaster } from "@/components/ui/sonner";
 import ExplorerView from "@/views/ExplorerView";
 import SchemaGraphView from "@/views/SchemaGraphView";
+import LookupView from "@/views/LookupView";
 
 const VIEWS = [
   { id: "explorer", label: "کاوش جدول‌ها", short: "جدول‌ها", icon: Search },
   { id: "graph", label: "گراف روابط اسکیما", short: "گراف", icon: Network },
+  { id: "lookup", label: "کد و شرح", short: "کد و شرح", icon: ListChecks },
 ];
 
 function Brand({ health }) {
@@ -80,7 +82,7 @@ function AppShell() {
   const [route, navigate] = useHashRoute();
   const [health, setHealth] = useState(null);
 
-  const view = route.view === "graph" ? "graph" : "explorer";
+  const view = ["graph", "lookup"].includes(route.view) ? route.view : "explorer";
   const graphSchema = route.schema || "FIN3";
 
   const refreshHealth = useCallback(async () => {
@@ -97,7 +99,11 @@ function AppShell() {
   }, [refreshHealth]);
 
   const setView = useCallback(
-    (next) => navigate(next === "graph" ? { view: "graph", schema: graphSchema } : { view: "explorer" }),
+    (next) => {
+      if (next === "graph") return navigate({ view: "graph", schema: graphSchema });
+      if (next === "lookup") return navigate({ view: "lookup" });
+      return navigate({ view: "explorer" });
+    },
     [navigate, graphSchema],
   );
 
@@ -123,10 +129,12 @@ function AppShell() {
       </header>
 
       <main className="flex min-h-0 flex-1 flex-col overflow-hidden">
-        {view === "explorer" ? (
+        {view === "explorer" && (
           <ExplorerView health={health} route={route} navigate={navigate} />
-        ) : (
-          <SchemaGraphView route={route} navigate={navigate} />
+        )}
+        {view === "graph" && <SchemaGraphView route={route} navigate={navigate} />}
+        {view === "lookup" && (
+          <LookupView onSelectTable={(full) => navigate({ view: "explorer", table: full })} />
         )}
       </main>
 

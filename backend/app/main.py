@@ -114,6 +114,26 @@ def schemas() -> dict:
     return {"schemas": kb.schemas()}
 
 
+@app.get("/api/lookups")
+def lookups(
+    q: str = "",
+    module: str = "",
+    limit: int = Query(400, ge=1, le=2000),
+) -> dict:
+    return {
+        "types": kb.lookups(q=q, module=module, limit=limit),
+        "modules": kb.lookup_modules(),
+    }
+
+
+@app.get("/api/lookup/{lookup_type}")
+def lookup(lookup_type: str) -> dict:
+    found = kb.lookup(lookup_type)
+    if found is None:
+        raise HTTPException(404, f"نوع کد و شرحی «{lookup_type}» پیدا نشد.")
+    return found
+
+
 @app.get("/api/schema/{schema}/graph")
 def schema_graph(
     schema: str,
