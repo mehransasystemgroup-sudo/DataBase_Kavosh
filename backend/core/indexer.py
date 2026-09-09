@@ -132,6 +132,22 @@ CREATE TABLE lookup_values (
 
 CREATE INDEX ix_lookup_values_type ON lookup_values(type);
 
+/*
+  موجودیت‌های نرم‌افزار — عنوان رسمی هر موجودیت و ماژولی که به آن تعلق دارد.
+  ماژول این‌جا بخش‌بندیِ نرم‌افزار است (HCM.Staff)، نه اسکیمای پایگاه داده
+  (HCM3) — دو محور متفاوت که گاهی یکی نیستند.
+*/
+CREATE TABLE entities (
+    entity_id   TEXT PRIMARY KEY,
+    name        TEXT NOT NULL,
+    title_fa    TEXT NOT NULL,
+    component   TEXT,
+    table_ref   TEXT
+);
+
+CREATE INDEX ix_entities_table ON entities(table_ref);
+CREATE INDEX ix_entities_comp  ON entities(component);
+
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT);
 """
 
@@ -268,6 +284,18 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     db.executemany("INSERT OR REPLACE INTO lookup_types VALUES (?,?,?,?)", lookup_types)
     db.executemany("INSERT OR REPLACE INTO lookup_values VALUES (?,?,?,?,?)", lookup_values)
 
+    # ── موجودیت‌های نرم‌افزار ──
+    entity_rows = []
+    for f in sorted((kb / "entities").glob("*.yaml")) if (kb / "entities").exists() else []:
+        for e in _load(f).get("entities", []):
+            tabs = e.get("tables") or [None]
+            for t in tabs:
+                # یک موجودیت می‌تواند به چند جدول بخورد؛ کلید اصلی هر دو را
+                # با هم می‌گیرد تا ردیف‌ها روی هم نیفتند.
+                entity_rows.append((f"{e['entity_id']}|{t or ''}", e["name"],
+                                    e["title_fa"], e.get("component"), t))
+    db.executemany("INSERT OR REPLACE INTO entities VALUES (?,?,?,?,?)", entity_rows)
+
     # ── ایندکس‌های واقعی دیتابیس ──
     index_rows = []
     for f in sorted((kb / "indexes").glob("*.yaml")):
@@ -317,6 +345,7 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
         ("column_labels", str(len(column_labels))),
         ("lookup_types", str(len(lookup_types))),
         ("lookup_values", str(len(lookup_values))),
+        ("entities", str(len({r[0].split("|")[0] for r in entity_rows}))),
         ("schemas", str(db.execute(
             "SELECT COUNT(DISTINCT schema) FROM tables").fetchone()[0])),
     ])
@@ -331,6 +360,8 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     print(f"  جدول دارای داده در این نصب: {n_active}")
     print(f"  نام فارسی ماژول {len(schema_titles)}  ·  واژه‌نامهٔ ستون {len(column_labels)}")
     print(f"  کد و شرحی: {len(lookup_types)} نوع  ·  {len(lookup_values)} مقدار")
+    print(f"  موجودیت نرم‌افزار: {len({r[0].split('|')[0] for r in entity_rows})}  ·  "
+          f"جدول منطبق {len({r[4] for r in entity_rows if r[4]})}")
 
 
 def main() -> int:

@@ -379,6 +379,15 @@ class KnowledgeBase {
     }));
   }
 
+  // ─────────────────── موجودیت نرم‌افزار ───────────────────
+
+  entityFor(fullName) {
+    return this.one(
+      "SELECT name, title_fa, component FROM entities WHERE table_ref = ? LIMIT 1",
+      [fullName],
+    ) || null;
+  }
+
   // ─────────────────── کد و شرحی ───────────────────
 
   lookups({ q = "", module = "", limit = 400 } = {}) {
@@ -740,6 +749,7 @@ const ROUTES = [
       indexes: t.indexes, indexed_columns: indexedCols, warnings: t.warnings,
       outgoing: t.outgoing.map(stepDict), incoming: t.incoming.map(stepDict),
       schema_neighbors: kb.schemaNeighbors(t.full_name),
+      entity: kb.entityFor(t.full_name),
     };
   }],
 

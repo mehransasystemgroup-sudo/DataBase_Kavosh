@@ -228,12 +228,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: PartQuantityControl
-  title_fa: کنترل مقدار قطعه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: اطلاعات سفارش گذاری کالا
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PlannedOrder
   title_fa: سفارش برنامه‌ریزی‌شده
   source: accepted_suggestion

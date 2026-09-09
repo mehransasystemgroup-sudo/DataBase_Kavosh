@@ -2,17 +2,17 @@ schema: IPR3
 note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
 tables:
 - name: Clearance
-  title_fa: ترخیص
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: برگ ترخیص
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ClearanceItem
-  title_fa: قلم ترخیص
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام برگ ترخیص
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ClearancePolicyContextItem
   title_fa: قلم زمینه سیاست ترخیص
   source: accepted_suggestion
@@ -21,23 +21,23 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: ClearancePolicyResult
-  title_fa: نتیجه سیاست ترخیص
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نتیجه اعمال سیاست در ترخیص
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CommercialOrder
   title_fa: سفارش بازرگانی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ImportLicence
-  title_fa: پروانه واردات
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مجوز
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ImportLicencePolicyContextItem
   title_fa: قلم زمینه سیاست پروانه واردات
   source: accepted_suggestion
@@ -46,17 +46,17 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: ImportLicencePolicyResult
-  title_fa: نتیجه سیاست پروانه واردات
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نتیجه اعمال سیاست در مجوز
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Insurance
-  title_fa: بیمه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: بیمه نامه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InsurancePolicyContextItem
   title_fa: قلم زمینه سیاست بیمه
   source: accepted_suggestion
@@ -65,47 +65,47 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: InsurancePolicyResult
-  title_fa: نتیجه سیاست بیمه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نتیجه اعمال سیاست در بیمه نامه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LetterOfCredit
-  title_fa: اعتبار نامه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اعتبار اسنادی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PackingList
-  title_fa: لیست بسته‌بندی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صورت بسته بندی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PackingListItem
-  title_fa: قلم لیست بسته‌بندی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام صورت بسته بندی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PackingListItemDetail
-  title_fa: جزئیات قلم لیست بسته‌بندی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: جزئیات اقلام صورت بسته بندی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransportDocument
-  title_fa: سند حمل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: بارنامه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransportDocumentItem
-  title_fa: قلم سند حمل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم بارنامه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransportDocumentPolicyContextItem
   title_fa: قلم زمینه سیاست سند حمل
   source: accepted_suggestion
@@ -114,8 +114,8 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: TransportDocumentPolicyResult
-  title_fa: نتیجه سیاست سند حمل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نتیجه اعمال سیاست در بارنامه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'

@@ -477,6 +477,22 @@ class KnowledgeBase:
             "with_data": r["with_data"] or 0, "column_count": r["column_count"] or 0,
         } for r in rows]
 
+    def entity_for(self, full_name: str) -> dict | None:
+        """موجودیت نرم‌افزاری که این جدول پیاده‌سازی‌اش می‌کند."""
+        row = self.db.execute(
+            "SELECT name, title_fa, component FROM entities WHERE table_ref = ? LIMIT 1",
+            (full_name,),
+        ).fetchone()
+        return dict(row) if row else None
+
+    def component_entities(self, component: str, limit: int = 200) -> list[dict]:
+        rows = self.db.execute(
+            "SELECT name, title_fa, table_ref FROM entities "
+            "WHERE component = ? AND table_ref IS NOT NULL ORDER BY name LIMIT ?",
+            (component, limit),
+        ).fetchall()
+        return [dict(r) for r in rows]
+
     # ─────────────────── کد و شرحی ───────────────────
 
     def lookups(self, q: str = "", module: str = "", limit: int = 400) -> list[dict]:

@@ -3,34 +3,40 @@ note: description_fa و gotchas را دستی اضافه کنید؛ ingest بع�
 tables:
 - name: Account
   title_fa: حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountDebitCreditStatement
   title_fa: اعلامیه بدهکار بستانکار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountDebitCreditStatementItem
   title_fa: قلم اعلامیه بدهکار بستانکار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountEstablishment
   title_fa: استقرار حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountEstablishmentItem
   title_fa: استقرار حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountGroup
   title_fa: گروه حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountGroupConfiguration
   title_fa: پیکربندی گروه حساب
   source: accepted_suggestion
@@ -45,64 +51,76 @@ tables:
   updated_at: '2026-09-08'
 - name: AccountGroupGroupMember
   title_fa: گروهِ گروه حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountMapping
   title_fa: نگاشت حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountMappingItem
   title_fa: قلم نگاشت حساب ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountProxy
   title_fa: نماینده حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountProxyItem
   title_fa: آیتم نماینده حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountTransactionAnalysis
   title_fa: آنالیز جامع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountTransactionAnalysisDetail
   title_fa: قلم آنالیز جامع
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountType
   title_fa: نوع حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountingDepartment
   title_fa: دپارتمان حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountingVoucherTemplate
   title_fa: الگوی سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountingVoucherTemplateItem
   title_fa: قلم الگوی سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AgingReceivableSetting
   title_fa: تنظیمات تجزیه سنی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AgingReceivables
   title_fa: دریافتنی‌ها سنی
   source: accepted_suggestion
@@ -111,54 +129,64 @@ tables:
   updated_at: '2026-09-08'
 - name: Analyse
   title_fa: آنالیز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AutomaticVoucherPattern
   title_fa: الگوی سند اتوماتیک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AutomaticVoucherPatternDestinationSL
   title_fa: حساب های مقصد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AutomaticVoucherPatternSourceSL
   title_fa: حساب های مبدا
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BranchCurrentAccount
   title_fa: حساب جاری شعبه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: COAGrouping
   title_fa: گروهبندی حساب ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: COAGroupingSL
   title_fa: معین های تخصیص یافته گروهبندی حساب ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: COAGroupingSLDL
   title_fa: تفصیلی های تخصیص یافته به معین های گروهبندی حساب ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ClosingVoucherClosableSL
   title_fa: حساب های قابل بستن
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ClosingVoucherCounterPartSL
   title_fa: حساب طرف مقابل سند بستن حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ClosingVoucherInfo
   title_fa: اطلاعات سند بستن
   source: accepted_suggestion
@@ -167,9 +195,10 @@ tables:
   updated_at: '2026-09-08'
 - name: ClosingVoucherPattern
   title_fa: تعریف الگو
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ClosingVoucherReferences
   title_fa: مراجع سند بستن
   source: accepted_suggestion
@@ -178,9 +207,10 @@ tables:
   updated_at: '2026-09-08'
 - name: CodingStandard
   title_fa: کدینگ استاندارد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardDlSlType
   title_fa: نوع معین تفصیلی استاندارد کدینگ
   source: accepted_suggestion
@@ -189,19 +219,22 @@ tables:
   updated_at: '2026-09-08'
 - name: CodingStandardEntity
   title_fa: موجودیت استاندارد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardEntityCode
   title_fa: کدهای استاندارد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardEntityCodeMapping
   title_fa: کدهای نگاشت شده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardExtraField
   title_fa: فیلد تکمیلی استاندارد کدینگ
   source: accepted_suggestion
@@ -210,19 +243,22 @@ tables:
   updated_at: '2026-09-08'
 - name: CodingStandardFormula
   title_fa: فرمول کدینگ استاندارد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardFormulaItem
   title_fa: عوامل فرمول
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardFormulaItemFilter
   title_fa: فیلتر فرمول
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardReportFieldInfo
   title_fa: اطلاعات فیلد گزارش استاندارد کدینگ
   source: accepted_suggestion
@@ -231,14 +267,16 @@ tables:
   updated_at: '2026-09-08'
 - name: CodingStandardReportFieldInfoAttachment
   title_fa: پیوست‌ جزئیات گزارش سناما
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardReportInfo
   title_fa: پیوست‌های گزارش سناما
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CodingStandardValidationError
   title_fa: خطا اعتبارسنجی استاندارد کدینگ
   source: accepted_suggestion
@@ -261,99 +299,116 @@ tables:
   updated_at: '2026-09-08'
 - name: ContaminationToll
   title_fa: عوارض آلایندگی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ConversionAccountItem
   title_fa: اقلام حساب تسعیر
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ConversionDocument
   title_fa: تسعیر ارز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ConversionPattern
   title_fa: الگوی تسعیر ارز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ConvertibleAccountItem
   title_fa: اقلام حساب تسعیر پذیر
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DL
   title_fa: حساب تفصیلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DLGroupMember
   title_fa: گروه تفصیلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DLGrouping
   title_fa: گروهبندی حساب تفصیلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DLGroupingDetail
   title_fa: اقلام گروهبندی تفصیلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DLType
   title_fa: نوع تفصیلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DLTypeConversionInfo
   title_fa: مبدل نوع تفصیل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DLTypeRelation
   title_fa: انواع تفصیلی های حساب معین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DebitCreditStatement
   title_fa: اعلامیه بدهکار- بستانکار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DebitCreditStatementItem
   title_fa: قلم اعلامیه بدهکار بستانکار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
-- name: DeletedVoucher
-  title_fa: سند حذف‌شده
-  source: stated_by_user
+  source: software_entity_catalogue
   confidence: high
-  origin: glossary_entity_catalog
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
+- name: DeletedVoucher
+  title_fa: حذف سند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
   gotchas:
   - فقط برای ردیابی حذف — در گزارش عملیاتی استفاده نشود
-  updated_at: '2026-07-26'
+  updated_at: '2026-09-09'
   updated_by: user
   _manual: true
 - name: DraftVoucher
   title_fa: اطلاعات سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DraftVoucherItem
   title_fa: قلم اطلاعات حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GL
   title_fa: حساب کل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GLGroupMember
   title_fa: GLGroupMember
   source: stated_by_user
@@ -361,24 +416,28 @@ tables:
   origin: glossary_entity_catalog
 - name: GLVoucher
   title_fa: سند کل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GLVoucherItem
   title_fa: اقلام سند کل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GLVoucherReference
   title_fa: مرجع های سند کل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GatheringProvider
   title_fa: ارائه دهنده جمع آوری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: LookupMap
   title_fa: نگاشت فهرست
   source: accepted_suggestion
@@ -387,9 +446,10 @@ tables:
   updated_at: '2026-09-08'
 - name: PeriodNature
   title_fa: ماهیت دوره
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PeriodicOppositNatureAccounts
   title_fa: حساب‌ها ماهیت مقابل دوره‌ای
   source: accepted_suggestion
@@ -399,24 +459,28 @@ tables:
   revised: glossary_fix
 - name: PurchaseOrImportGoodOrService
   title_fa: خرید و واردات کالا و خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RefundableOrDeductiblePaidTaxAndToll
   title_fa: مالیات و عوارض قابل استرداد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SL
   title_fa: حساب معین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SLCounterPart
   title_fa: حساب طرف مقابل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SLDLFlow
   title_fa: SLDLFlow
   source: stated_by_user
@@ -424,34 +488,40 @@ tables:
   origin: glossary_entity_catalog
 - name: SLDefaultVat
   title_fa: مقدار پیشفرض معین مالیاتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SLGroupMember
   title_fa: گروه معین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SLStandardDesc
   title_fa: شرح پیش فرض
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SaleOrExportGoodOrService
   title_fa: فروش و صادرات کالا و خدمات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SeasonalCurrency
   title_fa: منطقه جغرافیایی اداره مالیات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SeasonalCurrencyMap
   title_fa: نگاشت ارز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SeasonalNationalIDMap
   title_fa: نگاشت شناسهٔ ملی فصلی
   source: accepted_suggestion
@@ -460,19 +530,22 @@ tables:
   updated_at: '2026-09-08'
 - name: SeasonalReport
   title_fa: گزارش خرید و فروش فصلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SeasonalReportLog
   title_fa: تاریخچه گزارش فصلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SeasonalReportMergePattern
   title_fa: روش تجمیع اطلاعات خرید و فروش فصلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SeasonalReportMergePatternItem
   title_fa: قلم الگوی ادغام گزارش فصلی
   source: accepted_suggestion
@@ -481,24 +554,28 @@ tables:
   updated_at: '2026-09-08'
 - name: SeasonalZone
   title_fa: منطقه جغرافیایی اداره مالیات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SeasonalZoneMap
   title_fa: نگاشت مناطق جغرافیایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StandardVoucherTypeEntity
   title_fa: نوع سند استاندارد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StandardVoucherTypeMapping
   title_fa: نگاشت نوع سند استاندارد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StandardVoucherTypeMappingItem
   title_fa: StandardVoucherTypeMappingItem_StandardVoucherTypeMappingItem
   source: stated_by_user
@@ -506,24 +583,28 @@ tables:
   origin: glossary_entity_catalog
 - name: TaxAndTollRemaining
   title_fa: مانده مالیات و عوارض
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxInformation
   title_fa: حد نصاب تجمیع گزارش فصلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TaxYear
   title_fa: دوره مالیاتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Transaction
   title_fa: تراکنش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransactionAffectedAccount
   title_fa: _
   source: stated_by_user
@@ -531,29 +612,34 @@ tables:
   origin: glossary_entity_catalog
 - name: VATBaseInformation
   title_fa: اطلاعات هویتی مودی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VATCollectiveExtraInformation
   title_fa: جمع آوری جزییات اطلاعات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VATCollectiveInformation
   title_fa: جمع آوری اطلاعات
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VATCollectiveInformationHistory
   title_fa: تاریخچه تغییر اقلام تجمیعی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VATParty
   title_fa: طرف معامله مالیاتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VATStatement
   title_fa: صورت ارزش افزوده
   source: accepted_suggestion
@@ -566,26 +652,29 @@ tables:
   confidence: medium
   origin: glossary_entity_catalog
 - name: Voucher
-  title_fa: سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سند حسابداری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherHistory
   title_fa: تاریخچه تغییرات سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherItem
   title_fa: قلم سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherItemOffline
   title_fa: قلم سند حسابداری آفلاین
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherLock
   title_fa: VoucherLock
   source: stated_by_user
@@ -593,9 +682,10 @@ tables:
   origin: glossary_entity_catalog
 - name: VoucherReference
   title_fa: مرجع های سند حسابداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherReviewRecord
   title_fa: سوابق بازبینی سند
   source: accepted_suggestion
@@ -625,6 +715,7 @@ tables:
   revised: glossary_fix
 - name: VoucherType
   title_fa: نوع سند
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'

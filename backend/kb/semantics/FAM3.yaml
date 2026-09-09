@@ -3,9 +3,10 @@ note: description_fa و gotchas را دستی اضافه کنید؛ ingest بع�
 tables:
 - name: Accident
   title_fa: حادثه دیده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccidentItem
   title_fa: AccidentItem
   source: stated_by_user
@@ -13,14 +14,16 @@ tables:
   origin: glossary_entity_catalog
 - name: AccidentItemInCalculationArea
   title_fa: حادثه دیده در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountConfiguration
   title_fa: استقرار حساب ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountConfigurationAssetDLType
   title_fa: نوع تفصیلی دارایی پیکربندی حساب
   source: accepted_suggestion
@@ -29,19 +32,22 @@ tables:
   updated_at: '2026-09-08'
 - name: AccountConfigurationItem
   title_fa: قلم استقرار حساب ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AcquisitionReceipt
   title_fa: رسید تحصیل دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AcquisitionReceiptItem
   title_fa: قلم رسید تحصیل دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AcquisitionReceiptItemInCalculationArea
   title_fa: AcquisitionReceiptItemInCalculationArea
   source: stated_by_user
@@ -49,14 +55,16 @@ tables:
   origin: glossary_entity_catalog
 - name: AcquisitionReceiptItemPurchasePriceElement
   title_fa: جز قیمت خرید رسید تحصیل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Asset
   title_fa: دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetBarcode
   title_fa: بارکد دارایی
   source: accepted_suggestion
@@ -65,34 +73,40 @@ tables:
   updated_at: '2026-09-08'
 - name: AssetClass
   title_fa: طبقه دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetDLType
   title_fa: معرفی نوع تفصیل غیر سیستمی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetDLTypeValue
   title_fa: تکمیل حساب
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetDepreciation
   title_fa: مستهلک کردن دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetDepreciationItem
   title_fa: قلم مستهلک کردن
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetDepreciationItemInCalculationArea
   title_fa: قلم مستهلک کردن دارایی در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetEquipment
   title_fa: تجهیزات دارایی
   source: accepted_suggestion
@@ -101,29 +115,34 @@ tables:
   updated_at: '2026-09-08'
 - name: AssetExtraField
   title_fa: اطلاعات تکمیلی دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetExtraFieldGroup
   title_fa: توضیحات تکمیلی گروه دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetExtraFieldValue
   title_fa: مقداردهی اطلاعات تکمیلی دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetGroup
   title_fa: گروه دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetGroupInCalculationArea
   title_fa: روش استهلاک گروه دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetGroupPart
   title_fa: قطعه گروه دارایی
   source: accepted_suggestion
@@ -133,24 +152,28 @@ tables:
   revised: glossary_fix
 - name: AssetInCalculationArea
   title_fa: دارایی در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetInventory
   title_fa: صورت برداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetInventoryAddition
   title_fa: اضافات صورت برداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetInventoryItem
   title_fa: قلم صورت برداری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetOperationSummary
   title_fa: AssetOperationSummary
   source: stated_by_user
@@ -171,69 +194,82 @@ tables:
   updated_at: '2026-09-08'
 - name: AssetTagTemplate
   title_fa: مدیریت چاپ برچسب دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssetTransaction
   title_fa: تراکنش دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CalculationArea
   title_fa: حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CancelledSalesHistory
   title_fa: فروش های ابطال شده
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeCost
   title_fa: تغییر قیمت دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeCostItem
   title_fa: قلم تغییر قیمت دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeCostItemInCalculationArea
   title_fa: قلم تغییر قیمت دارایی در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeCostItemPriceElement
   title_fa: جزء قیمت قلم تغییر قیمت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeRate
   title_fa: تغییر نرخ و روش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeRateItem
   title_fa: قلم تغییر نرخ و روش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeRateItemInCalculationArea
   title_fa: قلم تغییر نرخ و روش در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ClosingFiscalYear
   title_fa: بستن سال مالی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Collector
   title_fa: جمع دار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CollectorDefaultCompany
   title_fa: شرکت پیش‌فرض وصول‌کننده
   source: accepted_suggestion
@@ -248,129 +284,154 @@ tables:
   updated_at: '2026-09-08'
 - name: CostPart
   title_fa: جز قیمت دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CostPartDeploymentExtraInfo
   title_fa: اطلاعات اضافی استقرار دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CostPartTransaction
   title_fa: محاسبه جز قیمت دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DefinitiveTransfer
   title_fa: انتقال قطعی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DefinitiveTransferItem
   title_fa: اقلام خروج از سازمان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DefinitiveTransferItemInCalculationArea
   title_fa: قلم انتقال قطعی در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Depreciation
   title_fa: استهلاک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DepreciationMethod
   title_fa: روش استهلاک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Diskette
   title_fa: دیسکت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DisketteItem
   title_fa: قلم دیسکت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DocumentInCalculationArea
   title_fa: حوزه محاسباتی اسناد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Donation
   title_fa: اعلامیه اهداء
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DonationItem
   title_fa: قلم اعلامیه اهداء
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DonationItemInCalculationArea
   title_fa: قلم اعلامیه اهدا در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Elimination
   title_fa: اعلامیه حذف
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EliminationItem
   title_fa: قلم اعلامیه حذف
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EliminationItemInCalculationArea
   title_fa: قلم اعلامیه حذف در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExitFromOrganization
   title_fa: خروج از سازمان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExitFromOrganizationItem
   title_fa: اقلام خروج از سازمان
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExitFromOrganizationItemInCalculationArea
   title_fa: قلم خروج از سازمان در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExitFromOrganizationItemPriceElement
   title_fa: اجزای قیمت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExitPermit
   title_fa: پروانه خروج
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExitPermitItem
   title_fa: اقلام پروانه خروج
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExitPermitItemInCalculationArea
   title_fa: قلم پروانه خروج در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExpenditureClass
   title_fa: طبقه مخارج پس از تحصیل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FAMGLComparisonReport
   title_fa: FAMGLComparisonReport
   source: stated_by_user
@@ -388,14 +449,16 @@ tables:
   origin: glossary_entity_catalog
 - name: FixedAssetPart
   title_fa: کالای دارایی ثابت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GasAssetReform
   title_fa: اصلاحیه رسید تحصیل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GasAssetReformItem
   title_fa: قلم اصلاح دارایی گاز
   source: accepted_suggestion
@@ -412,124 +475,148 @@ tables:
   revised: glossary_fix
 - name: GasDeployment
   title_fa: استقرار اموال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GasDeploymentItem
   title_fa: قلم اسقرار اموال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GasStandardCodeMapping
   title_fa: ارتباط کالا و گروه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Insurance
   title_fa: ثبت بیمه نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InsuranceAccountConfiguration
   title_fa: استقرار حساب ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InsuranceAccountConfigurationItem
   title_fa: قلم استقرار حساب ها
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InsuranceCalculation
   title_fa: محاسبه بیمه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InsuranceEndorsement
   title_fa: ثبت الحاقیه بیمه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InsuranceEndorsementItem
   title_fa: قلم الحاقیه بیمه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InsuranceItem
   title_fa: قلم بیمه نامه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InsuranceType
   title_fa: نوع بیمه
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InternalTransfer
   title_fa: اعلامیه انتقال
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InternalTransferItem
   title_fa: قلم انتقال داخلی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InternalTransferItemInCalculationArea
   title_fa: قلم انتقال داخلی در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaintenanceExpenditures
   title_fa: مخارج پس از تحصیل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaintenanceExpendituresItem
   title_fa: اقلام مخارج پس از تحصیل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaintenanceExpendituresItemInCalculationArea
   title_fa: قلم مخارج پس از تحصیل در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaintenanceExpendituresItemPriceElement
   title_fa: جزء قیمت قلم مخارج پس از تحصیل
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MinimumCostOfNonConsumableAsset
   title_fa: حداقل قیمت اموال غیرمصرفی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ModularTopic
   title_fa: سرفصل ماژول
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ModularTopicFilter
   title_fa: فیلتر سر فصل ماژول
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ModularTopicParameter
   title_fa: پارامتر سرفصل ماژول
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PermissionRequest
   title_fa: درخواست مجوز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PermissionRequestItem
   title_fa: قلم درخواست مجوز
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PermissionRequestItemInCalculationArea
   title_fa: حوزه محاسبه قلم درخواست مجوز
   source: accepted_suggestion
@@ -539,9 +626,10 @@ tables:
   revised: glossary_fix
 - name: PurchasePriceElement
   title_fa: جز قیمت خرید
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PurchasePriceElementInCalculationArea
   title_fa: حوزه محاسبه عنصر قیمت خرید
   source: accepted_suggestion
@@ -551,49 +639,58 @@ tables:
   revised: glossary_fix
 - name: ReassignPlaqueNumber
   title_fa: پلاک گذاری مجدد
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RetakeFromStore
   title_fa: تحویل از انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RetakeFromStoreItem
   title_fa: قلم تحویل از انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RetakeFromStoreItemInCalculationArea
   title_fa: قلم تحویل از انبار در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Revaluation
   title_fa: تجدید ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RevaluationItem
   title_fa: قلم تجدید ارزیابی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RevaluationItemInCalculationArea
   title_fa: قلم تجدید ارزیابی در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Sales
   title_fa: فروش دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SalesItem
   title_fa: قلم فروش دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SalesItemInCalculationArea
   title_fa: حوزه محاسبه قلم فروش
   source: accepted_suggestion
@@ -603,49 +700,58 @@ tables:
   revised: glossary_fix
 - name: SalesItemSalesPriceElement
   title_fa: اجزای قیمت فروش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SalesPriceElement
   title_fa: اجزای قیمت فروش
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Scrap
   title_fa: اسقاط
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ScrapItem
   title_fa: قلم اسقاط
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ScrapItemInCalculationArea
   title_fa: قلم اسقاط در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SendToStore
   title_fa: ارسال به انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SendToStoreItem
   title_fa: قلم ارسال به انبار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SendToStoreItemInCalculationArea
   title_fa: قلم ارسال به انبار در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SettlementPlace
   title_fa: محل استقرار
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SettlementPlaceDefaultCompany
   title_fa: شرکت پیش‌فرض محل تسویه
   source: accepted_suggestion
@@ -654,44 +760,52 @@ tables:
   updated_at: '2026-09-08'
 - name: SmallDealsQuorum
   title_fa: حدنصاب معاملات کوچک
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SmartDevice
   title_fa: دستگاه ارتباطی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TemporaryExit
   title_fa: اعلامیه خروج موقت دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TemporaryExitItem
   title_fa: قلم خروج موقت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TemporaryExitItemInCalculationArea
   title_fa: قلم خروج موقت در حوزه محاسباتی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherDescription
   title_fa: شرح استاندارد سند حسابداری دارایی ثابت
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Withdrawal
   title_fa: کنار گذاری دارایی
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WithdrawalItem
   title_fa: قلم کنارگذاری
-  source: stated_by_user
-  confidence: medium
-  origin: glossary_entity_catalog
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WithdrawalItemInCalculationArea
   title_fa: WithdrawalItemInCalculationArea
   source: stated_by_user

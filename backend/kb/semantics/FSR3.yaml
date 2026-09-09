@@ -26,65 +26,65 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: AccountNoteStructureImportanceInfo
-  title_fa: اطلاعات اهمیت ساختار سفته حساب
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نوع مبلغ اهمیت حساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AdjustmentClassification
-  title_fa: طبقه‌بندی تعدیل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تعدیل طبقه بندی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AdjustmentClassificationItem
-  title_fa: قلم طبقه‌بندی تعدیل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم تعدیل طبقه بندی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AdjustmentVoucher
   title_fa: سند تعدیل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AdjustmentVoucherItem
-  title_fa: قلم سند تعدیل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم سند حسابداری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AssignComparitiveReportingPeriod
-  title_fa: دوره گزارشگری مقایسه‌ای تخصیص
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تخصیص دوره گزارشگری مقایسه ای
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BalanceSheet
-  title_fa: ترازنامه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گزارش ترازنامه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BalanceSheetItem
   title_fa: قلم ترازنامه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BookletComparitiveReportingPeriodPresentation
-  title_fa: ارائه دوره گزارشگری مقایسه‌ای دفترچه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ترتیب کتابچه صورت های مالی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BookletStatementOrder
-  title_fa: سفارش صورت دفترچه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ترتیب کتابچه صورت های مالی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CalculationDescription
   title_fa: شرح محاسبه
   source: accepted_suggestion
@@ -94,67 +94,64 @@ tables:
   revised: glossary_fix
 - name: CalculationInformation
   title_fa: اطلاعات محاسبه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowAdjustment
-  title_fa: تعدیل جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: کار برگ جریان وجوه نقد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowAdjustmentItem
-  title_fa: قلم تعدیل جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: همه اقلام کاربرگ جریان وجوه نقد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowStatement
-  title_fa: صورت جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گزارش گردش وجوه نقد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowStatementItem
-  title_fa: قلم صورت جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم گردش وجوه نقد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CollectiveInformation
-  title_fa: اطلاعات جمعی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: فراخوانی تراز
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ComprehensiveIncomeStatement
-  title_fa: صورت سود و زیان جامع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گزارش سود و زیان جامع
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ComprehensiveIncomeStatementItem
-  title_fa: قلم صورت سود و زیان جامع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم سود و زیان جامع
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ConstantTopicInfo
-  title_fa: اطلاعات موضوع ثابت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: سرفصل عدد ثابت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DetailSetting
-  title_fa: تنظیم جزئیات
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تنظیمات کتابچه به تفکیک نوع گزارش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FSRCalcPeriod
   title_fa: دوره محاسبه FSR
   source: accepted_suggestion
@@ -162,47 +159,47 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: FinancialStatement
-  title_fa: صورت مالی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گزارش صورت مالی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FinancialStatementsStateLog
-  title_fa: گزارش رویداد وضعیت صورت‌های مالی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تاریخچه تغییر اطلاعات محاسبه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GeneralSetting
-  title_fa: تنظیم عمومی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تنظیمات عمومی کتابچه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IncomeStatement
-  title_fa: صورت سود و زیان
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گزارش سود و زیان
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: IncomeStatementItem
-  title_fa: قلم صورت سود و زیان
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم سود و زیان
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MatrixAccountNote
-  title_fa: سفته حساب ماتریس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ماتریس حساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MatrixAccountNoteItem
-  title_fa: قلم سفته حساب ماتریس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مقادیر ماتریس حساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MatrixAccountNoteItemImportanceInfo
   title_fa: اطلاعات اهمیت قلم سفته حساب ماتریس
   source: accepted_suggestion
@@ -216,11 +213,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: MatrixNoteColumnHeaderArrange
-  title_fa: چیدن سربرگ ستون سفته ماتریس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سر ستون های یادداشت ماتریسی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MatrixNoteDescriptor
   title_fa: توصیف‌گر سفته ماتریس
   source: accepted_suggestion
@@ -228,11 +225,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: MatrixNoteInfo
-  title_fa: اطلاعات سفته ماتریس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ساختار یادداشت ماتریس
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MatrixNoteItem
   title_fa: قلم سفته ماتریس
   source: accepted_suggestion
@@ -240,11 +237,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: MatrixNoteStructure
-  title_fa: ساختار سفته ماتریس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: یادداشت ماتریسی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MatrixNoteStructureDescriptor
   title_fa: توصیف‌گر ساختار سفته ماتریس
   source: accepted_suggestion
@@ -252,54 +249,53 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: MatrixNoteStructureInfo
-  title_fa: اطلاعات ساختار سفته ماتریس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ساختار یادداشت ماتریس
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MatrixNoteStructureItem
-  title_fa: قلم ساختار سفته ماتریس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: آیتم های یادداشت های ماتریسی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MatrixNoteStructureItemImportanceInfo
-  title_fa: اطلاعات اهمیت قلم ساختار سفته ماتریس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نوع مبلغ اهمیت ماتریسی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ModularTopicInfo
-  title_fa: اطلاعات موضوع ماژول
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: سرفصل سایر ماژول ها
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NatureAdjustment
   title_fa: تعدیل ماهیت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NatureAdjustmentItem
-  title_fa: قلم تعدیل ماهیت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام تعدیل ماهیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriorYearAdjustment
-  title_fa: تعدیل سال قبلی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اطلاعات تعدیل سنواتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriorYearAdjustmentAccount
-  title_fa: حساب تعدیل سال قبلی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب تعدیل سنواتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriorYearAdjustmentCollectiveInformation
   title_fa: اطلاعات جمعی تعدیل سال قبلی
   source: accepted_suggestion
@@ -308,188 +304,176 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: PriorYearAdjustmentItem
-  title_fa: قلم تعدیل سال قبلی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام تعدیل سنواتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PriorYearAdjustmentItemDetail
-  title_fa: جزئیات قلم تعدیل سال قبلی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب تعدیل سنواتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportStructure
-  title_fa: ساختار گزارش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: فرمت گزارش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportStructureItem
-  title_fa: قلم ساختار گزارش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: آیتم های فرمت گزارش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportTopic
-  title_fa: موضوع گزارش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: سرفصل های گزارش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportTopicToSLRelation
-  title_fa: رابطه معین موضوع گزارش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: ارتباطات سرفصل با معین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportTopicToSLRelationDL
-  title_fa: تفصیلی رابطه معین موضوع گزارش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: ارتباطات معین با تفصیلی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportTopicToTopicRelation
-  title_fa: رابطه موضوع گزارش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: ارتباطات سرفصل با سرفصل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportTypeSetting
-  title_fa: تنظیم نوع گزارش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تنظیمات کتابچه برای گزارش های اصلی/یادداشت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportingPeriod
   title_fa: دوره گزارشگری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReportingStyle
-  title_fa: سبک گزارشگری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سبک کتابچه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SimpleNote
-  title_fa: سفته ساده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گزارش یادداشت ساده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SimpleNoteItem
-  title_fa: قلم سفته ساده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام گزارش یادداشت ساده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SimpleNoteStructure
-  title_fa: ساختار سفته ساده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: یادداشت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SimpleNoteStructureItem
-  title_fa: قلم ساختار سفته ساده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: آیتم های یادداشت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Structure
   title_fa: ساختار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Topic
-  title_fa: موضوع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: سرفصل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TopicAdjustment
-  title_fa: تعدیل موضوع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: تعدیل سرفصل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TopicCalculation
-  title_fa: محاسبه موضوع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: سرفصل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TopicNoteRelation
-  title_fa: رابطه سفته موضوع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: یادداشتهای مرتبط با سرفصل گزارش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TopicNoteRelationStructure
-  title_fa: ساختار رابطه سفته موضوع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: یادداشت های مرتبط با سرفصل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TopicToSLRelation
-  title_fa: رابطه معین موضوع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: ارتباطات سرفصل با معین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TopicToSLRelationDL
-  title_fa: تفصیلی رابطه معین موضوع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: ارتباطات معین با تفصیلی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TopicToTopicRelation
-  title_fa: رابطه موضوع
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: ارتباطات سرفصل با سرفصل
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WriteOffPattern
-  title_fa: الگوی نوشتن
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: الگوی تهاتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WriteOffPatternAccount
-  title_fa: حساب الگوی نوشتن
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: طرف حساب تهاتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WriteOffPatternAccountSource
-  title_fa: منبع حساب الگوی نوشتن
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب مبدا تهاتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WriteOffStatement
-  title_fa: صورت نوشتن
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تهاتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: WriteOffStatementItem
-  title_fa: قلم صورت نوشتن
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام تهاتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'

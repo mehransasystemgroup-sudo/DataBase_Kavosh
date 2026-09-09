@@ -1,109 +1,107 @@
 schema: RPA3
 tables:
 - name: AccountTransactionScenario
-  title_fa: سناریو تراکنش حساب
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سناریوی دریافت پرداخت حساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AccountingOperation
   title_fa: عملیات حسابداری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AcquisitionCost
-  title_fa: هزینه تحصیل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: هزینه های دریافت تسهیلات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: AcquisitionCostItem
-  title_fa: قلم هزینه تحصیل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: قلم هزینه های دریافت تسهیلات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Bank
   title_fa: بانک
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankAccount
   title_fa: حساب بانکی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankAccountChequeSigner
-  title_fa: امضاکننده چک حساب بانکی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: امضاکنندگان دسته چک
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankAccountHistory
   title_fa: تاریخچه حساب بانکی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankAccountReconciliationSl
-  title_fa: معین مغایرت‌گیری حساب بانکی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب معین مرتبط با مغایرت گیری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankAccountTransaction
   title_fa: تراکنش حساب بانکی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankAccountType
-  title_fa: نوع حساب بانکی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نوع حساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankBill
-  title_fa: صورت‌حساب بانک
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صورت حساب بانکی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankBillItem
-  title_fa: قلم صورت‌حساب بانک
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورت حساب بانکی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankBranch
   title_fa: شعبه بانک
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankTransfer
-  title_fa: انتقال بانک
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: واگذار به بانک
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankTransferDisketteStructure
-  title_fa: ساختار دیسکت انتقال بانک
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ساختار دیسکت واگذار به بانک
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankTransferDisketteStructureItem
-  title_fa: قلم ساختار دیسکت انتقال بانک
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: فیلدهای ساختار دیسکت واگذار به بانک
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: BankTransferReceivableNote
   title_fa: سفته دریافتنی انتقال بانک
   source: accepted_suggestion
@@ -111,53 +109,53 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: CalculatedInterestAmountAdjustment
-  title_fa: تعدیل مبلغ سود محاسبه‌شده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تعدیل مبلغ بهره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CalculatedInterestAmountAdjustmentItem
-  title_fa: قلم تعدیل مبلغ سود محاسبه‌شده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقساط تعدیل مبلغ بهره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Cash
-  title_fa: نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صندوق
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowFactor
-  title_fa: عامل جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: عامل گردش نقدینگی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowFactorDLInformation
-  title_fa: اطلاعات تفصیلی عامل جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اطلاعات تفصیل طرف متغیر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowFactorGrouping
-  title_fa: گروهبندی عامل جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گروه بندی عامل گردش نقدینگی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowFactorGroupingDetail
-  title_fa: جزئیات گروهبندی عامل جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گروه بندی عامل گردش نقدینگی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowFactorGroupingDetailOfDetail
-  title_fa: جزئیات گروهبندی عامل جریان نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ارتباط عامل گردش نقدینگی و گروه بندی عامل گردش نقدینگی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashFlowReportEncashedNotesInfo
   title_fa: اطلاعات یادداشت‌ها نقدشده گزارش جریان نقد
   source: accepted_suggestion
@@ -165,59 +163,59 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: CashTransaction
-  title_fa: تراکنش نقد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تراکنش صندوق
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashierHistory
-  title_fa: تاریخچه صندوق‌دار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تاریخچه صندوق
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CashierHistoryItem
-  title_fa: قلم تاریخچه صندوق‌دار
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: جزئیات تاریخچه صندوق
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChangeChequeDateHistory
-  title_fa: تاریخچه تاریخ چک تغییر
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تاریخچه تغییر تاریخ توافق شده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ChequePattern
-  title_fa: الگوی چک
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: الگوی چاپ چک
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CollateralPermit
-  title_fa: مجوز وثیقه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مجوز عملیات ضمانت نامه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CollateralType
-  title_fa: نوع وثیقه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نوع ضمانتنامه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CollectionRejection
-  title_fa: مرجوعی وصول
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: وصول واخواست
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CollectionRejectionConfiguration
-  title_fa: پیکربندی مرجوعی وصول
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تنظیمات چک واخواستی/درجریان وصول
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CollectionRejectionReceivableNote
   title_fa: سفته دریافتنی مرجوعی وصول
   source: accepted_suggestion
@@ -225,132 +223,131 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: Collector
-  title_fa: وصول‌کننده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مامور وصول
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CommittedBank
-  title_fa: بانک تعهدشده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: بانک متعهد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Contract
   title_fa: قرارداد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractAccountingInformation
-  title_fa: اطلاعات حسابداری قرارداد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب های قرارداد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractReceiptStep
-  title_fa: گام فیش قرارداد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: مراحل دریافت تسهیلات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ContractType
   title_fa: نوع قرارداد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ControllingPolicy
-  title_fa: سیاست کنترل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سیاست کنترلی دریافت و پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ControllingPolicyParameter
-  title_fa: پارامتر سیاست کنترل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: پارامتر سیاست کنترلی دریافت و پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ControllingPolicyParameterItem
-  title_fa: قلم پارامتر سیاست کنترل
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم پارامتر سیاست کنترلی دریافت و پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CurrentShare
-  title_fa: سهم جاری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حصه جاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CurrentShareCurrencyExchangeRate
-  title_fa: نرخ تبادل ارز سهم جاری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نرخ ارز محاسبه حصه جاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: CurrentShareItem
-  title_fa: قلم سهم جاری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم محاسبه حصه جاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DelayFineAllowance
-  title_fa: کمک‌هزینه جریمه تأخیر
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ذخیره جریمه دیرکرد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Deposit
-  title_fa: واریز
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: معرفی سپرده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DepositDeployment
-  title_fa: استقرار واریز
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سپرده استقراری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DepositDeploymentItem
-  title_fa: قلم استقرار واریز
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم سپرده استقراری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DepositItem
-  title_fa: قلم واریز
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم سپرده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DepositType
-  title_fa: نوع واریز
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نوع سپرده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DocumentAnalyze
-  title_fa: تحلیل سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: آنالیز
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DocumentItemAnalyze
-  title_fa: تحلیل قلم سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: آنالیز قلم های درخواست
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DraftVoucher
-  title_fa: سند پیش‌نویس
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اطلاعات حسابداری دریافت و پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DraftVoucherItem
   title_fa: قلم سند پیش‌نویس
   source: accepted_suggestion
@@ -359,10 +356,10 @@ tables:
   updated_at: '2026-09-08'
 - name: DurationChange
   title_fa: تغییر مدت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: DurationChangePayableNote
   title_fa: سفته پرداختنی تغییر مدت
   source: accepted_suggestion
@@ -370,23 +367,23 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: EPaymentReceipt
-  title_fa: فیش پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: رسید پرداخت آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EPaymentReceiptItem
-  title_fa: قلم فیش پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام پرداخت آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Encash
   title_fa: نقد کردن
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: EncashReceivableNote
   title_fa: سفته دریافتنی نقد کردن
   source: accepted_suggestion
@@ -394,11 +391,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: ExecutableTask
-  title_fa: وظیفه اجرایی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: فعالیت انتقال وجه آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ExternalCreditProviderPreReceipt
   title_fa: فیش پیش ارائه‌دهنده اعتبار بیرونی
   source: accepted_suggestion
@@ -412,23 +409,23 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: FundRequest
-  title_fa: درخواست صندوق
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: درخواست وجه از خزانه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: FundRequestItem
-  title_fa: قلم درخواست صندوق
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم درخواست وجه از خزانه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GuaranteeToNormal
-  title_fa: عادی ضمانت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تبدیل تضمینی به عادی دریافتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GuaranteeToNormalReceivableNote
   title_fa: سفته دریافتنی عادی ضمانت
   source: accepted_suggestion
@@ -436,11 +433,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: GuaranteeToPayable
-  title_fa: پرداختنی ضمانت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تبدیل تضمینی به عادی پرداختی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: GuaranteeToPayableNote
   title_fa: سفته پرداختنی ضمانت
   source: accepted_suggestion
@@ -449,76 +446,76 @@ tables:
   updated_at: '2026-09-08'
 - name: Installment
   title_fa: قسط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: InterestAmountChange
-  title_fa: تغییر مبلغ سود
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تغییر مبلغ بهره
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaturedSharedInterestAllowance
-  title_fa: کمک‌هزینه سود مشترک سررسیدشده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ذخیره بهره سررسید شده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaturedSharedInterestAllowanceCurrencyExchangeRate
-  title_fa: نرخ تبادل ارز کمک‌هزینه سود مشترک سررسیدشده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نرخ ارز ذخیره بهره سررسید شده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: MaturedSharedInterestAllowanceItem
-  title_fa: قلم کمک‌هزینه سود مشترک سررسیدشده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم ذخیره بهره سررسید شده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NotMaturedSharedInterestAllowance
-  title_fa: کمک‌هزینه سود مشترک سررسیدشده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ذخیره بهره سررسید نشده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NotMaturedSharedInterestAllowanceCurrencyExchangeRate
-  title_fa: نرخ تبادل ارز کمک‌هزینه سود مشترک سررسیدشده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نرخ ارز ذخیره بهره سررسید نشده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: NotMaturedSharedInterestAllowanceItem
-  title_fa: قلم کمک‌هزینه سود مشترک سررسیدشده
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم ذخیره بهره سررسید نشده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineBankAccount
-  title_fa: حساب بانکی برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب بانکی استعلام شده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineBankAccountOwner
-  title_fa: مالک حساب بانکی برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صاحبان حساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineGateway
-  title_fa: درگاه برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: درگاه آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineGatewayApi
-  title_fa: API درگاه برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سرویس قابل پشتیبانی توسط درگاه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineGatewayBank
   title_fa: بانک درگاه برخط
   source: accepted_suggestion
@@ -526,71 +523,71 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: OnlineGatewaySetting
-  title_fa: تنظیم درگاه برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تنظیمات درگاه آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineGatewayUserAccount
-  title_fa: حساب کاربر درگاه برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب کاربری درگاه آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineGatewayUserAccountApi
-  title_fa: API حساب کاربر درگاه برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سرویس قابل پشتیبانی توسط حساب کاربری آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineGatewayUserAccountSpecification
-  title_fa: مشخصات حساب کاربر درگاه برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مشخصات حساب کاربری درگاه آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineMoneyTransfer
-  title_fa: انتقال مبلغ برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: انتقال وجه آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineMoneyTransferItem
-  title_fa: قلم انتقال مبلغ برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم انتقال وجه آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: OnlineMoneyTransferUser
-  title_fa: کاربر انتقال مبلغ برخط
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: کاربران درگاه آنلاین
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PSPBill
-  title_fa: صورت‌حساب PSP
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صورتحساب تراکنش های پایانه فروش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PSPBillItem
-  title_fa: قلم صورت‌حساب PSP
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورتحساب تراکنش های پایانه فروش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PartyBankAccount
-  title_fa: حساب بانکی طرف حساب
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب بانکی اشخاص و شرکت ها
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableChequeBook
-  title_fa: دفتر چک پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دسته چک
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableChequeBookChequePattern
   title_fa: الگوی چک دفتر چک پرداختنی
   source: accepted_suggestion
@@ -598,77 +595,77 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: PayableChequeBookItem
-  title_fa: قلم دفتر چک پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: برگه دسته چک
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableCollateral
-  title_fa: وثیقه پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ضمانتنامه به عهده شرکت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableCollateralAccountingInformation
-  title_fa: اطلاعات حسابداری وثیقه پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب های ضمانتنامه به عهده شرکت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableCollateralBlockedBankAccount
-  title_fa: حساب بانکی مسدود وثیقه پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب بانکی بلوکه شده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableCollateralGuaranteeNote
-  title_fa: سفته ضمانت وثیقه پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: چک و سفته تضمینی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableCollateralOtherCost
-  title_fa: هزینه دیگر وثیقه پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سایر هزینه ها
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableCollateralTransaction
-  title_fa: تراکنش وثیقه پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: عملیات ضمانتنامه به عهده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableNote
-  title_fa: سفته پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سند پرداختی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PayableNoteTransaction
-  title_fa: تراکنش سفته پرداختنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تراکنش سند پرداختی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Payment
-  title_fa: پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اعلامیه پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentCashMoney
-  title_fa: مبلغ نقد پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: پرداخت وجه نقد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentDeliverReceivableCheque
-  title_fa: چک دریافتنی تحویل پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: واگذار به غیر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentDeliverRestorePayableNote
   title_fa: سفته پرداختنی بازیابی تحویل پرداخت
   source: accepted_suggestion
@@ -676,29 +673,29 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: PaymentDeposit
-  title_fa: واریز پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اعلامیه برداشت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentOrder
-  title_fa: سفارش پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دستور پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentOrderCashMoney
-  title_fa: مبلغ نقد سفارش پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دستور پرداخت وجه نقد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentOrderDeliverReceivableCheque
-  title_fa: چک دریافتنی تحویل سفارش پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دستور واگذار به غیر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentOrderDeliverRestorePayableNote
   title_fa: سفته پرداختنی بازیابی تحویل سفارش پرداخت
   source: accepted_suggestion
@@ -706,23 +703,23 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: PaymentOrderDeposit
-  title_fa: واریز سفارش پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دستور اعلامیه برداشت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentOrderItemToPaymentItem
-  title_fa: قلم پرداخت قلم سفارش پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ارتباط دستور پرداخت و پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentOrderList
-  title_fa: لیست سفارش پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: لیست دستور پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentOrderPayableNote
   title_fa: سفته پرداختنی سفارش پرداخت
   source: accepted_suggestion
@@ -749,16 +746,16 @@ tables:
   updated_at: '2026-09-08'
 - name: PaymentRequest
   title_fa: درخواست پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentRequestItem
-  title_fa: قلم درخواست پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم عادی درخواست پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentRestoreReceivableNote
   title_fa: سفته دریافتنی بازیابی پرداخت
   source: accepted_suggestion
@@ -766,12 +763,11 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: PaymentServiceProviderCompany
-  title_fa: شرکت ارائه‌دهنده خدمت پرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
-  revised: glossary_fix
+  title_fa: شرکت خدمات پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PaymentToPublicIncomItem
   title_fa: قلم درآمد عمومی پرداخت
   source: accepted_suggestion
@@ -786,136 +782,136 @@ tables:
   updated_at: '2026-09-08'
 - name: PettyCash
   title_fa: تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashBill
-  title_fa: صورت‌حساب تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صورت خلاصه تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashBillItem
-  title_fa: قلم صورت‌حساب تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورت خلاصه تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCard
   title_fa: کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardBill
-  title_fa: صورت‌حساب کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: صورت حساب کارت تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardBillItem
-  title_fa: قلم صورت‌حساب کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورت حساب کارت تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardCollection
-  title_fa: وصول کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: گروه کارت تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardHistory
   title_fa: تاریخچه کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardReconciliation
-  title_fa: مغایرت‌گیری کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مغایرت گیری کارت تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardReconciliationOpenItemReason
-  title_fa: دلیل قلم باز مغایرت‌گیری کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دلیل مغایرت قلم باز دفتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardReconciliationPettyCashCardBillAllItem
-  title_fa: قلم همه صورت‌حساب کارت تنخواه مغایرت‌گیری کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورت حساب کارت تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardReconciliationPettyCashCardBillItem
-  title_fa: قلم صورت‌حساب کارت تنخواه مغایرت‌گیری کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورت حساب کارت تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardReconciliationReason
-  title_fa: دلیل مغایرت‌گیری کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دلیل مغایرت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardReconciliationTreasuryAllItem
-  title_fa: قلم همه خزانه‌داری مغایرت‌گیری کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام دفتر مغایرت گیری کارت تنخواه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashCardReconciliationTreasuryItem
-  title_fa: قلم خزانه‌داری مغایرت‌گیری کارت تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم دفتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PettyCashTransaction
   title_fa: تراکنش تنخواه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ProgressiveCollection
-  title_fa: وصول تصاعدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: وصول مرحله ای
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ProgressiveCollectionCreditItem
-  title_fa: قلم اعتبار وصول تصاعدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم بستانکاری وصول مرحله ای
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ProgressiveCollectionItem
-  title_fa: قلم وصول تصاعدی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم وصول مرحله ای
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PromissoryNote
-  title_fa: سفته
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سفته سفید
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: PromissoryNoteItem
-  title_fa: قلم سفته
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: برگ سفته
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Prosecution
-  title_fa: پیگرد
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حقوقی کردن
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ProsecutionReceivableNote
   title_fa: سفته دریافتنی پیگرد
   source: accepted_suggestion
@@ -923,41 +919,42 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: Receipt
-  title_fa: سند دریافت
+  title_fa: رسید دریافت
   description_fa: این جدول اسناد دریافت وجه از مشتریان را نگهداری می‌کند.
   kind: ledger
   grain: یک ردیف به‌ازای هر سند دریافت
   gotchas:
   - اسناد باطل‌شده هم در همین جدول می‌مانند؛ باید State فیلتر شود.
-  source: stated_by_user
+  source: software_entity_catalogue
   confidence: high
-  updated_at: '2026-07-25'
+  updated_at: '2026-09-09'
   updated_by: user
   _manual: true
+  origin: entity_form_2026_09
 - name: ReceiptAndPaymentCause
-  title_fa: علت پرداخت فیش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: بابت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptCashMoney
-  title_fa: مبلغ نقد فیش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: وجه نقد دریافتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptDeposit
-  title_fa: واریز فیش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اعلامیه واریز
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptFundRequestItem
-  title_fa: قلم درخواست صندوق فیش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم دریافت درخواست وجه از خزانه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptReceivableNote
   title_fa: سفته دریافتنی فیش
   source: accepted_suggestion
@@ -965,17 +962,17 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: ReceiptRequest
-  title_fa: درخواست فیش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: درخواست دریافت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptRequestOrdinaryItem
-  title_fa: قلم عادی درخواست فیش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: درخواست دریافت عادی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceiptRestorePayableNote
   title_fa: سفته پرداختنی بازیابی فیش
   source: accepted_suggestion
@@ -990,29 +987,29 @@ tables:
   updated_at: '2026-09-08'
   revised: glossary_fix
 - name: ReceivableCollateral
-  title_fa: وثیقه دریافتنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ضمانتنامه به نفع شرکت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceivableCollateralAccountingInformation
-  title_fa: اطلاعات حسابداری وثیقه دریافتنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: حساب های ضمانتنامه به نفع شرکت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceivableCollateralTransaction
-  title_fa: تراکنش وثیقه دریافتنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: عملیات ضمانتنامه به نفع
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceivableNote
-  title_fa: سفته دریافتنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سند دریافتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReceivableNoteAccountTransactionScenario
   title_fa: سناریو تراکنش حساب سفته دریافتنی
   source: accepted_suggestion
@@ -1020,47 +1017,47 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: ReceivableNoteTransaction
-  title_fa: تراکنش سفته دریافتنی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: تراکنش سند دریافتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Reconciliation
-  title_fa: مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مغایرت گیری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationBankBillAllItem
-  title_fa: قلم همه صورت‌حساب بانک مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نام موجودیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationBankBillItem
-  title_fa: قلم صورت‌حساب بانک مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورت حساب مغایرت گیری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationDeployment
-  title_fa: استقرار مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: استقرار مغایرت گیری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationDeploymentBankBillItem
-  title_fa: قلم صورت‌حساب بانک استقرار مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: استقرار صورت حساب بانکی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationDeploymentTreasuryOpenItem
-  title_fa: قلم باز خزانه‌داری استقرار مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: استقرار اقلام باز دفاتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationDeploymentVoucherOpenItem
   title_fa: قلم باز سند استقرار مغایرت‌گیری
   source: accepted_suggestion
@@ -1068,47 +1065,47 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: ReconciliationOpenItemReason
-  title_fa: دلیل قلم باز مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دلیل مغایرت قلم باز دفتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationReason
-  title_fa: دلیل مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دلیل مغایرت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationTreasuryAllItem
-  title_fa: قلم همه خزانه‌داری مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: نام موجودیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: ReconciliationTreasuryItem
-  title_fa: قلم خزانه‌داری مغایرت‌گیری
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم دفتر مغایرت گیری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RefundDeposit
-  title_fa: واریز برگشتی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: درخواست استردادسپرده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RefundDepositItem
-  title_fa: قلم واریز برگشتی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم استرداد سپرده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Rejection
-  title_fa: مرجوعی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: واخواست توسط مأمور وصول
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RejectionReceivableNote
   title_fa: سفته دریافتنی مرجوعی
   source: accepted_suggestion
@@ -1116,23 +1113,23 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: Repayment
-  title_fa: بازپرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: بازپرداخت اقساط
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RepaymentInstallmentInfo
-  title_fa: اطلاعات قسط بازپرداخت
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقساط بازپرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RestoreToCash
-  title_fa: نقد بازیابی
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: استرداد به صندوق
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: RestoreToCashReceivableNote
   title_fa: سفته دریافتنی نقد بازیابی
   source: accepted_suggestion
@@ -1140,53 +1137,53 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: RpaGLComparisonReportDeployment
-  title_fa: استقرار گزارش مقایسه کل RPA
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اطلاعات استقرار گزارش تطبیق دریافت پرداخت و حسابداری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: SalesTerminal
   title_fa: پایانه فروش
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Stale
-  title_fa: کهنه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: سوخت شدن
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: StaleReceivableCheque
-  title_fa: چک دریافتنی کهنه
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: چک های سوخت شده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: Transfer
   title_fa: انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferCashMoney
-  title_fa: مبلغ نقد انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: انتقال وجه نقد
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferDeposit
-  title_fa: واریز انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: انتقال اعلامیه برداشت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferPayableCheque
-  title_fa: چک پرداختنی انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: انتقال چک پرداختی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferReceivableNote
   title_fa: سفته دریافتنی انتقال
   source: accepted_suggestion
@@ -1194,17 +1191,17 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: TransferRestorePayableCheque
-  title_fa: چک پرداختنی بازیابی انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: انتقال استرداد چک پرداختی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferToCollector
-  title_fa: وصول‌کننده انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اعلامیه واگذاری به مامور وصول
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferToCollectorReceivableNote
   title_fa: سفته دریافتنی وصول‌کننده انتقال
   source: accepted_suggestion
@@ -1212,68 +1209,68 @@ tables:
   origin: excel_2026_09
   updated_at: '2026-09-08'
 - name: TransferToPublicIncom
-  title_fa: درآمد عمومی انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: انتقال به درآمدعمومی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferToPublicIncomItem
-  title_fa: قلم درآمد عمومی انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم های انتقال به درآمدعمومی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferToTreasury
-  title_fa: خزانه‌داری انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: ارسال سپرده به خزانه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: TransferToTreasuryItem
-  title_fa: قلم خزانه‌داری انتقال
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم های ارسال به خزانه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherDescription
-  title_fa: شرح سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: شرح سند حسابداری دریافت و پرداخت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherReconciliation
-  title_fa: مغایرت‌گیری سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: مغایرت گیری حسابداری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherReconciliationAllItem
-  title_fa: قلم همه مغایرت‌گیری سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام مغایرت گیری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherReconciliationBankBillAllItem
-  title_fa: قلم همه صورت‌حساب بانک مغایرت‌گیری سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: اقلام مغایرت گیری حساب بانکی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherReconciliationBankBillItem
-  title_fa: قلم صورت‌حساب بانک مغایرت‌گیری سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم صورت حساب بانکی مغایرت حسابداری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherReconciliationItem
-  title_fa: قلم مغایرت‌گیری سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: قلم مغایرت حسابداری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
 - name: VoucherReconciliationOpenItemReason
-  title_fa: دلیل قلم باز مغایرت‌گیری سند
-  source: accepted_suggestion
-  confidence: medium
-  origin: excel_2026_09
-  updated_at: '2026-09-08'
+  title_fa: دلیل قلم باز مغایرت گیری حسابداری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-09-09'
