@@ -111,6 +111,29 @@ function AppShell() {
     <div className="app-canvas inset-safe flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
       <Toaster />
 
+      {/*
+        نوار سازنده — بالای همه‌چیز، روی هر سه نما.
+
+        عمداً بیرون از هدرِ چسبان است و با آن اسکرول نمی‌شود: یک خط اعتبار
+        نباید دائماً بخشی از ارتفاع کاری صفحه را بگیرد، به‌ویژه روی گوشی که
+        هدر و سوییچ نما از قبل دو ردیف‌اند.
+
+        ltr و ‌dir صریح دارد چون نام و نشانیِ رایانامه لاتین‌اند و داخل سندِ
+        راست‌به‌چپ، پرانتز و نقطه‌شان جابه‌جا رندر می‌شود.
+      */}
+      <div
+        dir="ltr"
+        className="shrink-0 border-b border-border/70 bg-ink/70 px-3 py-1 text-center text-[10.5px] leading-4 text-muted-foreground sm:px-4 lg:px-6"
+      >
+        Created by Mehran-Sabzali{" "}
+        <a
+          href="mailto:mehransa@systemgroup.net"
+          className="font-mono text-brand-text underline-offset-2 transition-colors hover:underline"
+        >
+          (mehransa@systemgroup.net)
+        </a>
+      </div>
+
       <header className="sticky top-0 z-30 shrink-0 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="flex items-center justify-between gap-3 px-3 py-2.5 sm:px-4 lg:px-6">
           <Brand health={health} />

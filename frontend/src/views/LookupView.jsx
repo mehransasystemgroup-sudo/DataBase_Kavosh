@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, Hash, ListChecks, Search, Table2, X } from "lucide-react";
+import { ArrowRight, CornerDownLeft, Hash, ListChecks, Search, Table2, X } from "lucide-react";
 
 import { http } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
@@ -56,6 +56,17 @@ function TypeRow({ item, active, onOpen, index, isDark }) {
       </div>
       {item.title_fa && (
         <div className="mt-1 truncate text-[11.5px] text-muted-foreground">{item.title_fa}</div>
+      )}
+      {/*
+        مقداری که باعث تطبیق شده. بدون این، جست‌وجو با «دیپلم» فهرستی از
+        نام‌های لاتین برمی‌گرداند که هیچ‌کدام واژهٔ جست‌وجو را نشان نمی‌دهند
+        و کاربر باید تک‌تک را باز کند تا بفهمد چرا آمده‌اند.
+      */}
+      {item.matched_value && (
+        <div className="mt-1 flex items-center gap-1 text-[11px] text-brand-text">
+          <CornerDownLeft className="h-3 w-3 shrink-0" />
+          <span className="truncate">{item.matched_value}</span>
+        </div>
       )}
     </button>
   );
