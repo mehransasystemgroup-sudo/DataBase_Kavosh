@@ -4,17 +4,23 @@
 # انتخاب می‌کند (مثلاً «مقطع تحصیلی» در فرم کارمند). مقدار ذخیره‌شده در
 # پایگاه داده همان code است و value چیزی است که کاربر می‌بیند.
 #
-# منبع: صادرات کاربر — SYS3.Lookup (اکسل) و SYS3.LookupInfo (PDF).
+# منبع: صادرات UTF-8 کاربر — sys3Lookup.xlsx و sys3LookupInfo.xlsx.
 #
-# ⚠️ ترمیم داده: در صادرات اکسل حرف «ی» (U+06CC) به «?» تبدیل شده بود —
-# در ۷۳۹۹ مقدار، «ی» صفر بار و «?» ۶۶۶۴ بار دیده شد. جایگزینی با آزمون
-# تفکیکی روی پیکرهٔ مستقلِ عنوان‌های PDF و پایگاه دانش سنجیده شد: «ی»
-# 4190 واژهٔ درست ساخت و نزدیک‌ترین نامزد بعدی ۸۹ تا. 4255 مقدار ترمیم شد.
+# این نسخه جایگزین وارداتِ پیشین شد. صادرات اول حرف «ی» را به «?» تبدیل کرده
+# بود و آن مقادیر بازسازی شده بودند؛ حالا داده اصل است و هیچ چیز بازسازی‌شده
+# نیست. (برای ثبت: آن بازسازی در ۷۳۳۶ مقدار از ۷۴۲۰ دقیقاً درست بود و
+# ۸۴ اختلافِ باقی‌مانده هم فارسی نبود، قالب عددی بود.)
 #
-# عنوان فارسی نوع‌ها از SYS3.LookupInfo می‌آید؛ 879
-# نوع از 1830 نوع عنوان دارند و بقیه با نام لاتین خودشان می‌آیند.
+# ي و ك عربی به ی و ک فارسی یکسان‌سازی شده‌اند — فقط همین دو، چون داده خام
+# هر دو املا را قاتی دارد. جدولِ یکسان‌سازیِ جست‌وجو عمداً به کار نرفته: آن
+# آ را به ا و ئ را به ی می‌برد که برای متنِ نمایشی خرابی است.
 #
-# تاریخ ورود: 2026-09-09
+# ⚠️ 2 مقدار در نوع CalculationItemType در خودِ پایگاه داده خراب است
+# (همهٔ کاراکترهایش «?» است). دست‌نخورده مانده‌اند چون محتوای واقعی جدول‌اند.
+#
+# 1830 نوع · 7420 مقدار · 879 عنوان فارسی
+#
+# تاریخ ورود: 2026-09-10
 types:
 - type: AcceleratorType
   title_fa: نوع شتابگر
@@ -577,7 +583,7 @@ types:
     value: غیرفعال
     order: 3
 - type: AggregateDocsItemAnalysisSavingType
-  title_fa: نحوه ی ثبت اقلام دریافتی برای اسناد گروھی
+  title_fa: نحوه ی ثبت اقلام دریافتی برای اسناد گروهی
   module: XLS3
   values:
   - code: 1
@@ -725,7 +731,7 @@ types:
   - code: 2
     value: تفصیلی
 - type: AnalysedFollowUpBaseOn
-  title_fa: اساس گزارش پیگیري
+  title_fa: اساس گزارش پیگیری
   module: FIN3
   values:
   - code: 1
@@ -1069,7 +1075,7 @@ types:
   - code: 3
     value: ترکیبی
 - type: ApprovalState
-  title_fa: وضعیت تايیديه
+  title_fa: وضعیت تاییدیه
   module: SCM3
   values:
   - code: 1
@@ -1079,7 +1085,7 @@ types:
   - code: 3
     value: رد شده
 - type: ApprovalType
-  title_fa: نوع تايیديه
+  title_fa: نوع تاییدیه
   module: SCM3
   values:
   - code: 1
@@ -1372,7 +1378,7 @@ types:
   - code: 29
     value: پروانه خروج
 - type: AssignAnalyzeAllocatedAmountMethod
-  title_fa: روش تخصیص مبلغ تسھیم شده
+  title_fa: روش تخصیص مبلغ تسهیم شده
   module: RPA3
   values:
   - code: 0
@@ -1759,7 +1765,7 @@ types:
     value: رد شده
     order: 0
 - type: AttendanceRequestGeneralType
-  title_fa: نوع موجودیت درخواستھای در صف تاید مدیر
+  title_fa: نوع موجودیت درخواستهای در صف تاید مدیر
   module: HCM3
   values:
   - code: 1
@@ -1797,7 +1803,7 @@ types:
     value: مجوز حضور
     order: 0
 - type: AttendanceType
-  title_fa: نوع موجودیت درخواستھای تردد
+  title_fa: نوع موجودیت درخواستهای تردد
   module: HCM3
   values:
   - code: 1
@@ -1883,7 +1889,7 @@ types:
   - code: 2
     value: غیرمجاز
 - type: AutoMappingProperty
-  title_fa: ويژگي نگاشت خودکار
+  title_fa: ویژگی نگاشت خودکار
   module: SCM3
   values:
   - code: 1
@@ -1921,19 +1927,19 @@ types:
   module: RMS3
   values:
   - code: 1
-    value: چاپگر ی
+    value: چاپگر ۱
     order: 0
   - code: 2
-    value: چاپگر ی
+    value: چاپگر ۲
     order: 0
   - code: 3
-    value: چاپگر ی
+    value: چاپگر ۳
     order: 0
   - code: 4
-    value: چاپگر ی
+    value: چاپگر ۴
     order: 0
   - code: 5
-    value: چاپگر ی
+    value: چاپگر ۵
     order: 0
 - type: AverageGroup
   title_fa: گروه بندی
@@ -2032,7 +2038,7 @@ types:
   - code: 2
     value: انتقال به اندازه کل مبلغ قلم پرداختی
 - type: BankBillReconciliationMethod
-  title_fa: روش مغایرتگیری
+  title_fa: روش مغایرت‌گیری
   module: RPA3
   values:
   - code: 1
@@ -2305,35 +2311,35 @@ types:
   module: dbo
   values:
   - code: 0
-    value: '110.0'
+    value: '110'
   - code: 1
-    value: '300.0'
+    value: '300'
   - code: 2
-    value: '600.0'
+    value: '600'
   - code: 3
-    value: '1200.0'
+    value: '1200'
   - code: 4
-    value: '2400.0'
+    value: '2400'
   - code: 5
-    value: '4800.0'
+    value: '4800'
   - code: 6
-    value: '9600.0'
+    value: '9600'
   - code: 7
-    value: '14400.0'
+    value: '14400'
   - code: 8
-    value: '19200.0'
+    value: '19200'
   - code: 9
-    value: '38400.0'
+    value: '38400'
   - code: 10
-    value: '56000.0'
+    value: '56000'
   - code: 11
-    value: '57600.0'
+    value: '57600'
   - code: 12
-    value: '115200.0'
+    value: '115200'
   - code: 13
-    value: '128000.0'
+    value: '128000'
   - code: 14
-    value: '256000.0'
+    value: '256000'
   - code: 15
     value: Custom
 - type: BeforeInspectionDateType
@@ -2424,15 +2430,15 @@ types:
   module: HCM3
   values:
   - code: 1
-    value: '1.0'
+    value: '1'
   - code: 2
-    value: '2.0'
+    value: '2'
   - code: 3
-    value: '3.0'
+    value: '3'
   - code: 4
-    value: '4.0'
+    value: '4'
   - code: 5
-    value: '5.0'
+    value: '5'
 - type: BookMatchType
   module: FIN3
   values:
@@ -2522,7 +2528,7 @@ types:
   - code: 1
     value: فعال
   - code: 2
-    value: غير فعال
+    value: غیر فعال
   - code: 3
     value: معلق
   - code: 4
@@ -2981,28 +2987,28 @@ types:
   module: FAM3
   values:
   - code: 0
-    value: یییی
+    value: ????
     order: 1
   - code: 1
-    value: ییییییی
+    value: ???????
 - type: CalculationRunSaveJobStatus
   title_fa: وضعیت ذخیره محاسبات
   module: MRP3
   values:
   - code: 1
-    value: در حال ذخيره
+    value: در حال ذخیره
   - code: 2
-    value: ذخيره ناقص BOM
+    value: ذخیره ناقص BOM
   - code: 3
-    value: ذخيره ناقص اولويت محاسبه
+    value: ذخیره ناقص اولویت محاسبه
   - code: 4
-    value: ذخيره ناقص نتيجه
+    value: ذخیره ناقص نتیجه
   - code: 5
-    value: برنامه تامين ناقص حذف
+    value: برنامه تامین ناقص حذف
   - code: 6
-    value: ذخيره موفق
+    value: ذخیره موفق
   - code: 7
-    value: ذخيره ناقص New BOM
+    value: ذخیره ناقص New BOM
 - type: CalculationRunType
   title_fa: نوع محاسبه
   module: MRP3
@@ -3067,7 +3073,7 @@ types:
   - code: 2
     value: روزانه
 - type: CapacityTypeNature
-  title_fa: ماھیت نوع ظرفیت
+  title_fa: ماهیت نوع ظرفیت
   module: MMG3
   values:
   - code: 1
@@ -3234,7 +3240,7 @@ types:
   - code: 8
     value: صورت خلاصه تنخواه
 - type: CashFlowReviewDetailColumn
-  title_fa: ستون ھای قابل نمایش عامل گردش نقدینگی
+  title_fa: ستون های قابل نمایش عامل گردش نقدینگی
   module: RPA3
   values:
   - code: 1
@@ -3441,7 +3447,7 @@ types:
   - code: 3
     value: I
 - type: ClientLetterStates
-  title_fa: وضعیت ھای نامه ارباب رجوع
+  title_fa: وضعیت های نامه ارباب رجوع
   module: ECM
   values:
   - code: 1
@@ -3545,7 +3551,7 @@ types:
   - code: 3
     value: تغییر مبلغ
 - type: CollateralMappedSL
-  title_fa: نوع حساب ھای ضمانتنامه
+  title_fa: نوع حساب های ضمانتنامه
   module: RPA3
   values:
   - code: 1
@@ -3969,7 +3975,7 @@ types:
   - code: 2
     value: بازنشستگی
 - type: Competency
-  title_fa: نوع شایستگی Type
+  title_fa: شایستگی
   module: HCM3
   values:
   - code: 1
@@ -4245,7 +4251,7 @@ types:
   - code: 4
     value: مشاوره
 - type: ContractMappedSL
-  title_fa: نوع حساب ھای قرارداد
+  title_fa: نوع حساب های قرارداد
   module: RPA3
   values:
   - code: 1
@@ -4598,7 +4604,7 @@ types:
   - code: 6
     value: نامشخص
 - type: CostCenterState
-  title_fa: وضعیت مرکز ھزینه
+  title_fa: وضعیت مرکز هزینه
   module: GNR3
   values:
   - code: 1
@@ -4643,7 +4649,7 @@ types:
   - code: 16
     value: ضایعات
 - type: CostCenterType
-  title_fa: نوع مرکز ھزینه
+  title_fa: نوع مرکز هزینه
   module: GNR3
   values:
   - code: 1
@@ -4945,7 +4951,7 @@ types:
     value: توقف عملیات
     order: 2
 - type: CourseRegistrationParticipantPriority
-  title_fa: اولویت شرکتکننده ثبت نام دوره
+  title_fa: اولویت شرکت‌کننده ثبت نام دوره
   module: HCM3
   values:
   - code: 1
@@ -5058,11 +5064,11 @@ types:
   module: IPR3
   values:
   - code: 1
-    value: یA (All Risk)
+    value: ‭A (All Risk)
   - code: 2
-    value: یB (W.A)
+    value: ‭B (W.A)
   - code: 3
-    value: یC (F.P.A)
+    value: ‭C (F.P.A)
   - code: 4
     value: TOTAL LOSS
 - type: CreditCalculationBasis
@@ -5501,7 +5507,7 @@ types:
     value: مشتری مادر
     order: 2
 - type: DIPMethod
-  title_fa: روش اندازهگیری DIP
+  title_fa: روش اندازه‌گیری DIP
   module: STM3‌
   values:
   - code: 1
@@ -5654,15 +5660,15 @@ types:
   module: dbo
   values:
   - code: 0
-    value: '4.0'
+    value: '4'
   - code: 1
-    value: '5.0'
+    value: '5'
   - code: 2
-    value: '6.0'
+    value: '6'
   - code: 3
-    value: '7.0'
+    value: '7'
   - code: 4
-    value: '8.0'
+    value: '8'
 - type: DataTransferMethodItemFieldType
   title_fa: نوع فیلد آیتم روش انتقال داده
   module: SYS3
@@ -5693,7 +5699,7 @@ types:
   - code: 4
     value: دوره مالی
 - type: DateToleranceType
-  title_fa: نوع تلرانس تاريخ نیاز
+  title_fa: نوع تلرانس تاریخ نیاز
   module: SCM3
   values:
   - code: 1
@@ -5797,7 +5803,7 @@ types:
   - code: 2
     value: قرارداد
 - type: DefectCharacteristicRecordingType
-  title_fa: مقداردھی ویژگی عیب
+  title_fa: مقداردهی ویژگی عیب
   module: MMG3
   values:
   - code: 1
@@ -6592,7 +6598,7 @@ types:
   - code: 2
     value: 30 میلی گرم
 - type: DownloadHistoryState
-  title_fa: وضعیت تاريخچه دريافت
+  title_fa: وضعیت تاریخچه دریافت
   module: SCM3
   values:
   - code: 1
@@ -7182,11 +7188,11 @@ types:
   module: ECM
   values:
   - code: 0
-    value: غير امن
+    value: غیر امن
   - code: 1
     value: امن
   - code: 2
-    value: اتوماتيک
+    value: اتوماتیک
 - type: EmailAccountState
   module: ECM
   values:
@@ -7251,11 +7257,11 @@ types:
   module: ECM
   values:
   - code: 1
-    value: گيرنده
+    value: گیرنده
   - code: 2
-    value: رونوشت گيرنده
+    value: رونوشت گیرنده
   - code: 3
-    value: رونوشت گيرنده مخفي
+    value: رونوشت گیرنده مخفی
 - type: EmailSensitivity
   module: ECM
   values:
@@ -7675,7 +7681,7 @@ types:
   - code: 4
     value: تغییر وضعیت
 - type: EquipmentStatusType
-  title_fa: وضعیت دستگاه نگھداری و تعمیرات
+  title_fa: وضعیت دستگاه نگهداری و تعمیرات
   module: CMMS3
   values:
   - code: 1
@@ -7829,13 +7835,13 @@ types:
   module: FAM3
   values:
   - code: 1
-    value: انتقال قطعي
+    value: انتقال قطعی
   - code: 2
     value: فروش
   - code: 3
     value: خروج موقت
   - code: 4
-    value: ارسال اماني
+    value: ارسال امانی
 - type: ExpenditureClassType
   module: FAM3
   values:
@@ -7846,7 +7852,7 @@ types:
   - code: 3
     value: افزایش قیمت
 - type: ExportEffectiveInvoiceType
-  title_fa: فاکتورھای موثر در فروش
+  title_fa: فاکتورهای موثر در فروش
   module: XLS3
   values:
   - code: 1
@@ -7969,7 +7975,7 @@ types:
   - code: 2
     value: غیر کانتینری
 - type: ExternalCreditProviderPreReceiptState
-  title_fa: وضعیت پیش رسید اعتبار دھنده
+  title_fa: وضعیت پیش رسید اعتبار دهنده
   module: RPA3
   values:
   - code: 1
@@ -8349,7 +8355,7 @@ types:
   module: FAM3
   values:
   - code: 1
-    value: دستگاه اندرويدی و بارکد
+    value: دستگاه اندرویدی و بارکد
   - code: 2
     value: دستگاه رایت تگ
   - code: 3
@@ -8602,7 +8608,7 @@ types:
   - code: 3
     value: انتقال موجودی
 - type: FinancialFacilitiesCurrencySpecification
-  title_fa: ویژگی ارزی تسھیلات مالی
+  title_fa: ویژگی ارزی تسهیلات مالی
   module: RPA3
   values:
   - code: 1
@@ -8709,7 +8715,7 @@ types:
   - code: 3
     value: مجوز ارفاقی
 - type: FormulaFactorAssignType
-  title_fa: روش مقداردھی
+  title_fa: روش مقداردهی
   module: STM3
   values:
   - code: 1
@@ -9052,7 +9058,7 @@ types:
   - code: 2
     value: صدور/ صدور جزئی سفارش تولید
 - type: GregorianCalendarMonths
-  title_fa: ماه ھای میلادی
+  title_fa: ماه های میلادی
   module: MMG3
   values:
   - code: 1
@@ -9388,7 +9394,7 @@ types:
   - code: 1
     value: باطل شده
 - type: IncompleteSerialSystemBehavior
-  title_fa: عملکرد سیستم در حالت ناقص بودن سریالھا
+  title_fa: عملکرد سیستم در حالت ناقص بودن سریال‌ها
   module: PAC3
   values:
   - code: 1
@@ -9422,7 +9428,7 @@ types:
   - code: 10
     value: DDP
 - type: IndetermineReceiptAndPaymentAmountCalcType
-  title_fa: روش تسھیم
+  title_fa: روش تسهیم
   module: FCC3
   values:
   - code: 1
@@ -9460,20 +9466,20 @@ types:
   - code: 3
     value: علی‌الحساب
 - type: IndicatorAnswerStructureAnsweringMethod
-  title_fa: روش پاسخ دھی
+  title_fa: روش پاسخ دهی
   module: HCM3
   values:
   - code: 0
-    value: انتخاب يك گزینه
+    value: انتخاب یک گزینه
     order: 1
   - code: 1
     value: انتخاب چند گزینه
     order: 2
   - code: 2
-    value: انتخاب از ليست
+    value: انتخاب از لیست
     order: 3
 - type: IndicatorAnswerStructureCalculationMethod
-  title_fa: روش امتیاز دھی
+  title_fa: روش امتیاز دهی
   module: HCM3
   values:
   - code: 1
@@ -9481,7 +9487,7 @@ types:
   - code: 2
     value: میانگین امتیاز گزینه‌ها
 - type: IndicatorAnswerStructureScoringMethod
-  title_fa: روش امتیاز دھی
+  title_fa: روش امتیاز دهی
   module: HCM3
   values:
   - code: 0
@@ -9647,7 +9653,7 @@ types:
   - code: 2
     value: تعدادی
 - type: InspectionPointValueSerialRangeEvaluationType
-  title_fa: نوع ارزیابی سریالھای محدوده بازرسی
+  title_fa: نوع ارزیابی سریال‌های محدوده بازرسی
   module: QCM3
   values:
   - code: 1
@@ -9755,7 +9761,7 @@ types:
   - code: 2
     value: تفکیکی
 - type: InterestAmountChangeType
-  title_fa: نوع تغییر مبلغ بھره
+  title_fa: نوع تغییر مبلغ بهره
   module: RPA3
   values:
   - code: 1
@@ -9763,7 +9769,7 @@ types:
   - code: 2
     value: کاهش
 - type: InterestExpenseState
-  title_fa: وضعیت ھزینه بھره
+  title_fa: وضعیت هزینه بهره
   module: RPA3
   values:
   - code: 1
@@ -9801,7 +9807,7 @@ types:
   - code: 2
     value: انتقال بین شعب
 - type: InterpretablePolicy
-  title_fa: سیاست ھای قابل تفسیر
+  title_fa: سیاست های قابل تفسیر
   module: SLS3
   values:
   - code: 1
@@ -9856,7 +9862,7 @@ types:
   - code: 13
     value: سند رسید
 - type: InventoryInspectionDocumentPartRequestType
-  title_fa: نوعدرخواستکالا
+  title_fa: نوع‌درخواست‌کالا
   module: QCM3
   values:
   - code: 2
@@ -10141,7 +10147,7 @@ types:
   - code: 3
     value: هر دو مورد
 - type: InvoiceSettledType
-  title_fa: وضعیت سررسید فاکتورھا
+  title_fa: وضعیت سررسید فاکتورها
   module: SLS3
   values:
   - code: 1
@@ -10256,7 +10262,7 @@ types:
   - code: 6
     value: کالاهای بدون طبقه
 - type: ItemDetailTypes
-  title_fa: آیتم ھای صورت وضعیت
+  title_fa: آیتم های صورت وضعیت
   module: FCC3
   values:
   - code: 1
@@ -10304,7 +10310,7 @@ types:
   - code: 512
     value: واگذاری سفته استردادی
 - type: ItemTypes
-  title_fa: موجودیت ھای پرداخت
+  title_fa: موجودیت های پرداخت
   module: FCC3
   values:
   - code: 1
@@ -10350,64 +10356,64 @@ types:
   module: HCM3
   values:
   - code: 1
-    value: '1.0'
+    value: '1'
     order: 0
   - code: 2
-    value: '2.0'
+    value: '2'
     order: 0
   - code: 3
-    value: '3.0'
+    value: '3'
     order: 0
   - code: 4
-    value: '4.0'
+    value: '4'
     order: 0
   - code: 5
-    value: '5.0'
+    value: '5'
     order: 0
   - code: 6
-    value: '6.0'
+    value: '6'
     order: 0
   - code: 7
-    value: '7.0'
+    value: '7'
     order: 0
   - code: 8
-    value: '8.0'
+    value: '8'
     order: 0
   - code: 9
-    value: '9.0'
+    value: '9'
     order: 0
   - code: 10
-    value: '10.0'
+    value: '10'
     order: 0
   - code: 11
-    value: '11.0'
+    value: '11'
     order: 0
   - code: 12
-    value: '12.0'
+    value: '12'
     order: 0
   - code: 13
-    value: '13.0'
+    value: '13'
     order: 0
   - code: 14
-    value: '14.0'
+    value: '14'
     order: 0
   - code: 15
-    value: '15.0'
+    value: '15'
     order: 0
   - code: 16
-    value: '16.0'
+    value: '16'
     order: 0
   - code: 17
-    value: '17.0'
+    value: '17'
     order: 0
   - code: 18
-    value: '18.0'
+    value: '18'
     order: 0
   - code: 19
-    value: '19.0'
+    value: '19'
     order: 0
   - code: 20
-    value: '20.0'
+    value: '20'
     order: 0
   - code: 21
     value: کارشناس سطح1
@@ -11073,7 +11079,7 @@ types:
   - code: 5
     value: '3.4'
   - code: 6
-    value: '0.0'
+    value: '0'
   - code: 7
     value: '4.1'
   - code: 8
@@ -11193,7 +11199,7 @@ types:
   - code: 7
     value: باطل شده
 - type: MaintenanceDocumentType
-  title_fa: نوع سند نگھداری و تعمیرات
+  title_fa: نوع سند نگهداری و تعمیرات
   module: CMMS3
   values:
   - code: 1
@@ -11301,7 +11307,7 @@ types:
   - code: 5
     value: تاریخ
 - type: MaritalStatus
-  title_fa: وضعیت تاھل
+  title_fa: وضعیت تاهل
   module: HCM3
   values:
   - code: 1
@@ -11515,7 +11521,7 @@ types:
   - code: 2
     value: نزولی
 - type: MaterialInputMethod
-  title_fa: نحوهی دریافت سریال
+  title_fa: نحوه‌ی دریافت سریال
   module: PAC3
   values:
   - code: 1
@@ -11540,7 +11546,7 @@ types:
   - code: 3
     value: رشته ای
 - type: MeasurementParameterType
-  title_fa: نوع پارامتر اندازهگیری
+  title_fa: نوع پارامتر اندازه‌گیری
   module: CMMS3
   values:
   - code: 1
@@ -11548,7 +11554,7 @@ types:
   - code: 2
     value: سنجشی
 - type: MeasurementResultRecordingState
-  title_fa: وضعیت نقطه اندازهگیری
+  title_fa: وضعیت نقطه اندازه‌گیری
   module: CMMS3
   values:
   - code: 1
@@ -11558,7 +11564,7 @@ types:
   - code: 3
     value: باطل شده
 - type: MeasurementResultRecordingStateConfiguration
-  title_fa: وضعیت نقطه اندازهگیری در تنظیمات
+  title_fa: وضعیت نقطه اندازه‌گیری در تنظیمات
   module: CMMS3
   values:
   - code: 1
@@ -11610,7 +11616,7 @@ types:
   - code: 3
     value: تعریف شده توسط  کاربر
 - type: MessageDeliveryState
-  title_fa: وضعیت تحويل پیام
+  title_fa: وضعیت تحویل پیام
   module: SCM3
   values:
   - code: 1
@@ -11696,7 +11702,7 @@ types:
     value: نیرو دریایی
     order: 2
 - type: MiscCostEffectTypeScope
-  title_fa: سطح اثرگذاري
+  title_fa: سطح اثرگذاری
   module: PRC3
   values:
   - code: 1
@@ -11948,7 +11954,7 @@ types:
   - code: 4
     value: مودی اصلی حقیقی خارجی
 - type: NatureControl
-  title_fa: ماھیت کنترل
+  title_fa: ماهیت کنترل
   module: FIN3
   values:
   - code: 1
@@ -11960,7 +11966,7 @@ types:
   - code: 4
     value: معین و تفصیل انتخابی
 - type: NatureOfFailureConsequence
-  title_fa: ماھیت پیامد خرابی
+  title_fa: ماهیت پیامد خرابی
   module: CMMS3
   values:
   - code: 1
@@ -12122,7 +12128,7 @@ types:
   - code: 2
     value: مقدار خروجی مشخص است
 - type: NormalORGuarantee
-  title_fa: ماھیت قلم
+  title_fa: ماهیت قلم
   module: RPA3
   values:
   - code: 1
@@ -12403,7 +12409,7 @@ types:
   - code: 2
     value: غیر فعال
 - type: NumberingReservationAssignType
-  title_fa: نحوه تخصیص )حین ثبت شماره
+  title_fa: نحوه تخصیص (حین ثبت شماره)
   module: ECM
   values:
   - code: 1
@@ -12453,7 +12459,7 @@ types:
   - code: 7
     value: در حال بررسی و معلق
 - type: OCInstruction
-  title_fa: ثبت تايیديه سفارش خريد
+  title_fa: ثبت تاییدیه سفارش خرید
   module: SCM3
   values:
   - code: 1
@@ -12713,7 +12719,7 @@ types:
   - code: 3
     value: اندازه گیری
 - type: OperationNature
-  title_fa: ماھیت عملیات کالیبراسیون سند تعمیراتی
+  title_fa: ماهیت عملیات کالیبراسیون سند تعمیراتی
   module: CAL3
   values:
   - code: 1
@@ -12721,7 +12727,7 @@ types:
   - code: 2
     value: کالیبراسیون
 - type: OperationTestProgressStatus
-  title_fa: وضعیت تکمیل آزمایش عملیات ھا
+  title_fa: وضعیت تکمیل آزمایش عملیات ها
   module: QCM3
   values:
   - code: 1
@@ -12743,7 +12749,7 @@ types:
     value: بین المللی
     order: 1
 - type: OperationTypeCode
-  title_fa: نوع عملیات حسابداري
+  title_fa: نوع عملیات حسابداری
   module: RPA3
   values:
   - code: 1
@@ -13078,7 +13084,7 @@ types:
   - code: 4
     value: بارنامه
 - type: ParameterCombinationOperator
-  title_fa: نوع ترکیب شرط پارامترھای سیاستگذاری
+  title_fa: نوع ترکیب شرط پارامترهای سیاستگذاری
   module: RPA3
   values:
   - code: 1
@@ -13088,7 +13094,7 @@ types:
   - code: 3
     value: یا
 - type: ParameterComparisonOperator
-  title_fa: انواع شرط پارامترھای سیاستگذاری
+  title_fa: انواع شرط پارامترهای سیاستگذاری
   module: RPA3
   values:
   - code: 1
@@ -13483,7 +13489,7 @@ types:
   - code: 2
     value: هیچوقت
 - type: PayCommitmentKind
-  title_fa: نوع تعھد پرداخت
+  title_fa: نوع تعهد پرداخت
   module: FCC3
   values:
   - code: 1
@@ -13539,7 +13545,7 @@ types:
   - code: 16384
     value: تغییر تاریخ سر رسید
 - type: PayableCollateralState
-  title_fa: وضعیت ضمانتنامه به عھده
+  title_fa: وضعیت ضمانتنامه به عهده
   module: RPA3
   values:
   - code: 1
@@ -13556,7 +13562,7 @@ types:
   - code: 4
     value: چک و سفته به عهده
 - type: PayableNoteReviewState
-  title_fa: وضعیت اسناد پرداختي
+  title_fa: وضعیت اسناد پرداختی
   module: RPA3
   values:
   - code: 1
@@ -13765,7 +13771,7 @@ types:
   - code: 3
     value: تایید شده
 - type: PerformancePeriodFactorAssignType
-  title_fa: روش مقدار دھی عامل ارزیابی
+  title_fa: روش مقدار دهی عامل ارزیابی
   module: HCM3
   values:
   - code: 1
@@ -13856,7 +13862,7 @@ types:
   - code: 3
     value: ماهانه
 - type: PeriodNatureType
-  title_fa: ماھیت دوره
+  title_fa: ماهیت دوره
   module: FIN3
   values:
   - code: 1
@@ -13942,7 +13948,7 @@ types:
     value: سایر
     order: 2
 - type: PersianCalendarMonths
-  title_fa: ماه ھای شمسی
+  title_fa: ماه های شمسی
   module: MMG3
   values:
   - code: 1
@@ -14018,7 +14024,7 @@ types:
   - code: 3
     value: غیره
 - type: PersonMaritalStatus
-  title_fa: وضعیت تأھل
+  title_fa: وضعیت تأهل
   module: GNR3
   values:
   - code: 1
@@ -14043,7 +14049,7 @@ types:
   - code: 4
     value: یهودیت
 - type: PersonSubreligion
-  title_fa: مذھب
+  title_fa: مذهب
   module: GNR3
   values:
   - code: 1
@@ -14094,7 +14100,7 @@ types:
   - code: 2
     value: در حال استفاده
 - type: PettyCashTransactionDocumentType
-  title_fa: نوع تراکنش ھای تنخواه
+  title_fa: نوع تراکنش های تنخواه
   module: RPA3
   values:
   - code: 1
@@ -14253,7 +14259,7 @@ types:
   - code: 5
     value: '3.4'
   - code: 6
-    value: '0.0'
+    value: '0'
   - code: 7
     value: '4.1'
   - code: 8
@@ -14352,7 +14358,7 @@ types:
   - code: 3
     value: مقدار ثابت
 - type: PolicyParameterAssignmentMethod
-  title_fa: روش مقداردھی پارامتر سیاست
+  title_fa: روش مقداردهی پارامتر سیاست
   module: GNR3
   values:
   - code: 1
@@ -14382,7 +14388,7 @@ types:
   - code: 5
     value: خاص ترین
 - type: PolicyResultShrinkMethod
-  title_fa: روش تسھیم نتیجه سیاست
+  title_fa: روش تسهیم نتیجه سیاست
   module: GNR3
   values:
   - code: 1
@@ -14914,7 +14920,7 @@ types:
   - code: 256
     value: سطح نه
 - type: PriorityType
-  title_fa: اولويت
+  title_fa: اولویت
   module: LGS3
   values:
   - code: 1
@@ -15707,7 +15713,7 @@ types:
   - code: 2
     value: Proforma Invoice
 - type: QuoteMessageOpeningEventAttenderApprovalState
-  title_fa: وضعیت تايید شرکتکننده رويداد برگزاري پیش فاکتور
+  title_fa: وضعیت تایید شرکت‌کننده رویداد برگزاری پیش فاکتور
   module: SCM3
   values:
   - code: 1
@@ -15715,7 +15721,7 @@ types:
   - code: 2
     value: تایید شده
 - type: QuoteMessageOpeningEventState
-  title_fa: وضعیت رويداد برگزاري پیش فاکتور
+  title_fa: وضعیت رویداد برگزاری پیش فاکتور
   module: SCM3
   values:
   - code: 1
@@ -15729,7 +15735,7 @@ types:
   - code: 5
     value: متوقف شده
 - type: RCAItemNatureType
-  title_fa: ماھیت عوامل تحلیل علت ریشه ای
+  title_fa: ماهیت عوامل تحلیل علت ریشه ای
   module: QAM3
   values:
   - code: 1
@@ -15759,7 +15765,7 @@ types:
   - code: 2
     value: هفته
 - type: RPAAccountTransactionScenario
-  title_fa: انواع سناريو تراکنش ھاي حساب
+  title_fa: انواع سناریو تراکنش های حساب
   module: RPA3
   values:
   - code: 1
@@ -15915,7 +15921,7 @@ types:
   - code: 4
     value: عالی
 - type: RationControlType
-  title_fa: نحوه کنترل سھمیه
+  title_fa: نحوه کنترل سهمیه
   module: SLS3
   values:
   - code: 1
@@ -15923,7 +15929,7 @@ types:
   - code: 2
     value: پایان دوره
 - type: RationDataEntryType
-  title_fa: نوع سھمیه بندی
+  title_fa: نوع سهمیه بندی
   module: SLS3
   values:
   - code: 1
@@ -15931,7 +15937,7 @@ types:
   - code: 2
     value: درصدی
 - type: RationFreeSaleLevel
-  title_fa: سطح فروش بدون سھمیه
+  title_fa: سطح فروش بدون سهمیه
   module: SLS3
   values:
   - code: 1
@@ -15939,7 +15945,7 @@ types:
   - code: 2
     value: موجودیت قابل سهمیه بندی
 - type: RationLevel
-  title_fa: سطح موجودیت قابل سھمیه بندی
+  title_fa: سطح موجودیت قابل سهمیه بندی
   module: SLS3
   values:
   - code: 1
@@ -15951,7 +15957,7 @@ types:
   - code: 4
     value: انبار
 - type: RationStockStatus
-  title_fa: وضعیت دوره سھمیه بندی
+  title_fa: وضعیت دوره سهمیه بندی
   module: SLS3
   values:
   - code: 1
@@ -15961,7 +15967,7 @@ types:
   - code: 3
     value: بسته شده
 - type: RationingItemIncreaseDecreaseType
-  title_fa: نوع افزایش/کاھش
+  title_fa: نوع افزایش/کاهش
   module: SLS3
   values:
   - code: 1
@@ -15977,7 +15983,7 @@ types:
   - code: 6
     value: آزادسازی
 - type: RationingItemStatus
-  title_fa: وضعیت ریز قلم سھمیه بندی
+  title_fa: وضعیت ریز قلم سهمیه بندی
   module: SLS3
   values:
   - code: 1
@@ -15991,7 +15997,7 @@ types:
   - code: 5
     value: آزاد شده
 - type: RationingMoment
-  title_fa: زمان سھمیه بندی
+  title_fa: زمان سهمیه بندی
   module: SLS3
   values:
   - code: 1
@@ -15999,7 +16005,7 @@ types:
   - code: 2
     value: تایید
 - type: RationingPerformance
-  title_fa: عملکرد سھمیه بندی درصدی برای افزایش/کاھش موجودی قابل سھمیه بندی
+  title_fa: عملکرد سهمیه بندی درصدی برای افزایش/کاهش موجودی قابل سهمیه بندی
   module: SLS3
   values:
   - code: 1
@@ -16007,7 +16013,7 @@ types:
   - code: 2
     value: باقیمانده سهمیه
 - type: RationingPeriodStatus
-  title_fa: وضعیت دوره سھمیه بندی
+  title_fa: وضعیت دوره سهمیه بندی
   module: SLS3
   values:
   - code: 1
@@ -16024,7 +16030,7 @@ types:
   - code: 2
     value: گروه کاربر
 - type: RationingStatus
-  title_fa: وضعیت قلم سھمیه بندی
+  title_fa: وضعیت قلم سهمیه بندی
   module: SLS3
   values:
   - code: 1
@@ -16049,7 +16055,7 @@ types:
   - code: 3
     value: دریافت شده
 - type: ReceiptAndPaymentCauseStates
-  title_fa: وضعیت بابت در دريافت و پرداخت
+  title_fa: وضعیت بابت در دریافت و پرداخت
   module: RPA3
   values:
   - code: 1
@@ -16057,7 +16063,7 @@ types:
   - code: 2
     value: غیر فعال
 - type: ReceiptAndPaymentCauseType
-  title_fa: نوع بابت در دريافت و پرداخت
+  title_fa: نوع بابت در دریافت و پرداخت
   module: RPA3
   values:
   - code: 1
@@ -16069,7 +16075,7 @@ types:
   - code: 4
     value: صورت خلاصه تنخواه
 - type: ReceiptAndPaymentOperation
-  title_fa: عملیات دريافت و پرداخت
+  title_fa: عملیات دریافت و پرداخت
   module: RPA3
   values:
   - code: 3
@@ -16206,7 +16212,7 @@ types:
   - code: 4
     value: باطل شده
 - type: ReceivableNoteReviewState
-  title_fa: وضعیت اسناد دريافتي
+  title_fa: وضعیت اسناد دریافتی
   module: RPA3
   values:
   - code: 1
@@ -16248,7 +16254,7 @@ types:
   - code: 4
     value: پردازش نشده
 - type: ReceivedDocumentType
-  title_fa: نوع سند دريافتي
+  title_fa: نوع سند دریافتی
   module: SCM3
   values:
   - code: 1
@@ -16390,7 +16396,7 @@ types:
   - code: 2
     value: بدون مبنا
 - type: ReferenceTypeToVoucher
-  title_fa: انواع ارجاع به اقلام تغییر يافته سند
+  title_fa: انواع ارجاع به اقلام تغییر یافته سند
   module: FIN3
   values:
   - code: 1
@@ -16452,7 +16458,7 @@ types:
   - code: 14
     value: شتابگر نامه - تغییر وضعیت
 - type: ReferringReasonState
-  title_fa: وضعیت جھت مکاتبه
+  title_fa: وضعیت جهت مکاتبه
   module: ECM
   values:
   - code: 1
@@ -16460,7 +16466,7 @@ types:
   - code: 2
     value: غیرفعال
 - type: ReferringReasonType
-  title_fa: نوع جھت مکاتبه
+  title_fa: نوع جهت مکاتبه
   module: ECM
   values:
   - code: 1
@@ -16740,7 +16746,7 @@ types:
   - code: 14
     value: برگشت از واگذار به غیر
 - type: ReportInharmonicItem
-  title_fa: قلم ھای ناھماھنگ مورد استفاده در گزارش
+  title_fa: قلم های ناهماهنگ مورد استفاده در گزارش
   module: RPA3
   values:
   - code: 1
@@ -17105,7 +17111,7 @@ types:
   - code: 7
     value: ارز
 - type: RetailBusinessPolicyGroupControlType
-  title_fa: نحوه کنترل سیاست ھای ھم گروه خرده فروشی
+  title_fa: نحوه کنترل سیاست های هم گروه خرده فروشی
   module: RMS3
   values:
   - code: 1
@@ -17931,11 +17937,11 @@ types:
   module: HCM3
   values:
   - code: 1
-    value: احکام دوسال آخر خدمت مشمول كسوربازنشستگي (30)
+    value: احکام دوسال آخر خدمت مشمول کسوربازنشستگی (30)
   - code: 2
-    value: احکام مربوط به نيمه وقت ،آماده بخدمت ،غيبت موجه،ماموريت به دستگاه هاي غير مشمول (37)
+    value: احکام مربوط به نیمه وقت ،آماده بخدمت ،غیبت موجه،ماموریت به دستگاه های غیر مشمول (37)
   - code: 4
-    value: احکام نظير (مرخصي بدون حقوق، انفصال خدمت، غيبت و …)(38)
+    value: احکام نظیر (مرخصی بدون حقوق، انفصال خدمت، غیبت و …)(38)
 - type: ReturnBillIssueTime
   module: SLS3
   values:
@@ -18729,7 +18735,7 @@ types:
     value: بعد از تایید
     order: 2
 - type: SamplingPlan
-  title_fa: طرح نمونهگیری
+  title_fa: طرح نمونه‌گیری
   module: QCM3
   values:
   - code: 1
@@ -18757,7 +18763,7 @@ types:
   - code: 2
     value: به اندازه کمتر یا بیشتر مجاز است
 - type: SamplingType
-  title_fa: نوع رویه نمونهگیری
+  title_fa: نوع رویه نمونه‌گیری
   module: QCM3
   values:
   - code: 1
@@ -18774,15 +18780,15 @@ types:
   module: FIN3
   values:
   - code: 1
-    value: '#ERROR!'
+    value: '='
   - code: 2
     value: <
   - code: 3
-    value: '#ERROR!'
+    value: =<
   - code: 4
     value: '>'
   - code: 5
-    value: '#ERROR!'
+    value: =>
 - type: ScalePriceType
   module: RMS3
   values:
@@ -19032,7 +19038,7 @@ types:
   - code: 2
     value: ارسال نشود
 - type: SentDocumentState
-  title_fa: وضعیت سند ارسالي
+  title_fa: وضعیت سند ارسالی
   module: SCM3
   values:
   - code: 1
@@ -19050,7 +19056,7 @@ types:
   - code: 7
     value: منقضی شده
 - type: SentDocumentType
-  title_fa: نوع سند ارسالي
+  title_fa: نوع سند ارسالی
   module: SCM3
   values:
   - code: 1
@@ -19097,7 +19103,7 @@ types:
   - code: 3
     value: ضایعاتی
 - type: SerialPoolMissedBehavior
-  title_fa: شماره ھای از دست رفته
+  title_fa: شماره های از دست رفته
   module: ECM
   values:
   - code: 1
@@ -19626,7 +19632,7 @@ types:
   - code: 5
     value: منبع تامین کالای تعمیری
 - type: SpecialDayType
-  title_fa: روزھای خاص
+  title_fa: روزهای خاص
   module: HCM3
   values:
   - code: 1
@@ -19933,11 +19939,11 @@ types:
   module: dbo
   values:
   - code: 0
-    value: '1.0'
+    value: '1'
   - code: 1
     value: '1.5'
   - code: 2
-    value: '2.0'
+    value: '2'
 - type: StorePositionState
   title_fa: LookupTitleEmptyToken
   module: LGS3
@@ -20092,7 +20098,7 @@ types:
   - code: 3
     value: ارزیابی اولیه و با مبنا
 - type: SupplierAssessmentParameterType
-  title_fa: نوع شاخص ارزيابي تأمین کننده
+  title_fa: نوع شاخص ارزیابی تأمین کننده
   module: PRC3
   values:
   - code: 1
@@ -20106,7 +20112,7 @@ types:
   - code: 2
     value: شرکت
 - type: SupplierStatus
-  title_fa: شرايط تامین کننده
+  title_fa: شرایط تامین کننده
   module: SCM3
   values:
   - code: 1
@@ -20126,7 +20132,7 @@ types:
   - code: 2
     value: خارجی
 - type: SyncDuration
-  title_fa: دوره ھمگام سازي
+  title_fa: دوره همگام سازی
   module: SCM3
   values:
   - code: 10
@@ -20165,7 +20171,7 @@ types:
   - code: 5
     value: '3.4'
   - code: 6
-    value: '0.0'
+    value: '0'
   - code: 7
     value: '4.1'
   - code: 8
@@ -20439,7 +20445,7 @@ types:
   module: HCM3
   values:
   - code: 1
-    value: '1.0'
+    value: '1'
     order: 0
   - code: 2
     value: '0.5'
@@ -20850,7 +20856,7 @@ types:
     value: Other
     order: 6
 - type: TerminalAlarmType
-  title_fa: نحوه اعلان ھشدار صوتی
+  title_fa: نحوه اعلان هشدار صوتی
   module: PAC3
   values:
   - code: 1
@@ -20891,7 +20897,7 @@ types:
   - code: 5
     value: هوایی
 - type: TestProgressStatus
-  title_fa: وضعیت تکمیل آزمایش ھا
+  title_fa: وضعیت تکمیل آزمایش ها
   module: QCM3
   values:
   - code: 1
@@ -21344,7 +21350,7 @@ types:
   - code: 8
     value: گروه هدف
 - type: TranscriptStructureFinalScoreColorBase
-  title_fa: اساس رنگ بندی امتیاز نھایی شاخص
+  title_fa: اساس رنگ بندی امتیاز نهایی شاخص
   module: HCM3
   values:
   - code: 1
@@ -21539,7 +21545,7 @@ types:
   - code: 4
     value: داده پردازی تیس
 - type: UnSettledInvoiceDateType
-  title_fa: انواع زمان بررسی فاکتورھای تسویه نشده
+  title_fa: انواع زمان بررسی فاکتورهای تسویه نشده
   module: SLS3
   values:
   - code: 1
@@ -21623,7 +21629,7 @@ types:
   - code: 2
     value: غیرفعال
 - type: UploadHistoryState
-  title_fa: وضعیت تاريخچه ارسال
+  title_fa: وضعیت تاریخچه ارسال
   module: SCM3
   values:
   - code: 1
@@ -22087,7 +22093,7 @@ types:
   - code: 2
     value: سطوح ساختار انبار
 - type: WarningLevel
-  title_fa: سطح ھشدار
+  title_fa: سطح هشدار
   module: BDG3
   values:
   - code: 1
@@ -22161,7 +22167,7 @@ types:
   - code: 6
     value: انتقال وجه آنی
 - type: WeekDay
-  title_fa: روز ھفته
+  title_fa: روز هفته
   module: MMG
   values:
   - code: 0
@@ -22251,7 +22257,7 @@ types:
   - code: 2
     value: برنامه ریزی شده
 - type: WorkRecordExtra1
-  title_fa: سوابق شغلی1سایر
+  title_fa: سایر 1 سوابق شغلی
   module: SYS3
   values:
   - code: 1
@@ -22270,7 +22276,7 @@ types:
     value: کارشناس سطح2
     order: 4
 - type: WorkRecordExtra2
-  title_fa: سوابق شغلی2سایر
+  title_fa: سایر 2 سوابق شغلی
   module: SYS3
   values:
   - code: 1

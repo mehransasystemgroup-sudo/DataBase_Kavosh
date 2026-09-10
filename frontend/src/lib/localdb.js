@@ -405,7 +405,15 @@ class KnowledgeBase {
       where.push("t.module = ?");
       params.push(module);
     }
-    let sql = "SELECT type, title_fa, module, n_values FROM lookup_types t";
+    // وقتی تطبیق روی خودِ مقدار بوده، همان مقدار هم برمی‌گردد — وگرنه کاربری
+    // که «دیپلم» را جسته، فهرستی از نام‌های لاتین می‌بیند بی‌هیچ نشانه‌ای از
+    // اینکه چرا این نوع‌ها آمده‌اند.
+    const matched = q
+      ? "(SELECT v.value FROM lookup_values v WHERE v.type = t.type" +
+        "  AND v.value LIKE ? ORDER BY COALESCE(v.ordinal, v.code) LIMIT 1)"
+      : "NULL";
+    if (q) params.unshift(`%${q.trim()}%`);
+    let sql = `SELECT type, title_fa, module, n_values, ${matched} AS matched_value FROM lookup_types t`;
     if (where.length) sql += ` WHERE ${where.join(" AND ")}`;
     sql += " ORDER BY (t.title_fa IS NULL), t.n_values DESC, t.type LIMIT ?";
     params.push(limit);

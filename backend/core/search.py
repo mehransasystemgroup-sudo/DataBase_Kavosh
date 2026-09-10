@@ -514,7 +514,17 @@ class KnowledgeBase:
         if module:
             where.append("t.module = ?")
             params.append(module)
-        sql = "SELECT type, title_fa, module, n_values FROM lookup_types t"
+        # وقتی تطبیق روی خودِ مقدار بوده، همان مقدار هم برمی‌گردد: بدون آن،
+        # کاربری که «دیپلم» را جسته فهرستی از نام‌های لاتین می‌بیند و هیچ
+        # نشانه‌ای ندارد که چرا این نوع‌ها آمده‌اند.
+        matched = (
+            "(SELECT v.value FROM lookup_values v WHERE v.type = t.type "
+            " AND v.value LIKE ? ORDER BY COALESCE(v.ordinal, v.code) LIMIT 1)"
+            if q else "NULL"
+        )
+        sql = f"SELECT type, title_fa, module, n_values, {matched} AS matched_value FROM lookup_types t"
+        if q:
+            params.insert(0, f"%{q.strip()}%")
         if where:
             sql += " WHERE " + " AND ".join(where)
         # نوع‌های عنوان‌دار اول: بدون عنوان فارسی، سطر برای کاربر فارسی‌زبان
