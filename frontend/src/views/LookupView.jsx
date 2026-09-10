@@ -5,7 +5,7 @@ import { http } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
 import { schemaAccent, schemaLabel } from "@/lib/schemaTheme";
 import { useTheme } from "@/context/ThemeContext";
-import { EmptyState, LoadingBar, Shimmer } from "@/components/primitives";
+import { Badge, EmptyState, LoadingBar, Shimmer } from "@/components/primitives";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 /*
@@ -51,7 +51,7 @@ function TypeRow({ item, active, onOpen, index, isDark }) {
           {item.type}
         </span>
         <span className="ms-auto shrink-0 text-[10.5px] text-muted-foreground">
-          {fa(item.n_values)} مقدار
+          {item.n_values > 0 ? `${fa(item.n_values)} مقدار` : "بدون مقدار"}
         </span>
       </div>
       {item.title_fa && (
@@ -314,6 +314,7 @@ export default function LookupView({ onSelectTable }) {
                   <span className="ltr font-mono text-base font-bold text-foreground">
                     {detail.type}
                   </span>
+                  {detail.is_dynamic ? <Badge tone="info">پویا</Badge> : null}
                 </div>
                 {detail.title_fa && (
                   <h2 className="mt-1.5 text-sm font-bold text-foreground">{detail.title_fa}</h2>
@@ -345,7 +346,20 @@ export default function LookupView({ onSelectTable }) {
                 )}
               </div>
 
-              <ValueTable values={detail.values || []} />
+              {/*
+                نوعِ بی‌مقدار جدول خالی نمی‌گیرد. خالی بودنش خبر است نه نقص، و
+                اگر پویا باشد دلیلش را هم می‌دانیم: مقادیرش را خودِ مشتری در
+                نرم‌افزار تعریف می‌کند و در این نصب چیزی تعریف نشده.
+              */}
+              {detail.values?.length ? (
+                <ValueTable values={detail.values} />
+              ) : (
+                <div className="rounded-lg border border-warn/35 bg-warn/10 p-3 text-[11.5px] leading-relaxed text-warn">
+                  {detail.is_dynamic
+                    ? "این نوع پویاست: مقادیرش در خود نرم‌افزار تعریف می‌شوند و در این نصب هنوز چیزی تعریف نشده. نوع و عنوانش تعریف‌شده است، ولی فهرست مقادیری برایش وجود ندارد."
+                    : "برای این نوع مقداری در پایگاه داده ثبت نشده است."}
+                </div>
+              )}
 
               {detail.used_by?.length > 0 && (
                 <div>

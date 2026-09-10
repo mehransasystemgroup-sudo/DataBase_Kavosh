@@ -18,7 +18,12 @@
 # ⚠️ 2 مقدار در نوع CalculationItemType در خودِ پایگاه داده خراب است
 # (همهٔ کاراکترهایش «?» است). دست‌نخورده مانده‌اند چون محتوای واقعی جدول‌اند.
 #
-# 1830 نوع · 7420 مقدار · 879 عنوان فارسی
+# 1893 نوع · 7420 مقدار · 942 عنوان فارسی
+#
+# 63 نوع هیچ مقداری ندارد؛ تقریباً همه‌شان
+# پویا هستند (dynamic: true) یعنی مقادیرشان را خودِ مشتری در نرم‌افزار تعریف
+# می‌کند و در این نصب چیزی تعریف نشده. نگه داشته شده‌اند چون دانستنِ اینکه
+# چنین نوعی وجود دارد و یعنی چه، خودش اطلاعات است.
 #
 # تاریخ ورود: 2026-09-10
 types:
@@ -843,6 +848,7 @@ types:
 - type: AppraisalDimension
   title_fa: ابعاد ارزیابی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: خود ارزیابی
@@ -875,6 +881,7 @@ types:
 - type: AppraisalExecutionTime
   title_fa: تکمیلی سنجش آموزش
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: تکرار اول
@@ -977,6 +984,7 @@ types:
 - type: AppraisalPatternType
   title_fa: نوع کامپوننت
   module: HCM3
+  dynamic: true
   values:
   - code: 0
     value: صفحه
@@ -1058,6 +1066,7 @@ types:
 - type: AppraisalType
   title_fa: نوع سنجش
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: کمی
@@ -1786,6 +1795,10 @@ types:
   - code: 6
     value: درخواست مرخصی
     order: 0
+- type: AttendanceStatus
+  title_fa: وضعیت حضور
+  dynamic: true
+  values: []
 - type: AttendanceStatusType
   title_fa: نوع وضعیت
   module: HCM3
@@ -1856,6 +1869,7 @@ types:
 - type: Authority
   title_fa: اختیار
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: تعیین قوانین مالی
@@ -2210,6 +2224,7 @@ types:
 - type: Base
   title_fa: پایه
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: بدون پایه
@@ -2299,6 +2314,10 @@ types:
   - code: 2
     value: ورودی
     order: 0
+- type: BatchProfileTemplateItemGroup
+  title_fa: گروه ویژگی‌های الگوی شناسنامه‌ی کالا
+  dynamic: true
+  values: []
 - type: BatchType
   title_fa: نوع بچ
   module: LGS3
@@ -2420,6 +2439,7 @@ types:
 - type: BomUsage
   title_fa: کاربرد BOM
   module: PAC3
+  dynamic: true
   values:
   - code: 1
     value: تولید
@@ -2498,6 +2518,10 @@ types:
     value: تایید
   - code: 3
     value: سند صادر شده
+- type: BusinessDomain
+  title_fa: حوزه فعالیت
+  dynamic: true
+  values: []
 - type: BusinessPolicyGroupControlType
   title_fa: نحوه کنترل تعداد مجاز
   module: SLS3
@@ -3072,6 +3096,10 @@ types:
     value: شیفتی
   - code: 2
     value: روزانه
+- type: CapacityGroup
+  title_fa: گروه ظرفیت
+  dynamic: true
+  values: []
 - type: CapacityTypeNature
   title_fa: ماهیت نوع ظرفیت
   module: MMG3
@@ -3449,6 +3477,7 @@ types:
 - type: ClientLetterStates
   title_fa: وضعیت های نامه ارباب رجوع
   module: ECM
+  dynamic: true
   values:
   - code: 1
     value: درحال بررسی
@@ -3610,6 +3639,9 @@ types:
     value: پرداخت
   - code: 4
     value: دریافت
+- type: CollateralTypes
+  title_fa: نوع ضمانت
+  values: []
 - type: CollectionNoticeFundingType
   module: XLS3
   values:
@@ -3977,6 +4009,7 @@ types:
 - type: Competency
   title_fa: شایستگی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: آشنایی با حقوق بین الملل
@@ -4034,6 +4067,7 @@ types:
 - type: CompetencyLevel
   title_fa: سطح شایستگی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: مقدماتی
@@ -4053,6 +4087,10 @@ types:
   - code: 2
     value: غیر فعال
     order: 1
+- type: CompetencyType
+  title_fa: نوع شایستگی
+  dynamic: true
+  values: []
 - type: ComputationalIndicatorReturnType
   title_fa: نوع خروجی
   module: HCM3
@@ -4809,6 +4847,7 @@ types:
 - type: CourseAppraisalTitle
   title_fa: عنوان سنجش ارزیابی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: ارزیابی مدرس از فراگیر
@@ -4862,9 +4901,18 @@ types:
   - code: 2
     value: غیر اثربخش
     order: 1
+- type: CourseEvaluationByParticipant
+  title_fa: ارزیابی فراگیر از دوره
+  dynamic: true
+  values: []
+- type: CourseEvaluationByTrainer
+  title_fa: ارزیابی مدرس از دوره
+  dynamic: true
+  values: []
 - type: CourseExecutionMethod
   title_fa: روش برگزاری دوره آموزشی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: حضوری
@@ -4891,6 +4939,7 @@ types:
 - type: CourseLocation
   title_fa: محل برگزاری دوره آموزشی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: داخل سازمان
@@ -4919,6 +4968,7 @@ types:
 - type: CoursePlanHelperUtility
   title_fa: وسایل کمک آموزشی دوره
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: نت بوک
@@ -4938,6 +4988,10 @@ types:
   - code: 4
     value: خاتمه یافته
     order: 3
+- type: CoursePlanType
+  title_fa: نوع برگزاری دوره آموزشی
+  dynamic: true
+  values: []
 - type: CoursePrerequisiteControlMethod
   module: HCM3
   values:
@@ -4950,9 +5004,14 @@ types:
   - code: 3
     value: توقف عملیات
     order: 2
+- type: CourseReference
+  title_fa: مبنای تعریف دوره آموزشی
+  dynamic: true
+  values: []
 - type: CourseRegistrationParticipantPriority
   title_fa: اولویت شرکت‌کننده ثبت نام دوره
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: بسیار فوری
@@ -5009,6 +5068,7 @@ types:
 - type: CourseRequestPriority
   title_fa: اولویت درخواست دوره
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: بسیار فوری
@@ -5046,6 +5106,7 @@ types:
 - type: CourseSubject
   title_fa: موضوع دوره آموزشی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: خدماتی
@@ -5802,6 +5863,9 @@ types:
     value: ''
   - code: 2
     value: قرارداد
+- type: DefaultSalesArea
+  title_fa: حوزه فروش پیش فرض
+  values: []
 - type: DefectCharacteristicRecordingType
   title_fa: مقداردهی ویژگی عیب
   module: MMG3
@@ -5810,12 +5874,24 @@ types:
     value: اجباری
   - code: 2
     value: اختیاری
+- type: DefectRecordingDefectOccurrenceLocation
+  title_fa: محل وقوع عیب
+  dynamic: true
+  values: []
+- type: DefectRecordingDefectSeverity
+  title_fa: شدت عیب
+  dynamic: true
+  values: []
 - type: DefectRecordingScopeType
   title_fa: سطح سند عیب
   module: MMG3
   values:
   - code: 1
     value: سایر
+- type: DefectType
+  title_fa: نوع عیب
+  dynamic: true
+  values: []
 - type: DelayReasonState
   module: CMMS3
   values:
@@ -5885,6 +5961,18 @@ types:
     value: بیشترین برآورد زمان پیشبرد تامین کنندگان
   - code: 3
     value: برآورد زمان پیشبرد کالا
+- type: DepartmentExtra1
+  title_fa: سایر 1 واحد سازمانی
+  dynamic: true
+  values: []
+- type: DepartmentExtra2
+  title_fa: سایر 2 واحد سازمانی
+  dynamic: true
+  values: []
+- type: DepartmentExtra3
+  title_fa: سایر 3 واحد سازمانی
+  dynamic: true
+  values: []
 - type: DepartmentStatus
   title_fa: وضعیت واحد سازمانی
   module: HCM3
@@ -5898,6 +5986,7 @@ types:
 - type: DepartmentType
   title_fa: نوع واحد سازمانی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: ستادی
@@ -6590,6 +6679,7 @@ types:
 - type: Dosage
   title_fa: دوزاژ
   module: LGS3
+  dynamic: true
   values:
   - code: 0
     value: ''
@@ -6647,6 +6737,7 @@ types:
 - type: Duty
   title_fa: وظیفه
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: انجام امور مالی
@@ -6744,6 +6835,7 @@ types:
 - type: EducationCenter
   title_fa: مرکز آموزشی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: دانشگاه سراسری
@@ -6763,6 +6855,7 @@ types:
 - type: EducationDegree
   title_fa: مقطع تحصیلی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: زیردیپلم
@@ -6785,6 +6878,7 @@ types:
 - type: EducationDiscipline
   title_fa: رشته تحصیلی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: مهندسی شیمی
@@ -6930,6 +7024,7 @@ types:
 - type: EducationMajor
   title_fa: گرایش تحصیلی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: ندارد
@@ -7075,6 +7170,7 @@ types:
 - type: EducationNeedLevel
   title_fa: درجه نیاز آموزشی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: الف
@@ -7088,6 +7184,7 @@ types:
 - type: EducationQuality
   title_fa: کیفیت آموزشی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: خوب
@@ -7101,6 +7198,7 @@ types:
 - type: EducationState
   title_fa: وضعیت تحصیلی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: محصل
@@ -7293,6 +7391,14 @@ types:
   - code: 2
     value: یا
     order: 1
+- type: EmployeeCompetencyExtra1
+  title_fa: سایر 1 سوابق شایستگی
+  dynamic: true
+  values: []
+- type: EmployeeCompetencyExtra2
+  title_fa: سایر 2 سوابق شایستگی
+  dynamic: true
+  values: []
 - type: EmployeeDataAccessTargetSetType
   module: HCM3
   values:
@@ -7356,9 +7462,26 @@ types:
   - code: 2
     value: عدم دسترسی
     order: 1
+- type: EmployeeEducationExtra1
+  title_fa: سایر 1 سوابق تحصیلی
+  dynamic: true
+  values: []
+- type: EmployeeEducationExtra2
+  title_fa: سایر 2 سوابق تحصیلی
+  dynamic: true
+  values: []
+- type: EmployeeExtra1
+  title_fa: سایر 1 کارمند
+  dynamic: true
+  values: []
+- type: EmployeeExtra2
+  title_fa: سایر 2 کارمند
+  dynamic: true
+  values: []
 - type: EmployeeGroupStatus
   title_fa: وضعیت گروه کارمند
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: ذخیره
@@ -7467,6 +7590,10 @@ types:
   - code: 9
     value: فرزند خوانده
     order: 8
+- type: EmployeeRelativeExtra1
+  title_fa: سایر اطلاعات بستگان 1
+  dynamic: true
+  values: []
 - type: EmployeeRelativeType
   title_fa: نوع وابسته
   module: HCM3
@@ -7480,6 +7607,7 @@ types:
 - type: EmployeeStatus
   title_fa: وضعیت کارمند
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: جدید
@@ -7530,6 +7658,22 @@ types:
   - code: 5
     value: بازنشسته
     order: 4
+- type: EmployeeStatuteExtra1
+  title_fa: سایر 1 حکم کارگزینی
+  dynamic: true
+  values: []
+- type: EmployeeStatuteExtra2
+  title_fa: سایر 2 حکم کارگزینی
+  dynamic: true
+  values: []
+- type: EmployeeStatuteExtra3
+  title_fa: سایر 3 حکم کارگزینی
+  dynamic: true
+  values: []
+- type: EmployeeStatuteExtra4
+  title_fa: سایر 4 حکم کارگزینی
+  dynamic: true
+  values: []
 - type: EmployeeStatuteIssueTime
   title_fa: زمان صدور حکم
   module: HCM3
@@ -7564,6 +7708,7 @@ types:
 - type: EmployeeStatuteRequestReference
   title_fa: مبنای درخواست حکم کارگزینی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: ارتقا و ترفیع
@@ -7571,6 +7716,7 @@ types:
 - type: EmployeeStatuteRequestState
   title_fa: وضعیت درخواست حکم کارگزینی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: ذخیره
@@ -7581,6 +7727,7 @@ types:
 - type: EmployeeStatuteStatus
   title_fa: وضعیت حکم کارگزینی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: ذخیره
@@ -7588,6 +7735,22 @@ types:
     value: تایید کارگزینی
   - code: 10
     value: تایید پرداخت
+- type: EmployeeTrainingExtra1
+  title_fa: سایر 1 سوابق آموزشی
+  dynamic: true
+  values: []
+- type: EmployeeTrainingExtra2
+  title_fa: سایر 2 سوابق آموزشی
+  dynamic: true
+  values: []
+- type: EmployeeWarriorRecordExtra1
+  title_fa: سایر 1 سوابق ایثارگری
+  dynamic: true
+  values: []
+- type: EmployeeWarriorRecordExtra2
+  title_fa: سایر 2 سوابق ایثارگری
+  dynamic: true
+  values: []
 - type: EmploymentNature
   module: HCM3
   values:
@@ -7680,9 +7843,18 @@ types:
     value: تغییر کردن
   - code: 4
     value: تغییر وضعیت
+- type: EquipmentABCIndicator
+  title_fa: درجه اهمیت تجهیز
+  dynamic: true
+  values: []
+- type: EquipmentInstallDismantleReason
+  title_fa: علت نصب/جداسازی تجهیز
+  dynamic: true
+  values: []
 - type: EquipmentStatusType
   title_fa: وضعیت دستگاه نگهداری و تعمیرات
   module: CMMS3
+  dynamic: true
   values:
   - code: 1
     value: روشن
@@ -7815,6 +7987,7 @@ types:
 - type: ExemptionType
   title_fa: نوع معافیت
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: دائم
@@ -8342,6 +8515,7 @@ types:
 - type: FailureDetectionMethodType
   title_fa: نوع روش تشخیص خرابی
   module: CMMS3
+  dynamic: true
   values:
   - code: 1
     value: فعالیت های برنامه ریزی شده
@@ -8871,6 +9045,10 @@ types:
     value: گازوئیل
   - code: 3
     value: گاز
+- type: FunctionalLocationStructureType
+  title_fa: نوع فرایند/ استقرار
+  dynamic: true
+  values: []
 - type: FundCategory
   title_fa: طبقه اعتبار
   module: FIN3
@@ -9339,6 +9517,10 @@ types:
   - code: 1
     value: ماهانه
     order: 3
+- type: IRPGrouping
+  title_fa: گروه بندی
+  dynamic: true
+  values: []
 - type: IRPPlanningType
   module: MRP3
   values:
@@ -9406,6 +9588,7 @@ types:
 - type: Incoterms
   title_fa: نحوه خرید
   module: IPR3
+  dynamic: true
   values:
   - code: 1
     value: FAS
@@ -9522,6 +9705,10 @@ types:
     value: بازیافت
   - code: 4
     value: ابتدای دوره
+- type: InspectionCharacteristicCategory
+  title_fa: گروه ویژگی کیفی
+  dynamic: true
+  values: []
 - type: InspectionCharacteristicDefectRecordingType
   title_fa: نوع ثبت عیوب
   module: QCM3
@@ -9530,6 +9717,10 @@ types:
     value: اجباری
   - code: 2
     value: اختیاری
+- type: InspectionCharacteristicImportanceLevel
+  title_fa: درجه اهمیت ویژگی کیفی
+  dynamic: true
+  values: []
 - type: InspectionCharacteristicRecordingType
   title_fa: نوع ثبت نتیجه ویژگی
   module: QCM3
@@ -9690,6 +9881,10 @@ types:
     value: تاریخ بسته شدن سند
   - code: 5
     value: تاریخ ثابت
+- type: InstituteActivity
+  title_fa: زمینه فعالیت موسسه
+  dynamic: true
+  values: []
 - type: InstituteState
   module: HCM3
   values:
@@ -9699,6 +9894,10 @@ types:
   - code: 2
     value: غیر فعال
     order: 1
+- type: InstituteType
+  title_fa: نوع موسسه
+  dynamic: true
+  values: []
 - type: InsuranceAccountGroupType
   module: FAM3
   values:
@@ -9720,6 +9919,10 @@ types:
   - code: 2
     value: تعداد قلم
     order: 1
+- type: InsuranceContract
+  title_fa: ردیف پیمان
+  dynamic: true
+  values: []
 - type: InsuranceDLLookupItemType
   module: FAM3
   values:
@@ -10320,6 +10523,7 @@ types:
 - type: JobClass
   title_fa: رسته شغلی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: اداری و مالی
@@ -10354,6 +10558,7 @@ types:
 - type: JobGroup
   title_fa: گروه شغلی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: '1'
@@ -10719,6 +10924,10 @@ types:
     value: صادره
   - code: 3
     value: داخلی
+- type: LicenceType
+  title_fa: نوع مجوز
+  dynamic: true
+  values: []
 - type: LimitType
   module: SLS3
   values:
@@ -11201,6 +11410,7 @@ types:
 - type: MaintenanceDocumentType
   title_fa: نوع سند نگهداری و تعمیرات
   module: CMMS3
+  dynamic: true
   values:
   - code: 1
     value: پیشگیرانه
@@ -11216,9 +11426,14 @@ types:
     value: نیمه جاری
   - code: 3
     value: راکد
+- type: MaintenanceWorkPriority
+  title_fa: اولویت انجام کار تعمیراتی
+  dynamic: true
+  values: []
 - type: ManagementLevel
   title_fa: سطح مدیریت
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: عادی
@@ -11322,6 +11537,7 @@ types:
 - type: MartyrRelationGrade
   title_fa: درجه نسبت با ایثارگر
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: درجه1
@@ -11582,6 +11798,7 @@ types:
 - type: MedicalCategory
   title_fa: نوع
   module: LGS3
+  dynamic: true
   values:
   - code: 0
     value: ''
@@ -11662,6 +11879,7 @@ types:
 - type: MilitaryBranch
   title_fa: حوزه خدمت نظام وظیفه
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: اداری
@@ -11675,6 +11893,7 @@ types:
 - type: MilitaryServiceStatus
   title_fa: وضعیت نظام وظیفه
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: انجام داده
@@ -11691,6 +11910,7 @@ types:
 - type: MilitaryUnit
   title_fa: رسته خدمت نظام وظیفه
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: ارتش
@@ -11723,6 +11943,7 @@ types:
     order: 3
 - type: MissionAccommodationType
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: هتل
@@ -11774,6 +11995,7 @@ types:
     value: ساعت-دقیقه
 - type: MissionTravelType
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: زمینی-شخصی
@@ -11968,6 +12190,7 @@ types:
 - type: NatureOfFailureConsequence
   title_fa: ماهیت پیامد خرابی
   module: CMMS3
+  dynamic: true
   values:
   - code: 1
     value: امنیت
@@ -12932,6 +13155,7 @@ types:
 - type: OrganizationStructurePostType
   title_fa: نوع پست در ساختار
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: مصوب
@@ -13321,6 +13545,7 @@ types:
 - type: PartSecondType
   title_fa: نوع دوم کالا
   module: LGS3
+  dynamic: true
   values:
   - code: 1
     value: C
@@ -13806,6 +14031,7 @@ types:
 - type: PerformancePeriodType
   title_fa: نوع دوره
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: سیستمی
@@ -14081,6 +14307,9 @@ types:
     value: UROVO I9100 - ایران کیش
   - code: 10
     value: TECHNO P3 - به پرداخت ملت
+- type: PersonalInfoChangeRequestType
+  title_fa: نوع درخواست تغییر اطلاعات فردی
+  values: []
 - type: PettyCashCardCollectionStates
   title_fa: وضعیت گروه کارت تنخواه
   module: RPA3
@@ -14163,6 +14392,7 @@ types:
 - type: PhysicalShape
   title_fa: شکل
   module: LGS3
+  dynamic: true
   values:
   - code: 0
     value: ''
@@ -14179,6 +14409,7 @@ types:
 - type: PhysicalState
   title_fa: وضعیت جسمانی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: سالم
@@ -14422,9 +14653,22 @@ types:
     value: فعال
   - code: 1
     value: غیرفعال
+- type: PostExtra3
+  title_fa: سایر ۳ پست
+  dynamic: true
+  values: []
+- type: PostExtra4
+  title_fa: سایر ۴ پست
+  dynamic: true
+  values: []
+- type: PostExtra5
+  title_fa: سایر ۵ پست
+  dynamic: true
+  values: []
 - type: PostLevel
   title_fa: رده پستی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: مدیرعامل
@@ -14483,6 +14727,7 @@ types:
 - type: PostOccupationStatus
   title_fa: حالت پست
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: با متصدی
@@ -14515,6 +14760,7 @@ types:
 - type: PostType
   title_fa: نوع پست
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: اصلی
@@ -14889,6 +15135,7 @@ types:
 - type: PriorityExType
   title_fa: رمز فوریت
   module: PRC3
+  dynamic: true
   values:
   - code: 1
     value: Normal
@@ -14922,6 +15169,7 @@ types:
 - type: PriorityType
   title_fa: اولویت
   module: LGS3
+  dynamic: true
   values:
   - code: 1
     value: معمولی
@@ -14929,6 +15177,7 @@ types:
     value: فوری
 - type: PrivateAgentsRoles
   module: SLS3
+  dynamic: true
   values:
   - code: 1
     value: موسس
@@ -15429,6 +15678,7 @@ types:
 - type: PromotionStructureType
   title_fa: نوع ساختار ارتقا و ترفیع
   module: SYS3
+  dynamic: true
   values:
   - code: 1
     value: ارتقا و ترفیع
@@ -15641,6 +15891,7 @@ types:
 - type: PurchaseRequestType
   title_fa: نوع درخواست خرید
   module: PRC3
+  dynamic: true
   values:
   - code: 1
     value: پروژه
@@ -15659,6 +15910,22 @@ types:
     value: جزئی
   - code: 2
     value: استعلامی
+- type: QAM.NotificationCategory
+  title_fa: طبقه/گروه اعلان
+  dynamic: true
+  values: []
+- type: QAM.NotificationPriority
+  title_fa: اولویت اعلان
+  dynamic: true
+  values: []
+- type: QAM.NotificationProblemCategory
+  title_fa: طبقه/گروه مسئله
+  dynamic: true
+  values: []
+- type: QAM.TaskCategory
+  title_fa: طبقه/گروه اقدام
+  dynamic: true
+  values: []
 - type: QAM.TaskEffectivenessType
   title_fa: اثربخشی اقدام
   module: QAM3
@@ -15669,6 +15936,10 @@ types:
     value: نسبتا مؤثر
   - code: 3
     value: غیر مؤثر
+- type: QAM.TaskPriority
+  title_fa: اولویت اقدام
+  dynamic: true
+  values: []
 - type: QAM.TaskType
   title_fa: نوع اقدام
   module: QAM3
@@ -15737,6 +16008,7 @@ types:
 - type: RCAItemNatureType
   title_fa: ماهیت عوامل تحلیل علت ریشه ای
   module: QAM3
+  dynamic: true
   values:
   - code: 1
     value: علت رفتاری
@@ -15748,6 +16020,10 @@ types:
     value: توقف
   - code: 5
     value: مدرک
+- type: RCAItemStopReason
+  title_fa: علت توقف عوامل تحلیل علت ریشه ای
+  dynamic: true
+  values: []
 - type: RCCPCalculationMethod
   title_fa: روش محاسبه
   module: MMG3
@@ -15889,6 +16165,7 @@ types:
 - type: Rank
   title_fa: رتبه
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: بدون رتبه
@@ -16852,6 +17129,7 @@ types:
 - type: ResearchType
   title_fa: نوع تحقیق/نشان
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: زبان خارجی
@@ -17031,6 +17309,7 @@ types:
 - type: ResignationReason
   title_fa: دلیل ترک شغل
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: استعفا
@@ -18107,6 +18386,13 @@ types:
     value: تعویض
   - code: 2
     value: جداسازی
+- type: RfidCardGroup
+  title_fa: گروهبندی کارت
+  dynamic: true
+  values: []
+- type: RfidCardManufacturer
+  title_fa: سازنده کارت تردد
+  values: []
 - type: RfidCardType
   module: HCM3
   values:
@@ -19325,6 +19611,7 @@ types:
 - type: SeverityOfFailureConsequence
   title_fa: شدت پیامد خرابی
   module: CMMS3
+  dynamic: true
   values:
   - code: 1
     value: فاجعه آمیز
@@ -20179,6 +20466,7 @@ types:
 - type: Tabsare21ReportPaymentType
   title_fa: نوع پرداخت
   module: HCM3
+  dynamic: true
   values:
   - code: 0
     value: کارکرد (روز در ماه)
@@ -20407,6 +20695,7 @@ types:
 - type: TaxCalculationType
   title_fa: نحوه محاسبه مالیات
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: تعدیل ماهیانه
@@ -20443,6 +20732,7 @@ types:
 - type: TaxGroup
   title_fa: گروه مالیاتی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: '1'
@@ -20773,6 +21063,10 @@ types:
     value: عدم امکان واکنش
   - code: 8
     value: رد موقت
+- type: TeamMemberRole
+  title_fa: سمت اعضای تیم
+  dynamic: true
+  values: []
 - type: TechinicalInquiryIssueTime
   title_fa: LookupTitleEmptyToken
   module: PRC3
@@ -20896,6 +21190,26 @@ types:
     value: سایر
   - code: 5
     value: هوایی
+- type: TestProfilePhysicalSampleContainer
+  title_fa: ظرف نمونه‌برداری (حاوی نمونه)
+  dynamic: true
+  values: []
+- type: TestProfilePhysicalSampleStorageLocation
+  title_fa: مکان نگهداری نمونه
+  dynamic: true
+  values: []
+- type: TestProfilePrimaryPackaging
+  title_fa: بسته‌بندی اولیه
+  dynamic: true
+  values: []
+- type: TestProfileStabilityType
+  title_fa: نوع پایداری
+  dynamic: true
+  values: []
+- type: TestProfileStorageCondition
+  title_fa: شرایط نگهداری
+  dynamic: true
+  values: []
 - type: TestProgressStatus
   title_fa: وضعیت تکمیل آزمایش ها
   module: QCM3
@@ -21141,6 +21455,7 @@ types:
 - type: TrainingAppraisalLevel
   title_fa: سطح ارزیابی آموزش
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: واکنش
@@ -21257,6 +21572,7 @@ types:
 - type: TrainingRelationType
   title_fa: نوع ارتباط سابقه آموزشی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: مرتبط
@@ -21295,6 +21611,7 @@ types:
 - type: TrainingType
   title_fa: نوع آموزش
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: نظری
@@ -22047,6 +22364,7 @@ types:
 - type: WageSystemType
   title_fa: نوع نظام پرداخت
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: مدیریت خدمات کشوری
@@ -22103,6 +22421,7 @@ types:
 - type: WarriorActivityLevel
   title_fa: میزان فعالیت ایثارگری
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: عادی
@@ -22129,6 +22448,7 @@ types:
 - type: WarriorStatus
   title_fa: وضعیت ایثارگری
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: آزاده
@@ -22232,6 +22552,7 @@ types:
 - type: WorkLocation
   title_fa: محل خدمت
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: دفترمرکزی
@@ -22259,6 +22580,7 @@ types:
 - type: WorkRecordExtra1
   title_fa: سایر 1 سوابق شغلی
   module: SYS3
+  dynamic: true
   values:
   - code: 1
     value: خدماتی (گروه1)
@@ -22278,6 +22600,7 @@ types:
 - type: WorkRecordExtra2
   title_fa: سایر 2 سوابق شغلی
   module: SYS3
+  dynamic: true
   values:
   - code: 1
     value: کمک کارشناس
@@ -22303,9 +22626,18 @@ types:
   - code: 8
     value: فنی (گروه3)
     order: 7
+- type: WorkRecordExtra3
+  title_fa: سایر 3 سوابق شغلی
+  dynamic: true
+  values: []
+- type: WorkRecordExtra4
+  title_fa: سایر 4 سوابق شغلی
+  dynamic: true
+  values: []
 - type: WorkRelationType
   title_fa: نوع ارتباط سابقه شغلی
   module: HCM3
+  dynamic: true
   values:
   - code: 1
     value: مرتبط
