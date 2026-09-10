@@ -413,16 +413,16 @@ class KnowledgeBase {
         "  AND v.value LIKE ? ORDER BY COALESCE(v.ordinal, v.code) LIMIT 1)"
       : "NULL";
     if (q) params.unshift(`%${q.trim()}%`);
-    let sql = `SELECT type, title_fa, module, n_values, ${matched} AS matched_value FROM lookup_types t`;
+    let sql = `SELECT type, title_fa, module, n_values, is_dynamic, ${matched} AS matched_value FROM lookup_types t`;
     if (where.length) sql += ` WHERE ${where.join(" AND ")}`;
-    sql += " ORDER BY (t.title_fa IS NULL), t.n_values DESC, t.type LIMIT ?";
+    sql += " ORDER BY (t.title_fa IS NULL), (t.n_values = 0), t.n_values DESC, t.type LIMIT ?";
     params.push(limit);
     return this.all(sql, params);
   }
 
   lookup(type) {
     const head = this.one(
-      "SELECT type, title_fa, module, n_values FROM lookup_types WHERE type = ?",
+      "SELECT type, title_fa, module, n_values, is_dynamic FROM lookup_types WHERE type = ?",
       [type],
     );
     if (!head) return null;

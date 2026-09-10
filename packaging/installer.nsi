@@ -1,7 +1,7 @@
 ﻿; نصب‌کنندهٔ ویندوزی کاوشگر پایگاه داده — NSIS 3
 ;
 ; ساخت:  makensis packaging/installer.nsi
-; خروجی: packaging/KavoshDB-Setup-3.0.1.exe
+; خروجی: packaging/KavoshDB-Setup-3.0.2.exe
 ;
 ; نصب برای کاربر جاری انجام می‌شود (بدون UAC): برنامه سروری محلی است، چیزی در
 ; سطح سیستم نمی‌نویسد و دانش کاربر در %LOCALAPPDATA%\KavoshDB می‌ماند. همین
@@ -16,7 +16,7 @@ ManifestDPIAware true
 
 !define APP_NAME     "کاوشگر پایگاه داده"
 !define APP_NAME_EN  "DataBase Kavosh"
-!define APP_VERSION  "3.0.1"
+!define APP_VERSION  "3.0.2"
 !define APP_EXE      "KavoshDB.exe"
 !define APP_KEY      "DataBaseKavosh"
 !define DATA_DIR     "$LOCALAPPDATA\KavoshDB"

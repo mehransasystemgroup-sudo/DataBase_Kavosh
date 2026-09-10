@@ -522,20 +522,20 @@ class KnowledgeBase:
             " AND v.value LIKE ? ORDER BY COALESCE(v.ordinal, v.code) LIMIT 1)"
             if q else "NULL"
         )
-        sql = f"SELECT type, title_fa, module, n_values, {matched} AS matched_value FROM lookup_types t"
+        sql = f"SELECT type, title_fa, module, n_values, is_dynamic, {matched} AS matched_value FROM lookup_types t"
         if q:
             params.insert(0, f"%{q.strip()}%")
         if where:
             sql += " WHERE " + " AND ".join(where)
         # نوع‌های عنوان‌دار اول: بدون عنوان فارسی، سطر برای کاربر فارسی‌زبان
         # تقریباً بی‌معناست و نباید بالای فهرست بنشیند.
-        sql += " ORDER BY (t.title_fa IS NULL), t.n_values DESC, t.type LIMIT ?"
+        sql += " ORDER BY (t.title_fa IS NULL), (t.n_values = 0), t.n_values DESC, t.type LIMIT ?"
         params.append(limit)
         return [dict(r) for r in self.db.execute(sql, params).fetchall()]
 
     def lookup(self, lookup_type: str) -> dict | None:
         head = self.db.execute(
-            "SELECT type, title_fa, module, n_values FROM lookup_types WHERE type = ?",
+            "SELECT type, title_fa, module, n_values, is_dynamic FROM lookup_types WHERE type = ?",
             (lookup_type,),
         ).fetchone()
         if head is None:

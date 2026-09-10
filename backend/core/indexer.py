@@ -118,7 +118,10 @@ CREATE TABLE lookup_types (
     type        TEXT PRIMARY KEY,
     title_fa    TEXT,
     module      TEXT,
-    n_values    INTEGER NOT NULL
+    n_values    INTEGER NOT NULL,
+    -- lookup پویا: مقادیرش را خودِ مشتری در نرم‌افزار تعریف می‌کند، پس
+    -- خالی بودنش یعنی «در این نصب تعریف نشده»، نه «داده‌اش را نداریم».
+    is_dynamic  INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE lookup_values (
@@ -277,11 +280,12 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     for f in sorted((kb / "lookups").glob("*.yaml")) if (kb / "lookups").exists() else []:
         for t in _load(f).get("types", []):
             vals = t.get("values") or []
-            lookup_types.append((t["type"], t.get("title_fa"), t.get("module"), len(vals)))
+            lookup_types.append((t["type"], t.get("title_fa"), t.get("module"),
+                                 len(vals), int(bool(t.get("dynamic")))))
             for v in vals:
                 lookup_values.append((t["type"], v.get("code"), str(v["value"]),
                                       v.get("order", v.get("code")), v.get("extra")))
-    db.executemany("INSERT OR REPLACE INTO lookup_types VALUES (?,?,?,?)", lookup_types)
+    db.executemany("INSERT OR REPLACE INTO lookup_types VALUES (?,?,?,?,?)", lookup_types)
     db.executemany("INSERT OR REPLACE INTO lookup_values VALUES (?,?,?,?,?)", lookup_values)
 
     # ── موجودیت‌های نرم‌افزار ──
