@@ -145,13 +145,21 @@ jobs:
       - name: آزمون به‌روزرسانی روی نصب قبلی
         shell: pwsh
         run: |
+          # بدون این، شکستِ یک دستور بومی اسکریپت را متوقف نمی‌کند و آزمون تا
+          # پیام موفقیت پیش می‌رود بی‌آنکه چیزی را سنجیده باشد. یک بار همین
+          # اتفاق افتاد، پس هر فراخوانی python هم $LASTEXITCODE را می‌سنجد.
+          $ErrorActionPreference = "Stop"
+
           $env:KAVOSH_NO_BROWSER = "1"
-          $data = "$env:LOCALAPPDATA\KavoshDB"
-          $index = "$data\index\kb.sqlite"
+          $index = "$env:LOCALAPPDATA\KavoshDB\index\kb.sqlite"
           if (-not (Test-Path $index)) { throw "ایندکس نصب قبلی پیدا نشد؛ آزمون بی‌معنا می‌شود." }
 
-          # ایندکس را به شکل «ساختهٔ نسخهٔ قدیمی» درمی‌آوریم
-          python -c "import sqlite3,sys; db=sqlite3.connect(sys.argv[1]); db.execute("UPDATE meta SET value='0' WHERE key='schema_version'"); db.execute('DROP TABLE IF EXISTS entities'); db.commit()" $index
+          python packaging\age_index.py $index
+          if ($LASTEXITCODE -ne 0) { throw "کهنه‌سازی ایندکس شکست خورد." }
+
+          # ایندکس واقعاً باید کهنه شده باشد، وگرنه آزمون چیزی را نمی‌سنجد
+          python packaging\age_index.py $index --verify
+          if ($LASTEXITCODE -ne 0) { throw "ایندکس کهنه نشد؛ آزمون معتبر نیست." }
 
           $app = Start-Process -FilePath "dist\KavoshDB\KavoshDB.exe" -PassThru
           $ready = $false
@@ -161,15 +169,20 @@ jobs:
           }
           if (-not $ready) { $app | Stop-Process -Force; throw "برنامه پس از به‌روزرسانی بالا نیامد." }
 
-          # همان کاری که کاربر کرد و شکست: باز کردن جدول
-          foreach ($t in @("FIN3.Voucher", "RPA3.PaymentOrder", "HCM3.Employee")) {
-              $code = (Invoke-WebRequest "http://127.0.0.1:8321/api/table/$t" -UseBasicParsing -TimeoutSec 20).StatusCode
-              if ($code -ne 200) { $app | Stop-Process -Force; throw "$t پاسخ $code داد." }
+          try {
+              # همان کاری که کاربر کرد و شکست: باز کردن جدول
+              foreach ($t in @("FIN3.Voucher", "RPA3.PaymentOrder", "HCM3.Employee")) {
+                  $code = (Invoke-WebRequest "http://127.0.0.1:8321/api/table/$t" -UseBasicParsing -TimeoutSec 30).StatusCode
+                  if ($code -ne 200) { throw "$t پاسخ $code داد." }
+                  Write-Host "  ✔ $t"
+              }
+              $lookup = Invoke-RestMethod "http://127.0.0.1:8321/api/lookup/EducationDegree" -TimeoutSec 30
+              if ($lookup.values.Count -lt 1) { throw "کد و شرحی پس از به‌روزرسانی خالی است." }
+              Write-Host "  ✔ کد و شرحی: $($lookup.values.Count) مقدار"
           }
-          $lookup = Invoke-RestMethod "http://127.0.0.1:8321/api/lookup/EducationDegree" -TimeoutSec 20
-          if ($lookup.values.Count -lt 1) { $app | Stop-Process -Force; throw "کد و شرحی پس از به‌روزرسانی خالی است." }
-
-          $app | Stop-Process -Force
+          finally {
+              $app | Stop-Process -Force
+          }
           Write-Host "به‌روزرسانی روی نصب قبلی — جدول‌ها و کد و شرحی سالم"
 
       - uses: actions/upload-artifact@v4
