@@ -29,6 +29,7 @@ if str(ROOT) not in sys.path:
 
 from app.console import setup as setup_console                 # noqa: E402
 from app.crashlog import breadcrumb, fatal_guard               # noqa: E402
+from app.version import VERSION                                # noqa: E402
 from app.paths import (bundle_root, data_root,               # noqa: E402
                        kb_fingerprint, seed_data_dir)
 from core import indexer                                      # noqa: E402
@@ -117,7 +118,7 @@ class KnowledgeIn(BaseModel):
 
 @app.get("/api/health")
 def health() -> dict:
-    return {"ok": True, "kb": kb.stats(), "index": str(INDEX),
+    return {"ok": True, "version": VERSION, "kb": kb.stats(), "index": str(INDEX),
             "built_at": INDEX_STATE["last"]}
 
 
@@ -300,10 +301,41 @@ def index_state() -> dict:
 
 # ═══════════════ سرو کردن بیلد فرانت‌اند ═══════════════
 
+# ═══════════════ رابط کاربری ═══════════════
+#
+# چرا این‌جا صریحاً دربارهٔ حافظهٔ نهان حرف می‌زنیم:
+#
+# برنامه همیشه روی یک نشانی ثابت بالا می‌آید (http://127.0.0.1:8321) و کاربر
+# آن را در مرورگر معمولی خودش باز می‌کند. تا دیروز هیچ هدر Cache-Control
+# فرستاده نمی‌شد؛ در نبود آن، مرورگر مجاز است خودش حدس بزند فایل تا کِی
+# تازه است. نتیجه‌اش این بود: کاربر نسخهٔ تازه را نصب می‌کرد، برنامه بالا
+# می‌آمد، ولی مرورگر همان index.html قدیمی را از حافظه‌اش برمی‌داشت — و چون
+# آن فایل به نام دارایی‌های قدیمی اشاره می‌کند که آن‌ها هم در حافظه‌اند، کل
+# برنامهٔ قبلی بدون یک درخواست به سرور رندر می‌شد. از بیرون: «نصب کردم ولی
+# هیچ چیز عوض نشد.»
+#
+# قاعده استاندارد است و دو خط دارد:
+#   • index.html هرگز بی‌پرسش از حافظه خوانده نشود (no-cache). ETag هست، پس
+#     پرسش معمولاً یک ۳۰۴ کوچک است، نه دانلود دوباره.
+#   • دارایی‌های /assets که نامشان هش محتواست، تا یک سال معتبرند؛ محتوایشان
+#     هرگز عوض نمی‌شود، فقط نامشان.
+NO_STORE_HTML = "no-cache, must-revalidate"
+IMMUTABLE = "public, max-age=31536000, immutable"
+
+
+class _HashedAssets(StaticFiles):
+    """دارایی‌های هش‌دار — همیشه‌تازه، چون نامشان با محتوا عوض می‌شود."""
+
+    def file_response(self, *args, **kwargs):  # noqa: D102
+        response = super().file_response(*args, **kwargs)
+        response.headers["cache-control"] = IMMUTABLE
+        return response
+
+
 if STATIC_DIR.is_dir():
     ASSETS = STATIC_DIR / "assets"
     if ASSETS.is_dir():
-        app.mount("/assets", StaticFiles(directory=ASSETS), name="assets")
+        app.mount("/assets", _HashedAssets(directory=ASSETS), name="assets")
 
     @app.get("/{path:path}")
     def spa(path: str):
@@ -311,8 +343,11 @@ if STATIC_DIR.is_dir():
         candidate = (STATIC_DIR / path).resolve()
         # مسیر باید داخل پوشهٔ استاتیک بماند — جلوگیری از خواندن فایل‌های بیرون
         if path and candidate.is_file() and candidate.is_relative_to(STATIC_DIR.resolve()):
-            return FileResponse(candidate)
-        return FileResponse(STATIC_DIR / "index.html")
+            # این‌ها هش ندارند (favicon.svg و مانندش)، پس مثل html رفتار
+            # می‌کنند: با تغییر نسخه باید عوض شوند، و شدند.
+            return FileResponse(candidate, headers={"cache-control": NO_STORE_HTML})
+        return FileResponse(STATIC_DIR / "index.html",
+                            headers={"cache-control": NO_STORE_HTML})
 
 
 def _free_port(host: str, preferred: int) -> int:
@@ -343,12 +378,22 @@ def main() -> None:
 
     host = os.environ.get("HOST", "127.0.0.1")
     port = _free_port(host, int(os.environ.get("PORT", "8321")))
-    url = f"http://{host}:{port}"
+    base = f"http://{host}:{port}"
+
+    # ?v=نسخه فقط یک برچسب نیست؛ کارِ مشخصی می‌کند.
+    #
+    # کاربری که نسخهٔ قبلی را روی همین نشانی باز کرده، index.html قدیمی را در
+    # حافظهٔ نهان مرورگرش دارد — و چون آن روزها بدون Cache-Control فرستاده
+    # می‌شد، مرورگر مجاز است بی‌آنکه از سرور بپرسد همان را نشان دهد. هدرهای
+    # درستِ امروز آن حافظهٔ *از پیش پرشده* را پاک نمی‌کنند. ولی نشانیِ تازه
+    # کلید تازه‌ای در حافظه است، پس مرورگر مجبور است یک بار واقعاً بپرسد — و
+    # همان یک بار کافی است تا از این به بعد قاعدهٔ درست حاکم شود.
+    url = f"{base}/?v={VERSION}"
 
     print()
     print("  کاوشگر پایگاه داده  ·  DataBase Kavosh")
     print("  " + "─" * 42)
-    print(f"  {url}")
+    print(f"  {base}")
     print(f"  داده‌ها: {DATA}")
     print("  برای بستن برنامه، این پنجره را ببندید یا Ctrl+C بزنید.")
     print()

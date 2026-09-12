@@ -34,6 +34,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: هم‌خوانی شمارهٔ نسخه در همهٔ جاها
+        run: python packaging/check_versions.py
+
       - name: ساخت رابط کاربری
         working-directory: frontend
         run: |
@@ -83,6 +86,27 @@ jobs:
               if ($code -ne 200) { throw "$name پاسخ $code داد." }
               Write-Host "  ✔ $name"
           }
+
+          # هدرهای حافظهٔ نهان — ایرادی که یک بار به دست کاربر رسید: نسخهٔ
+          # تازه نصب می‌شد و مرورگر همچنان رابط کاربریِ قبلی را از حافظه‌اش
+          # نشان می‌داد، چون index.html بدون Cache-Control فرستاده می‌شد.
+          $html = (Invoke-WebRequest "$base/" -UseBasicParsing -TimeoutSec 10).Headers["Cache-Control"]
+          if ($html -notmatch "no-cache") { throw "index.html بدون no-cache سرو شد: «$html»" }
+          Write-Host "  ✔ index.html — $html"
+
+          $assetPath = [regex]::Match(
+              (Invoke-WebRequest "$base/" -UseBasicParsing).Content,
+              '/assets/index-[A-Za-z0-9_-]+\.js').Value
+          if (-not $assetPath) { throw "نام دارایی هش‌دار در index.html پیدا نشد." }
+          $asset = (Invoke-WebRequest "$base$assetPath" -UseBasicParsing -TimeoutSec 10).Headers["Cache-Control"]
+          if ($asset -notmatch "immutable") { throw "دارایی هش‌دار بدون immutable سرو شد: «$asset»" }
+          Write-Host "  ✔ $assetPath — $asset"
+
+          # نسخه‌ای که برنامه گزارش می‌کند باید همان نسخهٔ این ساخت باشد،
+          # وگرنه نشانیِ ?v= که مرورگر با آن باز می‌شود از نصب عقب می‌ماند.
+          $want = (Select-String -Path packaging\installer.nsi -Pattern '!define APP_VERSION\s+"([\d.]+)"').Matches[0].Groups[1].Value
+          if ($health.version -ne $want) { throw "نسخهٔ برنامه «$($health.version)» با نصب‌کننده «$want» نمی‌خواند." }
+          Write-Host "  ✔ نسخه: $($health.version)"
 
           $app | Stop-Process -Force
           Write-Host "آزمون دود با موفقیت گذشت — $($health.kb.tables) جدول"

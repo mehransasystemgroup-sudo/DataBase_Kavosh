@@ -39,6 +39,9 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      - name: هم‌خوانی شمارهٔ نسخه در همهٔ جاها
+        run: python3 packaging/check_versions.py
+
       - name: ساخت ایندکس دانش
         working-directory: backend
         run: |
