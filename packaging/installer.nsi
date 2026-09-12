@@ -1,7 +1,7 @@
 ﻿; نصب‌کنندهٔ ویندوزی کاوشگر پایگاه داده — NSIS 3
 ;
 ; ساخت:  makensis packaging/installer.nsi
-; خروجی: packaging/KavoshDB-Setup-3.1.0.exe
+; خروجی: packaging/KavoshDB-Setup-3.1.1.exe
 ;
 ; نصب برای کاربر جاری انجام می‌شود (بدون UAC): برنامه سروری محلی است، چیزی در
 ; سطح سیستم نمی‌نویسد و دانش کاربر در %LOCALAPPDATA%\KavoshDB می‌ماند. همین
@@ -16,7 +16,7 @@ ManifestDPIAware true
 
 !define APP_NAME     "کاوشگر پایگاه داده"
 !define APP_NAME_EN  "DataBase Kavosh"
-!define APP_VERSION  "3.1.0"
+!define APP_VERSION  "3.1.1"
 !define APP_EXE      "KavoshDB.exe"
 !define APP_KEY      "DataBaseKavosh"
 !define DATA_DIR     "$LOCALAPPDATA\KavoshDB"
@@ -80,19 +80,49 @@ FunctionEnd
 
 ; بستن نسخهٔ در حال اجرا: بدون این کار، فایل‌های قفل‌شده جایگزین نمی‌شوند و
 ; نصب نیمه‌کاره می‌ماند.
+;
+; /T فرزندها را هم می‌بندد، و مکث پس از آن لازم است: ویندوز دستگیره‌های فایل
+; را چند لحظه پس از پایان فرایند آزاد می‌کند، نه بلافاصله.
 !macro CloseRunningApp
-  nsExec::Exec 'taskkill /F /IM "${APP_EXE}"'
+  nsExec::Exec 'taskkill /F /T /IM "${APP_EXE}"'
   Pop $0
+  Sleep 1200
 !macroend
 
 Section "برنامه (الزامی)" SecApp
   SectionIn RO
   !insertmacro CloseRunningApp
 
-  ; پوشهٔ کتابخانه‌ها از نصب قبلی پاک می‌شود تا فایل‌های قدیمی با جدید قاطی نشوند
-  RMDir /r "$INSTDIR\_internal"
+  ; ── پاک‌کردن کتابخانه‌های نصب قبلی، با اطمینان از انجام‌شدنش ──
+  ;
+  ; این‌جا جایی است که به‌روزرسانی روی نصب قبلی می‌شکست. RMDir اگر فایلی قفل
+  ; باشد بی‌صدا رد می‌شود و نصب ادامه پیدا می‌کند؛ نتیجه پوشه‌ای است با
+  ; ترکیبی از کتابخانه‌های قدیمی و تازه، که بوت‌لودر PyInstaller آن را
+  ; نمی‌پذیرد — برنامه نصب می‌شود ولی اجرا نمی‌شود، و کاربر فقط یک برق
+  ; کوتاه می‌بیند. پس دیگر بی‌صدا رد نمی‌شویم: چند بار تلاش می‌کنیم و اگر
+  ; نشد، صریح می‌گوییم به‌جای اینکه نصبی خراب تحویل بدهیم.
+  StrCpy $R0 0
+  ${Do}
+    RMDir /r "$INSTDIR\_internal"
+    ${IfNot} ${FileExists} "$INSTDIR\_internal\*.*"
+      ${ExitDo}
+    ${EndIf}
+    IntOp $R0 $R0 + 1
+    ${If} $R0 >= 5
+      DetailPrint "پاک‌کردن $INSTDIR\_internal ممکن نشد."
+      ${IfNot} ${Silent}
+        MessageBox MB_ICONSTOP "فایل‌های نسخهٔ قبلی در دست برنامهٔ دیگری است و جایگزین نمی‌شوند.$\n$\nلطفاً «کاوشگر پایگاه داده» را ببندید (و اگر باز است، پنجرهٔ مرورگرش را هم) و دوباره نصب کنید."
+      ${EndIf}
+      SetErrorLevel 2
+      Abort "نصب انجام نشد: فایل‌های نسخهٔ قبلی قفل بودند."
+    ${EndIf}
+    DetailPrint "فایل‌های نسخهٔ قبلی هنوز در دسترس‌اند؛ تلاش دوباره…"
+    Sleep 1500
+    !insertmacro CloseRunningApp
+  ${Loop}
 
   SetOutPath "$INSTDIR"
+  SetOverwrite on
   File /r "${SRCDIR}\*"
 
   WriteRegStr HKCU "Software\${APP_KEY}" "InstallDir" "$INSTDIR"

@@ -1,6 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#050806"/>
-  <ellipse cx="16" cy="9.5" rx="8.5" ry="3.6" fill="none" stroke="#22C55E" stroke-width="2"/>
-  <path d="M7.5 9.5v13c0 2 3.8 3.6 8.5 3.6s8.5-1.6 8.5-3.6v-13" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/>
-  <path d="M7.5 16c0 2 3.8 3.6 8.5 3.6s8.5-1.6 8.5-3.6" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5B7CF7"/>
+      <stop offset="1" stop-color="#3549C9"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7.2" fill="url(#g)"/>
+  <g fill="#FFFFFF">
+    <ellipse cx="16" cy="22.3" rx="8.6" ry="3.4"/>
+    <rect x="7.4" y="9.6" width="17.2" height="12.7"/>
+    <ellipse cx="16" cy="9.6" rx="8.6" ry="3.4"/>
+  </g>
+  <!-- بندها شکلِ پُر‌اند نه خط.
+
+       با خط، هر ضخامتی نصفش بیرونِ مسیر می‌افتد و دو سرِ بند از بدنهٔ
+       استوانه بیرون می‌زند — دو زائدهٔ کوچک که در اندازه‌های بزرگ دیده
+       می‌شود. شکلِ بسته بین دو کمان، دو سرش دقیقاً روی لبهٔ بدنه تمام
+       می‌شود و هیچ ضخامتی بیرون نمی‌زند. -->
+  <g fill="#2C3EA8" opacity="0.45">
+    <path d="M7.4 14.6a8.6 3.4 0 0 0 17.2 0v1.25a8.6 3.4 0 0 1-17.2 0z"/>
+    <path d="M7.4 18.3a8.6 3.4 0 0 0 17.2 0v1.25a8.6 3.4 0 0 1-17.2 0z"/>
+  </g>
 </svg>

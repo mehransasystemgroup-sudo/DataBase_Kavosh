@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  نماد برنامه: استوانهٔ پایگاه داده.
+  نماد برنامه: استوانهٔ پایگاه داده — همان شکلِ نشانِ ویندوز و مرورگر، که
+  packaging/make_icons.py می‌سازد. این یکی برداری است و دستی نگه داشته
+  می‌شود، پس اگر طرح آن‌جا عوض شد، این‌جا هم باید عوض شود.
 
   در قاب ۱۰۸ واحدی آیکون تطبیقی، فقط ۷۲ واحد میانی همیشه دیده می‌شود؛ طرح
   داخل همان محدوده می‌ماند تا هیچ لانچری گوشه‌اش را نبُرد.
+
+  نقش سفید روی زمینهٔ نیلی می‌نشیند (ic_launcher.xml)، نه برعکس: نشان روی
+  صفحهٔ گوشی با تصویر پس‌زمینهٔ ناشناخته دیده می‌شود و کاشیِ تیره با خطوط
+  باریک آن‌جا گم می‌شود.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
@@ -11,25 +17,30 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
+    <!-- سرِ پایین -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M28,72 A26,10.5 0 1,0 80,72 A26,10.5 0 1,0 28,72 Z" />
+
     <!-- بدنه -->
     <path
-        android:fillColor="#16A34A"
-        android:pathData="M32,34 L32,74 A22,8 0 0,0 76,74 L76,34 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M28,35 L80,35 L80,72 L28,72 Z" />
 
-    <!-- سرِ بالا، روشن‌تر تا حجم دیده شود -->
+    <!-- سرِ بالا -->
     <path
-        android:fillColor="#4ADE80"
-        android:pathData="M32,34 A22,8 0 1,0 76,34 A22,8 0 1,0 32,34 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M28,35 A26,10.5 0 1,0 80,35 A26,10.5 0 1,0 28,35 Z" />
 
-    <!-- بندهای میانی -->
+    <!-- بندهای میانی: فقط منحنی جلو، تا حجم استوانه خوانده شود.
+         شکلِ پُر بین دو کمان است نه خط، وگرنه نصفِ ضخامت از لبهٔ بدنه
+         بیرون می‌زند و دو زائدهٔ کوچک می‌سازد. -->
     <path
-        android:pathData="M32,50 A22,8 0 0,0 76,50"
-        android:strokeColor="#05140B"
-        android:strokeWidth="3"
-        android:strokeAlpha="0.45" />
+        android:fillColor="#2C3EA8"
+        android:fillAlpha="0.45"
+        android:pathData="M28,49.6 A26,10.5 0 0,0 80,49.6 L80,53.4 A26,10.5 0 0,1 28,53.4 Z" />
     <path
-        android:pathData="M32,62 A22,8 0 0,0 76,62"
-        android:strokeColor="#05140B"
-        android:strokeWidth="3"
-        android:strokeAlpha="0.45" />
+        android:fillColor="#2C3EA8"
+        android:fillAlpha="0.45"
+        android:pathData="M28,60.3 A26,10.5 0 0,0 80,60.3 L80,64.1 A26,10.5 0 0,1 28,64.1 Z" />
 </vector>

@@ -28,6 +28,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app.console import setup as setup_console                 # noqa: E402
+from app.crashlog import breadcrumb, fatal_guard               # noqa: E402
 from app.paths import (bundle_root, data_root,               # noqa: E402
                        kb_fingerprint, seed_data_dir)
 from core import indexer                                      # noqa: E402
@@ -40,12 +41,13 @@ setup_console()
 
 BUNDLE = bundle_root()
 DATA = data_root()
-seed_data_dir(DATA, BUNDLE)
 
 KB_ROOT = Path(os.environ.get("KB_ROOT", DATA / "kb"))
 INDEX = Path(os.environ.get("KB_INDEX", DATA / "index" / "kb.sqlite"))
 INSTANCE = Path(os.environ.get("KB_INSTANCE", DATA / "instances" / "live"))
 STATIC_DIR = Path(os.environ.get("STATIC_DIR", BUNDLE / "static"))
+
+breadcrumb(DATA, f"شروع — بسته: {BUNDLE}")
 
 
 def _build_index() -> None:
@@ -84,15 +86,21 @@ def _index_is_stale() -> str | None:
     return None
 
 
-INDEX.parent.mkdir(parents=True, exist_ok=True)
-_kb_fingerprint = kb_fingerprint(KB_ROOT) if KB_ROOT.is_dir() else ""
-_stale = _index_is_stale()
-if _stale:
-    print(f"{_stale} — یک بار و چند ثانیه…", flush=True)
-    _build_index()
+# هرچه پیش از این نقطه می‌آید فقط مسیر می‌سازد؛ از این‌جا به بعد است که
+# دیسک لمس می‌شود و می‌تواند بیفتد — پس از همین‌جا زیر چتر گزارش می‌رود.
+_kb_fingerprint = ""
+with fatal_guard(DATA, "آماده‌سازی دانش و ایندکس"):
+    seed_data_dir(DATA, BUNDLE)
+    INDEX.parent.mkdir(parents=True, exist_ok=True)
+    _kb_fingerprint = kb_fingerprint(KB_ROOT) if KB_ROOT.is_dir() else ""
+    _stale = _index_is_stale()
+    if _stale:
+        print(f"{_stale} — یک بار و چند ثانیه…", flush=True)
+        _build_index()
 
-kb = KnowledgeBase(INDEX)
-writer = KnowledgeWriter(KB_ROOT)
+    kb = KnowledgeBase(INDEX)
+    writer = KnowledgeWriter(KB_ROOT)
+breadcrumb(DATA, "دانش و ایندکس آماده شد")
 INDEX_STATE: dict = {"building": False, "last": None, "log": ""}
 
 app = FastAPI(title="کاوشگر پایگاه داده", docs_url="/api/docs")
@@ -353,4 +361,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    with fatal_guard(DATA, "اجرای سرور"):
+        main()

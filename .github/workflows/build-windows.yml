@@ -137,6 +137,104 @@ jobs:
 
           Write-Host "نصب، اجرا و حذف — هر سه درست"
 
+      # این آزمون از گزارش کاربر آمد: «نسخهٔ ویندوزی بعد از نصب اجرا نمی‌شود».
+      # آزمون‌های بالا همیشه روی ماشین تمیز نصب می‌کردند، پس مسیری که کاربر
+      # واقعاً می‌رود — نصب نسخهٔ تازه روی نصب قبلیِ *در حال اجرا* — هرگز
+      # سنجیده نمی‌شد.
+      - name: آزمون نصب روی نسخهٔ قبلیِ در حال اجرا
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference = "Stop"
+          $dir  = "$env:LOCALAPPDATA\Programs\DataBase Kavosh"
+          $data = "$env:LOCALAPPDATA\KavoshDB"
+
+          # نصب‌کنندهٔ نسخهٔ پیشین، همان که روی رایانهٔ کاربر بوده
+          gh release download V3.0.2 --repo $env:GITHUB_REPOSITORY -p "KavoshDB-Setup-*.exe" -D old
+          $oldSetup = (Get-Item old\KavoshDB-Setup-*.exe).FullName
+
+          function Reset-Machine {
+              Get-Process KavoshDB -ErrorAction SilentlyContinue | Stop-Process -Force
+              Start-Sleep -Seconds 2
+              Remove-Item $dir  -Recurse -Force -ErrorAction SilentlyContinue
+              Remove-Item $data -Recurse -Force -ErrorAction SilentlyContinue
+          }
+
+          # نسخهٔ قبلی را نصب می‌کند، یک بار اجرا می‌کند تا داده‌اش بنشیند، و
+          # آن را *باز* می‌گذارد — دقیقاً وضعیتی که کاربری دارد که برنامه‌اش
+          # روی میز باز است و نصب‌کنندهٔ تازه را اجرا می‌کند.
+          function Install-OldAndLeaveRunning {
+              Start-Process -FilePath $oldSetup -ArgumentList "/S" -Wait
+              if (-not (Test-Path "$dir\KavoshDB.exe")) { throw "نصب نسخهٔ قبلی انجام نشد." }
+              $p = Start-Process -FilePath "$dir\KavoshDB.exe" -PassThru
+              foreach ($i in 1..90) {
+                  Start-Sleep -Seconds 2
+                  try { Invoke-RestMethod "http://127.0.0.1:8321/api/health" -TimeoutSec 3 | Out-Null; return $p } catch { }
+                  if ($p.HasExited) { break }
+              }
+              throw "نسخهٔ قبلی بالا نیامد؛ آزمون بی‌معنا می‌شود."
+          }
+
+          # نصب‌کنندهٔ داده‌شده را روی همان نصبِ باز اجرا می‌کند و می‌گوید آیا
+          # برنامه پس از آن بالا می‌آید یا نه — بدون آنکه خودش گام را بیندازد.
+          function Test-UpgradeWith($setup, $tag) {
+              $code = (Start-Process -FilePath $setup -ArgumentList "/S" -Wait -PassThru).ExitCode
+              Write-Host "  نصب‌کنندهٔ $tag با کد $code تمام شد"
+              if (-not (Test-Path "$dir\KavoshDB.exe")) {
+                  Write-Host "  ✘ $tag — فایل اجرایی سر جایش نیست"
+                  return $false
+              }
+              $log = "$env:RUNNER_TEMP\after-$tag.log"
+              # بدون KAVOSH_NO_BROWSER: همان‌طور که کاربر اجرا می‌کند
+              $p = Start-Process -FilePath "$dir\KavoshDB.exe" -PassThru `
+                   -RedirectStandardOutput $log -RedirectStandardError "$log.err"
+              $up = $false
+              foreach ($i in 1..60) {
+                  Start-Sleep -Seconds 2
+                  foreach ($port in 8321..8325) {
+                      try { Invoke-RestMethod "http://127.0.0.1:$port/api/health" -TimeoutSec 2 | Out-Null; $up = $true; break } catch { }
+                  }
+                  if ($up -or $p.HasExited) { break }
+              }
+              if (-not $up) {
+                  # Out-Host لازم است: هرچه به جریان خروجی برود بخشی از مقدار
+                  # بازگشتی تابع می‌شود و $up را به آرایه تبدیل می‌کند.
+                  Write-Host "  ── خروجی برنامه ($tag) ──"
+                  foreach ($f in @($log, "$log.err")) {
+                      if (Test-Path $f) { Get-Content $f | Select-Object -Last 30 | Out-Host }
+                  }
+                  $err = "$data\logs\startup-error.log"
+                  if (Test-Path $err) {
+                      Write-Host "  ── گزارش خطای خودِ برنامه ──"
+                      Get-Content $err | Select-Object -Last 30 | Out-Host
+                  } else {
+                      Write-Host "  (برنامه حتی به کد خودش نرسید — گزارش خطایی ننوشت)"
+                  }
+              }
+              if (-not $p.HasExited) { $p | Stop-Process -Force }
+              Wait-Process -Id $p.Id -Timeout 30 -ErrorAction SilentlyContinue
+              Start-Sleep -Seconds 2
+              return $up
+          }
+
+          # ── ۱) بازتولید: نصب‌کنندهٔ منتشرشدهٔ ۳.۱.۰، همان که کاربر اجرا کرد ──
+          Reset-Machine
+          $running = Install-OldAndLeaveRunning
+          gh release download V3.1.0 --repo $env:GITHUB_REPOSITORY -p "KavoshDB-Setup-*.exe" -D published
+          $publishedOk = Test-UpgradeWith (Get-Item published\KavoshDB-Setup-*.exe).FullName "منتشرشده"
+
+          # ── ۲) همان سناریو با نصب‌کنندهٔ همین ساخت ──
+          Reset-Machine
+          $running = Install-OldAndLeaveRunning
+          $freshOk = Test-UpgradeWith (Get-Item packaging\KavoshDB-Setup-*.exe).FullName "این-ساخت"
+
+          Write-Host ""
+          Write-Host "نتیجه — نصب روی نسخهٔ قبلیِ در حال اجرا:"
+          Write-Host "  نصب‌کنندهٔ منتشرشده: $(if ($publishedOk) { 'اجرا شد' } else { 'اجرا نشد ← همان چیزی که کاربر دید' })"
+          Write-Host "  نصب‌کنندهٔ این ساخت: $(if ($freshOk) { 'اجرا شد' } else { 'اجرا نشد' })"
+          if (-not $freshOk) { throw "نصب روی نسخهٔ قبلیِ در حال اجرا، برنامهٔ اجراشدنی تحویل نداد." }
+
       # این آزمون به‌خاطر ایرادی اضافه شد که به دست کاربر رسید: آزمون‌ها همیشه
       # از نصبِ تمیز شروع می‌شدند، پس مسیر «به‌روزرسانی روی نصب قبلی» هرگز
       # سنجیده نمی‌شد. کاربری که نسخهٔ قدیمی داشت، ایندکس قدیمی‌اش را نگه
