@@ -13,6 +13,7 @@ ManifestDPIAware true
 !include "MUI2.nsh"
 !include "FileFunc.nsh"   ; برای ${GetSize} هنگام ثبت حجم برنامه
 !include "x64.nsh"        ; برای بررسی ۶۴ بیتی بودن ویندوز
+!include "WinVer.nsh"     ; برای بررسی نسخهٔ ویندوز
 
 !define APP_NAME     "کاوشگر پایگاه داده"
 !define APP_NAME_EN  "DataBase Kavosh"
@@ -76,6 +77,13 @@ Function .onInit
     MessageBox MB_ICONSTOP "این برنامه ویندوز ۶۴ بیتی می‌خواهد و روی این سیستم اجرا نمی‌شود."
     Abort
   ${EndIf}
+  ; پایتون ۳.۱۱ روی ویندوز قدیمی‌تر از ۸.۱ بالا نمی‌آید. بدون این شرط، نصب
+  ; بی‌عیب تمام می‌شود و بعد برنامه بی‌هیچ پیامی اجرا نمی‌شود — بدترین حالت
+  ; ممکن برای کاربر، چون هیچ سرنخی ندارد.
+  ${IfNot} ${AtLeastWin8.1}
+    MessageBox MB_ICONSTOP "این برنامه دست‌کم ویندوز ۸.۱ می‌خواهد و روی این نسخه از ویندوز اجرا نمی‌شود."
+    Abort
+  ${EndIf}
 FunctionEnd
 
 ; بستن نسخهٔ در حال اجرا: بدون این کار، فایل‌های قفل‌شده جایگزین نمی‌شوند و
@@ -124,12 +132,15 @@ Section "برنامه (الزامی)" SecApp
   SetOutPath "$INSTDIR"
   SetOverwrite on
   File /r "${SRCDIR}\*"
+  ; راه تشخیص وقتی برنامه بی‌صدا بالا نمی‌آید — پنجره‌اش باز می‌ماند
+  File "diagnose.cmd"
 
   WriteRegStr HKCU "Software\${APP_KEY}" "InstallDir" "$INSTDIR"
   WriteRegStr HKCU "Software\${APP_KEY}" "Version"    "${APP_VERSION}"
 
   CreateDirectory "$SMPROGRAMS\${APP_NAME_EN}"
   CreateShortCut "$SMPROGRAMS\${APP_NAME_EN}\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}" "" "$INSTDIR\${APP_EXE}" 0
+  CreateShortCut "$SMPROGRAMS\${APP_NAME_EN}\تشخیص مشکل.lnk" "$INSTDIR\diagnose.cmd" "" "$INSTDIR\${APP_EXE}" 0
   CreateShortCut "$SMPROGRAMS\${APP_NAME_EN}\حذف ${APP_NAME}.lnk" "$INSTDIR\Uninstall.exe"
 
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -170,11 +181,13 @@ Section "Uninstall"
 
   Delete "$DESKTOP\${APP_NAME}.lnk"
   Delete "$SMPROGRAMS\${APP_NAME_EN}\${APP_NAME}.lnk"
+  Delete "$SMPROGRAMS\${APP_NAME_EN}\تشخیص مشکل.lnk"
   Delete "$SMPROGRAMS\${APP_NAME_EN}\حذف ${APP_NAME}.lnk"
   RMDir  "$SMPROGRAMS\${APP_NAME_EN}"
 
   RMDir /r "$INSTDIR\_internal"
   Delete "$INSTDIR\${APP_EXE}"
+  Delete "$INSTDIR\diagnose.cmd"
   Delete "$INSTDIR\Uninstall.exe"
   RMDir "$INSTDIR"
 

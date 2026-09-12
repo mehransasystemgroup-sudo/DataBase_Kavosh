@@ -49,7 +49,10 @@ def breadcrumb(data_root: Path, note: str) -> None:
 
 
 def _show_dialog(title: str, body: str) -> None:
-    if sys.platform != "win32":
+    # همان کلیدی که مکث کنسول را خاموش می‌کند، پنجرهٔ پیام را هم خاموش
+    # می‌کند: پنجرهٔ پیام منتظر کلیک می‌ماند، و در اجرای خودکار کسی نیست
+    # که کلیک کند — آزمون به‌جای شکستِ سریع، تا سقف زمانی‌اش معطل می‌شود.
+    if sys.platform != "win32" or os.environ.get("KAVOSH_NO_PAUSE") == "1":
         return
     try:
         import ctypes

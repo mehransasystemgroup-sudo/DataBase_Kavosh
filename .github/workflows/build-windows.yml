@@ -54,6 +54,7 @@ jobs:
           # برنامه باید بالا بیاید، رابط کاربری و API را سرو کند و پاسخ درست بدهد.
           $env:KAVOSH_NO_BROWSER = "1"
           $env:KAVOSH_DATA_DIR = "$env:RUNNER_TEMP\kavosh-smoke"
+          $env:KAVOSH_NO_PAUSE = "1"
           $app = Start-Process -FilePath "dist\KavoshDB\KavoshDB.exe" -PassThru
 
           $base = "http://127.0.0.1:8321"
@@ -115,7 +116,14 @@ jobs:
           $key = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\DataBaseKavosh"
           if (-not (Test-Path $key)) { throw "برنامه در فهرست حذف ویندوز ثبت نشد." }
 
+          if (-not (Test-Path "$dir\diagnose.cmd")) { throw "ابزار تشخیص نصب نشد." }
+          $diag = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\DataBase Kavosh\تشخیص مشکل.lnk"
+          if (-not (Test-Path $diag)) { throw "میان‌بر تشخیص ساخته نشد." }
+
           $env:KAVOSH_NO_BROWSER = "1"
+          # در اجرای خودکار، پنجرهٔ خطا و مکثِ کنسول باید خاموش باشند وگرنه
+          # یک شکست به‌جای گزارش‌شدن، تا سقف زمانی آزمون معطل می‌کند.
+          $env:KAVOSH_NO_PAUSE = "1"
           $app = Start-Process -FilePath "$dir\KavoshDB.exe" -PassThru
           $ready = $false
           foreach ($i in 1..90) {
@@ -147,6 +155,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           $ErrorActionPreference = "Stop"
+          $env:KAVOSH_NO_PAUSE = "1"
           $dir  = "$env:LOCALAPPDATA\Programs\DataBase Kavosh"
           $data = "$env:LOCALAPPDATA\KavoshDB"
 
@@ -254,6 +263,7 @@ jobs:
           Remove-Item $data -Recurse -Force -ErrorAction SilentlyContinue
           $env:KAVOSH_DATA_DIR = $data
           $env:KAVOSH_NO_BROWSER = "1"
+          $env:KAVOSH_NO_PAUSE = "1"
           # پورت جدا از گام‌های قبلی: اگر نمونه‌ای از آن‌ها هنوز روی ۸۳۲۱ زنده
           # مانده باشد، آزمون به‌جای برنامهٔ خودش با آن یکی حرف می‌زند و بی‌معنا
           # سبز می‌شود. برای همین هم هر جامانده‌ای اینجا بسته می‌شود.
