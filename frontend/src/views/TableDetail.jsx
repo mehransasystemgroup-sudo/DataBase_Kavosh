@@ -360,11 +360,20 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                   type="button"
                   onClick={() => onOpenSchemaGraph?.(schema)}
                   title={`گراف روابط اسکیمای ${schema}`}
-                  className="inline-flex min-h-8 items-center rounded-md px-2 font-mono text-[11px] font-bold transition-opacity hover:opacity-80"
+                  className="inline-flex min-h-8 items-center gap-1.5 rounded-md px-2 text-[11px] font-bold transition-opacity hover:opacity-80"
                   style={{ color: accent.text, background: accent.soft }}
                 >
-                  {schema}
-                  {schemaLabel(schema) ? ` · ${schemaLabel(schema)}` : ""}
+                  {/*
+                    کد اسکیما مونواسپیس می‌ماند و عنوان فارسی سنس می‌شود.
+
+                    هر دو در یک span مونواسپیس بودند و چون JetBrains Mono
+                    گلیف فارسی ندارد، عنوان به Vazirmatn می‌افتاد ولی با
+                    سنجهٔ مونو چیده می‌شد: «منابع انسانی» با فاصله‌های گشاد
+                    و ازهم‌پاشیده دیده می‌شد. جداکردن دو خط نوشتار، هر کدام
+                    را به قلم خودش می‌رساند.
+                  */}
+                  <span className="font-mono">{schema}</span>
+                  {schemaLabel(schema) && <span>· {schemaLabel(schema)}</span>}
                 </button>
                 <h2 className="ltr min-w-0 select-all break-all font-mono text-base font-bold tracking-tight text-foreground sm:text-lg">
                   {name}

@@ -1,24 +1,38 @@
 <!doctype html>
-<html lang="fa" dir="rtl" class="dark">
+<html lang="fa" dir="rtl" class="dark" data-theme="midnight">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#050806" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#F4F8F5" media="(prefers-color-scheme: light)" />
+    <!-- مقدارش را اسکریپت پایین و سپس ThemeContext با رنگ تم جاری پر می‌کنند -->
+    <meta name="theme-color" content="#0A0E17" />
     <meta name="description" content="کاوشگر پایگاه داده — جست‌وجو در ساختار، ستون‌ها و روابط جدول‌های نرم‌افزار سازمانی" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>کاوشگر پایگاه داده</title>
     <script>
-      // تم را پیش از اولین رنگ‌آمیزی اعمال می‌کنیم تا صفحه سفیدی/سیاهی
-      // ناگهانی نزند. همان کلیدی که ThemeContext می‌نویسد خوانده می‌شود.
+      // تم پیش از اولین رنگ‌آمیزی اعمال می‌شود تا صفحه سفیدی/سیاهیِ ناگهانی
+      // نزند. این چند سطر عمداً تکرارِ کوچکی از src/lib/themes.js است: ماژول
+      // برنامه هنوز بارگذاری نشده و اگر منتظرش بمانیم، همان پرش رخ می‌دهد.
+      // فهرست پایین باید با THEMES هم‌گام بماند.
       (function () {
+        var THEMES = {
+          midnight: { mode: "dark", bg: "#0A0E17" },
+          daylight: { mode: "light", bg: "#F4F6FB" },
+          "emerald-night": { mode: "dark", bg: "#050806" },
+          "emerald-day": { mode: "light", bg: "#F4F8F5" },
+        };
         try {
           var saved = localStorage.getItem("dbk_theme");
-          var theme = saved === "light" || saved === "dark" ? saved : "dark";
+          // «dark»/«light» از نسخه‌های پیشین می‌آید و انتخاب آگاهانه نبوده؛
+          // فقط ترجیح روشن/تیره از آن برداشته می‌شود.
+          if (!THEMES[saved]) saved = saved === "light" ? "daylight" : "midnight";
+          var theme = THEMES[saved];
           var root = document.documentElement;
           root.classList.remove("light", "dark");
-          root.classList.add(theme);
-          root.style.colorScheme = theme;
+          root.classList.add(theme.mode);
+          root.style.colorScheme = theme.mode;
+          root.dataset.theme = saved;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", theme.bg);
         } catch (e) {}
       })();
     </script>

@@ -5,6 +5,7 @@ import { http, OFFLINE_HINT } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
 import { useHashRoute } from "@/lib/route";
 import { ThemeProvider } from "@/context/ThemeContext";
+import ThemePicker from "@/components/ThemePicker";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Toaster } from "@/components/ui/sonner";
 import ExplorerView from "@/views/ExplorerView";
@@ -22,10 +23,18 @@ function Brand({ health }) {
     <div className="flex min-w-0 items-center gap-2.5">
       <div className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand/15 text-brand-text ring-1 ring-brand/30">
         <Database className="h-[18px] w-[18px]" strokeWidth={2.2} />
+        {/*
+          نقطهٔ سلامت با --ok رنگ می‌گیرد نه با رنگ هویت.
+
+          پیش از این هر دو سبز بودند و نقطه در کادرِ سبزِ نشان گم می‌شد؛
+          «وصل» و «هویت برنامه» یک رنگ داشتند، پس نقطه عملاً چیزی نمی‌گفت.
+          حالا سبز فقط یک معنا دارد: سالم است.
+        */}
         <span
+          title={health ? "سرویس در دسترس است" : "سرویس در دسترس نیست"}
           className={cn(
             "absolute -bottom-0.5 -end-0.5 h-2 w-2 rounded-full ring-2 ring-background transition-colors",
-            health ? "bg-brand" : "bg-err",
+            health ? "bg-ok" : "bg-err",
           )}
         />
       </div>
@@ -141,6 +150,7 @@ function AppShell() {
           <ViewSwitch view={view} setView={setView} className="hidden sm:flex" />
 
           <div className="flex shrink-0 items-center gap-1.5">
+            <ThemePicker />
             <ThemeToggle />
           </div>
         </div>

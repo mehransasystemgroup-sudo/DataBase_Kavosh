@@ -304,11 +304,14 @@ export default function LookupView({ onSelectTable }) {
                 <div className="flex flex-wrap items-center gap-2">
                   {detail.module && (
                     <span
-                      className="rounded px-1.5 py-0.5 font-mono text-[11px] font-bold"
+                      className="inline-flex items-center gap-1.5 rounded px-1.5 py-0.5 text-[11px] font-bold"
                       style={{ color: accent.text, background: accent.soft }}
                     >
-                      {detail.module}
-                      {schemaLabel(detail.module) ? ` · ${schemaLabel(detail.module)}` : ""}
+                      {/* مثل نشان اسکیما در جزئیات جدول: کد مونو، عنوان سنس */}
+                      <span className="font-mono">{detail.module}</span>
+                      {schemaLabel(detail.module) && (
+                        <span>· {schemaLabel(detail.module)}</span>
+                      )}
                     </span>
                   )}
                   <span className="ltr font-mono text-base font-bold text-foreground">

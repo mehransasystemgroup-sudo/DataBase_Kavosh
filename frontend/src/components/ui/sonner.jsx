@@ -3,10 +3,10 @@ import { useTheme } from "@/context/ThemeContext";
 
 /** نان‌آور پیام‌ها — رنگ‌هایش از توکن‌های تم می‌آید، نه از پالت خودش. */
 function Toaster(props) {
-  const { theme } = useTheme();
+  const { mode } = useTheme();
   return (
     <Sonner
-      theme={theme}
+      theme={mode}
       dir="rtl"
       position="top-center"
       className="toaster group"

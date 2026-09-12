@@ -45,8 +45,10 @@ public final class MainActivity extends Activity {
     /** موتور SQLite روی WebAssembly به نمایشگر وب نسبتاً تازه نیاز دارد. */
     private static final int MIN_WEBVIEW_MAJOR = 87;
 
-    private static final int INK = 0xFF050806;
-    private static final int PAPER = 0xFFF4F8F5;
+    /** رنگ پشتیبان تا وقتی صفحهٔ وب رنگ تم جاری را نفرستاده — برابر زمینهٔ
+     *  تم پیش‌فرض «نیمه‌شبِ نیلی» است. */
+    private static final int INK = 0xFF0A0E17;
+    private static final int PAPER = 0xFFF4F6FB;
 
     private WebView web;
     private boolean darkTheme = true;
@@ -140,17 +142,36 @@ public final class MainActivity extends Activity {
             WebViewCompat.addWebMessageListener(view, "KavoshShell", allowed,
                     (v, message, sourceOrigin, isMainFrame, replyProxy) -> {
                         if (!isMainFrame) return;
-                        boolean dark = "dark".equals(message.getData());
-                        runOnUiThread(() -> applyTheme(dark));
+                        // قالب پیام: «حالت» یا «حالت|#RRGGBB». شکل دوم رنگ
+                        // دقیق تم را می‌آورد تا نوار وضعیت با هر تمی — نه فقط
+                        // دو تای اول — مو‌به‌مو یکی شود.
+                        String data = String.valueOf(message.getData());
+                        int bar = data.indexOf('|');
+                        boolean dark = data.startsWith("dark");
+                        Integer color = null;
+                        if (bar >= 0) {
+                            try {
+                                color = Color.parseColor(data.substring(bar + 1));
+                            } catch (IllegalArgumentException ignored) {
+                                // رنگ ناخوانا؛ به پشتیبانِ حالت برمی‌گردیم
+                            }
+                        }
+                        final Integer shade = color;
+                        runOnUiThread(() -> applyTheme(dark, shade));
                     });
         }
     }
 
     /** رنگ پشت نوارهای سیستم و روشنی آیکون‌هایشان را با تم برنامه یکی می‌کند. */
     private void applyTheme(boolean dark) {
+        applyTheme(dark, null);
+    }
+
+    private void applyTheme(boolean dark, Integer color) {
         darkTheme = dark;
-        if (web != null) web.setBackgroundColor(dark ? INK : PAPER);
-        getWindow().getDecorView().setBackgroundColor(dark ? INK : PAPER);
+        int shade = color != null ? color : (dark ? INK : PAPER);
+        if (web != null) web.setBackgroundColor(shade);
+        getWindow().getDecorView().setBackgroundColor(shade);
 
         WindowInsetsControllerCompat bars =
                 WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
