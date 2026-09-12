@@ -137,6 +137,41 @@ jobs:
 
           Write-Host "نصب، اجرا و حذف — هر سه درست"
 
+      # این آزمون به‌خاطر ایرادی اضافه شد که به دست کاربر رسید: آزمون‌ها همیشه
+      # از نصبِ تمیز شروع می‌شدند، پس مسیر «به‌روزرسانی روی نصب قبلی» هرگز
+      # سنجیده نمی‌شد. کاربری که نسخهٔ قدیمی داشت، ایندکس قدیمی‌اش را نگه
+      # می‌داشت و کدِ تازه از جدول‌هایی می‌پرسید که در آن نبودند — هر بازکردن
+      # جدول خطای ۵۰۰ می‌داد.
+      - name: آزمون به‌روزرسانی روی نصب قبلی
+        shell: pwsh
+        run: |
+          $env:KAVOSH_NO_BROWSER = "1"
+          $data = "$env:LOCALAPPDATA\KavoshDB"
+          $index = "$data\index\kb.sqlite"
+          if (-not (Test-Path $index)) { throw "ایندکس نصب قبلی پیدا نشد؛ آزمون بی‌معنا می‌شود." }
+
+          # ایندکس را به شکل «ساختهٔ نسخهٔ قدیمی» درمی‌آوریم
+          python -c "import sqlite3,sys; db=sqlite3.connect(sys.argv[1]); db.execute("UPDATE meta SET value='0' WHERE key='schema_version'"); db.execute('DROP TABLE IF EXISTS entities'); db.commit()" $index
+
+          $app = Start-Process -FilePath "dist\KavoshDB\KavoshDB.exe" -PassThru
+          $ready = $false
+          foreach ($i in 1..120) {
+              Start-Sleep -Seconds 2
+              try { Invoke-RestMethod "http://127.0.0.1:8321/api/health" -TimeoutSec 3 | Out-Null; $ready = $true; break } catch { }
+          }
+          if (-not $ready) { $app | Stop-Process -Force; throw "برنامه پس از به‌روزرسانی بالا نیامد." }
+
+          # همان کاری که کاربر کرد و شکست: باز کردن جدول
+          foreach ($t in @("FIN3.Voucher", "RPA3.PaymentOrder", "HCM3.Employee")) {
+              $code = (Invoke-WebRequest "http://127.0.0.1:8321/api/table/$t" -UseBasicParsing -TimeoutSec 20).StatusCode
+              if ($code -ne 200) { $app | Stop-Process -Force; throw "$t پاسخ $code داد." }
+          }
+          $lookup = Invoke-RestMethod "http://127.0.0.1:8321/api/lookup/EducationDegree" -TimeoutSec 20
+          if ($lookup.values.Count -lt 1) { $app | Stop-Process -Force; throw "کد و شرحی پس از به‌روزرسانی خالی است." }
+
+          $app | Stop-Process -Force
+          Write-Host "به‌روزرسانی روی نصب قبلی — جدول‌ها و کد و شرحی سالم"
+
       - uses: actions/upload-artifact@v4
         with:
           name: KavoshDB-windows
