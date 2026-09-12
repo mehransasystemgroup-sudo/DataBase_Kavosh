@@ -145,9 +145,8 @@ jobs:
       - name: آزمون به‌روزرسانی روی نصب قبلی
         shell: pwsh
         run: |
-          # بدون این، شکستِ یک دستور بومی اسکریپت را متوقف نمی‌کند و آزمون تا
-          # پیام موفقیت پیش می‌رود بی‌آنکه چیزی را سنجیده باشد. یک بار همین
-          # اتفاق افتاد، پس هر فراخوانی python هم $LASTEXITCODE را می‌سنجد.
+          # بدون این، شکستِ یک دستور بومی اسکریپت را متوقف نمی‌کند و آزمون تا پیام
+          # موفقیت پیش می‌رود بی‌آنکه چیزی را سنجیده باشد.
           $ErrorActionPreference = "Stop"
 
           $env:KAVOSH_NO_BROWSER = "1"
@@ -161,15 +160,12 @@ jobs:
           python packaging\age_index.py $index --verify
           if ($LASTEXITCODE -ne 0) { throw "ایندکس کهنه نشد؛ آزمون معتبر نیست." }
 
-          # خروجی برنامه نگه داشته می‌شود: اگر بالا نیاید، آزمون باید بگوید چرا،
-          # نه اینکه فقط «بالا نیامد» بدهد و دور بعدی صرف حدس زدن شود.
+          # خروجی برنامه نگه داشته می‌شود: اگر بالا نیاید، آزمون باید بگوید چرا.
           $log = Join-Path $env:RUNNER_TEMP "upgrade-run.log"
-          $app = Start-Process -FilePath "dist\KavoshDB\KavoshDB.exe" -PassThru `
-                               -RedirectStandardOutput $log -RedirectStandardError "$log.err"
+          $app = Start-Process -FilePath "dist\KavoshDB\KavoshDB.exe" -PassThru -RedirectStandardOutput $log -RedirectStandardError "$log.err"
 
-          # برنامه اولین پورت آزاد از ۸۳۲۱ را می‌گیرد؛ اگر سوکتِ گام قبلی هنوز
-          # رها نشده باشد روی ۸۳۲۲ می‌نشیند. پس دنبال پورت می‌گردیم، نه اینکه
-          # یکی را فرض کنیم — همین فرض، دور قبل آزمون را قرمز کرد.
+          # برنامه اولین پورت آزاد از ۸۳۲۱ را می‌گیرد؛ اگر سوکتِ گام قبلی هنوز رها
+          # نشده باشد روی ۸۳۲۲ می‌نشیند. پس دنبال پورت می‌گردیم، نه اینکه فرض کنیم.
           $base = $null
           foreach ($i in 1..120) {
               Start-Sleep -Seconds 2
@@ -183,18 +179,15 @@ jobs:
               if ($base) { break }
               if ($app.HasExited) { break }
           }
+
           if (-not $base) {
               Write-Host "── خروجی برنامه ──"
-              if (Test-Path $log)       { Get-Content $log       | Select-Object -Last 40 }
+              if (Test-Path $log) { Get-Content $log | Select-Object -Last 40 }
               if (Test-Path "$log.err") { Get-Content "$log.err" | Select-Object -Last 40 }
-              if (-not $app.HasExited)  { $app | Stop-Process -Force }
+              if (-not $app.HasExited) { $app | Stop-Process -Force }
               throw "برنامه پس از به‌روزرسانی بالا نیامد."
           }
           Write-Host "  برنامه روی $base بالا آمد"
-
-          try { Invoke-RestMethod "http://127.0.0.1:8321/api/health" -TimeoutSec 3 | Out-Null; $ready = $true; break } catch { }
-          }
-          if (-not $ready) { $app | Stop-Process -Force; throw "برنامه پس از به‌روزرسانی بالا نیامد." }
 
           try {
               # همان کاری که کاربر کرد و شکست: باز کردن جدول
@@ -208,7 +201,7 @@ jobs:
               Write-Host "  ✔ کد و شرحی: $($lookup.values.Count) مقدار"
           }
           finally {
-              $app | Stop-Process -Force
+              if (-not $app.HasExited) { $app | Stop-Process -Force }
           }
           Write-Host "به‌روزرسانی روی نصب قبلی — جدول‌ها و کد و شرحی سالم"
 
