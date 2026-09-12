@@ -20,6 +20,17 @@ from __future__ import annotations
 import sqlite3
 import sys
 
+# کنسول ویندوز پیش‌فرض cp1252 است و اولین print فارسی با UnicodeEncodeError
+# اسکریپت را می‌کُشد — دقیقاً همان چیزی که app/console.py برای خودِ برنامه حل
+# می‌کند. این‌جا هم لازم است: بدون آن، «کهنه‌سازی» انجام می‌شود ولی اسکریپت
+# سر چاپِ پیامِ موفقیت می‌افتد و آزمون بی‌دلیل قرمز می‌شود.
+for _stream in (sys.stdout, sys.stderr):
+    if _stream is not None and hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
 
 def main(argv: list[str]) -> int:
     if not argv:
