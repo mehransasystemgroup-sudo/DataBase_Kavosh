@@ -209,6 +209,12 @@ def _collect_joins(kb: Path) -> list[tuple]:
     return list(edges.values())
 
 
+# نسخهٔ ساختار ایندکس. هر بار که جدول یا ستونی به SCHEMA اضافه یا عوض شد،
+# این عدد باید یک واحد بالا برود: برنامه با همین می‌فهمد ایندکسِ روی دیسکِ
+# کاربر برای نسخهٔ قدیمی ساخته شده و باید دوباره ساخته شود.
+SCHEMA_VERSION = "5"
+
+
 def build(kb: Path, out: Path, instance: Path | None) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     if out.exists():
@@ -346,6 +352,7 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
         ("indexes", str(len(index_rows))), ("with_title_fa", str(n_sem)),
         ("active_tables", str(n_active)),
         ("schema_titles", str(len(schema_titles))),
+        ("schema_version", SCHEMA_VERSION),
         ("column_labels", str(len(column_labels))),
         ("lookup_types", str(len(lookup_types))),
         ("lookup_values", str(len(lookup_values))),

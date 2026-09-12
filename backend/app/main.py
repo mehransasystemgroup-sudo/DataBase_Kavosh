@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import sqlite3
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -26,7 +27,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app.console import setup as setup_console                 # noqa: E402
-from app.paths import bundle_root, data_root, seed_data_dir   # noqa: E402
+from app.paths import (bundle_root, data_root,               # noqa: E402
+                       kb_fingerprint, seed_data_dir)
 from core import indexer                                      # noqa: E402
 from core.search import KnowledgeBase                         # noqa: E402
 from core.writer import KnowledgeWriter                       # noqa: E402
@@ -48,11 +50,41 @@ STATIC_DIR = Path(os.environ.get("STATIC_DIR", BUNDLE / "static"))
 def _build_index() -> None:
     """ساخت ایندکس از kb/ — درون همین فرایند، بدون زیرفرایند."""
     indexer.build(KB_ROOT, INDEX, INSTANCE if INSTANCE.exists() else None)
+    # اثر انگشت دانشی که این ایندکس از رویش ساخته شد، داخل خودش می‌ماند تا
+    # اجرای بعدی بداند چیزی عوض شده یا نه.
+    with sqlite3.connect(INDEX) as db:
+        db.execute("INSERT OR REPLACE INTO meta VALUES ('kb_fingerprint', ?)",
+                   (kb_fingerprint(KB_ROOT) if KB_ROOT.is_dir() else "",))
+
+
+def _index_is_stale() -> str | None:
+    """
+    چرا ایندکس باید دوباره ساخته شود — یا None اگر تازه است.
+
+    پیش از این فقط «وجود ندارد» بررسی می‌شد. نتیجه‌اش این بود که کاربرِ
+    به‌روزرسانی‌شده ایندکسِ نسخهٔ قبلی را نگه می‌داشت، در حالی که کدِ تازه از
+    جدول‌هایی می‌پرسد که در آن ایندکس وجود ندارند — و هر بازکردن جدول با خطای
+    «no such table» به ۵۰۰ می‌خورد. این دقیقاً همان چیزی بود که کاربر دید.
+    """
+    if not INDEX.exists():
+        return f"ایندکس یافت نشد؛ ساخت از {KB_ROOT}"
+    try:
+        with sqlite3.connect(f"file:{INDEX}?mode=ro", uri=True) as db:
+            meta = dict(db.execute("SELECT key, value FROM meta").fetchall())
+    except sqlite3.Error:
+        return "ایندکس خوانده نشد؛ بازسازی"
+    if meta.get("schema_version") != indexer.SCHEMA_VERSION:
+        return "ساختار ایندکس برای نسخهٔ قبلی برنامه است؛ بازسازی"
+    if meta.get("kb_fingerprint") != _kb_fingerprint:
+        return "دانش پایه به‌روز شده؛ بازسازی ایندکس"
+    return None
 
 
 INDEX.parent.mkdir(parents=True, exist_ok=True)
-if not INDEX.exists():
-    print(f"ایندکس یافت نشد؛ ساخت از {KB_ROOT} — یک بار و چند ثانیه…", flush=True)
+_kb_fingerprint = kb_fingerprint(KB_ROOT) if KB_ROOT.is_dir() else ""
+_stale = _index_is_stale()
+if _stale:
+    print(f"{_stale} — یک بار و چند ثانیه…", flush=True)
     _build_index()
 
 kb = KnowledgeBase(INDEX)
