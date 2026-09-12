@@ -149,61 +149,96 @@ jobs:
           # موفقیت پیش می‌رود بی‌آنکه چیزی را سنجیده باشد.
           $ErrorActionPreference = "Stop"
 
+          # پوشهٔ دادهٔ مستقل. آزمون قبلاً از جامانده‌های گام نصب استفاده می‌کرد و
+          # همان‌جا شکست: هر فرایند یا پویشگری که هنوز kb.sqlite را باز نگه داشته
+          # بود، بازسازی ایندکس را می‌خواباند. این‌جا هیچ‌کس جز خودِ آزمون نیست.
+          $data = Join-Path $env:RUNNER_TEMP "kavosh-upgrade"
+          Remove-Item $data -Recurse -Force -ErrorAction SilentlyContinue
+          $env:KAVOSH_DATA_DIR = $data
           $env:KAVOSH_NO_BROWSER = "1"
-          $index = "$env:LOCALAPPDATA\KavoshDB\index\kb.sqlite"
-          if (-not (Test-Path $index)) { throw "ایندکس نصب قبلی پیدا نشد؛ آزمون بی‌معنا می‌شود." }
+          # پورت جدا از گام‌های قبلی: اگر نمونه‌ای از آن‌ها هنوز روی ۸۳۲۱ زنده
+          # مانده باشد، آزمون به‌جای برنامهٔ خودش با آن یکی حرف می‌زند و بی‌معنا
+          # سبز می‌شود. برای همین هم هر جامانده‌ای اینجا بسته می‌شود.
+          Get-Process KavoshDB -ErrorAction SilentlyContinue | Stop-Process -Force
+          Start-Sleep -Seconds 2
+          $env:PORT = "8341"
+          $exe = "dist\KavoshDB\KavoshDB.exe"
+          $log = Join-Path $env:RUNNER_TEMP "upgrade-run.log"
 
+          # برنامه اولین پورت آزاد از پورت دلخواه به بعد را می‌گیرد؛ پس دنبالش
+          # می‌گردیم، نه اینکه فرض کنیم دقیقاً روی همان نشسته است.
+          function Start-Kavosh($tag) {
+              $p = Start-Process -FilePath $exe -PassThru `
+                   -RedirectStandardOutput "$log.$tag" -RedirectStandardError "$log.$tag.err"
+              $base = $null
+              foreach ($i in 1..120) {
+                  Start-Sleep -Seconds 2
+                  foreach ($port in 8341..8345) {
+                      try {
+                          Invoke-RestMethod "http://127.0.0.1:$port/api/health" -TimeoutSec 2 | Out-Null
+                          $base = "http://127.0.0.1:$port"; break
+                      } catch { }
+                  }
+                  if ($base -or $p.HasExited) { break }
+              }
+              if (-not $base) {
+                  Write-Host "── خروجی برنامه ($tag) ──"
+                  foreach ($f in @("$log.$tag", "$log.$tag.err")) {
+                      if (Test-Path $f) { Get-Content $f | Select-Object -Last 40 }
+                  }
+                  if (-not $p.HasExited) { $p | Stop-Process -Force }
+                  throw "برنامه بالا نیامد ($tag)."
+              }
+              return @{ proc = $p; base = $base }
+          }
+
+          # Wait-Process لازم است: Stop-Process فقط دستور کشتن را می‌فرستد و
+          # بی‌آنکه صبر کنیم، فایل ایندکس هنوز چند لحظه در دست ویندوز است.
+          function Stop-Kavosh($h) {
+              if (-not $h.proc.HasExited) { $h.proc | Stop-Process -Force }
+              Wait-Process -Id $h.proc.Id -Timeout 30 -ErrorAction SilentlyContinue
+              Start-Sleep -Seconds 2
+          }
+
+          # ── ۱) نصب قبلی: یک بار اجرا تا دانش و ایندکس بنشیند ──
+          $h = Start-Kavosh "first"
+          $body = @{ kind = "table"; payload = @{
+              full_name = "HCM3.Employee"; title_fa = "عنوانِ خودِ کاربر" } } | ConvertTo-Json
+          Invoke-RestMethod "$($h.base)/api/knowledge" -Method Post -Body $body `
+              -ContentType "application/json" | Out-Null
+          Stop-Kavosh $h
+          Write-Host "  نصب قبلی ساخته شد و دانش کاربر ثبت شد"
+
+          # ── ۲) کهنه کردن: همان چیزی که کاربرِ نسخهٔ قدیمی روی دیسک دارد ──
+          $index = Join-Path $data "index\kb.sqlite"
+          if (-not (Test-Path $index)) { throw "ایندکس نصب قبلی ساخته نشد." }
           python packaging\age_index.py $index
           if ($LASTEXITCODE -ne 0) { throw "کهنه‌سازی ایندکس شکست خورد." }
-
-          # ایندکس واقعاً باید کهنه شده باشد، وگرنه آزمون چیزی را نمی‌سنجد
           python packaging\age_index.py $index --verify
           if ($LASTEXITCODE -ne 0) { throw "ایندکس کهنه نشد؛ آزمون معتبر نیست." }
+          Remove-Item (Join-Path $data "kb-version.txt") -Force -ErrorAction SilentlyContinue
 
-          # خروجی برنامه نگه داشته می‌شود: اگر بالا نیاید، آزمون باید بگوید چرا.
-          $log = Join-Path $env:RUNNER_TEMP "upgrade-run.log"
-          $app = Start-Process -FilePath "dist\KavoshDB\KavoshDB.exe" -PassThru -RedirectStandardOutput $log -RedirectStandardError "$log.err"
-
-          # برنامه اولین پورت آزاد از ۸۳۲۱ را می‌گیرد؛ اگر سوکتِ گام قبلی هنوز رها
-          # نشده باشد روی ۸۳۲۲ می‌نشیند. پس دنبال پورت می‌گردیم، نه اینکه فرض کنیم.
-          $base = $null
-          foreach ($i in 1..120) {
-              Start-Sleep -Seconds 2
-              foreach ($port in 8321..8325) {
-                  try {
-                      Invoke-RestMethod "http://127.0.0.1:$port/api/health" -TimeoutSec 2 | Out-Null
-                      $base = "http://127.0.0.1:$port"
-                      break
-                  } catch { }
-              }
-              if ($base) { break }
-              if ($app.HasExited) { break }
-          }
-
-          if (-not $base) {
-              Write-Host "── خروجی برنامه ──"
-              if (Test-Path $log) { Get-Content $log | Select-Object -Last 40 }
-              if (Test-Path "$log.err") { Get-Content "$log.err" | Select-Object -Last 40 }
-              if (-not $app.HasExited) { $app | Stop-Process -Force }
-              throw "برنامه پس از به‌روزرسانی بالا نیامد."
-          }
-          Write-Host "  برنامه روی $base بالا آمد"
-
+          # ── ۳) اجرای نسخهٔ تازه روی همان پوشه — همان کاری که کاربر کرد ──
+          $h = Start-Kavosh "upgrade"
           try {
-              # همان کاری که کاربر کرد و شکست: باز کردن جدول
               foreach ($t in @("FIN3.Voucher", "RPA3.PaymentOrder", "HCM3.Employee")) {
-                  $code = (Invoke-WebRequest "$base/api/table/$t" -UseBasicParsing -TimeoutSec 30).StatusCode
+                  $code = (Invoke-WebRequest "$($h.base)/api/table/$t" -UseBasicParsing -TimeoutSec 30).StatusCode
                   if ($code -ne 200) { throw "$t پاسخ $code داد." }
                   Write-Host "  ✔ $t"
               }
-              $lookup = Invoke-RestMethod "$base/api/lookup/EducationDegree" -TimeoutSec 30
+              $lookup = Invoke-RestMethod "$($h.base)/api/lookup/EducationDegree" -TimeoutSec 30
               if ($lookup.values.Count -lt 1) { throw "کد و شرحی پس از به‌روزرسانی خالی است." }
               Write-Host "  ✔ کد و شرحی: $($lookup.values.Count) مقدار"
+
+              # به‌روزرسانی نباید دانش کاربر را بشوید
+              $emp = Invoke-RestMethod "$($h.base)/api/table/HCM3.Employee" -TimeoutSec 30
+              if ($emp.title_fa -ne "عنوانِ خودِ کاربر") {
+                  throw "دانش کاربر پس از به‌روزرسانی از بین رفت: $($emp.title_fa)"
+              }
+              Write-Host "  ✔ دانش کاربر سالم ماند"
           }
-          finally {
-              if (-not $app.HasExited) { $app | Stop-Process -Force }
-          }
-          Write-Host "به‌روزرسانی روی نصب قبلی — جدول‌ها و کد و شرحی سالم"
+          finally { Stop-Kavosh $h }
+          Write-Host "به‌روزرسانی روی نصب قبلی — جدول‌ها، کد و شرحی و دانش کاربر سالم"
 
       - uses: actions/upload-artifact@v4
         with:

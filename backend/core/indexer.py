@@ -17,8 +17,10 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sqlite3
 import sys
+import time
 from pathlib import Path
 
 import yaml
@@ -215,12 +217,41 @@ def _collect_joins(kb: Path) -> list[tuple]:
 SCHEMA_VERSION = "5"
 
 
+def _put_in_place(tmp: Path, out: Path) -> None:
+    """
+    ایندکس تازه را جای ایندکس قبلی می‌نشاند — با چند بار تلاش.
+
+    چرا تلاش دوباره: روی ویندوز فایلی که فرایند دیگری لحظه‌ای باز کرده —
+    پویشگر ضدویروس که تازه‌نوشته‌ها را می‌خواند، یا نسخهٔ دیگری از خود
+    برنامه — با PermissionError جایگزین نمی‌شود. این قفل‌ها گذرا هستند و
+    چند ثانیه صبر حلشان می‌کند؛ ولی اگر همین یک خطا را رد کنیم، برنامه
+    هنگام بالا آمدن می‌میرد و کاربر هیچ چیزی جز یک پنجرهٔ بسته نمی‌بیند.
+    """
+    last: OSError | None = None
+    for wait in (0, 0.3, 0.6, 1.2, 2.0, 3.0):
+        if wait:
+            time.sleep(wait)
+        try:
+            os.replace(tmp, out)
+            return
+        except OSError as e:
+            last = e
+    tmp.unlink(missing_ok=True)
+    raise RuntimeError(
+        f"ایندکس تازه ساخته شد ولی جایگزین ایندکس قبلی نشد: {out}\n"
+        "احتمالاً نسخهٔ دیگری از برنامه باز است؛ ببندیدش و دوباره اجرا کنید."
+    ) from last
+
+
 def build(kb: Path, out: Path, instance: Path | None) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
-    if out.exists():
-        out.unlink()
+    # روی فایل کناری ساخته می‌شود و در پایان جایش می‌نشیند: تا لحظهٔ آخر
+    # ایندکس قبلی سالم می‌ماند، پس ساختِ نیمه‌کاره — قطع برق، بسته‌شدن
+    # پنجره — کاربر را بی‌ایندکس نمی‌گذارد.
+    tmp = out.with_name(out.name + ".building")
+    tmp.unlink(missing_ok=True)
 
-    db = sqlite3.connect(out)
+    db = sqlite3.connect(tmp)
     db.executescript(SCHEMA)
 
     # ── ساختار ──
@@ -363,6 +394,7 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     db.commit()
     db.execute("VACUUM")
     db.close()
+    _put_in_place(tmp, out)
 
     size = out.stat().st_size / 1024 / 1024
     print(f"✔ {out}  ({size:.1f} MB)")

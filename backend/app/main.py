@@ -13,6 +13,7 @@ import asyncio
 import os
 import sqlite3
 import sys
+from contextlib import closing
 from datetime import datetime
 from pathlib import Path
 
@@ -52,7 +53,10 @@ def _build_index() -> None:
     indexer.build(KB_ROOT, INDEX, INSTANCE if INSTANCE.exists() else None)
     # اثر انگشت دانشی که این ایندکس از رویش ساخته شد، داخل خودش می‌ماند تا
     # اجرای بعدی بداند چیزی عوض شده یا نه.
-    with sqlite3.connect(INDEX) as db:
+    # closing لازم است: «with» روی اتصال sqlite فقط تراکنش را می‌بندد، نه خود
+    # اتصال را. اتصالِ باز روی ویندوز فایل را قفل نگه می‌دارد و بازسازی بعدی
+    # را — در همین اجرا — با PermissionError می‌خواباند.
+    with closing(sqlite3.connect(INDEX)) as db, db:
         db.execute("INSERT OR REPLACE INTO meta VALUES ('kb_fingerprint', ?)",
                    (kb_fingerprint(KB_ROOT) if KB_ROOT.is_dir() else "",))
 
@@ -69,7 +73,7 @@ def _index_is_stale() -> str | None:
     if not INDEX.exists():
         return f"ایندکس یافت نشد؛ ساخت از {KB_ROOT}"
     try:
-        with sqlite3.connect(f"file:{INDEX}?mode=ro", uri=True) as db:
+        with closing(sqlite3.connect(f"file:{INDEX}?mode=ro", uri=True)) as db:
             meta = dict(db.execute("SELECT key, value FROM meta").fetchall())
     except sqlite3.Error:
         return "ایندکس خوانده نشد؛ بازسازی"
