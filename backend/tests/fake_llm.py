@@ -58,7 +58,18 @@ def serve(port: int) -> HTTPServer:
 
 
 if __name__ == "__main__":
+    # بدون این، اولین چاپِ غیر-ASCII روی ویندوز UnicodeEncodeError می‌دهد و
+    # فرایند می‌میرد — و چون سرور در نخِ daemon است، بی‌صدا با آن می‌رود.
+    # آن وقت آزمون «به سرویس مدل وصل نشدیم» می‌گیرد و علت جای دیگری به نظر
+    # می‌رسد. همان درسی که یک بار در age_index.py گرفتیم.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            try:
+                stream.reconfigure(encoding="utf-8", errors="replace")
+            except Exception:                                # noqa: BLE001
+                pass
+
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8999
     serve(port)
-    print(f"سرویس ساختگی روی {port}", flush=True)
+    print(f"fake llm listening on {port}", flush=True)
     threading.Event().wait()

@@ -60,6 +60,12 @@ def server(tmp_path_factory):
     api_log = logs / "api.log"
     llm_log = logs / "llm.log"
 
+    def tail(path: Path, n: int = 4000) -> str:
+        try:
+            return path.read_text(encoding="utf-8", errors="replace")[-n:]
+        except OSError:
+            return "(بدون خروجی)"
+
     llm = subprocess.Popen(
         [sys.executable, str(BACKEND / "tests" / "fake_llm.py"), str(llm_port)],
         stdout=llm_log.open("wb"), stderr=subprocess.STDOUT,
@@ -77,11 +83,20 @@ def server(tmp_path_factory):
         stdout=api_log.open("wb"), stderr=subprocess.STDOUT,
     )
 
-    def tail(path: Path, n: int = 4000) -> str:
+    # سرویس مدلِ ساختگی باید *ثابت شود* که بالاست. اگر نباشد، شکستش چند لایه
+    # پایین‌تر و با پیامی بی‌ربط بیرون می‌زند («به سرویس مدل وصل نشدیم») و
+    # دنبال علت در جای اشتباه می‌گردیم.
+    llm_base = f"http://127.0.0.1:{llm_port}/v1"
+    for _ in range(40):
+        if llm.poll() is not None:
+            pytest.fail(f"سرویس مدل ساختگی افتاد:\n{tail(llm_log)}")
         try:
-            return path.read_text(encoding="utf-8", errors="replace")[-n:]
-        except OSError:
-            return "(بدون خروجی)"
+            _send(f"{llm_base}/chat/completions", {"messages": []}, method="POST")
+            break
+        except (urllib.error.URLError, OSError, TimeoutError):
+            time.sleep(0.5)
+    else:
+        pytest.fail(f"سرویس مدل ساختگی بالا نیامد:\n{tail(llm_log)}")
 
     base = f"http://127.0.0.1:{api_port}"
     deadline = time.time() + 300           # اولین اجرا ایندکس را می‌سازد
@@ -97,7 +112,7 @@ def server(tmp_path_factory):
         pytest.fail(f"سرور در زمان مقرر بالا نیامد.\n{tail(api_log)}")
 
     yield {
-        "base": base, "llm": f"http://127.0.0.1:{llm_port}/v1", "data": data,
+        "base": base, "llm": llm_base, "data": data,
         "api_log": api_log, "llm_log": llm_log, "tail": tail,
     }
 
