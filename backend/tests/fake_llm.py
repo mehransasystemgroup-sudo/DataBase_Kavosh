@@ -19,9 +19,6 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class Handler(BaseHTTPRequestHandler):
-    seen = 0
-    lock = threading.Lock()
-
     def log_message(self, *args):        # noqa: D102 — سکوت در خروجی آزمون
         pass
 
@@ -30,24 +27,20 @@ class Handler(BaseHTTPRequestHandler):
         body = json.loads(self.rfile.read(length) or b"{}")
         text = json.dumps(body, ensure_ascii=False)
 
-        with Handler.lock:
-            Handler.seen += 1
-            n = Handler.seen
-
-        # واژهٔ کلیدی برای آزمودن مسیر شکست: مدلی که تا آخر اشتباه می‌ماند.
-        # بدون این، مسیر «تأیید نشد» هرگز دیده نمی‌شود.
-        if "ناموجود" in text:
-            reply = ("```sql\nSELECT x.NoSuchColumn FROM HCM3.Employees AS x\n```"
-                     if "انتخاب کن" not in text else "HCM3.Employee")
-        elif "انتخاب کن" in text:
+        # تصمیم فقط از روی محتوای پرامپت گرفته می‌شود، نه از شمارندهٔ درخواست.
+        # با شمارنده، ترتیب یا تعداد تماس‌ها که عوض شود آزمون بی‌ربط می‌افتد و
+        # علتش هم پیدا نیست؛ این‌طور رفتار هر تماس مستقل و قابل‌پیش‌بینی است.
+        good = "```sql\nSELECT [e].[EmployeeID] FROM [HCM3].[Employee] AS [e]\n```\nشناسهٔ کارمندان."
+        if "انتخاب کن" in text:
             reply = "HCM3.Employee"
+        elif "ناموجود" in text:
+            # مدلی که تا آخر اشتباه می‌ماند — برای آزمودن مسیر «تأیید نشد»
+            reply = "```sql\nSELECT x.NoSuchColumn FROM HCM3.Employees AS x\n```"
         elif "ایرادهایی که بازبین گرفت" in text:
-            reply = "```sql\nSELECT [e].[EmployeeID] FROM [HCM3].[Employee] AS [e]\n```\nشناسهٔ کارمندان."
-        elif n <= 2:
-            # اولین نگارش: اشتباهِ کلاسیکِ مدل ضعیف — جمع‌بستن نام جدول
-            reply = "```sql\nSELECT e.EmployeeID FROM HCM3.Employees AS e\n```"
+            reply = good                       # با دیدن بازخورد، تصحیح می‌کند
         else:
-            reply = "```sql\nSELECT [e].[EmployeeID] FROM [HCM3].[Employee] AS [e]\n```"
+            # اولین نگارش: اشتباهِ کلاسیک مدل ضعیف — جمع‌بستن نام جدول
+            reply = "```sql\nSELECT e.EmployeeID FROM HCM3.Employees AS e\n```"
 
         payload = {"choices": [{"message": {"role": "assistant", "content": reply}}]}
         raw = json.dumps(payload).encode()

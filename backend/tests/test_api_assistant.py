@@ -45,12 +45,24 @@ def _send(url: str, payload: dict, method: str = "PUT") -> dict:
 
 @pytest.fixture(scope="module")
 def server(tmp_path_factory):
+    """
+    سرور واقعی و سرویس مدلِ ساختگی، هر دو در زیرفرایند.
+
+    خروجی هر دو به *فایل* می‌رود نه به لوله. لولهٔ خوانده‌نشده وقتی پر شود،
+    فرایندِ نویسنده را بی‌صدا متوقف می‌کند — و بافر لوله روی ویندوز به‌مراتب
+    کوچک‌تر از لینوکس است، یعنی آزمونی که این‌جا سبز است آن‌جا بی‌دلیل
+    می‌خوابد. با فایل، نه سقفی هست و نه موقع شکست چیزی از دست می‌رود.
+    """
     data = tmp_path_factory.mktemp("data")
+    logs = tmp_path_factory.mktemp("logs")
     llm_port, api_port = _free_port(), _free_port()
+
+    api_log = logs / "api.log"
+    llm_log = logs / "llm.log"
 
     llm = subprocess.Popen(
         [sys.executable, str(BACKEND / "tests" / "fake_llm.py"), str(llm_port)],
-        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        stdout=llm_log.open("wb"), stderr=subprocess.STDOUT,
     )
     env = {
         **os.environ,
@@ -62,24 +74,32 @@ def server(tmp_path_factory):
     }
     api = subprocess.Popen(
         [sys.executable, "-m", "app.main"], cwd=str(BACKEND), env=env,
-        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        stdout=api_log.open("wb"), stderr=subprocess.STDOUT,
     )
+
+    def tail(path: Path, n: int = 4000) -> str:
+        try:
+            return path.read_text(encoding="utf-8", errors="replace")[-n:]
+        except OSError:
+            return "(بدون خروجی)"
 
     base = f"http://127.0.0.1:{api_port}"
     deadline = time.time() + 300           # اولین اجرا ایندکس را می‌سازد
     while time.time() < deadline:
         if api.poll() is not None:
-            out = (api.stdout.read() or b"").decode("utf-8", "replace")
-            pytest.fail(f"سرور بالا نیامد:\n{out[-3000:]}")
+            pytest.fail(f"سرور بالا نیامد:\n{tail(api_log)}")
         try:
             _get(f"{base}/api/health")
             break
         except (urllib.error.URLError, OSError, TimeoutError):
             time.sleep(2)
     else:
-        pytest.fail("سرور در زمان مقرر بالا نیامد.")
+        pytest.fail(f"سرور در زمان مقرر بالا نیامد.\n{tail(api_log)}")
 
-    yield {"base": base, "llm": f"http://127.0.0.1:{llm_port}/v1", "data": data}
+    yield {
+        "base": base, "llm": f"http://127.0.0.1:{llm_port}/v1", "data": data,
+        "api_log": api_log, "llm_log": llm_log, "tail": tail,
+    }
 
     for proc in (api, llm):
         proc.terminate()
@@ -148,10 +168,15 @@ def test_full_run_repairs_a_weak_models_mistake(server):
     """
     events = _ask(server["base"], "فهرست کارمندان")
     kinds = [e["type"] for e in events]
-    assert "retrieve" in kinds and "verify" in kinds
+    # گزارشِ کامل در خودِ پیام شکست: با فهرست بریده، تشخیص از راه دور ممکن
+    # نیست و باید یک دور دیگر CI سوزاند تا فقط ببینیم چه شد.
+    story = "\n".join(f"  {e['type']}: {e.get('message', '')}" for e in events)
+    detail = f"\nرویدادها:\n{story}\n\nخروجی سرور:\n{server['tail'](server['api_log'])}"
+    assert "retrieve" in kinds, detail
+    assert "verify" in kinds, detail
 
     result = events[-1]
-    assert result["type"] == "result", result
+    assert result["type"] == "result", detail
     assert result["check"]["ok"] is True
     assert "Employee" in result["sql"] and "Employees" not in result["sql"]
     # یعنی حلقهٔ اصلاح واقعاً به کار افتاده، نه اینکه از اول درست بوده

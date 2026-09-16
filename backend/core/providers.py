@@ -21,6 +21,7 @@ from __future__ import annotations
 import json
 import socket
 import urllib.error
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 
@@ -106,13 +107,32 @@ class ProviderError(RuntimeError):
     """خطای قابل‌نمایش به کاربر — پیامش فارسی و بدون جزئیات بی‌فایده است."""
 
 
+LOCAL_HOSTS = {"localhost", "127.0.0.1", "::1", "0.0.0.0"}
+
+
+def _opener(url: str):
+    """
+    برای سرویس محلی، پروکسی دور زده می‌شود.
+
+    چرا: روی رایانهٔ سازمانی معمولاً http_proxy تنظیم است تا ترافیک بیرونی
+    از پروکسی رد شود — و همین درست است، چون OpenAI و Gemini بیرون‌اند. ولی
+    urllib همان قاعده را روی 127.0.0.1 هم اعمال می‌کند، و آن وقت مدلی که
+    روی خودِ همین دستگاه بالاست (Ollama، LM Studio) از راه پروکسی خواسته
+    می‌شود و هرگز جواب نمی‌دهد.
+    """
+    host = (urllib.parse.urlsplit(url).hostname or "").lower()
+    if host in LOCAL_HOSTS or host.endswith(".local"):
+        return urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    return urllib.request.build_opener()
+
+
 def _post(url: str, payload: dict, headers: dict, timeout: int) -> dict:
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=body, method="POST", headers={
         "content-type": "application/json", **headers,
     })
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+        with _opener(url).open(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         detail = ""
