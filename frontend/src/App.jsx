@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Database, ListChecks, Network, Search, TriangleAlert } from "lucide-react";
+import { Database, ListChecks, Network, Search, Settings, TriangleAlert, Wand2 } from "lucide-react";
 
 import { http, OFFLINE_HINT } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
@@ -11,11 +11,14 @@ import { Toaster } from "@/components/ui/sonner";
 import ExplorerView from "@/views/ExplorerView";
 import SchemaGraphView from "@/views/SchemaGraphView";
 import LookupView from "@/views/LookupView";
+import AssistantView from "@/views/AssistantView";
+import SettingsDialog from "@/views/SettingsDialog";
 
 const VIEWS = [
   { id: "explorer", label: "کاوش جدول‌ها", short: "جدول‌ها", icon: Search },
   { id: "graph", label: "گراف روابط اسکیما", short: "گراف", icon: Network },
   { id: "lookup", label: "کد و شرح", short: "کد و شرح", icon: ListChecks },
+  { id: "assistant", label: "دستیار کوئری‌نویسی", short: "دستیار", icon: Wand2 },
 ];
 
 function Brand({ health }) {
@@ -90,8 +93,9 @@ function ViewSwitch({ view, setView, className }) {
 function AppShell() {
   const [route, navigate] = useHashRoute();
   const [health, setHealth] = useState(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
-  const view = ["graph", "lookup"].includes(route.view) ? route.view : "explorer";
+  const view = ["graph", "lookup", "assistant"].includes(route.view) ? route.view : "explorer";
   const graphSchema = route.schema || "FIN3";
 
   const refreshHealth = useCallback(async () => {
@@ -119,6 +123,7 @@ function AppShell() {
   return (
     <div className="app-canvas inset-safe flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
       <Toaster />
+      <SettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen} />
 
       {/*
         نوار سازنده — بالای همه‌چیز، روی هر سه نما.
@@ -150,6 +155,15 @@ function AppShell() {
           <ViewSwitch view={view} setView={setView} className="hidden sm:flex" />
 
           <div className="flex shrink-0 items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setSettingsOpen(true)}
+              aria-label="تنظیمات"
+              title="تنظیمات"
+              className="inline-flex h-9 shrink-0 items-center justify-center rounded-md border border-border bg-surface px-2.5 text-muted-foreground transition-colors hover:border-brand/45 hover:bg-surfaceHover hover:text-brand-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
+            >
+              <Settings className="h-4 w-4" />
+            </button>
             <ThemePicker />
             <ThemeToggle />
           </div>
@@ -168,6 +182,12 @@ function AppShell() {
         {view === "graph" && <SchemaGraphView route={route} navigate={navigate} />}
         {view === "lookup" && (
           <LookupView onSelectTable={(full) => navigate({ view: "explorer", table: full })} />
+        )}
+        {view === "assistant" && (
+          <AssistantView
+            onOpenTable={(full) => navigate({ view: "explorer", table: full })}
+            onOpenSettings={() => setSettingsOpen(true)}
+          />
         )}
       </main>
 

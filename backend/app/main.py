@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 import sqlite3
 import sys
@@ -19,7 +20,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -30,6 +31,9 @@ if str(ROOT) not in sys.path:
 from app.console import setup as setup_console                 # noqa: E402
 from app.crashlog import breadcrumb, fatal_guard               # noqa: E402
 from app.version import VERSION                                # noqa: E402
+from app import settings as user_settings                      # noqa: E402
+from core import assistant, providers                          # noqa: E402
+from core.sqlcheck import SchemaIndex, check_sql                # noqa: E402
 from app.paths import (bundle_root, data_root,               # noqa: E402
                        kb_fingerprint, seed_data_dir)
 from core import indexer                                      # noqa: E402
@@ -262,6 +266,170 @@ def knowledge(body: KnowledgeIn) -> dict:
 
     return {"ok": True, "message": message, "applied": applied,
             "note": "" if applied else "برای اعمال در جست‌وجو، ایندکس را بازسازی کنید."}
+
+
+# ═══════════════ تنظیمات و دستیار کوئری‌نویسی ═══════════════
+
+
+class SettingsIn(BaseModel):
+    provider: str | None = None
+    model: str | None = None
+    base_url: str | None = None
+    max_attempts: int | None = None
+    api_key: str | None = None
+    key_provider: str | None = None
+
+
+class AskIn(BaseModel):
+    question: str
+
+
+@app.get("/api/settings")
+def get_settings() -> dict:
+    return user_settings.public(DATA)
+
+
+@app.put("/api/settings")
+def put_settings(body: SettingsIn) -> dict:
+    # exclude_unset مهم است: «نفرستادن کلید» با «فرستادن کلید خالی» یکی نیست.
+    # اولی یعنی دست نزن، دومی یعنی پاکش کن.
+    patch = body.model_dump(exclude_unset=True)
+    try:
+        return user_settings.save(DATA, patch)
+    except (ValueError, TypeError) as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.post("/api/settings/test")
+async def test_settings(body: SettingsIn) -> dict:
+    """
+    آزمایش کلید پیش از ذخیره.
+
+    کلیدِ فرستاده‌شده ذخیره نمی‌شود؛ اگر نیامده باشد، از کلیدِ ذخیره‌شده
+    استفاده می‌شود. پس کاربر هم می‌تواند کلید تازه را بیازماید و هم کلید
+    فعلی را، بی‌آنکه چیزی عوض شود.
+    """
+    patch = body.model_dump(exclude_unset=True)
+    current = user_settings.active(DATA)
+    provider_id = patch.get("provider") or current["provider_id"]
+    key = patch.get("api_key")
+    if not key:
+        stored = user_settings.load(DATA).get("keys") or {}
+        key = stored.get(provider_id, "")
+    model = patch.get("model") or current["model"]
+    if provider_id != current["provider_id"] and not patch.get("model"):
+        target = providers.BY_ID.get(provider_id)
+        model = target.default_model if target else model
+    base_url = patch.get("base_url", current["base_url"])
+
+    try:
+        result = await asyncio.to_thread(
+            providers.probe, provider_id=provider_id, api_key=key,
+            model=model, base_url=base_url or "",
+        )
+        return {**result, "provider": provider_id, "model": model}
+    except providers.ProviderError as e:
+        return {"ok": False, "error": str(e), "provider": provider_id, "model": model}
+
+
+class CheckIn(BaseModel):
+    sql: str
+
+
+@app.post("/api/assistant/check")
+def assistant_check(body: CheckIn) -> dict:
+    """
+    بازبینی یک کوئری در برابر ساختار — بدون هیچ مدلی.
+
+    همان بازبینی‌ای که خروجی دستیار از آن رد می‌شود، این‌جا مستقیم در دسترس
+    است: کوئریِ خودِ کاربر را هم می‌شود سنجید. کلید API نمی‌خواهد چون هیچ
+    مدلی درگیر نیست.
+
+    این مسیر ضمناً تنها راهی است که آزمون دود می‌تواند مطمئن شود گویش T-SQL
+    در نسخهٔ بسته‌بندی‌شده هم بار می‌شود: sqlglot گویش‌ها را در زمان اجرا
+    import می‌کند، پس صرفِ بالا آمدن برنامه چیزی را ثابت نمی‌کند.
+    """
+    return check_sql(body.sql or "", SchemaIndex(INDEX)).to_dict()
+
+
+@app.post("/api/assistant/ask")
+async def assistant_ask(body: AskIn) -> StreamingResponse:
+    """
+    پرسش به دستیار، با گزارش زندهٔ مراحل.
+
+    چرا جریانی: مسیرِ رسیدن به جواب چند مرحله دارد و با مدل‌های ضعیف‌تر
+    عمداً طولانی می‌شود (هر بازبینیِ ناموفق یک دور اصلاح می‌آورد). اگر کاربر
+    فقط یک چرخنده ببیند، فکر می‌کند برنامه گیر کرده؛ وقتی می‌بیند «بازبینی
+    ۲ از ۴»، می‌فهمد دارد کار می‌کند و چرا طول می‌کشد.
+    """
+    question = (body.question or "").strip()
+    if not question:
+        raise HTTPException(400, "پرسش خالی است.")
+
+    conf = user_settings.active(DATA)
+    if not conf["api_key"] and conf["provider_id"] != "custom":
+        raise HTTPException(400, "هنوز کلید API ثبت نشده — از تنظیمات اضافه‌اش کنید.")
+
+    loop = asyncio.get_running_loop()
+    queue: asyncio.Queue = asyncio.Queue()
+
+    def emit(kind: str, message: str, data: dict) -> None:
+        loop.call_soon_threadsafe(
+            queue.put_nowait, {"type": kind, "message": message, **(data or {})}
+        )
+
+    def ask(system: str, user: str) -> str:
+        return providers.complete(
+            provider_id=conf["provider_id"], api_key=conf["api_key"],
+            model=conf["model"], base_url=conf["base_url"],
+            system=system, user=user,
+        )
+
+    def work() -> dict:
+        index = SchemaIndex(INDEX)
+        draft = assistant.run(
+            question=question, kb=kb, index=index, ask=ask, emit=emit,
+            max_attempts=conf["max_attempts"],
+        )
+        return {
+            "type": "result", "kind": draft.kind, "sql": draft.sql,
+            "note": draft.note, "attempts": draft.attempts,
+            "tables": draft.tables, "joins": draft.joins,
+            "check": draft.check.to_dict() if draft.check else None,
+            "model": conf["model"], "provider": conf["provider_id"],
+        }
+
+    async def stream():
+        task = asyncio.create_task(asyncio.to_thread(work))
+        try:
+            while True:
+                drain = asyncio.create_task(queue.get())
+                done, _ = await asyncio.wait(
+                    {drain, task}, return_when=asyncio.FIRST_COMPLETED
+                )
+                if drain in done:
+                    yield f"data: {json.dumps(drain.result(), ensure_ascii=False)}\n\n"
+                    continue
+                drain.cancel()
+                while not queue.empty():
+                    event = queue.get_nowait()
+                    yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+                try:
+                    payload = task.result()
+                except providers.ProviderError as e:
+                    payload = {"type": "error", "message": str(e)}
+                except Exception as e:                       # noqa: BLE001
+                    payload = {"type": "error", "message": f"خطای غیرمنتظره: {e}"}
+                yield f"data: {json.dumps(payload, ensure_ascii=False)}\n\n"
+                return
+        finally:
+            if not task.done():
+                task.cancel()
+
+    return StreamingResponse(stream(), media_type="text/event-stream", headers={
+        "cache-control": "no-cache",
+        "x-accel-buffering": "no",
+    })
 
 
 @app.post("/api/index/rebuild")

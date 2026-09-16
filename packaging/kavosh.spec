@@ -29,6 +29,9 @@ datas = [
 # uvicorn پیاده‌سازی‌هایش را در زمان اجرا import می‌کند، پس تحلیل ایستا
 # آن‌ها را نمی‌بیند و بدون این فهرست، برنامه هنگام بالاآمدن می‌افتد.
 hiddenimports = [
+    # sqlglot گویش‌ها را در زمان اجرا import می‌کند؛ بدون این، بازبینیِ
+    # کوئری در نسخهٔ بسته‌بندی‌شده با ModuleNotFoundError می‌افتد.
+    "sqlglot.dialects.tsql",
     "uvicorn.logging",
     "uvicorn.loops.auto",
     "uvicorn.loops.asyncio",

@@ -37,6 +37,11 @@ jobs:
       - name: هم‌خوانی شمارهٔ نسخه در همهٔ جاها
         run: python packaging/check_versions.py
 
+      - name: آزمون‌های بک‌اند
+        run: |
+          pip install -r backend/requirements-dev.txt
+          python -m pytest backend/tests -q
+
       - name: ساخت رابط کاربری
         working-directory: frontend
         run: |
@@ -107,6 +112,20 @@ jobs:
           $want = (Select-String -Path packaging\installer.nsi -Pattern '!define APP_VERSION\s+"([\d.]+)"').Matches[0].Groups[1].Value
           if ($health.version -ne $want) { throw "نسخهٔ برنامه «$($health.version)» با نصب‌کننده «$want» نمی‌خواند." }
           Write-Host "  ✔ نسخه: $($health.version)"
+
+          # بازبین کوئری باید در نسخهٔ بسته‌بندی‌شده هم کار کند. sqlglot گویش
+          # T-SQL را در زمان اجرا import می‌کند، پس اگر از بسته جا مانده باشد،
+          # برنامه بی‌عیب بالا می‌آید و تازه سرِ اولین کوئری می‌افتد.
+          $good = Invoke-RestMethod "$base/api/assistant/check" -Method Post `
+              -ContentType "application/json" `
+              -Body (@{ sql = "SELECT EmployeeID FROM HCM3.Employee" } | ConvertTo-Json)
+          if (-not $good.ok) { throw "بازبین کوئری درست را رد کرد: $($good.findings | ConvertTo-Json -Compress)" }
+
+          $bad = Invoke-RestMethod "$base/api/assistant/check" -Method Post `
+              -ContentType "application/json" `
+              -Body (@{ sql = "SELECT * FROM HCM3.NoSuchTable" } | ConvertTo-Json)
+          if ($bad.ok) { throw "بازبین جدول ناموجود را نگرفت." }
+          Write-Host "  ✔ بازبین کوئری در بستهٔ نهایی کار می‌کند"
 
           $app | Stop-Process -Force
           Write-Host "آزمون دود با موفقیت گذشت — $($health.kb.tables) جدول"

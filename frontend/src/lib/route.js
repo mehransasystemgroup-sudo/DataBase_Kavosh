@@ -14,6 +14,7 @@ import { useCallback, useEffect, useState } from "react";
     #/table/<FIN3.Voucher>   جزئیات جدول
     #/graph/<FIN3>           گراف اسکیما
     #/lookup                 جدول‌های کد و شرحی
+    #/assistant              دستیار کوئری‌نویسی
 */
 
 function parse(hash) {
@@ -27,6 +28,7 @@ function parse(hash) {
   if (kind === "table" && rest) return { view: "explorer", table: rest };
   if (kind === "graph" && rest) return { view: "graph", schema: rest };
   if (kind === "lookup") return { view: "lookup" };
+  if (kind === "assistant") return { view: "assistant" };
   if (kind === "q") return { view: "explorer", query: rest };
   return { view: "explorer" };
 }
@@ -34,6 +36,7 @@ function parse(hash) {
 function build(route) {
   if (route.view === "graph") return `#/graph/${encodeURIComponent(route.schema || "")}`;
   if (route.view === "lookup") return "#/lookup";
+  if (route.view === "assistant") return "#/assistant";
   if (route.table) return `#/table/${encodeURIComponent(route.table)}`;
   if (route.query) return `#/q/${encodeURIComponent(route.query)}`;
   return "#/";

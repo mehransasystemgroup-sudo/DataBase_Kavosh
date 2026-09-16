@@ -42,6 +42,11 @@ jobs:
       - name: هم‌خوانی شمارهٔ نسخه در همهٔ جاها
         run: python3 packaging/check_versions.py
 
+      - name: آزمون‌های بک‌اند
+        run: |
+          pip install -r backend/requirements-dev.txt
+          python -m pytest backend/tests -q
+
       - name: ساخت ایندکس دانش
         working-directory: backend
         run: |

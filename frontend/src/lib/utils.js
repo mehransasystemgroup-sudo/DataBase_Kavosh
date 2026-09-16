@@ -20,6 +20,17 @@ export function faCompact(n) {
   return v.toLocaleString("fa-IR");
 }
 
+/**
+ * رقم‌های لاتینِ داخل یک جملهٔ فارسی را فارسی می‌کند.
+ *
+ * برای متن‌هایی که سرور می‌سازد («۲۸ جدول نامزد پیدا شد»): آن‌جا شمارش است
+ * نه نمایش، پس عدد لاتین می‌آید و کنار بقیهٔ رابط ناجور می‌نشیند. شناسه‌های
+ * لاتین دست نمی‌خورند چون فقط رقم‌ها جایگزین می‌شوند.
+ */
+export function faText(text) {
+  return String(text ?? "").replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
+}
+
 /** نام کامل جدول را به اسکیما و نام می‌شکند. */
 export function splitTable(fullName = "") {
   const [schema, ...rest] = String(fullName).split(".");

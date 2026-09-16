@@ -8,3 +8,11 @@
 export { localHttp as transport } from "./localdb.js";
 
 export const offlineHint = "ایندکس دانش باز نشد — برنامه را ببندید و دوباره باز کنید.";
+
+/*
+  نسخهٔ موبایل سروری ندارد و کاملاً آفلاین کار می‌کند؛ دستیار کوئری‌نویسی
+  هم به اینترنت و هم به کلید API نیاز دارد. به‌جای تبی که با خطا برمی‌گردد،
+  صریح می‌گوییم در دسترس نیست.
+*/
+export const apiBase = "";
+export const assistant = false;
