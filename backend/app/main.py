@@ -29,6 +29,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app.console import setup as setup_console                 # noqa: E402
+from app.ports import bind_free_port                           # noqa: E402
 from app.crashlog import breadcrumb, fatal_guard               # noqa: E402
 from app.version import VERSION                                # noqa: E402
 from app import settings as user_settings                      # noqa: E402
@@ -122,8 +123,10 @@ class KnowledgeIn(BaseModel):
 
 @app.get("/api/health")
 def health() -> dict:
+    # pid می‌گوید *کدام* فرایند جواب داد؛ بدون آن، آزمون نصب نمی‌تواند نسخهٔ
+    # تازه را از نسخهٔ قدیمیِ هنوز باز تشخیص دهد.
     return {"ok": True, "version": VERSION, "kb": kb.stats(), "index": str(INDEX),
-            "built_at": INDEX_STATE["last"]}
+            "built_at": INDEX_STATE["last"], "pid": os.getpid()}
 
 
 # ═══════════════ کاوش ═══════════════
@@ -518,26 +521,6 @@ if STATIC_DIR.is_dir():
                             headers={"cache-control": NO_STORE_HTML})
 
 
-def _free_port(host: str, preferred: int) -> int:
-    """
-    اولین پورت آزاد از پورت دلخواه به بعد.
-
-    یک برنامهٔ رومیزی نباید فقط به این دلیل که پورتی اشغال است بالا نیاید؛
-    اگر ۸۳۲۱ گرفته باشد، ۸۳۲۲ را امتحان می‌کند و همین‌طور تا بیست پورت بعد.
-    """
-    import socket
-
-    for candidate in range(preferred, preferred + 20):
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as probe:
-            probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            try:
-                probe.bind((host, candidate))
-                return candidate
-            except OSError:
-                continue
-    raise SystemExit(f"هیچ پورت آزادی بین {preferred} تا {preferred + 19} پیدا نشد.")
-
-
 def main() -> None:
     import threading
     import webbrowser
@@ -545,7 +528,8 @@ def main() -> None:
     import uvicorn
 
     host = os.environ.get("HOST", "127.0.0.1")
-    port = _free_port(host, int(os.environ.get("PORT", "8321")))
+    sock = bind_free_port(host, int(os.environ.get("PORT", "8321")))
+    port = sock.getsockname()[1]
     base = f"http://{host}:{port}"
 
     # ?v=نسخه فقط یک برچسب نیست؛ کارِ مشخصی می‌کند.
@@ -570,7 +554,9 @@ def main() -> None:
         # مرورگر با کمی تأخیر باز می‌شود تا به صفحهٔ «اتصال برقرار نشد» نخورد
         threading.Timer(1.5, lambda: webbrowser.open(url)).start()
 
-    uvicorn.run(app, host=host, port=port, log_level="warning")
+    # سوکتِ از پیش گرفته‌شده به uvicorn می‌رود، نه شمارهٔ پورت — دلیلش در ports.py
+    server = uvicorn.Server(uvicorn.Config(app, host=host, port=port, log_level="warning"))
+    server.run(sockets=[sock])
 
 
 if __name__ == "__main__":
