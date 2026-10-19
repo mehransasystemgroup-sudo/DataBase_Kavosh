@@ -14,7 +14,7 @@ import {
   Wand2,
 } from "lucide-react";
 
-import { API_BASE, HAS_ASSISTANT, errorMessage, http } from "@/lib/api";
+import { ASK_ASSISTANT, HAS_ASSISTANT, errorMessage, http } from "@/lib/api";
 import { cn, fa, faText } from "@/lib/utils";
 import { EmptyState, SqlBlock } from "@/components/primitives";
 import { Button } from "@/components/ui/button";
@@ -216,7 +216,7 @@ function Answer({ turn, onOpenTable }) {
   );
 }
 
-export default function AssistantView({ onOpenTable, onOpenSettings }) {
+export default function AssistantView({ onOpenTable, onOpenSettings, settingsVersion = 0 }) {
   const [turns, setTurns] = useState([]);
   const [question, setQuestion] = useState("");
   const [ready, setReady] = useState(null);
@@ -233,7 +233,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings }) {
         setReady({ ok: Boolean(active?.has_key) || data.provider === "custom", conf: data });
       })
       .catch((e) => setReady({ ok: false, error: errorMessage(e) }));
-  }, []);
+  }, [settingsVersion]);
 
   useEffect(() => {
     tail.current?.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -262,39 +262,10 @@ export default function AssistantView({ onOpenTable, onOpenSettings }) {
       abort.current = controller;
 
       try {
-        const res = await fetch(`${API_BASE}/assistant/ask`, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ question: q }),
-          signal: controller.signal,
-        });
-        if (!res.ok) {
-          let detail = `سرور پاسخ ${res.status} داد.`;
-          try {
-            detail = (await res.json()).detail || detail;
-          } catch {
-            /* بدنه JSON نبود — همان پیام پیش‌فرض */
-          }
-          throw new Error(detail);
-        }
-
-        // SSE را دستی می‌خوانیم: axios برای جریان ساخته نشده و EventSource
-        // فقط GET می‌فرستد، ولی پرسش باید در بدنه برود.
-        const reader = res.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = "";
         const steps = [];
-
-        for (;;) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
-          const chunks = buffer.split("\n\n");
-          buffer = chunks.pop() ?? "";
-          for (const chunk of chunks) {
-            const line = chunk.split("\n").find((l) => l.startsWith("data:"));
-            if (!line) continue;
-            const event = JSON.parse(line.slice(5));
+        await ASK_ASSISTANT(q, {
+          signal: controller.signal,
+          onEvent: (event) => {
             if (event.type === "result") {
               patch({ result: event, running: false });
             } else if (event.type === "error") {
@@ -303,8 +274,8 @@ export default function AssistantView({ onOpenTable, onOpenSettings }) {
               steps.push(event);
               patch({ steps: [...steps] });
             }
-          }
-        }
+          },
+        });
       } catch (e) {
         if (e.name !== "AbortError") patch({ error: errorMessage(e), running: false });
         else patch({ error: "متوقف شد.", running: false });
@@ -322,8 +293,8 @@ export default function AssistantView({ onOpenTable, onOpenSettings }) {
       <div className="mx-auto w-full max-w-2xl px-4 py-10">
         <EmptyState
           icon={Bot}
-          title="دستیار کوئری‌نویسی در نسخهٔ موبایل نیست"
-          description="این بخش به اینترنت و کلید API نیاز دارد، ولی نسخهٔ موبایل عمداً کاملاً آفلاین ساخته شده و همهٔ دانش داخل خودش است. برای کار با دستیار، از نسخهٔ ویندوزی استفاده کنید."
+          title="دستیار روی این دستگاه در دسترس نیست"
+          description="نمایشگر وبِ این گوشی (Android System WebView) قدیمی‌تر از آن است که برنامه بتواند از راهش به مدل زبانی وصل شود. آن را از Google Play به‌روز کنید و برنامه را دوباره باز کنید. بقیهٔ بخش‌ها آفلاین و بی‌تغییر کار می‌کنند."
         />
       </div>
     );
@@ -359,7 +330,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings }) {
                   </p>
                   <p className="mt-1 text-[11.5px] leading-relaxed text-muted-foreground">
                     {ready.error ||
-                      "دستیار برای نوشتن کوئری به یک مدل زبانی وصل می‌شود. کلید روی همین رایانه ذخیره می‌شود."}
+                      "دستیار برای نوشتن کوئری به یک مدل زبانی وصل می‌شود. کلید فقط روی همین دستگاه ذخیره می‌شود."}
                   </p>
                   <Button type="button" size="sm" className="mt-2.5" onClick={onOpenSettings}>
                     <Settings className="h-3.5 w-3.5" />

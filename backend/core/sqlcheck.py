@@ -198,6 +198,10 @@ def _collect_sources(tree: exp.Expression) -> tuple[dict[str, str], set[str], se
     for sub in tree.find_all(exp.Subquery):
         if sub.alias:
             derived.add(sub.alias.lower())
+    # OUTER/CROSS APPLY (…) x — نام مستعار روی Lateral می‌نشیند نه روی Subquery
+    for lat in tree.find_all(exp.Lateral):
+        if lat.alias:
+            derived.add(lat.alias.lower())
 
     alias_to_table: dict[str, str] = {}
     referenced: set[str] = set()

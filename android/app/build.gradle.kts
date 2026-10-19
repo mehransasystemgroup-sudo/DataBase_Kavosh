@@ -15,8 +15,8 @@ android {
         applicationId = "ir.kavosh.db"
         minSdk = 24
         targetSdk = 35
-        versionCode = 10
-        versionName = "3.2.0"
+        versionCode = 11
+        versionName = "3.3.0"
     }
 
     sourceSets["main"].assets.srcDirs("src/main/assets", webBundle)

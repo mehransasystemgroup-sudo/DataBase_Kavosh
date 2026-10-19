@@ -1,0 +1,43 @@
+SELECT EmployeeID FROM HCM3.Employee
+SELECT * FROM HCM3.Employees
+SELECT e.NoSuchColumn FROM HCM3.Employee e
+SELECT NoSuchColumn FROM HCM3.Employee
+DELETE FROM HCM3.Employee
+UPDATE HCM3.Employee SET FirstName = 'x'
+DROP TABLE HCM3.Employee
+TRUNCATE TABLE HCM3.Employee
+INSERT INTO HCM3.Employee (FirstName) VALUES ('x')
+MERGE HCM3.Employee AS t USING HCM3.Employee AS s ON t.EmployeeID = s.EmployeeID WHEN MATCHED THEN DELETE;
+SELECT FROM WHERE
+SELECT TOP 10 [e].[EmployeeID], [e].[FirstName] FROM [HCM3].[Employee] AS [e]
+SELECT e.FullName FROM HCM3.Employee e WITH (NOLOCK) WHERE e.FullName LIKE N'%علی%'
+WITH c AS (SELECT EmployeeID FROM HCM3.Employee) SELECT c.EmployeeID FROM c
+WITH c AS (SELECT EmployeeID FROM HCM3.Employee) SELECT EmployeeID, Whatever FROM c
+SELECT x.a FROM (SELECT EmployeeID AS a FROM HCM3.Employee) x
+SELECT a.AddressRef FROM HCM3.AddressChangeRequest a JOIN GNR3.Address b ON a.AddressRef = b.AddressID
+SELECT a.AddressRef FROM HCM3.AddressChangeRequest a JOIN GNR3.Address b ON b.AddressID = a.AddressRef
+SELECT a.AddressRef FROM HCM3.AddressChangeRequest a JOIN GNR3.Address b ON a.RegionalDivisionRef = b.AddressID
+SELECT e.EmployeeID FROM HCM3.Employee e JOIN HCM3.AddressChangeRequest a ON a.AddressRef = e.EmployeeID
+SELECT l.AttendanceCalcStatus FROM HCM3.AttendanceCalcLog l WHERE l.AttendanceCalcStatus = 1
+SELECT l.AttendanceCalcStatus FROM HCM3.AttendanceCalcLog l WHERE l.AttendanceCalcStatus = 7
+SELECT AttendanceCalcStatus FROM HCM3.AttendanceCalcLog WHERE AttendanceCalcStatus IN (0, 1, 9)
+SELECT l.AttendanceCalcStatus FROM HCM3.AttendanceCalcLog l WHERE l.AttendanceCalcStatus NOT IN (5)
+SELECT c.State FROM HCM3.AttendanceCalculationCalendar c WHERE c.State = '1'
+SELECT q.EmployeeID FROM HCM3.Employee e
+SELECT Employee.EmployeeID FROM HCM3.Employee
+SELECT EmployeeID FROM Employee
+SELECT e.EmployeeID, COUNT(*) AS n FROM HCM3.Employee e GROUP BY e.EmployeeID HAVING COUNT(*) > 1
+SELECT e.FullName FROM HCM3.Employee e WHERE EXISTS (SELECT 1 FROM HCM3.AddressChangeRequest a WHERE a.AddressRef = e.EmployeeID)
+SELECT ISNULL(e.FullName, N'نامشخص') AS n, CONVERT(date, e.CreationDate) AS d FROM HCM3.Employee e
+SELECT CASE WHEN e.Code = 1 THEN N'یک' ELSE N'دیگر' END FROM HCM3.Employee e
+SELECT e.FullName FROM HCM3.Employee e ORDER BY e.FullName OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY
+SELECT e.FullName FROM HCM3.Employee e; SELECT a.Nope FROM HCM3.AddressChangeRequest a
+SELECT ROW_NUMBER() OVER (PARTITION BY e.Code ORDER BY e.CreationDate DESC) AS rn FROM HCM3.Employee e
+SELECT e.FullName, x.c FROM HCM3.Employee e OUTER APPLY (SELECT COUNT(*) AS c FROM HCM3.AddressChangeRequest a WHERE a.AddressRef = e.EmployeeID) x
+SELECT AddressRef FROM HCM3.AddressChangeRequest a JOIN GNR3.Address b ON a.AddressRef = b.AddressID
+SELECT FOO.Bar FROM FIN3.Vouchers FOO
+SELECT e.EmployeeId FROM hcm3.employee e
+SELECT e.FullName FROM HCM3.Employee e WHERE e.CreationDate BETWEEN '2024-01-01' AND '2024-12-31' AND e.Code > 0
+SELECT DATEADD(day, -7, e.CreationDate), DATEDIFF(month, e.CreationDate, e.DeathDate), DATEPART(year, e.CreationDate) FROM HCM3.Employee e
+SELECT TRY_CONVERT(int, e.Code), CAST(e.Code AS varchar(10)) FROM HCM3.Employee e
+SELECT e.FullName, x.c FROM HCM3.Employee e CROSS APPLY (SELECT TOP 1 a.AddressRef AS c FROM HCM3.AddressChangeRequest a) x

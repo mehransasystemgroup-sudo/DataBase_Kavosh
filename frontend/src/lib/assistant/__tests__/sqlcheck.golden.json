@@ -1,0 +1,473 @@
+[
+ {
+  "sql": "SELECT EmployeeID FROM HCM3.Employee",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT * FROM HCM3.Employees",
+  "ok": false,
+  "tables": [],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "unknown_table",
+    "message": "جدول «HCM3.Employees» در این پایگاه داده وجود ندارد.",
+    "hint": "نزدیک‌ترین‌ها: HCM3.Employee، HCM3.EmployeeAppraisal، HCM3.EmployeeAppraiser، HCM3.EmployeeAppraiserItem، HCM3.EmployeeBranchInfo"
+   }
+  ]
+ },
+ {
+  "sql": "SELECT e.NoSuchColumn FROM HCM3.Employee e",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "unknown_column",
+    "message": "ستون «NoSuchColumn» در جدول HCM3.Employee وجود ندارد.",
+    "hint": "ستون‌های HCM3.Employee را از متن ساختار بردارید."
+   }
+  ]
+ },
+ {
+  "sql": "SELECT NoSuchColumn FROM HCM3.Employee",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "unknown_column",
+    "message": "ستون «NoSuchColumn» در هیچ‌کدام از جدول‌های این کوئری نیست.",
+    "hint": "جدول‌های کوئری: HCM3.Employee"
+   }
+  ]
+ },
+ {
+  "sql": "DELETE FROM HCM3.Employee",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "not_read_only",
+    "message": "این کوئری داده را تغییر می‌دهد؛ دستیار فقط کوئری خواندنی می‌سازد.",
+    "hint": "فقط SELECT بنویسید."
+   }
+  ]
+ },
+ {
+  "sql": "UPDATE HCM3.Employee SET FirstName = 'x'",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "not_read_only",
+    "message": "این کوئری داده را تغییر می‌دهد؛ دستیار فقط کوئری خواندنی می‌سازد.",
+    "hint": "فقط SELECT بنویسید."
+   }
+  ]
+ },
+ {
+  "sql": "DROP TABLE HCM3.Employee",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "not_read_only",
+    "message": "این کوئری داده را تغییر می‌دهد؛ دستیار فقط کوئری خواندنی می‌سازد.",
+    "hint": "فقط SELECT بنویسید."
+   }
+  ]
+ },
+ {
+  "sql": "TRUNCATE TABLE HCM3.Employee",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "not_read_only",
+    "message": "این کوئری داده را تغییر می‌دهد؛ دستیار فقط کوئری خواندنی می‌سازد.",
+    "hint": "فقط SELECT بنویسید."
+   }
+  ]
+ },
+ {
+  "sql": "INSERT INTO HCM3.Employee (FirstName) VALUES ('x')",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "not_read_only",
+    "message": "این کوئری داده را تغییر می‌دهد؛ دستیار فقط کوئری خواندنی می‌سازد.",
+    "hint": "فقط SELECT بنویسید."
+   }
+  ]
+ },
+ {
+  "sql": "MERGE HCM3.Employee AS t USING HCM3.Employee AS s ON t.EmployeeID = s.EmployeeID WHEN MATCHED THEN DELETE;",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "not_read_only",
+    "message": "این کوئری داده را تغییر می‌دهد؛ دستیار فقط کوئری خواندنی می‌سازد.",
+    "hint": "فقط SELECT بنویسید."
+   }
+  ]
+ },
+ {
+  "sql": "SELECT FROM WHERE",
+  "ok": false,
+  "tables": [],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "parse_error"
+   }
+  ]
+ },
+ {
+  "sql": "SELECT TOP 10 [e].[EmployeeID], [e].[FirstName] FROM [HCM3].[Employee] AS [e]",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT e.FullName FROM HCM3.Employee e WITH (NOLOCK) WHERE e.FullName LIKE N'%علی%'",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "WITH c AS (SELECT EmployeeID FROM HCM3.Employee) SELECT c.EmployeeID FROM c",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "WITH c AS (SELECT EmployeeID FROM HCM3.Employee) SELECT EmployeeID, Whatever FROM c",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT x.a FROM (SELECT EmployeeID AS a FROM HCM3.Employee) x",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT a.AddressRef FROM HCM3.AddressChangeRequest a JOIN GNR3.Address b ON a.AddressRef = b.AddressID",
+  "ok": true,
+  "tables": [
+   "GNR3.Address",
+   "HCM3.AddressChangeRequest"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT a.AddressRef FROM HCM3.AddressChangeRequest a JOIN GNR3.Address b ON b.AddressID = a.AddressRef",
+  "ok": true,
+  "tables": [
+   "GNR3.Address",
+   "HCM3.AddressChangeRequest"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT a.AddressRef FROM HCM3.AddressChangeRequest a JOIN GNR3.Address b ON a.RegionalDivisionRef = b.AddressID",
+  "ok": true,
+  "tables": [
+   "GNR3.Address",
+   "HCM3.AddressChangeRequest"
+  ],
+  "findings": [
+   {
+    "severity": "warning",
+    "code": "unverified_join",
+    "message": "پیوند HCM3.AddressChangeRequest.RegionalDivisionRef = GNR3.Address.AddressID در دانش پایگاه داده ثبت نشده است.",
+    "hint": "رابطهٔ شناخته‌شده: HCM3.AddressChangeRequest.addressref = GNR3.Address.addressid"
+   }
+  ]
+ },
+ {
+  "sql": "SELECT e.EmployeeID FROM HCM3.Employee e JOIN HCM3.AddressChangeRequest a ON a.AddressRef = e.EmployeeID",
+  "ok": true,
+  "tables": [
+   "HCM3.AddressChangeRequest",
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "warning",
+    "code": "unverified_join",
+    "message": "پیوند HCM3.AddressChangeRequest.AddressRef = HCM3.Employee.EmployeeID در دانش پایگاه داده ثبت نشده است.",
+    "hint": "بین این دو جدول رابطهٔ مستقیمی در دانش ما نیست."
+   }
+  ]
+ },
+ {
+  "sql": "SELECT l.AttendanceCalcStatus FROM HCM3.AttendanceCalcLog l WHERE l.AttendanceCalcStatus = 1",
+  "ok": true,
+  "tables": [
+   "HCM3.AttendanceCalcLog"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT l.AttendanceCalcStatus FROM HCM3.AttendanceCalcLog l WHERE l.AttendanceCalcStatus = 7",
+  "ok": true,
+  "tables": [
+   "HCM3.AttendanceCalcLog"
+  ],
+  "findings": [
+   {
+    "severity": "warning",
+    "code": "unknown_enum_value",
+    "message": "مقدار 7 برای HCM3.AttendanceCalcLog.AttendanceCalcStatus در فهرست مقادیر شناخته‌شده نیست.",
+    "hint": "مقادیر مجاز: 0، 1"
+   }
+  ]
+ },
+ {
+  "sql": "SELECT AttendanceCalcStatus FROM HCM3.AttendanceCalcLog WHERE AttendanceCalcStatus IN (0, 1, 9)",
+  "ok": true,
+  "tables": [
+   "HCM3.AttendanceCalcLog"
+  ],
+  "findings": [
+   {
+    "severity": "warning",
+    "code": "unknown_enum_value",
+    "message": "مقدار 9 برای HCM3.AttendanceCalcLog.AttendanceCalcStatus در فهرست مقادیر شناخته‌شده نیست.",
+    "hint": "مقادیر مجاز: 0، 1"
+   }
+  ]
+ },
+ {
+  "sql": "SELECT l.AttendanceCalcStatus FROM HCM3.AttendanceCalcLog l WHERE l.AttendanceCalcStatus NOT IN (5)",
+  "ok": true,
+  "tables": [
+   "HCM3.AttendanceCalcLog"
+  ],
+  "findings": [
+   {
+    "severity": "warning",
+    "code": "unknown_enum_value",
+    "message": "مقدار 5 برای HCM3.AttendanceCalcLog.AttendanceCalcStatus در فهرست مقادیر شناخته‌شده نیست.",
+    "hint": "مقادیر مجاز: 0، 1"
+   }
+  ]
+ },
+ {
+  "sql": "SELECT c.State FROM HCM3.AttendanceCalculationCalendar c WHERE c.State = '1'",
+  "ok": true,
+  "tables": [
+   "HCM3.AttendanceCalculationCalendar"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT q.EmployeeID FROM HCM3.Employee e",
+  "ok": false,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "unknown_alias",
+    "message": "نام مستعار «q» به هیچ جدولی در FROM وصل نیست.",
+    "hint": ""
+   }
+  ]
+ },
+ {
+  "sql": "SELECT Employee.EmployeeID FROM HCM3.Employee",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT EmployeeID FROM Employee",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT e.EmployeeID, COUNT(*) AS n FROM HCM3.Employee e GROUP BY e.EmployeeID HAVING COUNT(*) > 1",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT e.FullName FROM HCM3.Employee e WHERE EXISTS (SELECT 1 FROM HCM3.AddressChangeRequest a WHERE a.AddressRef = e.EmployeeID)",
+  "ok": true,
+  "tables": [
+   "HCM3.AddressChangeRequest",
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT ISNULL(e.FullName, N'نامشخص') AS n, CONVERT(date, e.CreationDate) AS d FROM HCM3.Employee e",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT CASE WHEN e.Code = 1 THEN N'یک' ELSE N'دیگر' END FROM HCM3.Employee e",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT e.FullName FROM HCM3.Employee e ORDER BY e.FullName OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT e.FullName FROM HCM3.Employee e; SELECT a.Nope FROM HCM3.AddressChangeRequest a",
+  "ok": false,
+  "tables": [
+   "HCM3.AddressChangeRequest",
+   "HCM3.Employee"
+  ],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "unknown_column",
+    "message": "ستون «Nope» در جدول HCM3.AddressChangeRequest وجود ندارد.",
+    "hint": "ستون‌های HCM3.AddressChangeRequest را از متن ساختار بردارید."
+   }
+  ]
+ },
+ {
+  "sql": "SELECT ROW_NUMBER() OVER (PARTITION BY e.Code ORDER BY e.CreationDate DESC) AS rn FROM HCM3.Employee e",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT e.FullName, x.c FROM HCM3.Employee e OUTER APPLY (SELECT COUNT(*) AS c FROM HCM3.AddressChangeRequest a WHERE a.AddressRef = e.EmployeeID) x",
+  "ok": true,
+  "tables": [
+   "HCM3.AddressChangeRequest",
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT AddressRef FROM HCM3.AddressChangeRequest a JOIN GNR3.Address b ON a.AddressRef = b.AddressID",
+  "ok": true,
+  "tables": [
+   "GNR3.Address",
+   "HCM3.AddressChangeRequest"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT FOO.Bar FROM FIN3.Vouchers FOO",
+  "ok": false,
+  "tables": [],
+  "findings": [
+   {
+    "severity": "error",
+    "code": "unknown_table",
+    "message": "جدول «FIN3.Vouchers» در این پایگاه داده وجود ندارد.",
+    "hint": "نزدیک‌ترین‌ها: ACC.Voucher، ACC.VoucherItem، FAM3.VoucherDescription، FIN3.Voucher، FIN3.VoucherHistory"
+   }
+  ]
+ },
+ {
+  "sql": "SELECT e.EmployeeId FROM hcm3.employee e",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT e.FullName FROM HCM3.Employee e WHERE e.CreationDate BETWEEN '2024-01-01' AND '2024-12-31' AND e.Code > 0",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT DATEADD(day, -7, e.CreationDate), DATEDIFF(month, e.CreationDate, e.DeathDate), DATEPART(year, e.CreationDate) FROM HCM3.Employee e",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT TRY_CONVERT(int, e.Code), CAST(e.Code AS varchar(10)) FROM HCM3.Employee e",
+  "ok": true,
+  "tables": [
+   "HCM3.Employee"
+  ],
+  "findings": []
+ },
+ {
+  "sql": "SELECT e.FullName, x.c FROM HCM3.Employee e CROSS APPLY (SELECT TOP 1 a.AddressRef AS c FROM HCM3.AddressChangeRequest a) x",
+  "ok": true,
+  "tables": [
+   "HCM3.AddressChangeRequest",
+   "HCM3.Employee"
+  ],
+  "findings": []
+ }
+]

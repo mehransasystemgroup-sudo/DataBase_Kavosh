@@ -2,8 +2,10 @@
 <data-extraction-rules>
     <cloud-backup>
         <include domain="file" path="app_webview" />
+        <exclude domain="sharedpref" path="kavosh_secrets.xml" />
     </cloud-backup>
     <device-transfer>
         <include domain="file" path="app_webview" />
+        <exclude domain="sharedpref" path="kavosh_secrets.xml" />
     </device-transfer>
 </data-extraction-rules>

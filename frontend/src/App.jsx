@@ -94,6 +94,9 @@ function AppShell() {
   const [route, navigate] = useHashRoute();
   const [health, setHealth] = useState(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  // هر ذخیرهٔ تنظیمات این را جلو می‌برد تا دستیار بی‌نیاز به بارگذاری دوباره
+  // بفهمد کلید ثبت شده — وگرنه تب تا بستن و باز کردن برنامه قفل می‌ماند.
+  const [settingsVersion, setSettingsVersion] = useState(0);
 
   const view = ["graph", "lookup", "assistant"].includes(route.view) ? route.view : "explorer";
   const graphSchema = route.schema || "FIN3";
@@ -123,7 +126,11 @@ function AppShell() {
   return (
     <div className="app-canvas inset-safe flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
       <Toaster />
-      <SettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen} />
+      <SettingsDialog
+        open={settingsOpen}
+        onOpenChange={setSettingsOpen}
+        onSaved={() => setSettingsVersion((v) => v + 1)}
+      />
 
       {/*
         نوار سازنده — بالای همه‌چیز، روی هر سه نما.
@@ -187,6 +194,7 @@ function AppShell() {
           <AssistantView
             onOpenTable={(full) => navigate({ view: "explorer", table: full })}
             onOpenSettings={() => setSettingsOpen(true)}
+            settingsVersion={settingsVersion}
           />
         )}
       </main>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  http بی‌رمز فقط برای سرویس مدلِ روی شبکهٔ محلی لازم است (Ollama یا LM Studio
+  روی رایانهٔ کناری، با نشانی‌ای مثل 192.168.1.10). این‌جا نمی‌شود بازهٔ IP
+  نوشت، پس قاعده در خود NetBridge است: http فقط برای loopback و نشانی‌های
+  خصوصی، و هر چیز دیگری فقط https.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

@@ -51,6 +51,7 @@ public final class MainActivity extends Activity {
     private static final int PAPER = 0xFFF4F6FB;
 
     private WebView web;
+    private NetBridge net;
     private boolean darkTheme = true;
 
     @Override
@@ -124,7 +125,13 @@ public final class MainActivity extends Activity {
         view.setWebViewClient(new WebViewClient() {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView v, WebResourceRequest request) {
-                return loader.shouldInterceptRequest(request.getUrl());
+                WebResourceResponse local = loader.shouldInterceptRequest(request.getUrl());
+                if (local != null) return local;
+                // برنامه حالا مجوز اینترنت دارد، ولی فقط برای پل دستیار (NetBridge).
+                // خودِ صفحه هیچ درخواستی به بیرون نمی‌فرستد؛ اگر روزی کدی اشتباه
+                // بخواهد، همین‌جا بسته می‌شود.
+                return new WebResourceResponse("text/plain", "utf-8", 403, "Forbidden",
+                        Collections.emptyMap(), new java.io.ByteArrayInputStream(new byte[0]));
             }
 
             @Override
@@ -134,6 +141,16 @@ public final class MainActivity extends Activity {
                 return !String.valueOf(request.getUrl()).startsWith(ORIGIN);
             }
         });
+
+        // پل شبکه و کلید برای دستیار کوئری‌نویسی — فقط به مبدأ خودِ برنامه باز است
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
+            net = new NetBridge(this);
+            WebViewCompat.addWebMessageListener(view, "KavoshNet", Collections.singleton(ORIGIN),
+                    (v, message, sourceOrigin, isMainFrame, replyProxy) -> {
+                        if (!isMainFrame || message.getData() == null) return;
+                        net.handle(message.getData(), replyProxy);
+                    });
+        }
 
         // پل تم: صفحهٔ وب پس از هر تعویض تم، تیره یا روشن بودن را می‌فرستد تا
         // نوار وضعیت و پس‌زمینهٔ پشت آن هم‌رنگ شوند.
@@ -246,6 +263,7 @@ public final class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         if (web != null) web.destroy();
+        if (net != null) net.shutdown();
         super.onDestroy();
     }
 }
