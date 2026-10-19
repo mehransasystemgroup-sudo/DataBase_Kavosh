@@ -57,10 +57,11 @@ function fakeShell(model) {
   return shell;
 }
 
-function scripted(selection, replies) {
+function scripted(selection, replies, intent = "") {
   const asked = [];
   const model = (system, user) => {
     asked.push(user);
+    if (system.includes("هنوز کوئری نمی‌نویسی")) return intent;
     if (system.includes("انتخاب کن")) return selection;
     if (system.includes("یک کلمه")) return "سلام";
     return replies.length ? replies.shift() : "```sql\nSELECT 1\n```";
@@ -69,9 +70,9 @@ function scripted(selection, replies) {
   return model;
 }
 
-async function ask(question = "فهرست کارمندان") {
+async function ask(question = "فهرست کارمندان", history = []) {
   const events = [];
-  await askAssistant(kb, question, { onEvent: (e) => events.push(e) });
+  await askAssistant(kb, question, { onEvent: (e) => events.push(e), history });
   return { events, result: events.find((e) => e.type === "result"), error: events.find((e) => e.type === "error") };
 }
 
@@ -126,6 +127,26 @@ describe("دستیار موبایل", () => {
     const { result } = await ask();
     expect(result.attempts).toBe(3);
     expect(result.check.ok).toBe(false);
+  });
+
+  it("برداشت به نتیجه می‌رسد و پرسش بعدی روی کوئری قبلی ساخته می‌شود", async () => {
+    const intent = "هدف: ده کارمند اول\nکلیدواژه‌ها: کارمند، Employee\nابهام‌ها: به ترتیب چه؟";
+    const model = scripted("HCM3.Employee", [
+      "### برداشت\nده کارمند.\n\n```sql\nSELECT TOP 10 EmployeeID FROM HCM3.Employee\n```",
+    ], intent);
+    window.KavoshNet = fakeShell(model);
+    await putSettings({ provider: "openai", api_key: "sk-test-9876" });
+
+    const history = [{ question: "فهرست کارمندان", sql: "SELECT EmployeeID FROM HCM3.Employee", tables: ["HCM3.Employee"] }];
+    const { result, events } = await ask("حالا فقط ده تا", history);
+    expect(result.check.ok).toBe(true);
+    expect(result.intent.goal).toBe("ده کارمند اول");
+    expect(result.intent.questions).toEqual(["به ترتیب چه؟"]);
+    expect(result.note).toContain("### برداشت");
+    expect(events[0].type).toBe("understand");
+    expect(model.asked[0]).toContain("## گفت‌وگوی قبلی");
+    expect(model.asked.at(-1)).toContain("SELECT EmployeeID FROM HCM3.Employee");
+    expect(model.asked.at(-1)).toContain("هدف: ده کارمند اول");
   });
 
   it("خطای کلید از سرویس، پیام فارسیِ سرور را می‌دهد", async () => {

@@ -1,7 +1,7 @@
 /**
  * دستیار کوئری‌نویسی — همتای backend/core/assistant.py.
  *
- * همان پنج مرحله و همان قاعدهٔ مرکزی: مدل زبانی هرگز ساختار پایگاه داده را از
+ * همان شش مرحله و همان قاعدهٔ مرکزی: مدل زبانی هرگز ساختار پایگاه داده را از
  * خودش نمی‌سازد. ساختار را ما می‌دهیم، و هرچه بنویسد را ما می‌سنجیم. متن
  * پرامپت‌ها عیناً متن سرور است تا مدل در هر دو نسخه یک چیز بشنود.
  */
@@ -15,9 +15,118 @@ export const DEFAULT_ATTEMPTS = 4;
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const bracket = (full) => `[${full.replace(/\./g, "].[")}]`;
 
+// ───────────────────────── ۰) فهم خواسته ─────────────────────────
+
+export const MAX_HISTORY = 3;
+export const MAX_KEYWORDS = 6;
+
+export const UNDERSTAND_SYSTEM = `تو تحلیلگر نیازمندی‌های یک پایگاه دادهٔ سازمانی روی SQL Server هستی.
+هنوز کوئری نمی‌نویسی؛ فقط باید دقیق بفهمی کاربر واقعاً چه می‌خواهد.
+
+پرسش کاربر را (و اگر آمده، گفت‌وگوی قبلی را) بخوان و برداشتت را دقیقاً در
+همین قالب بنویس، هر مورد در یک سطر. موردی که در پرسش نیامده را با «—» پر کن.
+
+هدف: خواستهٔ کاربر در یک جملهٔ کامل و مستقل؛ اگر پرسش ادامهٔ گفت‌وگوی قبلی است، آنچه از قبل مانده را هم در همین جمله بیاور
+نوع: کوئری یا راهنمایی
+کلیدواژه‌ها: مفهوم‌های اصلی به فارسی، و اگر می‌دانی معادل انگلیسی‌شان، با «،» جدا
+خروجی: ستون‌ها یا مقدارهایی که باید برگردد
+فیلترها: شرط‌ها
+گروه‌بندی: —
+مرتب‌سازی: —
+بازهٔ زمانی: —
+فرض‌ها: هر فرضی که برای پرکردن جای خالی کردی
+ابهام‌ها: پرسش‌هایی که پاسخشان نتیجه را عوض می‌کند، با «|» جدا؛ اگر نیست «—»
+
+هیچ توضیح دیگری ننویس.`;
+
+export const INTENT_FIELDS = [
+  ["goal", "هدف"], ["mode", "نوع"], ["keywords", "کلیدواژه‌ها"],
+  ["output", "خروجی"], ["filters", "فیلترها"], ["grouping", "گروه‌بندی"],
+  ["ordering", "مرتب‌سازی"], ["period", "بازهٔ زمانی"],
+  ["assumptions", "فرض‌ها"], ["questions", "ابهام‌ها"],
+];
+
+const EMPTY = new Set(["", "—", "-", "–", "ندارد", "هیچ", "نامشخص", "ندارد.", "—."]);
+
+const normLabel = (text) =>
+  text.replace(/ي/g, "ی").replace(/ك/g, "ک").replace(/[‌ٔ\s*#_`]/gu, "").replace(/ۀ/g, "ه");
+
+const LABELS = new Map(INTENT_FIELDS.map(([key, label]) => [normLabel(label), key]));
+for (const [label, key] of [["کلیدواژه", "keywords"], ["فیلتر", "filters"],
+  ["فرض", "assumptions"], ["ابهام", "questions"], ["پرسشهایروشنکننده", "questions"]]) {
+  LABELS.set(label, key);
+}
+
+const emptyIntent = () => {
+  const out = Object.fromEntries(INTENT_FIELDS.map(([key]) => [key, ""]));
+  return Object.assign(out, { mode: "query", keywords: [], questions: [] });
+};
+
+/** همتای parse_intent: هر سطرِ «برچسب: مقدار»؛ بی‌«هدف»، برداشتی در کار نیست. */
+export function parseIntent(reply) {
+  const out = emptyIntent();
+  for (const line of (reply || "").split(/\r?\n/)) {
+    const m = line.match(/^\s*(?:[-*•]\s*)?([^:：]{1,30})[:：]\s*(.*)$/u);
+    if (!m) continue;
+    const key = LABELS.get(normLabel(m[1]));
+    const value = m[2].trim().replace(/^\*+|\*+$/g, "").trim();
+    if (!key || EMPTY.has(value)) continue;
+    if (key === "keywords") {
+      out.keywords = value.split(/[،,;؛]/).map((w) => w.trim())
+        .filter((w) => w && !EMPTY.has(w)).slice(0, MAX_KEYWORDS);
+    } else if (key === "questions") {
+      out.questions = value.split("|").map((q) => q.trim())
+        .filter((q) => q && !EMPTY.has(q)).slice(0, 4);
+    } else if (key === "mode") {
+      out.mode = value.includes("راهنما") ? "guidance" : "query";
+    } else {
+      out[key] = value;
+    }
+  }
+  return out.goal ? out : emptyIntent();
+}
+
+export function briefText(intent) {
+  if (!intent?.goal) return "";
+  return INTENT_FIELDS
+    .filter(([key]) => !["mode", "keywords", "questions"].includes(key) && intent[key])
+    .map(([key, label]) => `${label}: ${intent[key]}`)
+    .join("\n");
+}
+
+export function cleanHistory(history) {
+  const out = [];
+  for (const item of (Array.isArray(history) ? history : []).slice(-MAX_HISTORY)) {
+    if (!item || typeof item !== "object" || Array.isArray(item)) continue;
+    const question = String(item.question ?? "").trim().slice(0, 2000);
+    if (!question) continue;
+    const sql = String(item.sql ?? "").trim().slice(0, 8000);
+    const tables = (Array.isArray(item.tables) ? item.tables : [])
+      .filter(Boolean).map((t) => String(t).slice(0, 128)).slice(0, 10);
+    out.push({ question, sql, tables });
+  }
+  return out;
+}
+
+export function historyText(history) {
+  if (!history.length) return "";
+  const parts = ["## گفت‌وگوی قبلی", ""];
+  history.forEach((item, i) => {
+    parts.push(`پرسش ${i + 1}: ${item.question}`);
+    if (item.sql) parts.push(`کوئری ${i + 1}:`, "```sql", item.sql, "```");
+    parts.push("");
+  });
+  return parts.join("\n").trimEnd();
+}
+
+export function understandPrompt(question, history) {
+  const head = historyText(history);
+  return (head ? head + "\n\n" : "") + `## پرسش تازه\n\n${question}`;
+}
+
 // ───────────────────────── ۱) بازیابی ─────────────────────────
 
-export function retrieve(kb, question) {
+export function retrieve(kb, question, keywords = [], previous = []) {
   const seen = new Map();
   const add = (full, title, why, score) => {
     const row = seen.get(full);
@@ -31,6 +140,20 @@ export function retrieve(kb, question) {
   for (const col of kb.searchColumns(question, 20)) {
     const table = col.table || col.table_ref || "";
     if (table) add(table, col.title_fa, `ستون ${col.name}`, 1.0);
+  }
+  for (const word of [...new Set(keywords)].slice(0, MAX_KEYWORDS)) {
+    for (const hit of kb.searchTables({ query: word, limit: 8 })) {
+      add(hit.full_name, hit.title_fa, `کلیدواژهٔ «${word}»`, hit.score);
+    }
+    for (const col of kb.searchColumns(word, 8)) {
+      const table = col.table || col.table_ref || "";
+      if (table) add(table, col.title_fa, `ستون ${col.name}`, 1.0);
+    }
+  }
+  const top = seen.size ? Math.max(...[...seen.values()].map((r) => r.score)) : 1.0;
+  for (const full of previous) {
+    const info = kb.getTable(full);
+    if (info) add(info.full_name, info.title_fa, "گفت‌وگوی قبلی", top + 1.0);
   }
   return [...seen.values()].sort((a, b) => b.score - a.score).slice(0, MAX_CANDIDATES);
 }
@@ -113,7 +236,7 @@ export function buildContext(kb, chosen) {
 
 // ───────────────────────── ۴) نگارش ─────────────────────────
 
-export const DRAFT_SYSTEM = `تو یک کارشناس ارشد T-SQL روی SQL Server هستی و به فارسی پاسخ می‌دهی.
+export const DRAFT_SYSTEM = `تو یک کارشناس ارشد T-SQL روی SQL Server هستی و به فارسی، دقیق و قدم‌به‌قدم پاسخ می‌دهی.
 
 قواعد غیرقابل‌مذاکره:
 ۱. فقط از جدول‌ها و ستون‌هایی استفاده کن که در «ساختار» آمده‌اند. هیچ نام
@@ -122,25 +245,59 @@ export const DRAFT_SYSTEM = `تو یک کارشناس ارشد T-SQL روی SQL 
    نساز.
 ۳. فقط SELECT. هیچ INSERT/UPDATE/DELETE/DROP ننویس.
 ۴. شناسه‌ها را داخل براکت بگذار: [SCHEMA].[Table].[Column]
-۵. کوئری را داخل یک بلوک \`\`\`sql بگذار و بیرون آن، دو سه جملهٔ فارسی بنویس
-   که می‌گوید کوئری چه می‌کند.
+۵. اگر «گفت‌وگوی قبلی» آمده و پرسش تازه ادامهٔ آن است، کوئری قبلی را مبنا
+   بگیر و فقط همان چیزی را عوض کن که خواسته شده.
+۶. اگر جایی از خواسته مبهم است، معقول‌ترین برداشت را برگزین و آن را در
+   «نکته‌ها» صریح بنویس؛ هیچ فرضی را بی‌صدا نکن.
 
-اگر پرسش کاربر اصلاً کوئری نمی‌خواهد و فقط راهنمایی می‌خواهد، بلوک \`\`\`sql
-نگذار و فقط فارسی توضیح بده.`;
+قالب پاسخ — دقیقاً با همین عنوان‌ها:
 
-export const draftPrompt = (question, context) => `## ساختار
+### برداشت
+یک یا دو جمله: این کوئری دقیقاً چه چیزی را برمی‌گرداند.
+
+### مراحل
+فهرست شماره‌دار و کوتاه از ساختن کوئری: از کدام جدول شروع می‌شود و چرا،
+کدام پیوندها، چه فیلترهایی، چه گروه‌بندی و مرتب‌سازی‌ای. در هر مرحله نام
+فارسی جدول یا ستون را هم بیاور.
+
+\`\`\`sql
+-- کوئری کامل
+\`\`\`
+
+### نکته‌ها
+فرض‌هایی که کردی، آنچه کاربر باید پیش از اجرا بررسی یا جایگزین کند (مثلاً
+یک مقدار نمونه)، و اگر لازم است یک نکتهٔ کارایی.
+
+اگر کاربر کوئری نمی‌خواهد و فقط راهنمایی می‌خواهد، بلوک \`\`\`sql نگذار؛ به‌جایش
+با همین سه عنوان قدم‌به‌قدم راهنمایی کن.`;
+
+function preamble(history, intent) {
+  const parts = [];
+  const head = historyText(history);
+  if (head) parts.push(head);
+  const brief = briefText(intent);
+  if (brief) parts.push("## برداشت از خواسته — اگر با پرسش نمی‌خواند، خودِ پرسش ملاک است\n\n" + brief);
+  return parts.join("\n\n");
+}
+
+export function draftPrompt(question, context, history = [], intent = {}) {
+  const extra = preamble(history, intent);
+  return `## ساختار
 
 ${context}
 
-## پرسش کاربر
+${extra ? extra + "\n\n" : ""}## پرسش کاربر
 
 ${question}`;
+}
 
-export const repairPrompt = (question, context, sql, result) => `## ساختار
+export function repairPrompt(question, context, sql, result, history = [], intent = {}) {
+  const extra = preamble(history, intent);
+  return `## ساختار
 
 ${context}
 
-## پرسش کاربر
+${extra ? extra + "\n\n" : ""}## پرسش کاربر
 
 ${question}
 
@@ -155,7 +312,9 @@ ${sql}
 ${feedback(result)}
 
 کوئری را با توجه به همین ایرادها اصلاح کن. فقط از جدول‌ها و ستون‌های بخش
-«ساختار» استفاده کن. دوباره کل کوئری اصلاح‌شده را داخل یک بلوک \`\`\`sql بده.`;
+«ساختار» استفاده کن. دوباره کل کوئری اصلاح‌شده را داخل یک بلوک \`\`\`sql بده؛
+اگر برداشت یا مراحل هم عوض شد، آن‌ها را با همان قالب بنویس.`;
+}
 
 const FENCED = /```(?:sql|tsql)?\s*\n([\s\S]*?)```/gi;
 
@@ -181,15 +340,33 @@ export function splitReply(reply) {
  * `ask(system, user) → Promise<string>` تنها راه ارتباط با مدل است. `emit`
  * همان رویدادهایی را می‌فرستد که سرور با SSE می‌فرستد، با همان شکل.
  */
-export async function run({ question, kb, index, ask, emit, maxAttempts = DEFAULT_ATTEMPTS, signal }) {
-  const draft = { sql: "", note: "", check: null, attempts: 0, tables: [], joins: [], kind: "query" };
+export async function run({
+  question, kb, index, ask, emit, maxAttempts = DEFAULT_ATTEMPTS, signal, history = [],
+}) {
+  const draft = {
+    sql: "", note: "", check: null, attempts: 0, tables: [], joins: [], kind: "query", intent: {},
+  };
   const say = (type, message, data = {}) => {
     if (signal?.aborted) throw new DOMException("aborted", "AbortError");
     emit({ type, message, ...data });
   };
+  const past = cleanHistory(history);
+
+  say("understand", "فهم خواستهٔ شما");
+  let intent;
+  try {
+    intent = parseIntent(await ask(UNDERSTAND_SYSTEM, understandPrompt(question, past)));
+  } catch (e) {
+    if (e?.name === "AbortError") throw e;
+    intent = emptyIntent();
+  }
+  draft.intent = intent;
+  if (intent.goal) say("understand", intent.goal, { intent });
+  else say("understand", "برداشت روشنی نیامد؛ با خودِ پرسش ادامه می‌دهیم");
 
   say("retrieve", "جست‌وجو در ساختار پایگاه داده");
-  const candidates = retrieve(kb, question);
+  const previous = past.flatMap((item) => item.tables);
+  const candidates = retrieve(kb, question, intent.keywords, previous);
   if (!candidates.length) {
     draft.kind = "guidance";
     draft.note = "برای این پرسش جدول مرتبطی پیدا نشد. کمی مشخص‌تر بپرسید — " +
@@ -206,7 +383,8 @@ export async function run({ question, kb, index, ask, emit, maxAttempts = DEFAUL
     .join("\n");
   let chosen = [];
   try {
-    const reply = await ask(SELECT_SYSTEM, `## جدول‌های موجود\n${listing}\n\n## پرسش\n${question}`);
+    const goal = intent.goal ? `\n\n## هدف\n${intent.goal}` : "";
+    const reply = await ask(SELECT_SYSTEM, `## جدول‌های موجود\n${listing}\n\n## پرسش\n${question}${goal}`);
     chosen = parseSelection(reply, candidates);
   } catch (e) {
     if (e?.name === "AbortError") throw e;
@@ -224,7 +402,7 @@ export async function run({ question, kb, index, ask, emit, maxAttempts = DEFAUL
   Object.assign(draft, { tables, joins });
   say("context", `${tables.length} جدول و ${joins.length} پیوند آماده شد`, { tables, joins });
 
-  let userPrompt = draftPrompt(question, context);
+  let userPrompt = draftPrompt(question, context, past, intent);
   let lastResult = null;
   let lastSql = "";
 
@@ -259,7 +437,7 @@ export async function run({ question, kb, index, ask, emit, maxAttempts = DEFAUL
     // هشدارها خطا نیستند؛ یک دور برای برطرف‌کردنشان می‌ارزد، دو دور نه.
     if (result.ok && attempt >= 2) break;
     if (attempt === maxAttempts) break;
-    userPrompt = repairPrompt(question, context, sql, result);
+    userPrompt = repairPrompt(question, context, sql, result, past, intent);
   }
 
   draft.sql = lastSql;

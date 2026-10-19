@@ -31,7 +31,9 @@ class Handler(BaseHTTPRequestHandler):
         # با شمارنده، ترتیب یا تعداد تماس‌ها که عوض شود آزمون بی‌ربط می‌افتد و
         # علتش هم پیدا نیست؛ این‌طور رفتار هر تماس مستقل و قابل‌پیش‌بینی است.
         good = "```sql\nSELECT [e].[EmployeeID] FROM [HCM3].[Employee] AS [e]\n```\nشناسهٔ کارمندان."
-        if "انتخاب کن" in text:
+        if "هنوز کوئری نمی‌نویسی" in text:
+            reply = "هدف: فهرست شناسهٔ کارمندان\nنوع: کوئری\nکلیدواژه‌ها: کارمند، Employee"
+        elif "انتخاب کن" in text:
             reply = "HCM3.Employee"
         elif "ناموجود" in text:
             # مدلی که تا آخر اشتباه می‌ماند — برای آزمودن مسیر «تأیید نشد»

@@ -285,6 +285,9 @@ class SettingsIn(BaseModel):
 
 class AskIn(BaseModel):
     question: str
+    # پرسش‌وپاسخ‌های قبلیِ همین گفت‌وگو، تا «حالا فقط امسال» معنا داشته باشد.
+    # شکل و اندازه‌اش در assistant.clean_history مهار می‌شود.
+    history: list[dict] = []
 
 
 @app.get("/api/settings")
@@ -392,12 +395,12 @@ async def assistant_ask(body: AskIn) -> StreamingResponse:
         index = SchemaIndex(INDEX)
         draft = assistant.run(
             question=question, kb=kb, index=index, ask=ask, emit=emit,
-            max_attempts=conf["max_attempts"],
+            max_attempts=conf["max_attempts"], history=body.history,
         )
         return {
             "type": "result", "kind": draft.kind, "sql": draft.sql,
             "note": draft.note, "attempts": draft.attempts,
-            "tables": draft.tables, "joins": draft.joins,
+            "tables": draft.tables, "joins": draft.joins, "intent": draft.intent,
             "check": draft.check.to_dict() if draft.check else None,
             "model": conf["model"], "provider": conf["provider_id"],
         }

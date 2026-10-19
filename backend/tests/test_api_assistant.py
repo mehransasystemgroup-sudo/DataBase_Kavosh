@@ -187,6 +187,7 @@ def test_full_run_repairs_a_weak_models_mistake(server):
     # نیست و باید یک دور دیگر CI سوزاند تا فقط ببینیم چه شد.
     story = "\n".join(f"  {e['type']}: {e.get('message', '')}" for e in events)
     detail = f"\nرویدادها:\n{story}\n\nخروجی سرور:\n{server['tail'](server['api_log'])}"
+    assert "understand" in kinds, detail
     assert "retrieve" in kinds, detail
     assert "verify" in kinds, detail
 
@@ -196,6 +197,7 @@ def test_full_run_repairs_a_weak_models_mistake(server):
     assert "Employee" in result["sql"] and "Employees" not in result["sql"]
     # یعنی حلقهٔ اصلاح واقعاً به کار افتاده، نه اینکه از اول درست بوده
     assert result["attempts"] >= 2
+    assert result["intent"]["goal"] == "فهرست شناسهٔ کارمندان"
 
     verifies = [e for e in events if e["type"] == "verify" and "ok" in e]
     assert any(not v["ok"] for v in verifies), "اولین بازبینی باید ناموفق باشد"

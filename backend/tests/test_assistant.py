@@ -132,13 +132,16 @@ def test_extract_sql_pulls_query_out_of_chatter():
 class ScriptedModel:
     """مدلی که پاسخ‌هایش از پیش نوشته شده — جای مدل ضعیف واقعی."""
 
-    def __init__(self, selection: str, replies: list[str]):
+    def __init__(self, selection: str, replies: list[str], intent: str = ""):
         self.selection = selection
         self.replies = list(replies)
+        self.intent = intent
         self.asked: list[str] = []
 
     def __call__(self, system: str, user: str) -> str:
         self.asked.append(user)
+        if "هنوز کوئری نمی‌نویسی" in system:
+            return self.intent
         if "انتخاب کن" in system:
             return self.selection
         return self.replies.pop(0) if self.replies else self.replies_last
@@ -148,9 +151,10 @@ class ScriptedModel:
         return "```sql\nSELECT 1\n```"
 
 
-def run_with(kb, index, model, question="فهرست کارمندان", attempts=4):
+def run_with(kb, index, model, question="فهرست کارمندان", attempts=4, history=None):
     return assistant.run(question=question, kb=kb, index=index,
-                         ask=model, emit=lambda *a: None, max_attempts=attempts)
+                         ask=model, emit=lambda *a: None, max_attempts=attempts,
+                         history=history)
 
 
 def test_weak_model_converges_after_feedback(kb, index):
@@ -220,3 +224,81 @@ def test_context_includes_real_columns_and_joins(kb):
     info = kb.get_table("HCM3.Employee")
     for column in info.columns:
         assert column["name"] in context
+
+
+# ─────────────────────── فهم خواسته و گفت‌وگو ───────────────────────
+
+
+INTENT = """هدف: فهرست کارمندان به همراه شناسه
+نوع: کوئری
+کلیدواژه‌ها: کارمند، Employee
+خروجی: شناسهٔ کارمند
+فیلترها: —
+فرض‌ها: همهٔ کارمندان، فعال و غیرفعال
+ابهام‌ها: فقط کارمندان فعال؟ | مرتب‌سازی بر اساس چه؟"""
+
+
+def test_parse_intent_reads_labels_loosely():
+    intent = assistant.parse_intent(
+        "**هدف**: جمع مبلغ اسناد\n- کلیدواژه: سند، Voucher\nبازه زمانی: سال ۱۴۰۲\n"
+        "فیلترها: —\nنوع: راهنمایی"
+    )
+    assert intent["goal"] == "جمع مبلغ اسناد"
+    assert intent["keywords"] == ["سند", "Voucher"]
+    assert intent["period"] == "سال ۱۴۰۲"
+    assert intent["filters"] == ""
+    assert intent["mode"] == "guidance"
+
+
+def test_garbage_intent_is_empty_not_half_filled():
+    """بی‌«هدف»، برداشتی در کار نیست — نیمه‌برداشت از هیچ بدتر است."""
+    intent = assistant.parse_intent("```sql\nSELECT 1\n```\nخروجی: همه")
+    assert intent["goal"] == "" and intent["output"] == ""
+
+
+def test_intent_reaches_the_draft_and_the_result(kb, index):
+    model = ScriptedModel("HCM3.Employee", [
+        "```sql\nSELECT EmployeeID FROM HCM3.Employee\n```",
+    ], intent=INTENT)
+    d = run_with(kb, index, model)
+    assert d.check.ok
+    assert d.intent["goal"].startswith("فهرست کارمندان")
+    assert len(d.intent["questions"]) == 2
+    draft_prompt = model.asked[-1]
+    assert "## برداشت از خواسته" in draft_prompt
+    assert "همهٔ کارمندان، فعال و غیرفعال" in draft_prompt
+
+
+def test_keywords_widen_retrieval(kb):
+    """پرسش محاوره‌ای ممکن است واژهٔ جدول را نداشته باشد؛ کلیدواژه پیدایش می‌کند."""
+    bare = {c["full_name"] for c in assistant.retrieve(kb, "چند نفر داریم؟")}
+    wide = {c["full_name"] for c in assistant.retrieve(kb, "چند نفر داریم؟", ["Employee"])}
+    assert "HCM3.Employee" in wide
+    assert wide >= bare
+
+
+def test_follow_up_keeps_previous_tables_and_query(kb, index):
+    """«حالا فقط ...» باید روی کوئری قبلی ساخته شود، نه از صفر."""
+    history = [{"question": "فهرست کارمندان",
+                "sql": "SELECT EmployeeID FROM HCM3.Employee",
+                "tables": ["HCM3.Employee", "NO.SuchTable"]}]
+    model = ScriptedModel("HCM3.Employee", [
+        "```sql\nSELECT TOP 10 EmployeeID FROM HCM3.Employee\n```",
+    ])
+    candidates = assistant.retrieve(kb, "حالا فقط ده تا", (), ["HCM3.Employee", "NO.SuchTable"])
+    assert candidates[0]["full_name"] == "HCM3.Employee"
+    assert all(c["full_name"] != "NO.SuchTable" for c in candidates)
+
+    d = run_with(kb, index, model, question="حالا فقط ده تا", history=history)
+    assert d.check.ok
+    assert "## گفت‌وگوی قبلی" in model.asked[0]          # به مرحلهٔ فهم رسید
+    assert "SELECT EmployeeID FROM HCM3.Employee" in model.asked[-1]
+
+
+def test_history_is_bounded_and_sanitised():
+    many = [{"question": f"q{i}", "sql": "x" * 9000, "tables": ["A.B"] * 20} for i in range(6)]
+    many.append({"question": "   "})
+    many.append("not a dict")
+    out = assistant.clean_history(many)
+    assert [h["question"] for h in out] == ["q5"]
+    assert len(out[0]["sql"]) == 8000 and len(out[0]["tables"]) == 10

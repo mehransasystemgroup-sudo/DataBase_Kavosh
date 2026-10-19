@@ -5,10 +5,15 @@ import {
   BadgeCheck,
   Bot,
   CircleSlash,
+  HelpCircle,
   KeyRound,
+  Lightbulb,
   Link2,
+  ListOrdered,
   Loader2,
+  MessageSquarePlus,
   Settings,
+  Target,
   Square,
   Table2,
   Wand2,
@@ -35,6 +40,14 @@ import { Textarea } from "@/components/ui/textarea";
       در تب کاوش.
 
   کوئریِ تأییدنشده هرگز به‌شکل تأییدشده نشان داده نمی‌شود.
+
+  و پیش از همهٔ این‌ها، «برداشت»: دستیار اول می‌گوید خواستهٔ شما را چه
+  فهمیده — هدف، خروجی، فیلترها، فرض‌ها — و اگر جایی مبهم است، همان را
+  می‌پرسد. اگر برداشت غلط باشد، کاربر همان‌جا می‌بیند، نه بعد از اجرای
+  کوئری روی داده‌های واقعی.
+
+  پرسش‌ها یک گفت‌وگویند: سه پرسش‌وپاسخ آخر همراه پرسش تازه می‌رود، تا
+  «حالا فقط امسال» روی کوئری قبلی ساخته شود.
 */
 
 const SAMPLES = [
@@ -44,6 +57,7 @@ const SAMPLES = [
 ];
 
 const STEP_LABEL = {
+  understand: "فهم خواسته",
   retrieve: "بازیابی",
   select: "انتخاب جدول",
   context: "زمینه‌سازی",
@@ -136,8 +150,153 @@ function Verdict({ check }) {
   );
 }
 
-function Answer({ turn, onOpenTable }) {
+
+const INTENT_ROWS = [
+  ["output", "خروجی"],
+  ["filters", "فیلترها"],
+  ["grouping", "گروه‌بندی"],
+  ["ordering", "مرتب‌سازی"],
+  ["period", "بازهٔ زمانی"],
+  ["assumptions", "فرض‌ها"],
+];
+
+/** آنچه دستیار از خواسته فهمید — تا اگر غلط است، همین‌جا دیده شود. */
+function IntentCard({ intent, onClarify }) {
+  if (!intent?.goal) return null;
+  const rows = INTENT_ROWS.filter(([key]) => intent[key]);
+  return (
+    <div className="rounded-md border border-brand/30 bg-brand/5 px-3 py-2">
+      <p className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-text">
+        <Target className="h-3.5 w-3.5 shrink-0" />
+        برداشت من از خواستهٔ شما
+      </p>
+      <p className="mt-1 text-[12px] leading-relaxed text-foreground">{intent.goal}</p>
+      {rows.length > 0 && (
+        <dl className="mt-1.5 grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[11px] leading-relaxed">
+          {rows.map(([key, label]) => (
+            <div key={key} className="contents">
+              <dt className="text-muted-foreground">{label}:</dt>
+              <dd className="min-w-0 text-foreground/90">{intent[key]}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+      {intent.questions?.length > 0 && (
+        <div className="mt-2 border-t border-brand/20 pt-1.5">
+          <p className="flex items-center gap-1 text-[10.5px] text-muted-foreground">
+            <HelpCircle className="h-3 w-3" />
+            برای دقیق‌تر شدن پاسخ، این‌ها را روشن کنید:
+          </p>
+          <div className="mt-1 flex flex-wrap gap-1">
+            {intent.questions.map((q) => (
+              <button
+                key={q}
+                type="button"
+                onClick={() => onClarify(q)}
+                title="پاسخ این پرسش را بنویسید تا کوئری اصلاح شود"
+                className="rounded border border-border bg-surface px-2 py-0.5 text-start text-[11px] text-foreground transition-colors hover:border-brand/45 hover:text-brand-text"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/**
+ * پاسخ مدل در قالب «### برداشت / ### مراحل / ### نکته‌ها» می‌آید. اگر مدل
+ * قالب را رعایت نکرده باشد، کل متن یک بخشِ بی‌عنوان می‌شود — همان رفتار قبلی.
+ */
+function splitSections(note) {
+  const sections = [];
+  let current = { title: "", lines: [] };
+  for (const line of (note || "").split(/\r?\n/)) {
+    const m = line.match(/^\s*#{2,4}\s*(.+?)\s*#*\s*$/);
+    if (m) {
+      if (current.title || current.lines.some((l) => l.trim())) sections.push(current);
+      current = { title: m[1].replace(/\*\*/g, "").trim(), lines: [] };
+    } else {
+      current.lines.push(line);
+    }
+  }
+  if (current.title || current.lines.some((l) => l.trim())) sections.push(current);
+  return sections.map((sec) => ({ title: sec.title, body: sec.lines.join("\n").trim() }));
+}
+
+const SECTION_ICON = { برداشت: Target, مراحل: ListOrdered, "نکته‌ها": Lightbulb };
+
+function Inline({ text }) {
+  // فقط `کد` و **پررنگ** — بقیهٔ مارک‌داون این‌جا لازم نیست
+  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g).filter(Boolean);
+  return parts.map((part, i) =>
+    part.startsWith("`") ? (
+      <code key={i} className="ltr rounded bg-ink/60 px-1 font-mono text-[10.5px] text-brand-text">
+        {part.slice(1, -1)}
+      </code>
+    ) : part.startsWith("**") ? (
+      <strong key={i} className="font-semibold">{part.slice(2, -2)}</strong>
+    ) : (
+      <span key={i}>{part}</span>
+    ),
+  );
+}
+
+function SectionBody({ body }) {
+  const lines = body.split("\n").filter((l) => l.trim());
+  return (
+    <div className="space-y-1">
+      {lines.map((line, i) => {
+        const step = line.match(/^\s*([0-9۰-۹]+)[.)\-–]\s*(.*)$/);
+        const bullet = line.match(/^\s*[-*•]\s+(.*)$/);
+        if (step) {
+          return (
+            <div key={i} className="flex gap-2">
+              <span className="mt-px flex h-4 min-w-4 shrink-0 items-center justify-center rounded-full bg-brand/15 px-1 text-[10px] font-bold text-brand-text">
+                {faText(step[1])}
+              </span>
+              <span className="min-w-0"><Inline text={step[2]} /></span>
+            </div>
+          );
+        }
+        if (bullet) {
+          return (
+            <div key={i} className="flex gap-2 ps-1">
+              <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
+              <span className="min-w-0"><Inline text={bullet[1]} /></span>
+            </div>
+          );
+        }
+        return <p key={i}><Inline text={line} /></p>;
+      })}
+    </div>
+  );
+}
+
+function Section({ title, body }) {
+  if (!body) return null;
+  const Icon = SECTION_ICON[title];
+  return (
+    <div className="text-[12px] leading-relaxed text-foreground/90">
+      {title && (
+        <p className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold text-brand-text">
+          {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
+          {title}
+        </p>
+      )}
+      <SectionBody body={body} />
+    </div>
+  );
+}
+
+function Answer({ turn, onOpenTable, onClarify }) {
   const { question, steps, running, result, error } = turn;
+  const sections = splitSections(result?.note);
+  const isNotes = (sec) => sec.title.startsWith("نکته");
+  const before = result?.sql ? sections.filter((sec) => !isNotes(sec)) : sections;
+  const after = result?.sql ? sections.filter(isNotes) : [];
 
   return (
     <div className="anim-rise space-y-2.5">
@@ -156,6 +315,11 @@ function Answer({ turn, onOpenTable }) {
           </p>
         )}
 
+        <IntentCard intent={result?.intent} onClarify={onClarify} />
+
+        {/* «نکته‌ها» بعد از کوئری می‌آید: اول ببیند چه ساخته شد، بعد چه را بسنجد */}
+        {before.map((sec, i) => <Section key={`b${i}`} {...sec} />)}
+
         {result?.sql && (
           <>
             <SqlBlock sql={result.sql} title={`کوئری — ${fa(result.attempts)} تلاش`} />
@@ -163,11 +327,7 @@ function Answer({ turn, onOpenTable }) {
           </>
         )}
 
-        {result?.note && (
-          <p className="whitespace-pre-line text-[12px] leading-relaxed text-foreground/90">
-            {result.note}
-          </p>
-        )}
+        {after.map((sec, i) => <Section key={`a${i}`} {...sec} />)}
 
         {/*
           چیپ‌ها جدول‌هایی‌اند که *خودِ کوئری* به آن‌ها اشاره کرده (خروجی
@@ -223,6 +383,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
   const [running, setRunning] = useState(false);
   const abort = useRef(null);
   const tail = useRef(null);
+  const input = useRef(null);
 
   useEffect(() => {
     if (!HAS_ASSISTANT) return;
@@ -252,6 +413,16 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
       setQuestion("");
       setRunning(true);
 
+      // سه پرسش‌وپاسخ آخرِ کامل، تا پرسش تازه بتواند ادامهٔ گفت‌وگو باشد
+      const history = turns
+        .filter((t) => t.result)
+        .slice(-3)
+        .map((t) => ({
+          question: t.question,
+          sql: t.result.sql || "",
+          tables: t.result.check?.tables || [],
+        }));
+
       const idx = turns.length;
       setTurns((prev) => [...prev, { question: q, steps: [], running: true }]);
 
@@ -265,6 +436,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
         const steps = [];
         await ASK_ASSISTANT(q, {
           signal: controller.signal,
+          history,
           onEvent: (event) => {
             if (event.type === "result") {
               patch({ result: event, running: false });
@@ -285,8 +457,24 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
         abort.current = null;
       }
     },
-    [question, running, turns.length],
+    [question, running, turns],
   );
+
+  const clarify = useCallback((q) => {
+    setQuestion(`دربارهٔ «${q}»: `);
+    requestAnimationFrame(() => {
+      const el = input.current;
+      if (!el) return;
+      el.focus();
+      el.setSelectionRange(el.value.length, el.value.length);
+    });
+  }, []);
+
+  const fresh = useCallback(() => {
+    stop();
+    setTurns([]);
+    setQuestion("");
+  }, [stop]);
 
   if (!HAS_ASSISTANT) {
     return (
@@ -314,11 +502,12 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
                   دستیار کوئری‌نویسی
                 </h1>
                 <p className="mt-1.5 text-[12px] leading-relaxed text-muted-foreground">
-                  به فارسی بپرسید چه می‌خواهید. دستیار اول جدول‌های مرتبط را از
+                  به فارسی بپرسید چه می‌خواهید. دستیار اول می‌گوید خواستهٔ شما را
+                  چه فهمیده و اگر جایی مبهم است می‌پرسد. بعد جدول‌های مرتبط را از
                   ساختار همین پایگاه داده پیدا می‌کند، ستون‌ها و مسیرهای پیوند را
-                  از دانش موجود برمی‌دارد، و کوئری را می‌نویسد — و پیش از
-                  نشان‌دادن، تک‌تک نام جدول‌ها، ستون‌ها و پیوندها را با ساختار
-                  واقعی می‌سنجد.
+                  از دانش موجود برمی‌دارد، و کوئری را قدم‌به‌قدم توضیح می‌دهد — و
+                  پیش از نشان‌دادن، تک‌تک نام جدول‌ها، ستون‌ها و پیوندها را با
+                  ساختار واقعی می‌سنجد.
                 </p>
               </div>
 
@@ -358,7 +547,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
           )}
 
           {turns.map((turn, i) => (
-            <Answer key={i} turn={turn} onOpenTable={onOpenTable} />
+            <Answer key={i} turn={turn} onOpenTable={onOpenTable} onClarify={clarify} />
           ))}
           <div ref={tail} />
         </div>
@@ -367,6 +556,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
       <div className="shrink-0 border-t border-border bg-background/85 px-3 py-2.5 backdrop-blur-xl sm:px-4 lg:px-6">
         <div className="mx-auto flex w-full max-w-3xl items-end gap-1.5">
           <Textarea
+            ref={input}
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyDown={(e) => {
@@ -397,10 +587,26 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
             </Button>
           )}
         </div>
-        <p className="mx-auto mt-1.5 w-full max-w-3xl text-[10px] leading-relaxed text-muted-foreground">
-          دستیار کوئری را اجرا نمی‌کند — فقط می‌نویسد و با ساختار می‌سنجد. پیش از
-          اجرا روی داده‌های واقعی، خودتان هم نگاهش کنید.
-        </p>
+        <div className="mx-auto mt-1.5 flex w-full max-w-3xl items-start gap-2">
+          <p className="min-w-0 flex-1 text-[10px] leading-relaxed text-muted-foreground">
+            {turns.length > 0
+              ? "پرسش بعدی ادامهٔ همین گفت‌وگوست؛ مثلاً «حالا فقط امسال» یا «به تفکیک واحد». "
+              : ""}
+            دستیار کوئری را اجرا نمی‌کند — فقط می‌نویسد و با ساختار می‌سنجد. پیش از
+            اجرا روی داده‌های واقعی، خودتان هم نگاهش کنید.
+          </p>
+          {turns.length > 0 && (
+            <button
+              type="button"
+              onClick={fresh}
+              className="flex shrink-0 items-center gap-1 rounded px-1.5 py-0.5 text-[10.5px] text-muted-foreground transition-colors hover:bg-surfaceHover hover:text-brand-text"
+              title="پرسش‌های قبلی کنار گذاشته می‌شوند"
+            >
+              <MessageSquarePlus className="h-3 w-3" />
+              گفت‌وگوی تازه
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

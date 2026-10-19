@@ -115,7 +115,7 @@ export function checkQuery(kb, sql) {
  * پرسش به دستیار. رویدادها همان رویدادهای SSE سرورند و به `onEvent` می‌رسند؛
  * آخرینشان `result` یا `error` است.
  */
-export async function askAssistant(kb, question, { onEvent, signal } = {}) {
+export async function askAssistant(kb, question, { onEvent, signal, history } = {}) {
   const q = (question || "").trim();
   if (!q) throw new Error("پرسش خالی است.");
 
@@ -133,12 +133,12 @@ export async function askAssistant(kb, question, { onEvent, signal } = {}) {
 
   try {
     const draft = await run({
-      question: q, kb, index: indexFor(kb), ask, emit: onEvent, signal,
+      question: q, kb, index: indexFor(kb), ask, emit: onEvent, signal, history,
       maxAttempts: conf.max_attempts,
     });
     onEvent({
       type: "result", kind: draft.kind, sql: draft.sql, note: draft.note,
-      attempts: draft.attempts, tables: draft.tables, joins: draft.joins,
+      attempts: draft.attempts, tables: draft.tables, joins: draft.joins, intent: draft.intent,
       check: draft.check, model: conf.model, provider: conf.provider,
     });
   } catch (e) {

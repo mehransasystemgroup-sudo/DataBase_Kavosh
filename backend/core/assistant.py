@@ -6,10 +6,15 @@
     مدل زبانی هرگز ساختار پایگاه داده را از خودش نمی‌سازد.
     ساختار را ما می‌دهیم، و هرچه بنویسد را ما می‌سنجیم.
 
-پس کار به پنج مرحله شکسته شده و در هر مرحله نقش مدل تا جای ممکن کوچک است:
+پس کار به شش مرحله شکسته شده و در هر مرحله نقش مدل تا جای ممکن کوچک است:
 
+    ۰) فهم        — مدل هنوز کوئری نمی‌نویسد؛ فقط خواستهٔ کاربر را در قالبی
+                    ثابت بازنویسی می‌کند: هدف، خروجی، فیلترها، فرض‌ها و
+                    ابهام‌ها. کلیدواژه‌هایش جست‌وجو را دقیق‌تر می‌کند و خودِ
+                    برداشت به نگارش داده می‌شود. اگر خروجی‌اش بی‌معنا بود،
+                    با خودِ پرسش ادامه می‌دهیم.
     ۱) بازیابی    — جدول‌های نامزد با جست‌وجوی فارسیِ خودِ برنامه پیدا می‌شوند.
-                    هیچ مدلی دخالت ندارد؛ این مرحله برای همه یکسان است.
+                    مدل فقط کلیدواژه داده؛ نام جدولی از او پذیرفته نمی‌شود.
     ۲) انتخاب     — مدل فقط از میان همان نامزدها انتخاب می‌کند. هر نامی که
                     در فهرست نباشد دور ریخته می‌شود، و اگر خروجی‌اش بی‌معنا
                     بود، به نتیجهٔ بازیابی برمی‌گردیم.
@@ -51,17 +56,161 @@ class Draft:
     tables: list[str] = field(default_factory=list)
     joins: list[str] = field(default_factory=list)
     kind: str = "query"              # query | guidance
+    intent: dict = field(default_factory=dict)
+
+
+# ───────────────────────── ۰) فهم خواسته ─────────────────────────
+
+
+MAX_HISTORY = 3
+MAX_KEYWORDS = 6
+
+UNDERSTAND_SYSTEM = """تو تحلیلگر نیازمندی‌های یک پایگاه دادهٔ سازمانی روی SQL Server هستی.
+هنوز کوئری نمی‌نویسی؛ فقط باید دقیق بفهمی کاربر واقعاً چه می‌خواهد.
+
+پرسش کاربر را (و اگر آمده، گفت‌وگوی قبلی را) بخوان و برداشتت را دقیقاً در
+همین قالب بنویس، هر مورد در یک سطر. موردی که در پرسش نیامده را با «—» پر کن.
+
+هدف: خواستهٔ کاربر در یک جملهٔ کامل و مستقل؛ اگر پرسش ادامهٔ گفت‌وگوی قبلی است، آنچه از قبل مانده را هم در همین جمله بیاور
+نوع: کوئری یا راهنمایی
+کلیدواژه‌ها: مفهوم‌های اصلی به فارسی، و اگر می‌دانی معادل انگلیسی‌شان، با «،» جدا
+خروجی: ستون‌ها یا مقدارهایی که باید برگردد
+فیلترها: شرط‌ها
+گروه‌بندی: —
+مرتب‌سازی: —
+بازهٔ زمانی: —
+فرض‌ها: هر فرضی که برای پرکردن جای خالی کردی
+ابهام‌ها: پرسش‌هایی که پاسخشان نتیجه را عوض می‌کند، با «|» جدا؛ اگر نیست «—»
+
+هیچ توضیح دیگری ننویس."""
+
+INTENT_FIELDS = (
+    ("goal", "هدف"), ("mode", "نوع"), ("keywords", "کلیدواژه‌ها"),
+    ("output", "خروجی"), ("filters", "فیلترها"), ("grouping", "گروه‌بندی"),
+    ("ordering", "مرتب‌سازی"), ("period", "بازهٔ زمانی"),
+    ("assumptions", "فرض‌ها"), ("questions", "ابهام‌ها"),
+)
+
+# برچسب‌ها با املای گوناگون می‌آیند (بی‌نیم‌فاصله، «بازه زمانی»، مفرد)؛ پس
+# پیش از مقایسه یکدست می‌شوند و مفرد هم پذیرفته است.
+_EMPTY = {"", "—", "-", "–", "ندارد", "هیچ", "نامشخص", "ندارد.", "—."}
+
+
+def _norm_label(text: str) -> str:
+    text = text.replace("ي", "ی").replace("ك", "ک")
+    text = re.sub(r"[‌ٔ\s*#_`]", "", text)
+    return text.replace("ۀ", "ه")
+
+
+_LABELS: dict[str, str] = {}
+for _key, _label in INTENT_FIELDS:
+    _LABELS[_norm_label(_label)] = _key
+for _label, _key in (("کلیدواژه", "keywords"), ("فیلتر", "filters"),
+                     ("فرض", "assumptions"), ("ابهام", "questions"),
+                     ("پرسشهایروشنکننده", "questions")):
+    _LABELS[_label] = _key
+
+
+def _empty_intent() -> dict:
+    out = {key: "" for key, _ in INTENT_FIELDS}
+    out.update(mode="query", keywords=[], questions=[])
+    return out
+
+
+def parse_intent(reply: str) -> dict:
+    """
+    برداشت مدل را از متن بیرون می‌کشد — هر سطرِ «برچسب: مقدار».
+
+    باز هم JSON نخواستیم، به همان دلیل مرحلهٔ انتخاب. سطری که برچسبش
+    شناخته نشود نادیده گرفته می‌شود؛ اگر «هدف» پیدا نشد، کل برداشت تهی است
+    و کار با خودِ پرسش ادامه می‌یابد.
+    """
+    out = _empty_intent()
+    for line in (reply or "").splitlines():
+        m = re.match(r"^\s*(?:[-*•]\s*)?([^:：]{1,30})[:：]\s*(.*)$", line)
+        if not m:
+            continue
+        key = _LABELS.get(_norm_label(m.group(1)))
+        value = m.group(2).strip().strip("*").strip()
+        if not key or value in _EMPTY:
+            continue
+        if key == "keywords":
+            out[key] = [w.strip() for w in re.split(r"[،,;؛]", value)
+                        if w.strip() and w.strip() not in _EMPTY][:MAX_KEYWORDS]
+        elif key == "questions":
+            out[key] = [q.strip() for q in value.split("|")
+                        if q.strip() and q.strip() not in _EMPTY][:4]
+        elif key == "mode":
+            out[key] = "guidance" if "راهنما" in value else "query"
+        else:
+            out[key] = value
+    if not out["goal"]:
+        return _empty_intent()
+    return out
+
+
+def brief_text(intent: dict) -> str:
+    """برداشت به شکلی که به مراحل بعد داده می‌شود؛ فقط موردهای پُر."""
+    if not intent or not intent.get("goal"):
+        return ""
+    lines = []
+    for key, label in INTENT_FIELDS:
+        if key in ("mode", "keywords", "questions"):
+            continue
+        if intent.get(key):
+            lines.append(f"{label}: {intent[key]}")
+    return "\n".join(lines)
+
+
+def clean_history(history: Iterable[dict] | None) -> list[dict]:
+    """گفت‌وگوی قبلی از رابط کاربری می‌آید؛ اندازه و شکلش این‌جا مهار می‌شود."""
+    out = []
+    for item in list(history or [])[-MAX_HISTORY:]:
+        if not isinstance(item, dict):
+            continue
+        q = str(item.get("question") or "").strip()[:2000]
+        if not q:
+            continue
+        sql = str(item.get("sql") or "").strip()[:8000]
+        tables = [str(t)[:128] for t in (item.get("tables") or []) if t][:10]
+        out.append({"question": q, "sql": sql, "tables": tables})
+    return out
+
+
+def history_text(history: list[dict]) -> str:
+    if not history:
+        return ""
+    parts = ["## گفت‌وگوی قبلی", ""]
+    for i, item in enumerate(history, 1):
+        parts.append(f"پرسش {i}: {item['question']}")
+        if item.get("sql"):
+            parts += [f"کوئری {i}:", "```sql", item["sql"], "```"]
+        parts.append("")
+    return "\n".join(parts).rstrip()
+
+
+def understand_prompt(question: str, history: list[dict]) -> str:
+    head = history_text(history)
+    return (head + "\n\n" if head else "") + f"## پرسش تازه\n\n{question}"
 
 
 # ───────────────────────── ۱) بازیابی ─────────────────────────
 
 
-def retrieve(kb: KnowledgeBase, question: str) -> list[dict]:
+def retrieve(
+    kb: KnowledgeBase,
+    question: str,
+    keywords: Iterable[str] = (),
+    previous: Iterable[str] = (),
+) -> list[dict]:
     """
     جدول‌های نامزد برای این پرسش.
 
     از سه راه، چون هیچ‌کدام به‌تنهایی کافی نیست: کاربر ممکن است نام فارسی
-    جدول را بگوید، یا نام یک ستون را، یا نام یک نوع کد و شرحی را.
+    جدول را بگوید، یا نام یک ستون را، یا نام یک نوع کد و شرحی را. کلیدواژه‌های
+    مرحلهٔ فهم همان جست‌وجو را با واژه‌های دیگر تکرار می‌کنند — پرسشِ
+    محاوره‌ای اغلب واژهٔ جدول را ندارد. جدول‌های پرسش قبلی هم نامزد می‌مانند،
+    وگرنه «حالا فقط امسال» ربطش را به گفت‌وگو از دست می‌دهد.
     """
     seen: dict[str, dict] = {}
 
@@ -80,6 +229,20 @@ def retrieve(kb: KnowledgeBase, question: str) -> list[dict]:
         table = col.get("table") or col.get("table_ref") or ""
         if table:
             add(table, col.get("title_fa"), f"ستون {col.get('name')}", 1.0)
+
+    for word in list(dict.fromkeys(keywords))[:MAX_KEYWORDS]:
+        for hit in kb.search_tables(query=word, limit=8):
+            add(hit.full_name, hit.title_fa, f"کلیدواژهٔ «{word}»", hit.score)
+        for col in kb.search_columns(word, limit=8):
+            table = col.get("table") or col.get("table_ref") or ""
+            if table:
+                add(table, col.get("title_fa"), f"ستون {col.get('name')}", 1.0)
+
+    top = max((r["score"] for r in seen.values()), default=1.0)
+    for full in previous:
+        info = kb.get_table(full)
+        if info is not None:
+            add(info.full_name, info.title_fa, "گفت‌وگوی قبلی", top + 1.0)
 
     ordered = sorted(seen.values(), key=lambda r: -r["score"])
     return ordered[:MAX_CANDIDATES]
@@ -199,7 +362,7 @@ def build_context(kb: KnowledgeBase, chosen: list[str]) -> tuple[str, list[str],
 # ───────────────────────── ۴) نگارش ─────────────────────────
 
 
-DRAFT_SYSTEM = """تو یک کارشناس ارشد T-SQL روی SQL Server هستی و به فارسی پاسخ می‌دهی.
+DRAFT_SYSTEM = """تو یک کارشناس ارشد T-SQL روی SQL Server هستی و به فارسی، دقیق و قدم‌به‌قدم پاسخ می‌دهی.
 
 قواعد غیرقابل‌مذاکره:
 ۱. فقط از جدول‌ها و ستون‌هایی استفاده کن که در «ساختار» آمده‌اند. هیچ نام
@@ -208,29 +371,67 @@ DRAFT_SYSTEM = """تو یک کارشناس ارشد T-SQL روی SQL Server هس
    نساز.
 ۳. فقط SELECT. هیچ INSERT/UPDATE/DELETE/DROP ننویس.
 ۴. شناسه‌ها را داخل براکت بگذار: [SCHEMA].[Table].[Column]
-۵. کوئری را داخل یک بلوک ```sql بگذار و بیرون آن، دو سه جملهٔ فارسی بنویس
-   که می‌گوید کوئری چه می‌کند.
+۵. اگر «گفت‌وگوی قبلی» آمده و پرسش تازه ادامهٔ آن است، کوئری قبلی را مبنا
+   بگیر و فقط همان چیزی را عوض کن که خواسته شده.
+۶. اگر جایی از خواسته مبهم است، معقول‌ترین برداشت را برگزین و آن را در
+   «نکته‌ها» صریح بنویس؛ هیچ فرضی را بی‌صدا نکن.
 
-اگر پرسش کاربر اصلاً کوئری نمی‌خواهد و فقط راهنمایی می‌خواهد، بلوک ```sql
-نگذار و فقط فارسی توضیح بده."""
+قالب پاسخ — دقیقاً با همین عنوان‌ها:
+
+### برداشت
+یک یا دو جمله: این کوئری دقیقاً چه چیزی را برمی‌گرداند.
+
+### مراحل
+فهرست شماره‌دار و کوتاه از ساختن کوئری: از کدام جدول شروع می‌شود و چرا،
+کدام پیوندها، چه فیلترهایی، چه گروه‌بندی و مرتب‌سازی‌ای. در هر مرحله نام
+فارسی جدول یا ستون را هم بیاور.
+
+```sql
+-- کوئری کامل
+```
+
+### نکته‌ها
+فرض‌هایی که کردی، آنچه کاربر باید پیش از اجرا بررسی یا جایگزین کند (مثلاً
+یک مقدار نمونه)، و اگر لازم است یک نکتهٔ کارایی.
+
+اگر کاربر کوئری نمی‌خواهد و فقط راهنمایی می‌خواهد، بلوک ```sql نگذار؛ به‌جایش
+با همین سه عنوان قدم‌به‌قدم راهنمایی کن."""
 
 
-def draft_prompt(question: str, context: str) -> str:
+def _preamble(history: list[dict], intent: dict) -> str:
+    parts = []
+    head = history_text(history)
+    if head:
+        parts.append(head)
+    brief = brief_text(intent)
+    if brief:
+        parts.append("## برداشت از خواسته — اگر با پرسش نمی‌خواند، خودِ پرسش ملاک است\n\n"
+                     + brief)
+    return "\n\n".join(parts)
+
+
+def draft_prompt(question: str, context: str, history: list[dict] | None = None,
+                 intent: dict | None = None) -> str:
+    extra = _preamble(history or [], intent or {})
+    extra = extra + "\n\n" if extra else ""
     return f"""## ساختار
 
 {context}
 
-## پرسش کاربر
+{extra}## پرسش کاربر
 
 {question}"""
 
 
-def repair_prompt(question: str, context: str, sql: str, result: CheckResult) -> str:
+def repair_prompt(question: str, context: str, sql: str, result: CheckResult,
+                  history: list[dict] | None = None, intent: dict | None = None) -> str:
+    extra = _preamble(history or [], intent or {})
+    extra = extra + "\n\n" if extra else ""
     return f"""## ساختار
 
 {context}
 
-## پرسش کاربر
+{extra}## پرسش کاربر
 
 {question}
 
@@ -245,7 +446,8 @@ def repair_prompt(question: str, context: str, sql: str, result: CheckResult) ->
 {result.feedback()}
 
 کوئری را با توجه به همین ایرادها اصلاح کن. فقط از جدول‌ها و ستون‌های بخش
-«ساختار» استفاده کن. دوباره کل کوئری اصلاح‌شده را داخل یک بلوک ```sql بده."""
+«ساختار» استفاده کن. دوباره کل کوئری اصلاح‌شده را داخل یک بلوک ```sql بده؛
+اگر برداشت یا مراحل هم عوض شد، آن‌ها را با همان قالب بنویس."""
 
 
 def split_reply(reply: str) -> tuple[str, str]:
@@ -275,6 +477,7 @@ def run(
     ask: Callable[[str, str], str],
     emit: Emit,
     max_attempts: int = DEFAULT_ATTEMPTS,
+    history: Iterable[dict] | None = None,
 ) -> Draft:
     """
     `ask(system, user) -> str` تنها راه ارتباط با مدل است؛ هرچه بقیه لازم
@@ -282,9 +485,22 @@ def run(
     آزمودنی باشد، بی‌آن‌که کلید API لازم باشد.
     """
     draft = Draft()
+    past = clean_history(history)
+
+    emit("understand", "فهم خواستهٔ شما", {})
+    try:
+        intent = parse_intent(ask(UNDERSTAND_SYSTEM, understand_prompt(question, past)))
+    except Exception:                                        # noqa: BLE001
+        intent = _empty_intent()
+    draft.intent = intent
+    if intent["goal"]:
+        emit("understand", intent["goal"], {"intent": intent})
+    else:
+        emit("understand", "برداشت روشنی نیامد؛ با خودِ پرسش ادامه می‌دهیم", {})
 
     emit("retrieve", "جست‌وجو در ساختار پایگاه داده", {})
-    candidates = retrieve(kb, question)
+    previous = [t for item in past for t in item["tables"]]
+    candidates = retrieve(kb, question, intent["keywords"], previous)
     if not candidates:
         draft.kind = "guidance"
         draft.note = ("برای این پرسش جدول مرتبطی پیدا نشد. کمی مشخص‌تر بپرسید — "
@@ -299,11 +515,12 @@ def run(
         f"{c['full_name']}" + (f" — {c['title_fa']}" if c.get("title_fa") else "")
         for c in candidates
     )
+    goal = f"\n\n## هدف\n{intent['goal']}" if intent["goal"] else ""
     chosen: list[str] = []
     try:
         reply = ask(
             SELECT_SYSTEM.format(max_chosen=MAX_CHOSEN),
-            f"## جدول‌های موجود\n{listing}\n\n## پرسش\n{question}",
+            f"## جدول‌های موجود\n{listing}\n\n## پرسش\n{question}{goal}",
         )
         chosen = parse_selection(reply, candidates)
     except Exception:                                        # noqa: BLE001
@@ -324,13 +541,13 @@ def run(
         "tables": tables, "joins": joins,
     })
 
-    user_prompt = draft_prompt(question, context)
+    user_prompt = draft_prompt(question, context, past, intent)
     last_result: CheckResult | None = None
     last_sql = ""
 
     for attempt in range(1, max_attempts + 1):
         draft.attempts = attempt
-        emit("draft", (f"نگارش کوئری" if attempt == 1
+        emit("draft", ("نگارش کوئری" if attempt == 1
                        else f"اصلاح کوئری — تلاش {attempt} از {max_attempts}"),
              {"attempt": attempt})
         reply = ask(DRAFT_SYSTEM, user_prompt)
@@ -362,7 +579,7 @@ def run(
             break
         if attempt == max_attempts:
             break
-        user_prompt = repair_prompt(question, context, sql, result)
+        user_prompt = repair_prompt(question, context, sql, result, past, intent)
 
     draft.sql = last_sql
     draft.check = last_result
