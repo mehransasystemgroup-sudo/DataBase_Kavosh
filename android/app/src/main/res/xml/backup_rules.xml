@@ -3,4 +3,6 @@
 <full-backup-content>
     <include domain="database" path="." />
     <include domain="file" path="app_webview" />
+    <!-- کلیدهای API دستیار هرگز پشتیبان گرفته نمی‌شوند (NetBridge) -->
+    <exclude domain="sharedpref" path="kavosh_secrets.xml" />
 </full-backup-content>

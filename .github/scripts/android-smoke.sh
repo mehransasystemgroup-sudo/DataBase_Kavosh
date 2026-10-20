@@ -73,6 +73,43 @@ else
     exit 1
 fi
 
+# دستیار کوئری‌نویسی: پل شبکه و کلید (NetBridge) باید در دسترس صفحه باشد.
+# اگر نباشد، تب به‌جای «کلید ثبت نشده» می‌گوید «در دسترس نیست» — یعنی صفحه
+# پوسته را نمی‌بیند. پیام «کلید ثبت نشده» فقط وقتی می‌آید که پرسش از پوسته
+# دربارهٔ کلیدها رفت و برگشت.
+tap_text() {
+    adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1 || true
+    adb pull /sdcard/ui.xml /tmp/ui.xml >/dev/null 2>&1 || return 1
+    python3 - "$1" <<'PY' || return 1
+import re, subprocess, sys
+xml = open("/tmp/ui.xml", encoding="utf-8").read()
+for node in re.finditer(r'<node [^>]*>', xml):
+    tag = node.group(0)
+    if re.search(r'(text|content-desc)="' + re.escape(sys.argv[1]) + '"', tag):
+        x1, y1, x2, y2 = map(int, re.search(r'bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', tag).groups())
+        subprocess.run(["adb", "shell", "input", "tap", str((x1 + x2) // 2), str((y1 + y2) // 2)], check=True)
+        sys.exit(0)
+sys.exit(1)
+PY
+}
+
+if tap_text "دستیار"; then
+    sleep 4
+    adb exec-out screencap -p > emulator-assistant.png || true
+    adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1 || true
+    adb pull /sdcard/ui.xml /tmp/ui.xml >/dev/null 2>&1 || true
+    if grep -q "در دسترس نیست" /tmp/ui.xml; then
+        echo "دستیار پل پوسته را نمی‌بیند (NetBridge ثبت نشد)."
+        exit 1
+    elif grep -q "هنوز کلید API ثبت نشده" /tmp/ui.xml; then
+        echo "دستیار بالا آمد و پل پوسته پاسخ داد."
+    else
+        echo "هشدار: متن تب دستیار خوانده نشد؛ تصویر صفحه ضمیمه است."
+    fi
+else
+    echo "هشدار: زبانهٔ دستیار در درخت دسترسی‌پذیری پیدا نشد؛ تصویر صفحه ضمیمه است."
+fi
+
 # رفتن به یک لینک عمیق، تا فقط صفحهٔ اول سنجیده نشود
 adb shell am start -n "$PKG/.MainActivity" >/dev/null
 sleep 5

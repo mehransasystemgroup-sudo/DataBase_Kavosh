@@ -57,6 +57,7 @@ jobs:
         working-directory: frontend
         run: |
           npm ci
+          npm test
           npm run build:mobile
 
       - name: ساخت APK
@@ -82,19 +83,20 @@ jobs:
           done
           grep -q "assets/assets/.*\.wasm" /tmp/apk.txt || { echo "موتور SQLite در APK نیست"; exit 1; }
 
-          # برنامه باید کاملاً آفلاین باشد: هیچ مجوز سیستمی، به‌ویژه اینترنت.
+          # تنها مجوز سیستمیِ مجاز اینترنت است، و فقط برای پل دستیار (NetBridge).
+          # هر مجوز سیستمیِ دیگری یعنی وابستگی‌ای بی‌صدا چیزی اضافه کرده.
           #
           # androidx.core خودش یک مجوز خصوصیِ همین برنامه با سطح signature
           # اضافه می‌کند (DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION) که برای
           # گیرنده‌های داخلی است و هیچ قابلیتی به برنامه نمی‌دهد؛ پس معیار
-          # درست «هیچ مجوزی» نیست، «هیچ مجوز سیستمی» است.
+          # «مجوز سیستمی» است، نه «هر مجوزی».
           "$TOOLS/aapt2" dump badging "$APK" > /tmp/badging.txt
           grep -E "^package:|^application-label:|sdkVersion:|targetSdkVersion:" /tmp/badging.txt
           PERMS=$(grep -oP "uses-permission: name='\K[^']+" /tmp/badging.txt || true)
           echo "مجوزهای اعلام‌شده: ${PERMS:-(هیچ)}"
-          SYSTEM_PERMS=$(printf '%s\n' "$PERMS" | grep '^android\.permission\.' || true)
+          SYSTEM_PERMS=$(printf '%s\n' "$PERMS" | grep '^android\.permission\.' | grep -vx 'android.permission.INTERNET' || true)
           if [ -n "$SYSTEM_PERMS" ]; then
-              echo "مجوز سیستمی خواسته شده، در حالی که برنامه باید کاملاً آفلاین باشد:"
+              echo "مجوز سیستمیِ ناخواسته در بسته:"
               printf '%s\n' "$SYSTEM_PERMS"
               exit 1
           fi

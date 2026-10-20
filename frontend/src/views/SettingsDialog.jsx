@@ -178,9 +178,9 @@ export default function SettingsDialog({ open, onOpenChange, onSaved }) {
             تنظیمات
           </DialogTitle>
           <DialogDescription>
-            دستیار کوئری‌نویسی برای کار کردن به یک کلید API نیاز دارد. کلید روی
-            همین رایانه و کنار داده‌های شما ذخیره می‌شود و جایی فرستاده نمی‌شود
-            جز همان سرویسی که انتخاب می‌کنید.
+            دستیار کوئری‌نویسی برای کار کردن به یک کلید API نیاز دارد. کلید فقط
+            روی همین دستگاه ذخیره می‌شود و جایی فرستاده نمی‌شود جز همان سرویسی
+            که انتخاب می‌کنید.
           </DialogDescription>
         </DialogHeader>
 
@@ -309,7 +309,7 @@ export default function SettingsDialog({ open, onOpenChange, onSaved }) {
                   dir="ltr"
                   value={baseUrl}
                   onChange={(e) => setBaseUrl(e.target.value)}
-                  placeholder="http://127.0.0.1:11434/v1"
+                  placeholder={current?.base_url || "http://127.0.0.1:11434/v1"}
                   className="font-mono text-[11.5px]"
                 />
               </div>

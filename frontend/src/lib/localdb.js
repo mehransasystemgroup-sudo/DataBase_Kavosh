@@ -8,6 +8,9 @@
 
 import sqlite3InitModule from "@sqlite.org/sqlite-wasm";
 
+import {
+  askAssistant, checkQuery, getSettings, invalidateSchemaIndex, putSettings, testSettings,
+} from "./assistant/mobile.js";
 import { buildSearchText, normalize, stemFa } from "./textnorm.js";
 
 // نگاشت دستهٔ نوع فیلد → الگوهای LIKE روی ستون type
@@ -42,7 +45,7 @@ function typeClause(fieldType) {
   return [`(${clause})`, patterns.map((p) => `%${p}%`)];
 }
 
-class KnowledgeBase {
+export class KnowledgeBase {
   constructor(sqlite3, db) {
     this.sqlite3 = sqlite3;
     this.db = db;
@@ -276,6 +279,16 @@ class KnowledgeBase {
       if (ka === kb) return 0;
       return (ka > kb ? 1 : -1) * dir;
     });
+  }
+
+  /** یافتن ستون بر اساس نام — همتای search_columns سرور؛ دستیار لازمش دارد. */
+  searchColumns(query, limit = 30) {
+    return this.all(
+      "SELECT c.table_ref, c.name, c.type, t.title_fa, t.has_data " +
+      "FROM columns c JOIN tables t ON t.full_name = c.table_ref " +
+      "WHERE c.name LIKE ? ORDER BY t.has_data DESC, length(c.name) LIMIT ?",
+      [`%${query}%`, limit],
+    );
   }
 
   // ─────────────────────── جزئیات جدول ───────────────────────
@@ -720,6 +733,8 @@ const ROUTES = [
 
   [/^\/schemas$/, async (kb) => ({ schemas: kb.schemas() })],
 
+  [/^\/settings$/, async () => getSettings()],
+
   [/^\/lookups$/, async (kb, m, params = {}) => ({
     types: kb.lookups({ q: params.q || "", module: params.module || "", limit: params.limit || 400 }),
     modules: kb.lookupModules(),
@@ -795,6 +810,7 @@ async function handleKnowledge(kb, body) {
     throw error;
   }
   kb.applyLearned(kind, payload);
+  invalidateSchemaIndex();
   const stored = saveLearned(kind, payload);
   return {
     ok: true,
@@ -820,6 +836,18 @@ export const localHttp = {
   async post(url, body) {
     const kb = await ready();
     if (url === "/knowledge") return { data: await handleKnowledge(kb, body) };
+    if (url === "/settings/test") return { data: await testSettings(body) };
+    if (url === "/assistant/check") return { data: checkQuery(kb, body?.sql) };
+    throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
+  },
+
+  async put(url, body) {
+    if (url === "/settings") return { data: await putSettings(body) };
     throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
   },
 };
+
+/** دستیار روی خودِ دستگاه — همان رویدادهای جریانیِ سرور، بی‌سرور. */
+export async function askLocal(question, options) {
+  return askAssistant(await ready(), question, options);
+}

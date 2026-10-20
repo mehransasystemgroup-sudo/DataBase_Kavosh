@@ -244,8 +244,14 @@ jobs:
               $up = $false
               foreach ($i in 1..60) {
                   Start-Sleep -Seconds 2
+                  # فقط پاسخِ *همین* فرایند حساب است. نسخهٔ قدیمی ممکن است هنوز
+                  # روی ۸۳۲۱ باز باشد؛ پیش‌تر همان جواب می‌داد و آزمون بی‌آنکه نسخهٔ
+                  # تازه بالا آمده باشد سبز می‌شد.
                   foreach ($port in 8321..8325) {
-                      try { Invoke-RestMethod "http://127.0.0.1:$port/api/health" -TimeoutSec 2 | Out-Null; $up = $true; break } catch { }
+                      try {
+                          $h = Invoke-RestMethod "http://127.0.0.1:$port/api/health" -TimeoutSec 2
+                          if ([int]$h.pid -eq $p.Id) { $up = $true; break }
+                      } catch { }
                   }
                   if ($up -or $p.HasExited) { break }
               }
