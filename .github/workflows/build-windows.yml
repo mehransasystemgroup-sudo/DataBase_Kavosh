@@ -196,14 +196,31 @@ jobs:
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag || github.ref_name }}
         run: |
           $ErrorActionPreference = "Stop"
           $env:KAVOSH_NO_PAUSE = "1"
           $dir  = "$env:LOCALAPPDATA\Programs\DataBase Kavosh"
           $data = "$env:LOCALAPPDATA\KavoshDB"
 
-          # نصب‌کنندهٔ نسخهٔ پیشین، همان که روی رایانهٔ کاربر بوده
-          gh release download V3.0.2 --repo $env:GITHUB_REPOSITORY -p "KavoshDB-Setup-*.exe" -D old
+          # نصب‌کنندهٔ نسخهٔ پیشین، همان که روی رایانهٔ کاربر بوده. مخزن به
+          # mehransasystemgroup-sudo منتقل شده و انتشارهای قدیمی (V3.0.2) در آن
+          # نیستند؛ پس اگر نبود، تازه‌ترین انتشارِ پیشینِ همین مخزن را می‌گیریم.
+          # اگر هیچ انتشار پیشینی نباشد (نخستین انتشار در مخزن تازه)، نسخهٔ
+          # قبلی‌ای هم نیست که رویش نصب شود و آزمون با هشدار کنار می‌رود.
+          $candidates = @("V3.0.2") + @(gh release list --repo $env:GITHUB_REPOSITORY --limit 20 --json tagName --jq ".[].tagName" 2>$null)
+          $oldTag = $null
+          foreach ($t in $candidates) {
+              if (-not $t -or $t -eq $env:RELEASE_TAG) { continue }
+              Remove-Item old -Recurse -Force -ErrorAction SilentlyContinue
+              gh release download $t --repo $env:GITHUB_REPOSITORY -p "KavoshDB-Setup-*.exe" -D old 2>$null
+              if ($LASTEXITCODE -eq 0 -and (Test-Path old\KavoshDB-Setup-*.exe)) { $oldTag = $t; break }
+          }
+          if (-not $oldTag) {
+              Write-Host "::warning::هیچ نصب‌کنندهٔ پیشینی در این مخزن نیست؛ آزمون نصب روی نسخهٔ قبلی این بار اجرا نشد."
+              exit 0
+          }
+          Write-Host "نسخهٔ قبلی برای آزمون: $oldTag"
           $oldSetup = (Get-Item old\KavoshDB-Setup-*.exe).FullName
 
           function Reset-Machine {
@@ -277,10 +294,14 @@ jobs:
           }
 
           # ── ۱) بازتولید: نصب‌کنندهٔ منتشرشدهٔ ۳.۱.۰، همان که کاربر اجرا کرد ──
-          Reset-Machine
-          $running = Install-OldAndLeaveRunning
-          gh release download V3.1.0 --repo $env:GITHUB_REPOSITORY -p "KavoshDB-Setup-*.exe" -D published
-          $publishedOk = Test-UpgradeWith (Get-Item published\KavoshDB-Setup-*.exe).FullName "منتشرشده"
+          # فقط برای گزارش است و اگر در این مخزن نباشد کنار می‌رود.
+          $publishedOk = $null
+          gh release download V3.1.0 --repo $env:GITHUB_REPOSITORY -p "KavoshDB-Setup-*.exe" -D published 2>$null
+          if ($LASTEXITCODE -eq 0 -and (Test-Path published\KavoshDB-Setup-*.exe)) {
+              Reset-Machine
+              $running = Install-OldAndLeaveRunning
+              $publishedOk = Test-UpgradeWith (Get-Item published\KavoshDB-Setup-*.exe).FullName "منتشرشده"
+          }
 
           # ── ۲) همان سناریو با نصب‌کنندهٔ همین ساخت ──
           Reset-Machine
@@ -289,7 +310,7 @@ jobs:
 
           Write-Host ""
           Write-Host "نتیجه — نصب روی نسخهٔ قبلیِ در حال اجرا:"
-          Write-Host "  نصب‌کنندهٔ منتشرشده: $(if ($publishedOk) { 'اجرا شد' } else { 'اجرا نشد ← همان چیزی که کاربر دید' })"
+          Write-Host "  نصب‌کنندهٔ منتشرشده: $(if ($null -eq $publishedOk) { 'در این مخزن نیست' } elseif ($publishedOk) { 'اجرا شد' } else { 'اجرا نشد ← همان چیزی که کاربر دید' })"
           Write-Host "  نصب‌کنندهٔ این ساخت: $(if ($freshOk) { 'اجرا شد' } else { 'اجرا نشد' })"
           if (-not $freshOk) { throw "نصب روی نسخهٔ قبلیِ در حال اجرا، برنامهٔ اجراشدنی تحویل نداد." }
 

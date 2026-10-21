@@ -3,6 +3,7 @@
 <full-backup-content>
     <include domain="database" path="." />
     <include domain="file" path="app_webview" />
-    <!-- کلیدهای API دستیار هرگز پشتیبان گرفته نمی‌شوند (NetBridge) -->
-    <exclude domain="sharedpref" path="kavosh_secrets.xml" />
+    <!-- کلیدهای API دستیار (NetBridge، kavosh_secrets.xml در sharedpref) هرگز
+         پشتیبان گرفته نمی‌شوند: دامنهٔ sharedpref عمداً include نشده است. exclude
+         جداگانه لازم نیست و lint آن را خطای FullBackupContent می‌داند. -->
 </full-backup-content>
