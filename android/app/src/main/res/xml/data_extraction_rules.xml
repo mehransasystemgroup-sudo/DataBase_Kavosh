@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
+    <!-- sharedpref (و کلیدهای API در kavosh_secrets.xml) عمداً include نشده؛
+         exclude جداگانه را lint خطا می‌داند. -->
     <cloud-backup>
         <include domain="file" path="app_webview" />
-        <exclude domain="sharedpref" path="kavosh_secrets.xml" />
     </cloud-backup>
     <device-transfer>
         <include domain="file" path="app_webview" />
-        <exclude domain="sharedpref" path="kavosh_secrets.xml" />
     </device-transfer>
 </data-extraction-rules>
