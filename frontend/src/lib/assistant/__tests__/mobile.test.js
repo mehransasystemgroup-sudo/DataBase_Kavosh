@@ -44,7 +44,19 @@ function fakeShell(model) {
         const headers = Object.fromEntries(
           Object.entries(msg.headers).map(([n, v]) => [n, v.replace(KEY, key)]));
         sent.push({ ...msg, headers });
+        if (msg.method === "GET") {
+          // فهرست مدل‌های سرویس — مثل /models واقعی
+          const ids = shell.models || ["text-embedding-3-small", "gpt-9-mini", "gpt-9"];
+          const text = JSON.stringify({ data: ids.map((id) => ({ id })) });
+          queueMicrotask(() => shell.onmessage({ data: JSON.stringify({ id: msg.id, ok: true, status: 200, text }) }));
+          return;
+        }
         const body = JSON.parse(msg.body);
+        if (body.model === "retired-model") {
+          const text = JSON.stringify({ error: { message: "The model `retired-model` does not exist", code: "model_not_found" } });
+          queueMicrotask(() => shell.onmessage({ data: JSON.stringify({ id: msg.id, ok: true, status: 404, text }) }));
+          return;
+        }
         const system = body.messages[0].content;
         const user = body.messages[1].content;
         const text = model(system, user, headers);
@@ -154,6 +166,33 @@ describe("دستیار موبایل", () => {
     await putSettings({ provider: "openai", api_key: "sk-wrong" });
     const { error } = await ask();
     expect(error.message).toBe("کلید API پذیرفته نشد. کلید را در تنظیمات بررسی کنید.");
+  });
+
+  it("مدلِ بازنشسته از فهرست زندهٔ سرویس جایگزین و ذخیره می‌شود", async () => {
+    window.KavoshNet = fakeShell(scripted("HCM3.Employee", ["```sql\nSELECT e.EmployeeID FROM HCM3.Employee AS e\n```"]));
+    await putSettings({ provider: "openai", model: "retired-model", api_key: "sk-test-9876" });
+    const { result, events, error } = await ask();
+    expect(error).toBeUndefined();
+    expect(result.model).toBe("gpt-9-mini");
+    expect(events.find((e) => e.type === "model")).toMatchObject({ model: "gpt-9-mini", replaced: "retired-model" });
+    expect((await getSettings()).model).toBe("gpt-9-mini");
+    expect(window.KavoshNet.sent.some((m) => m.method === "GET" && m.url.endsWith("/models"))).toBe(true);
+  });
+
+  it("خطای محدودیت کشور، ایراد کلید خوانده نمی‌شود", async () => {
+    const text = JSON.stringify({ error: { code: "unsupported_country_region_territory", message: "Country, region, or territory not supported" } });
+    window.KavoshNet = fakeShell(() => ({ ok: true, status: 403, text }));
+    await putSettings({ provider: "openai", api_key: "sk-test-9876" });
+    const { error } = await ask();
+    expect(error.message).toContain("منطقهٔ جغرافیایی");
+    expect(error.message).not.toContain("کلید API پذیرفته نشد");
+  });
+
+  it("آزمایش اتصال، مدل کهنه را با مدل زنده عوض می‌کند و فهرست مدل‌ها را می‌دهد", async () => {
+    window.KavoshNet = fakeShell(scripted("", []));
+    const probe = await testSettings({ provider: "openai", model: "retired-model", api_key: "sk-temp-0000" });
+    expect(probe).toMatchObject({ ok: true, model: "gpt-9-mini", replaced: "retired-model" });
+    expect(probe.models).toEqual(["gpt-9-mini", "gpt-9"]);
   });
 
   it("آزمایش کلید با کلید موقت، چیزی ذخیره نمی‌کند", async () => {

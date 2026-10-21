@@ -223,3 +223,30 @@ def test_check_endpoint_validates_without_any_model(server):
                 {"sql": "SELECT * FROM HCM3.NoSuchTable"}, method="POST")
     assert bad["ok"] is False
     assert any(f["code"] == "unknown_table" for f in bad["findings"])
+
+
+def test_retired_model_is_replaced_from_the_live_list(server):
+    """
+    مدلِ ذخیره‌شده بازنشسته شده (همان چیزی که با gemini-2.0-flash پیش آمد).
+    دستیار باید از فهرست زندهٔ سرویس جایگزین بگیرد، ادامه دهد، و آن را ذخیره کند.
+    """
+    _send(f"{server['base']}/api/settings", {
+        "provider": "custom", "base_url": server["llm"], "model": "retired-model",
+    })
+    events = _ask(server["base"], "فهرست کارمندان")
+    story = "\n".join(f"  {e['type']}: {e.get('message', '')}" for e in events)
+    detail = f"\nرویدادها:\n{story}\n\nخروجی سرور:\n{server['tail'](server['api_log'])}"
+    assert events[-1]["type"] == "result", detail
+    assert events[-1]["model"] == "gpt-9-mini", detail
+    assert any(e["type"] == "model" for e in events), detail
+    assert _get(f"{server['base']}/api/settings")["model"] == "gpt-9-mini"
+
+
+def test_connection_test_suggests_a_live_model(server):
+    probe = _send(f"{server['base']}/api/settings/test", {
+        "provider": "custom", "base_url": server["llm"], "model": "retired-model",
+    }, method="POST")
+    assert probe["ok"] is True, probe
+    assert probe["model"] == "gpt-9-mini"
+    assert probe["replaced"] == "retired-model"
+    assert "gpt-9" in probe["models"] and "text-embedding-3-small" not in probe["models"]

@@ -153,9 +153,11 @@ final class NetBridge {
         int timeout = Math.max(5_000, Math.min(MAX_TIMEOUT_MS, msg.optInt("timeoutMs", 180_000)));
         HttpURLConnection conn = null;
         try {
+            // GET فقط برای فهرست مدل‌ها؛ هر چیز دیگر همان POST است
+            boolean get = "GET".equals(msg.optString("method", "POST"));
             conn = (HttpURLConnection) new URL(uri.toString()).openConnection();
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
+            conn.setRequestMethod(get ? "GET" : "POST");
+            conn.setDoOutput(!get);
             conn.setInstanceFollowRedirects(false);   // کلید نباید پشت تغییر مسیر به جای دیگر برود
             conn.setConnectTimeout(Math.min(timeout, 20_000));
             conn.setReadTimeout(timeout);
@@ -177,10 +179,12 @@ final class NetBridge {
                 }
             }
 
-            byte[] body = msg.optString("body").getBytes(StandardCharsets.UTF_8);
-            conn.setFixedLengthStreamingMode(body.length);
-            try (OutputStream out = conn.getOutputStream()) {
-                out.write(body);
+            if (!get) {
+                byte[] body = msg.optString("body").getBytes(StandardCharsets.UTF_8);
+                conn.setFixedLengthStreamingMode(body.length);
+                try (OutputStream out = conn.getOutputStream()) {
+                    out.write(body);
+                }
             }
 
             int status = conn.getResponseCode();

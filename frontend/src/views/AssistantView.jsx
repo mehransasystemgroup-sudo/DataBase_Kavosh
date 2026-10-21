@@ -63,6 +63,7 @@ const STEP_LABEL = {
   context: "زمینه‌سازی",
   draft: "نگارش",
   verify: "بازبینی",
+  model: "مدل",
   done: "پایان",
   error: "خطا",
 };

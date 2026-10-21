@@ -56,8 +56,8 @@ function send(op, fields = {}) {
 }
 
 /** درخواست HTTP از راه پوسته. خطای شبکه با `kind` پرتاب می‌شود. */
-export async function post({ url, headers, body, timeoutMs, keyProvider }) {
-  const reply = await send("http", { url, headers, body, timeoutMs, keyProvider });
+export async function post({ url, headers, body, timeoutMs, keyProvider, method = "POST" }) {
+  const reply = await send("http", { url, headers, body, timeoutMs, keyProvider, method });
   if (!reply.ok) {
     throw Object.assign(new Error(reply.message || "network"), { kind: reply.kind || "network" });
   }

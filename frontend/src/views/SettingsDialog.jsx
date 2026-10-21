@@ -128,6 +128,9 @@ export default function SettingsDialog({ open, onOpenChange, onSaved }) {
       const body = patch(apiKey.trim() ? { api_key: apiKey.trim() } : {});
       const { data } = await http.post("/settings/test", body);
       setProbe(data);
+      // مدل کهنه بود و سرویس جایگزین زنده‌ای داد — همان را در فرم بگذار تا با
+      // «ذخیره» ماندگار شود.
+      if (data?.ok && data.model) setModel(data.model);
     } catch (e) {
       setProbe({ ok: false, error: errorMessage(e) });
     } finally {
@@ -278,7 +281,7 @@ export default function SettingsDialog({ open, onOpenChange, onSaved }) {
                   className="font-mono text-[11.5px]"
                 />
                 <datalist id="model-suggestions">
-                  {(current?.models || []).map((m) => (
+                  {[...new Set([...(current?.models || []), ...(probe?.models || [])])].map((m) => (
                     <option key={m} value={m} />
                   ))}
                 </datalist>
@@ -329,10 +332,17 @@ export default function SettingsDialog({ open, onOpenChange, onSaved }) {
                 ) : (
                   <XCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
                 )}
-                <span className="min-w-0">
+                <span className="min-w-0 whitespace-pre-line">
                   {probe.ok
-                    ? `ارتباط برقرار شد — مدل ${probe.model} پاسخ داد.`
+                    ? probe.replaced
+                      ? `مدل ${probe.replaced} دیگر در این سرویس نیست؛ ${probe.model} جایگزین شد و پاسخ داد. برای ماندگاری «ذخیره» را بزنید.`
+                      : `ارتباط برقرار شد — مدل ${probe.model} پاسخ داد.`
                     : probe.error}
+                  {probe.ok && probe.models?.length > 0 && (
+                    <span className="block text-[10.5px] text-muted-foreground">
+                      {probe.models.length} مدل در دسترس این کلید است؛ از فهرست «مدل» انتخاب کنید.
+                    </span>
+                  )}
                 </span>
               </div>
             )}

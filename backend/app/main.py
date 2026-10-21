@@ -333,7 +333,7 @@ async def test_settings(body: SettingsIn) -> dict:
             providers.probe, provider_id=provider_id, api_key=key,
             model=model, base_url=base_url or "",
         )
-        return {**result, "provider": provider_id, "model": model}
+        return {**result, "provider": provider_id}
     except providers.ProviderError as e:
         return {"ok": False, "error": str(e), "provider": provider_id, "model": model}
 
@@ -385,11 +385,28 @@ async def assistant_ask(body: AskIn) -> StreamingResponse:
         )
 
     def ask(system: str, user: str) -> str:
-        return providers.complete(
-            provider_id=conf["provider_id"], api_key=conf["api_key"],
-            model=conf["model"], base_url=conf["base_url"],
-            system=system, user=user,
-        )
+        try:
+            return providers.complete(
+                provider_id=conf["provider_id"], api_key=conf["api_key"],
+                model=conf["model"], base_url=conf["base_url"],
+                system=system, user=user,
+            )
+        except providers.ModelNotFound:
+            # مدلِ ذخیره‌شده بازنشسته شده: جایگزین از فهرست زندهٔ سرویس، ذخیره
+            # برای دفعه‌های بعد، و یک بار تلاش دوباره — بی‌آنکه کاربر کاری کند.
+            old = conf["model"]
+            conf["model"] = providers.heal_model(
+                provider_id=conf["provider_id"], api_key=conf["api_key"],
+                base_url=conf["base_url"], failed=old,
+            )
+            user_settings.save(DATA, {"model": conf["model"]})
+            emit("model", f"مدل {old} دیگر در دسترس نیست؛ با {conf['model']} ادامه می‌دهیم.",
+                 {"model": conf["model"], "replaced": old})
+            return providers.complete(
+                provider_id=conf["provider_id"], api_key=conf["api_key"],
+                model=conf["model"], base_url=conf["base_url"],
+                system=system, user=user,
+            )
 
     def work() -> dict:
         index = SchemaIndex(INDEX)

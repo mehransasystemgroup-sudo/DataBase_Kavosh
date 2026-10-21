@@ -18,7 +18,9 @@
 
 from __future__ import annotations
 
+import fnmatch
 import json
+import re
 import socket
 import urllib.error
 import urllib.parse
@@ -42,39 +44,38 @@ class Provider:
 
 
 PROVIDERS: tuple[Provider, ...] = (
+    # نام مدل‌ها زود کهنه می‌شوند: gemini-2.0-flash که پیش‌فرض بود در ۱۴۰۵
+    # بازنشسته شد و دستیار با «مدل پیدا نشد» از کار افتاد. برای همین هرجا
+    # سرویس نامِ «همیشه‌تازه» دارد همان پیش‌فرض است، و برای بقیه اگر مدل
+    # نبود، فهرست زندهٔ مدل‌ها از خودِ سرویس گرفته و جایگزین انتخاب می‌شود
+    # (heal_model). این فهرست‌ها فقط پیشنهادِ اولیه‌اند.
     Provider(
         id="openai", name="OpenAI", dialect="openai",
         base_url="https://api.openai.com/v1",
-        default_model="gpt-4o-mini",
-        models=("gpt-4o-mini", "gpt-4o", "gpt-4.1", "gpt-4.1-mini", "o4-mini"),
+        default_model="gpt-4.1-mini",
+        models=("gpt-4.1-mini", "gpt-4.1", "gpt-4o-mini", "o4-mini"),
         key_url="https://platform.openai.com/api-keys",
     ),
     Provider(
         id="gemini", name="Google Gemini", dialect="gemini",
         base_url="https://generativelanguage.googleapis.com/v1beta",
-        default_model="gemini-2.0-flash",
-        models=("gemini-2.0-flash", "gemini-2.5-flash", "gemini-2.5-pro"),
+        default_model="gemini-flash-latest",
+        models=("gemini-flash-latest", "gemini-pro-latest", "gemini-flash-lite-latest"),
         key_url="https://aistudio.google.com/apikey",
     ),
     Provider(
         id="openrouter", name="OpenRouter", dialect="openai",
         base_url="https://openrouter.ai/api/v1",
-        default_model="google/gemini-2.0-flash-001",
-        models=(
-            "google/gemini-2.0-flash-001",
-            "openai/gpt-4o-mini",
-            "anthropic/claude-3.5-haiku",
-            "meta-llama/llama-3.3-70b-instruct",
-            "qwen/qwen-2.5-72b-instruct",
-        ),
+        default_model="openrouter/auto",
+        models=("openrouter/auto",),
         key_url="https://openrouter.ai/keys",
-        note="از یک کلید به ده‌ها مدل دسترسی می‌دهد.",
+        note="از یک کلید به ده‌ها مدل دسترسی می‌دهد؛ «openrouter/auto» خودش مدل مناسب را برمی‌گزیند.",
     ),
     Provider(
         id="anthropic", name="Anthropic Claude", dialect="anthropic",
         base_url="https://api.anthropic.com/v1",
-        default_model="claude-sonnet-5",
-        models=("claude-sonnet-5", "claude-opus-5", "claude-haiku-4-5-20251001"),
+        default_model="claude-sonnet-5-5",
+        models=("claude-sonnet-5-5", "claude-opus-5-5", "claude-haiku-5-5"),
         key_url="https://console.anthropic.com/settings/keys",
     ),
     Provider(
@@ -107,6 +108,80 @@ class ProviderError(RuntimeError):
     """خطای قابل‌نمایش به کاربر — پیامش فارسی و بدون جزئیات بی‌فایده است."""
 
 
+class ModelNotFound(ProviderError):
+    """سرویس در دسترس است ولی این نام مدل را نمی‌شناسد — معمولاً مدلِ بازنشسته."""
+
+
+# نشانه‌های «مدل نیست» در پیام سرویس‌ها. کد وضعیت به‌تنهایی کافی نیست:
+# OpenRouter برای مدلِ ناموجود ۴۰۰ می‌دهد و ۴۰۴ هم می‌تواند از نشانی اشتباه باشد.
+_MODEL_MISSING = (
+    "model_not_found", "does not exist", "is not found", "not found for api",
+    "not a valid model", "no endpoints found", "unknown model", "not supported for generatecontent",
+    "no longer available", "has been deprecated", "is deprecated", "not_found_error",
+)
+# محدودیت جغرافیایی؛ بدون این، کاربر ساعت‌ها دنبال ایراد کلید می‌گردد.
+_REGION_BLOCK = (
+    "unsupported_country", "location is not supported", "not available in your country",
+    "unsupported country", "not available in your region", "region is not supported",
+    "request not allowed",
+)
+
+
+def _detail_text(body: str) -> str:
+    """پیام خودِ سرویس از بدنهٔ خطا — هر سه گویش آن را در error.message می‌گذارند."""
+    try:
+        doc = json.loads(body)
+    except (json.JSONDecodeError, TypeError):
+        return (body or "").strip()[:300]
+    err = doc.get("error") if isinstance(doc, dict) else None
+    if isinstance(err, dict):
+        msg = err.get("message") or err.get("code") or ""
+        meta = err.get("metadata") or {}
+        raw = meta.get("raw") if isinstance(meta, dict) else ""
+        return f"{msg} {raw or ''}".strip()[:300]
+    if isinstance(err, str):
+        return err[:300]
+    if isinstance(doc, dict) and doc.get("message"):
+        return str(doc["message"])[:300]
+    return "" if isinstance(doc, (dict, list)) else (body or "").strip()[:300]
+
+
+def http_error(status: int, body: str, model: str = "") -> ProviderError:
+    """
+    خطای HTTP سرویس → پیام فارسیِ دقیق.
+
+    پیش‌تر هر ۴۰۳ «کلید پذیرفته نشد» خوانده می‌شد؛ در حالی که از ایران رایج‌ترین
+    ۴۰۳ محدودیت جغرافیایی است و کاربر بی‌جهت کلیدش را عوض می‌کرد. حالا پیام
+    خودِ سرویس خوانده و همراه خطا نشان داده می‌شود.
+    """
+    detail = _detail_text(body)
+    low = f"{detail} {body or ''}".lower()
+    tail = f"\nپیام سرویس: {detail}" if detail else ""
+    if any(k in low for k in _REGION_BLOCK):
+        return ProviderError(
+            "این سرویس از منطقهٔ جغرافیایی شما درخواست نمی‌پذیرد (محدودیت کشور)، نه "
+            "ایراد کلید. از ارائه‌دهندهٔ دیگری مثل OpenRouter، یا سرویس محلی "
+            "(Ollama / LM Studio) استفاده کنید." + tail
+        )
+    if status == 401 or "invalid api key" in low or "api_key_invalid" in low or "invalid x-api-key" in low:
+        return ProviderError("کلید API پذیرفته نشد. کلید را در تنظیمات بررسی کنید." + tail)
+    if status == 402 or (status != 429 and any(k in low for k in ("insufficient", "credit"))):
+        return ProviderError("اعتبار یا سهمیهٔ حساب در این سرویس کافی نیست." + tail)
+    if status in (400, 404) and any(k in low for k in _MODEL_MISSING):
+        return ModelNotFound(
+            f"مدل «{model}» در این سرویس وجود ندارد یا بازنشسته شده است." + tail
+        )
+    if status == 404:
+        return ProviderError("نشانی سرویس یا نام مدل پیدا نشد؛ در تنظیمات بررسی کنید." + tail)
+    if status == 403:
+        return ProviderError("سرویس دسترسی را رد کرد." + tail)
+    if status == 429:
+        return ProviderError("سرویس فعلاً محدودیت نرخ گذاشته؛ کمی بعد دوباره تلاش کنید." + tail)
+    if 500 <= status < 600:
+        return ProviderError(f"سرویسِ مدل خطای داخلی داد ({status})." + tail)
+    return ProviderError(f"سرویسِ مدل خطای {status} داد." + tail)
+
+
 LOCAL_HOSTS = {"localhost", "127.0.0.1", "::1", "0.0.0.0"}
 
 
@@ -126,29 +201,22 @@ def _opener(url: str):
     return urllib.request.build_opener()
 
 
-def _post(url: str, payload: dict, headers: dict, timeout: int) -> dict:
-    body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(url, data=body, method="POST", headers={
-        "content-type": "application/json", **headers,
-    })
+def _request(url: str, payload: dict | None, headers: dict, timeout: int, model: str = "") -> dict:
+    body = json.dumps(payload).encode("utf-8") if payload is not None else None
+    req = urllib.request.Request(
+        url, data=body, method="POST" if payload is not None else "GET",
+        headers={"content-type": "application/json", **headers},
+    )
     try:
         with _opener(url).open(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         detail = ""
         try:
-            detail = e.read().decode("utf-8", "replace")[:400]
+            detail = e.read().decode("utf-8", "replace")[:4000]
         except Exception:                                    # noqa: BLE001
             pass
-        if e.code in (401, 403):
-            raise ProviderError("کلید API پذیرفته نشد. کلید را در تنظیمات بررسی کنید.") from e
-        if e.code == 404:
-            raise ProviderError("نام مدل یا نشانی سرویس پیدا نشد؛ در تنظیمات بررسی کنید.") from e
-        if e.code == 429:
-            raise ProviderError("سرویس فعلاً محدودیت نرخ گذاشته؛ کمی بعد دوباره تلاش کنید.") from e
-        if 500 <= e.code < 600:
-            raise ProviderError(f"سرویسِ مدل خطای داخلی داد ({e.code}).") from e
-        raise ProviderError(f"سرویسِ مدل خطای {e.code} داد. {detail}") from e
+        raise http_error(e.code, detail, model) from e
     except urllib.error.URLError as e:
         raise ProviderError(
             "به سرویس مدل وصل نشدیم. اتصال اینترنت و نشانی سرویس را بررسی کنید."
@@ -157,6 +225,10 @@ def _post(url: str, payload: dict, headers: dict, timeout: int) -> dict:
         raise ProviderError("پاسخ مدل در زمان مقرر نرسید.") from e
     except json.JSONDecodeError as e:
         raise ProviderError("پاسخ سرویس قابل خواندن نبود.") from e
+
+
+def _post(url: str, payload: dict, headers: dict, timeout: int, model: str = "") -> dict:
+    return _request(url, payload, headers, timeout, model)
 
 
 def complete(
@@ -192,7 +264,7 @@ def complete(
                 ],
             },
             {"authorization": f"Bearer {api_key}"} if api_key else {},
-            timeout,
+            timeout, model,
         )
         try:
             return data["choices"][0]["message"]["content"] or ""
@@ -211,7 +283,7 @@ def complete(
                 },
             },
             {"x-goog-api-key": api_key},
-            timeout,
+            timeout, model,
         )
         try:
             parts = data["candidates"][0]["content"]["parts"]
@@ -231,7 +303,7 @@ def complete(
                 "messages": [{"role": "user", "content": user}],
             },
             {"x-api-key": api_key, "anthropic-version": "2023-06-01"},
-            timeout,
+            timeout, model,
         )
         try:
             return "".join(
@@ -243,17 +315,112 @@ def complete(
     raise ProviderError(f"گویش «{provider.dialect}» پیاده‌سازی نشده است.")
 
 
+def list_models(*, provider_id: str, api_key: str, base_url: str = "", timeout: int = 30) -> list[str]:
+    """فهرست زندهٔ مدل‌های گفت‌وگوی این سرویس، با همین کلید."""
+    provider = BY_ID.get(provider_id)
+    if provider is None:
+        raise ProviderError(f"ارائه‌دهندهٔ «{provider_id}» شناخته نشد.")
+    root = (base_url or provider.base_url).rstrip("/")
+
+    if provider.dialect == "gemini":
+        ids: list[str] = []
+        token = ""
+        for _ in range(10):                       # صفحه‌بندی؛ سقف برای ایمنی
+            url = f"{root}/models?pageSize=1000" + (f"&pageToken={token}" if token else "")
+            data = _request(url, None, {"x-goog-api-key": api_key}, timeout)
+            for m in data.get("models") or []:
+                if "generateContent" in (m.get("supportedGenerationMethods") or []):
+                    ids.append(str(m.get("name", "")).removeprefix("models/"))
+            token = data.get("nextPageToken") or ""
+            if not token:
+                break
+        return [i for i in ids if i]
+
+    if provider.dialect == "anthropic":
+        data = _request(f"{root}/models?limit=1000", None,
+                        {"x-api-key": api_key, "anthropic-version": "2023-06-01"}, timeout)
+        return [str(m["id"]) for m in data.get("data") or [] if m.get("id")]
+
+    data = _request(f"{root}/models", None,
+                    {"authorization": f"Bearer {api_key}"} if api_key else {}, timeout)
+    return [str(m["id"]) for m in data.get("data") or [] if isinstance(m, dict) and m.get("id")]
+
+
+# مدل‌هایی که برای نوشتن کوئری به کار نمی‌آیند — صوت، تصویر، جاسازی و …
+_NOT_CHAT = (
+    "embed", "tts", "audio", "image", "vision-preview", "realtime", "transcribe",
+    "whisper", "dall-e", "moderation", "search", "live", "native-audio", "computer-use",
+    "aqa", "learnlm", "gemma", "babbage", "davinci", "instruct", "robotics",
+)
+# ترتیب ترجیح برای هر سرویس: اول «همیشه‌تازه»، بعد خانوادهٔ سریعِ ارزان.
+_PREFER = {
+    "openai": ("gpt-*-mini", "gpt-*"),
+    "gemini": ("gemini-flash-latest", "gemini-*-flash", "gemini-pro-latest", "gemini-*-pro"),
+    "anthropic": ("claude-sonnet-*", "claude-*"),
+    "openrouter": ("openrouter/auto",),
+}
+
+
+def _version(model_id: str) -> tuple:
+    return tuple(int(n) for n in re.findall(r"\d+", model_id)[:4])
+
+
+def pick_model(provider_id: str, ids: list[str]) -> str:
+    """از فهرست زنده، مناسب‌ترین مدل برای کوئری‌نویسی را برمی‌گزیند."""
+    usable = [i for i in ids if not any(k in i.lower() for k in _NOT_CHAT)]
+    stable = [i for i in usable if not any(k in i.lower() for k in ("preview", "exp", "-lite", "nano"))]
+    for pool in (stable, usable):
+        for pattern in _PREFER.get(provider_id, ()):
+            hits = [i for i in pool if fnmatch.fnmatchcase(i, pattern)]
+            if hits:
+                return max(hits, key=lambda i: (_version(i), -len(i)))
+    return (stable or usable or ids or [""])[0]
+
+
+def heal_model(*, provider_id: str, api_key: str, base_url: str, failed: str) -> str:
+    """
+    مدل ذخیره‌شده دیگر نیست → جایگزینی از فهرست زندهٔ همان سرویس.
+
+    کاربر نباید برای بازنشسته‌شدنِ یک مدل در آن سوی دنیا، برنامه را
+    به‌روز کند یا نام مدل تازه را از جایی پیدا کند.
+    """
+    ids = list_models(provider_id=provider_id, api_key=api_key, base_url=base_url)
+    choice = pick_model(provider_id, [i for i in ids if i != failed])
+    if not choice:
+        raise ProviderError(
+            f"مدل «{failed}» در این سرویس وجود ندارد و سرویس مدل دیگری هم معرفی نکرد."
+        )
+    return choice
+
+
 def probe(*, provider_id: str, api_key: str, model: str, base_url: str = "") -> dict:
     """
     آزمایش کلید — یک پرسش کوچک که فقط می‌سنجد ارتباط و کلید و مدل درست‌اند.
 
     چرا لازم است: بدون آن، کاربر کلید را ذخیره می‌کند و تازه وسط اولین پرسش
-    واقعی می‌فهمد جایی ایراد دارد.
+    واقعی می‌فهمد جایی ایراد دارد. اگر فقط نام مدل کهنه باشد، همین‌جا جایگزین
+    پیشنهاد می‌شود، و فهرست زندهٔ مدل‌ها هم برای انتخاب برمی‌گردد.
     """
-    reply = complete(
-        provider_id=provider_id, api_key=api_key, model=model, base_url=base_url,
-        system="پاسخ را دقیقاً در یک کلمه بده.",
-        user="بگو: سلام",
-        max_tokens=64, timeout=45,
-    )
-    return {"ok": True, "reply": (reply or "").strip()[:120]}
+    def once(name: str) -> str:
+        return complete(
+            provider_id=provider_id, api_key=api_key, model=name, base_url=base_url,
+            system="پاسخ را دقیقاً در یک کلمه بده.",
+            user="بگو: سلام",
+            max_tokens=64, timeout=45,
+        )
+
+    replaced = ""
+    try:
+        reply = once(model)
+    except ModelNotFound:
+        replaced, model = model, heal_model(
+            provider_id=provider_id, api_key=api_key, base_url=base_url, failed=model,
+        )
+        reply = once(model)
+    try:
+        models = list_models(provider_id=provider_id, api_key=api_key, base_url=base_url)
+        models = [m for m in models if not any(k in m.lower() for k in _NOT_CHAT)][:300]
+    except ProviderError:
+        models = []
+    return {"ok": True, "reply": (reply or "").strip()[:120], "model": model,
+            "replaced": replaced, "models": models}
