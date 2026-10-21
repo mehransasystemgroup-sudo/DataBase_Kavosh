@@ -9,7 +9,9 @@
 
 import { DEFAULT_ATTEMPTS, run } from "./assistant.js";
 import { keyHints, post, postWithTransientKey, setKey } from "./native.js";
-import { BY_ID, PROVIDERS, ProviderError, complete, probe } from "./providers.js";
+import {
+  BY_ID, PROVIDERS, ModelNotFound, ProviderError, complete, healModel, probe,
+} from "./providers.js";
 import { SchemaIndex, checkSql } from "./sqlcheck.js";
 
 const STORE = "kavosh.assistant.v1";
@@ -92,7 +94,7 @@ export async function testSettings(patch = {}) {
 
   try {
     const result = await probe({ post: send, providerId, hasKey, model, baseUrl: baseUrl || "" });
-    return { ...result, provider: providerId, model };
+    return { ...result, provider: providerId };
   } catch (e) {
     if (e instanceof ProviderError) return { ok: false, error: e.message, provider: providerId, model };
     throw e;
@@ -126,10 +128,29 @@ export async function askAssistant(kb, question, { onEvent, signal, history } = 
     throw new Error("هنوز کلید API ثبت نشده — از تنظیمات اضافه‌اش کنید.");
   }
 
-  const ask = (system, user) => complete({
+  const once = (system, user) => complete({
     post, providerId: conf.provider, hasKey, model: conf.model, baseUrl: conf.base_url,
     system, user,
   });
+  // مدلِ ذخیره‌شده بازنشسته شده باشد → جایگزین از فهرست زندهٔ سرویس، یک بار
+  // دوباره، و ذخیرهٔ نام تازه تا دفعهٔ بعد مستقیم همان به کار رود.
+  const ask = async (system, user) => {
+    try {
+      return await once(system, user);
+    } catch (e) {
+      if (!(e instanceof ModelNotFound)) throw e;
+      const old = conf.model;
+      conf.model = await healModel({
+        post, providerId: conf.provider, hasKey, baseUrl: conf.base_url, failed: old,
+      });
+      store(conf);
+      onEvent?.({
+        type: "model", message: `مدل ${old} دیگر در دسترس نیست؛ با ${conf.model} ادامه می‌دهیم.`,
+        model: conf.model, replaced: old,
+      });
+      return once(system, user);
+    }
+  };
 
   try {
     const draft = await run({

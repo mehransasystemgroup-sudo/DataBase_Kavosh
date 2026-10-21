@@ -22,10 +22,36 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args):        # noqa: D102 — سکوت در خروجی آزمون
         pass
 
+    def _json(self, status: int, payload: dict) -> None:
+        raw = json.dumps(payload).encode()
+        self.send_response(status)
+        self.send_header("content-type", "application/json")
+        self.send_header("content-length", str(len(raw)))
+        self.end_headers()
+        self.wfile.write(raw)
+
+    def do_GET(self):                    # noqa: N802
+        # فهرست مدل‌ها، همان شکل OpenAI. «retired-model» در آن نیست — مثل
+        # مدلی که سرویس بازنشسته کرده است.
+        if self.path.rstrip("/").endswith("/models"):
+            self._json(200, {"object": "list", "data": [
+                {"id": "text-embedding-3-small"}, {"id": "gpt-9-mini"}, {"id": "gpt-9"},
+            ]})
+        else:
+            self._json(404, {"error": {"message": "not found"}})
+
     def do_POST(self):                   # noqa: N802 — نام را http.server می‌خواهد
         length = int(self.headers.get("content-length") or 0)
         body = json.loads(self.rfile.read(length) or b"{}")
         text = json.dumps(body, ensure_ascii=False)
+
+        # مدلِ بازنشسته: همان پاسخی که OpenAI برای مدلِ ناموجود می‌دهد
+        if body.get("model") == "retired-model":
+            self._json(404, {"error": {
+                "message": "The model `retired-model` does not exist or you do not have access to it.",
+                "type": "invalid_request_error", "code": "model_not_found",
+            }})
+            return
 
         # تصمیم فقط از روی محتوای پرامپت گرفته می‌شود، نه از شمارندهٔ درخواست.
         # با شمارنده، ترتیب یا تعداد تماس‌ها که عوض شود آزمون بی‌ربط می‌افتد و

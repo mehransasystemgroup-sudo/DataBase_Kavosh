@@ -9,37 +9,38 @@
 
 export const KEY = "\u0000KAVOSH_API_KEY\u0000";
 
+// نام مدل‌ها زود کهنه می‌شوند (gemini-2.0-flash که پیش‌فرض بود بازنشسته شد).
+// هرجا سرویس نامِ «همیشه‌تازه» دارد همان پیش‌فرض است، و اگر مدلی نبود فهرست
+// زندهٔ مدل‌ها از خودِ سرویس گرفته می‌شود (healModel). همتای providers.py.
 export const PROVIDERS = [
   {
     id: "openai", name: "OpenAI", dialect: "openai",
     base_url: "https://api.openai.com/v1",
-    default_model: "gpt-4o-mini",
-    models: ["gpt-4o-mini", "gpt-4o", "gpt-4.1", "gpt-4.1-mini", "o4-mini"],
+    default_model: "gpt-4.1-mini",
+    models: ["gpt-4.1-mini", "gpt-4.1", "gpt-4o-mini", "o4-mini"],
     key_url: "https://platform.openai.com/api-keys", note: "", editable_base_url: false,
   },
   {
     id: "gemini", name: "Google Gemini", dialect: "gemini",
     base_url: "https://generativelanguage.googleapis.com/v1beta",
-    default_model: "gemini-2.0-flash",
-    models: ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-2.5-pro"],
+    default_model: "gemini-flash-latest",
+    models: ["gemini-flash-latest", "gemini-pro-latest", "gemini-flash-lite-latest"],
     key_url: "https://aistudio.google.com/apikey", note: "", editable_base_url: false,
   },
   {
     id: "openrouter", name: "OpenRouter", dialect: "openai",
     base_url: "https://openrouter.ai/api/v1",
-    default_model: "google/gemini-2.0-flash-001",
-    models: [
-      "google/gemini-2.0-flash-001", "openai/gpt-4o-mini", "anthropic/claude-3.5-haiku",
-      "meta-llama/llama-3.3-70b-instruct", "qwen/qwen-2.5-72b-instruct",
-    ],
+    default_model: "openrouter/auto",
+    models: ["openrouter/auto"],
     key_url: "https://openrouter.ai/keys",
-    note: "از یک کلید به ده‌ها مدل دسترسی می‌دهد.", editable_base_url: false,
+    note: "از یک کلید به ده‌ها مدل دسترسی می‌دهد؛ «openrouter/auto» خودش مدل مناسب را برمی‌گزیند.",
+    editable_base_url: false,
   },
   {
     id: "anthropic", name: "Anthropic Claude", dialect: "anthropic",
     base_url: "https://api.anthropic.com/v1",
-    default_model: "claude-sonnet-5",
-    models: ["claude-sonnet-5", "claude-opus-5", "claude-haiku-4-5-20251001"],
+    default_model: "claude-sonnet-5-5",
+    models: ["claude-sonnet-5-5", "claude-opus-5-5", "claude-haiku-5-5"],
     key_url: "https://console.anthropic.com/settings/keys", note: "", editable_base_url: false,
   },
   {
@@ -57,24 +58,82 @@ export const BY_ID = Object.fromEntries(PROVIDERS.map((p) => [p.id, p]));
 
 export class ProviderError extends Error {}
 
-/** همان پیام‌های فارسیِ سرور برای هر وضعیت HTTP. */
-function httpError(status, detail) {
-  if (status === 401 || status === 403) return new ProviderError("کلید API پذیرفته نشد. کلید را در تنظیمات بررسی کنید.");
-  if (status === 404) return new ProviderError("نام مدل یا نشانی سرویس پیدا نشد؛ در تنظیمات بررسی کنید.");
-  if (status === 429) return new ProviderError("سرویس فعلاً محدودیت نرخ گذاشته؛ کمی بعد دوباره تلاش کنید.");
-  if (status >= 500 && status < 600) return new ProviderError(`سرویسِ مدل خطای داخلی داد (${status}).`);
-  return new ProviderError(`سرویسِ مدل خطای ${status} داد. ${String(detail || "").slice(0, 400)}`);
+/** سرویس در دسترس است ولی این نام مدل را نمی‌شناسد — معمولاً مدلِ بازنشسته. */
+export class ModelNotFound extends ProviderError {}
+
+const MODEL_MISSING = [
+  "model_not_found", "does not exist", "is not found", "not found for api",
+  "not a valid model", "no endpoints found", "unknown model", "not supported for generatecontent",
+  "no longer available", "has been deprecated", "is deprecated", "not_found_error",
+];
+const REGION_BLOCK = [
+  "unsupported_country", "location is not supported", "not available in your country",
+  "unsupported country", "not available in your region", "region is not supported",
+  "request not allowed",
+];
+
+/** پیام خودِ سرویس از بدنهٔ خطا — هر سه گویش آن را در error.message می‌گذارند. */
+function detailText(body) {
+  let doc;
+  try {
+    doc = JSON.parse(body);
+  } catch {
+    return String(body || "").trim().slice(0, 300);
+  }
+  const err = doc && typeof doc === "object" ? doc.error : undefined;
+  if (err && typeof err === "object") {
+    const raw = err.metadata && typeof err.metadata === "object" ? err.metadata.raw || "" : "";
+    return `${err.message || err.code || ""} ${raw}`.trim().slice(0, 300);
+  }
+  if (typeof err === "string") return err.slice(0, 300);
+  if (doc && typeof doc === "object" && doc.message) return String(doc.message).slice(0, 300);
+  return doc && typeof doc === "object" ? "" : String(body || "").trim().slice(0, 300);
 }
 
 /**
- * `post({url, headers, body, timeoutMs, keyProvider})` → `{status, text}` یا
- * پرتاب خطای شبکه با `kind` = "network" | "timeout".
+ * خطای HTTP سرویس → پیام فارسیِ دقیق؛ همتای http_error در providers.py.
+ *
+ * پیش‌تر هر ۴۰۳ «کلید پذیرفته نشد» خوانده می‌شد، در حالی که از ایران رایج‌ترین
+ * ۴۰۳ محدودیت جغرافیایی است. حالا پیام خودِ سرویس هم همراه خطا می‌آید.
  */
-async function call(post, url, payload, headers, timeoutMs, keyProvider) {
+export function httpError(status, body, model = "") {
+  const detail = detailText(body);
+  const low = `${detail} ${body || ""}`.toLowerCase();
+  const tail = detail ? `\nپیام سرویس: ${detail}` : "";
+  const has = (keys) => keys.some((k) => low.includes(k));
+  if (has(REGION_BLOCK)) {
+    return new ProviderError(
+      "این سرویس از منطقهٔ جغرافیایی شما درخواست نمی‌پذیرد (محدودیت کشور)، نه "
+      + "ایراد کلید. از ارائه‌دهندهٔ دیگری مثل OpenRouter، یا سرویس محلی "
+      + "(Ollama / LM Studio) استفاده کنید." + tail,
+    );
+  }
+  if (status === 401 || has(["invalid api key", "api_key_invalid", "invalid x-api-key"])) {
+    return new ProviderError("کلید API پذیرفته نشد. کلید را در تنظیمات بررسی کنید." + tail);
+  }
+  if (status === 402 || (status !== 429 && has(["insufficient", "credit"]))) {
+    return new ProviderError("اعتبار یا سهمیهٔ حساب در این سرویس کافی نیست." + tail);
+  }
+  if ((status === 400 || status === 404) && has(MODEL_MISSING)) {
+    return new ModelNotFound(`مدل «${model}» در این سرویس وجود ندارد یا بازنشسته شده است.` + tail);
+  }
+  if (status === 404) return new ProviderError("نشانی سرویس یا نام مدل پیدا نشد؛ در تنظیمات بررسی کنید." + tail);
+  if (status === 403) return new ProviderError("سرویس دسترسی را رد کرد." + tail);
+  if (status === 429) return new ProviderError("سرویس فعلاً محدودیت نرخ گذاشته؛ کمی بعد دوباره تلاش کنید." + tail);
+  if (status >= 500 && status < 600) return new ProviderError(`سرویسِ مدل خطای داخلی داد (${status}).` + tail);
+  return new ProviderError(`سرویسِ مدل خطای ${status} داد.` + tail);
+}
+
+/**
+ * `post({url, headers, body, timeoutMs, keyProvider, method})` → `{status, text}` یا
+ * پرتاب خطای شبکه با `kind` = "network" | "timeout". payload تهی (null) یعنی GET.
+ */
+async function call(post, url, payload, headers, timeoutMs, keyProvider, model = "") {
   let res;
   try {
     res = await post({
-      url, body: JSON.stringify(payload), timeoutMs, keyProvider,
+      url, body: payload === null ? "" : JSON.stringify(payload), timeoutMs, keyProvider,
+      method: payload === null ? "GET" : "POST",
       headers: { "content-type": "application/json", ...headers },
     });
   } catch (e) {
@@ -82,7 +141,7 @@ async function call(post, url, payload, headers, timeoutMs, keyProvider) {
     if (e?.kind === "refused") throw new ProviderError(e.message);
     throw new ProviderError("به سرویس مدل وصل نشدیم. اتصال اینترنت و نشانی سرویس را بررسی کنید.");
   }
-  if (res.status < 200 || res.status >= 300) throw httpError(res.status, res.text);
+  if (res.status < 200 || res.status >= 300) throw httpError(res.status, res.text, model);
   try {
     return JSON.parse(res.text);
   } catch {
@@ -108,7 +167,7 @@ export async function complete({
     const data = await call(post, `${root}/chat/completions`, {
       model, temperature, max_tokens: maxTokens,
       messages: [{ role: "system", content: system }, { role: "user", content: user }],
-    }, hasKey ? { authorization: `Bearer ${KEY}` } : {}, timeoutMs, provider.id);
+    }, hasKey ? { authorization: `Bearer ${KEY}` } : {}, timeoutMs, provider.id, model);
     const text = data?.choices?.[0]?.message?.content;
     if (text === undefined) throw shapeError();
     return text || "";
@@ -119,7 +178,7 @@ export async function complete({
       systemInstruction: { parts: [{ text: system }] },
       contents: [{ role: "user", parts: [{ text: user }] }],
       generationConfig: { temperature, maxOutputTokens: maxTokens },
-    }, { "x-goog-api-key": KEY }, timeoutMs, provider.id);
+    }, { "x-goog-api-key": KEY }, timeoutMs, provider.id, model);
     const parts = data?.candidates?.[0]?.content?.parts;
     if (!Array.isArray(parts)) {
       const blocked = data?.promptFeedback?.blockReason;
@@ -133,7 +192,7 @@ export async function complete({
     const data = await call(post, `${root}/messages`, {
       model, max_tokens: maxTokens, temperature, system,
       messages: [{ role: "user", content: user }],
-    }, { "x-api-key": KEY, "anthropic-version": "2023-06-01" }, timeoutMs, provider.id);
+    }, { "x-api-key": KEY, "anthropic-version": "2023-06-01" }, timeoutMs, provider.id, model);
     if (!Array.isArray(data?.content)) throw shapeError();
     return data.content.filter((b) => b.type === "text").map((b) => b.text || "").join("");
   }
@@ -141,12 +200,125 @@ export async function complete({
   throw new ProviderError(`گویش «${provider.dialect}» پیاده‌سازی نشده است.`);
 }
 
-/** آزمایش کلید — یک پرسش کوچک که فقط ارتباط و کلید و مدل را می‌سنجد. */
+/** فهرست زندهٔ مدل‌های گفت‌وگوی این سرویس، با همین کلید. */
+export async function listModels({ post, providerId, hasKey, baseUrl = "", timeoutMs = 30_000 }) {
+  const provider = BY_ID[providerId];
+  if (!provider) throw new ProviderError(`ارائه‌دهندهٔ «${providerId}» شناخته نشد.`);
+  const root = (baseUrl || provider.base_url).replace(/\/+$/, "");
+
+  if (provider.dialect === "gemini") {
+    const ids = [];
+    let token = "";
+    for (let i = 0; i < 10; i += 1) {          // صفحه‌بندی؛ سقف برای ایمنی
+      const url = `${root}/models?pageSize=1000${token ? `&pageToken=${token}` : ""}`;
+      const data = await call(post, url, null, { "x-goog-api-key": KEY }, timeoutMs, provider.id);
+      for (const m of data?.models || []) {
+        if ((m.supportedGenerationMethods || []).includes("generateContent")) {
+          ids.push(String(m.name || "").replace(/^models\//, ""));
+        }
+      }
+      token = data?.nextPageToken || "";
+      if (!token) break;
+    }
+    return ids.filter(Boolean);
+  }
+  if (provider.dialect === "anthropic") {
+    const data = await call(post, `${root}/models?limit=1000`, null,
+      { "x-api-key": KEY, "anthropic-version": "2023-06-01" }, timeoutMs, provider.id);
+    return (data?.data || []).map((m) => m?.id).filter(Boolean).map(String);
+  }
+  const data = await call(post, `${root}/models`, null,
+    hasKey ? { authorization: `Bearer ${KEY}` } : {}, timeoutMs, provider.id);
+  return (data?.data || []).map((m) => m?.id).filter(Boolean).map(String);
+}
+
+// مدل‌هایی که برای نوشتن کوئری به کار نمی‌آیند — صوت، تصویر، جاسازی و …
+const NOT_CHAT = [
+  "embed", "tts", "audio", "image", "vision-preview", "realtime", "transcribe",
+  "whisper", "dall-e", "moderation", "search", "live", "native-audio", "computer-use",
+  "aqa", "learnlm", "gemma", "babbage", "davinci", "instruct", "robotics",
+];
+// ترتیب ترجیح: اول «همیشه‌تازه»، بعد خانوادهٔ سریعِ ارزان.
+const PREFER = {
+  openai: ["gpt-*-mini", "gpt-*"],
+  gemini: ["gemini-flash-latest", "gemini-*-flash", "gemini-pro-latest", "gemini-*-pro"],
+  anthropic: ["claude-sonnet-*", "claude-*"],
+  openrouter: ["openrouter/auto"],
+};
+
+export const isChatModel = (id) => !NOT_CHAT.some((k) => id.toLowerCase().includes(k));
+
+const version = (id) => (id.match(/\d+/g) || []).slice(0, 4).map(Number);
+
+/** همان مقایسهٔ (نسخه، -طول) در pick_model. */
+function newer(a, b) {
+  const va = version(a);
+  const vb = version(b);
+  for (let i = 0; i < Math.max(va.length, vb.length); i += 1) {
+    if (i >= va.length) return false;
+    if (i >= vb.length) return true;
+    if (va[i] !== vb[i]) return va[i] > vb[i];
+  }
+  return a.length < b.length;
+}
+
+const glob = (pattern) =>
+  new RegExp(`^${pattern.replace(/[.+^${}()|[\]\\/]/g, "\\$&").replace(/\*/g, ".*")}$`);
+
+/** از فهرست زنده، مناسب‌ترین مدل برای کوئری‌نویسی — همتای pick_model. */
+export function pickModel(providerId, ids) {
+  const usable = ids.filter(isChatModel);
+  const stable = usable.filter(
+    (i) => !["preview", "exp", "-lite", "nano"].some((k) => i.toLowerCase().includes(k)));
+  for (const pool of [stable, usable]) {
+    for (const pattern of PREFER[providerId] || []) {
+      const re = glob(pattern);
+      const hits = pool.filter((i) => re.test(i));
+      if (hits.length) return hits.reduce((best, i) => (newer(i, best) ? i : best));
+    }
+  }
+  return stable[0] || usable[0] || ids[0] || "";
+}
+
+/**
+ * مدل ذخیره‌شده دیگر نیست → جایگزینی از فهرست زندهٔ همان سرویس. کاربر نباید
+ * برای بازنشسته‌شدنِ یک مدل، برنامه را به‌روز کند یا نام تازه را جست‌وجو کند.
+ */
+export async function healModel({ post, providerId, hasKey, baseUrl = "", failed }) {
+  const ids = await listModels({ post, providerId, hasKey, baseUrl });
+  const choice = pickModel(providerId, ids.filter((i) => i !== failed));
+  if (!choice) {
+    throw new ProviderError(`مدل «${failed}» در این سرویس وجود ندارد و سرویس مدل دیگری هم معرفی نکرد.`);
+  }
+  return choice;
+}
+
+/**
+ * آزمایش کلید — یک پرسش کوچک که فقط ارتباط و کلید و مدل را می‌سنجد. اگر فقط
+ * نام مدل کهنه باشد، جایگزین همین‌جا پیشنهاد می‌شود، و فهرست زندهٔ مدل‌ها هم
+ * برای انتخاب برمی‌گردد.
+ */
 export async function probe({ post, providerId, hasKey, model, baseUrl = "" }) {
-  const reply = await complete({
-    post, providerId, hasKey, model, baseUrl,
+  const once = (name) => complete({
+    post, providerId, hasKey, model: name, baseUrl,
     system: "پاسخ را دقیقاً در یک کلمه بده.", user: "بگو: سلام",
     maxTokens: 64, timeoutMs: 45_000,
   });
-  return { ok: true, reply: (reply || "").trim().slice(0, 120) };
+  let replaced = "";
+  let reply;
+  try {
+    reply = await once(model);
+  } catch (e) {
+    if (!(e instanceof ModelNotFound)) throw e;
+    replaced = model;
+    model = await healModel({ post, providerId, hasKey, baseUrl, failed: model });
+    reply = await once(model);
+  }
+  let models = [];
+  try {
+    models = (await listModels({ post, providerId, hasKey, baseUrl })).filter(isChatModel).slice(0, 300);
+  } catch (e) {
+    if (!(e instanceof ProviderError)) throw e;
+  }
+  return { ok: true, reply: (reply || "").trim().slice(0, 120), model, replaced, models };
 }
