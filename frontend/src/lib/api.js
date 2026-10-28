@@ -17,6 +17,9 @@ export const HAS_ASSISTANT = assistant;
 /** پرسش به دستیار — روی دسکتاپ از سرور، روی موبایل در خودِ برنامه. */
 export const ASK_ASSISTANT = askAssistant;
 
+/** دانلود فایل از مرورگر؛ نمایشگر وبِ اندروید بدون کد بومی فایل را ذخیره نمی‌کند. */
+export const CAN_DOWNLOAD = import.meta.env.MODE !== "mobile";
+
 /** پیام خطای خوانا از پاسخ سرور یا خطای شبکه. */
 export function errorMessage(err, fallback = "خطای نامشخص") {
   return err?.response?.data?.detail || err?.message || fallback;

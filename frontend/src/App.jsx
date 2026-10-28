@@ -3,7 +3,7 @@ import { Database, ListChecks, Network, Search, Settings, TriangleAlert, Wand2 }
 
 import { http, OFFLINE_HINT } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
-import { useHashRoute } from "@/lib/route";
+import { routeForView, useHashRoute } from "@/lib/route";
 import { ThemeProvider } from "@/context/ThemeContext";
 import ThemePicker from "@/components/ThemePicker";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -115,11 +115,7 @@ function AppShell() {
   }, [refreshHealth]);
 
   const setView = useCallback(
-    (next) => {
-      if (next === "graph") return navigate({ view: "graph", schema: graphSchema });
-      if (next === "lookup") return navigate({ view: "lookup" });
-      return navigate({ view: "explorer" });
-    },
+    (next) => navigate(routeForView(next, { graphSchema })),
     [navigate, graphSchema],
   );
 
@@ -192,6 +188,8 @@ function AppShell() {
         )}
         {view === "assistant" && (
           <AssistantView
+            pinnedFromRoute={route.table || ""}
+            onClearRoutePin={() => navigate({ view: "assistant" }, { replace: true })}
             onOpenTable={(full) => navigate({ view: "explorer", table: full })}
             onOpenSettings={() => setSettingsOpen(true)}
             settingsVersion={settingsVersion}

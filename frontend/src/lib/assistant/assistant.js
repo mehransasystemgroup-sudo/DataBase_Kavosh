@@ -8,9 +8,15 @@
 
 import { checkSql, extractSql, feedback } from "./sqlcheck.js";
 
-export const MAX_CANDIDATES = 28;
+export const MAX_CANDIDATES = 36;
 export const MAX_CHOSEN = 7;
+export const MAX_PINNED = 5;
 export const DEFAULT_ATTEMPTS = 4;
+// گسترش از راه روابط: چند نامزد برتر، و از هرکدام چند مرجع و چند جدول جزئیات
+const EXPAND_SEEDS = 5;
+const EXPAND_OUT = 4;
+const EXPAND_IN = 3;
+const EXPAND_WEIGHT = 0.6;
 
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const bracket = (full) => `[${full.replace(/\./g, "].[")}]`;
@@ -126,7 +132,21 @@ export function understandPrompt(question, history) {
 
 // ───────────────────────── ۱) بازیابی ─────────────────────────
 
-export function retrieve(kb, question, keywords = [], previous = []) {
+/** جدول‌های سنجاق‌شدهٔ کاربر — فقط آن‌هایی که واقعاً در ایندکس هستند. */
+export function cleanPinned(kb, pinned) {
+  const out = [];
+  for (const full of [...(pinned || [])].slice(0, MAX_PINNED * 2)) {
+    const info = kb.getTable(String(full).trim().slice(0, 128));
+    if (info && !out.includes(info.full_name)) out.push(info.full_name);
+  }
+  return out.slice(0, MAX_PINNED);
+}
+
+/**
+ * جدول‌های نامزد: جست‌وجو، کلیدواژه‌ها، گفت‌وگوی قبلی و سنجاق‌ها — و بعد
+ * گسترش از راه روابط (مرجع‌ها و جدول‌های جزئیاتِ نامزدهای برتر).
+ */
+export function retrieve(kb, question, keywords = [], previous = [], pinned = []) {
   const seen = new Map();
   const add = (full, title, why, score) => {
     const row = seen.get(full);
@@ -150,10 +170,26 @@ export function retrieve(kb, question, keywords = [], previous = []) {
       if (table) add(table, col.title_fa, `ستون ${col.name}`, 1.0);
     }
   }
-  const top = seen.size ? Math.max(...[...seen.values()].map((r) => r.score)) : 1.0;
+  const direct = [...seen.values()].sort((a, b) => b.score - a.score);
+  const top = direct.length ? Math.max(...direct.map((r) => r.score)) : 1.0;
   for (const full of previous) {
     const info = kb.getTable(full);
     if (info) add(info.full_name, info.title_fa, "گفت‌وگوی قبلی", top + 1.0);
+  }
+  const pins = cleanPinned(kb, pinned);
+  for (const full of pins) add(full, kb.getTable(full).title_fa, "انتخاب شما", top + 2.0);
+
+  const seeds = pins.map((full) => [full, seen.get(full).score]);
+  for (const row of direct.slice(0, EXPAND_SEEDS)) {
+    if (!pins.includes(row.full_name)) seeds.push([row.full_name, row.score]);
+  }
+  for (const [seed, score] of seeds) {
+    const related = kb.relatedTables(seed);
+    const refs = related.filter((r) => r.direction === "out").slice(0, EXPAND_OUT);
+    const details = related.filter((r) => r.direction === "in").slice(0, EXPAND_IN);
+    for (const r of [...refs, ...details]) {
+      add(r.full_name, r.title_fa, `مرتبط با ${seed}`, score * EXPAND_WEIGHT);
+    }
   }
   return [...seen.values()].sort((a, b) => b.score - a.score).slice(0, MAX_CANDIDATES);
 }
@@ -168,7 +204,48 @@ export const SELECT_SYSTEM = `تو دستیار یک پایگاه دادهٔ س�
 - فقط نام‌هایی را بنویس که عیناً در فهرست آمده‌اند.
 - هر نام در یک سطر جدا، بدون شماره، بدون توضیح، بدون علامت.
 - حداکثر ${MAX_CHOSEN} جدول.
+- جدولی را انتخاب کن که دادهٔ خواسته‌شده واقعاً در آن است؛ مثلاً مبلغ و
+  تعداد معمولاً در جدول اقلام و ردیف‌هاست، نه در جدول سربرگ.
+- اگر خروجی باید نام یا شرح نشان دهد (نام شخص، شرح حساب، عنوان کالا)،
+  جدول مرجعِ آن را هم انتخاب کن.
+- از «پیوندهای مستقیم» ببین جدول‌ها چطور به هم می‌رسند؛ اگر دو جدولِ لازم
+  مستقیم به هم وصل نیستند، جدول واسطه را هم بنویس.
+- جدول‌هایی که کاربر خودش انتخاب کرده همیشه به کار می‌روند؛ لازم نیست تکرارشان کنی.
 - اگر مطمئن نیستی، جدول‌های محتمل‌تر را بنویس.`;
+
+const MAX_LINKS = 40;
+
+/** پیوندهای مستقیم میان نامزدها، آن‌هایی که به نامزدهای برتر می‌رسند اول — همان candidate_links. */
+export function candidateLinks(kb, candidates) {
+  const rank = new Map(candidates.map((c, i) => [c.full_name, i]));
+  const links = kb.linksBetween([...rank.keys()]);
+  const key = (s) => [
+    Math.min(rank.get(s.from_table), rank.get(s.to_table)),
+    Math.max(rank.get(s.from_table), rank.get(s.to_table)),
+  ];
+  links.sort((a, b) => {
+    const [a1, a2] = key(a);
+    const [b1, b2] = key(b);
+    return a1 - b1 || a2 - b2;
+  });
+  return links.slice(0, MAX_LINKS);
+}
+
+const linkLine = (step) => `${step.from_table}.${step.from_col} → ${step.to_table}`;
+
+/** پرامپت انتخاب: نامزدها، دلیل نامزدی، و نقشهٔ پیوندهای مستقیم میانشان. */
+export function selectPrompt(question, candidates, links = [], goal = "", pinned = []) {
+  const listing = candidates
+    .map((c) => c.full_name + (c.title_fa ? ` — ${c.title_fa}` : "") + (c.why ? `  · ${c.why}` : ""))
+    .join("\n");
+  const parts = [`## جدول‌های موجود\n${listing}`];
+  const lines = links.map(linkLine);
+  if (lines.length) parts.push("## پیوندهای مستقیم میان این جدول‌ها\n" + lines.join("\n"));
+  if (pinned.length) parts.push("## جدول‌هایی که کاربر خودش انتخاب کرده\n" + pinned.join("\n"));
+  parts.push(`## پرسش\n${question}`);
+  if (goal) parts.push(`## هدف\n${goal}`);
+  return parts.join("\n\n");
+}
 
 export function parseSelection(reply, candidates) {
   const text = (reply || "").toLowerCase();
@@ -183,6 +260,19 @@ export function parseSelection(reply, candidates) {
 
 // ───────────────────────── ۳) زمینه‌سازی ─────────────────────────
 
+const MAX_DESCRIPTION = 200;
+const MAX_REFS = 12;
+const AUDIT_COLUMNS = ["Creator", "LastModifier"];
+
+// مقایسهٔ رشته به ترتیب نقطهٔ کد — همان sorted پایتون
+const cmp = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+
+function short(text, limit) {
+  const flat = (text || "").replace(/\s+/g, " ").trim();
+  const chars = [...flat];
+  return chars.length <= limit ? flat : chars.slice(0, limit).join("").trimEnd() + "…";
+}
+
 function tableBlock(kb, full) {
   const info = kb.getTable(full);
   if (!info) return "";
@@ -191,6 +281,8 @@ function tableBlock(kb, full) {
   if (info.row_count !== null && info.row_count !== undefined) head += `  (${info.row_count} ردیف)`;
 
   const lines = [head];
+  const description = short(info.description_fa, MAX_DESCRIPTION);
+  if (description && description !== info.title_fa) lines.push("  شرح: " + description);
   if (info.primary_key.length) lines.push("  کلید اصلی: " + info.primary_key.join(", "));
   const cols = info.columns.map((c) =>
     `${c.name}:${c.type || "?"}` + (c.label_fa ? `(${c.label_fa})` : ""));
@@ -199,6 +291,29 @@ function tableBlock(kb, full) {
     const shown = values.slice(0, 15).map((v) => `${v.value}=${v.label_fa || "?"}`).join(", ");
     lines.push(`  مقادیر ${col}: ${shown}`);
   }
+
+  // ارجاع‌های تأییدشده، گروه‌شده بر پایهٔ جدول مقصد — همان _table_block
+  const pairs = new Map();
+  for (const j of info.outgoing) {
+    if (j.verified && !AUDIT_COLUMNS.includes(j.from_col)) {
+      pairs.set(`${j.from_col}\u0000${j.to_table}`, [j.from_col, j.to_table]);
+    }
+  }
+  const targets = new Map();
+  for (const [col, to] of [...pairs.values()].sort((a, b) => cmp(a[0], b[0]) || cmp(a[1], b[1]))) {
+    if (!targets.has(to)) targets.set(to, []);
+    targets.get(to).push(col);
+  }
+  if (targets.size) {
+    const groups = [...targets.entries()].sort((a, b) => cmp(a[1][0], b[1][0])).slice(0, MAX_REFS);
+    const shown = groups
+      .map(([to, cols]) => cols.slice(0, 3).join("/") + (cols.length > 3 ? "/…" : "") + "→" + bracket(to))
+      .join(", ");
+    lines.push("  ارجاع‌ها: " + shown);
+  }
+  for (const warning of info.warnings) {
+    if (!warning.includes("تأییدنشده است")) lines.push("  هشدار: " + warning);
+  }
   return lines.join("\n");
 }
 
@@ -206,10 +321,17 @@ export function buildContext(kb, chosen) {
   const tables = [...new Set(chosen)];
   const joins = [];
   const bridges = [];
+  const cautions = [];
 
   tables.forEach((a, i) => {
     for (const b of tables.slice(i + 1)) {
-      const path = kb.findJoinPath(a, b);
+      // اول از میان خودِ جدول‌های انتخاب‌شده؛ فقط اگر نشد جدول واسطهٔ تازه.
+      let path = kb.findJoinPath(a, b, { through: tables });
+      if (!path || !path.length) {
+        path = kb.findJoinPath(a, b);
+        const caution = path && path.length ? kb.constructor.pathWarning(path) : null;
+        if (caution) cautions.push(`- ${a} ↔ ${b}: ${caution}`);
+      }
       if (!path || !path.length) continue;
       for (const step of path) {
         const clause = `${bracket(step.from_table)}.[${step.from_col}] = ${bracket(step.to_table)}.[${step.to_col}]`;
@@ -231,6 +353,7 @@ export function buildContext(kb, chosen) {
   }
   if (joins.length) parts.push("", "### پیوندهای شناخته‌شده — شرط JOIN را عیناً از این‌جا بردار", "", ...joins);
   else parts.push("", "(بین این جدول‌ها پیوند ثبت‌شده‌ای نیست.)");
+  if (cautions.length) parts.push("", "### هشدار مسیرها — پیش از استفاده بسنج", "", ...cautions);
   return { context: parts.join("\n"), tables: everything, joins };
 }
 
@@ -240,15 +363,32 @@ export const DRAFT_SYSTEM = `تو یک کارشناس ارشد T-SQL روی SQL 
 
 قواعد غیرقابل‌مذاکره:
 ۱. فقط از جدول‌ها و ستون‌هایی استفاده کن که در «ساختار» آمده‌اند. هیچ نام
-   دیگری ننویس — اگر چیزی در ساختار نیست، یعنی وجود ندارد.
-۲. شرط‌های JOIN را عیناً از بخش «پیوندهای شناخته‌شده» بردار. پیوند از خودت
-   نساز.
-۳. فقط SELECT. هیچ INSERT/UPDATE/DELETE/DROP ننویس.
-۴. شناسه‌ها را داخل براکت بگذار: [SCHEMA].[Table].[Column]
-۵. اگر «گفت‌وگوی قبلی» آمده و پرسش تازه ادامهٔ آن است، کوئری قبلی را مبنا
+   دیگری ننویس — اگر چیزی در ساختار نیست، یعنی وجود ندارد. جدولی که فقط در
+   سطر «ارجاع‌ها» آمده و بلوک ستون‌هایش نیامده را نمی‌شناسی؛ از آن جز همان
+   ستونِ پیوند چیزی ننویس.
+۲. شرط‌های JOIN را عیناً از بخش «پیوندهای شناخته‌شده» یا سطر «ارجاع‌ها»
+   بردار. پیوند از خودت نساز. پیوندِ «تأییدنشده» را فقط وقتی به کار ببر که
+   راه دیگری نیست، و در «نکته‌ها» بگو.
+۳. فقط خواندنی: SELECT، و در صورت نیاز WITH و DECLARE. هیچ
+   INSERT/UPDATE/DELETE/DROP/EXEC ننویس.
+۴. شناسه‌ها را داخل براکت بگذار: [SCHEMA].[Table].[Column] و برای هر جدول
+   نام مستعار کوتاه بگذار.
+۵. اگر جدولی ستون FiscalYearRef دارد، فیلتر سال مالی را حتماً بگذار؛ وگرنه
+   خروجی بی‌خطا ولی غلط می‌شود.
+۶. مقدارهای نمونه (سال مالی، تاریخ، کد، شناسه) را در ابتدای کوئری با DECLARE
+   و نامی گویا تعریف کن تا کاربر فقط همان‌جا را عوض کند.
+۷. برای ستونی که «مقادیر»ش آمده، در فیلتر فقط از همان مقدارها استفاده کن، و
+   اگر خروجی برای خواندن است کنار عدد، شرح فارسی‌اش را با CASE برگردان.
+۸. جدول مرجع (نام شخص، شرح حساب، عنوان کالا) را با LEFT JOIN بیاور تا ردیفی
+   گم نشود، مگر خواسته صریحاً چیز دیگری باشد. در جمع و شمارش مراقب باش JOIN
+   به جدول جزئیات ردیف‌ها را چند برابر نکند.
+۹. اگر «گفت‌وگوی قبلی» آمده و پرسش تازه ادامهٔ آن است، کوئری قبلی را مبنا
    بگیر و فقط همان چیزی را عوض کن که خواسته شده.
-۶. اگر جایی از خواسته مبهم است، معقول‌ترین برداشت را برگزین و آن را در
+۱۰. اگر جایی از خواسته مبهم است، معقول‌ترین برداشت را برگزین و آن را در
    «نکته‌ها» صریح بنویس؛ هیچ فرضی را بی‌صدا نکن.
+۱۱. اگر دادهٔ لازم در ساختار نیست، کوئری ساختگی ننویس؛ بلوک \`\`\`sql نگذار و
+   به‌جایش راهکار رسیدن به گزارش را قدم‌به‌قدم بگو: از کدام جدول‌های موجود،
+   با چه کمبودی، و چه چیزی باید روشن شود.
 
 قالب پاسخ — دقیقاً با همین عنوان‌ها:
 
@@ -266,7 +406,8 @@ export const DRAFT_SYSTEM = `تو یک کارشناس ارشد T-SQL روی SQL 
 
 ### نکته‌ها
 فرض‌هایی که کردی، آنچه کاربر باید پیش از اجرا بررسی یا جایگزین کند (مثلاً
-یک مقدار نمونه)، و اگر لازم است یک نکتهٔ کارایی.
+مقدارهای DECLARE)، هشدارهای ساختار که به این گزارش مربوط‌اند، و اگر لازم
+است یک نکتهٔ کارایی.
 
 اگر کاربر کوئری نمی‌خواهد و فقط راهنمایی می‌خواهد، بلوک \`\`\`sql نگذار؛ به‌جایش
 با همین سه عنوان قدم‌به‌قدم راهنمایی کن.`;
@@ -341,7 +482,7 @@ export function splitReply(reply) {
  * همان رویدادهایی را می‌فرستد که سرور با SSE می‌فرستد، با همان شکل.
  */
 export async function run({
-  question, kb, index, ask, emit, maxAttempts = DEFAULT_ATTEMPTS, signal, history = [],
+  question, kb, index, ask, emit, maxAttempts = DEFAULT_ATTEMPTS, signal, history = [], pinned = [],
 }) {
   const draft = {
     sql: "", note: "", check: null, attempts: 0, tables: [], joins: [], kind: "query", intent: {},
@@ -351,6 +492,7 @@ export async function run({
     emit({ type, message, ...data });
   };
   const past = cleanHistory(history);
+  const pins = cleanPinned(kb, pinned);
 
   say("understand", "فهم خواستهٔ شما");
   let intent;
@@ -366,7 +508,7 @@ export async function run({
 
   say("retrieve", "جست‌وجو در ساختار پایگاه داده");
   const previous = past.flatMap((item) => item.tables);
-  const candidates = retrieve(kb, question, intent.keywords, previous);
+  const candidates = retrieve(kb, question, intent.keywords, previous, pins);
   if (!candidates.length) {
     draft.kind = "guidance";
     draft.note = "برای این پرسش جدول مرتبطی پیدا نشد. کمی مشخص‌تر بپرسید — " +
@@ -378,22 +520,23 @@ export async function run({
   });
 
   say("select", "انتخاب جدول‌های مرتبط");
-  const listing = candidates
-    .map((c) => c.full_name + (c.title_fa ? ` — ${c.title_fa}` : ""))
-    .join("\n");
+  const links = candidateLinks(kb, candidates);
   let chosen = [];
   try {
-    const goal = intent.goal ? `\n\n## هدف\n${intent.goal}` : "";
-    const reply = await ask(SELECT_SYSTEM, `## جدول‌های موجود\n${listing}\n\n## پرسش\n${question}${goal}`);
+    const reply = await ask(SELECT_SYSTEM, selectPrompt(question, candidates, links, intent.goal, pins));
     chosen = parseSelection(reply, candidates);
   } catch (e) {
     if (e?.name === "AbortError") throw e;
     chosen = [];
   }
   if (!chosen.length) {
-    chosen = candidates.slice(0, 4).map((c) => c.full_name);
+    // مدل کمکی نکرد — با نتیجهٔ بازیابی ادامه می‌دهیم. بهتر از توقف است.
+    const rest = candidates.map((c) => c.full_name).filter((t) => !pins.includes(t));
+    chosen = [...pins, ...rest.slice(0, Math.max(0, 4 - pins.length))];
     say("select", "انتخاب مدل روشن نبود؛ با نتیجهٔ جست‌وجو ادامه می‌دهیم", { tables: chosen });
   } else {
+    // جدول‌های سنجاق‌شده همیشه می‌مانند، هرچه مدل گفته باشد.
+    chosen = [...pins, ...chosen.filter((t) => !pins.includes(t))].slice(0, MAX_CHOSEN);
     say("select", `${chosen.length} جدول انتخاب شد`, { tables: chosen });
   }
 

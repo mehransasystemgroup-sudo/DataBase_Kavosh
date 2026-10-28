@@ -1,0 +1,1836 @@
+{
+ "related": {
+  "FIN3.Voucher": [
+   {
+    "direction": "out",
+    "col": "AccountRef",
+    "full_name": "FIN3.Account",
+    "title_fa": "حساب",
+    "has_data": false
+   },
+   {
+    "direction": "out",
+    "col": "VoucherTypeRef",
+    "full_name": "FIN3.VoucherType",
+    "title_fa": "نوع سند",
+    "has_data": false
+   },
+   {
+    "direction": "out",
+    "col": "BranchRef",
+    "full_name": "GNR3.Branch",
+    "title_fa": "شعبه",
+    "has_data": false
+   },
+   {
+    "direction": "out",
+    "col": "FiscalYearRef",
+    "full_name": "GNR3.FiscalYear",
+    "title_fa": "دوره مالی",
+    "has_data": false
+   },
+   {
+    "direction": "out",
+    "col": "LedgerRef",
+    "full_name": "GNR3.Ledger",
+    "title_fa": "دفتر کل",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.VoucherItem",
+    "title_fa": "قلم سند حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.VoucherItemOffline",
+    "title_fa": "قلم سند حسابداری آفلاین",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.VoucherLock",
+    "title_fa": "VoucherLock",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.VoucherReference",
+    "title_fa": "مرجع های سند حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.VoucherReviewRecord",
+    "title_fa": "سوابق بازبینی سند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "HCM3.Voucher",
+    "title_fa": "سند حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.ClosingVoucherInfo",
+    "title_fa": "اطلاعات سند بستن",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.ClosingVoucherReferences",
+    "title_fa": "مراجع سند بستن",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.ConversionDocument",
+    "title_fa": "تسعیر ارز",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.DebitCreditStatementItem",
+    "title_fa": "قلم اعلامیه بدهکار بستانکار",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.DraftVoucher",
+    "title_fa": "اطلاعات سند حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.GLVoucherReference",
+    "title_fa": "مرجع های سند کل",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.SLDLFlow",
+    "title_fa": "SLDLFlow",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.VATCollectiveInformation",
+    "title_fa": "جمع آوری اطلاعات",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FIN3.VatContractCollectiveInformation",
+    "title_fa": "VatContractCollectiveInformation",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "CAC3.AccountingVoucher",
+    "title_fa": "سند حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FAM3.FAMGLComparisonReportReason",
+    "title_fa": "FAMGLComparisonReportReason",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FSR3.PriorYearAdjustment",
+    "title_fa": "اطلاعات تعدیل سنواتی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "FSR3.PriorYearAdjustmentItem",
+    "title_fa": "اقلام تعدیل سنواتی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "HCM3.NSVoucherReference",
+    "title_fa": "قلم سند حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "HCM3.OilVoucherReference",
+    "title_fa": "قلم سند حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "HCM3.TrainingVoucher",
+    "title_fa": "سند حسابداری آموزش",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "HCM3.TransferVoucher",
+    "title_fa": "سند حسابداری انتقالی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "IPR3.Clearance",
+    "title_fa": "برگ ترخیص",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "IPR3.CommercialOrder",
+    "title_fa": "سفارش بازرگانی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "IPR3.ImportLicence",
+    "title_fa": "مجوز",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "IPR3.Insurance",
+    "title_fa": "بیمه نامه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "IPR3.TransportDocument",
+    "title_fa": "بارنامه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "PRC3.DraftVoucher",
+    "title_fa": "اطلاعات حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "PRC3.Invoice",
+    "title_fa": "فاکتور خرید",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "PRC3.PurchaseMiscCost",
+    "title_fa": "هزینه تکمیلی خرید",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "PRC3.Refund",
+    "title_fa": "فاکتور برگشتی خرید",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "RPA3.DraftVoucher",
+    "title_fa": "اطلاعات حسابداری دریافت و پرداخت",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "VoucherRef",
+    "full_name": "SLS3.CommissionVoucher",
+    "title_fa": "سند پورسانت",
+    "has_data": false
+   }
+  ],
+  "HCM3.Employee": [
+   {
+    "direction": "out",
+    "col": "PartyRef",
+    "full_name": "GNR3.Party",
+    "title_fa": "طرف حساب",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeAppraisal",
+    "title_fa": "سوابق سنجش کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeAppraiserItem",
+    "title_fa": "قلم ارزیاب کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeBranchInfo",
+    "title_fa": "شعبه کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeCompetency",
+    "title_fa": "سوابق شایستگی های کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeConditionItem",
+    "title_fa": "قلم وضعیت کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeContractInfo",
+    "title_fa": "تنظیم مشخصات قرارداد کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeDataAccess",
+    "title_fa": "دسترسی به داده کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeEducation",
+    "title_fa": "سوابق تحصیلی کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeEmploymentNumber",
+    "title_fa": "کد مستخدم کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeGroupEmployee",
+    "title_fa": "جزئیات گروه کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeInfo",
+    "title_fa": "اطلاعات کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeInfoChangeRequest",
+    "title_fa": "درخواست تغییر اطلاعات کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeMarriage",
+    "title_fa": "وضعیت تاهل کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeePaymentLocation",
+    "title_fa": "اطلاعات محل پرداخت کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeePriorPeriod",
+    "title_fa": "اطلاعات بازخرید سنوات کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeRelatedDL",
+    "title_fa": "تفصیلی های مرتبط با کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeRelatedOrganization",
+    "title_fa": "سازمانهای مرتبط با کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeRelative",
+    "title_fa": "بستگان کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ParentEmployeeRef",
+    "full_name": "HCM3.EmployeeRelative",
+    "title_fa": "بستگان کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeResearch",
+    "title_fa": "سوابق تحقیق ها و نشان های کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeRetirementForm",
+    "title_fa": "تکمیل اطلاعات بازنشستگی کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeRewardPunish",
+    "title_fa": "سوابق تشویق و تنبیه کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeRfidCard",
+    "title_fa": "تخصیص کارت کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeSignature",
+    "title_fa": "امضا کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ConfirmerRef",
+    "full_name": "HCM3.EmployeeStatute",
+    "title_fa": "حکم کارگزینی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeStatute",
+    "title_fa": "حکم کارگزینی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "PaymentConfirmerRef",
+    "full_name": "HCM3.EmployeeStatute",
+    "title_fa": "حکم کارگزینی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeStatuteRequest",
+    "title_fa": "درخواست حکم کارگزینی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AuditorRef",
+    "full_name": "HCM3.EmployeeStatuteRequestStateHistory",
+    "title_fa": "تاریخچه تغییر وضعیت درخواست حکم",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AuditorRef",
+    "full_name": "HCM3.EmployeeStatuteStateHistory",
+    "title_fa": "تاریخچه تغییر وضعیت حکم",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeSupplementary",
+    "title_fa": "اطللاعات تکمیلی کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeTraining",
+    "title_fa": "سوابق آموزشی کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeWarriorRecord",
+    "title_fa": "سوابق ایثارگری کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployeeWorkRecord",
+    "title_fa": "سوابق کاری کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AppraiseeRef",
+    "full_name": "HCM3.AppraisalQuestionnaire",
+    "title_fa": "فرم ارزیابی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AppraiserRef",
+    "full_name": "HCM3.AppraisalQuestionnaire",
+    "title_fa": "فرم ارزیابی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceCalc",
+    "title_fa": "کارکرد",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceCalcLog",
+    "title_fa": "رویداد محاسبه کارکرد خدمات الکترونیک",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceCalculationCalendarEmployee",
+    "title_fa": "کارمند تقویم محاسباتی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceDailyFixedFactorData",
+    "title_fa": "مقادیر عوامل ثابت روزانه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceDailyInputFactorData",
+    "title_fa": "مقادیر عوامل ورودی روزانه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceData",
+    "title_fa": "اطلاعات تردد",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceDataCorrectionRequest",
+    "title_fa": "درخواست تصحیح اطلاعات تردد",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceFixedFactorData",
+    "title_fa": "مقادیر عوامل ثابت ماهانه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendanceMonthlyInputFactorData",
+    "title_fa": "مقادیر عوامل ورودی ماهانه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "Confirmer",
+    "full_name": "HCM3.AttendancePermission",
+    "title_fa": "درخواست مجوز حضور",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendancePermission",
+    "title_fa": "درخواست مجوز حضور",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.AttendancePermissionRequest",
+    "title_fa": "درخواست مجوز",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "Confirmer",
+    "full_name": "HCM3.BatchAttendancePermission",
+    "title_fa": "درخواست مجوز حضور گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ConfirmerRef",
+    "full_name": "HCM3.BatchCorrectiveEmployeeStatute",
+    "title_fa": "حکم اصلاحی گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "PaymentConfirmerRef",
+    "full_name": "HCM3.BatchCorrectiveEmployeeStatute",
+    "title_fa": "حکم اصلاحی گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.BatchCorrectiveEmployeeStatuteEmployee",
+    "title_fa": "کارمندان حکم اصلاحی گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ConfirmerRef",
+    "full_name": "HCM3.BatchEmployeeStatute",
+    "title_fa": "حکم کارگزینی گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "PaymentConfirmerRef",
+    "full_name": "HCM3.BatchEmployeeStatute",
+    "title_fa": "حکم کارگزینی گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.BatchEmployeeStatuteEmployee",
+    "title_fa": "کارمندان حکم کارگزینی گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "FinancialConfirmerEmployeeRef",
+    "full_name": "HCM3.BatchMissionDocument",
+    "title_fa": "ماموریت گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "OfficialConfirmerEmployeeRef",
+    "full_name": "HCM3.BatchMissionDocument",
+    "title_fa": "ماموریت گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.BatchMissionDocumentEmployee",
+    "title_fa": "کارمندان ماموریت گروهی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.ChangeEmploymentDate",
+    "title_fa": "تغییر تاریخ استخدام",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CompensationComplementRequestEmployee",
+    "title_fa": "کارمند",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CompensationInsurance",
+    "title_fa": "بیمه جبران خدمات",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CompensationPaymentRequestEmployee",
+    "title_fa": "کارمند دستور پرداخت",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CompensationTax",
+    "title_fa": "مالیات حقوق و مزایا",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ConfirmerRef",
+    "full_name": "HCM3.CorrectiveEmployeeStatute",
+    "title_fa": "حکم اصلاحی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CorrectiveEmployeeStatute",
+    "title_fa": "حکم اصلاحی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "PaymentConfirmerRef",
+    "full_name": "HCM3.CorrectiveEmployeeStatute",
+    "title_fa": "حکم اصلاحی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AuditorRef",
+    "full_name": "HCM3.CorrectiveEmployeeStatuteStateHistory",
+    "title_fa": "تاریخچه تغییر وضعیت حکم اصلاحی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CoursePlanParticipant",
+    "title_fa": "شرکت کنندگان برگزاری دوره",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "Requester",
+    "full_name": "HCM3.CourseRegistration",
+    "title_fa": "ثبت‌نام دوره",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CourseRegistrationParticipant",
+    "title_fa": "شرکت کنندگان",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CourseRequest",
+    "title_fa": "درخواست دوره",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.CourseRequestParticipant",
+    "title_fa": "شرکت کنندگان درخواست دوره",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.EmployerExemptionException",
+    "title_fa": "استثنا معافیت کارفرما",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.FileCalc",
+    "title_fa": "محاسبه فایل",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.FinancialStatute",
+    "title_fa": "حکم مالی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.LeaveRemainder",
+    "title_fa": "مانده مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.LeaveRemainderHistory",
+    "title_fa": "مانده مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ConfirmerRef",
+    "full_name": "HCM3.LeaveRequest",
+    "title_fa": "درخواست مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.LeaveRequest",
+    "title_fa": "درخواست مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "FirstConfirmerRef",
+    "full_name": "HCM3.LeaveRequest",
+    "title_fa": "درخواست مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "SecondConfirmerRef",
+    "full_name": "HCM3.LeaveRequest",
+    "title_fa": "درخواست مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "SubstituteRef",
+    "full_name": "HCM3.LeaveRequest",
+    "title_fa": "درخواست مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ThirdConfirmerRef",
+    "full_name": "HCM3.LeaveRequest",
+    "title_fa": "درخواست مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ThirdConfirmerRef",
+    "full_name": "HCM3.LeaveType",
+    "title_fa": "نوع مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "ConfirmerEmployeeRef",
+    "full_name": "HCM3.LoanPayment",
+    "title_fa": "پرداخت وام",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.LoanPayment",
+    "title_fa": "پرداخت وام",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.MissionDocument",
+    "title_fa": "ماموریت",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "FinancialConfirmerEmployeeRef",
+    "full_name": "HCM3.MissionDocument",
+    "title_fa": "ماموریت",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "OfficialConfirmerEmployeeRef",
+    "full_name": "HCM3.MissionDocument",
+    "title_fa": "ماموریت",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.MonthlyFactorData",
+    "title_fa": "ثبت مقادیر عوامل ورودی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.MonthlyFactorDataCompensationItem",
+    "title_fa": "مقادیر جبران خدمات",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.NegativeRemainderRequest",
+    "title_fa": "درخواست پیشخور مرخصی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.PYSalaryReceipt",
+    "title_fa": "فیش حقوق نفت",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.PairedAttendanceData",
+    "title_fa": "داده کارکرد جفت‌شده",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.PayCalc",
+    "title_fa": "محاسبه حقوق",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.PayCalcItem",
+    "title_fa": "آیتم محاسبه حقوق",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AgreementEmployeeRef",
+    "full_name": "HCM3.PerformanceAgreement",
+    "title_fa": "موافقتنامه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AgreementManagerRef",
+    "full_name": "HCM3.PerformanceAgreement",
+    "title_fa": "موافقتنامه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "CompleteAgreedEmployeeRef",
+    "full_name": "HCM3.PerformanceAgreement",
+    "title_fa": "موافقتنامه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "InitialAgreedEmployeeRef",
+    "full_name": "HCM3.PerformanceAgreement",
+    "title_fa": "موافقتنامه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "CompletionEmployeeRef",
+    "full_name": "HCM3.PerformancePeriod",
+    "title_fa": "دوره مدیریت عملکرد",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AppraiseeRef",
+    "full_name": "HCM3.PerformancePeriodCalculation",
+    "title_fa": "محاسبه دوره",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.PeriodicCalc",
+    "title_fa": "محاسبه دوره ای",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.PeriodicCalcItem",
+    "title_fa": "آیتم محاسبات دوره ای",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.PromotionProcess",
+    "title_fa": "اجرای ارتقا و ترفیع",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.PunchInHistory",
+    "title_fa": "تاریخچه پایش",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.RetirementCalc",
+    "title_fa": "محاسبه بازنشستگی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "RelativeRef",
+    "full_name": "HCM3.RetirementCalc",
+    "title_fa": "محاسبه بازنشستگی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.RetirementCalcItem",
+    "title_fa": "آیتم محاسبه بازنشستگی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "RelativeRef",
+    "full_name": "HCM3.RetirementCalcItem",
+    "title_fa": "آیتم محاسبه بازنشستگی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.RetirementUserDefinedCalc",
+    "title_fa": "UserDefinedCalc_RetirementUserDefinedCalc",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "RelativeRef",
+    "full_name": "HCM3.RetirementUserDefinedCalc",
+    "title_fa": "UserDefinedCalc_RetirementUserDefinedCalc",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.RetirementUserDefinedCalcItem",
+    "title_fa": "UserDefinedCalcItem_RetirementUserDefinedCalcItem",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "RelativeRef",
+    "full_name": "HCM3.RetirementUserDefinedCalcItem",
+    "title_fa": "UserDefinedCalcItem_RetirementUserDefinedCalcItem",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.RfidEmployeeFace",
+    "title_fa": "چهره کارمند RFID",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.RfidEmployeeFingerprint",
+    "title_fa": "اثر انگشت کارمند RFID",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.RfidEmployeePhone",
+    "title_fa": "تلفن کارمند RFID",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.RfidTrafficLog",
+    "title_fa": "رویداد تردد",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.SettlementCalc",
+    "title_fa": "تسویه حساب",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.TargetGroupExecutive",
+    "title_fa": "ارتباط اجرا کنندگان شرایط هدف",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.TargetGroupExecutiveAgreementStep",
+    "title_fa": "موافقتنامه",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.TargetGroupExecutiveEvaluationStepType",
+    "title_fa": "ابعاد ارزیابی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.TrainingAssessmentFactorDataParticipantItem",
+    "title_fa": "مقادیر عوامل سنجش در سطح فراگیر",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AuditorRef",
+    "full_name": "HCM3.TrainingAssessmentFactorDataStateHistory",
+    "title_fa": "تاریخچه تغییر وضعیت مقادیر عوامل سنجش",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.TrainingFactorDataParticipantItem",
+    "title_fa": "مقادیر عوامل آموزشی در سطح فراگیر",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "AuditorRef",
+    "full_name": "HCM3.TrainingFactorDataStateHistory",
+    "title_fa": "تاریخچه تغییر وضعیت مقادیر عوامل آموزشی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.TranscriptComment",
+    "title_fa": "یادداشت رونوشت",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.TransferVoucherEmployee",
+    "title_fa": "کارمندان مرتبط با سند حسابداری انتقالی",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.UserDefinedCalc",
+    "title_fa": "محاسبه خاص کاربر",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.UserDefinedCalcItem",
+    "title_fa": "آیتم محاسبه خاص کاربر",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.VoucherEmployee",
+    "title_fa": "کارمندان مرتبط با سند حسابداری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.WGSalaryReceipt",
+    "title_fa": "فیش حقوق دستمزدی نفت",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.WorkingGroupChangeRequest",
+    "title_fa": "درخواست تغییر گروه کاری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "SecondEmployeeRef",
+    "full_name": "HCM3.WorkingGroupChangeRequest",
+    "title_fa": "درخواست تغییر گروه کاری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.WorkingGroupEmployee",
+    "title_fa": "کارمندان گروه کاری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.WorkingGroupOrganizingEmployee",
+    "title_fa": "کارمند عضو برنامه ریزی گروه کاری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.WorkingGroupOrganizingHistoryBase",
+    "title_fa": "پایه تاریخچه سازمان‌دهی گروه کاری",
+    "has_data": false
+   },
+   {
+    "direction": "in",
+    "col": "EmployeeRef",
+    "full_name": "HCM3.WorkingGroupOrganizingHistoryWorkingMinutesBase",
+    "title_fa": "پایه صورت‌جلسه کاری تاریخچه سازمان‌دهی گروه کاری",
+    "has_data": false
+   }
+  ]
+ },
+ "retrievals": [
+  {
+   "question": "جمع مبلغ اسناد حسابداری به تفکیک حساب",
+   "keywords": [
+    "سند حسابداری",
+    "حساب",
+    "مبلغ"
+   ],
+   "previous": [],
+   "pinned": [],
+   "goal": "جمع مبلغ بدهکار و بستانکار اسناد به تفکیک حساب",
+   "pins": [],
+   "candidates": [
+    {
+     "full_name": "FIN3.Voucher",
+     "title_fa": "سند حسابداری",
+     "why": "کلیدواژهٔ «سند حسابداری»",
+     "score": 49.00045109251779
+    },
+    {
+     "full_name": "HCM3.Voucher",
+     "title_fa": "سند حسابداری",
+     "why": "کلیدواژهٔ «سند حسابداری»",
+     "score": 49.00045109251779
+    },
+    {
+     "full_name": "CAC3.AccountingVoucher",
+     "title_fa": "سند حسابداری",
+     "why": "کلیدواژهٔ «سند حسابداری»",
+     "score": 47.78287642963299
+    },
+    {
+     "full_name": "ACC.Account",
+     "title_fa": "حساب",
+     "why": "کلیدواژهٔ «حساب»",
+     "score": 39.15185546087676
+    },
+    {
+     "full_name": "FIN3.Account",
+     "title_fa": "حساب",
+     "why": "کلیدواژهٔ «حساب»",
+     "score": 38.73661338630752
+    },
+    {
+     "full_name": "FIN3.VoucherItem",
+     "title_fa": "قلم سند حسابداری",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "HCM3.VoucherSpecification",
+     "title_fa": "الگوی سند حسابداری",
+     "why": "مرتبط با HCM3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "FIN3.VoucherItemOffline",
+     "title_fa": "قلم سند حسابداری آفلاین",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "HCM3.VoucherEmployee",
+     "title_fa": "کارمندان مرتبط با سند حسابداری",
+     "why": "مرتبط با HCM3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "FIN3.VoucherType",
+     "title_fa": "نوع سند",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "GNR3.Branch",
+     "title_fa": "شعبه",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "GNR3.FiscalYear",
+     "title_fa": "دوره مالی",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "FIN3.VoucherLock",
+     "title_fa": "VoucherLock",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "HCM3.VoucherBranch",
+     "title_fa": "شعبه کارمند",
+     "why": "مرتبط با HCM3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "HCM3.VoucherInsuranceBranch",
+     "title_fa": "اطلاعات سازمان شعب",
+     "why": "مرتبط با HCM3.Voucher",
+     "score": 29.400270655510674
+    },
+    {
+     "full_name": "CAC3.CalcPeriod",
+     "title_fa": "دوره محاسبه",
+     "why": "مرتبط با CAC3.AccountingVoucher",
+     "score": 28.669725857779795
+    },
+    {
+     "full_name": "FIN3.AccountType",
+     "title_fa": "نوع حساب",
+     "why": "مرتبط با FIN3.Account",
+     "score": 23.24196803178451
+    },
+    {
+     "full_name": "GNR3.Currency",
+     "title_fa": "ارز",
+     "why": "مرتبط با FIN3.Account",
+     "score": 23.24196803178451
+    },
+    {
+     "full_name": "GNR3.Party",
+     "title_fa": "طرف حساب",
+     "why": "مرتبط با FIN3.Account",
+     "score": 23.24196803178451
+    },
+    {
+     "full_name": "FIN3.AccountDebitCreditStatementItem",
+     "title_fa": "قلم اعلامیه بدهکار بستانکار",
+     "why": "مرتبط با FIN3.Account",
+     "score": 23.24196803178451
+    },
+    {
+     "full_name": "FIN3.AccountingDepartment",
+     "title_fa": "دپارتمان حسابداری",
+     "why": "نام جدول",
+     "score": 12.809676991131763
+    },
+    {
+     "full_name": "PRC3.DraftVoucher",
+     "title_fa": "اطلاعات حسابداری",
+     "why": "نام جدول",
+     "score": 12.809676991131763
+    },
+    {
+     "full_name": "RPA3.AccountingOperation",
+     "title_fa": "عملیات حسابداری",
+     "why": "نام جدول",
+     "score": 12.809676991131763
+    },
+    {
+     "full_name": "FIN3.DraftVoucher",
+     "title_fa": "اطلاعات سند حسابداری",
+     "why": "نام جدول",
+     "score": 12.275879893311778
+    },
+    {
+     "full_name": "HCM3.NSVoucher",
+     "title_fa": "سند حسابداری نفت",
+     "why": "نام جدول",
+     "score": 12.275879893311778
+    },
+    {
+     "full_name": "HCM3.TrainingVoucher",
+     "title_fa": "سند حسابداری آموزش",
+     "why": "نام جدول",
+     "score": 12.275879893311778
+    },
+    {
+     "full_name": "HCM3.TransferVoucher",
+     "title_fa": "سند حسابداری انتقالی",
+     "why": "نام جدول",
+     "score": 12.275879893311778
+    },
+    {
+     "full_name": "RPA3.VoucherReconciliation",
+     "title_fa": "مغایرت گیری حسابداری",
+     "why": "نام جدول",
+     "score": 12.275879893311778
+    },
+    {
+     "full_name": "FIN3.AccountingVoucherTemplate",
+     "title_fa": "الگوی سند حسابداری",
+     "why": "نام جدول",
+     "score": 11.784791214564894
+    },
+    {
+     "full_name": "FIN3.DraftVoucherItem",
+     "title_fa": "قلم اطلاعات حسابداری",
+     "why": "نام جدول",
+     "score": 11.784791214564894
+    },
+    {
+     "full_name": "FIN3.VoucherReference",
+     "title_fa": "مرجع های سند حسابداری",
+     "why": "نام جدول",
+     "score": 11.784791214564894
+    },
+    {
+     "full_name": "FSR3.AdjustmentVoucherItem",
+     "title_fa": "قلم سند حسابداری",
+     "why": "نام جدول",
+     "score": 11.784791214564894
+    },
+    {
+     "full_name": "HCM3.NSVoucherReference",
+     "title_fa": "قلم سند حسابداری",
+     "why": "نام جدول",
+     "score": 11.784791214564894
+    },
+    {
+     "full_name": "HCM3.OilVoucher",
+     "title_fa": "سند حسابداری نفت جنوب",
+     "why": "نام جدول",
+     "score": 11.784791214564894
+    },
+    {
+     "full_name": "HCM3.OilVoucherReference",
+     "title_fa": "قلم سند حسابداری",
+     "why": "نام جدول",
+     "score": 11.784791214564894
+    },
+    {
+     "full_name": "PRC3.DraftVoucherItem",
+     "title_fa": "قلم اطلاعات حسابداری",
+     "why": "نام جدول",
+     "score": 11.784791214564894
+    }
+   ],
+   "select_prompt": "## جدول‌های موجود\nFIN3.Voucher — سند حسابداری  · کلیدواژهٔ «سند حسابداری»\nHCM3.Voucher — سند حسابداری  · کلیدواژهٔ «سند حسابداری»\nCAC3.AccountingVoucher — سند حسابداری  · کلیدواژهٔ «سند حسابداری»\nACC.Account — حساب  · کلیدواژهٔ «حساب»\nFIN3.Account — حساب  · کلیدواژهٔ «حساب»\nFIN3.VoucherItem — قلم سند حسابداری  · مرتبط با FIN3.Voucher\nHCM3.VoucherSpecification — الگوی سند حسابداری  · مرتبط با HCM3.Voucher\nFIN3.VoucherItemOffline — قلم سند حسابداری آفلاین  · مرتبط با FIN3.Voucher\nHCM3.VoucherEmployee — کارمندان مرتبط با سند حسابداری  · مرتبط با HCM3.Voucher\nFIN3.VoucherType — نوع سند  · مرتبط با FIN3.Voucher\nGNR3.Branch — شعبه  · مرتبط با FIN3.Voucher\nGNR3.FiscalYear — دوره مالی  · مرتبط با FIN3.Voucher\nFIN3.VoucherLock — VoucherLock  · مرتبط با FIN3.Voucher\nHCM3.VoucherBranch — شعبه کارمند  · مرتبط با HCM3.Voucher\nHCM3.VoucherInsuranceBranch — اطلاعات سازمان شعب  · مرتبط با HCM3.Voucher\nCAC3.CalcPeriod — دوره محاسبه  · مرتبط با CAC3.AccountingVoucher\nFIN3.AccountType — نوع حساب  · مرتبط با FIN3.Account\nGNR3.Currency — ارز  · مرتبط با FIN3.Account\nGNR3.Party — طرف حساب  · مرتبط با FIN3.Account\nFIN3.AccountDebitCreditStatementItem — قلم اعلامیه بدهکار بستانکار  · مرتبط با FIN3.Account\nFIN3.AccountingDepartment — دپارتمان حسابداری  · نام جدول\nPRC3.DraftVoucher — اطلاعات حسابداری  · نام جدول\nRPA3.AccountingOperation — عملیات حسابداری  · نام جدول\nFIN3.DraftVoucher — اطلاعات سند حسابداری  · نام جدول\nHCM3.NSVoucher — سند حسابداری نفت  · نام جدول\nHCM3.TrainingVoucher — سند حسابداری آموزش  · نام جدول\nHCM3.TransferVoucher — سند حسابداری انتقالی  · نام جدول\nRPA3.VoucherReconciliation — مغایرت گیری حسابداری  · نام جدول\nFIN3.AccountingVoucherTemplate — الگوی سند حسابداری  · نام جدول\nFIN3.DraftVoucherItem — قلم اطلاعات حسابداری  · نام جدول\nFIN3.VoucherReference — مرجع های سند حسابداری  · نام جدول\nFSR3.AdjustmentVoucherItem — قلم سند حسابداری  · نام جدول\nHCM3.NSVoucherReference — قلم سند حسابداری  · نام جدول\nHCM3.OilVoucher — سند حسابداری نفت جنوب  · نام جدول\nHCM3.OilVoucherReference — قلم سند حسابداری  · نام جدول\nPRC3.DraftVoucherItem — قلم اطلاعات حسابداری  · نام جدول\n\n## پیوندهای مستقیم میان این جدول‌ها\nHCM3.Voucher.VoucherRef → FIN3.Voucher\nCAC3.AccountingVoucher.VoucherRef → FIN3.Voucher\nFIN3.Voucher.AccountRef → FIN3.Account\nFIN3.VoucherItem.VoucherRef → FIN3.Voucher\nFIN3.VoucherItemOffline.VoucherRef → FIN3.Voucher\nFIN3.Voucher.VoucherTypeRef → FIN3.VoucherType\nFIN3.Voucher.BranchRef → GNR3.Branch\nFIN3.Voucher.FiscalYearRef → GNR3.FiscalYear\nFIN3.VoucherLock.VoucherRef → FIN3.Voucher\nPRC3.DraftVoucher.VoucherRef → FIN3.Voucher\nFIN3.DraftVoucher.VoucherRef → FIN3.Voucher\nHCM3.TrainingVoucher.VoucherRef → FIN3.Voucher\nHCM3.TransferVoucher.VoucherRef → FIN3.Voucher\nFIN3.VoucherReference.VoucherRef → FIN3.Voucher\nHCM3.NSVoucherReference.VoucherRef → FIN3.Voucher\nHCM3.OilVoucherReference.VoucherRef → FIN3.Voucher\nHCM3.Voucher.VoucherSpecificationRef → HCM3.VoucherSpecification\nHCM3.VoucherEmployee.VoucherRef → HCM3.Voucher\nHCM3.Voucher.BranchRef → GNR3.Branch\nHCM3.VoucherBranch.VoucherRef → HCM3.Voucher\nHCM3.VoucherInsuranceBranch.VoucherRef → HCM3.Voucher\nCAC3.AccountingVoucher.CalcPeriodRef → CAC3.CalcPeriod\nFIN3.Account.AccountTypeRef → FIN3.AccountType\nFIN3.Account.CurrencyRef → GNR3.Currency\nFIN3.Account.PartyRef → GNR3.Party\nFIN3.AccountDebitCreditStatementItem.CreditAccountRef → FIN3.Account\nFIN3.AccountDebitCreditStatementItem.DebitAccountRef → FIN3.Account\nFIN3.AccountDebitCreditStatementItem.SecondCreditAccountRef → FIN3.Account\nFIN3.AccountDebitCreditStatementItem.SecondDebitAccountRef → FIN3.Account\nFIN3.AccountDebitCreditStatementItem.ThirdCreditAccountRef → FIN3.Account\nFIN3.AccountDebitCreditStatementItem.ThirdDebitAccountRef → FIN3.Account\nFIN3.VoucherItem.BranchRef → GNR3.Branch\nFIN3.VoucherItem.BaseCurrencyRef → GNR3.Currency\nFIN3.VoucherItem.CurrencyRef → GNR3.Currency\nFIN3.VoucherItem.TargetCurrencyRef → GNR3.Currency\nFIN3.VoucherItem.PartyRef → GNR3.Party\nFIN3.DraftVoucherItem.VoucherItemRef → FIN3.VoucherItem\nFIN3.VoucherItemOffline.VoucherTypeRef → FIN3.VoucherType\nFIN3.VoucherItemOffline.BranchRef → GNR3.Branch\nFIN3.VoucherItemOffline.FiscalYearRef → GNR3.FiscalYear\n\n## پرسش\nجمع مبلغ اسناد حسابداری به تفکیک حساب\n\n## هدف\nجمع مبلغ بدهکار و بستانکار اسناد به تفکیک حساب"
+  },
+  {
+   "question": "فهرست کارمندان با نام و کد ملی",
+   "keywords": [
+    "کارمند",
+    "Employee"
+   ],
+   "previous": [],
+   "pinned": [
+    "HCM3.Employee"
+   ],
+   "goal": "",
+   "pins": [
+    "HCM3.Employee"
+   ],
+   "candidates": [
+    {
+     "full_name": "HCM3.Employee",
+     "title_fa": "کارمند",
+     "why": "انتخاب شما",
+     "score": 52.0
+    },
+    {
+     "full_name": "HCM3.CompensationComplementRequestEmployee",
+     "title_fa": "کارمند",
+     "why": "کلیدواژهٔ «کارمند»",
+     "score": 39.199061347279496
+    },
+    {
+     "full_name": "GNR3.Party",
+     "title_fa": "طرف حساب",
+     "why": "مرتبط با HCM3.Employee",
+     "score": 31.2
+    },
+    {
+     "full_name": "HCM3.EmployeeAppraisal",
+     "title_fa": "سوابق سنجش کارمند",
+     "why": "مرتبط با HCM3.Employee",
+     "score": 31.2
+    },
+    {
+     "full_name": "HCM3.EmployeeAppraiserItem",
+     "title_fa": "قلم ارزیاب کارمند",
+     "why": "مرتبط با HCM3.Employee",
+     "score": 31.2
+    },
+    {
+     "full_name": "HCM3.EmployeeBranchInfo",
+     "title_fa": "شعبه کارمند",
+     "why": "مرتبط با HCM3.Employee",
+     "score": 31.2
+    },
+    {
+     "full_name": "HCM3.CompensationComplementRequest",
+     "title_fa": "درخواست متمم پرداخت",
+     "why": "مرتبط با HCM3.CompensationComplementRequestEmployee",
+     "score": 23.519436808367697
+    },
+    {
+     "full_name": "HCM3.VoucherEmployee",
+     "title_fa": "کارمندان مرتبط با سند حسابداری",
+     "why": "نام جدول",
+     "score": 12.254315197467388
+    },
+    {
+     "full_name": "HCM3.EmployeeGroupEmployee",
+     "title_fa": "جزئیات گروه کارمند",
+     "why": "کلیدواژهٔ «Employee»",
+     "score": 11.769559623001632
+    },
+    {
+     "full_name": "HCM3.TransferVoucherEmployee",
+     "title_fa": "کارمندان مرتبط با سند حسابداری انتقالی",
+     "why": "نام جدول",
+     "score": 11.378921847203049
+    },
+    {
+     "full_name": "HCM3.EmployeeAppraiser",
+     "title_fa": "ارزیاب کارمند",
+     "why": "کلیدواژهٔ «Employee»",
+     "score": 11.354059834414779
+    },
+    {
+     "full_name": "HCM3.EmployeeCondition",
+     "title_fa": "شرط کارمند",
+     "why": "کلیدواژهٔ «Employee»",
+     "score": 11.354059834414779
+    },
+    {
+     "full_name": "HCM3.EmployeeGroup",
+     "title_fa": "گروه کارمند",
+     "why": "کلیدواژهٔ «Employee»",
+     "score": 11.354059834414779
+    },
+    {
+     "full_name": "HCM3.EmployeeInfo",
+     "title_fa": "اطلاعات کارمند",
+     "why": "کلیدواژهٔ «Employee»",
+     "score": 11.354059834414779
+    },
+    {
+     "full_name": "HCM3.EmployeeRelative",
+     "title_fa": "بستگان کارمند",
+     "why": "کلیدواژهٔ «Employee»",
+     "score": 11.354059834414779
+    },
+    {
+     "full_name": "HCM3.EmployeeSignature",
+     "title_fa": "امضا کارمند",
+     "why": "کلیدواژهٔ «Employee»",
+     "score": 11.354059834414779
+    },
+    {
+     "full_name": "HCM3.OilVoucherFileRep",
+     "title_fa": "کارمندان رسمی",
+     "why": "نام جدول",
+     "score": 10.120383120904641
+    },
+    {
+     "full_name": "HCM3.OilVoucherFileWf",
+     "title_fa": "کارمندان قراردادی",
+     "why": "نام جدول",
+     "score": 10.120383120904641
+    },
+    {
+     "full_name": "HCM3.WorkingGroupEmployee",
+     "title_fa": "کارمندان گروه کاری",
+     "why": "نام جدول",
+     "score": 10.120383120904641
+    },
+    {
+     "full_name": "HCM3.BatchMissionDocumentEmployee",
+     "title_fa": "کارمندان ماموریت گروهی",
+     "why": "نام جدول",
+     "score": 9.731096850855035
+    },
+    {
+     "full_name": "HCM3.BatchEmployeeStatuteEmployee",
+     "title_fa": "کارمندان حکم کارگزینی گروهی",
+     "why": "نام جدول",
+     "score": 9.37064950892234
+    },
+    {
+     "full_name": "HCM3.EmployeeEmploymentNumber",
+     "title_fa": "کد مستخدم کارمند",
+     "why": "نام جدول",
+     "score": 9.274051046991488
+    },
+    {
+     "full_name": "FMK.Lookup",
+     "title_fa": "فهرست",
+     "why": "نام جدول",
+     "score": 9.07285069273991
+    },
+    {
+     "full_name": "HCM3.BatchCorrectiveEmployeeStatuteEmployee",
+     "title_fa": "کارمندان حکم اصلاحی گروهی",
+     "why": "نام جدول",
+     "score": 9.035950909466383
+    },
+    {
+     "full_name": "FMK.LookupLocale",
+     "title_fa": "زبان فهرست",
+     "why": "نام جدول",
+     "score": 7.776561099654868
+    },
+    {
+     "full_name": "HCM3.Voucher",
+     "title_fa": "سند حسابداری",
+     "why": "مرتبط با HCM3.VoucherEmployee",
+     "score": 7.352589118480433
+    },
+    {
+     "full_name": "FIN3.SeasonalNationalIDMap",
+     "title_fa": "نگاشت شناسهٔ ملی فصلی",
+     "why": "نام جدول",
+     "score": 7.27080944078344
+    },
+    {
+     "full_name": "FIN3.LookupMap",
+     "title_fa": "نگاشت فهرست",
+     "why": "نام جدول",
+     "score": 7.100258336497791
+    },
+    {
+     "full_name": "LGS3.PriceList",
+     "title_fa": "فهرست بها",
+     "why": "نام جدول",
+     "score": 7.100258336497791
+    },
+    {
+     "full_name": "ECM.Letter",
+     "title_fa": "نامه",
+     "why": "نام جدول",
+     "score": 6.846758349550699
+    },
+    {
+     "full_name": "HCM3.TransferVoucher",
+     "title_fa": "سند حسابداری انتقالی",
+     "why": "مرتبط با HCM3.TransferVoucherEmployee",
+     "score": 6.827353108321829
+    },
+    {
+     "full_name": "LGS3.PriceListItem",
+     "title_fa": "قلم فهرست بها",
+     "why": "نام جدول",
+     "score": 6.532175801390557
+    },
+    {
+     "full_name": "HCM3.EmployeePriorPeriod",
+     "title_fa": "اطلاعات بازخرید سنوات کارمند",
+     "why": "نام جدول",
+     "score": 6.399241146820362
+    },
+    {
+     "full_name": "HCM3.EmployeeRelatedOrganization",
+     "title_fa": "سازمانهای مرتبط با کارمند",
+     "why": "نام جدول",
+     "score": 6.399241146820362
+    },
+    {
+     "full_name": "HCM3.EmployeeRetirementForm",
+     "title_fa": "تکمیل اطلاعات بازنشستگی کارمند",
+     "why": "نام جدول",
+     "score": 6.399241146820362
+    },
+    {
+     "full_name": "HCM3.EmployeeRelatedDL",
+     "title_fa": "تفصیلی های مرتبط با کارمند",
+     "why": "نام جدول",
+     "score": 6.162208313100793
+    }
+   ],
+   "select_prompt": "## جدول‌های موجود\nHCM3.Employee — کارمند  · انتخاب شما\nHCM3.CompensationComplementRequestEmployee — کارمند  · کلیدواژهٔ «کارمند»\nGNR3.Party — طرف حساب  · مرتبط با HCM3.Employee\nHCM3.EmployeeAppraisal — سوابق سنجش کارمند  · مرتبط با HCM3.Employee\nHCM3.EmployeeAppraiserItem — قلم ارزیاب کارمند  · مرتبط با HCM3.Employee\nHCM3.EmployeeBranchInfo — شعبه کارمند  · مرتبط با HCM3.Employee\nHCM3.CompensationComplementRequest — درخواست متمم پرداخت  · مرتبط با HCM3.CompensationComplementRequestEmployee\nHCM3.VoucherEmployee — کارمندان مرتبط با سند حسابداری  · نام جدول\nHCM3.EmployeeGroupEmployee — جزئیات گروه کارمند  · کلیدواژهٔ «Employee»\nHCM3.TransferVoucherEmployee — کارمندان مرتبط با سند حسابداری انتقالی  · نام جدول\nHCM3.EmployeeAppraiser — ارزیاب کارمند  · کلیدواژهٔ «Employee»\nHCM3.EmployeeCondition — شرط کارمند  · کلیدواژهٔ «Employee»\nHCM3.EmployeeGroup — گروه کارمند  · کلیدواژهٔ «Employee»\nHCM3.EmployeeInfo — اطلاعات کارمند  · کلیدواژهٔ «Employee»\nHCM3.EmployeeRelative — بستگان کارمند  · کلیدواژهٔ «Employee»\nHCM3.EmployeeSignature — امضا کارمند  · کلیدواژهٔ «Employee»\nHCM3.OilVoucherFileRep — کارمندان رسمی  · نام جدول\nHCM3.OilVoucherFileWf — کارمندان قراردادی  · نام جدول\nHCM3.WorkingGroupEmployee — کارمندان گروه کاری  · نام جدول\nHCM3.BatchMissionDocumentEmployee — کارمندان ماموریت گروهی  · نام جدول\nHCM3.BatchEmployeeStatuteEmployee — کارمندان حکم کارگزینی گروهی  · نام جدول\nHCM3.EmployeeEmploymentNumber — کد مستخدم کارمند  · نام جدول\nFMK.Lookup — فهرست  · نام جدول\nHCM3.BatchCorrectiveEmployeeStatuteEmployee — کارمندان حکم اصلاحی گروهی  · نام جدول\nFMK.LookupLocale — زبان فهرست  · نام جدول\nHCM3.Voucher — سند حسابداری  · مرتبط با HCM3.VoucherEmployee\nFIN3.SeasonalNationalIDMap — نگاشت شناسهٔ ملی فصلی  · نام جدول\nFIN3.LookupMap — نگاشت فهرست  · نام جدول\nLGS3.PriceList — فهرست بها  · نام جدول\nECM.Letter — نامه  · نام جدول\nHCM3.TransferVoucher — سند حسابداری انتقالی  · مرتبط با HCM3.TransferVoucherEmployee\nLGS3.PriceListItem — قلم فهرست بها  · نام جدول\nHCM3.EmployeePriorPeriod — اطلاعات بازخرید سنوات کارمند  · نام جدول\nHCM3.EmployeeRelatedOrganization — سازمانهای مرتبط با کارمند  · نام جدول\nHCM3.EmployeeRetirementForm — تکمیل اطلاعات بازنشستگی کارمند  · نام جدول\nHCM3.EmployeeRelatedDL — تفصیلی های مرتبط با کارمند  · نام جدول\n\n## پیوندهای مستقیم میان این جدول‌ها\nHCM3.CompensationComplementRequestEmployee.EmployeeRef → HCM3.Employee\nHCM3.Employee.PartyRef → GNR3.Party\nHCM3.EmployeeAppraisal.EmployeeRef → HCM3.Employee\nHCM3.EmployeeAppraiserItem.EmployeeRef → HCM3.Employee\nHCM3.EmployeeBranchInfo.EmployeeRef → HCM3.Employee\nHCM3.VoucherEmployee.EmployeeRef → HCM3.Employee\nHCM3.EmployeeGroupEmployee.EmployeeRef → HCM3.Employee\nHCM3.TransferVoucherEmployee.EmployeeRef → HCM3.Employee\nHCM3.EmployeeInfo.EmployeeRef → HCM3.Employee\nHCM3.EmployeeRelative.EmployeeRef → HCM3.Employee\nHCM3.EmployeeRelative.ParentEmployeeRef → HCM3.Employee\nHCM3.EmployeeSignature.EmployeeRef → HCM3.Employee\nHCM3.WorkingGroupEmployee.EmployeeRef → HCM3.Employee\nHCM3.BatchMissionDocumentEmployee.EmployeeRef → HCM3.Employee\nHCM3.BatchEmployeeStatuteEmployee.EmployeeRef → HCM3.Employee\nHCM3.EmployeeEmploymentNumber.EmployeeRef → HCM3.Employee\nHCM3.BatchCorrectiveEmployeeStatuteEmployee.EmployeeRef → HCM3.Employee\nHCM3.EmployeePriorPeriod.EmployeeRef → HCM3.Employee\nHCM3.EmployeeRelatedOrganization.EmployeeRef → HCM3.Employee\nHCM3.EmployeeRetirementForm.EmployeeRef → HCM3.Employee\nHCM3.EmployeeRelatedDL.EmployeeRef → HCM3.Employee\nHCM3.CompensationComplementRequestEmployee.CompensationComplementRequestRef → HCM3.CompensationComplementRequest\nHCM3.EmployeeInfo.PartyRef → GNR3.Party\nFIN3.SeasonalNationalIDMap.PartyRef → GNR3.Party\nFIN3.SeasonalNationalIDMap.TaxPayerRef → GNR3.Party\nLGS3.PriceListItem.PartyRef → GNR3.Party\nHCM3.EmployeeAppraiserItem.EmployeeAppraiserRef → HCM3.EmployeeAppraiser\nHCM3.VoucherEmployee.VoucherRef → HCM3.Voucher\nHCM3.EmployeeGroupEmployee.EmployeeGroupRef → HCM3.EmployeeGroup\nHCM3.TransferVoucherEmployee.TransferVoucherRef → HCM3.TransferVoucher\nFMK.LookupLocale.LookupRef → FMK.Lookup\nLGS3.PriceListItem.PriceListRef → LGS3.PriceList\n\n## جدول‌هایی که کاربر خودش انتخاب کرده\nHCM3.Employee\n\n## پرسش\nفهرست کارمندان با نام و کد ملی"
+  },
+  {
+   "question": "حالا فقط امسال",
+   "keywords": [],
+   "previous": [
+    "FIN3.Voucher"
+   ],
+   "pinned": [
+    "NOPE.Missing",
+    "FIN3.Voucher"
+   ],
+   "goal": "",
+   "pins": [
+    "FIN3.Voucher"
+   ],
+   "candidates": [
+    {
+     "full_name": "FIN3.Voucher",
+     "title_fa": "سند حسابداری",
+     "why": "انتخاب شما",
+     "score": 3.0
+    },
+    {
+     "full_name": "FIN3.Account",
+     "title_fa": "حساب",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 1.7999999999999998
+    },
+    {
+     "full_name": "FIN3.VoucherType",
+     "title_fa": "نوع سند",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 1.7999999999999998
+    },
+    {
+     "full_name": "GNR3.Branch",
+     "title_fa": "شعبه",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 1.7999999999999998
+    },
+    {
+     "full_name": "GNR3.FiscalYear",
+     "title_fa": "دوره مالی",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 1.7999999999999998
+    },
+    {
+     "full_name": "FIN3.VoucherItem",
+     "title_fa": "قلم سند حسابداری",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 1.7999999999999998
+    },
+    {
+     "full_name": "FIN3.VoucherItemOffline",
+     "title_fa": "قلم سند حسابداری آفلاین",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 1.7999999999999998
+    },
+    {
+     "full_name": "FIN3.VoucherLock",
+     "title_fa": "VoucherLock",
+     "why": "مرتبط با FIN3.Voucher",
+     "score": 1.7999999999999998
+    }
+   ],
+   "select_prompt": "## جدول‌های موجود\nFIN3.Voucher — سند حسابداری  · انتخاب شما\nFIN3.Account — حساب  · مرتبط با FIN3.Voucher\nFIN3.VoucherType — نوع سند  · مرتبط با FIN3.Voucher\nGNR3.Branch — شعبه  · مرتبط با FIN3.Voucher\nGNR3.FiscalYear — دوره مالی  · مرتبط با FIN3.Voucher\nFIN3.VoucherItem — قلم سند حسابداری  · مرتبط با FIN3.Voucher\nFIN3.VoucherItemOffline — قلم سند حسابداری آفلاین  · مرتبط با FIN3.Voucher\nFIN3.VoucherLock — VoucherLock  · مرتبط با FIN3.Voucher\n\n## پیوندهای مستقیم میان این جدول‌ها\nFIN3.Voucher.AccountRef → FIN3.Account\nFIN3.Voucher.VoucherTypeRef → FIN3.VoucherType\nFIN3.Voucher.BranchRef → GNR3.Branch\nFIN3.Voucher.FiscalYearRef → GNR3.FiscalYear\nFIN3.VoucherItem.VoucherRef → FIN3.Voucher\nFIN3.VoucherItemOffline.VoucherRef → FIN3.Voucher\nFIN3.VoucherLock.VoucherRef → FIN3.Voucher\nFIN3.VoucherItemOffline.VoucherTypeRef → FIN3.VoucherType\nFIN3.VoucherItem.BranchRef → GNR3.Branch\nFIN3.VoucherItemOffline.BranchRef → GNR3.Branch\nFIN3.VoucherItemOffline.FiscalYearRef → GNR3.FiscalYear\n\n## جدول‌هایی که کاربر خودش انتخاب کرده\nFIN3.Voucher\n\n## پرسش\nحالا فقط امسال"
+  }
+ ],
+ "contexts": [
+  {
+   "chosen": [
+    "FIN3.Voucher",
+    "FIN3.VoucherItem",
+    "GNR3.Party"
+   ],
+   "context": "### جدول‌ها — فقط از همین‌ها و فقط با همین ستون‌ها استفاده کن\n\n[FIN3].[Voucher] — سند حسابداری\n  کلید اصلی: VoucherID\n  ستون‌ها: VoucherID:bigint, LedgerRef:bigint(دفتر کل), FiscalYearRef:bigint(سال مالی), BranchRef:bigint(شعبه), Number:int(شماره), Sequence:int, DailyNumber:int, AuxiliaryNumber:nvarchar(16), Date:datetime(تاریخ), VoucherTypeRef:bigint, Creator:bigint(ایجادکننده), CreationDate:datetime(تاریخ ایجاد), LastModifier:bigint(آخرین تغییردهنده), LastModificationDate:datetime(تاریخ آخرین تغییر), Description:nvarchar(512)(شرح), Description_En:nvarchar(512)(شرح (انگلیسی)), State:int(وضعیت), IsTemporary:bit, IsCurrencyBased:bit, IsExternal:bit, ReferenceNumber:bigint(شمارهٔ مرجع), ShowCurrencyFields:bit, IsReadonly:bit, Version:timestamp(نسخه), ReviewNumber:int, ReviewDate:datetime\n  مقادیر State: 1=موقت, 2=یادداشت, 32=قطعی شده, 4=بررسی شده, 8=در حال بررسی\n  ارجاع‌ها: AccountRef→[FIN3].[Account], BranchRef→[GNR3].[Branch], FiscalYearRef→[GNR3].[FiscalYear], LedgerRef→[GNR3].[Ledger], VoucherTypeRef→[FIN3].[VoucherType]\n  هشدار: این جدول در نصب فعلی داده ندارد — احتمالاً ماژولش خریداری نشده.\n  هشدار: ستون FiscalYearRef دارد — فیلتر سال مالی الزامی است، وگرنه خروجی بی‌خطا ولی غلط می‌شود.\n[FIN3].[VoucherItem] — قلم سند حسابداری\n  کلید اصلی: VoucherItemID\n  ستون‌ها: VoucherItemID:bigint, VoucherRef:bigint(سند), BranchRef:bigint(شعبه), RowNumber:int(شمارهٔ ردیف), AccountGroupRef:bigint, GLRef:bigint, SLRef:bigint(معین), SLCode:nvarchar(64)(کد معین), Debit:decimal(28,6)(بدهکار), Credit:decimal(28,6)(اعتبار), CurrencyRef:bigint(ارز), BaseCurrencyRef:bigint(ارز ارسالی), TargetCurrencyRef:bigint, TargetCurrencyDebit:decimal(28,6), TargetCurrencyCredit:decimal(28,6), IsCurrencyBased:bit, OperationalCurrencyExchangeRateRef:bigint(نرخ تبادل ارز عملیاتی), OperationalCurrencyExchangeRate:decimal(28,6)(نرخ تبادل ارز عملیاتی), BaseCurrencyExchangeRateRef:bigint(نرخ تبادل ارز ارسالی), BaseCurrencyExchangeRate:decimal(28,6)(نرخ تبادل ارز ارسالی), CurrencyDebit:decimal(28,6), CurrencyCredit:decimal(28,6), Description:nvarchar(512)(شرح), Description_En:nvarchar(512)(شرح (انگلیسی)), FollowUpNumber:nvarchar(64), FollowUpDate:datetime, Quantity:decimal(28,6)(مقدار), DLLevel4:nvarchar(64)(level4 تفصیلی), DLLevel5:nvarchar(64)(level5 تفصیلی), DLLevel6:nvarchar(64)(level6 تفصیلی), DLLevel7:nvarchar(64)(level7 تفصیلی), DLLevel8:nvarchar(64)(level8 تفصیلی), DLLevel9:nvarchar(64)(level9 تفصیلی), DLLevel10:nvarchar(64)(level10 تفصیلی), DLLevel11:nvarchar(64)(level11 تفصیلی), DLLevel12:nvarchar(64)(level12 تفصیلی), DLLevel13:nvarchar(64)(level13 تفصیلی), DLLevel14:nvarchar(64)(level14 تفصیلی), DLLevel15:nvarchar(64)(level15 تفصیلی), DLLevel16:nvarchar(64)(level16 تفصیلی), DLLevel17:nvarchar(64)(level17 تفصیلی), DLLevel18:nvarchar(64)(level18 تفصیلی), DLLevel19:nvarchar(64)(level19 تفصیلی), DLLevel20:nvarchar(64)(level20 تفصیلی), DLTypeRef4:bigint(ref4 نوع تفصیلی), DLTypeRef5:bigint(ref5 نوع تفصیلی), DLTypeRef6:bigint(ref6 نوع تفصیلی), DLTypeRef7:bigint(ref7 نوع تفصیلی), DLTypeRef8:bigint(ref8 نوع تفصیلی), DLTypeRef9:bigint(ref9 نوع تفصیلی), DLTypeRef10:bigint, DLTypeRef11:bigint, DLTypeRef12:bigint, DLTypeRef13:bigint, DLTypeRef14:bigint, DLTypeRef15:bigint, DLTypeRef16:bigint, DLTypeRef17:bigint, DLTypeRef18:bigint, DLTypeRef19:bigint, DLTypeRef20:bigint, TaxAccountType:int, TaxStateType:int, TransactionType:int, PurchaseOrSale:int, ItemOrService:int, PartyRef:bigint(طرف حساب), TaxAmount:decimal(28,6), TollAmount:decimal(28,6), Version:timestamp(نسخه), PeriodNature:int, IsTaxPrepaymentUnrefundable:bit, IsTollPrepaymentUnrefundable:bit\n  مقادیر TaxAccountType: 1=مالیات بر ارزش افزوده پرداختنی, 2=عوارض پرداختنی, 3=پیش پرداخت مالیات بر ارزش افزوده, 4=پیش پرداخت عوارض, 5=مالیات تکلیفی\n  مقادیر TransactionType: 1=داخلی, 2=خارجی\n  ارجاع‌ها: AccountGroupRef→[FIN3].[AccountGroup], BaseCurrencyExchangeRateRef/OperationalCurrencyExchangeRateRef→[GNR3].[CurrencyExchangeRate], BaseCurrencyRef/CurrencyRef/TargetCurrencyRef→[GNR3].[Currency], BranchRef→[GNR3].[Branch], DLLevel10/DLLevel11/DLLevel12/…→[FIN3].[DL], DLTypeRef10/DLTypeRef11/DLTypeRef12/…→[FIN3].[DLType], GLRef→[FIN3].[GL], PartyRef→[GNR3].[Party], SLRef→[FIN3].[SL], VoucherRef→[FIN3].[Voucher]\n  هشدار: این جدول در نصب فعلی داده ندارد — احتمالاً ماژولش خریداری نشده.\n[GNR3].[Party] — طرف حساب\n  کلید اصلی: PartyID\n  ستون‌ها: PartyID:bigint, Title:int(عنوان), FirstName:nvarchar(50), LastName:nvarchar(50), FullName:nvarchar(101), Alias:nvarchar(50), NationalID:nvarchar(20), Gender:int, Nationality:nvarchar(20), Allegiance:nvarchar(20), Religion:int, Subreligion:int, Mobile:nvarchar(20), Email:nvarchar(50), IDNumber:nvarchar(20), IDSerial:nvarchar(20), FatherName:nvarchar(50), BirthPlaceRef:bigint, BirthDate:datetime, IssuanceDate:datetime, IssuancePlaceRef:bigint, CompanyCode:nvarchar(20), Abbreviation:nchar(10), EconomicCode:nvarchar(20), RegistrationCode:nvarchar(20), CompanyType:int, ActivityType:nvarchar(50), Website:nvarchar(30), ReferenceCompany:nvarchar(50), Group:nvarchar(50), CompanyName:nvarchar(100), Number:nvarchar(50)(شماره), Type:int(نوع), Version:timestamp(نسخه), FirstName_EN:nvarchar(50), LastName_EN:nvarchar(50), CompanyName_EN:nvarchar(100), Creator:bigint(ایجادکننده), CreationDate:datetime(تاریخ ایجاد), LastModifier:bigint(آخرین تغییردهنده), LastModificationDate:datetime(تاریخ آخرین تغییر), Tel:nvarchar(20), FidaRegistration:nvarchar(20), MaritalStatus:int, EducationDegree:int, MarriageDate:datetime, VATCertificateValidityDate:datetime, IsPharmaceuticalSupplier:bit, FullName_EN:nvarchar(101)\n  مقادیر CompanyType: 0=سهامی عام, 1=سهامی خاص, 10=?, 2=با مسئولیت محدود, 3=تعاونی, 4=سازمان, 5=اداره کل, 6=ارگان دولتی, 7=وزارتخانه, 8=تضامنی, 9=سایر\n  مقادیر MaritalStatus: 1=مجرد, 2=متأهل, 3=معیل, 4=سایر\n  مقادیر Type: 0=شخص, 1=شرکت\n  ارجاع‌ها: BirthPlaceRef/IssuancePlaceRef→[GNR3].[RegionalDivision]\n  هشدار: این جدول در نصب فعلی داده ندارد — احتمالاً ماژولش خریداری نشده.\n\n### پیوندهای شناخته‌شده — شرط JOIN را عیناً از این‌جا بردار\n\n[FIN3].[Voucher].[VoucherID] = [FIN3].[VoucherItem].[VoucherRef]\n[FIN3].[VoucherItem].[PartyRef] = [GNR3].[Party].[PartyID]",
+   "tables": [
+    "FIN3.Voucher",
+    "FIN3.VoucherItem",
+    "GNR3.Party"
+   ],
+   "joins": [
+    "[FIN3].[Voucher].[VoucherID] = [FIN3].[VoucherItem].[VoucherRef]",
+    "[FIN3].[VoucherItem].[PartyRef] = [GNR3].[Party].[PartyID]"
+   ]
+  },
+  {
+   "chosen": [
+    "HCM3.Employee",
+    "GNR3.Party"
+   ],
+   "context": "### جدول‌ها — فقط از همین‌ها و فقط با همین ستون‌ها استفاده کن\n\n[HCM3].[Employee] — کارمند\n  کلید اصلی: EmployeeID\n  ستون‌ها: EmployeeID:bigint, PartyRef:bigint(طرف حساب), Code:nvarchar(100)(کد), WorkIDNumber:nvarchar(100), EmploymentNumber:nvarchar(100), MilitaryServiceStatusCode:int, MilitaryUnitCode:int, MilitaryBranchCode:int, ExemptionTypeCode:int, MilitaryStartDate:datetime, MilitaryEndDate:datetime, MilitaryDuration:int, MilitaryEducationDegreeCode:int, MilitaryAttachment:varbinary(max), MilitaryAttachmentFileName:nvarchar(512), Status:int(وضعیت), MailAttachmentPassword:nvarchar(max), MonthLengthType:int, DeathDate:datetime, DeathAnnouncingDate:datetime, FirstName:nvarchar(50), LastName:nvarchar(50), FullName:nvarchar(101), Extra1Code:int, Extra2Code:int, Version:timestamp(نسخه), CreationDate:datetime(تاریخ ایجاد), Creator:bigint(ایجادکننده), LastModificationDate:datetime(تاریخ آخرین تغییر), LastModifier:bigint(آخرین تغییردهنده)\n  مقادیر MonthLengthType: 2=ماه 30 روزه\n  مقادیر Status: 1=جدید, 10=وظیفه بگیر غیرفعال, 2=فعال, 3=غیر فعال, 4=معلق, 5=مرخصی پزشکی, 6=بازنشسته, 7=مستمری بگیر فعال, 8=مستمری بگیر غیرفعال, 9=وظیفه بگیر فعال\n  ارجاع‌ها: PartyRef→[GNR3].[Party]\n  هشدار: این جدول در نصب فعلی داده ندارد — احتمالاً ماژولش خریداری نشده.\n[GNR3].[Party] — طرف حساب\n  کلید اصلی: PartyID\n  ستون‌ها: PartyID:bigint, Title:int(عنوان), FirstName:nvarchar(50), LastName:nvarchar(50), FullName:nvarchar(101), Alias:nvarchar(50), NationalID:nvarchar(20), Gender:int, Nationality:nvarchar(20), Allegiance:nvarchar(20), Religion:int, Subreligion:int, Mobile:nvarchar(20), Email:nvarchar(50), IDNumber:nvarchar(20), IDSerial:nvarchar(20), FatherName:nvarchar(50), BirthPlaceRef:bigint, BirthDate:datetime, IssuanceDate:datetime, IssuancePlaceRef:bigint, CompanyCode:nvarchar(20), Abbreviation:nchar(10), EconomicCode:nvarchar(20), RegistrationCode:nvarchar(20), CompanyType:int, ActivityType:nvarchar(50), Website:nvarchar(30), ReferenceCompany:nvarchar(50), Group:nvarchar(50), CompanyName:nvarchar(100), Number:nvarchar(50)(شماره), Type:int(نوع), Version:timestamp(نسخه), FirstName_EN:nvarchar(50), LastName_EN:nvarchar(50), CompanyName_EN:nvarchar(100), Creator:bigint(ایجادکننده), CreationDate:datetime(تاریخ ایجاد), LastModifier:bigint(آخرین تغییردهنده), LastModificationDate:datetime(تاریخ آخرین تغییر), Tel:nvarchar(20), FidaRegistration:nvarchar(20), MaritalStatus:int, EducationDegree:int, MarriageDate:datetime, VATCertificateValidityDate:datetime, IsPharmaceuticalSupplier:bit, FullName_EN:nvarchar(101)\n  مقادیر CompanyType: 0=سهامی عام, 1=سهامی خاص, 10=?, 2=با مسئولیت محدود, 3=تعاونی, 4=سازمان, 5=اداره کل, 6=ارگان دولتی, 7=وزارتخانه, 8=تضامنی, 9=سایر\n  مقادیر MaritalStatus: 1=مجرد, 2=متأهل, 3=معیل, 4=سایر\n  مقادیر Type: 0=شخص, 1=شرکت\n  ارجاع‌ها: BirthPlaceRef/IssuancePlaceRef→[GNR3].[RegionalDivision]\n  هشدار: این جدول در نصب فعلی داده ندارد — احتمالاً ماژولش خریداری نشده.\n\n### پیوندهای شناخته‌شده — شرط JOIN را عیناً از این‌جا بردار\n\n[HCM3].[Employee].[PartyRef] = [GNR3].[Party].[PartyID]",
+   "tables": [
+    "HCM3.Employee",
+    "GNR3.Party"
+   ],
+   "joins": [
+    "[HCM3].[Employee].[PartyRef] = [GNR3].[Party].[PartyID]"
+   ]
+  },
+  {
+   "chosen": [
+    "FIN3.VoucherItem",
+    "HCM3.Employee"
+   ],
+   "context": "### جدول‌ها — فقط از همین‌ها و فقط با همین ستون‌ها استفاده کن\n\n[FIN3].[VoucherItem] — قلم سند حسابداری\n  کلید اصلی: VoucherItemID\n  ستون‌ها: VoucherItemID:bigint, VoucherRef:bigint(سند), BranchRef:bigint(شعبه), RowNumber:int(شمارهٔ ردیف), AccountGroupRef:bigint, GLRef:bigint, SLRef:bigint(معین), SLCode:nvarchar(64)(کد معین), Debit:decimal(28,6)(بدهکار), Credit:decimal(28,6)(اعتبار), CurrencyRef:bigint(ارز), BaseCurrencyRef:bigint(ارز ارسالی), TargetCurrencyRef:bigint, TargetCurrencyDebit:decimal(28,6), TargetCurrencyCredit:decimal(28,6), IsCurrencyBased:bit, OperationalCurrencyExchangeRateRef:bigint(نرخ تبادل ارز عملیاتی), OperationalCurrencyExchangeRate:decimal(28,6)(نرخ تبادل ارز عملیاتی), BaseCurrencyExchangeRateRef:bigint(نرخ تبادل ارز ارسالی), BaseCurrencyExchangeRate:decimal(28,6)(نرخ تبادل ارز ارسالی), CurrencyDebit:decimal(28,6), CurrencyCredit:decimal(28,6), Description:nvarchar(512)(شرح), Description_En:nvarchar(512)(شرح (انگلیسی)), FollowUpNumber:nvarchar(64), FollowUpDate:datetime, Quantity:decimal(28,6)(مقدار), DLLevel4:nvarchar(64)(level4 تفصیلی), DLLevel5:nvarchar(64)(level5 تفصیلی), DLLevel6:nvarchar(64)(level6 تفصیلی), DLLevel7:nvarchar(64)(level7 تفصیلی), DLLevel8:nvarchar(64)(level8 تفصیلی), DLLevel9:nvarchar(64)(level9 تفصیلی), DLLevel10:nvarchar(64)(level10 تفصیلی), DLLevel11:nvarchar(64)(level11 تفصیلی), DLLevel12:nvarchar(64)(level12 تفصیلی), DLLevel13:nvarchar(64)(level13 تفصیلی), DLLevel14:nvarchar(64)(level14 تفصیلی), DLLevel15:nvarchar(64)(level15 تفصیلی), DLLevel16:nvarchar(64)(level16 تفصیلی), DLLevel17:nvarchar(64)(level17 تفصیلی), DLLevel18:nvarchar(64)(level18 تفصیلی), DLLevel19:nvarchar(64)(level19 تفصیلی), DLLevel20:nvarchar(64)(level20 تفصیلی), DLTypeRef4:bigint(ref4 نوع تفصیلی), DLTypeRef5:bigint(ref5 نوع تفصیلی), DLTypeRef6:bigint(ref6 نوع تفصیلی), DLTypeRef7:bigint(ref7 نوع تفصیلی), DLTypeRef8:bigint(ref8 نوع تفصیلی), DLTypeRef9:bigint(ref9 نوع تفصیلی), DLTypeRef10:bigint, DLTypeRef11:bigint, DLTypeRef12:bigint, DLTypeRef13:bigint, DLTypeRef14:bigint, DLTypeRef15:bigint, DLTypeRef16:bigint, DLTypeRef17:bigint, DLTypeRef18:bigint, DLTypeRef19:bigint, DLTypeRef20:bigint, TaxAccountType:int, TaxStateType:int, TransactionType:int, PurchaseOrSale:int, ItemOrService:int, PartyRef:bigint(طرف حساب), TaxAmount:decimal(28,6), TollAmount:decimal(28,6), Version:timestamp(نسخه), PeriodNature:int, IsTaxPrepaymentUnrefundable:bit, IsTollPrepaymentUnrefundable:bit\n  مقادیر TaxAccountType: 1=مالیات بر ارزش افزوده پرداختنی, 2=عوارض پرداختنی, 3=پیش پرداخت مالیات بر ارزش افزوده, 4=پیش پرداخت عوارض, 5=مالیات تکلیفی\n  مقادیر TransactionType: 1=داخلی, 2=خارجی\n  ارجاع‌ها: AccountGroupRef→[FIN3].[AccountGroup], BaseCurrencyExchangeRateRef/OperationalCurrencyExchangeRateRef→[GNR3].[CurrencyExchangeRate], BaseCurrencyRef/CurrencyRef/TargetCurrencyRef→[GNR3].[Currency], BranchRef→[GNR3].[Branch], DLLevel10/DLLevel11/DLLevel12/…→[FIN3].[DL], DLTypeRef10/DLTypeRef11/DLTypeRef12/…→[FIN3].[DLType], GLRef→[FIN3].[GL], PartyRef→[GNR3].[Party], SLRef→[FIN3].[SL], VoucherRef→[FIN3].[Voucher]\n  هشدار: این جدول در نصب فعلی داده ندارد — احتمالاً ماژولش خریداری نشده.\n[HCM3].[Employee] — کارمند\n  کلید اصلی: EmployeeID\n  ستون‌ها: EmployeeID:bigint, PartyRef:bigint(طرف حساب), Code:nvarchar(100)(کد), WorkIDNumber:nvarchar(100), EmploymentNumber:nvarchar(100), MilitaryServiceStatusCode:int, MilitaryUnitCode:int, MilitaryBranchCode:int, ExemptionTypeCode:int, MilitaryStartDate:datetime, MilitaryEndDate:datetime, MilitaryDuration:int, MilitaryEducationDegreeCode:int, MilitaryAttachment:varbinary(max), MilitaryAttachmentFileName:nvarchar(512), Status:int(وضعیت), MailAttachmentPassword:nvarchar(max), MonthLengthType:int, DeathDate:datetime, DeathAnnouncingDate:datetime, FirstName:nvarchar(50), LastName:nvarchar(50), FullName:nvarchar(101), Extra1Code:int, Extra2Code:int, Version:timestamp(نسخه), CreationDate:datetime(تاریخ ایجاد), Creator:bigint(ایجادکننده), LastModificationDate:datetime(تاریخ آخرین تغییر), LastModifier:bigint(آخرین تغییردهنده)\n  مقادیر MonthLengthType: 2=ماه 30 روزه\n  مقادیر Status: 1=جدید, 10=وظیفه بگیر غیرفعال, 2=فعال, 3=غیر فعال, 4=معلق, 5=مرخصی پزشکی, 6=بازنشسته, 7=مستمری بگیر فعال, 8=مستمری بگیر غیرفعال, 9=وظیفه بگیر فعال\n  ارجاع‌ها: PartyRef→[GNR3].[Party]\n  هشدار: این جدول در نصب فعلی داده ندارد — احتمالاً ماژولش خریداری نشده.\n[GNR3].[Party] — طرف حساب\n  کلید اصلی: PartyID\n  ستون‌ها: PartyID:bigint, Title:int(عنوان), FirstName:nvarchar(50), LastName:nvarchar(50), FullName:nvarchar(101), Alias:nvarchar(50), NationalID:nvarchar(20), Gender:int, Nationality:nvarchar(20), Allegiance:nvarchar(20), Religion:int, Subreligion:int, Mobile:nvarchar(20), Email:nvarchar(50), IDNumber:nvarchar(20), IDSerial:nvarchar(20), FatherName:nvarchar(50), BirthPlaceRef:bigint, BirthDate:datetime, IssuanceDate:datetime, IssuancePlaceRef:bigint, CompanyCode:nvarchar(20), Abbreviation:nchar(10), EconomicCode:nvarchar(20), RegistrationCode:nvarchar(20), CompanyType:int, ActivityType:nvarchar(50), Website:nvarchar(30), ReferenceCompany:nvarchar(50), Group:nvarchar(50), CompanyName:nvarchar(100), Number:nvarchar(50)(شماره), Type:int(نوع), Version:timestamp(نسخه), FirstName_EN:nvarchar(50), LastName_EN:nvarchar(50), CompanyName_EN:nvarchar(100), Creator:bigint(ایجادکننده), CreationDate:datetime(تاریخ ایجاد), LastModifier:bigint(آخرین تغییردهنده), LastModificationDate:datetime(تاریخ آخرین تغییر), Tel:nvarchar(20), FidaRegistration:nvarchar(20), MaritalStatus:int, EducationDegree:int, MarriageDate:datetime, VATCertificateValidityDate:datetime, IsPharmaceuticalSupplier:bit, FullName_EN:nvarchar(101)\n  مقادیر CompanyType: 0=سهامی عام, 1=سهامی خاص, 10=?, 2=با مسئولیت محدود, 3=تعاونی, 4=سازمان, 5=اداره کل, 6=ارگان دولتی, 7=وزارتخانه, 8=تضامنی, 9=سایر\n  مقادیر MaritalStatus: 1=مجرد, 2=متأهل, 3=معیل, 4=سایر\n  مقادیر Type: 0=شخص, 1=شرکت\n  ارجاع‌ها: BirthPlaceRef/IssuancePlaceRef→[GNR3].[RegionalDivision]\n  هشدار: این جدول در نصب فعلی داده ندارد — احتمالاً ماژولش خریداری نشده.\n\n(جدول‌های GNR3.Party واسطهٔ پیوندند و برای همین آمده‌اند.)\n\n### پیوندهای شناخته‌شده — شرط JOIN را عیناً از این‌جا بردار\n\n[FIN3].[VoucherItem].[PartyRef] = [GNR3].[Party].[PartyID]\n[GNR3].[Party].[PartyID] = [HCM3].[Employee].[PartyRef]",
+   "tables": [
+    "FIN3.VoucherItem",
+    "HCM3.Employee",
+    "GNR3.Party"
+   ],
+   "joins": [
+    "[FIN3].[VoucherItem].[PartyRef] = [GNR3].[Party].[PartyID]",
+    "[GNR3].[Party].[PartyID] = [HCM3].[Employee].[PartyRef]"
+   ]
+  }
+ ]
+}

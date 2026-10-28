@@ -5,23 +5,30 @@ import {
   BadgeCheck,
   Bot,
   CircleSlash,
+  Compass,
+  Download,
   HelpCircle,
   KeyRound,
+  Layers,
   Lightbulb,
   Link2,
   ListOrdered,
   Loader2,
   MessageSquarePlus,
+  Pin,
+  Plus,
+  Search,
   Settings,
   Target,
   Square,
   Table2,
   Wand2,
+  X,
 } from "lucide-react";
 
-import { ASK_ASSISTANT, HAS_ASSISTANT, errorMessage, http } from "@/lib/api";
+import { ASK_ASSISTANT, CAN_DOWNLOAD, HAS_ASSISTANT, errorMessage, http } from "@/lib/api";
 import { cn, fa, faText } from "@/lib/utils";
-import { EmptyState, SqlBlock } from "@/components/primitives";
+import { CopyButton, EmptyState, SqlBlock } from "@/components/primitives";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -48,12 +55,76 @@ import { Textarea } from "@/components/ui/textarea";
 
   پرسش‌ها یک گفت‌وگویند: سه پرسش‌وپاسخ آخر همراه پرسش تازه می‌رود، تا
   «حالا فقط امسال» روی کوئری قبلی ساخته شود.
+
+  گفت‌وگو و جدول‌های سنجاق‌شده در localStorage می‌مانند: رفتن به زبانهٔ
+  جدول‌ها برای نگاه‌کردن به یک ستون نباید گفت‌وگو را پاک کند. جدول سنجاق‌شده
+  (از همین‌جا یا با دکمهٔ «پرسش از دستیار» در صفحهٔ جدول) همیشه در زمینهٔ
+  پاسخ هست، هرچه جست‌وجو پیدا کند.
 */
+
+const TURNS_KEY = "kavosh.assistant.turns.v1";
+const PINNED_KEY = "kavosh.assistant.pinned.v1";
+const MAX_SAVED_TURNS = 20;
+const MAX_PINNED = 5;
+
+function loadJson(key, fallback) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key) || "null");
+    return value ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function saveJson(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    /* حافظهٔ مرورگر پر یا بسته است — گفت‌وگو فقط در همین نشست می‌ماند */
+  }
+}
+
+/** گفت‌وگوی ذخیره‌شده؛ پرسشی که هنگام بستن نیمه‌کاره بود، همین را می‌گوید. */
+function loadTurns() {
+  const turns = loadJson(TURNS_KEY, []);
+  if (!Array.isArray(turns)) return [];
+  return turns
+    .filter((t) => t && typeof t.question === "string")
+    .map((t) => (t.running ? { ...t, running: false, error: t.error || "این پرسش نیمه‌کاره ماند." } : t));
+}
+
+function loadPinned() {
+  const pinned = loadJson(PINNED_KEY, []);
+  return Array.isArray(pinned) ? pinned.filter((p) => typeof p === "string").slice(0, MAX_PINNED) : [];
+}
+
+/** کل پاسخ به‌صورت متن — برای کپی در گزارش یا پیام. */
+function answerText(turn) {
+  const { question, result } = turn;
+  const parts = [`پرسش: ${question}`];
+  if (result?.note) parts.push(result.note.trim());
+  if (result?.sql) parts.push("```sql\n" + result.sql.trim() + "\n```");
+  return parts.join("\n\n");
+}
+
+function downloadSql(turn) {
+  const header = `-- ${turn.question.replace(/\s+/g, " ")}\n-- کاوشگر پایگاه داده — دستیار کوئری‌نویسی\n\n`;
+  const blob = new Blob([header + turn.result.sql.trim() + "\n"], { type: "application/sql;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "kavosh-query.sql";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
 
 const SAMPLES = [
   "فهرست کارمندان به همراه نام واحد سازمانی‌شان",
   "جمع بدهکار و بستانکار هر سند حسابداری در سال مالی جاری",
   "سندهای پرداختی که وضعیتشان تأییدنشده است",
+  "گردش حساب هر طرف حساب به تفکیک ماه",
 ];
 
 const STEP_LABEL = {
@@ -227,7 +298,7 @@ function splitSections(note) {
   return sections.map((sec) => ({ title: sec.title, body: sec.lines.join("\n").trim() }));
 }
 
-const SECTION_ICON = { برداشت: Target, مراحل: ListOrdered, "نکته‌ها": Lightbulb };
+const SECTION_ICON = { برداشت: Target, مراحل: ListOrdered, "نکته‌ها": Lightbulb, راهکار: Compass };
 
 function Inline({ text }) {
   // فقط `کد` و **پررنگ** — بقیهٔ مارک‌داون این‌جا لازم نیست
@@ -323,12 +394,38 @@ function Answer({ turn, onOpenTable, onClarify }) {
 
         {result?.sql && (
           <>
-            <SqlBlock sql={result.sql} title={`کوئری — ${fa(result.attempts)} تلاش`} />
+            <SqlBlock
+              sql={result.sql}
+              title={`کوئری — ${fa(result.attempts)} تلاش`}
+              actions={
+                CAN_DOWNLOAD && (
+                  <button
+                    type="button"
+                    onClick={() => downloadSql(turn)}
+                    title="ذخیره به‌صورت فایل .sql"
+                    className="inline-flex min-h-9 items-center justify-center gap-1 rounded-md border border-border bg-surface px-2.5 text-[11px] text-muted-foreground transition-colors hover:border-brand/45 hover:text-brand-text sm:min-h-8"
+                  >
+                    <Download className="h-3 w-3" />
+                    <span dir="ltr">.sql</span>
+                  </button>
+                )
+              }
+            />
             <Verdict check={result.check} />
           </>
         )}
 
         {after.map((sec, i) => <Section key={`a${i}`} {...sec} />)}
+
+        {result && !running && (
+          <div className="flex flex-wrap items-center justify-end gap-1.5">
+            <CopyButton
+              text={answerText(turn)}
+              label="کپی کل پاسخ"
+              message="کل پاسخ (توضیح و کوئری) کپی شد."
+            />
+          </div>
+        )}
 
         {/*
           چیپ‌ها جدول‌هایی‌اند که *خودِ کوئری* به آن‌ها اشاره کرده (خروجی
@@ -357,19 +454,36 @@ function Answer({ turn, onOpenTable, onClarify }) {
         )}
 
         {/* زمینه‌ای که مدل داشت — برای وقتی کاربر می‌خواهد بداند چرا این کوئری */}
-        {result?.joins?.length > 0 && (
+        {(result?.tables?.length > 0 || result?.joins?.length > 0) && (
           <details className="rounded-md border border-border/70 bg-ink/30">
             <summary className="flex cursor-pointer list-none items-center gap-1.5 px-2.5 py-1.5 text-[10.5px] text-muted-foreground">
               <Link2 className="h-3 w-3" />
-              {fa(result.joins.length)} پیوندی که از دانش پایگاه داده به مدل داده شد
+              زمینهٔ داده‌شده به مدل: {fa(result.tables?.length || 0)} جدول و{" "}
+              {fa(result.joins?.length || 0)} پیوند از دانش پایگاه داده
             </summary>
-            <ul className="ltr space-y-0.5 border-t border-border/70 px-2.5 py-2 text-start">
-              {result.joins.map((j, i) => (
-                <li key={i} className="font-mono text-[10px] leading-relaxed text-muted-foreground">
-                  {j}
-                </li>
-              ))}
-            </ul>
+            {result.tables?.length > 0 && (
+              <div className="flex flex-wrap gap-1 border-t border-border/70 px-2.5 py-2">
+                {result.tables.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => onOpenTable(t)}
+                    className="ltr rounded border border-border/70 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors hover:border-brand/45 hover:text-brand-text"
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            )}
+            {result.joins?.length > 0 && (
+              <ul className="ltr space-y-0.5 border-t border-border/70 px-2.5 py-2 text-start">
+                {result.joins.map((j, i) => (
+                  <li key={i} className="font-mono text-[10px] leading-relaxed text-muted-foreground">
+                    {j}
+                  </li>
+                ))}
+              </ul>
+            )}
           </details>
         )}
       </div>
@@ -377,8 +491,158 @@ function Answer({ turn, onOpenTable, onClarify }) {
   );
 }
 
-export default function AssistantView({ onOpenTable, onOpenSettings, settingsVersion = 0 }) {
-  const [turns, setTurns] = useState([]);
+/**
+ * جدول‌های سنجاق‌شده و افزودنشان با جست‌وجو.
+ *
+ * وقتی کاربر خودش می‌داند گزارش از کدام جدول درمی‌آید، نباید منتظر بماند که
+ * جست‌وجو همان را پیدا کند. جدول سنجاق‌شده همیشه به مدل داده می‌شود و
+ * جدول‌های مرتبطش (مرجع‌ها و جزئیات) هم نامزد می‌شوند.
+ */
+function TablePicker({ pinned, onChange, disabled }) {
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const [hits, setHits] = useState([]);
+  const [busy, setBusy] = useState(false);
+  const request = useRef(0);
+
+  useEffect(() => {
+    if (!open || !q.trim()) {
+      setHits([]);
+      return undefined;
+    }
+    const id = ++request.current;
+    const t = setTimeout(async () => {
+      setBusy(true);
+      try {
+        const { data } = await http.get("/search", { params: { q: q.trim(), limit: 8 } });
+        if (id === request.current) setHits(data.results || []);
+      } catch {
+        if (id === request.current) setHits([]);
+      } finally {
+        if (id === request.current) setBusy(false);
+      }
+    }, 250);
+    return () => clearTimeout(t);
+  }, [q, open]);
+
+  const add = (full) => {
+    if (!pinned.includes(full)) onChange([...pinned, full].slice(0, MAX_PINNED));
+    setQ("");
+    setHits([]);
+    setOpen(false);
+  };
+
+  const full = pinned.length >= MAX_PINNED;
+
+  return (
+    <div className="mx-auto mb-1.5 w-full max-w-3xl">
+      <div className="flex flex-wrap items-center gap-1">
+        <span className="flex items-center gap-1 text-[10.5px] text-muted-foreground">
+          <Pin className="h-3 w-3" />
+          جدول‌های سنجاق‌شده:
+        </span>
+        {pinned.map((t) => (
+          <span
+            key={t}
+            className="ltr inline-flex items-center gap-1 rounded border border-brand/35 bg-brand/10 py-0.5 pe-0.5 ps-1.5 font-mono text-[10.5px] text-brand-text"
+          >
+            {t}
+            <button
+              type="button"
+              onClick={() => onChange(pinned.filter((p) => p !== t))}
+              disabled={disabled}
+              title="برداشتن"
+              className="rounded p-0.5 transition-colors hover:bg-brand/20"
+            >
+              <X className="h-3 w-3" />
+            </button>
+          </span>
+        ))}
+        {!pinned.length && !open && (
+          <span className="text-[10.5px] text-muted-foreground/80">هیچ — دستیار خودش پیدا می‌کند</span>
+        )}
+        {!open && !full && (
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            disabled={disabled}
+            className="inline-flex items-center gap-1 rounded border border-dashed border-border px-1.5 py-0.5 text-[10.5px] text-muted-foreground transition-colors hover:border-brand/45 hover:text-brand-text"
+          >
+            <Plus className="h-3 w-3" />
+            افزودن جدول
+          </button>
+        )}
+      </div>
+      {open && (
+        <div className="relative mt-1.5">
+          <div className="flex items-center gap-1.5 rounded-md border border-border bg-surface px-2">
+            {busy ? (
+              <Loader2 className="h-3.5 w-3.5 shrink-0 animate-spin text-muted-foreground" />
+            ) : (
+              <Search className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+            )}
+            <input
+              autoFocus
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setOpen(false);
+                if (e.key === "Enter" && hits[0]) {
+                  e.preventDefault();
+                  add(hits[0].full_name);
+                }
+              }}
+              placeholder="نام فارسی یا انگلیسی جدول، مثلاً «قلم سند» یا VoucherItem"
+              className="h-9 min-w-0 flex-1 bg-transparent text-[12px] text-foreground outline-none placeholder:text-muted-foreground"
+            />
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              title="بستن"
+              className="rounded p-1 text-muted-foreground hover:text-foreground"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </div>
+          {hits.length > 0 && (
+            <ul className="absolute inset-x-0 bottom-full z-20 mb-1 max-h-64 overflow-y-auto rounded-md border border-border bg-background shadow-lg">
+              {hits.map((h) => (
+                <li key={h.full_name}>
+                  <button
+                    type="button"
+                    onClick={() => add(h.full_name)}
+                    className="flex w-full items-center gap-2 px-2.5 py-1.5 text-start transition-colors hover:bg-surfaceHover"
+                  >
+                    <Table2 className="h-3.5 w-3.5 shrink-0 text-brand-text" />
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-[12px] text-foreground">
+                        {h.title_fa || h.full_name}
+                      </span>
+                      <span className="ltr block truncate text-start font-mono text-[10px] text-muted-foreground">
+                        {h.full_name}
+                      </span>
+                    </span>
+                    {h.has_data ? (
+                      <span className="shrink-0 text-[10px] text-ok">{fa(h.row_count || 0)} ردیف</span>
+                    ) : (
+                      <span className="shrink-0 text-[10px] text-warn">بی‌داده</span>
+                    )}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function AssistantView({
+  onOpenTable, onOpenSettings, settingsVersion = 0, pinnedFromRoute = "", onClearRoutePin,
+}) {
+  const [turns, setTurns] = useState(loadTurns);
+  const [pinned, setPinned] = useState(loadPinned);
   const [question, setQuestion] = useState("");
   const [ready, setReady] = useState(null);
   const [running, setRunning] = useState(false);
@@ -400,6 +664,26 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
   useEffect(() => {
     tail.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [turns]);
+
+  // گفت‌وگو با رفتن به زبانهٔ دیگر پاک نمی‌شود
+  useEffect(() => {
+    saveJson(TURNS_KEY, turns.slice(-MAX_SAVED_TURNS));
+  }, [turns]);
+
+  useEffect(() => {
+    saveJson(PINNED_KEY, pinned);
+  }, [pinned]);
+
+  // «پرسش از دستیار» در صفحهٔ جدول: #/assistant/<جدول> → سنجاق، و نشانی تمیز
+  useEffect(() => {
+    if (!pinnedFromRoute) return;
+    setPinned((prev) => (prev.includes(pinnedFromRoute) ? prev : [...prev, pinnedFromRoute].slice(-MAX_PINNED)));
+    onClearRoutePin?.();
+    requestAnimationFrame(() => input.current?.focus());
+  }, [pinnedFromRoute, onClearRoutePin]);
+
+  // ترک صفحه وسط پاسخ: درخواست بسته می‌شود، نه اینکه بی‌صاحب ادامه دهد
+  useEffect(() => () => abort.current?.abort(), []);
 
   const stop = useCallback(() => {
     abort.current?.abort();
@@ -438,6 +722,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
         await ASK_ASSISTANT(q, {
           signal: controller.signal,
           history,
+          tables: pinned,
           onEvent: (event) => {
             if (event.type === "result") {
               patch({ result: event, running: false });
@@ -458,7 +743,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
         abort.current = null;
       }
     },
-    [question, running, turns],
+    [question, running, turns, pinned],
   );
 
   const clarify = useCallback((q) => {
@@ -510,6 +795,20 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
                   پیش از نشان‌دادن، تک‌تک نام جدول‌ها، ستون‌ها و پیوندها را با
                   ساختار واقعی می‌سنجد.
                 </p>
+                <ul className="mt-2.5 grid gap-1.5 text-[11px] leading-relaxed text-muted-foreground sm:grid-cols-3">
+                  <li className="flex gap-1.5 rounded-md border border-border bg-surface/60 p-2">
+                    <Layers className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-text" />
+                    روابط را می‌شناسد: جدول‌های مرجع (نام شخص، شرح حساب) و جدول‌های جزئیات (اقلام سند) را خودش پیدا می‌کند.
+                  </li>
+                  <li className="flex gap-1.5 rounded-md border border-border bg-surface/60 p-2">
+                    <Pin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-text" />
+                    اگر جدول را می‌دانید، سنجاقش کنید — از پایین همین صفحه یا با «پرسش از دستیار» در صفحهٔ جدول.
+                  </li>
+                  <li className="flex gap-1.5 rounded-md border border-border bg-surface/60 p-2">
+                    <Compass className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-text" />
+                    اگر داده‌ای در ساختار نباشد، کوئری نمی‌سازد؛ راهکار رسیدن به گزارش را می‌گوید.
+                  </li>
+                </ul>
               </div>
 
               {needsKey ? (
@@ -555,6 +854,7 @@ export default function AssistantView({ onOpenTable, onOpenSettings, settingsVer
       </div>
 
       <div className="shrink-0 border-t border-border bg-background/85 px-3 py-2.5 backdrop-blur-xl sm:px-4 lg:px-6">
+        {!needsKey && <TablePicker pinned={pinned} onChange={setPinned} disabled={running} />}
         <div className="mx-auto flex w-full max-w-3xl items-end gap-1.5">
           <Textarea
             ref={input}

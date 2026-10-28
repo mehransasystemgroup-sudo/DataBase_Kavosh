@@ -288,6 +288,9 @@ class AskIn(BaseModel):
     # پرسش‌وپاسخ‌های قبلیِ همین گفت‌وگو، تا «حالا فقط امسال» معنا داشته باشد.
     # شکل و اندازه‌اش در assistant.clean_history مهار می‌شود.
     history: list[dict] = []
+    # جدول‌هایی که کاربر خودش سنجاق کرده؛ همیشه در زمینه می‌آیند.
+    # نام‌های ناموجود در assistant.clean_pinned دور ریخته می‌شوند.
+    tables: list[str] = []
 
 
 @app.get("/api/settings")
@@ -413,6 +416,7 @@ async def assistant_ask(body: AskIn) -> StreamingResponse:
         draft = assistant.run(
             question=question, kb=kb, index=index, ask=ask, emit=emit,
             max_attempts=conf["max_attempts"], history=body.history,
+            pinned=body.tables,
         )
         return {
             "type": "result", "kind": draft.kind, "sql": draft.sql,

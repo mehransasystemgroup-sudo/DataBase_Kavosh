@@ -13,14 +13,19 @@
                     ابهام‌ها. کلیدواژه‌هایش جست‌وجو را دقیق‌تر می‌کند و خودِ
                     برداشت به نگارش داده می‌شود. اگر خروجی‌اش بی‌معنا بود،
                     با خودِ پرسش ادامه می‌دهیم.
-    ۱) بازیابی    — جدول‌های نامزد با جست‌وجوی فارسیِ خودِ برنامه پیدا می‌شوند.
+    ۱) بازیابی    — جدول‌های نامزد با جست‌وجوی فارسیِ خودِ برنامه پیدا می‌شوند،
+                    و بعد از راه روابط گسترش می‌یابند: جدول‌های مرجعِ نامزدهای
+                    برتر (شخص، کالا، سال مالی) و جدول‌های جزئیاتشان (سند ←
+                    اقلام سند). جدول‌هایی که کاربر خودش سنجاق کرده همیشه هستند.
                     مدل فقط کلیدواژه داده؛ نام جدولی از او پذیرفته نمی‌شود.
-    ۲) انتخاب     — مدل فقط از میان همان نامزدها انتخاب می‌کند. هر نامی که
-                    در فهرست نباشد دور ریخته می‌شود، و اگر خروجی‌اش بی‌معنا
-                    بود، به نتیجهٔ بازیابی برمی‌گردیم.
-    ۳) زمینه‌سازی  — ستون‌ها، کلید اصلی، مقادیر کد و شرحی و — مهم‌تر از همه —
-                    شرط‌های JOIN از ایندکس بیرون کشیده می‌شوند. مدل JOIN
-                    نمی‌سازد؛ JOIN را به او می‌دهیم.
+    ۲) انتخاب     — مدل فقط از میان همان نامزدها انتخاب می‌کند، و نقشهٔ
+                    پیوندهای مستقیمِ میانشان را هم می‌بیند تا جدول واسطه را
+                    جا نیندازد. هر نامی که در فهرست نباشد دور ریخته می‌شود، و
+                    اگر خروجی‌اش بی‌معنا بود، به نتیجهٔ بازیابی برمی‌گردیم.
+    ۳) زمینه‌سازی  — ستون‌ها، کلید اصلی، شرح جدول، مقادیر کد و شرحی، ارجاع‌های
+                    هر جدول، هشدارهای داده و سال مالی و — مهم‌تر از همه — شرط‌های
+                    JOIN و هشدار مسیرهای بلند از ایندکس بیرون کشیده می‌شوند.
+                    مدل JOIN نمی‌سازد؛ JOIN را به او می‌دهیم.
     ۴) نگارش      — مدل با همین زمینه کوئری می‌نویسد.
     ۵) بازبینی    — sqlcheck کوئری را کلمه‌به‌کلمه با ساختار می‌سنجد. اگر
                     ایرادی بود، متن ایراد به مدل پس داده می‌شود و دور بعد.
@@ -40,8 +45,14 @@ from typing import Callable, Iterable
 from core.search import KnowledgeBase
 from core.sqlcheck import CheckResult, SchemaIndex, check_sql, extract_sql
 
-MAX_CANDIDATES = 28
+MAX_CANDIDATES = 36
 MAX_CHOSEN = 7
+MAX_PINNED = 5
+# گسترش از راه روابط: چند نامزد برتر، و از هرکدام چند مرجع و چند جدول جزئیات
+EXPAND_SEEDS = 5
+EXPAND_OUT = 4
+EXPAND_IN = 3
+EXPAND_WEIGHT = 0.6
 DEFAULT_ATTEMPTS = 4
 
 Emit = Callable[[str, str, dict], None]
@@ -197,11 +208,22 @@ def understand_prompt(question: str, history: list[dict]) -> str:
 # ───────────────────────── ۱) بازیابی ─────────────────────────
 
 
+def clean_pinned(kb: KnowledgeBase, pinned: Iterable[str] | None) -> list[str]:
+    """جدول‌های سنجاق‌شدهٔ کاربر — فقط آن‌هایی که واقعاً در ایندکس هستند."""
+    out: list[str] = []
+    for full in list(pinned or [])[:MAX_PINNED * 2]:
+        info = kb.get_table(str(full).strip()[:128])
+        if info is not None and info.full_name not in out:
+            out.append(info.full_name)
+    return out[:MAX_PINNED]
+
+
 def retrieve(
     kb: KnowledgeBase,
     question: str,
     keywords: Iterable[str] = (),
     previous: Iterable[str] = (),
+    pinned: Iterable[str] = (),
 ) -> list[dict]:
     """
     جدول‌های نامزد برای این پرسش.
@@ -211,6 +233,12 @@ def retrieve(
     مرحلهٔ فهم همان جست‌وجو را با واژه‌های دیگر تکرار می‌کنند — پرسشِ
     محاوره‌ای اغلب واژهٔ جدول را ندارد. جدول‌های پرسش قبلی هم نامزد می‌مانند،
     وگرنه «حالا فقط امسال» ربطش را به گفت‌وگو از دست می‌دهد.
+
+    بعد، گسترش از راه روابط: گزارشِ واقعی تقریباً هیچ‌وقت از یک جدول درنمی‌آید.
+    «جمع مبلغ اسناد هر حساب» سند را پیدا می‌کند، ولی مبلغ در اقلام سند است و
+    نام حساب در جدول حساب — هیچ‌کدام در متن پرسش نیامده‌اند. پس مرجع‌ها و
+    جدول‌های جزئیاتِ نامزدهای برتر (و جدول‌های سنجاق‌شده) هم نامزد می‌شوند،
+    با امتیازی کمتر از خودِ آن نامزد.
     """
     seen: dict[str, dict] = {}
 
@@ -238,11 +266,26 @@ def retrieve(
             if table:
                 add(table, col.get("title_fa"), f"ستون {col.get('name')}", 1.0)
 
-    top = max((r["score"] for r in seen.values()), default=1.0)
+    direct = sorted(seen.values(), key=lambda r: -r["score"])
+    top = max((r["score"] for r in direct), default=1.0)
     for full in previous:
         info = kb.get_table(full)
         if info is not None:
             add(info.full_name, info.title_fa, "گفت‌وگوی قبلی", top + 1.0)
+    pins = clean_pinned(kb, pinned)
+    for full in pins:
+        add(full, kb.get_table(full).title_fa, "انتخاب شما", top + 2.0)
+
+    seeds: list[tuple[str, float]] = [(full, seen[full]["score"]) for full in pins]
+    for row in direct[:EXPAND_SEEDS]:
+        if row["full_name"] not in pins:
+            seeds.append((row["full_name"], row["score"]))
+    for seed, score in seeds:
+        related = kb.related_tables(seed)
+        refs = [r for r in related if r["direction"] == "out"][:EXPAND_OUT]
+        details = [r for r in related if r["direction"] == "in"][:EXPAND_IN]
+        for r in refs + details:
+            add(r["full_name"], r["title_fa"], f"مرتبط با {seed}", score * EXPAND_WEIGHT)
 
     ordered = sorted(seen.values(), key=lambda r: -r["score"])
     return ordered[:MAX_CANDIDATES]
@@ -259,7 +302,57 @@ SELECT_SYSTEM = """تو دستیار یک پایگاه دادهٔ سازمانی
 - فقط نام‌هایی را بنویس که عیناً در فهرست آمده‌اند.
 - هر نام در یک سطر جدا، بدون شماره، بدون توضیح، بدون علامت.
 - حداکثر {max_chosen} جدول.
+- جدولی را انتخاب کن که دادهٔ خواسته‌شده واقعاً در آن است؛ مثلاً مبلغ و
+  تعداد معمولاً در جدول اقلام و ردیف‌هاست، نه در جدول سربرگ.
+- اگر خروجی باید نام یا شرح نشان دهد (نام شخص، شرح حساب، عنوان کالا)،
+  جدول مرجعِ آن را هم انتخاب کن.
+- از «پیوندهای مستقیم» ببین جدول‌ها چطور به هم می‌رسند؛ اگر دو جدولِ لازم
+  مستقیم به هم وصل نیستند، جدول واسطه را هم بنویس.
+- جدول‌هایی که کاربر خودش انتخاب کرده همیشه به کار می‌روند؛ لازم نیست تکرارشان کنی.
 - اگر مطمئن نیستی، جدول‌های محتمل‌تر را بنویس."""
+
+
+MAX_LINKS = 40
+
+
+def candidate_links(kb: KnowledgeBase, candidates: list[dict]) -> list:
+    """
+    پیوندهای مستقیم میان نامزدها، آن‌هایی که به نامزدهای برتر می‌رسند اول.
+
+    ترتیب الفبایی کافی نیست: با ۳۶ نامزد صدها پیوند هست و پیوندِ سند به
+    اقلام سند ممکن است زیر پیوندهای جدول‌های بی‌ربط گم شود.
+    """
+    rank = {c["full_name"]: i for i, c in enumerate(candidates)}
+    links = kb.links_between(list(rank))
+    links.sort(key=lambda s: (min(rank[s.from_table], rank[s.to_table]),
+                              max(rank[s.from_table], rank[s.to_table])))
+    return links[:MAX_LINKS]
+
+
+def _link_line(step) -> str:
+    return f"{step.from_table}.{step.from_col} → {step.to_table}"
+
+
+def select_prompt(question: str, candidates: list[dict], links: Iterable = (),
+                  goal: str = "", pinned: Iterable[str] = ()) -> str:
+    """پرامپت انتخاب: نامزدها، دلیل نامزدی، و نقشهٔ پیوندهای مستقیم میانشان."""
+    listing = "\n".join(
+        c["full_name"]
+        + (f" — {c['title_fa']}" if c.get("title_fa") else "")
+        + (f"  · {c['why']}" if c.get("why") else "")
+        for c in candidates
+    )
+    parts = [f"## جدول‌های موجود\n{listing}"]
+    lines = [_link_line(step) for step in links]
+    if lines:
+        parts.append("## پیوندهای مستقیم میان این جدول‌ها\n" + "\n".join(lines))
+    pins = list(pinned)
+    if pins:
+        parts.append("## جدول‌هایی که کاربر خودش انتخاب کرده\n" + "\n".join(pins))
+    parts.append(f"## پرسش\n{question}")
+    if goal:
+        parts.append(f"## هدف\n{goal}")
+    return "\n\n".join(parts)
 
 
 def parse_selection(reply: str, candidates: Iterable[dict]) -> list[str]:
@@ -283,17 +376,34 @@ def parse_selection(reply: str, candidates: Iterable[dict]) -> list[str]:
 # ───────────────────────── ۳) زمینه‌سازی ─────────────────────────
 
 
+MAX_DESCRIPTION = 200
+MAX_REFS = 12
+AUDIT_COLUMNS = ("Creator", "LastModifier")
+
+
+def _bracketed(full: str) -> str:
+    return f"[{full.replace('.', '].[')}]"
+
+
+def _short(text: str | None, limit: int) -> str:
+    text = re.sub(r"\s+", " ", text or "").strip()
+    return text if len(text) <= limit else text[:limit].rstrip() + "…"
+
+
 def _table_block(kb: KnowledgeBase, full: str) -> str:
     info = kb.get_table(full)
     if info is None:
         return ""
-    head = f"[{full.replace('.', '].[')}]"
+    head = _bracketed(full)
     if info.title_fa:
         head += f" — {info.title_fa}"
     if info.row_count is not None:
         head += f"  ({info.row_count} ردیف)"
 
     lines = [head]
+    description = _short(info.description_fa, MAX_DESCRIPTION)
+    if description and description != info.title_fa:
+        lines.append("  شرح: " + description)
     if info.primary_key:
         lines.append("  کلید اصلی: " + ", ".join(info.primary_key))
 
@@ -310,6 +420,25 @@ def _table_block(kb: KnowledgeBase, full: str) -> str:
             f"{v['value']}={v.get('label_fa') or '?'}" for v in values[:15]
         )
         lines.append(f"  مقادیر {col}: {shown}")
+
+    # ارجاع‌های تأییدشده: مدل می‌بیند هر ستونِ Ref به کدام جدول می‌رسد، حتی
+    # وقتی آن جدول در زمینه نیامده — و می‌فهمد برای نام و شرح کجا برود.
+    # گروه‌بندی بر پایهٔ جدول مقصد است، وگرنه بیست ستون DLLevel که همه به
+    # یک جدول می‌روند جای PartyRef و VoucherRef را می‌گیرند.
+    targets: dict[str, list[str]] = {}
+    for col, to in sorted({(j.from_col, j.to_table) for j in info.outgoing
+                           if j.verified and j.from_col not in AUDIT_COLUMNS}):
+        targets.setdefault(to, []).append(col)
+    if targets:
+        groups = sorted(targets.items(), key=lambda kv: kv[1][0])[:MAX_REFS]
+        shown = ", ".join(
+            "/".join(cols[:3]) + ("/…" if len(cols) > 3 else "") + "→" + _bracketed(to)
+            for to, cols in groups
+        )
+        lines.append("  ارجاع‌ها: " + shown)
+    for warning in info.warnings:
+        if "تأییدنشده است" not in warning:
+            lines.append("  هشدار: " + warning)
     return "\n".join(lines)
 
 
@@ -324,10 +453,17 @@ def build_context(kb: KnowledgeBase, chosen: list[str]) -> tuple[str, list[str],
     tables = list(dict.fromkeys(chosen))
     joins: list[str] = []
     bridges: list[str] = []
+    cautions: list[str] = []
 
     for i, a in enumerate(tables):
         for b in tables[i + 1:]:
-            path = kb.find_join_path(a, b)
+            # اول از میان خودِ جدول‌های انتخاب‌شده؛ فقط اگر نشد جدول واسطهٔ تازه.
+            path = kb.find_join_path(a, b, through=tables)
+            if not path:
+                path = kb.find_join_path(a, b)
+                caution = kb.path_warning(path) if path else None
+                if caution:
+                    cautions.append(f"- {a} ↔ {b}: {caution}")
             if not path:
                 continue
             for step in path:
@@ -356,6 +492,9 @@ def build_context(kb: KnowledgeBase, chosen: list[str]) -> tuple[str, list[str],
         parts.extend(joins)
     else:
         parts += ["", "(بین این جدول‌ها پیوند ثبت‌شده‌ای نیست.)"]
+    if cautions:
+        parts += ["", "### هشدار مسیرها — پیش از استفاده بسنج", ""]
+        parts.extend(cautions)
     return "\n".join(parts), everything, joins
 
 
@@ -366,15 +505,32 @@ DRAFT_SYSTEM = """تو یک کارشناس ارشد T-SQL روی SQL Server هس
 
 قواعد غیرقابل‌مذاکره:
 ۱. فقط از جدول‌ها و ستون‌هایی استفاده کن که در «ساختار» آمده‌اند. هیچ نام
-   دیگری ننویس — اگر چیزی در ساختار نیست، یعنی وجود ندارد.
-۲. شرط‌های JOIN را عیناً از بخش «پیوندهای شناخته‌شده» بردار. پیوند از خودت
-   نساز.
-۳. فقط SELECT. هیچ INSERT/UPDATE/DELETE/DROP ننویس.
-۴. شناسه‌ها را داخل براکت بگذار: [SCHEMA].[Table].[Column]
-۵. اگر «گفت‌وگوی قبلی» آمده و پرسش تازه ادامهٔ آن است، کوئری قبلی را مبنا
+   دیگری ننویس — اگر چیزی در ساختار نیست، یعنی وجود ندارد. جدولی که فقط در
+   سطر «ارجاع‌ها» آمده و بلوک ستون‌هایش نیامده را نمی‌شناسی؛ از آن جز همان
+   ستونِ پیوند چیزی ننویس.
+۲. شرط‌های JOIN را عیناً از بخش «پیوندهای شناخته‌شده» یا سطر «ارجاع‌ها»
+   بردار. پیوند از خودت نساز. پیوندِ «تأییدنشده» را فقط وقتی به کار ببر که
+   راه دیگری نیست، و در «نکته‌ها» بگو.
+۳. فقط خواندنی: SELECT، و در صورت نیاز WITH و DECLARE. هیچ
+   INSERT/UPDATE/DELETE/DROP/EXEC ننویس.
+۴. شناسه‌ها را داخل براکت بگذار: [SCHEMA].[Table].[Column] و برای هر جدول
+   نام مستعار کوتاه بگذار.
+۵. اگر جدولی ستون FiscalYearRef دارد، فیلتر سال مالی را حتماً بگذار؛ وگرنه
+   خروجی بی‌خطا ولی غلط می‌شود.
+۶. مقدارهای نمونه (سال مالی، تاریخ، کد، شناسه) را در ابتدای کوئری با DECLARE
+   و نامی گویا تعریف کن تا کاربر فقط همان‌جا را عوض کند.
+۷. برای ستونی که «مقادیر»ش آمده، در فیلتر فقط از همان مقدارها استفاده کن، و
+   اگر خروجی برای خواندن است کنار عدد، شرح فارسی‌اش را با CASE برگردان.
+۸. جدول مرجع (نام شخص، شرح حساب، عنوان کالا) را با LEFT JOIN بیاور تا ردیفی
+   گم نشود، مگر خواسته صریحاً چیز دیگری باشد. در جمع و شمارش مراقب باش JOIN
+   به جدول جزئیات ردیف‌ها را چند برابر نکند.
+۹. اگر «گفت‌وگوی قبلی» آمده و پرسش تازه ادامهٔ آن است، کوئری قبلی را مبنا
    بگیر و فقط همان چیزی را عوض کن که خواسته شده.
-۶. اگر جایی از خواسته مبهم است، معقول‌ترین برداشت را برگزین و آن را در
+۱۰. اگر جایی از خواسته مبهم است، معقول‌ترین برداشت را برگزین و آن را در
    «نکته‌ها» صریح بنویس؛ هیچ فرضی را بی‌صدا نکن.
+۱۱. اگر دادهٔ لازم در ساختار نیست، کوئری ساختگی ننویس؛ بلوک ```sql نگذار و
+   به‌جایش راهکار رسیدن به گزارش را قدم‌به‌قدم بگو: از کدام جدول‌های موجود،
+   با چه کمبودی، و چه چیزی باید روشن شود.
 
 قالب پاسخ — دقیقاً با همین عنوان‌ها:
 
@@ -392,7 +548,8 @@ DRAFT_SYSTEM = """تو یک کارشناس ارشد T-SQL روی SQL Server هس
 
 ### نکته‌ها
 فرض‌هایی که کردی، آنچه کاربر باید پیش از اجرا بررسی یا جایگزین کند (مثلاً
-یک مقدار نمونه)، و اگر لازم است یک نکتهٔ کارایی.
+مقدارهای DECLARE)، هشدارهای ساختار که به این گزارش مربوط‌اند، و اگر لازم
+است یک نکتهٔ کارایی.
 
 اگر کاربر کوئری نمی‌خواهد و فقط راهنمایی می‌خواهد، بلوک ```sql نگذار؛ به‌جایش
 با همین سه عنوان قدم‌به‌قدم راهنمایی کن."""
@@ -478,6 +635,7 @@ def run(
     emit: Emit,
     max_attempts: int = DEFAULT_ATTEMPTS,
     history: Iterable[dict] | None = None,
+    pinned: Iterable[str] | None = None,
 ) -> Draft:
     """
     `ask(system, user) -> str` تنها راه ارتباط با مدل است؛ هرچه بقیه لازم
@@ -486,6 +644,7 @@ def run(
     """
     draft = Draft()
     past = clean_history(history)
+    pins = clean_pinned(kb, pinned)
 
     emit("understand", "فهم خواستهٔ شما", {})
     try:
@@ -500,7 +659,7 @@ def run(
 
     emit("retrieve", "جست‌وجو در ساختار پایگاه داده", {})
     previous = [t for item in past for t in item["tables"]]
-    candidates = retrieve(kb, question, intent["keywords"], previous)
+    candidates = retrieve(kb, question, intent["keywords"], previous, pins)
     if not candidates:
         draft.kind = "guidance"
         draft.note = ("برای این پرسش جدول مرتبطی پیدا نشد. کمی مشخص‌تر بپرسید — "
@@ -511,27 +670,26 @@ def run(
     })
 
     emit("select", "انتخاب جدول‌های مرتبط", {})
-    listing = "\n".join(
-        f"{c['full_name']}" + (f" — {c['title_fa']}" if c.get("title_fa") else "")
-        for c in candidates
-    )
-    goal = f"\n\n## هدف\n{intent['goal']}" if intent["goal"] else ""
+    links = candidate_links(kb, candidates)
     chosen: list[str] = []
     try:
         reply = ask(
             SELECT_SYSTEM.format(max_chosen=MAX_CHOSEN),
-            f"## جدول‌های موجود\n{listing}\n\n## پرسش\n{question}{goal}",
+            select_prompt(question, candidates, links, intent["goal"], pins),
         )
         chosen = parse_selection(reply, candidates)
     except Exception:                                        # noqa: BLE001
         chosen = []
     if not chosen:
         # مدل کمکی نکرد — با نتیجهٔ بازیابی ادامه می‌دهیم. بهتر از توقف است.
-        chosen = [c["full_name"] for c in candidates[:4]]
+        rest = [c["full_name"] for c in candidates if c["full_name"] not in pins]
+        chosen = pins + rest[:max(0, 4 - len(pins))]
         emit("select", "انتخاب مدل روشن نبود؛ با نتیجهٔ جست‌وجو ادامه می‌دهیم", {
             "tables": chosen,
         })
     else:
+        # جدول‌های سنجاق‌شده همیشه می‌مانند، هرچه مدل گفته باشد.
+        chosen = (pins + [t for t in chosen if t not in pins])[:MAX_CHOSEN]
         emit("select", f"{len(chosen)} جدول انتخاب شد", {"tables": chosen})
 
     emit("context", "استخراج ستون‌ها و مسیرهای پیوند", {})

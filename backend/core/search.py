@@ -11,6 +11,7 @@ import sqlite3
 from collections import deque
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Iterable
 
 from .textnorm import build_search_text, normalize, stem_fa
 
@@ -692,14 +693,17 @@ class KnowledgeBase:
 
     def find_join_path(
         self, source: str, target: str, max_hops: int = 4,
-        verified_only: bool = False,
+        verified_only: bool = False, through: Iterable[str] | None = None,
     ) -> list[JoinStep] | None:
         """
         کوتاه‌ترین مسیر JOIN بین دو جدول (BFS).
 
         یال‌های تأییدشده اولویت دارند: در هر سطح اول آن‌ها بررسی می‌شوند،
-        تا اگر دو مسیر هم‌طول باشند، مسیر قطعی برنده شود.
+        تا اگر دو مسیر هم‌طول باشند، مسیر قطعی برنده شود. با `through` فقط از
+        همان جدول‌ها عبور می‌کند — دستیار اول مسیری از میان جدول‌های انتخاب‌شده
+        می‌خواهد و فقط اگر نبود، جدول واسطهٔ تازه می‌آورد.
         """
+        allowed = set(through) if through is not None else None
         if source == target:
             return []
         adj = self._adjacency()
@@ -718,6 +722,8 @@ class KnowledgeBase:
                 if verified_only and not verified:
                     continue
                 if nxt in seen:
+                    continue
+                if allowed is not None and nxt != target and nxt not in allowed:
                     continue
                 step = JoinStep(node, from_col, nxt, to_col, conf, bool(verified))
                 if nxt == target:
@@ -745,6 +751,50 @@ class KnowledgeBase:
         if weak:
             return f"{len(weak)} مرحله از این مسیر تأییدنشده است (استنتاج از نام)."
         return None
+
+    def related_tables(self, full_name: str) -> list[dict]:
+        """
+        همسایه‌های تأییدشدهٔ یک جدول، با عنوان و وضعیت داده — برای دستیار.
+
+        «out» جدول‌هایی است که این جدول به آن‌ها ارجاع می‌دهد (مرجع‌ها: شخص،
+        کالا، سال مالی) و «in» جدول‌هایی که به این جدول ارجاع می‌دهند (ردیف‌ها و
+        جزئیات). داده‌دار، جدولِ جزئیاتِ هم‌نام (Voucher ← VoucherItem) و
+        هم‌اسکیما اول می‌آیند؛ ستون‌های ممیزی (Creator و
+        LastModifier) کنار می‌روند چون هر جدولی آن‌ها را دارد و چیزی نمی‌گویند.
+        ترتیب صریح است تا نسخهٔ اندروید (localdb.js) عیناً همین را ببیند.
+        """
+        schema, _, name = full_name.partition(".")
+        rows = self.db.execute(
+            "SELECT 'out' AS direction, j.from_col AS col, t.full_name, t.title_fa, t.has_data, "
+            "t.schema = ? AS near, 0 AS child "
+            "FROM joins j JOIN tables t ON t.full_name = j.to_table "
+            "WHERE j.from_table = ? AND j.verified = 1 AND j.to_table <> ? "
+            "AND j.from_col NOT IN ('Creator', 'LastModifier') "
+            "UNION ALL "
+            "SELECT 'in', j.from_col, t.full_name, t.title_fa, t.has_data, t.schema = ?, "
+            "substr(t.name, 1, length(?)) = ? "
+            "FROM joins j JOIN tables t ON t.full_name = j.from_table "
+            "WHERE j.to_table = ? AND j.verified = 1 AND j.from_table <> ? "
+            "ORDER BY 1 DESC, 5 DESC, 7 DESC, 6 DESC, 3, 2",
+            (schema, full_name, full_name, schema, name, name, full_name, full_name),
+        )
+        return [{"direction": r["direction"], "col": r["col"], "full_name": r["full_name"],
+                 "title_fa": r["title_fa"], "has_data": bool(r["has_data"])} for r in rows]
+
+    def links_between(self, names: Iterable[str], limit: int = 400) -> list[JoinStep]:
+        """پیوندهای تأییدشدهٔ مستقیم میان چند جدول — نقشهٔ کوچکِ روابط برای انتخاب."""
+        names = list(dict.fromkeys(names))
+        if not names:
+            return []
+        marks = ",".join("?" * len(names))
+        rows = self.db.execute(
+            f"SELECT * FROM joins WHERE verified = 1 AND from_table IN ({marks}) "
+            f"AND to_table IN ({marks}) AND from_table <> to_table "
+            "ORDER BY from_table, from_col, to_table, to_col LIMIT ?",
+            (*names, *names, limit),
+        )
+        return [JoinStep(j["from_table"], j["from_col"], j["to_table"], j["to_col"],
+                         j["confidence"], bool(j["verified"])) for j in rows]
 
     def neighbours(self, table: str, limit: int = 40) -> list[dict]:
         return [{
