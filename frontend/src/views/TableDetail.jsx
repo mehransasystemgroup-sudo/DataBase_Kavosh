@@ -39,6 +39,14 @@ import { toast } from "@/components/ui/sonner";
 import TableGraph from "@/components/graph/TableGraph";
 import TeachDialog from "@/views/TeachDialog";
 
+// منبع نام فارسی ستون (column_titles در ایندکس) — در راهنمای روی نام نشان داده می‌شود.
+const LABEL_SOURCE = {
+  user: "ثبت‌شده برای همین جدول",
+  glossary: "از واژه‌نامهٔ نام ستون‌ها",
+  reference: "از عنوان جدولی که این ستون به آن ارجاع می‌دهد",
+  key: "کلید اصلی جدول",
+};
+
 const COLUMN_FILTERS = [
   { id: "all", label: "همه", icon: Columns3 },
   { id: "keys", label: "کلیدها", icon: KeyRound },
@@ -859,7 +867,12 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                             {c.name}
                           </div>
                           {c.label_fa && (
-                            <div className="mt-0.5 text-[11px] text-brand-text/85">{c.label_fa}</div>
+                            <div
+                              className="mt-0.5 text-[11px] text-brand-text/85"
+                              title={LABEL_SOURCE[c.label_source] || undefined}
+                            >
+                              {c.label_fa}
+                            </div>
                           )}
                           {enums[c.name] && (
                             <div className="mt-0.5 text-[10px] text-muted-foreground">
