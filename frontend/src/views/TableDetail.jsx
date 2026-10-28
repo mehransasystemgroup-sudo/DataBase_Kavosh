@@ -45,6 +45,8 @@ const LABEL_SOURCE = {
   glossary: "از واژه‌نامهٔ نام ستون‌ها",
   reference: "از عنوان جدولی که این ستون به آن ارجاع می‌دهد",
   key: "کلید اصلی جدول",
+  lookup: "عنوان رسمی کد و شرحیِ هم‌نام",
+  composed: "نام پیشنهادی — از معنای اجزای نام ستون ساخته شده",
 };
 
 const COLUMN_FILTERS = [
@@ -868,10 +870,17 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                           </div>
                           {c.label_fa && (
                             <div
-                              className="mt-0.5 text-[11px] text-brand-text/85"
+                              className={
+                                c.label_source === "composed"
+                                  ? "mt-0.5 text-[11px] text-brand-text/60"
+                                  : "mt-0.5 text-[11px] text-brand-text/85"
+                              }
                               title={LABEL_SOURCE[c.label_source] || undefined}
                             >
                               {c.label_fa}
+                              {c.label_source === "composed" && (
+                                <span className="ms-1 text-[9px] text-muted-foreground">(پیشنهادی)</span>
+                              )}
                             </div>
                           )}
                           {enums[c.name] && (

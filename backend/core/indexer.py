@@ -27,6 +27,7 @@ from pathlib import Path
 
 import yaml
 
+from .naming import Composer
 from .textnorm import build_search_text
 
 
@@ -190,6 +191,15 @@ def _split_ref(ref: str) -> tuple[str, str] | None:
 _REF_SUFFIX = re.compile(r"(Ref|ID|Id)$")
 
 
+def _lookup_titles(kb: Path) -> dict[str, str]:
+    doc = kb / "lookups" / "sys3-lookup.yaml"
+    if not doc.exists():
+        return {}
+    # بعضی عنوان‌ها در خودِ داده فقط کلید منبع‌اند (LookupTitleEmptyToken)
+    return {t["type"]: t["title_fa"] for t in _load(doc).get("types") or []
+            if t.get("title_fa") and re.search(r"[\u0600-\u06FF]", t["title_fa"])}
+
+
 def _column_titles(kb: Path, columns: list[tuple], table_titles: dict[str, str],
                    glossary: dict[str, str], join_rows: list[tuple]) -> list[tuple]:
     """
@@ -201,7 +211,15 @@ def _column_titles(kb: Path, columns: list[tuple], table_titles: dict[str, str],
     (CourseRef → Course) عنوان جدول عیناً نام ستون است؛ وگرنه ستون نقشی
     دارد که مستندات نمی‌گوید (ConfirmerRef → User)، پس فقط «ارجاع به …»
     نوشته می‌شود و نقش حدس زده نمی‌شود.
+
+    ستونی که نامش همان نوع یک کد و شرحی است (VoucherState) عنوان رسمی آن
+    نوع را می‌گیرد. برای بقیه، نام از اجزای نام ستون ساخته می‌شود
+    (core.naming) و با source=composed علامت می‌خورد تا در اپ «پیشنهادی»
+    دیده شود؛ برای *Ref این نامِ نقش از «ارجاع به …» دقیق‌تر است.
     """
+    lookups = _lookup_titles(kb)
+    vocab_doc = kb / "semantics" / "_vocabulary.yaml"
+    composer = Composer(_load(vocab_doc) if vocab_doc.exists() else {}, lookups)
     manual_doc = kb / "semantics" / "_table_columns.yaml"
     manual = (_load(manual_doc).get("tables") or {}) if manual_doc.exists() else {}
     refs = {(j[0], j[1]): j[2] for j in join_rows if j[4] == "high"}
@@ -211,15 +229,23 @@ def _column_titles(kb: Path, columns: list[tuple], table_titles: dict[str, str],
         title, source = (manual.get(table_ref) or {}).get(name), "user"
         if not title:
             title, source = glossary.get(name), "glossary"
+        if not title and lookups.get(name):
+            title, source = lookups[name], "lookup"
+        fallback = None
         if not title:
             target = refs.get((table_ref, name))
             if target and table_titles.get(target):
                 base = _REF_SUFFIX.sub("", name)
-                same = base.lower() == target.split(".", 1)[1].lower()
-                title = table_titles[target] if same else f"ارجاع به {table_titles[target]}"
-                source = "reference"
+                if base.lower() == target.split(".", 1)[1].lower():
+                    title, source = table_titles[target], "reference"
+                else:
+                    fallback = f"ارجاع به {table_titles[target]}"
         if not title and is_pk and table_titles.get(table_ref):
             title, source = f"شناسهٔ {table_titles[table_ref]}", "key"
+        if not title:
+            title, source = composer.compose(name, bool(is_pk)), "composed"
+        if not title and fallback:
+            title, source = fallback, "reference"
         if title:
             rows.append((table_ref, name, title, source))
     return rows
@@ -270,7 +296,7 @@ def _collect_joins(kb: Path) -> list[tuple]:
 # نسخهٔ ساختار ایندکس. هر بار که جدول یا ستونی به SCHEMA اضافه یا عوض شد،
 # این عدد باید یک واحد بالا برود: برنامه با همین می‌فهمد ایندکسِ روی دیسکِ
 # کاربر برای نسخهٔ قدیمی ساخته شده و باید دوباره ساخته شود.
-SCHEMA_VERSION = "6"
+SCHEMA_VERSION = "7"
 
 
 # مهلت جایگزینی ایندکس. سخاوتمند است و عمداً: روی رایانهٔ سازمانی، ضدویروس
