@@ -1,0 +1,1421 @@
+# واژه‌نامهٔ اجزای نام ستون — برای ساختن نام فارسی ستون‌هایی که در هیچ مستندی نیامده‌اند.
+#
+# نام ستون به اجزایش شکسته می‌شود (ConfirmDate → Confirm + Date) و هر جزء از این
+# فهرست (یا از عنوان رسمی جدول‌ها و کد و شرحی‌ها) معنا می‌گیرد؛ بعد به ترتیب
+# فارسی چیده می‌شود («تاریخ تأیید»). اگر حتی یک جزء ناشناخته باشد، نامی ساخته
+# نمی‌شود — نام ناقص یا حدسی بدتر از نبودِ نام است.
+#
+# شکل هر ورودی:
+#   واژه: معادل                      اسم یا صفتی که پس از هسته می‌آید (مثل «نهایی»)
+#   واژه: {fa: معادل, pre: true}     پیش از بقیه می‌آید (حداکثر، اولین، …)
+#   واژه: {fa: معادل, pred: true}    اگر آخرِ نام باشد سر جایش می‌ماند («ایجاد شده»)
+# صفت‌هایی که در فهرست adjectives آمده‌اند اگر آخرِ نام بیایند پس از اسم
+# می‌نشینند (LabourFeeActual ← «نرخ دستمزد واقعی»).
+# بخش phrases برای ترکیب‌هایی است که معنای جدا دارند (by product ← محصول جانبی).
+#
+# این نام‌ها با source: composed علامت می‌خورند و در اپ «نام پیشنهادی» نمایش داده
+# می‌شوند. هر نامی که در _columns.yaml یا _table_columns.yaml ثبت شود بر این‌ها
+# اولویت دارد.
+words:
+  # ── عمومی ──
+  id: شناسه
+  ids: شناسه‌ها
+  guid: شناسهٔ یکتا
+  uid: شناسهٔ یکتا
+  identifier: شناسه
+  ref: مرجع
+  refs: مراجع
+  reference: مرجع
+  references: مراجع
+  code: کد
+  codes: کدها
+  number: شماره
+  numbers: شماره‌ها
+  "no": شماره
+  num: شماره
+  name: نام
+  names: نام‌ها
+  title: عنوان
+  titles: عناوین
+  caption: برچسب
+  label: برچسب
+  description: شرح
+  desc: شرح
+  comment: توضیح
+  comments: توضیحات
+  note: یادداشت
+  notes: یادداشت‌ها
+  remark: ملاحظات
+  remarks: ملاحظات
+  annotation: حاشیه‌نویسی
+  summary: خلاصه
+  text: متن
+  body: بدنه
+  content: محتوا
+  contents: محتوا
+  data: داده
+  metadata: فراداده
+  meta: فرا
+  info: اطلاعات
+  information: اطلاعات
+  detail: جزئیات
+  details: جزئیات
+  type: نوع
+  types: انواع
+  kind: نوع
+  sub: زیر
+  subtype: زیرنوع
+  category: دسته
+  categories: دسته‌ها
+  class: طبقه
+  classification: طبقه‌بندی
+  group: گروه
+  groups: گروه‌ها
+  grouping: گروه‌بندی
+  level: سطح
+  levels: سطوح
+  state: وضعیت
+  status: وضعیت
+  mode: حالت
+  method: روش
+  methods: روش‌ها
+  procedure: رویه
+  way: روش
+  model: مدل
+  pattern: الگو
+  template: الگو
+  format: قالب
+  structure: ساختار
+  version: نسخه
+  value: مقدار
+  values: مقادیر
+  item: قلم
+  items: اقلام
+  row: ردیف
+  rows: ردیف‌ها
+  column: ستون
+  columns: ستون‌ها
+  field: فیلد
+  fields: فیلدها
+  key: کلید
+  keys: کلیدها
+  index: اندیس
+  sort: مرتب‌سازی
+  sorting: مرتب‌سازی
+  sequence: توالی
+  priority: اولویت
+  rank: رتبه
+  step: گام
+  steps: گام‌ها
+  stage: مرحله
+  phase: فاز
+  position: موقعیت
+  location: محل
+  place: محل
+  area: مساحت
+  zone: منطقه
+  region: منطقه
+  regional: منطقه‌ای
+  division: تقسیمات
+  path: مسیر
+  url: نشانی اینترنتی
+  link: پیوند
+  address: نشانی
+  addresses: نشانی‌ها
+  source: مبدأ
+  origin: مبدأ
+  destination: مقصد
+  target: هدف
+  parent: والد
+  child: فرزند
+  children: فرزندان
+  root: ریشه
+  node: گره
+  leaf: برگ
+  owner: مالک
+  master: اصلی
+  main: اصلی
+  major: اصلی
+  minor: فرعی
+  primary: اصلی
+  secondary: ثانویه
+  auxiliary: کمکی
+  additional: اضافی
+  extra: اضافی
+  other: {fa: سایر, pre: true}
+  others: سایر
+  general: عمومی
+  special: ویژه
+  specific: مشخص
+  custom: سفارشی
+  default: پیش‌فرض
+  standard: استاندارد
+  normal: عادی
+  abnormal: غیرعادی
+  regular: عادی
+  temporary: موقت
+  temp: موقت
+  permanent: دائمی
+  fixed: ثابت
+  fix: ثابت
+  static: ایستا
+  dynamic: پویا
+  variable: متغیر
+  manual: دستی
+  manually: {fa: به‌صورت دستی, pred: true}
+  automatic: خودکار
+  auto: خودکار
+  automatically: {fa: به‌صورت خودکار, pred: true}
+  system: سیستم
+  systemic: سیستمی
+  systematic: سیستمی
+  internal: داخلی
+  external: خارجی
+  local: محلی
+  international: بین‌المللی
+  national: ملی
+  public: عمومی
+  private: خصوصی
+  shared: مشترک
+  common: مشترک
+  global: سراسری
+  enterprise: سازمانی
+  wide: سراسری
+  whole: کل
+  full: کامل
+  complete: تکمیل
+  partial: جزئی
+  single: تکی
+  multi: چندگانه
+  multiple: چندگانه
+  unique: یکتا
+  new: جدید
+  old: قدیم
+  original: اصلی
+  current: جاری
+  previous: قبلی
+  prev: قبلی
+  prior: قبلی
+  next: {fa: بعدی, pred: false}
+  last: {fa: آخرین, pre: true}
+  first: {fa: اولین, pre: true}
+  second: دوم
+  third: سوم
+  initial: اولیه
+  final: نهایی
+  start: شروع
+  starting: شروع
+  begin: شروع
+  beginning: ابتدای دوره
+  end: پایان
+  ending: پایان دوره
+  finish: پایان
+  stop: توقف
+  opening: افتتاحیه
+  closing: اختتامیه
+  max: {fa: حداکثر, pre: true}
+  maximum: {fa: حداکثر, pre: true}
+  min: {fa: حداقل, pre: true}
+  minimum: {fa: حداقل, pre: true}
+  biggest: {fa: بزرگ‌ترین, pre: true}
+  smallest: {fa: کوچک‌ترین, pre: true}
+  upper: بالا
+  lower: پایین
+  high: بالا
+  low: پایین
+  top: بالا
+  bottom: پایین
+  left: چپ
+  right: راست
+  limit: حد
+  limits: حدود
+  bound: حد
+  range: بازه
+  interval: فاصله
+  distance: فاصله
+  offset: انحراف
+  margin: حاشیه
+  tolerance: رواداری
+  accuracy: دقت
+  precision: دقت
+  scale: مقیاس
+  size: اندازه
+  length: طول
+  width: عرض
+  height: ارتفاع
+  depth: عمق
+  weight: وزن
+  volume: حجم
+  density: چگالی
+  color: رنگ
+  font: قلم
+  icon: نماد
+  image: تصویر
+  picture: تصویر
+  pic: تصویر
+  photo: عکس
+  file: فایل
+  files: فایل‌ها
+  folder: پوشه
+  attachment: پیوست
+  attachments: پیوست‌ها
+  extension: پسوند
+  mime: MIME
+  page: صفحه
+  pages: صفحات
+  header: سرآیند
+  hdr: سرآیند
+  footer: پانویس
+  layout: چیدمان
+  display: نمایش
+  view: نمایش
+  show: نمایش
+  visible: قابل مشاهده
+  visibility: نمایش‌پذیری
+  hidden: پنهان
+  editable: قابل ویرایش
+  enabled: {fa: فعال, pred: true}
+  disabled: {fa: غیرفعال, pred: true}
+  active: فعال
+  inactive: غیرفعال
+  activation: فعال‌سازی
+  deactivation: غیرفعال‌سازی
+  valid: {fa: معتبر, pred: true}
+  invalid: {fa: نامعتبر, pred: true}
+  validity: اعتبار
+  validation: اعتبارسنجی
+  required: {fa: الزامی, pred: true}
+  mandatory: {fa: اجباری, pred: true}
+  obligatory: {fa: الزامی, pred: true}
+  optional: {fa: اختیاری, pred: true}
+  available: {fa: موجود, pred: true}
+  locked: {fa: قفل‌شده, pred: true}
+  lock: قفل
+  blocked: مسدود
+  deleted: {fa: حذف شده, pred: true}
+  created: {fa: ایجاد شده, pred: true}
+  closed: {fa: بسته شده, pred: true}
+  completed: {fa: تکمیل شده, pred: true}
+  checked: {fa: بررسی شده, pred: true}
+  confirmed: {fa: تأیید شده, pred: true}
+  approved: {fa: تصویب شده, pred: true}
+  rejected: {fa: رد شده, pred: true}
+  canceled: {fa: لغو شده, pred: true}
+  cancelled: {fa: لغو شده, pred: true}
+  finalized: {fa: قطعی شده, pred: true}
+  processed: {fa: پردازش شده, pred: true}
+  passed: {fa: قبول شده, pred: true}
+  failed: {fa: ناموفق, pred: true}
+  sent: {fa: ارسال شده, pred: true}
+  received: دریافتی
+  returned: برگشتی
+  reversed: {fa: معکوس, pred: true}
+  modified: {fa: تغییر یافته, pred: true}
+  changed: {fa: تغییر یافته, pred: true}
+  edited: ویرایش‌شده
+  added: {fa: افزوده شده, pred: true}
+  assigned: {fa: تخصیص یافته, pred: true}
+  allocated: تخصیص‌یافته
+  imported: {fa: وارد شده, pred: true}
+  mapped: {fa: نگاشت شده, pred: true}
+  calculated: محاسبه‌شده
+  collected: {fa: جمع‌آوری شده, pred: true}
+  delivered: تحویل‌شده
+  undelivered: تحویل‌نشده
+  paid: پرداخت‌شده
+  settled: تسویه‌شده
+  consumed: مصرف‌شده
+  counsumed: مصرف‌شده
+  produced: تولیدشده
+  planned: برنامه‌ریزی‌شده
+  unplanned: برنامه‌ریزی‌نشده
+  scheduled: زمان‌بندی‌شده
+  nonscheduled: غیر برنامه‌ای
+  unexecuted: اجرانشده
+  estimated: برآوردی
+  expected: مورد انتظار
+  suggested: پیشنهادی
+  selected: انتخاب‌شده
+  requested: درخواست‌شده
+  defined: تعریف‌شده
+  predefined: از پیش تعریف‌شده
+  supported: پشتیبانی‌شده
+  included: شامل‌شده
+  transferred: منتقل‌شده
+  transfered: منتقل‌شده
+  converted: تبدیل‌شده
+  accumulated: انباشته
+  applied: اعمال‌شده
+  absorbed: جذب‌شده
+  reserved: رزروشده
+  accepted: پذیرفته‌شده
+  permitted: مجاز
+  authorized: مجاز
+  deducted: کسرشده
+  approve: تصویب
+  approval: تصویب
+  confirm: تأیید
+  confirmation: تأیید
+  confirmer: تأییدکننده
+  verification: تأیید
+  verified: تأییدشده
+  official: رسمی
+  draft: پیش‌نویس
+  # ── زمان ──
+  date: تاریخ
+  dates: تاریخ‌ها
+  time: زمان
+  times: زمان‌ها
+  datetime: تاریخ و زمان
+  timestamp: مهر زمانی
+  year: سال
+  years: سال‌ها
+  yearly: سالانه
+  annual: سالانه
+  month: ماه
+  months: ماه‌ها
+  monthly: ماهانه
+  week: هفته
+  weekly: هفتگی
+  day: روز
+  days: روز
+  daily: روزانه
+  hour: ساعت
+  hours: ساعت
+  hourly: ساعتی
+  minute: دقیقه
+  minutes: دقیقه
+  sec: ثانیه
+  seconds: ثانیه
+  quarter: فصل
+  period: دوره
+  periods: دوره‌ها
+  periodic: دوره‌ای
+  duration: مدت
+  delay: تأخیر
+  deadline: مهلت
+  respite: مهلت
+  grace: تنفس
+  expiry: انقضا
+  expiration: انقضا
+  expire: انقضا
+  due: سررسید
+  cycle: چرخه
+  recurrence: تکرار
+  occurrence: رخداد
+  schedule: زمان‌بندی
+  calendar: تقویم
+  shift: شیفت
+  rest: استراحت
+  break: استراحت
+  fiscal: مالی
+  birth: تولد
+  # ── اعمال ──
+  action: عملیات
+  actions: عملیات
+  operation: عملیات
+  operations: عملیات
+  operational: عملیاتی
+  activity: فعالیت
+  activities: فعالیت‌ها
+  task: وظیفه
+  process: فرایند
+  processor: پردازشگر
+  execution: اجرا
+  run: اجرا
+  request: درخواست
+  requests: درخواست‌ها
+  requester: درخواست‌کننده
+  issue: صدور
+  issuance: صدور
+  issuer: صادرکننده
+  registration: ثبت
+  register: ثبت
+  record: سابقه
+  recording: ثبت
+  creation: ایجاد
+  create: ایجاد
+  modification: تغییر
+  modifier: تغییردهنده
+  change: تغییر
+  changes: تغییرات
+  edit: ویرایش
+  update: به‌روزرسانی
+  delete: حذف
+  insert: درج
+  insertion: درج
+  add: افزودن
+  addition: افزایش
+  additions: اضافات
+  subtraction: کاهش
+  deduction: کسر
+  deductions: کسورات
+  reduction: کاهش
+  reductions: کاهش‌ها
+  increase: افزایش
+  decrease: کاهش
+  increment: افزایش
+  decrement: کاهش
+  adjustment: تعدیل
+  correction: اصلاح
+  corrective: اصلاحی
+  amendment: اصلاحیه
+  cancel: لغو
+  cancellation: ابطال
+  apply: اعمال
+  calc: محاسبه
+  calculation: محاسبه
+  computation: محاسبه
+  computational: محاسباتی
+  formula: فرمول
+  rounding: گردکردن
+  conversion: تبدیل
+  convert: تبدیل
+  exchange: تسعیر
+  transfer: انتقال
+  transport: حمل
+  transportation: حمل و نقل
+  shipment: محموله
+  loading: بارگیری
+  unloading: تخلیه
+  delivery: تحویل
+  deliverer: تحویل‌دهنده
+  deliverable: قابل تحویل
+  receive: دریافت
+  receiving: دریافت
+  receiver: گیرنده
+  receivers: گیرندگان
+  recipient: گیرنده
+  send: ارسال
+  sending: ارسال
+  sender: فرستنده
+  return: برگشت
+  returnable: برگشت‌پذیر
+  refund: استرداد
+  refundable: قابل استرداد
+  unrefundable: غیرقابل استرداد
+  reserve: رزرو
+  reservation: رزرو
+  allocation: تخصیص
+  assignment: تخصیص
+  assign: تخصیص
+  distribution: توزیع
+  distributing: توزیع
+  collection: وصول
+  gathering: جمع‌آوری
+  merge: ادغام
+  sync: همگام‌سازی
+  import: ورود
+  export: صدور
+  print: چاپ
+  scan: پویش
+  search: جست‌وجو
+  filter: فیلتر
+  selection: انتخاب
+  select: انتخاب
+  selecting: انتخاب
+  option: گزینه
+  options: گزینه‌ها
+  choice: گزینه
+  setting: تنظیم
+  settings: تنظیمات
+  config: پیکربندی
+  configuration: پیکربندی
+  parameter: پارامتر
+  parameters: پارامترها
+  param: پارامتر
+  condition: شرط
+  conditions: شرایط
+  rule: قاعده
+  rules: قواعد
+  policy: سیاست
+  strategy: راهبرد
+  control: کنترل
+  check: بررسی
+  checking: بررسی
+  review: بازبینی
+  inspection: بازرسی
+  evaluation: ارزیابی
+  appraisal: ارزیابی
+  appraisee: ارزیابی‌شونده
+  appraiser: ارزیاب
+  assessment: سنجش
+  measurement: اندازه‌گیری
+  measure: اندازه
+  test: آزمون
+  sample: نمونه
+  sampling: نمونه‌برداری
+  calibration: کالیبراسیون
+  audit: حسابرسی
+  analysis: تحلیل
+  report: گزارش
+  reports: گزارش‌ها
+  reporting: گزارش‌گیری
+  dashboard: داشبورد
+  message: پیام
+  notification: اعلان
+  alert: هشدار
+  reminder: یادآوری
+  error: خطا
+  exception: استثنا
+  failure: خرابی
+  problem: مشکل
+  risk: ریسک
+  reason: علت
+  result: نتیجه
+  results: نتایج
+  answer: پاسخ
+  score: امتیاز
+  point: نقطه
+  points: امتیازها
+  rate: نرخ
+  ratio: نسبت
+  percent: درصد
+  percentage: درصد
+  coefficient: ضریب
+  factor: عامل
+  factors: عوامل
+  count: تعداد
+  counter: شمارنده
+  total: کل
+  sum: جمع
+  average: {fa: میانگین, pre: true}
+  net: خالص
+  gross: ناخالص
+  balance: مانده
+  remaining: مانده
+  remainder: مانده
+  difference: تفاوت
+  variance: انحراف
+  surplus: مازاد
+  deficit: کسری
+  equivalent: معادل
+  usage: مصرف
+  use: استفاده
+  used: استفاده‌شده
+  useful: مفید
+  utilization: بهره‌برداری
+  consumption: مصرف
+  consume: مصرف
+  consumer: مصرف‌کننده
+  capacity: ظرفیت
+  efficiency: کارایی
+  performance: عملکرد
+  yield: بازده
+  output: خروجی
+  input: ورودی
+  incoming: ورودی
+  outgoing: خروجی
+  entry: ورود
+  enter: ورود
+  entrance: ورود
+  exit: خروج
+  access: دسترسی
+  permission: مجوز
+  permit: مجوز
+  license: پروانه
+  certificate: گواهی
+  security: امنیت
+  password: گذرواژه
+  login: ورود
+  authentication: احراز هویت
+  role: نقش
+  signature: امضا
+  sign: علامت
+  tag: برچسب
+  hash: درهم‌سازی
+  # ── اشخاص و سازمان ──
+  user: کاربر
+  users: کاربران
+  person: شخص
+  employee: کارمند
+  employees: کارمندان
+  employer: کارفرما
+  employment: استخدام
+  manager: مدیر
+  management: مدیریت
+  admin: مدیر
+  supervisor: سرپرست
+  agent: نماینده
+  actor: کنشگر
+  operator: اپراتور
+  member: عضو
+  membership: عضویت
+  owner2: مالک
+  customer: مشتری
+  customers: مشتریان
+  supplier: تأمین‌کننده
+  vendor: فروشنده
+  buyer: خریدار
+  seller: فروشنده
+  broker: کارگزار
+  contractor: پیمانکار
+  undertaker: متعهد
+  provider: ارائه‌دهنده
+  payer: پرداخت‌کننده
+  taxpayer: مؤدی
+  depositor: سپرده‌گذار
+  manufacturer: سازنده
+  trainer: مدرس
+  student: فراگیر
+  relative: بستگان
+  father: پدر
+  gender: جنسیت
+  marital: تأهل
+  marriage: ازدواج
+  nationality: ملیت
+  military: نظام وظیفه
+  education: تحصیلات
+  degree: مدرک
+  discipline: رشته
+  organization: سازمان
+  organizational: سازمانی
+  organizing: سازمان‌دهی
+  org: سازمان
+  company: شرکت
+  office: اداره
+  department: واحد
+  section: بخش
+  branch: شعبه
+  center: مرکز
+  site: سایت
+  city: شهر
+  country: کشور
+  postal: پستی
+  zip: کد پستی
+  phone: تلفن
+  mobile: همراه
+  cell: همراه
+  fax: نمابر
+  email: پست الکترونیک
+  mail: نامه
+  web: وب
+  website: وبگاه
+  job: شغل
+  post: پست
+  duty: وظیفه
+  competency: شایستگی
+  course: دوره
+  training: آموزش
+  learning: یادگیری
+  objective: هدف
+  effectiveness: اثربخشی
+  session: جلسه
+  meeting: جلسه
+  attendance: حضور
+  presence: حضور
+  absent: غایب
+  leave: مرخصی
+  mission: مأموریت
+  overtime: اضافه‌کار
+  statute: حکم
+  retirement: بازنشستگی
+  insurance: بیمه
+  salary: حقوق
+  wage: دستمزد
+  pay: پرداخت
+  compensation: جبران خدمات
+  allowance: فوق‌العاده
+  reward: پاداش
+  bonus: پاداش
+  penalty: جریمه
+  loan: وام
+  installment: قسط
+  instalment: قسط
+  # ── مالی و تجاری ──
+  account: حساب
+  accounts: حساب‌ها
+  accounting: حسابداری
+  dl: تفصیلی
+  sl: حساب معین
+  gl: حساب کل
+  ledger: دفتر
+  voucher: سند حسابداری
+  document: سند
+  documents: اسناد
+  doc: سند
+  amount: مبلغ
+  amounts: مبالغ
+  price: قیمت
+  cost: بها
+  costs: هزینه‌ها
+  fee: نرخ
+  expense: هزینه
+  expenditure: هزینه
+  income: درآمد
+  profit: سود
+  loss: زیان
+  interest: سود
+  discount: تخفیف
+  tax: مالیات
+  toll: عوارض
+  vat: مالیات بر ارزش افزوده
+  duties: حقوق گمرکی
+  customs: گمرک
+  currency: ارز
+  rial: ریالی
+  cash: نقد
+  cheque: چک
+  check2: چک
+  bank: بانک
+  sheba: شبا
+  card: کارت
+  payment: پرداخت
+  payments: پرداخت‌ها
+  payable: پرداختنی
+  receipt: دریافت
+  receivable: دریافتنی
+  deposit: سپرده
+  prepayment: پیش‌پرداخت
+  prepaid: پیش‌پرداخت
+  advance: پیش‌پرداخت
+  guarantee: ضمانت
+  collateral: وثیقه
+  credit: اعتبار
+  debit: بدهکار
+  debt: بدهی
+  budget: بودجه
+  budgeting: بودجه‌ریزی
+  fund: منبع
+  funds: منابع
+  financial: مالی
+  economic: اقتصادی
+  contract: قرارداد
+  agreement: توافق
+  commitment: تعهد
+  invoice: فاکتور
+  bill: صورت‌حساب
+  statement: صورت‌حساب
+  proforma: پیش‌فاکتور
+  quotation: پیش‌فاکتور
+  inquiry: استعلام
+  order: سفارش
+  orders: سفارش‌ها
+  ordering: سفارش‌گذاری
+  purchase: خرید
+  purchasing: خرید
+  buy: خرید
+  sale: فروش
+  sales: فروش
+  salable: قابل فروش
+  retail: خرده‌فروشی
+  shop: فروشگاه
+  shops: فروشگاه‌ها
+  commission: کمیسیون
+  settlement: تسویه
+  reconciliation: مغایرت‌گیری
+  depreciation: استهلاک
+  revaluation: تجدید ارزیابی
+  impairment: کاهش ارزش
+  salvage: اسقاط
+  book: دفتری
+  asset: دارایی
+  assets: دارایی‌ها
+  acquisition: تحصیل
+  # ── کالا و تولید ──
+  part: کالا
+  parts: کالاها
+  product: محصول
+  products: محصولات
+  production: تولید
+  produce: تولید
+  material: مواد
+  materials: مواد
+  inventory: موجودی
+  stock: موجودی
+  store: انبار
+  storage: انبارش
+  warehouse: انبار
+  plant: کارخانه
+  unit: واحد
+  units: واحدها
+  quantity: مقدار
+  qty: مقدار
+  pack: بسته
+  package: بسته
+  packaging: بسته‌بندی
+  barcode: بارکد
+  serial: سریال
+  batch: بچ
+  lot: انباشته
+  scrap: ضایعات
+  waste: ضایعات
+  wastage: ضایعات
+  rework: دوباره‌کاری
+  recycle: بازیافت
+  recycling: بازیافت
+  labour: دستمزد
+  labor: دستمزد
+  overhead: سربار
+  work: کار
+  working: کاری
+  workstation: ایستگاه کاری
+  equipment: تجهیزات
+  device: دستگاه
+  machine: ماشین
+  vehicle: وسیلهٔ نقلیه
+  plate: پلاک
+  plaque: پلاک
+  maintenance: نگهداری
+  repair: تعمیر
+  defect: عیب
+  quality: کیفیت
+  characteristic: مشخصه
+  specification: مشخصات
+  property: ویژگی
+  properties: ویژگی‌ها
+  attribute: ویژگی
+  attributes: ویژگی‌ها
+  feature: ویژگی
+  component: جزء
+  element: جزء
+  bom: درخت محصول
+  routing: مسیر ساخت
+  route: مسیر
+  tracking: ردیابی
+  track: ردیابی
+  trace: ردیابی
+  traceable: قابل ردیابی
+  planning: برنامه‌ریزی
+  plan: برنامه
+  demand: تقاضا
+  requirement: نیاز
+  supply: تأمین
+  safety: اطمینان
+  reorder: سفارش مجدد
+  tank: مخزن
+  gas: گاز
+  feed: خوراک
+  tour: تور
+  handheld: دستگاه دستی
+  terminal: پایانه
+  cashier: صندوق
+  # ── فنی ──
+  entity: موجودیت
+  entities: موجودیت‌ها
+  table: جدول
+  object: شیء
+  module: ماژول
+  component2: مؤلفه
+  lookup: کد و شرحی
+  string: رشته
+  integer: عدد صحیح
+  int: عدد صحیح
+  decimal: عدد اعشاری
+  numeric: عددی
+  boolean: منطقی
+  xml: XML
+  html: HTML
+  pdf: PDF
+  api: API
+  ip: IP
+  server: سرور
+  host: میزبان
+  port: درگاه
+  protocol: پروتکل
+  channel: کانال
+  gateway: درگاه
+  domain: دامنه
+  context: زمینه
+  resource: منبع
+  logical: منطقی
+  physical: فیزیکی
+  log: رویداد
+  history: تاریخچه
+  event: رویداد
+  call: فراخوانی
+  instance: نمونه
+  definition: تعریف
+  expression: عبارت
+  phrase: عبارت
+  separator: جداکننده
+  prefix: پیشوند
+  suffix: پسوند
+  language: زبان
+  latin: لاتین
+  persian: فارسی
+  english: انگلیسی
+  en: انگلیسی
+  latitude: عرض جغرافیایی
+  longitude: طول جغرافیایی
+  online: برخط
+  offline: برون‌خط
+  remote: راه دور
+  legacy: قدیمی
+  # ── متفرقه ──
+  topic: سرفصل
+  subject: موضوع
+  letter: نامه
+  base: پایه
+  basis: مبنا
+  based: مبتنی
+  related: مرتبط
+  relation: رابطه
+  dependency: وابستگی
+  nature: ماهیت
+  effect: اثر
+  effective: مؤثر
+  scope: دامنه
+  importance: اهمیت
+  severity: شدت
+  real: واقعی
+  actual: واقعی
+  direct: مستقیم
+  indirect: غیرمستقیم
+  positive: مثبت
+  negative: منفی
+  zero: صفر
+  free: رایگان
+  only: {fa: فقط, pre: true}
+  the: ""
+  all: همه
+  each: هر
+  side: جانبی
+  semi: نیمه
+  comparative: مقایسه‌ای
+  comparison: مقایسه
+  continuous: مستمر
+  discontinuous: غیرمستمر
+  discrete: گسسته
+  quota: سهمیه
+  rationing: سهمیه‌بندی
+  ration: سهمیه
+  share: سهم
+  premium: حق بیمه
+  carrier: حمل‌کننده
+  transporter: حمل‌کننده
+  driving: رانندگی
+  container: کانتینر
+  weighing: توزین
+  bascule: باسکول
+  loyalty: وفاداری
+  survey: نظرسنجی
+  feedback: بازخورد
+  green: سبز
+  red: قرمز
+  yellow: زرد
+  establishment: تأسیس
+  abbreviation: اختصار
+  identity: هویت
+  life: عمر
+  mrp: MRP
+  # ── دور دوم: اجزای پرتکرار باقی‌مانده ──
+  transaction: تراکنش
+  transactions: تراکنش‌ها
+  service: خدمت
+  services: خدمات
+  deployment: استقرار
+  counterpart: طرف مقابل
+  business: کسب‌وکار
+  discard: انصراف
+  backflush: کسر خودکار
+  backflushable: قابل کسر خودکار
+  stocktaking: انبارگردانی
+  inclusive: شامل
+  hot: گرم
+  discriminator: تمایزدهنده
+  quorum: حد نصاب
+  list: فهرست
+  lists: فهرست‌ها
+  party: طرف حساب
+  parties: طرف‌حساب‌ها
+  include: {fa: شامل, pre: true}
+  includes: {fa: شامل, pre: true}
+  contains: {fa: شامل, pre: true}
+  applicable: قابل اعمال
+  concept: مفهوم
+  shelf: قفسه
+  matured: سررسیدشده
+  indicator: شاخص
+  miscellaneous: متفرقه
+  misc: متفرقه
+  inferred: استنتاجی
+  read: خواندن
+  creator: ایجادکننده
+  reverse: معکوس
+  technical: فنی
+  variant: گونه
+  rejection: رد
+  excel: اکسل
+  suspended: معلق
+  pricing: قیمت‌گذاری
+  portal: درگاه
+  acceptable: قابل قبول
+  transmission: انتقال
+  aggregate: تجمیعی
+  descriptor: توصیف‌گر
+  effected: تأثیرپذیرفته
+  series: سری
+  unifier: یکسان‌ساز
+  bookmark: نشانک
+  distributor: توزیع‌کننده
+  declaration: اظهارنامه
+  form: فرم
+  forms: فرم‌ها
+  cardex: کاردکس
+  utilizability: قابلیت بهره‌برداری
+  simulation: شبیه‌سازی
+  function: کارکرد
+  detection: تشخیص
+  turnover: گردش
+  align: تراز
+  alignment: تراز
+  release: انتشار
+  exemption: معافیت
+  sacrifice: ایثارگری
+  fill: پرکردن
+  sizing: تعیین اندازه
+  telegram: تلگرام
+  primitive: اولیه
+  install: نصب
+  installation: نصب
+  out: خارج
+  paper: کاغذ
+  deal: معامله
+  civil: مدنی
+  authority: مرجع
+  endorsement: ظهرنویسی
+  notice: ابلاغیه
+  treasury: خزانه
+  conflict: تعارض
+  entitlement: استحقاق
+  save: ذخیره
+  sharing: اشتراک
+  alternative: جایگزین
+  acceptance: پذیرش
+  discharge: تخلیه
+  intact: سالم
+  dimension: بعد
+  breakdown: تفکیک
+  generation: تولید
+  behavior: رفتار
+  behaviour: رفتار
+  expert: کارشناس
+  donation: اهدا
+  elimination: حذف
+  five: پنج
+  parametric: پارامتری
+  filled: پرشده
+  booklet: دفترچه
+  ancestor: نیا
+  middleware: میان‌افزار
+  participation: مشارکت
+  shell: پوسته
+  war: جنگ
+  promotion: ارتقا
+  command: فرمان
+  block: بلوک
+  set: تنظیم
+  needed: مورد نیاز
+  inway: در راه
+  bucket: بازه
+  "non": {fa: غیر, pre: true}
+  un: {fa: غیر, pre: true}
+  term: مدت
+  supplied: تأمین‌شده
+  dismantle: برچیدن
+  inter: بین
+  line: خط
+  principal: اصل
+  taker: گیرنده
+  plus: به‌علاوهٔ
+  detain: توقیف
+  conversation: گفت‌وگو
+  deny: منع
+  grant: اعطا
+  inline: درون‌خطی
+  four: چهار
+  six: شش
+  three: سه
+  two: دو
+  one: یک
+  quantifiable: کمی
+  build: ساخت
+  separate: جداگانه
+  seperate: جداگانه
+  definitiveness: قطعیت
+  publish: انتشار
+  supplementary: تکمیلی
+  dependent: وابسته
+  downgrade: تنزل
+  tier: رده
+  tel: تلفن
+  reject: رد
+  legal: حقوقی
+  answering: پاسخ‌گویی
+  scoring: امتیازدهی
+  indicators: شاخص‌ها
+  join: پیوستن
+  trend: روند
+  self: خود
+  aware: آگاه
+  participant: شرکت‌کننده
+  participants: شرکت‌کنندگان
+  abbr: اختصاری
+  expired: منقضی
+  exporting: صدور
+  assembly: اسمبلی
+  splitter: جداکننده
+  consider: درنظرگرفتن
+  deployed: مستقرشده
+  remain: مانده
+  deletion: حذف
+  agreed: موافقت‌شده
+  completion: تکمیل
+  executive: اجرایی
+  scheduler: زمان‌بند
+  virtual: مجازی
+  questionnaire: پرسش‌نامه
+  workbook: کارنامه
+  compare: مقایسه
+  freight: کرایه حمل
+  load: بار
+  discrepancy: مغایرت
+  direction: جهت
+  denominator: مخرج
+  numerator: صورت
+  proposed: پیشنهادی
+  generic: عمومی
+  shipping: حمل
+  excess: مازاد
+  lading: بارنامه
+  fractional: کسری
+  electronic: الکترونیکی
+  parallel: موازی
+  centralized: متمرکز
+  explosion: انفجار
+  prediction: پیش‌بینی
+  manufacturing: ساخت
+  goods: کالا
+  latest: آخرین
+  serials: سریال‌ها
+  until: تا
+  damage: خسارت
+  likelihood: احتمال
+  long: بلند
+  ability: قابلیت
+  chargeable: قابل شارژ
+  repayable: قابل بازپرداخت
+  saleable: قابل فروش
+  producer: تولیدکننده
+  payed: پرداخت‌شده
+  coupon: کوپن
+  referenced: ارجاع‌شده
+  rejecting: رد
+  printer: چاپگر
+  token: توکن
+  settling: تسویه
+  taxable: مشمول مالیات
+  refrence: مرجع
+  tick: تیک
+  registeration: ثبت
+  published: منتشرشده
+  precedence: تقدم
+  amend: اصلاح
+  rationable: سهمیه‌ای
+  replaceable: قابل جایگزینی
+  priced: قیمت‌دار
+  script: اسکریپت
+  reading: قرائت
+  commissioning: راه‌اندازی
+  app: برنامه
+  retry: تلاش مجدد
+  repository: مخزن
+  kpi: شاخص کلیدی عملکرد
+  replication: تکثیر
+  logon: ورود
+  responsibility: مسئولیت
+  monitoring: پایش
+  merged: ادغام‌شده
+  amended: اصلاح‌شده
+  controled: کنترل‌شده
+  controlled: کنترل‌شده
+  modules: ماژول‌ها
+  nullable: قابل تهی
+  filters: فیلترها
+  precentage: درصد
+  ineffective: بی‌اثر
+  regulated: تنظیم‌شده
+  recyclable: قابل بازیافت
+  dissimilar: غیرمشابه
+  budgeted: بودجه‌ای
+  personnel: پرسنل
+  released: منتشرشده
+  horizon: افق
+  succeeded: موفق
+  prompt: اعلان
+  subcontract: پیمانکاری فرعی
+  saturday: شنبه
+  sunday: یکشنبه
+  monday: دوشنبه
+  tuesday: سه‌شنبه
+  wednesday: چهارشنبه
+  thursday: پنجشنبه
+  friday: جمعه
+  distributer: توزیع‌کننده
+  ask: درخواست
+  correspondence: مکاتبه
+  searchable: قابل جست‌وجو
+  write: نوشتن
+  software: نرم‌افزار
+  developer: توسعه‌دهنده
+  cc: رونوشت
+  encryption: رمزگذاری
+  repeat: تکرار
+  response: پاسخ
+  client: کارخواه
+  extracted: استخراج‌شده
+  signed: امضاشده
+  duplex: دورو
+  orientation: جهت
+  dpi: DPI
+  missed: ازدست‌رفته
+  termination: خاتمه
+  registered: ثبت‌شده
+  partnership: مشارکت
+  benefit: منفعت
+  revenue: درآمد
+  ministry: وزارت
+  court: دیوان
+  vote: رأی
+  affecting: مؤثر
+  capital: سرمایه
+  agency: نمایندگی
+  tender: مناقصه
+  remained: مانده
+  separately: جداگانه
+  running: جاری
+  args: آرگومان‌ها
+  tagging: برچسب‌گذاری
+  province: استان
+  small: کوچک
+  deals: معاملات
+  analyze: تحلیل
+  booking: رزرو
+  affected: متأثر
+  question: پرسش
+  questions: پرسش‌ها
+  locale: محلی‌سازی
+  matrix: ماتریس
+  fully: کاملاً
+  symbol: نماد
+  jalali: شمسی
+  finance: دارایی
+  identification: شناسایی
+  blacklist: فهرست سیاه
+  movement: جابه‌جایی
+  shrinked: فشرده
+  diskette: دیسکت
+  must: {fa: باید, pre: true}
+phrases:
+  by product: محصول جانبی
+  spare part: قطعهٔ یدکی
+  year month: سال و ماه
+  date time: تاریخ و زمان
+  lead time: زمان تحویل
+  cash flow: جریان نقد
+  book value: ارزش دفتری
+  useful life: عمر مفید
+  national code: کد ملی
+  economic code: کد اقتصادی
+  postal code: کد پستی
+  zip code: کد پستی
+  e mail: پست الکترونیک
+  email address: نشانی پست الکترونیک
+  write off: حذف از دفاتر
+  follow up: پیگیری
+  up to: تا
+  number of: تعداد
+  advance payment: پیش‌پرداخت
+  valid from: معتبر از
+  valid to: معتبر تا
+  valid until: معتبر تا
+  carry over: انتقال
+  dead line: مهلت
+  lead time: زمان تحویل
+  counter part: طرف مقابل
+  pre pay: پیش‌پرداخت
+  payment term: شرایط پرداخت
+  payment terms: شرایط پرداخت
+  va toll: عوارض ارزش افزوده
+  at least: حداقل
+  long term: بلندمدت
+  short term: کوتاه‌مدت
+  none working: غیرکاری
+  goods reciept: رسید کالا
+  goods receipt: رسید کالا
+  lead time: زمان تحویل
+  ministry of finance: وزارت دارایی
+  audit court: دیوان محاسبات
+  side product: محصول جانبی
+  under taker: متعهد
+  meta data: فراداده
+  in way: در راه
+  va tax: مالیات بر ارزش افزوده
+  order taking: سفارش‌گیری
+  un planned: برنامه‌ریزی‌نشده
+  non scheduled: غیر برنامه‌ای
+  pre defined: از پیش تعریف‌شده
+  shelf time: مدت ماندگاری
+  shelf life: مدت ماندگاری
+  term of delivery: شرایط تحویل
+  terms of delivery: شرایط تحویل
+  self service: سلف سرویس
+  lot sizing: تعیین اندازهٔ انباشته
+  drill through: جزئیات بیشتر
+  time bucket: بازهٔ زمانی
+  hot sales: فروش گرم
+  cost center: مرکز هزینه
+  cost centers: مراکز هزینه
+  bar code: بارکد
+  check sum: کنترل صحت
+  check list: چک‌لیست
+  count of: تعداد
+  on hand: در دست
+  to be: ""
+  at least: حداقل
+  display order: ترتیب نمایش
+  sort order: ترتیب مرتب‌سازی
+  first name: نام
+  last name: نام خانوادگی
+  father name: نام پدر
+  birth date: تاریخ تولد
+  marital status: وضعیت تأهل
+  fiscal year: سال مالی
+  exchange rate: نرخ تسعیر
+  currency rate: نرخ ارز
+  sayad number: شمارهٔ صیادی
+  due date: تاریخ سررسید
+  safety stock: موجودی اطمینان
+  semi product: محصول نیمه‌ساخته
+  petty cash: تنخواه
+  work location: محل کار
+  working group: گروه کاری
+  working shift: شیفت کاری
+  working days: روزهای کاری
+  none working days: روزهای غیرکاری
+  break time: زمان استراحت
+  plate identifier: شمارهٔ پلاک
+  gas station: جایگاه سوخت
+  value added: ارزش افزوده
+  title en: عنوان (انگلیسی)
+  name en: نام (انگلیسی)
+  description en: شرح (انگلیسی)
+adjectives: [manual, actual, automatic, auto, final, initial, active, inactive,
+  valid, invalid, fixed, default, temporary, temp, permanent, real, net, gross,
+  original, current, previous, prev, old, new, main, major, minor, primary,
+  secondary, extra, additional, internal, external, local, general, special,
+  custom, standard, normal, direct, indirect, positive, negative, free, official,
+  mandatory, optional, required, visible, hidden, editable, unique, partial, full,
+  complete, single, multi, multiple, dynamic, static, variable, periodic, daily,
+  weekly, monthly, yearly, annual, financial, organizational, operational,
+  physical, logical, online, offline, remote, shared, common, global, public,
+  private, rial, cash, other, first, last, upper, lower, high, low, maximum,
+  minimum, max, min, estimated, expected, suggested, selected, requested, approved,
+  confirmed, finalized, enabled, disabled, deleted, paid, received, returned,
+  planned, unplanned, systemic, systematic, effective, comparative, continuous,
+  regular, abnormal, legacy, virtual, electronic, legal, technical, fractional,
+  centralized, parallel, generic, executive, supplementary, dependent, proposed,
+  primitive, inclusive, aggregate, inferred, reverse, suspended, acceptable, intact,
+  parametric, filled, alternative, needed, separate, quantifiable, taxable,
+  referenced, merged, amended, expired, latest]

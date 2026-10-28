@@ -419,12 +419,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: کارمند حکم اصلاحی گروهی'
 - name: BatchCorrectiveEmployeeStatuteFactor
   title_fa: عوامل حکم اصلاحی گروهی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل حکم اصلاحی گروهی'
 - name: BatchEmployeeStatute
   title_fa: حکم کارگزینی گروهی
   source: software_entity_catalogue
@@ -437,42 +439,49 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: کارمند حکم کارگزینی گروهی'
 - name: BatchEmployeeStatuteFactor
   title_fa: عوامل حکم کارگزینی گروهی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل حکم کارگزینی گروهی'
 - name: BatchMissionDocument
   title_fa: ماموریت گروهی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ثبت ماموریت گروهی'
 - name: BatchMissionDocumentEmployee
   title_fa: کارمندان ماموریت گروهی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: کارمند ثبت ماموریت گروهی'
 - name: BatchMissionDocumentFactor
   title_fa: عوامل ماموریت گروهی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل ثبت ماموریت گروهی'
 - name: CalculationBaseTable
   title_fa: جدول پایه ‌محاسبات
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: جدول پایه محاسبات'
 - name: CalculationBaseTableItem
   title_fa: آیتم ساختار جدول پایه محاسبات
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: مقادیر جدول پایه محاسبات'
 - name: CalculationBaseTableStructure
   title_fa: ساختار جدول پایه محاسبات
   source: software_entity_catalogue
@@ -515,6 +524,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف عامل جبران خدمات'
 - name: CompensationFactorProperty
   title_fa: خصوصیت عامل جبران خدمات
   source: software_entity_catalogue
@@ -575,12 +585,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: شایستگی'
 - name: CompetencyGroupItem
   title_fa: گروه شایستگی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: گروهبندی شایستگی'
 - name: ComprehensiveReportSetting
   title_fa: تنظیم گزارش جامع
   source: software_entity_catalogue
@@ -599,18 +611,21 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: حکم اصلاحی کارمند'
 - name: CorrectiveEmployeeStatuteFactor
   title_fa: عوامل حکم اصلاحی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل حکم اصلاحی کارمند'
 - name: CorrectiveEmployeeStatuteStateHistory
   title_fa: تاریخچه تغییر وضعیت حکم اصلاحی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تاریخچه حکم اصلاحی کارمند'
 - name: Course
   title_fa: دوره آموزشی
   source: software_entity_catalogue
@@ -623,6 +638,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ارزیابی دوره آموزشی'
 - name: CourseChapter
   title_fa: سرفصل دوره آموزشی
   source: software_entity_catalogue
@@ -635,12 +651,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل آموزش'
 - name: CourseDegree
   title_fa: مقاطع تحصیلی دوره
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: مدرک دوره آموزشی'
 - name: CourseExpert
   title_fa: کارشناسان دوره
   source: software_entity_catalogue
@@ -653,6 +671,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: موسسه آموزش دهنده'
 - name: CoursePlan
   title_fa: برگزاری دوره آموزشی
   source: software_entity_catalogue
@@ -665,6 +684,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ارزیابی برگزاری دوره آموزشی'
 - name: CoursePlanChapter
   title_fa: سرفصل برگزاری دوره آموزشی
   source: software_entity_catalogue
@@ -683,6 +703,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: مدرک دوره آموزشی'
 - name: CoursePlanExpert
   title_fa: کارشناسان برگزاری دوره
   source: software_entity_catalogue
@@ -701,6 +722,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: شرکت کنندگان دوره آموزشی'
 - name: CoursePlanParticipantAppraisalValue
   title_fa: مقادیر ارزیابی های شرکت کننده برگزاری دوره
   source: software_entity_catalogue
@@ -713,18 +735,21 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: برنامه ریزی جلسات'
 - name: CoursePlanSession
   title_fa: جلسات برگزاری دوره
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: جلسات دوره آموزشی'
 - name: CoursePlanTrainer
   title_fa: مدرس برگزاری دوره
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: مدرس دوره آموزشی'
 - name: CoursePlanTrainerAppraisalValue
   title_fa: مقادیر ارزیابی های مدرس برگزاری دوره
   source: software_entity_catalogue
@@ -755,6 +780,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ثبت درخواست دوره'
 - name: CourseRequestParticipant
   title_fa: شرکت کنندگان درخواست دوره
   source: software_entity_catalogue
@@ -767,6 +793,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: مدرس دوره آموزشی'
 - name: CriticalEvent
   title_fa: وقایع حساس
   source: software_entity_catalogue
@@ -803,12 +830,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: معرفی کارمند'
 - name: EmployeeAppraisal
   title_fa: سوابق سنجش کارمند
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ارزیابی کارمند'
 - name: EmployeeAppraiser
   title_fa: ارزیاب کارمند
   source: accepted_suggestion
@@ -827,6 +856,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعیین شعبه کارمند'
 - name: EmployeeBranchInfoCondition
   title_fa: مامور
   source: software_entity_catalogue
@@ -839,12 +869,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: شایستگی (قابلیت) کارمند'
 - name: EmployeeCondition
   title_fa: شرط کارمند
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: وضعیت کارمند'
 - name: EmployeeConditionItem
   title_fa: قلم وضعیت کارمند
   source: stated_by_user
@@ -868,6 +900,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تحصیلات کارمند'
 - name: EmployeeEducationChangeRequest
   title_fa: درخواست تغییر سوابق تحصیلی
   source: software_entity_catalogue
@@ -910,6 +943,8 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: فایل ضمیمه درخواست تغییر اطلاعات
+    کارمند'
 - name: EmployeeLocalSyncData
   title_fa: داده همگام‌سازی محلی کارمند
   source: accepted_suggestion
@@ -923,6 +958,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: وضعیت تاهل'
 - name: EmployeeMarriageChangeRequest
   title_fa: درخواست تغییر وضعیت تاهل کارمند
   source: software_entity_catalogue
@@ -935,12 +971,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: محل پرداخت'
 - name: EmployeePriorPeriod
   title_fa: اطلاعات بازخرید سنوات کارمند
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: سابقه سنوات کارمند'
 - name: EmployeeRelatedDL
   title_fa: تفصیلی های مرتبط با کارمند
   source: software_entity_catalogue
@@ -953,12 +991,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: سازمان مرتبط با کارمند'
 - name: EmployeeRelative
   title_fa: بستگان کارمند
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: اطلاعات بستگان کارمند'
 - name: EmployeeRelativeChangeRequest
   title_fa: درخواست تغییر وابستگان کارمند
   source: software_entity_catalogue
@@ -971,12 +1011,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: اطلاعات بیمه بستگان کارمند'
 - name: EmployeeResearch
   title_fa: سوابق تحقیق ها و نشان های کارمند
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: سوابق تحقیق ها و نشان ها'
 - name: EmployeeRetirementForm
   title_fa: تکمیل اطلاعات بازنشستگی کارمند
   source: software_entity_catalogue
@@ -1043,12 +1085,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: سوابق تشویق و تنبیه'
 - name: EmployeeRfidCard
   title_fa: تخصیص کارت کارمند
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: کارت تردد'
 - name: EmployeeSignature
   title_fa: امضا کارمند
   source: accepted_suggestion
@@ -1061,12 +1105,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ثبت حکم کارمند'
 - name: EmployeeStatuteFactor
   title_fa: عامل حکم
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل حکم کارمند'
 - name: EmployeeStatuteReportPattern
   title_fa: تنظیم نمایش گزارش حکم
   source: software_entity_catalogue
@@ -1085,18 +1131,22 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ثبت درخواست حکم'
 - name: EmployeeStatuteRequestStateHistory
   title_fa: تاریخچه تغییر وضعیت درخواست حکم
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تاریخچه تغییر وضعیت درخواست
+    تغییر حکم کارمند'
 - name: EmployeeStatuteStateHistory
   title_fa: تاریخچه تغییر وضعیت حکم
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تاریخچه وضعیت حکم کارمند'
 - name: EmployeeStatuteTempPost
   title_fa: پست موقت حکم
   source: software_entity_catalogue
@@ -1109,12 +1159,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: اطلاعات تکمیلی کارمند'
 - name: EmployeeTraining
   title_fa: سوابق آموزشی کارمند
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: آموزش کارمند'
 - name: EmployeeTrainingChangeRequest
   title_fa: درخواست تغییر سوابق آموزشی کارمند
   source: software_entity_catalogue
@@ -1127,6 +1179,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: دوره آموزشی کارمند'
 - name: EmployeeWarriorRecord
   title_fa: سوابق ایثارگری کارمند
   source: software_entity_catalogue
@@ -1157,12 +1210,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف نوع استخدام'
 - name: EmploymentTypeItem
   title_fa: آیتم نوع استخدام
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: جزئیات نوع استخدام'
 - name: EntityAppraisal
   title_fa: ارزیابی موجودیت
   source: accepted_suggestion
@@ -1205,12 +1260,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تنظیم نمایش عوامل کارکر (تردد)'
 - name: FactorViewSettingCompensation
   title_fa: قلم تنظیم نمایش عوامل
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تنظیم نمایش عوامل جبران خدمات'
 - name: FactorViewSettingType
   title_fa: نوع تنظیم نمایش عوامل
   source: software_entity_catalogue
@@ -1247,18 +1304,21 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ایجاد ساختار فایل'
 - name: FileStructureBank
   title_fa: بانک های مرتبط با ساختار فایل
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ساختار فایل بانک'
 - name: FileStructureField
   title_fa: فیلدهای ساختار فایل
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: فیلد تنظیم مدیریت فایل'
 - name: FileStructureRetirement
   title_fa: اطلاعات ساختار فایل برای بازنشستگی
   source: software_entity_catalogue
@@ -1277,12 +1337,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ثبت حکم مالی'
 - name: Formula
   title_fa: فرمول
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ریز فرمول (متن فرمول)'
 - name: FormulaChangeLog
   title_fa: لاگ تغییر فرمول
   source: stated_by_user
@@ -1366,18 +1428,21 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: معرفی موسسه'
 - name: InstituteTrainer
   title_fa: مدرس موسسه
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: موسسه آموزش دهنده'
 - name: Job
   title_fa: شغل
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: معرفی شغل'
 - name: JobCompetency
   title_fa: شایستگی شغل
   source: software_entity_catalogue
@@ -1480,18 +1545,21 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعدیل اقساط وام'
 - name: LoanInstalment
   title_fa: قسط وام
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: استقرار وام'
 - name: LoanPayment
   title_fa: پرداخت وام
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تخصیص وام'
 - name: LoanSurety
   title_fa: ضامن وام
   source: software_entity_catalogue
@@ -1504,6 +1572,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: مستندات ضامن وام'
 - name: LoanType
   title_fa: نوع وام
   source: software_entity_catalogue
@@ -1516,6 +1585,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: طرف مقابل وام'
 - name: LocalServerStatus
   title_fa: وضعیت سرورهای تردد
   source: software_entity_catalogue
@@ -1601,6 +1671,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ثبت ماموریت'
 - name: MissionDocumentAttendanceData
   title_fa: رکوردهای تردد های مرتبط با ماموریت
   source: software_entity_catalogue
@@ -1613,18 +1684,21 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل ثبت ماموریت'
 - name: MissionDocumentReport
   title_fa: گزارشات ماموریت
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: گزارش ثبت ماموریت'
 - name: MissionFactor
   title_fa: عامل ماموریت
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف عامل ماموریت'
 - name: MissionFactorProperty
   title_fa: خصوصیت عامل ماموریت
   source: software_entity_catalogue
@@ -1637,6 +1711,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف نوع ماموریت'
 - name: MissionTypeAttendanceStatus
   title_fa: وضعیت متناظر نوع ماموریت در تردد
   source: software_entity_catalogue
@@ -1765,24 +1840,28 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: شعب سازمان (بیمه، مالیات)'
 - name: OrganizationCompensationFactor
   title_fa: عوامل مرتبط با سازمان
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل مرتبط با سازمان'
 - name: OrganizationalStructure
   title_fa: ساختار سازمانی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف ساختار سازمان'
 - name: OrganizationalStructureDescription
   title_fa: شرح تغییرات ساختار سازمانی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: شرح ساختار سازمانی'
 - name: OrganizationalStructureItem
   title_fa: قلم ساختار سازمانی
   source: software_entity_catalogue
@@ -1836,6 +1915,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: قلم محاسبه حقوق'
 - name: PerformanceAgreement
   title_fa: موافقتنامه
   source: software_entity_catalogue
@@ -1908,6 +1988,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: قلم محاسبه دوره ای'
 - name: Phrase
   title_fa: شاخص
   source: software_entity_catalogue
@@ -1932,6 +2013,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف پست'
 - name: PostAuthority
   title_fa: اختیارات پست
   source: software_entity_catalogue
@@ -1950,18 +2032,21 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: دوره آموزشی پست'
 - name: PostDuty
   title_fa: وظایف پست
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: وظیفه پست'
 - name: PostJob
   title_fa: پست های مرتبط با شغل
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: شغل پست (ارتباط شغل و پست)'
 - name: PostQualification
   title_fa: شرایط احراز
   source: software_entity_catalogue
@@ -1998,12 +2083,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: قلم اجرای ارتقا و ترفیع'
 - name: PromotionStructure
   title_fa: ساختار ارتقا و ترفیع
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف ساختار ارتقا و ترفیع'
 - name: PromotionStructureFactor
   title_fa: عامل ساختار ارتقا و ترفیع
   source: software_entity_catalogue
@@ -2273,6 +2360,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تسویه حساب کارمند'
 - name: SettlementCalcItem
   title_fa: آیتم تسویه حساب
   source: software_entity_catalogue
@@ -2303,12 +2391,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف عامل حکمی'
 - name: StatuteFactorDisplayOrder
   title_fa: ترتیب عوامل حکمی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ترتیب نمایش عوامل حکمی'
 - name: StatuteFactorProperty
   title_fa: خصوصیت عامل حکمی
   source: software_entity_catalogue
@@ -2327,6 +2417,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف نوع عامل حکمی'
 - name: StatuteTypeParameter
   title_fa: پارامترهای نوع حکم
   source: software_entity_catalogue
@@ -2386,12 +2477,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: معرفی جدول مالیات'
 - name: TaxTableItem
   title_fa: مقادیر جدول مالیات
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: اقلام جدول مالیات'
 - name: TmpCardLastSync
   title_fa: همگام‌سازی آخرین کارت موقت
   source: accepted_suggestion
@@ -2410,6 +2503,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: معرفی مدرس'
 - name: TrainingAssessmentFactor
   title_fa: عامل سنجش
   source: software_entity_catalogue
@@ -2464,12 +2558,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف عامل آموزش'
 - name: TrainingFactorData
   title_fa: مقادیر عوامل آموزشی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: ثبت عوامل مقادیر آموزش'
 - name: TrainingFactorDataItem
   title_fa: مقادیر عوامل آموزشی در سطح برگزاری
   source: software_entity_catalogue
@@ -2542,12 +2638,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: سند انتقالی'
 - name: TransferVoucherEmployee
   title_fa: کارمندان مرتبط با سند حسابداری انتقالی
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: سند انتقالی کارمند'
 - name: TransferVoucherSpecification
   title_fa: تنظیم سند انتقالی
   source: software_entity_catalogue
@@ -2589,12 +2687,14 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: محاسبات خاص کاربر'
 - name: UserDefinedCalcItem
   title_fa: آیتم محاسبه خاص کاربر
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: قلم محاسبات خاص کاربر'
 - name: Voucher
   title_fa: سند حسابداری
   source: software_entity_catalogue
@@ -2613,6 +2713,8 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: کارمندان دارای سند (به تفکیک
+    ماه)'
 - name: VoucherInsuranceBranch
   title_fa: اطلاعات سازمان شعب
   source: software_entity_catalogue
@@ -2637,18 +2739,21 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: معین های مرتبط با سند حسابداری'
 - name: VoucherSpecificationSLFactor
   title_fa: عامل های مرتبط با حساب معین
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: عامل مرتبط با معین سند حسابداری'
 - name: VoucherSpecificationSLLoan
   title_fa: وامهای مرتبط با حساب معین
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: معین وام در سند حسابداری'
 - name: VoucherSpecificationSLRelatedDL
   title_fa: تفصیلی های مرتبط
   source: software_entity_catalogue
@@ -2703,6 +2808,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف گروه کاری'
 - name: WorkingGroupChangeRequest
   title_fa: درخواست تغییر گروه کاری
   source: software_entity_catalogue
@@ -2721,6 +2827,7 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: گروه کاری کارمند'
 - name: WorkingGroupOrganizing
   title_fa: برنامه ریزی گروه کاری
   source: software_entity_catalogue
@@ -2759,15 +2866,18 @@ tables:
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: تعریف شیفت'
 - name: WorkingShiftDay
   title_fa: روز
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: روز شیفت کاری'
 - name: WorkingShiftSpecialDay
   title_fa: روز خاص
   source: software_entity_catalogue
   confidence: high
   origin: entity_form_2026_09
   updated_at: '2026-09-09'
+  description_fa: 'نام در منوی سرمایهٔ انسانی راهکاران: روز خاص شیفت کاری'
