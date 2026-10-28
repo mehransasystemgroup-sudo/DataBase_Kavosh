@@ -10,7 +10,7 @@
 import { DEFAULT_ATTEMPTS, run } from "./assistant.js";
 import { keyHints, post, postWithTransientKey, setKey } from "./native.js";
 import {
-  BY_ID, PROVIDERS, ModelNotFound, ProviderError, complete, healModel, probe,
+  BY_ID, PROVIDERS, ModelNotFound, ProviderError, cleanKey, complete, healModel, probe,
 } from "./providers.js";
 import { SchemaIndex, checkSql } from "./sqlcheck.js";
 
@@ -74,7 +74,7 @@ export async function putSettings(patch = {}) {
   store(conf);
 
   if ("api_key" in patch) {
-    await setKey(String(patch.key_provider || conf.provider), String(patch.api_key ?? "").trim());
+    await setKey(String(patch.key_provider || conf.provider), cleanKey(patch.api_key));
   }
   return publicView();
 }
@@ -87,7 +87,7 @@ export async function testSettings(patch = {}) {
   if (providerId !== conf.provider && !patch.model) model = BY_ID[providerId]?.default_model || model;
   const baseUrl = "base_url" in patch ? patch.base_url : conf.base_url;
 
-  const transient = (patch.api_key || "").trim();
+  const transient = cleanKey(patch.api_key);
   const hints = await keyHints().catch(() => ({}));
   const hasKey = Boolean(transient || hints[providerId]);
   const send = transient ? (req) => postWithTransientKey(req, transient) : post;

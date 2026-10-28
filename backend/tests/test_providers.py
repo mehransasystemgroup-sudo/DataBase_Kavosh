@@ -46,3 +46,62 @@ def test_pick_model_prefers_current_fast_chat_models():
     assert providers.pick_model("anthropic", ["claude-opus-5-5", "claude-sonnet-5-5", "claude-sonnet-4-5"]) \
         == "claude-sonnet-5-5"
     assert providers.pick_model("openrouter", ["a/b", "openrouter/auto"]) == "openrouter/auto"
+
+
+def _fake(monkeypatch, reply):
+    sent = {}
+
+    def fake(url, payload, headers, timeout, model=""):
+        sent.update(url=url, payload=payload, headers=headers)
+        return reply
+    monkeypatch.setattr(providers, "_request", fake)
+    return sent
+
+
+def test_gemini_has_no_output_cap_so_thinking_cannot_eat_the_answer(monkeypatch):
+    # Gemini 2.5+ فکر کردن را از maxOutputTokens کم می‌کند؛ سقف کوچکِ آزمایش اتصال
+    # پاسخ بی‌متن می‌داد و «شکل منتظره را نداشت» نشان داده می‌شد.
+    sent = _fake(monkeypatch, {"candidates": [{"content": {"parts": [
+        {"text": "…", "thought": True}, {"text": "سلام"}]}, "finishReason": "STOP"}]})
+    out = providers.complete(provider_id="gemini", api_key="k", model="models/gemini-flash-latest",
+                             system="s", user="u", max_tokens=64)
+    assert out == "سلام"
+    assert "maxOutputTokens" not in sent["payload"]["generationConfig"]
+    assert sent["url"].endswith("/models/gemini-flash-latest:generateContent")
+
+
+def test_gemini_empty_answer_is_explained(monkeypatch):
+    _fake(monkeypatch, {"candidates": [{"content": {"role": "model"}, "finishReason": "MAX_TOKENS"}]})
+    try:
+        providers.complete(provider_id="gemini", api_key="k", model="m", system="s", user="u")
+    except providers.ProviderError as e:
+        assert "سقف توکن" in str(e)
+    else:
+        raise AssertionError("باید خطا می‌داد")
+
+
+def test_pasted_key_loses_invisible_characters(monkeypatch):
+    sent = _fake(monkeypatch, {"candidates": [{"content": {"parts": [{"text": "x"}]}}]})
+    providers.complete(provider_id="gemini", api_key="‏ AIza-abc_123‌\n",
+                       model="m", system="s", user="u")
+    assert sent["headers"]["x-goog-api-key"] == "AIza-abc_123"
+
+
+def test_openai_reasoning_models_get_their_own_parameters(monkeypatch):
+    sent = _fake(monkeypatch, {"choices": [{"message": {"content": "ok"}, "finish_reason": "stop"}]})
+    providers.complete(provider_id="openai", api_key="k", model="gpt-5.2-mini", system="s", user="u",
+                       max_tokens=64)
+    assert "temperature" not in sent["payload"] and "max_tokens" not in sent["payload"]
+    assert sent["payload"]["max_completion_tokens"] > 64
+    providers.complete(provider_id="openai", api_key="k", model="gpt-4.1-mini", system="s", user="u")
+    assert sent["payload"]["temperature"] == 0 and "max_tokens" not in sent["payload"]
+    providers.complete(provider_id="openrouter", api_key="k", model="openrouter/auto", system="s", user="u")
+    assert sent["payload"]["max_tokens"] == 2000
+
+
+def test_html_403_is_a_network_block_and_bad_gemini_key_is_named():
+    e = providers.http_error(403, "<html><title>Error 403 (Forbidden)!!1</title><p>Your client does not "
+                                  "have permission</p></html>")
+    assert "کلید" in str(e) and "فیلترینگ" in str(e) and "<p>" not in str(e)
+    e = err(400, "API key not valid. Please pass a valid API key.")
+    assert "کلید API پذیرفته نشد" in str(e)

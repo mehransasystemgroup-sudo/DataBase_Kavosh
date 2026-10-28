@@ -19,6 +19,7 @@
 from __future__ import annotations
 
 import fnmatch
+import http.client
 import json
 import re
 import socket
@@ -119,6 +120,10 @@ _MODEL_MISSING = (
     "not a valid model", "no endpoints found", "unknown model", "not supported for generatecontent",
     "no longer available", "has been deprecated", "is deprecated", "not_found_error",
 )
+_BAD_KEY = (
+    "invalid api key", "api_key_invalid", "invalid x-api-key", "api key not valid",
+    "incorrect api key", "api key expired", "api_key_expired",
+)
 # محدودیت جغرافیایی؛ بدون این، کاربر ساعت‌ها دنبال ایراد کلید می‌گردد.
 _REGION_BLOCK = (
     "unsupported_country", "location is not supported", "not available in your country",
@@ -127,8 +132,30 @@ _REGION_BLOCK = (
 )
 
 
+def clean_key(value: str | None) -> str:
+    """
+    کلید API بی هیچ نویسهٔ اضافه.
+
+    کلیدی که از صفحهٔ فارسی یا پیام‌رسان کپی شود اغلب نشانهٔ جهت (U+200F)،
+    نیم‌فاصله یا فاصلهٔ ناپیدا همراه دارد. چنین نویسه‌ای در سرآیند HTTP جا
+    نمی‌شود: یا درخواست اصلاً فرستاده نمی‌شود، یا سرویس کلید را نامعتبر
+    می‌خواند — و کاربر کلیدی را که درست است بی‌جهت عوض می‌کند. همهٔ کلیدهای
+    این سرویس‌ها فقط از نویسه‌های چاپیِ ASCII ساخته شده‌اند.
+    """
+    return "".join(ch for ch in str(value or "") if "!" <= ch <= "~")
+
+
+def _is_html(body: str) -> bool:
+    head = (body or "").lstrip()[:200].lower()
+    return head.startswith("<!doctype html") or head.startswith("<html") or "<title>" in head
+
+
 def _detail_text(body: str) -> str:
     """پیام خودِ سرویس از بدنهٔ خطا — هر سه گویش آن را در error.message می‌گذارند."""
+    if _is_html(body):
+        # صفحهٔ خطای HTML (از دروازهٔ Google یا یک پروکسی) — فقط عنوانش به کار می‌آید
+        m = re.search(r"<title>(.*?)</title>", body or "", re.I | re.S)
+        return re.sub(r"\s+", " ", m.group(1)).strip()[:200] if m else ""
     try:
         doc = json.loads(body)
     except (json.JSONDecodeError, TypeError):
@@ -163,7 +190,15 @@ def http_error(status: int, body: str, model: str = "") -> ProviderError:
             "ایراد کلید. از ارائه‌دهندهٔ دیگری مثل OpenRouter، یا سرویس محلی "
             "(Ollama / LM Studio) استفاده کنید." + tail
         )
-    if status == 401 or "invalid api key" in low or "api_key_invalid" in low or "invalid x-api-key" in low:
+    if status == 403 and _is_html(body):
+        # پاسخِ JSONِ خودِ سرویس نیست؛ دروازهٔ Google (یا فیلترینگ و پروکسیِ میانه)
+        # درخواست را پیش از رسیدن به سرویس بسته است. کلید هنوز سنجیده هم نشده.
+        return ProviderError(
+            "درخواست پیش از رسیدن به سرویس بسته شد (۴۰۳). این معمولاً محدودیت کشور یا "
+            "فیلترینگِ شبکه است، نه ایراد کلید. با VPN یا از ارائه‌دهندهٔ دیگری مثل "
+            "OpenRouter امتحان کنید." + tail
+        )
+    if status == 401 or any(k in low for k in _BAD_KEY):
         return ProviderError("کلید API پذیرفته نشد. کلید را در تنظیمات بررسی کنید." + tail)
     if status == 402 or (status != 429 and any(k in low for k in ("insufficient", "credit"))):
         return ProviderError("اعتبار یا سهمیهٔ حساب در این سرویس کافی نیست." + tail)
@@ -221,10 +256,20 @@ def _request(url: str, payload: dict | None, headers: dict, timeout: int, model:
         raise ProviderError(
             "به سرویس مدل وصل نشدیم. اتصال اینترنت و نشانی سرویس را بررسی کنید."
         ) from e
-    except socket.timeout as e:
+    except (socket.timeout, TimeoutError) as e:
         raise ProviderError("پاسخ مدل در زمان مقرر نرسید.") from e
     except json.JSONDecodeError as e:
         raise ProviderError("پاسخ سرویس قابل خواندن نبود.") from e
+    except UnicodeError as e:
+        # نویسهٔ غیرلاتین در سرآیند یا نشانی — معمولاً در کلید یا نام مدل
+        raise ProviderError(
+            "کلید API یا نام مدل نویسهٔ نامعتبر دارد؛ کلید را دوباره و بی‌فاصله بچسبانید."
+        ) from e
+    except (OSError, http.client.HTTPException) as e:
+        # قطع اتصال وسط پاسخ (ConnectionReset، RemoteDisconnected، SSL و …)
+        raise ProviderError(
+            "اتصال به سرویس مدل نیمه‌کاره قطع شد. اتصال اینترنت یا VPN را بررسی کنید."
+        ) from e
 
 
 def _post(url: str, payload: dict, headers: dict, timeout: int, model: str = "") -> dict:
@@ -247,52 +292,63 @@ def complete(
     provider = BY_ID.get(provider_id)
     if provider is None:
         raise ProviderError(f"ارائه‌دهندهٔ «{provider_id}» شناخته نشد.")
+    api_key = clean_key(api_key)
+    model = (model or "").strip()
     if not api_key and provider.id != "custom":
         raise ProviderError("کلید API ثبت نشده است. از تنظیمات اضافه‌اش کنید.")
 
     root = (base_url or provider.base_url).rstrip("/")
 
     if provider.dialect == "openai":
+        payload = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+        }
+        if provider.id == "openai":
+            # API خودِ OpenAI: max_tokens برای مدل‌های استدلالی (o*، gpt-5) پذیرفته
+            # نیست و temperature جز ۱ هم؛ سقف هم باید جای «فکر کردن» را داشته باشد،
+            # وگرنه همه‌اش صرف استدلال می‌شود و پاسخ خالی برمی‌گردد.
+            if is_reasoning_model(model):
+                payload["max_completion_tokens"] = max_tokens + THINKING_ROOM
+            else:
+                payload["max_completion_tokens"] = max_tokens
+                payload["temperature"] = temperature
+        else:
+            payload["max_tokens"] = max_tokens
+            payload["temperature"] = temperature
         data = _post(
-            f"{root}/chat/completions",
-            {
-                "model": model, "temperature": temperature,
-                "max_tokens": max_tokens,
-                "messages": [
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": user},
-                ],
-            },
+            f"{root}/chat/completions", payload,
             {"authorization": f"Bearer {api_key}"} if api_key else {},
             timeout, model,
         )
         try:
-            return data["choices"][0]["message"]["content"] or ""
-        except (KeyError, IndexError, TypeError) as e:
-            raise ProviderError("پاسخ سرویس شکل منتظره را نداشت.") from e
+            choice = data["choices"][0]
+            text = choice["message"].get("content") or ""
+        except (KeyError, IndexError, TypeError, AttributeError) as e:
+            raise ProviderError("پاسخ سرویس شکل منتظره را نداشت." + _shape_hint(data)) from e
+        if not text.strip() and choice.get("finish_reason") == "length":
+            raise ProviderError(_TRUNCATED)
+        return text
 
     if provider.dialect == "gemini":
+        # بدون maxOutputTokens: در Gemini 2.5 به بعد «فکر کردن» از همین سقف
+        # کم می‌شود. با سقف ۶۴ توکنیِ آزمایش اتصال، کل سهم صرف فکر می‌شد و
+        # پاسخ بی‌متن (بدون parts) برمی‌گشت — همان «پاسخ سرویس شکل منتظره را
+        # نداشت» پس از ذخیرهٔ کلید. سقفِ خودِ مدل همین‌جا کافی است.
         data = _post(
-            f"{root}/models/{model}:generateContent",
+            f"{root}/models/{model.removeprefix('models/')}:generateContent",
             {
                 "systemInstruction": {"parts": [{"text": system}]},
                 "contents": [{"role": "user", "parts": [{"text": user}]}],
-                "generationConfig": {
-                    "temperature": temperature,
-                    "maxOutputTokens": max_tokens,
-                },
+                "generationConfig": {"temperature": temperature},
             },
             {"x-goog-api-key": api_key},
             timeout, model,
         )
-        try:
-            parts = data["candidates"][0]["content"]["parts"]
-            return "".join(p.get("text", "") for p in parts)
-        except (KeyError, IndexError, TypeError) as e:
-            blocked = (data.get("promptFeedback") or {}).get("blockReason")
-            if blocked:
-                raise ProviderError(f"سرویس پاسخ را رد کرد ({blocked}).") from e
-            raise ProviderError("پاسخ سرویس شکل منتظره را نداشت.") from e
+        return _gemini_text(data)
 
     if provider.dialect == "anthropic":
         data = _post(
@@ -315,8 +371,52 @@ def complete(
     raise ProviderError(f"گویش «{provider.dialect}» پیاده‌سازی نشده است.")
 
 
+_TRUNCATED = (
+    "پاسخ مدل پیش از نوشتن متن قطع شد (سقف توکن). مدل دیگری انتخاب کنید یا دوباره تلاش کنید."
+)
+# جای «فکر کردن» مدل‌های استدلالی، روی سقفی که برای خودِ پاسخ در نظر داریم
+THINKING_ROOM = 8000
+
+
+def is_reasoning_model(model: str) -> bool:
+    """مدل‌های استدلالیِ OpenAI (o1، o3، o4-mini، gpt-5 …)."""
+    return bool(re.match(r"^(o\d|gpt-5)", (model or "").lower()))
+
+
+def _shape_hint(data) -> str:
+    try:
+        return f"\nپاسخ: {json.dumps(data, ensure_ascii=False)[:200]}"
+    except (TypeError, ValueError):
+        return ""
+
+
+def _gemini_text(data: dict) -> str:
+    """متن پاسخ Gemini، با توضیح روشن وقتی متنی در کار نیست."""
+    if not isinstance(data, dict):
+        raise ProviderError("پاسخ سرویس شکل منتظره را نداشت.")
+    cands = data.get("candidates") or []
+    if not cands:
+        blocked = (data.get("promptFeedback") or {}).get("blockReason")
+        if blocked:
+            raise ProviderError(f"سرویس پرسش را رد کرد ({blocked}).")
+        raise ProviderError("سرویس هیچ پاسخی برنگرداند." + _shape_hint(data))
+    first = cands[0] if isinstance(cands[0], dict) else {}
+    parts = (first.get("content") or {}).get("parts") or []
+    # بخش‌های «فکر» (thought) جزو پاسخ نیستند
+    text = "".join(p.get("text", "") for p in parts if isinstance(p, dict) and not p.get("thought"))
+    if text.strip():
+        return text
+    reason = first.get("finishReason") or ""
+    if reason == "MAX_TOKENS":
+        raise ProviderError(_TRUNCATED)
+    if reason and reason != "STOP":
+        raise ProviderError(f"سرویس پاسخ را نیمه‌کاره گذاشت یا رد کرد ({reason}).")
+    return text
+
+
 def list_models(*, provider_id: str, api_key: str, base_url: str = "", timeout: int = 30) -> list[str]:
     """فهرست زندهٔ مدل‌های گفت‌وگوی این سرویس، با همین کلید."""
+    api_key = clean_key(api_key)
     provider = BY_ID.get(provider_id)
     if provider is None:
         raise ProviderError(f"ارائه‌دهندهٔ «{provider_id}» شناخته نشد.")

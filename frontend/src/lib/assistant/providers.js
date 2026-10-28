@@ -72,8 +72,30 @@ const REGION_BLOCK = [
   "request not allowed",
 ];
 
+const BAD_KEY = [
+  "invalid api key", "api_key_invalid", "invalid x-api-key", "api key not valid",
+  "incorrect api key", "api key expired", "api_key_expired",
+];
+
+/**
+ * کلید API بی هیچ نویسهٔ اضافه — همتای clean_key. کلیدِ کپی‌شده از متن فارسی
+ * اغلب نشانهٔ جهت (U+200F) یا نیم‌فاصله همراه دارد که در سرآیند HTTP جا
+ * نمی‌شود؛ همهٔ کلیدهای این سرویس‌ها فقط نویسهٔ چاپیِ ASCII دارند.
+ */
+export const cleanKey = (value) => String(value ?? "").replace(/[^\x21-\x7e]/g, "");
+
+const isHtml = (body) => {
+  const head = String(body || "").trimStart().slice(0, 200).toLowerCase();
+  return head.startsWith("<!doctype html") || head.startsWith("<html") || head.includes("<title>");
+};
+
 /** پیام خودِ سرویس از بدنهٔ خطا — هر سه گویش آن را در error.message می‌گذارند. */
 function detailText(body) {
+  if (isHtml(body)) {
+    // صفحهٔ خطای HTML (از دروازهٔ Google یا یک پروکسی) — فقط عنوانش به کار می‌آید
+    const m = /<title>([\s\S]*?)<\/title>/i.exec(String(body || ""));
+    return m ? m[1].replace(/\s+/g, " ").trim().slice(0, 200) : "";
+  }
   let doc;
   try {
     doc = JSON.parse(body);
@@ -108,7 +130,16 @@ export function httpError(status, body, model = "") {
       + "(Ollama / LM Studio) استفاده کنید." + tail,
     );
   }
-  if (status === 401 || has(["invalid api key", "api_key_invalid", "invalid x-api-key"])) {
+  if (status === 403 && isHtml(body)) {
+    // پاسخِ JSONِ خودِ سرویس نیست؛ دروازهٔ Google (یا فیلترینگ و پروکسیِ میانه)
+    // درخواست را پیش از رسیدن به سرویس بسته است. کلید هنوز سنجیده هم نشده.
+    return new ProviderError(
+      "درخواست پیش از رسیدن به سرویس بسته شد (۴۰۳). این معمولاً محدودیت کشور یا "
+      + "فیلترینگِ شبکه است، نه ایراد کلید. با VPN یا از ارائه‌دهندهٔ دیگری مثل "
+      + "OpenRouter امتحان کنید." + tail,
+    );
+  }
+  if (status === 401 || has(BAD_KEY)) {
     return new ProviderError("کلید API پذیرفته نشد. کلید را در تنظیمات بررسی کنید." + tail);
   }
   if (status === 402 || (status !== 429 && has(["insufficient", "credit"]))) {
@@ -149,7 +180,41 @@ async function call(post, url, payload, headers, timeoutMs, keyProvider, model =
   }
 }
 
-const shapeError = () => new ProviderError("پاسخ سرویس شکل منتظره را نداشت.");
+const shapeHint = (data) => {
+  try {
+    return `\nپاسخ: ${JSON.stringify(data).slice(0, 200)}`;
+  } catch {
+    return "";
+  }
+};
+const shapeError = (data) => new ProviderError("پاسخ سرویس شکل منتظره را نداشت." + (data === undefined ? "" : shapeHint(data)));
+
+const TRUNCATED = "پاسخ مدل پیش از نوشتن متن قطع شد (سقف توکن). مدل دیگری انتخاب کنید یا دوباره تلاش کنید.";
+// جای «فکر کردن» مدل‌های استدلالی، روی سقفی که برای خودِ پاسخ در نظر داریم
+export const THINKING_ROOM = 8000;
+
+/** مدل‌های استدلالیِ OpenAI (o1، o3، o4-mini، gpt-5 …) — همتای is_reasoning_model. */
+export const isReasoningModel = (model) => /^(o\d|gpt-5)/.test(String(model || "").toLowerCase());
+
+/** متن پاسخ Gemini، با توضیح روشن وقتی متنی در کار نیست — همتای _gemini_text. */
+function geminiText(data) {
+  if (!data || typeof data !== "object") throw shapeError();
+  const cands = data.candidates || [];
+  if (!cands.length) {
+    const blocked = data.promptFeedback?.blockReason;
+    if (blocked) throw new ProviderError(`سرویس پرسش را رد کرد (${blocked}).`);
+    throw new ProviderError("سرویس هیچ پاسخی برنگرداند." + shapeHint(data));
+  }
+  const first = cands[0] && typeof cands[0] === "object" ? cands[0] : {};
+  const parts = first.content?.parts || [];
+  // بخش‌های «فکر» (thought) جزو پاسخ نیستند
+  const text = parts.filter((p) => p && typeof p === "object" && !p.thought).map((p) => p.text || "").join("");
+  if (text.trim()) return text;
+  const reason = first.finishReason || "";
+  if (reason === "MAX_TOKENS") throw new ProviderError(TRUNCATED);
+  if (reason && reason !== "STOP") throw new ProviderError(`سرویس پاسخ را نیمه‌کاره گذاشت یا رد کرد (${reason}).`);
+  return text;
+}
 
 /** یک پرسش، یک پاسخ متنی. `hasKey` می‌گوید کلیدی برای این ارائه‌دهنده ثبت شده یا نه. */
 export async function complete({
@@ -161,31 +226,46 @@ export async function complete({
   if (!hasKey && provider.id !== "custom") {
     throw new ProviderError("کلید API ثبت نشده است. از تنظیمات اضافه‌اش کنید.");
   }
+  model = String(model || "").trim();
   const root = (baseUrl || provider.base_url).replace(/\/+$/, "");
 
   if (provider.dialect === "openai") {
-    const data = await call(post, `${root}/chat/completions`, {
-      model, temperature, max_tokens: maxTokens,
+    const payload = {
+      model,
       messages: [{ role: "system", content: system }, { role: "user", content: user }],
-    }, hasKey ? { authorization: `Bearer ${KEY}` } : {}, timeoutMs, provider.id, model);
-    const text = data?.choices?.[0]?.message?.content;
-    if (text === undefined) throw shapeError();
-    return text || "";
+    };
+    if (provider.id === "openai") {
+      // API خودِ OpenAI: max_tokens و temperature جز ۱ برای مدل‌های استدلالی
+      // پذیرفته نیست، و سقف باید جای «فکر کردن» را هم داشته باشد.
+      if (isReasoningModel(model)) {
+        payload.max_completion_tokens = maxTokens + THINKING_ROOM;
+      } else {
+        payload.max_completion_tokens = maxTokens;
+        payload.temperature = temperature;
+      }
+    } else {
+      payload.max_tokens = maxTokens;
+      payload.temperature = temperature;
+    }
+    const data = await call(post, `${root}/chat/completions`, payload,
+      hasKey ? { authorization: `Bearer ${KEY}` } : {}, timeoutMs, provider.id, model);
+    const choice = data?.choices?.[0];
+    if (!choice?.message || typeof choice.message !== "object") throw shapeError(data);
+    const text = choice.message.content || "";
+    if (!text.trim() && choice.finish_reason === "length") throw new ProviderError(TRUNCATED);
+    return text;
   }
 
   if (provider.dialect === "gemini") {
-    const data = await call(post, `${root}/models/${model}:generateContent`, {
+    // بدون maxOutputTokens: در Gemini 2.5 به بعد «فکر کردن» از همین سقف کم
+    // می‌شود و با سقف ۶۴ توکنیِ آزمایش اتصال، پاسخ بی‌متن برمی‌گشت. همتای
+    // توضیح providers.py.
+    const data = await call(post, `${root}/models/${model.replace(/^models\//, "")}:generateContent`, {
       systemInstruction: { parts: [{ text: system }] },
       contents: [{ role: "user", parts: [{ text: user }] }],
-      generationConfig: { temperature, maxOutputTokens: maxTokens },
+      generationConfig: { temperature },
     }, { "x-goog-api-key": KEY }, timeoutMs, provider.id, model);
-    const parts = data?.candidates?.[0]?.content?.parts;
-    if (!Array.isArray(parts)) {
-      const blocked = data?.promptFeedback?.blockReason;
-      if (blocked) throw new ProviderError(`سرویس پاسخ را رد کرد (${blocked}).`);
-      throw shapeError();
-    }
-    return parts.map((p) => p.text || "").join("");
+    return geminiText(data);
   }
 
   if (provider.dialect === "anthropic") {
