@@ -593,10 +593,12 @@ export class KnowledgeBase {
    * یال‌های تأییدشده اولویت دارند: در هر سطح اول آن‌ها بررسی می‌شوند، تا اگر
    * دو مسیر هم‌طول باشند، مسیر قطعی برنده شود.
    */
-  findJoinPath(source, target, { maxHops = 4, verifiedOnly = false } = {}) {
+  findJoinPath(source, target, { maxHops = 4, verifiedOnly = false, through = null } = {}) {
     if (source === target) return [];
     const adj = this.adjacency();
     if (!adj.has(source)) return null;
+    // با through فقط از همان جدول‌ها عبور می‌کند — همان find_join_path
+    const allowed = through ? new Set(through) : null;
 
     const seen = new Set([source]);
     const queue = [[source, []]];
@@ -610,6 +612,7 @@ export class KnowledgeBase {
       for (const edge of edges) {
         if (verifiedOnly && !edge.verified) continue;
         if (seen.has(edge.next)) continue;
+        if (allowed && edge.next !== target && !allowed.has(edge.next)) continue;
         const step = {
           from_table: node, from_col: edge.fromCol,
           to_table: edge.next, to_col: edge.toCol,
@@ -621,6 +624,50 @@ export class KnowledgeBase {
       }
     }
     return null;
+  }
+
+  /**
+   * همسایه‌های تأییدشدهٔ یک جدول با عنوان و وضعیت داده — همتای related_tables.
+   * ترتیب صریح است تا با نسخهٔ ویندوز یکی باشد.
+   */
+  relatedTables(fullName) {
+    const dot = fullName.indexOf(".");
+    const schema = dot === -1 ? fullName : fullName.slice(0, dot);
+    const name = dot === -1 ? "" : fullName.slice(dot + 1);
+    return this.all(
+      "SELECT 'out' AS direction, j.from_col AS col, t.full_name, t.title_fa, t.has_data, " +
+      "t.schema = ? AS near, 0 AS child " +
+      "FROM joins j JOIN tables t ON t.full_name = j.to_table " +
+      "WHERE j.from_table = ? AND j.verified = 1 AND j.to_table <> ? " +
+      "AND j.from_col NOT IN ('Creator', 'LastModifier') " +
+      "UNION ALL " +
+      "SELECT 'in', j.from_col, t.full_name, t.title_fa, t.has_data, t.schema = ?, " +
+      "substr(t.name, 1, length(?)) = ? " +
+      "FROM joins j JOIN tables t ON t.full_name = j.from_table " +
+      "WHERE j.to_table = ? AND j.verified = 1 AND j.from_table <> ? " +
+      "ORDER BY 1 DESC, 5 DESC, 7 DESC, 6 DESC, 3, 2",
+      [schema, fullName, fullName, schema, name, name, fullName, fullName],
+    ).map((r) => ({
+      direction: r.direction, col: r.col, full_name: r.full_name,
+      title_fa: r.title_fa ?? null, has_data: Boolean(r.has_data),
+    }));
+  }
+
+  /** پیوندهای تأییدشدهٔ مستقیم میان چند جدول — همتای links_between. */
+  linksBetween(names, limit = 400) {
+    const unique = [...new Set(names)];
+    if (!unique.length) return [];
+    const marks = unique.map(() => "?").join(",");
+    return this.all(
+      `SELECT * FROM joins WHERE verified = 1 AND from_table IN (${marks}) ` +
+      `AND to_table IN (${marks}) AND from_table <> to_table ` +
+      "ORDER BY from_table, from_col, to_table, to_col LIMIT ?",
+      [...unique, ...unique, limit],
+    ).map((j) => ({
+      from_table: j.from_table, from_col: j.from_col,
+      to_table: j.to_table, to_col: j.to_col,
+      confidence: j.confidence, verified: Boolean(j.verified),
+    }));
   }
 
   /**

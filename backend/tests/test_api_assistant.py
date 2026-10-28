@@ -161,10 +161,10 @@ def test_saving_other_fields_keeps_the_key(server):
     assert conf["max_attempts"] == 3
 
 
-def _ask(base: str, question: str) -> list[dict]:
+def _ask(base: str, question: str, **extra) -> list[dict]:
     req = urllib.request.Request(
         f"{base}/api/assistant/ask",
-        data=json.dumps({"question": question}).encode(), method="POST",
+        data=json.dumps({"question": question, **extra}).encode(), method="POST",
         headers={"content-type": "application/json"},
     )
     events = []
@@ -201,6 +201,15 @@ def test_full_run_repairs_a_weak_models_mistake(server):
 
     verifies = [e for e in events if e["type"] == "verify" and "ok" in e]
     assert any(not v["ok"] for v in verifies), "اولین بازبینی باید ناموفق باشد"
+
+
+def test_pinned_tables_reach_the_assistant(server):
+    """جدولی که کاربر از صفحهٔ جدول سنجاق کرده، همیشه در زمینهٔ پاسخ هست."""
+    events = _ask(server["base"], "فهرست کارمندان", tables=["FIN3.Voucher", "NOPE.Missing"])
+    result = events[-1]
+    assert result["type"] == "result", events
+    assert result["tables"][0] == "FIN3.Voucher"
+    assert "NOPE.Missing" not in result["tables"]
 
 
 def test_empty_question_is_refused(server):

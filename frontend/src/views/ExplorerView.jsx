@@ -859,6 +859,7 @@ export default function ExplorerView({ health, route, navigate }) {
                 loading={detailLoading}
                 onSelectTable={openTable}
                 onOpenSchemaGraph={openSchemaGraph}
+                onAskAssistant={(full) => navigate({ view: "assistant", table: full })}
                 onRefresh={() => openTable(detail.full_name)}
               />
             </>

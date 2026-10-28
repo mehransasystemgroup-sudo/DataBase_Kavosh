@@ -22,11 +22,11 @@ export const offlineHint = "ارتباط با سرور دانش برقرار ن�
  * SSE را دستی می‌خوانیم: axios برای جریان ساخته نشده و EventSource فقط GET
  * می‌فرستد، ولی پرسش باید در بدنه برود.
  */
-export async function askAssistant(question, { onEvent, signal, history = [] } = {}) {
+export async function askAssistant(question, { onEvent, signal, history = [], tables = [] } = {}) {
   const res = await fetch(`${apiBase}/assistant/ask`, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ question, history }),
+    body: JSON.stringify({ question, history, tables }),
     signal,
   });
   if (!res.ok) {

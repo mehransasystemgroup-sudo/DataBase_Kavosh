@@ -15,9 +15,10 @@ import { useCallback, useEffect, useState } from "react";
     #/graph/<FIN3>           گراف اسکیما
     #/lookup                 جدول‌های کد و شرحی
     #/assistant              دستیار کوئری‌نویسی
+    #/assistant/<FIN3.Voucher>  دستیار، با این جدول سنجاق‌شده
 */
 
-function parse(hash) {
+export function parse(hash) {
   const raw = (hash || "").replace(/^#\/?/, "");
   if (!raw) return { view: "explorer" };
 
@@ -28,18 +29,34 @@ function parse(hash) {
   if (kind === "table" && rest) return { view: "explorer", table: rest };
   if (kind === "graph" && rest) return { view: "graph", schema: rest };
   if (kind === "lookup") return { view: "lookup" };
-  if (kind === "assistant") return { view: "assistant" };
+  if (kind === "assistant") return rest ? { view: "assistant", table: rest } : { view: "assistant" };
   if (kind === "q") return { view: "explorer", query: rest };
   return { view: "explorer" };
 }
 
-function build(route) {
+export function build(route) {
   if (route.view === "graph") return `#/graph/${encodeURIComponent(route.schema || "")}`;
   if (route.view === "lookup") return "#/lookup";
-  if (route.view === "assistant") return "#/assistant";
+  if (route.view === "assistant") {
+    return route.table ? `#/assistant/${encodeURIComponent(route.table)}` : "#/assistant";
+  }
   if (route.table) return `#/table/${encodeURIComponent(route.table)}`;
   if (route.query) return `#/q/${encodeURIComponent(route.query)}`;
   return "#/";
+}
+
+/**
+ * مسیرِ هر زبانه در نوار نماها.
+ *
+ * پیش‌تر این نگاشت داخل App بود و «assistant» را نمی‌شناخت؛ پس کلیک روی زبانهٔ
+ * دستیار به «کاوش جدول‌ها» می‌رفت و دستیار عملاً از زبانهٔ جدول‌ها جدا نبود.
+ * حالا یک تابع است با آزمون، تا هر زبانهٔ تازه هم نشانی درست بگیرد.
+ */
+export function routeForView(view, { graphSchema = "FIN3" } = {}) {
+  if (view === "graph") return { view: "graph", schema: graphSchema };
+  if (view === "lookup") return { view: "lookup" };
+  if (view === "assistant") return { view: "assistant" };
+  return { view: "explorer" };
 }
 
 /**

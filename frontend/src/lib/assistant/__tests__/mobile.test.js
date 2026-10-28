@@ -161,6 +161,23 @@ describe("دستیار موبایل", () => {
     expect(model.asked.at(-1)).toContain("هدف: ده کارمند اول");
   });
 
+  it("جدول سنجاق‌شده همیشه در زمینه است و نقشهٔ پیوندها به مدل می‌رسد", async () => {
+    const model = scripted("GNR3.Party", ["```sql\nSELECT p.PartyID FROM [GNR3].[Party] AS p\n```"]);
+    window.KavoshNet = fakeShell(model);
+    await putSettings({ provider: "openai", api_key: "sk-test-9876" });
+    const events = [];
+    await askAssistant(kb, "جمع مبلغ اسناد", {
+      onEvent: (e) => events.push(e), tables: ["FIN3.Voucher", "NOPE.Missing"],
+    });
+    const result = events.find((e) => e.type === "result");
+    expect(result.tables[0]).toBe("FIN3.Voucher");
+    expect(result.tables).not.toContain("NOPE.Missing");
+    const select = model.asked.find((u) => u.includes("## جدول‌های موجود"));
+    expect(select).toContain("## پیوندهای مستقیم میان این جدول‌ها");
+    expect(select).toContain("FIN3.VoucherItem.VoucherRef → FIN3.Voucher");
+    expect(model.asked.at(-1)).toContain("ارجاع‌ها:");
+  });
+
   it("خطای کلید از سرویس، پیام فارسیِ سرور را می‌دهد", async () => {
     window.KavoshNet = fakeShell(() => ({ ok: true, status: 401, text: "{}" }));
     await putSettings({ provider: "openai", api_key: "sk-wrong" });

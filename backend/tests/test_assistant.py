@@ -302,3 +302,93 @@ def test_history_is_bounded_and_sanitised():
     out = assistant.clean_history(many)
     assert [h["question"] for h in out] == ["q5"]
     assert len(out[0]["sql"]) == 8000 and len(out[0]["tables"]) == 10
+
+
+# ─────────────────────── شناخت روابط و جدول‌های سنجاق‌شده ───────────────────────
+
+
+def test_retrieval_follows_relations_to_detail_and_reference_tables(kb):
+    """
+    «جمع مبلغ اسناد» سند را پیدا می‌کند؛ مبلغ در اقلام سند است و هیچ واژه‌ای از
+    پرسش به آن نمی‌خورد. گسترش از راه روابط باید اقلام سند را نامزد کند.
+    """
+    names = [c["full_name"] for c in assistant.retrieve(
+        kb, "جمع مبلغ اسناد حسابداری", ["سند حسابداری"])]
+    assert "FIN3.Voucher" in names
+    assert "FIN3.VoucherItem" in names
+    assert len(names) <= assistant.MAX_CANDIDATES
+
+
+def test_pinned_tables_are_candidates_and_always_chosen(kb, index):
+    model = ScriptedModel("GNR3.Party", ["```sql\nSELECT p.PartyID FROM [GNR3].[Party] AS p\n```"])
+    d = assistant.run(question="فهرست اشخاص", kb=kb, index=index, ask=model,
+                      emit=lambda *a: None, pinned=["HCM3.Employee", "NOPE.Missing"])
+    assert d.tables[0] == "HCM3.Employee"
+    assert "GNR3.Party" in d.tables
+    assert "NOPE.Missing" not in d.tables
+    select = next(u for u in model.asked if "## جدول‌های موجود" in u)
+    assert "HCM3.Employee — " in select and "انتخاب شما" in select
+    assert "## جدول‌هایی که کاربر خودش انتخاب کرده\nHCM3.Employee" in select
+
+
+def test_pinned_tables_survive_a_garbage_selection(kb, index):
+    model = ScriptedModel("...!!!", ["```sql\nSELECT EmployeeID FROM HCM3.Employee\n```"])
+    d = assistant.run(question="گزارش", kb=kb, index=index, ask=model,
+                      emit=lambda *a: None, pinned=["FIN3.Voucher"])
+    assert d.tables[0] == "FIN3.Voucher"
+
+
+def test_select_prompt_shows_direct_links_between_candidates(kb):
+    candidates = [{"full_name": t, "title_fa": None, "why": ""}
+                  for t in ("FIN3.Voucher", "FIN3.VoucherItem", "GNR3.Party")]
+    links = assistant.candidate_links(kb, candidates)
+    prompt = assistant.select_prompt("x", candidates, links)
+    assert "FIN3.VoucherItem.VoucherRef → FIN3.Voucher" in prompt
+    assert "FIN3.VoucherItem.PartyRef → GNR3.Party" in prompt
+
+
+def test_context_lists_references_and_data_warnings(kb):
+    context, _tables, _joins = assistant.build_context(kb, ["FIN3.VoucherItem"])
+    assert "ارجاع‌ها:" in context
+    assert "VoucherRef→[FIN3].[Voucher]" in context
+    assert "PartyRef→[GNR3].[Party]" in context
+    # ستون‌های ممیزی چیزی دربارهٔ گزارش نمی‌گویند
+    assert "Creator→" not in context
+    context, _tables, _joins = assistant.build_context(kb, ["FIN3.Voucher"])
+    assert "هشدار: ستون FiscalYearRef دارد" in context
+
+
+def test_join_goes_through_chosen_tables_before_adding_a_bridge(kb):
+    """
+    سند و طرف حساب از راه اقلام سند به هم می‌رسند. اگر اقلام سند انتخاب شده،
+    همان مسیر باید برگزیده شود، نه جدولِ هم‌طولِ دیگری که کسی نخواسته.
+    """
+    _context, tables, joins = assistant.build_context(
+        kb, ["FIN3.Voucher", "FIN3.VoucherItem", "GNR3.Party"])
+    assert tables == ["FIN3.Voucher", "FIN3.VoucherItem", "GNR3.Party"]
+    assert all("Offline" not in j for j in joins)
+
+
+def test_find_join_path_can_be_limited_to_given_tables(kb):
+    path = kb.find_join_path("FIN3.Voucher", "GNR3.Party",
+                             through=["FIN3.VoucherItem"])
+    assert [s.to_table for s in path] == ["FIN3.VoucherItem", "GNR3.Party"]
+    assert kb.find_join_path("FIN3.Voucher", "GNR3.Party", through=[]) is None
+
+
+def test_draft_rules_cover_fiscal_year_parameters_and_fallback():
+    for phrase in ("FiscalYearRef", "DECLARE", "CASE", "LEFT JOIN", "راهکار"):
+        assert phrase in assistant.DRAFT_SYSTEM
+
+# ───────────── همسانی روی ایندکس واقعی (مرجعِ نسخهٔ اندروید) ─────────────
+
+
+def test_kb_golden(kb):
+    """بازیابی، پرامپت انتخاب و زمینه هنوز با مرجعی می‌خوانند که assistant.test.js هم با آن سنجیده می‌شود."""
+    import json
+
+    import assistant_golden as golden
+
+    expected = json.loads(golden.KB_GOLDEN.read_text(encoding="utf-8"))
+    actual = json.loads(json.dumps(golden.compute_kb(kb), ensure_ascii=False))
+    assert actual == expected

@@ -22,6 +22,7 @@ import {
   ShieldCheck,
   Square,
   Type,
+  Wand2,
   X,
 } from "lucide-react";
 
@@ -139,7 +140,7 @@ function RelationRow({ direction, join, onSelectTable, isDark }) {
   );
 }
 
-export default function TableDetail({ table, loading, onSelectTable, onOpenSchemaGraph, onRefresh }) {
+export default function TableDetail({ table, loading, onSelectTable, onOpenSchemaGraph, onAskAssistant, onRefresh }) {
   const { isDark } = useTheme();
   const [tab, setTab] = useState("relations");
 
@@ -433,6 +434,17 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
             </div>
 
             <div className="flex shrink-0 flex-wrap items-center gap-1.5">
+              {onAskAssistant && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onAskAssistant(table.full_name)}
+                  title="دستیار با این جدول سنجاق‌شده باز می‌شود"
+                >
+                  <Wand2 />
+                  <span className="hidden sm:inline">پرسش از دستیار</span>
+                </Button>
+              )}
               <Button variant="outline" size="sm" onClick={() => onOpenSchemaGraph?.(schema)}>
                 <Network />
                 <span className="hidden sm:inline">گراف اسکیما</span>
