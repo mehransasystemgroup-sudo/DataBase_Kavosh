@@ -106,12 +106,27 @@ final class NetBridge {
 
     private JSONObject setKey(long id, String provider, String value) {
         if (!validProvider(provider)) return error(id, "refused", "ارائه‌دهندهٔ نامعتبر.");
-        String key = value == null ? "" : value.trim();
+        String key = cleanKey(value);
         SharedPreferences.Editor edit = secrets.edit();
         if (key.isEmpty()) edit.remove(provider);
         else edit.putString(provider, key);
         if (!edit.commit()) return error(id, "refused", "کلید ذخیره نشد.");
         return hints(id);
+    }
+
+    /**
+     * فقط نویسه‌های چاپیِ ASCII — همتای cleanKey در providers.js. نشانهٔ جهت یا
+     * نیم‌فاصلهٔ کپی‌شده از متن فارسی در سرآیند HTTP جا نمی‌شود و
+     * setRequestProperty با آن خطا می‌دهد.
+     */
+    static String cleanKey(String value) {
+        if (value == null) return "";
+        StringBuilder out = new StringBuilder(value.length());
+        for (int i = 0; i < value.length(); i++) {
+            char c = value.charAt(i);
+            if (c >= '!' && c <= '~') out.append(c);
+        }
+        return out.toString();
     }
 
     // ───────────────────────── شبکه ─────────────────────────
@@ -145,7 +160,7 @@ final class NetBridge {
         String refused = refuseUrl(uri);
         if (refused != null) return error(id, "refused", refused);
 
-        String transient_ = msg.optString("transientKey", "");
+        String transient_ = cleanKey(msg.optString("transientKey", ""));
         String provider = msg.optString("keyProvider", "");
         String key = !transient_.isEmpty() ? transient_
                 : validProvider(provider) ? secrets.getString(provider, "") : "";

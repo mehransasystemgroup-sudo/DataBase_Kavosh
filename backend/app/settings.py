@@ -125,7 +125,8 @@ def save(data_root: Path, patch: dict) -> dict:
     # «api_key» تهی یعنی پاک کن؛ نبودنش یعنی دست نزن
     if "api_key" in patch:
         target = str(patch.get("key_provider") or conf["provider"])
-        value = str(patch["api_key"] or "").strip()
+        # نیم‌فاصله و نشانهٔ جهتِ کپی‌شده از متن فارسی در سرآیند HTTP جا نمی‌شود
+        value = providers.clean_key(patch["api_key"])
         if value:
             keys[target] = value
         else:
