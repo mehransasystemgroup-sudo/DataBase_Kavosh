@@ -299,16 +299,18 @@ export class KnowledgeBase {
 
     const columns = [];
     const primaryKey = [];
-    // برچسب فارسی ستون از واژه‌نامه می‌آید، نه از خود جدول: یک ورودی روی هر
-    // جدولی که آن ستون را دارد اثر می‌گذارد.
+    // نام فارسی ستون در ایندکس یک‌جا حل شده (column_titles) — همان منطق
+    // search.py در نسخهٔ ویندوز.
     for (const c of this.all(
-      "SELECT c.*, l.title_fa AS label_fa FROM columns c " +
-      "LEFT JOIN column_labels l ON l.name = c.name " +
+      "SELECT c.*, t.title_fa AS label_fa, t.source AS label_source " +
+      "FROM columns c LEFT JOIN column_titles t " +
+      "ON t.table_ref = c.table_ref AND t.name = c.name " +
       "WHERE c.table_ref=? ORDER BY c.ordinal", [fullName],
     )) {
       columns.push({
         name: c.name, type: c.type, nullable: Boolean(c.nullable),
         is_pk: Boolean(c.is_pk), ordinal: c.ordinal, label_fa: c.label_fa ?? null,
+        label_source: c.label_source ?? null,
       });
       if (c.is_pk) primaryKey.push(c.name);
     }

@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import shutil
 import sqlite3
 import sys
@@ -112,6 +113,22 @@ CREATE TABLE column_labels (
 );
 
 /*
+  نام فارسی نهایی هر ستون در هر جدول — همان چیزی که اپ نشان می‌دهد.
+  source یکی از این‌هاست، به ترتیب اولویت:
+    user       ثبت‌شده برای همین جدول در semantics/_table_columns.yaml
+    glossary   واژه‌نامهٔ نام ستون (column_labels)
+    reference  ستون *Ref با رابطهٔ مطمئن به جدولی که عنوان فارسی دارد
+    key        کلید اصلی جدولی که عنوان فارسی دارد («شناسهٔ …»)
+*/
+CREATE TABLE column_titles (
+    table_ref   TEXT NOT NULL,
+    name        TEXT NOT NULL,
+    title_fa    TEXT NOT NULL,
+    source      TEXT NOT NULL,
+    PRIMARY KEY (table_ref, name)
+);
+
+/*
   جدول‌های کد و شرحی (SYS3.Lookup / SYS3.LookupInfo) — فیلدهایی که کاربر در
   فرم نرم‌افزار از فهرستی از پیش تعریف‌شده انتخاب می‌کند. جدا از enums نگه
   داشته می‌شوند: enums یک مقدار را به یک ستونِ مشخص می‌بندد، ولی این‌جا خودِ
@@ -170,6 +187,44 @@ def _split_ref(ref: str) -> tuple[str, str] | None:
     return f"{parts[0]}.{parts[1]}", parts[2]
 
 
+_REF_SUFFIX = re.compile(r"(Ref|ID|Id)$")
+
+
+def _column_titles(kb: Path, columns: list[tuple], table_titles: dict[str, str],
+                   glossary: dict[str, str], join_rows: list[tuple]) -> list[tuple]:
+    """
+    نام فارسی هر ستون، فقط از روی مستندات — هیچ ترجمهٔ ماشینی در کار نیست.
+
+    ستون *Ref نامش را از جدولی می‌گیرد که به آن اشاره می‌کند، به شرط آنکه
+    رابطه مطمئن باشد (تأیید کاربر، اصلاح ثبت‌شده، یا تطبیق دقیق نام) و آن
+    جدول عنوان رسمی داشته باشد. اگر نام ستون همان نام جدول مقصد باشد
+    (CourseRef → Course) عنوان جدول عیناً نام ستون است؛ وگرنه ستون نقشی
+    دارد که مستندات نمی‌گوید (ConfirmerRef → User)، پس فقط «ارجاع به …»
+    نوشته می‌شود و نقش حدس زده نمی‌شود.
+    """
+    manual_doc = kb / "semantics" / "_table_columns.yaml"
+    manual = (_load(manual_doc).get("tables") or {}) if manual_doc.exists() else {}
+    refs = {(j[0], j[1]): j[2] for j in join_rows if j[4] == "high"}
+
+    rows = []
+    for table_ref, name, _type, _null, is_pk, _ord in columns:
+        title, source = (manual.get(table_ref) or {}).get(name), "user"
+        if not title:
+            title, source = glossary.get(name), "glossary"
+        if not title:
+            target = refs.get((table_ref, name))
+            if target and table_titles.get(target):
+                base = _REF_SUFFIX.sub("", name)
+                same = base.lower() == target.split(".", 1)[1].lower()
+                title = table_titles[target] if same else f"ارجاع به {table_titles[target]}"
+                source = "reference"
+        if not title and is_pk and table_titles.get(table_ref):
+            title, source = f"شناسهٔ {table_titles[table_ref]}", "key"
+        if title:
+            rows.append((table_ref, name, title, source))
+    return rows
+
+
 def _collect_joins(kb: Path) -> list[tuple]:
     """
     ادغام سه منبع یال، به ترتیب اولویت صعودی:
@@ -215,7 +270,7 @@ def _collect_joins(kb: Path) -> list[tuple]:
 # نسخهٔ ساختار ایندکس. هر بار که جدول یا ستونی به SCHEMA اضافه یا عوض شد،
 # این عدد باید یک واحد بالا برود: برنامه با همین می‌فهمد ایندکسِ روی دیسکِ
 # کاربر برای نسخهٔ قدیمی ساخته شده و باید دوباره ساخته شود.
-SCHEMA_VERSION = "5"
+SCHEMA_VERSION = "6"
 
 
 # مهلت جایگزینی ایندکس. سخاوتمند است و عمداً: روی رایانهٔ سازمانی، ضدویروس
@@ -336,6 +391,12 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     join_rows = _collect_joins(kb)
     db.executemany("INSERT OR REPLACE INTO joins VALUES (?,?,?,?,?,?)", join_rows)
 
+    # ── نام فارسی نهایی ستون‌ها ──
+    table_titles = dict(db.execute(
+        "SELECT full_name, title_fa FROM tables WHERE title_fa IS NOT NULL"))
+    title_rows = _column_titles(kb, columns, table_titles, column_labels, join_rows)
+    db.executemany("INSERT OR REPLACE INTO column_titles VALUES (?,?,?,?)", title_rows)
+
     # ── enum ──
     enum_rows = []
     for f in sorted((kb / "enums").glob("[A-Z]*.yaml")):
@@ -421,6 +482,7 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
         ("schema_titles", str(len(schema_titles))),
         ("schema_version", SCHEMA_VERSION),
         ("column_labels", str(len(column_labels))),
+        ("column_titles", str(len(title_rows))),
         ("lookup_types", str(len(lookup_types))),
         ("lookup_values", str(len(lookup_values))),
         ("entities", str(len({r[0].split("|")[0] for r in entity_rows}))),
@@ -438,6 +500,7 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     print(f"  عنوان فارسی {n_sem}  ·  enum {len(enum_rows)}  ·  ایندکس {len(index_rows)}")
     print(f"  جدول دارای داده در این نصب: {n_active}")
     print(f"  نام فارسی ماژول {len(schema_titles)}  ·  واژه‌نامهٔ ستون {len(column_labels)}")
+    print(f"  ستون با نام فارسی: {len(title_rows)} از {len(columns)}")
     print(f"  کد و شرحی: {len(lookup_types)} نوع  ·  {len(lookup_values)} مقدار")
     print(f"  موجودیت نرم‌افزار: {len({r[0].split('|')[0] for r in entity_rows})}  ·  "
           f"جدول منطبق {len({r[4] for r in entity_rows if r[4]})}")

@@ -391,18 +391,20 @@ class KnowledgeBase:
             in_live_db=r["in_live_db"] != 0,
         )
 
-        # برچسب فارسی ستون از واژه‌نامه می‌آید، نه از خود جدول: یک ورودی
-        # («FiscalYearRef» → «سال مالی») روی هر جدولی که آن ستون را دارد اثر
-        # می‌گذارد، پس ۲۰۰ ورودی نیمی از ستون‌های پایگاه داده را نام‌دار می‌کند.
+        # نام فارسی ستون در ایندکس یک‌جا حل شده (column_titles): ثبت دستی
+        # برای همین جدول، واژه‌نامهٔ نام ستون، یا عنوان جدولی که ستون *Ref به
+        # آن اشاره می‌کند. label_source می‌گوید کدام.
         for c in self.db.execute(
-            "SELECT c.*, l.title_fa AS label_fa FROM columns c "
-            "LEFT JOIN column_labels l ON l.name = c.name "
+            "SELECT c.*, t.title_fa AS label_fa, t.source AS label_source "
+            "FROM columns c LEFT JOIN column_titles t "
+            "ON t.table_ref = c.table_ref AND t.name = c.name "
             "WHERE c.table_ref=? ORDER BY c.ordinal", (full_name,)
         ):
             info.columns.append({
                 "name": c["name"], "type": c["type"],
                 "nullable": bool(c["nullable"]), "is_pk": bool(c["is_pk"]),
                 "ordinal": c["ordinal"], "label_fa": c["label_fa"],
+                "label_source": c["label_source"],
             })
             if c["is_pk"]:
                 info.primary_key.append(c["name"])

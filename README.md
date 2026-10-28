@@ -55,6 +55,7 @@ backend/
     semantics/<S>.yaml   عنوان و شرح فارسی جدول‌های اسکیمای <S>
     semantics/_schemas.yaml  نام فارسی ماژول‌ها (اسکیماها)
     semantics/_columns.yaml  واژه‌نامهٔ نام ستون‌ها — بر پایهٔ نام دقیق ستون
+    semantics/_table_columns.yaml  نام فارسی ستون برای یک جدول مشخص — بر واژه‌نامه اولویت دارد
     joins/user-verified.yaml روابط تأییدشدهٔ کاربر — بر استنتاج اولویت دارند
   instances/live/      آمار ردیف‌های نصب فعلی
   index/               ایندکس مشتق‌شده (در git نیست — خودکار ساخته می‌شود)

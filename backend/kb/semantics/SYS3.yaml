@@ -1,0 +1,273 @@
+schema: SYS3
+note: description_fa و gotchas را دستی اضافه کنید؛ ingest بعدی پاکشان نمی‌کند.
+tables:
+- name: Attachment
+  title_fa: پیوست
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: BusinessRuleActionExecutionLog
+  title_fa: لاگ رویداد عملیات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: BusinessXMLSchemaDefination
+  title_fa: داده پویا
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: CustomCondition
+  title_fa: شرط سفارشی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: DataTransferMethod
+  title_fa: روش تبادل داده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: DynamicComponent
+  title_fa: مولفه پویا
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: DynamicComponentDeployment
+  title_fa: انتشار فرم
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: DynamicComponentMenu
+  title_fa: گزینه های منو
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: DynamicComponentUnit
+  title_fa: فرم
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: DynamicReport
+  title_fa: گزارش
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: EntityLookup
+  title_fa: موجودیت کد و شرحی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: EntityRelation
+  title_fa: رابطه موجودیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: EntityReport
+  title_fa: گزارش چاپی موجودیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: Field
+  title_fa: فیلد اضافه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: FieldValueContainer
+  title_fa: داده فیلدهای اضافه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: Filter
+  title_fa: فیلتر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: GeneralPackageInfo
+  title_fa: بسته فرایار
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: GeneralPackageItem
+  title_fa: قلم بسته فرایار
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: Image
+  title_fa: تصویر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: LogicalResourceConfiguration
+  title_fa: تنظیمات کلیدهای امنیتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: Lookup
+  title_fa: کد و شرحی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: LookupInfo
+  title_fa: اطلاعات کد و شرحی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: Note
+  title_fa: یادداشت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: NoteAttachment
+  title_fa: فایل یادداشت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: NumberingMethod
+  title_fa: روش شماره گذاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: NumberingMethodEntityAttribute
+  title_fa: ویژگی موجودیت شیوه شماره گذاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: NumberingMethodRange
+  title_fa: محدوده شیوه شماره گذاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: NumberingRangeReservation
+  title_fa: مخزن شماره گذاری
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: NumberingReseterAttribute
+  title_fa: ویژگی تکرار محدوده
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: Portal
+  title_fa: پرتال
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: PortalComponent
+  title_fa: اجزا پرتال
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: Primitive
+  title_fa: جزء داده فیلد اضافه
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: ProcessAdministrator
+  title_fa: مدیر فرایند
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: ProcessInstanceReassignmentTracking
+  title_fa: انتساب
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: ProcessInstanceTask
+  title_fa: عملیات
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: ProcessInstanceTaskDelivery
+  title_fa: کار
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: RecursiveEntityRelation
+  title_fa: رابطه موجودیت بازگشتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: ReportPathMapping
+  title_fa: تغییر مسیر گزارشات سیستمی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: SecurityEvent
+  title_fa: رویداد امنیتی
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: SecurityPolicy
+  title_fa: سیاست امنیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: UserEntityAction
+  title_fa: عملیات خاص موجودیت
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: UserGroupMember
+  title_fa: عضو گروه کاربر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: UserHash
+  title_fa: هش کاربر
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: UserLogonAudit
+  title_fa: گزارش ورود و خروج کاربران
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
+- name: UserShellNotification
+  title_fa: نام موجودیت اعلان
+  source: software_entity_catalogue
+  confidence: high
+  origin: entity_form_2026_09
+  updated_at: '2026-10-28'
