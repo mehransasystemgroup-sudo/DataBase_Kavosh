@@ -3,7 +3,7 @@ import {
   AlertTriangle,
   ArrowUp,
   BadgeCheck,
-  Bot,
+  Cpu,
   CircleSlash,
   Compass,
   Download,
@@ -19,16 +19,19 @@ import {
   Plus,
   Search,
   Settings,
+  Sparkles,
   Target,
   Square,
   Table2,
   Wand2,
+  WifiOff,
   X,
 } from "lucide-react";
 
 import { ASK_ASSISTANT, CAN_DOWNLOAD, HAS_ASSISTANT, errorMessage, http } from "@/lib/api";
 import { cn, fa, faText } from "@/lib/utils";
-import { CopyButton, EmptyState, SqlBlock } from "@/components/primitives";
+import { answerOffline, OFFLINE_SAMPLES } from "@/lib/assistant/offline";
+import { CopyButton, SqlBlock } from "@/components/primitives";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -47,6 +50,16 @@ import { Textarea } from "@/components/ui/textarea";
       در تب کاوش.
 
   کوئریِ تأییدنشده هرگز به‌شکل تأییدشده نشان داده نمی‌شود.
+
+  دو موتور پشت این صفحه است:
+    • آفلاین (lib/assistant/offline.js) — پرسش‌های ساختاری مثل «ارتباط سند و
+      طرف حساب»، «ستون‌های جدول کارمند» یا «مقادیر وضعیت سند» را بی‌مدل و
+      بی‌کلید، از همان دانش پایگاه داده پاسخ می‌دهد. سریع است و رایگان.
+    • هوشمند (مدل زبانی، با کلید API) — برای محاسبه، شرط، بازهٔ زمانی و
+      پرسش‌های آزاد.
+  در حالت «خودکار» پرسش ساده آفلاین پاسخ می‌گیرد و بقیه به مدل می‌رود. بی‌کلید
+  همه‌چیز آفلاین است و اگر پرسش پیشرفته باشد، پاسخ پایه با این توضیح می‌آید
+  که پاسخ کامل کلید می‌خواهد.
 
   و پیش از همهٔ این‌ها، «برداشت»: دستیار اول می‌گوید خواستهٔ شما را چه
   فهمیده — هدف، خروجی، فیلترها، فرض‌ها — و اگر جایی مبهم است، همان را
@@ -120,7 +133,7 @@ function downloadSql(turn) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-const SAMPLES = [
+const AI_SAMPLES = [
   "فهرست کارمندان به همراه نام واحد سازمانی‌شان",
   "جمع بدهکار و بستانکار هر سند حسابداری در سال مالی جاری",
   "سندهای پرداختی که وضعیتشان تأییدنشده است",
@@ -135,6 +148,7 @@ const STEP_LABEL = {
   draft: "نگارش",
   verify: "بازبینی",
   model: "مدل",
+  offline: "آفلاین",
   done: "پایان",
   error: "خطا",
 };
@@ -363,8 +377,33 @@ function Section({ title, body }) {
   );
 }
 
-function Answer({ turn, onOpenTable, onClarify }) {
+/** «شاید منظورتان…»: همان پرسش با جدولی دیگر. */
+function Choices({ choices, onAsk }) {
+  if (!choices?.length) return null;
+  return (
+    <div className="flex flex-wrap items-center gap-1">
+      <span className="flex items-center gap-1 text-[10.5px] text-muted-foreground">
+        <HelpCircle className="h-3 w-3" />
+        شاید منظورتان جدول دیگری است:
+      </span>
+      {choices.map((c) => (
+        <button
+          key={c.label}
+          type="button"
+          onClick={() => onAsk(c.question)}
+          title={`پرسیدن دوباره با ${c.label}`}
+          className="rounded border border-border bg-surface px-1.5 py-0.5 text-start text-[10.5px] text-foreground transition-colors hover:border-brand/45 hover:text-brand-text"
+        >
+          {c.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function Answer({ turn, onOpenTable, onClarify, onAsk, aiReady }) {
   const { question, steps, running, result, error } = turn;
+  const offline = Boolean(result?.offline);
   const sections = splitSections(result?.note);
   const isNotes = (sec) => sec.title.startsWith("نکته");
   const before = result?.sql ? sections.filter((sec) => !isNotes(sec)) : sections;
@@ -379,7 +418,19 @@ function Answer({ turn, onOpenTable, onClarify }) {
       </div>
 
       <div className="space-y-2 rounded-lg border border-border bg-surface/70 p-2.5">
-        <StepTrail steps={steps} running={running} />
+        {offline ? (
+          <p className="flex items-center gap-1.5 text-[10.5px] text-muted-foreground">
+            <Cpu className="h-3 w-3 shrink-0 text-brand-text" />
+            پاسخ آفلاین — ساخته‌شده از دانش پایگاه داده، بدون هوش مصنوعی و بدون کلید API
+          </p>
+        ) : running && !steps.length ? (
+          <p className="flex items-center gap-1.5 px-1 text-[11px] text-muted-foreground">
+            <Loader2 className="h-3 w-3 shrink-0 animate-spin text-brand-text" />
+            در حال یافتن پاسخ…
+          </p>
+        ) : (
+          <StepTrail steps={steps} running={running} />
+        )}
 
         {error && (
           <p className="rounded-md border border-err/40 bg-err/10 px-3 py-2 text-[11.5px] text-err">
@@ -396,7 +447,7 @@ function Answer({ turn, onOpenTable, onClarify }) {
           <>
             <SqlBlock
               sql={result.sql}
-              title={`کوئری — ${fa(result.attempts)} تلاش`}
+              title={offline ? "کوئری — ساخته‌شده بدون هوش مصنوعی" : `کوئری — ${fa(result.attempts)} تلاش`}
               actions={
                 CAN_DOWNLOAD && (
                   <button
@@ -417,8 +468,35 @@ function Answer({ turn, onOpenTable, onClarify }) {
 
         {after.map((sec, i) => <Section key={`a${i}`} {...sec} />)}
 
+        {offline && result.needsAi && (
+          <div className="rounded-md border border-warn/40 bg-warn/8 px-3 py-2 text-[11px] leading-relaxed text-foreground/90">
+            <p className="flex items-center gap-1.5 font-semibold text-warn">
+              <KeyRound className="h-3.5 w-3.5 shrink-0" />
+              {result.sql ? "این فقط پایهٔ کوئری است" : "این پرسش پاسخ آفلاین ندارد"}
+            </p>
+            <p className="mt-0.5 text-muted-foreground">
+              {aiReady
+                ? "برای محاسبه، شرط و بازهٔ زمانی، همین پرسش را از دستیار هوشمند بپرسید."
+                : "محاسبه، شرط، بازهٔ زمانی و پرسش‌های آزاد به دستیار هوشمند نیاز دارد. با ثبت کلید API در تنظیمات فعال می‌شود."}
+            </p>
+          </div>
+        )}
+
+        <Choices choices={result?.choices} onAsk={onAsk} />
+
         {result && !running && (
           <div className="flex flex-wrap items-center justify-end gap-1.5">
+            {offline && aiReady && (
+              <button
+                type="button"
+                onClick={() => onAsk(question, "ai")}
+                title="همین پرسش با مدل زبانی پاسخ داده شود"
+                className="inline-flex min-h-9 items-center justify-center gap-1 rounded-md border border-brand/40 bg-brand/10 px-2.5 text-[11px] text-brand-text transition-colors hover:bg-brand/20 sm:min-h-8"
+              >
+                <Sparkles className="h-3 w-3" />
+                پرسش از دستیار هوشمند
+              </button>
+            )}
             <CopyButton
               text={answerText(turn)}
               label="کپی کل پاسخ"
@@ -458,8 +536,8 @@ function Answer({ turn, onOpenTable, onClarify }) {
           <details className="rounded-md border border-border/70 bg-ink/30">
             <summary className="flex cursor-pointer list-none items-center gap-1.5 px-2.5 py-1.5 text-[10.5px] text-muted-foreground">
               <Link2 className="h-3 w-3" />
-              زمینهٔ داده‌شده به مدل: {fa(result.tables?.length || 0)} جدول و{" "}
-              {fa(result.joins?.length || 0)} پیوند از دانش پایگاه داده
+              {offline ? "جدول‌ها و پیوندهای به‌کاررفته" : "زمینهٔ داده‌شده به مدل"}:{" "}
+              {fa(result.tables?.length || 0)} جدول و {fa(result.joins?.length || 0)} پیوند از دانش پایگاه داده
             </summary>
             {result.tables?.length > 0 && (
               <div className="flex flex-wrap gap-1 border-t border-border/70 px-2.5 py-2">
@@ -651,7 +729,10 @@ export default function AssistantView({
   const input = useRef(null);
 
   useEffect(() => {
-    if (!HAS_ASSISTANT) return;
+    if (!HAS_ASSISTANT) {
+      setReady({ ok: false, noAi: true });
+      return;
+    }
     http
       .get("/settings")
       .then(({ data }) => {
@@ -691,8 +772,14 @@ export default function AssistantView({
     setRunning(false);
   }, []);
 
+  const aiReady = Boolean(HAS_ASSISTANT && ready?.ok);
+
+  /**
+   * پرسیدن. `mode`: "auto" (پیش‌فرض) ساده را آفلاین و بقیه را به مدل می‌دهد،
+   * "ai" مستقیم به مدل می‌رود (دکمهٔ «پرسش از دستیار هوشمند»).
+   */
   const ask = useCallback(
-    async (text) => {
+    async (text, mode = "auto") => {
       const q = (text ?? question).trim();
       if (!q || running) return;
       setQuestion("");
@@ -718,6 +805,27 @@ export default function AssistantView({
       abort.current = controller;
 
       try {
+        if (mode !== "ai") {
+          const off = await answerOffline(http, q, { pinned });
+          if (controller.signal.aborted) return;
+          // با کلید: فقط پرسش ساختاریِ روشن آفلاین می‌ماند؛ پیشرفته و مبهم به مدل
+          const keep = off.handled && (!aiReady || (!off.advanced && off.intent !== "unknown"));
+          if (keep) {
+            patch({ result: { ...off.result, needsAi: off.advanced }, running: false });
+            return;
+          }
+          if (!aiReady) {
+            patch({
+              running: false,
+              result: {
+                type: "result", offline: true, needsAi: true, sql: "", tables: [], joins: [], choices: [],
+                note: "### برداشت\nجدولی که این پرسش درباره‌اش باشد در دانش پایگاه داده پیدا نشد.\n\n### راهکار\n- نام جدول را به فارسی یا لاتین بیاورید؛ مثلاً «ستون‌های جدول سند حسابداری» یا «ارتباط FIN3.Voucher و GNR3.Party».\n- یا جدول را از پایین صفحه سنجاق کنید و دوباره بپرسید.",
+              },
+            });
+            return;
+          }
+        }
+
         const steps = [];
         await ASK_ASSISTANT(q, {
           signal: controller.signal,
@@ -738,12 +846,15 @@ export default function AssistantView({
         if (e.name !== "AbortError") patch({ error: errorMessage(e), running: false });
         else patch({ error: "متوقف شد.", running: false });
       } finally {
+        if (controller.signal.aborted) patch({ error: "متوقف شد.", running: false });
         patch({ running: false });
-        setRunning(false);
-        abort.current = null;
+        if (abort.current === controller) {
+          setRunning(false);
+          abort.current = null;
+        }
       }
     },
-    [question, running, turns, pinned],
+    [question, running, turns, pinned, aiReady],
   );
 
   const clarify = useCallback((q) => {
@@ -762,19 +873,8 @@ export default function AssistantView({
     setQuestion("");
   }, [stop]);
 
-  if (!HAS_ASSISTANT) {
-    return (
-      <div className="mx-auto w-full max-w-2xl px-4 py-10">
-        <EmptyState
-          icon={Bot}
-          title="دستیار روی این دستگاه در دسترس نیست"
-          description="نمایشگر وبِ این گوشی (Android System WebView) قدیمی‌تر از آن است که برنامه بتواند از راهش به مدل زبانی وصل شود. آن را از Google Play به‌روز کنید و برنامه را دوباره باز کنید. بقیهٔ بخش‌ها آفلاین و بی‌تغییر کار می‌کنند."
-        />
-      </div>
-    );
-  }
-
-  const needsKey = ready && !ready.ok;
+  const offlineOnly = ready && !aiReady;
+  const samples = offlineOnly ? OFFLINE_SAMPLES : [...OFFLINE_SAMPLES.slice(0, 2), ...AI_SAMPLES.slice(0, 3)];
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -811,26 +911,42 @@ export default function AssistantView({
                 </ul>
               </div>
 
-              {needsKey ? (
-                <div className="rounded-lg border border-warn/40 bg-warn/8 p-3">
-                  <p className="flex items-center gap-1.5 text-[12px] font-semibold text-warn">
-                    <KeyRound className="h-3.5 w-3.5" />
-                    هنوز کلید API ثبت نشده
+              {aiReady && (
+                <p className="flex items-start gap-1.5 rounded-md border border-border bg-surface/60 p-2 text-[11px] leading-relaxed text-muted-foreground">
+                  <Cpu className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-text" />
+                  پرسش‌های ساختاری (ارتباط دو جدول، ستون‌ها، مقادیر کددار، یافتن جدول) فوری و بدون
+                  مصرف API از دانش پایگاه داده پاسخ می‌گیرند؛ محاسبه، شرط و بازهٔ زمانی به دستیار
+                  هوشمند می‌رود. زیر هر پاسخ آفلاین می‌توانید همان پرسش را از دستیار هوشمند هم بپرسید.
+                </p>
+              )}
+              {offlineOnly ? (
+                <div className="rounded-lg border border-brand/30 bg-brand/5 p-3">
+                  <p className="flex items-center gap-1.5 text-[12px] font-semibold text-brand-text">
+                    <WifiOff className="h-3.5 w-3.5" />
+                    حالت آفلاین — بدون هوش مصنوعی
                   </p>
                   <p className="mt-1 text-[11.5px] leading-relaxed text-muted-foreground">
-                    {ready.error ||
-                      "دستیار برای نوشتن کوئری به یک مدل زبانی وصل می‌شود. کلید فقط روی همین دستگاه ذخیره می‌شود."}
+                    پرسش‌های ساختاری همین حالا و بی‌کلید پاسخ می‌گیرند: ارتباط و مسیر
+                    پیوند دو جدول، ستون‌ها و روابط یک جدول، مقادیر کددار و کد و شرح،
+                    یافتن جدول، فهرست و تعداد (به تفکیک یک جدول دیگر).
+                    {ready.noAi
+                      ? " دستیار هوشمند روی این دستگاه در دسترس نیست، چون نمایشگر وب گوشی (Android System WebView) قدیمی است؛ با به‌روزرسانی آن از Google Play فعال می‌شود."
+                      : " برای محاسبه (جمع، میانگین)، شرط، بازهٔ زمانی و پرسش‌های آزاد، کلید API را در تنظیمات ثبت کنید؛ کلید فقط روی همین دستگاه می‌ماند."}
                   </p>
-                  <Button type="button" size="sm" className="mt-2.5" onClick={onOpenSettings}>
-                    <Settings className="h-3.5 w-3.5" />
-                    رفتن به تنظیمات
-                  </Button>
+                  {ready.error && <p className="mt-1 text-[11px] text-warn">{ready.error}</p>}
+                  {!ready.noAi && (
+                    <Button type="button" size="sm" variant="outline" className="mt-2.5" onClick={onOpenSettings}>
+                      <Settings className="h-3.5 w-3.5" />
+                      ثبت کلید API
+                    </Button>
+                  )}
                 </div>
-              ) : (
+              ) : null}
+              {ready && (
                 <div className="space-y-1.5">
                   <p className="text-[11px] text-muted-foreground">برای شروع، یکی را بزنید:</p>
                   <div className="flex flex-wrap gap-1.5">
-                    {SAMPLES.map((s) => (
+                    {samples.map((s) => (
                       <button
                         key={s}
                         type="button"
@@ -847,14 +963,21 @@ export default function AssistantView({
           )}
 
           {turns.map((turn, i) => (
-            <Answer key={i} turn={turn} onOpenTable={onOpenTable} onClarify={clarify} />
+            <Answer
+              key={i}
+              turn={turn}
+              onOpenTable={onOpenTable}
+              onClarify={clarify}
+              onAsk={ask}
+              aiReady={aiReady}
+            />
           ))}
           <div ref={tail} />
         </div>
       </div>
 
       <div className="shrink-0 border-t border-border bg-background/85 px-3 py-2.5 backdrop-blur-xl sm:px-4 lg:px-6">
-        {!needsKey && <TablePicker pinned={pinned} onChange={setPinned} disabled={running} />}
+        <TablePicker pinned={pinned} onChange={setPinned} disabled={running} />
         <div className="mx-auto flex w-full max-w-3xl items-end gap-1.5">
           <Textarea
             ref={input}
@@ -868,8 +991,12 @@ export default function AssistantView({
               }
             }}
             rows={1}
-            disabled={running || needsKey}
-            placeholder="مثلاً: فهرست کارمندان هر واحد سازمانی با تعدادشان"
+            disabled={running}
+            placeholder={
+              offlineOnly
+                ? "مثلاً: ارتباط سند حسابداری و طرف حساب"
+                : "مثلاً: فهرست کارمندان هر واحد سازمانی با تعدادشان"
+            }
             className="max-h-40 min-h-[42px] resize-y text-[12.5px]"
           />
           {running ? (
@@ -881,7 +1008,7 @@ export default function AssistantView({
               type="button"
               size="icon"
               onClick={() => ask()}
-              disabled={!question.trim() || needsKey}
+              disabled={!question.trim()}
               title="پرسیدن"
             >
               <ArrowUp className="h-4 w-4" />
@@ -890,9 +1017,14 @@ export default function AssistantView({
         </div>
         <div className="mx-auto mt-1.5 flex w-full max-w-3xl items-start gap-2">
           <p className="min-w-0 flex-1 text-[10px] leading-relaxed text-muted-foreground">
-            {turns.length > 0
+            {turns.length > 0 && !offlineOnly
               ? "پرسش بعدی ادامهٔ همین گفت‌وگوست؛ مثلاً «حالا فقط امسال» یا «به تفکیک واحد». "
               : ""}
+            {offlineOnly && (
+              <span className="text-brand-text">
+                حالت آفلاین: هر پرسش جداگانه پاسخ می‌گیرد و پرسش‌های پیشرفته کلید API می‌خواهند.{" "}
+              </span>
+            )}
             دستیار کوئری را اجرا نمی‌کند — فقط می‌نویسد و با ساختار می‌سنجد. پیش از
             اجرا روی داده‌های واقعی، خودتان هم نگاهش کنید.
           </p>

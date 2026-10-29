@@ -870,31 +870,42 @@ async function handleKnowledge(kb, body) {
 }
 
 /**
+ * لایهٔ سازگار با axios روی یک پایگاه دانشِ مشخص.
+ *
+ * جدا شده تا آزمون‌ها (و موتور آفلاین دستیار در آزمون) همان مسیرهای برنامه
+ * را روی ایندکسِ آزمون صدا بزنند، بی‌آنکه فایل از شبکه بار شود.
+ */
+export function httpFor(source) {
+  const kbOf = typeof source === "function" ? source : async () => source;
+  return {
+    async get(url, config = {}) {
+      const kb = await kbOf();
+      for (const [pattern, handler] of ROUTES) {
+        const m = pattern.exec(url);
+        if (m) return { data: await handler(kb, m, config.params) };
+      }
+      throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
+    },
+
+    async post(url, body) {
+      const kb = await kbOf();
+      if (url === "/knowledge") return { data: await handleKnowledge(kb, body) };
+      if (url === "/settings/test") return { data: await testSettings(body) };
+      if (url === "/assistant/check") return { data: checkQuery(kb, body?.sql) };
+      throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
+    },
+
+    async put(url, body) {
+      if (url === "/settings") return { data: await putSettings(body) };
+      throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
+    },
+  };
+}
+
+/**
  * همان قراردادی که axios دارد (`{ data }`), تا بقیهٔ برنامه نفهمد سرور نیست.
  */
-export const localHttp = {
-  async get(url, config = {}) {
-    const kb = await ready();
-    for (const [pattern, handler] of ROUTES) {
-      const m = pattern.exec(url);
-      if (m) return { data: await handler(kb, m, config.params) };
-    }
-    throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
-  },
-
-  async post(url, body) {
-    const kb = await ready();
-    if (url === "/knowledge") return { data: await handleKnowledge(kb, body) };
-    if (url === "/settings/test") return { data: await testSettings(body) };
-    if (url === "/assistant/check") return { data: checkQuery(kb, body?.sql) };
-    throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
-  },
-
-  async put(url, body) {
-    if (url === "/settings") return { data: await putSettings(body) };
-    throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
-  },
-};
+export const localHttp = httpFor(ready);
 
 /** دستیار روی خودِ دستگاه — همان رویدادهای جریانیِ سرور، بی‌سرور. */
 export async function askLocal(question, options) {

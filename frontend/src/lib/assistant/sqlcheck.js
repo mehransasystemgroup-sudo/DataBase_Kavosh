@@ -280,7 +280,8 @@ export function checkSql(sqlText, index) {
     const keywords = keywordColumns(tree);
     for (const col of nodes.filter((n) => isColumn(n) && !keywords.has(n))) {
       const cname = strip(col.column);
-      if (!cname || cname === "*") continue;
+      // @FiscalYearRef پارامتر است، نه ستون (تجزیه‌گر گاهی آن را ستون می‌خواند)
+      if (!cname || cname === "*" || cname.startsWith("@")) continue;
       const qualifier = col.table ? strip(col.table).toLowerCase() : "";
 
       if (qualifier) {
