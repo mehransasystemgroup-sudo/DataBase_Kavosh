@@ -82,7 +82,7 @@ function ViewSwitch({ view, setView, className }) {
           >
             <Icon className="h-3.5 w-3.5 shrink-0" />
             <span className="hidden sm:inline">{v.label}</span>
-            <span className="sm:hidden">{v.short}</span>
+            <span className="whitespace-nowrap sm:hidden">{v.short}</span>
           </button>
         );
       })}
@@ -129,7 +129,7 @@ function AppShell() {
       />
 
       {/*
-        نوار سازنده — بالای همه‌چیز، روی هر سه نما.
+        نوار سازنده — بالای همه‌چیز: از نخستین زبانه («کاوش جدول‌ها») تا بقیه.
 
         عمداً بیرون از هدرِ چسبان است و با آن اسکرول نمی‌شود: یک خط اعتبار
         نباید دائماً بخشی از ارتفاع کاری صفحه را بگیرد، به‌ویژه روی گوشی که
@@ -140,14 +140,14 @@ function AppShell() {
       */}
       <div
         dir="ltr"
-        className="shrink-0 border-b border-border/70 bg-ink/70 px-3 py-1 text-center text-[10.5px] leading-4 text-muted-foreground sm:px-4 lg:px-6"
+        className="shrink-0 border-b border-border/70 bg-ink/70 px-3 py-1 text-center text-[11.5px] leading-5 text-muted-foreground sm:px-4 lg:px-6"
       >
-        Created by Mehran-Sabzali{" "}
+        Created By{" "}
         <a
-          href="mailto:mehransa@systemgroup.net"
-          className="font-mono text-brand-text underline-offset-2 transition-colors hover:underline"
+          href="mailto:MehranSa@systemgroup.net"
+          className="font-semibold text-brand-text underline-offset-2 transition-colors hover:underline"
         >
-          (mehransa@systemgroup.net)
+          MehranSa@systemgroup.net
         </a>
       </div>
 

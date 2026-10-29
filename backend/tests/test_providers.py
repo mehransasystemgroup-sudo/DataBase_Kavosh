@@ -105,3 +105,11 @@ def test_html_403_is_a_network_block_and_bad_gemini_key_is_named():
     assert "کلید" in str(e) and "فیلترینگ" in str(e) and "<p>" not in str(e)
     e = err(400, "API key not valid. Please pass a valid API key.")
     assert "کلید API پذیرفته نشد" in str(e)
+
+
+def test_fixed_providers_ignore_a_foreign_base_url():
+    """کلیدِ سرویس‌های اصلی هرگز به نشانی دلخواه نمی‌رود؛ فقط سرویس محلی نشانی دلخواه دارد."""
+    openai = providers.BY_ID["openai"]
+    assert providers._root(openai, "https://evil.example/v1") == "https://api.openai.com/v1"
+    custom = providers.BY_ID["custom"]
+    assert providers._root(custom, "http://127.0.0.1:11434/v1/") == "http://127.0.0.1:11434/v1"

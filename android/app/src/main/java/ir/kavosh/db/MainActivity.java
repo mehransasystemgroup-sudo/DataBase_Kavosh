@@ -1,8 +1,11 @@
 package ir.kavosh.db;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -136,9 +139,20 @@ public final class MainActivity extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest request) {
-                // برنامه آفلاین است و پیوند بیرونی ندارد؛ هر ناوبری خارج از
-                // مبدأ خودمان یعنی اشتباهی رخ داده — بی‌صدا نادیده می‌گیریم.
-                return !String.valueOf(request.getUrl()).startsWith(ORIGIN);
+                Uri url = request.getUrl();
+                // تنها پیوند بیرونی برنامه نشانی رایانامهٔ سازنده است؛ به برنامهٔ
+                // ایمیل دستگاه سپرده می‌شود، نه به خود نمایشگر وب.
+                if ("mailto".equalsIgnoreCase(url.getScheme())) {
+                    try {
+                        startActivity(new Intent(Intent.ACTION_SENDTO, url));
+                    } catch (ActivityNotFoundException ignored) {
+                        // برنامهٔ ایمیلی نصب نیست؛ کاری از دست ما برنمی‌آید
+                    }
+                    return true;
+                }
+                // برنامه آفلاین است؛ هر ناوبری دیگری خارج از مبدأ خودمان یعنی
+                // اشتباهی رخ داده — بی‌صدا نادیده می‌گیریم.
+                return !String.valueOf(url).startsWith(ORIGIN);
             }
         });
 

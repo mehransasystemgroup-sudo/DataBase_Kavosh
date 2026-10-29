@@ -19,7 +19,6 @@ from datetime import datetime
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -110,8 +109,72 @@ breadcrumb(DATA, "دانش و ایندکس آماده شد")
 INDEX_STATE: dict = {"building": False, "last": None, "log": ""}
 
 app = FastAPI(title="کاوشگر پایگاه داده", docs_url="/api/docs")
-app.add_middleware(CORSMiddleware, allow_origins=["*"],
-                   allow_methods=["*"], allow_headers=["*"])
+
+
+# ═══════════════ مرز امنیتی سرور محلی ═══════════════
+#
+# این سرور روی دستگاه کاربر بالا است و کلید API را نگه می‌دارد. پیش از این
+# CORS برای «هر مبدأ» باز بود؛ یعنی هر صفحه‌ای که کاربر در همان مرورگر باز
+# می‌کرد، می‌توانست به 127.0.0.1:8321 درخواست بفرستد — مثلاً
+# /api/settings/test را با base_url سرور خودش صدا بزند و کلیدِ ذخیره‌شده را
+# بگیرد، یا در kb/ دانش بنویسد. حالا سه لایه جلویش است:
+#
+#   • CORS دیگر باز نیست: رابط کاربری از همان مبدأ سرو می‌شود و نیازی ندارد.
+#   • سرآیند Host باید نشانی محلی باشد — سدّ حملهٔ DNS rebinding که CORS را
+#     دور می‌زند.
+#   • درخواست تغییر‌دهنده (POST/PUT/…) اگر Origin دارد، Origin باید محلی باشد.
+#
+# اگر کاربر عمداً HOST را روی نشانی غیرمحلی گذاشته (مثلاً برای شبکهٔ داخلی)،
+# بررسی Host کنار می‌رود — آن انتخاب خودِ اوست.
+_LOOPBACK = {"127.0.0.1", "localhost", "::1", "testserver"}
+_SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
+
+
+def _hostname(value: str) -> str:
+    """نام میزبان بدون درگاه — «[::1]:8321» ← «::1»، «localhost:3000» ← «localhost»."""
+    value = (value or "").strip().lower()
+    if value.startswith("["):
+        return value[1:value.find("]")] if "]" in value else value
+    return value.rsplit(":", 1)[0] if value.count(":") == 1 else value
+
+
+def _allowed_hosts() -> set[str] | None:
+    host = os.environ.get("HOST", "127.0.0.1")
+    if _hostname(host) not in _LOOPBACK:
+        return None                      # کاربر خودش سرور را بیرون باز کرده
+    extra = {h.strip().lower() for h in os.environ.get("KAVOSH_ALLOWED_HOSTS", "").split(",") if h.strip()}
+    return _LOOPBACK | extra
+
+
+class LocalOnly:
+    """میان‌افزار ASGI خام — BaseHTTPMiddleware با پاسخ جریانیِ دستیار نمی‌سازد."""
+
+    def __init__(self, inner):
+        self.inner = inner
+        self.hosts = _allowed_hosts()
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http" or self.hosts is None:
+            return await self.inner(scope, receive, send)
+        headers = {k.decode("latin-1"): v.decode("latin-1") for k, v in scope.get("headers", [])}
+        reason = None
+        if _hostname(headers.get("host", "")) not in self.hosts:
+            reason = "نشانی میزبان مجاز نیست."
+        elif scope.get("method", "GET") not in _SAFE_METHODS and "origin" in headers:
+            origin = headers["origin"].split("://", 1)[-1]
+            if _hostname(origin) not in self.hosts:
+                reason = "درخواست از صفحه‌ای بیرون از برنامه پذیرفته نیست."
+        if reason is None:
+            return await self.inner(scope, receive, send)
+        body = json.dumps({"detail": reason}, ensure_ascii=False).encode("utf-8")
+        await send({"type": "http.response.start", "status": 403, "headers": [
+            (b"content-type", b"application/json; charset=utf-8"),
+            (b"content-length", str(len(body)).encode()),
+        ]})
+        await send({"type": "http.response.body", "body": body})
+
+
+app.add_middleware(LocalOnly)
 
 
 class KnowledgeIn(BaseModel):
@@ -246,6 +309,27 @@ def neighbours(full_name: str, limit: int = Query(40, ge=1, le=200)) -> dict:
 
 # ═══════════════ ثبت دانش ═══════════════
 
+def _check_knowledge_targets(kind: str, payload: dict) -> None:
+    """
+    دانش فقط برای جدول و ستونی ثبت می‌شود که واقعاً در ساختار هست.
+
+    پیش از این نام جدول بی‌بررسی به مسیر فایل تبدیل می‌شد؛ نامی مثل
+    «../../x» فایلی بیرون از kb/ می‌ساخت، و غلط تایپی هم بی‌صدا یک جدولِ
+    خیالی در دانش پایه می‌کاشت.
+    """
+    pairs = {"table": [("full_name", None)], "enum": [("full_name", "column")],
+             "join": [("from_table", "from_col"), ("to_table", "to_col")]}[kind]
+    for table_key, column_key in pairs:
+        name = payload.get(table_key)
+        info = kb.get_table(name) if isinstance(name, str) else None
+        if info is None:
+            raise HTTPException(400, f"جدول «{name}» در ساختار پایگاه داده نیست.")
+        if column_key:
+            column = payload.get(column_key)
+            if not any(c.get("name") == column for c in info.columns):
+                raise HTTPException(400, f"ستون «{column}» در جدول {name} نیست.")
+
+
 @app.post("/api/knowledge")
 def knowledge(body: KnowledgeIn) -> dict:
     handlers = {"table": writer.record_table, "enum": writer.record_enum,
@@ -253,6 +337,7 @@ def knowledge(body: KnowledgeIn) -> dict:
     handler = handlers.get(body.kind)
     if handler is None:
         raise HTTPException(400, f"نوع دانش «{body.kind}» شناخته نشد.")
+    _check_knowledge_targets(body.kind, body.payload)
     try:
         message = handler(**body.payload)
     except TypeError as e:
