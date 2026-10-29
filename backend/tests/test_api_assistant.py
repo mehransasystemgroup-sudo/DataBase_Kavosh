@@ -99,7 +99,8 @@ def server(tmp_path_factory):
         pytest.fail(f"سرویس مدل ساختگی بالا نیامد:\n{tail(llm_log)}")
 
     base = f"http://127.0.0.1:{api_port}"
-    deadline = time.time() + 300           # اولین اجرا ایندکس را می‌سازد
+    # اولین اجرا ایندکس را می‌سازد؛ روی دستگاه کند CI تا چند دقیقه طول می‌کشد
+    deadline = time.time() + 900
     while time.time() < deadline:
         if api.poll() is not None:
             pytest.fail(f"سرور بالا نیامد:\n{tail(api_log)}")
