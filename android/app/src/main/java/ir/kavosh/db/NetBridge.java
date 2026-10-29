@@ -20,7 +20,9 @@ import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -44,6 +46,21 @@ final class NetBridge {
     private static final String PREFS = "kavosh_secrets";
     private static final int MAX_RESPONSE = 4 * 1024 * 1024;
     private static final int MAX_TIMEOUT_MS = 240_000;
+
+    /**
+     * کلید هر ارائه‌دهنده فقط به میزبان خودِ همان سرویس می‌رود — همان نشانی‌های
+     * ثابت providers.js. «custom» (سرویس محلی کاربر) نشانی دلخواه دارد و در
+     * این فهرست نیست. اگر روزی کدی در صفحه کلیدِ OpenAI را به سرور دیگری
+     * بفرستد، این‌جا بسته می‌شود.
+     */
+    private static final Map<String, String> KEY_HOSTS = new HashMap<>();
+
+    static {
+        KEY_HOSTS.put("openai", "api.openai.com");
+        KEY_HOSTS.put("gemini", "generativelanguage.googleapis.com");
+        KEY_HOSTS.put("openrouter", "openrouter.ai");
+        KEY_HOSTS.put("anthropic", "api.anthropic.com");
+    }
 
     private final SharedPreferences secrets;
     private final ExecutorService pool = Executors.newFixedThreadPool(2);
@@ -164,6 +181,10 @@ final class NetBridge {
         String provider = msg.optString("keyProvider", "");
         String key = !transient_.isEmpty() ? transient_
                 : validProvider(provider) ? secrets.getString(provider, "") : "";
+        String expectedHost = KEY_HOSTS.get(provider);
+        if (expectedHost != null && !expectedHost.equalsIgnoreCase(uri.getHost())) {
+            return error(id, "refused", "کلید این سرویس فقط به نشانی خودِ آن فرستاده می‌شود.");
+        }
 
         int timeout = Math.max(5_000, Math.min(MAX_TIMEOUT_MS, msg.optInt("timeoutMs", 180_000)));
         HttpURLConnection conn = null;

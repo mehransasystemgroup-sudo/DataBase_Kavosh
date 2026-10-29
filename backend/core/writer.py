@@ -14,10 +14,29 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import date, datetime
 from pathlib import Path
 
 import yaml
+
+
+# نام اسکیما، جدول و ستون در SQL Server؛ هر چیز دیگر (به‌ویژه «/» و «..»)
+# نباید به مسیر فایل برسد.
+_IDENT = re.compile(r"^[A-Za-z0-9_$#@]{1,128}$")
+
+
+def _split_table(full_name: str) -> tuple[str, str]:
+    schema, _, table = str(full_name or "").partition(".")
+    if not (_IDENT.match(schema) and _IDENT.match(table)):
+        raise ValueError(f"نام جدول «{full_name}» معتبر نیست؛ شکل درست: Schema.Table")
+    return schema, table
+
+
+def _check_column(column: str) -> str:
+    if not _IDENT.match(str(column or "")):
+        raise ValueError(f"نام ستون «{column}» معتبر نیست.")
+    return column
 
 
 class KnowledgeWriter:
@@ -62,7 +81,7 @@ class KnowledgeWriter:
         grain: str | None = None,
         gotcha: str | None = None,
     ) -> str:
-        schema, table = full_name.split(".", 1)
+        schema, table = _split_table(full_name)
         path = self.kb / "semantics" / f"{schema}.yaml"
         doc = self._load(path)
         doc.setdefault("schema", schema)
@@ -110,7 +129,8 @@ class KnowledgeWriter:
         self, full_name: str, column: str, value: str, label_fa: str,
         note: str | None = None,
     ) -> str:
-        schema, table = full_name.split(".", 1)
+        schema, table = _split_table(full_name)
+        _check_column(column)
         path = self.kb / "enums" / f"{schema}.yaml"
         doc = self._load(path)
         doc.setdefault("schema", schema)
@@ -151,6 +171,8 @@ class KnowledgeWriter:
         self, from_table: str, from_col: str, to_table: str, to_col: str,
         note: str | None = None,
     ) -> str:
+        _split_table(from_table), _split_table(to_table)
+        _check_column(from_col), _check_column(to_col)
         path = self.kb / "joins" / "user-verified.yaml"
         doc = self._load(path)
         doc.setdefault("note", "مسیرهای JOIN که کاربر تأیید کرده — بر استنتاج اولویت دارند.")

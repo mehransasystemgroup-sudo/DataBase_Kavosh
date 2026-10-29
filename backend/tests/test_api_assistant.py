@@ -259,3 +259,62 @@ def test_connection_test_suggests_a_live_model(server):
     assert probe["model"] == "gpt-9-mini"
     assert probe["replaced"] == "retired-model"
     assert "gpt-9" in probe["models"] and "text-embedding-3-small" not in probe["models"]
+
+
+# ═══════════════ مرز امنیتی سرور محلی ═══════════════
+
+def _status(url: str, *, method: str = "GET", payload: dict | None = None,
+            headers: dict | None = None) -> tuple[int, dict]:
+    req = urllib.request.Request(
+        url, method=method,
+        data=json.dumps(payload).encode() if payload is not None else None,
+        headers={"content-type": "application/json", **(headers or {})},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return r.status, dict(r.headers)
+    except urllib.error.HTTPError as e:
+        return e.code, dict(e.headers)
+
+
+def test_other_websites_cannot_reach_the_local_server(server):
+    """
+    صفحه‌ای دیگر در همان مرورگر نباید بتواند تنظیمات و کلید را دست بزند.
+    پیش از 3.6.0 CORS برای همه باز بود.
+    """
+    base = server["base"]
+    status, headers = _status(f"{base}/api/settings", method="OPTIONS", headers={
+        "origin": "https://evil.example", "access-control-request-method": "PUT"})
+    assert "access-control-allow-origin" not in {k.lower() for k in headers}
+
+    status, _ = _status(f"{base}/api/settings/test", method="POST",
+                        payload={"provider": "openai", "base_url": "https://evil.example"},
+                        headers={"origin": "https://evil.example"})
+    assert status == 403
+
+    # DNS rebinding: همان سرور، با نام میزبان بیگانه
+    status, _ = _status(f"{base}/api/health", headers={"host": "evil.example"})
+    assert status == 403
+
+    # خودِ برنامه (همان مبدأ) و ابزارهای بی‌Origin کار می‌کنند
+    status, _ = _status(f"{base}/api/assistant/check", method="POST",
+                        payload={"sql": "SELECT 1"}, headers={"origin": base})
+    assert status == 200
+
+
+def test_knowledge_cannot_escape_kb_or_invent_tables(server):
+    base = server["base"]
+    for payload in (
+        {"full_name": "../../../escape", "title_fa": "x"},
+        {"full_name": "NOPE.NoSuchTable", "title_fa": "x"},
+        {"full_name": "nodot", "title_fa": "x"},
+    ):
+        status, _ = _status(f"{base}/api/knowledge", method="POST",
+                            payload={"kind": "table", "payload": payload})
+        assert status == 400, payload
+    assert not list(Path(server["data"]).parent.rglob("escape.yaml"))
+
+    status, _ = _status(f"{base}/api/knowledge", method="POST", payload={
+        "kind": "enum", "payload": {"full_name": "FIN3.Voucher", "column": "NoSuchCol",
+                                    "value": "1", "label_fa": "x"}})
+    assert status == 400

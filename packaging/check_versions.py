@@ -1,5 +1,5 @@
 """
-شمارهٔ نسخه در چهار جا نوشته می‌شود؛ این‌جا بررسی می‌شود که یکی باشند.
+شمارهٔ نسخه در پنج جا نوشته می‌شود؛ این‌جا بررسی می‌شود که یکی باشند.
 
 چرا لازم است: نسخه دیگر فقط یک برچسب نیست. نشانی‌ای که مرورگر با آن باز
 می‌شود (`?v=...`) از backend/app/version.py می‌آید، و اگر آن از نصب‌کننده جا
@@ -31,6 +31,7 @@ def main() -> int:
         find("packaging/installer.nsi", r'!define APP_VERSION\s+"([\d.]+)"'),
         find("packaging/version_info.txt", r"StringStruct\('FileVersion', '([\d.]+)\.0'\)"),
         find("android/app/build.gradle.kts", r'versionName\s*=\s*"([\d.]+)"'),
+        find("frontend/package.json", r'"version":\s*"([\d.]+)"'),
     ]
     for path, version in found:
         print(f"  {version:10s} {path}")
@@ -39,7 +40,7 @@ def main() -> int:
     if len(versions) != 1:
         print(f"\n✘ نسخه‌ها یکی نیستند: {', '.join(sorted(versions))}")
         return 1
-    print(f"\n✔ هر چهار جا: {versions.pop()}")
+    print(f"\n✔ هر پنج جا: {versions.pop()}")
     return 0
 
 

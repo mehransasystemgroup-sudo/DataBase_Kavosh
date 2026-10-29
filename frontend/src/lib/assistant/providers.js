@@ -216,6 +216,17 @@ function geminiText(data) {
   return text;
 }
 
+/**
+ * نشانی پایهٔ سرویس — همتای _root در providers.py.
+ *
+ * نشانی دلخواه فقط برای سرویس محلی پذیرفته است؛ برای بقیه نشانی ثابت است تا
+ * کلید هیچ‌وقت به سروری جز سرویس اصلی نرود.
+ */
+export function rootOf(provider, baseUrl) {
+  const custom = provider.editable_base_url ? String(baseUrl || "").trim() : "";
+  return (custom || provider.base_url).replace(/\/+$/, "");
+}
+
 /** یک پرسش، یک پاسخ متنی. `hasKey` می‌گوید کلیدی برای این ارائه‌دهنده ثبت شده یا نه. */
 export async function complete({
   post, providerId, hasKey, model, system, user, baseUrl = "",
@@ -227,7 +238,7 @@ export async function complete({
     throw new ProviderError("کلید API ثبت نشده است. از تنظیمات اضافه‌اش کنید.");
   }
   model = String(model || "").trim();
-  const root = (baseUrl || provider.base_url).replace(/\/+$/, "");
+  const root = rootOf(provider, baseUrl);
 
   if (provider.dialect === "openai") {
     const payload = {
@@ -284,7 +295,7 @@ export async function complete({
 export async function listModels({ post, providerId, hasKey, baseUrl = "", timeoutMs = 30_000 }) {
   const provider = BY_ID[providerId];
   if (!provider) throw new ProviderError(`ارائه‌دهندهٔ «${providerId}» شناخته نشد.`);
-  const root = (baseUrl || provider.base_url).replace(/\/+$/, "");
+  const root = rootOf(provider, baseUrl);
 
   if (provider.dialect === "gemini") {
     const ids = [];

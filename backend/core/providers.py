@@ -276,6 +276,18 @@ def _post(url: str, payload: dict, headers: dict, timeout: int, model: str = "")
     return _request(url, payload, headers, timeout, model)
 
 
+def _root(provider: "Provider", base_url: str) -> str:
+    """
+    نشانی پایهٔ سرویس.
+
+    نشانیِ دلخواه فقط برای ارائه‌دهنده‌ای پذیرفته است که نشانی‌اش ذاتاً
+    دلخواه است (سرویس محلی). برای بقیه نشانی ثابت است: وگرنه کافی بود کسی
+    base_url را عوض کند تا کلیدِ OpenAI یا Gemini به سرور دیگری فرستاده شود.
+    """
+    custom = (base_url or "").strip() if provider.editable_base_url else ""
+    return (custom or provider.base_url).rstrip("/")
+
+
 def complete(
     *,
     provider_id: str,
@@ -297,7 +309,7 @@ def complete(
     if not api_key and provider.id != "custom":
         raise ProviderError("کلید API ثبت نشده است. از تنظیمات اضافه‌اش کنید.")
 
-    root = (base_url or provider.base_url).rstrip("/")
+    root = _root(provider, base_url)
 
     if provider.dialect == "openai":
         payload = {
@@ -420,7 +432,7 @@ def list_models(*, provider_id: str, api_key: str, base_url: str = "", timeout: 
     provider = BY_ID.get(provider_id)
     if provider is None:
         raise ProviderError(f"ارائه‌دهندهٔ «{provider_id}» شناخته نشد.")
-    root = (base_url or provider.base_url).rstrip("/")
+    root = _root(provider, base_url)
 
     if provider.dialect == "gemini":
         ids: list[str] = []

@@ -5,7 +5,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { KEY, cleanKey, complete, httpError } from "../providers.js";
+import { BY_ID, KEY, cleanKey, complete, httpError, rootOf } from "../providers.js";
 
 function fakePost(reply) {
   const sent = {};
@@ -61,5 +61,12 @@ describe("کلید و خطا", () => {
     expect(e.message).not.toContain("<p>");
     const bad = httpError(400, JSON.stringify({ error: { message: "API key not valid. Please pass a valid API key." } }));
     expect(bad.message).toContain("کلید API پذیرفته نشد");
+  });
+});
+
+describe("نشانی سرویس", () => {
+  it("کلیدِ سرویس‌های اصلی به نشانی دلخواه نمی‌رود؛ فقط سرویس محلی نشانی دلخواه دارد", () => {
+    expect(rootOf(BY_ID.openai, "https://evil.example/v1")).toBe("https://api.openai.com/v1");
+    expect(rootOf(BY_ID.custom, "http://192.168.1.5:11434/v1/")).toBe("http://192.168.1.5:11434/v1");
   });
 });
