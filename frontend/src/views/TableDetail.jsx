@@ -449,13 +449,20 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                   variant="outline"
                   size="sm"
                   onClick={() => onAskAssistant(table.full_name)}
+                  aria-label="پرسش از دستیار"
                   title="دستیار با این جدول سنجاق‌شده باز می‌شود"
                 >
                   <Wand2 />
                   <span className="hidden sm:inline">پرسش از دستیار</span>
                 </Button>
               )}
-              <Button variant="outline" size="sm" onClick={() => onOpenSchemaGraph?.(schema)}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onOpenSchemaGraph?.(schema)}
+                aria-label="گراف اسکیما"
+                title={`گراف روابط اسکیمای ${schema}`}
+              >
                 <Network />
                 <span className="hidden sm:inline">گراف اسکیما</span>
               </Button>
@@ -728,7 +735,7 @@ ${hasFiscalYear ? "GROUP BY t.[FiscalYearRef]\nORDER BY t.[FiscalYearRef] DESC;"
                       <div className="truncate text-[10px] text-muted-foreground">{n.title_fa}</div>
                     )}
                   </div>
-                  <span className="shrink-0 font-mono text-[10px] text-muted-foreground">
+                  <span className="shrink-0 tabular-nums text-[10px] text-muted-foreground">
                     {fa(n.degree)} رابطه
                   </span>
                 </button>

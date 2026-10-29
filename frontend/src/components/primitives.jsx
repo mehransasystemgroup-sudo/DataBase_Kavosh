@@ -93,7 +93,10 @@ export function SqlBlock({ sql, title = "SQL", className, actions }) {
   return (
     <div className={cn("overflow-hidden rounded-lg border border-border bg-ink", className)}>
       <div className="flex items-center justify-between gap-2 border-b border-border bg-surface px-3 py-1.5">
-        <span className="truncate font-mono text-[10.5px] uppercase tracking-wider text-muted-foreground">
+        {/* بی uppercase و فاصلهٔ حروف: عنوان گاهی فارسی است («کوئری — ۲ تلاش») و
+            فاصله‌گذاری حروف، اتصال حروف فارسی را می‌شکند؛ گاهی هم نام جدول است
+            و بزرگ‌کردنش نام واقعی را عوض نشان می‌دهد. */}
+        <span className="truncate font-mono text-[10.5px] text-muted-foreground">
           {title}
         </span>
         <div className="flex shrink-0 items-center gap-1.5">

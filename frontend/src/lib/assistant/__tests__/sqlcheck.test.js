@@ -49,3 +49,14 @@ describe("بیرون کشیدن کوئری از پاسخ مدل", () => {
     expect(extractSql("این کوئری: SELECT 1")).toBe("SELECT 1");
   });
 });
+
+describe("پارامتر در کوئری چندجدولی", () => {
+  const sql = `SELECT TOP (100) t0.[VoucherID], t1.[Title]
+FROM [FIN3].[Voucher] AS t0
+LEFT JOIN [GNR3].[Branch] AS t1 ON t0.[BranchRef] = t1.[BranchID]
+WHERE t0.[FiscalYearRef] = @FiscalYearRef`;
+  it("@FiscalYearRef ستون ناشناخته شمرده نمی‌شود", () => {
+    const r = checkSql(sql, index);
+    expect(r.findings.filter((f) => f.severity === "error")).toEqual([]);
+  });
+});

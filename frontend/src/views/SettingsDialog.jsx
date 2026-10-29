@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, ExternalLink, Eye, EyeOff, KeyRound, Loader2, Settings, Trash2, XCircle } from "lucide-react";
 
 import { errorMessage, http } from "@/lib/api";
-import { cn } from "@/lib/utils";
+import { cn, fa } from "@/lib/utils";
 import { Badge } from "@/components/primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -220,7 +220,9 @@ export default function SettingsDialog({ open, onOpenChange, onSaved }) {
               <div className="flex gap-1.5">
                 {/* قلم مونو فقط برای خودِ کلید که لاتین است؛ روی متن راهنمای
                     فارسی، مونو گلیف ندارد و فاصله‌ها را می‌شکند. */}
-                <div className="relative flex-1">
+                {/* ltr روی خودِ قاب، نه فقط روی ورودی: وگرنه «end» دکمهٔ چشم در
+                    قاب راست‌به‌چپ سمت چپ می‌نشیند و روی متنِ کلید می‌افتد. */}
+                <div className="relative flex-1" dir="ltr">
                   <Input
                     id="api-key"
                     dir="ltr"
@@ -340,7 +342,7 @@ export default function SettingsDialog({ open, onOpenChange, onSaved }) {
                     : probe.error}
                   {probe.ok && probe.models?.length > 0 && (
                     <span className="block text-[10.5px] text-muted-foreground">
-                      {probe.models.length} مدل در دسترس این کلید است؛ از فهرست «مدل» انتخاب کنید.
+                      {fa(probe.models.length)} مدل در دسترس این کلید است؛ از فهرست «مدل» انتخاب کنید.
                     </span>
                   )}
                 </span>

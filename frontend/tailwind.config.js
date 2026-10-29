@@ -12,7 +12,9 @@ export default {
       },
       fontFamily: {
         sans: ["Vazirmatn Variable", "Vazirmatn", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono Variable", "JetBrains Mono", "ui-monospace", "monospace"],
+        // Vazirmatn پس از JetBrains: مونو گلیف فارسی ندارد و بی آن حروف فارسیِ داخل
+        // برچسب‌های مونو به قلم مونوی سیستم می‌افتند و از هم جدا می‌شوند.
+        mono: ["JetBrains Mono Variable", "JetBrains Mono", "Vazirmatn Variable", "Vazirmatn", "ui-monospace", "monospace"],
       },
       borderRadius: {
         xs: "calc(var(--radius) - 4px)",
