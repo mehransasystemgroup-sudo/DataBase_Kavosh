@@ -173,7 +173,7 @@ function ResultCard({ hit, selected, active, index, onOpen, isDark }) {
 
       <div className="mt-1.5 flex items-center justify-between text-[10px] text-muted-foreground">
         <span className="truncate">{hit.why}</span>
-        <span className="shrink-0 font-mono">{fa(hit.n_cols)} ستون</span>
+        <span className="shrink-0 tabular-nums">{fa(hit.n_cols)} ستون</span>
       </div>
     </button>
   );
@@ -689,7 +689,7 @@ export default function ExplorerView({ health, route, navigate }) {
               )}
             </span>
             {results.length > 0 && (
-              <span className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10.5px] font-semibold text-foreground">
+              <span className="rounded border border-border bg-surface px-1.5 py-0.5 tabular-nums text-[10.5px] font-semibold text-foreground">
                 {fa(results.length)} جدول
               </span>
             )}
@@ -769,7 +769,7 @@ export default function ExplorerView({ health, route, navigate }) {
                           <span className="mt-0.5 truncate text-[11px] text-foreground">
                             {schemaLabel(s.id) || "بدون عنوان فارسی"}
                           </span>
-                          <span className="mt-0.5 font-mono text-[10px] text-muted-foreground">
+                          <span className="mt-0.5 tabular-nums text-[10px] text-muted-foreground">
                             {fa(s.table_count)} جدول · {fa(s.with_data)} با داده
                           </span>
                         </button>

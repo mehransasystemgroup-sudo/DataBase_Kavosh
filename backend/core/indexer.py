@@ -296,7 +296,7 @@ def _collect_joins(kb: Path) -> list[tuple]:
 # نسخهٔ ساختار ایندکس. هر بار که جدول یا ستونی به SCHEMA اضافه یا عوض شد،
 # این عدد باید یک واحد بالا برود: برنامه با همین می‌فهمد ایندکسِ روی دیسکِ
 # کاربر برای نسخهٔ قدیمی ساخته شده و باید دوباره ساخته شود.
-SCHEMA_VERSION = "7"
+SCHEMA_VERSION = "8"
 
 
 # مهلت جایگزینی ایندکس. سخاوتمند است و عمداً: روی رایانهٔ سازمانی، ضدویروس
@@ -414,7 +414,14 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
                    [(k, v) for k, v in column_labels.items() if v])
 
     # ── گراف JOIN ──
-    join_rows = _collect_joins(kb)
+    # یالی که یک سرش در ساختار این نصب نیست، فقط گمراه می‌کند: در صفحهٔ جدول
+    # پیوندی می‌سازد که به «جدول پیدا نشد» می‌رسد، مسیریاب از آن رد می‌شود و
+    # دستیار JOIN به جدولی ناموجود پیشنهاد می‌دهد. پس کنار گذاشته و شمرده می‌شود.
+    known_cols = {(c[0], c[1]) for c in columns}
+    all_joins = _collect_joins(kb)
+    join_rows = [j for j in all_joins
+                 if (j[0], j[1]) in known_cols and (j[2], j[3]) in known_cols]
+    dangling_joins = len(all_joins) - len(join_rows)
     db.executemany("INSERT OR REPLACE INTO joins VALUES (?,?,?,?,?,?)", join_rows)
 
     # ── نام فارسی نهایی ستون‌ها ──
@@ -433,6 +440,10 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
                 enum_rows.append((full, e["column"], str(v["value"]),
                                   v.get("label_fa"), v.get("confidence"),
                                   v.get("observed_count")))
+    # مقدار کددار برای ستونی که در ساختار نیست، جایی برای نمایش ندارد
+    n_enums_all = len(enum_rows)
+    enum_rows = [e for e in enum_rows if (e[0], e[1]) in known_cols]
+    dangling_enums = n_enums_all - len(enum_rows)
     db.executemany("INSERT OR REPLACE INTO enums VALUES (?,?,?,?,?,?)", enum_rows)
 
     # ── جدول‌های کد و شرحی ──
@@ -503,6 +514,7 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     db.executemany("INSERT INTO meta VALUES (?,?)", [
         ("tables", str(len(tables))), ("columns", str(len(columns))),
         ("joins", str(len(join_rows))), ("enums", str(len(enum_rows))),
+        ("dangling_joins", str(dangling_joins)), ("dangling_enums", str(dangling_enums)),
         ("indexes", str(len(index_rows))), ("with_title_fa", str(n_sem)),
         ("active_tables", str(n_active)),
         ("schema_titles", str(len(schema_titles))),

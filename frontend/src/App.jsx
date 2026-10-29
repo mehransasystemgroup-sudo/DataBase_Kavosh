@@ -45,7 +45,7 @@ function Brand({ health }) {
         <div className="truncate text-sm font-extrabold tracking-tight text-foreground">
           کاوشگر پایگاه داده
         </div>
-        <div className="truncate font-mono text-[10px] text-muted-foreground">
+        <div className="truncate text-[10px] tabular-nums text-muted-foreground">
           {health?.kb?.tables
             ? `${fa(health.kb.tables)} جدول · ${fa(health.kb.columns)} ستون`
             : "SCHEMA · RELATIONS · SQL"}

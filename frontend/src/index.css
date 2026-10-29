@@ -209,6 +209,12 @@
     font-feature-settings: "liga" 0;
   }
 
+  /* راهنمای داخل ورودی‌های مونو معمولاً جملهٔ فارسی است («نام کامل جدول
+     مقصد، مثلاً …»)؛ فاصلهٔ پهنِ مونو کلمه‌هایش را از هم دور می‌کند. */
+  .font-mono::placeholder {
+    font-family: "Vazirmatn Variable", "Vazirmatn", system-ui, sans-serif;
+  }
+
   ::selection {
     background: rgb(var(--brand) / 0.3);
     color: rgb(var(--fg));

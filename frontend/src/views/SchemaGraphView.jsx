@@ -353,8 +353,10 @@ export default function SchemaGraphView({ route, navigate }) {
         d3.forceLink(links).id((d) => d.id).distance(78).strength(0.45),
       )
       .force("charge", d3.forceManyBody().strength(-190).distanceMax(420))
-      .force("x", d3.forceX(width / 2).strength(0.06))
-      .force("y", d3.forceY(height / 2).strength(0.08))
+      // نیروی مرکز با نسبت قاب هم‌خوان می‌شود: روی گوشیِ ایستاده، کشش افقی
+      // قوی‌تر است تا گراف بلند بچیند و «جا دادن» آن را تا حد ریز شدن کوچک نکند.
+      .force("x", d3.forceX(width / 2).strength(0.06 * Math.max(1, height / width)))
+      .force("y", d3.forceY(height / 2).strength(0.08 * Math.max(1, (width / height) * 0.75)))
       .force(
         "collide",
         d3.forceCollide((d) => radiusOf(d) + 18).iterations(2),
@@ -450,7 +452,7 @@ export default function SchemaGraphView({ route, navigate }) {
               {schemas.map((s) => (
                 <option key={s.id} value={s.id}>
                   {s.id}
-                  {schemaLabel(s.id) ? ` · ${schemaLabel(s.id)}` : ""} — {s.table_count} جدول
+                  {schemaLabel(s.id) ? ` · ${schemaLabel(s.id)}` : ""} — {fa(s.table_count)} جدول
                 </option>
               ))}
             </Select>

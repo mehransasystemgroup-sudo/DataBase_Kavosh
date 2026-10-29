@@ -114,7 +114,7 @@ export default function TeachDialog({ table, onDone }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="soft" size="sm">
+        <Button variant="soft" size="sm" aria-label="آموزش دانش" title="آموزش دانش">
           <GraduationCap />
           <span className="hidden sm:inline">آموزش دانش</span>
         </Button>
