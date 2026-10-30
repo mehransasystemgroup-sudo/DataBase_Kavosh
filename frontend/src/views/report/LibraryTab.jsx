@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { BookMarked, FileDown, FolderOpen, Hammer, Lightbulb, Loader2, Plus, Search, Trash2, Upload } from "lucide-react";
+import { BookMarked, Copy, FileDown, FolderOpen, Hammer, Lightbulb, Loader2, Plus, Search, Trash2, Upload } from "lucide-react";
 
 import { CAN_DOWNLOAD, errorMessage } from "@/lib/api";
-import { cn, fa } from "@/lib/utils";
+import { cn, copyText, fa } from "@/lib/utils";
 import { sendToBuilder } from "@/lib/report/handoff";
 import { deleteReport, getReport, listReports, saveReport } from "@/lib/report/library";
 import { testHarness } from "@/lib/report/patterns";
@@ -57,16 +57,23 @@ function ReportCard({ r, folders, onChanged }) {
   const reuse = () => run("reuse", async () => {
     const doc = await load();
     await saveReport({ id: r.id, touch: true });
-    sendToBuilder({ sql: doc.sql || "", title: doc.title, libraryId: doc.id, source: "کتابخانه", spec: doc.spec ? { ...doc.spec, layout: doc.spec.layout, analyzed: false } : null });
+    sendToBuilder({ sql: doc.sql || "", title: doc.title, libraryId: doc.id, source: "کتابخانه", spec: doc.spec ? { ...doc.spec } : null });
     onChanged("open-build");
   });
 
+  // روی گوشی دانلود در WebView ممکن نیست؛ همان متن کپی می‌شود
   const download = (kind) => run(kind, async () => {
     const doc = await load();
-    if (kind === "rdl") downloadText(fileName(doc.title, "rdl"), doc.rdl, "application/xml");
-    if (kind === "sql") downloadText(fileName(doc.title, "sql"), testHarness(doc.sql || "", { title: doc.title }), "application/sql");
-    if (kind === "json") downloadText(fileName(doc.title, "json"), JSON.stringify({ kavosh_report: 1, ...doc }, null, 2), "application/json");
+    const out = {
+      rdl: [doc.rdl, "rdl", "application/xml"],
+      sql: [testHarness(doc.sql || "", { title: doc.title }), "sql", "application/sql"],
+      json: [JSON.stringify({ kavosh_report: 1, ...doc }, null, 2), "json", "application/json"],
+    }[kind];
+    if (CAN_DOWNLOAD) downloadText(fileName(doc.title, out[1]), out[0], out[2]);
+    else if (await copyText(out[0])) toast.success(`متن ${out[1].toUpperCase()} کپی شد.`);
+    else toast.error("کپی ناموفق بود.");
   });
+  const FileIcon = CAN_DOWNLOAD ? FileDown : Copy;
 
   const addLesson = () => run("lesson", async () => {
     const doc = await load();
@@ -96,9 +103,9 @@ function ReportCard({ r, folders, onChanged }) {
           {r.parameters?.length > 0 && <p className="text-[11px] text-muted-foreground">پارامترها: <span className="ltr font-mono">{r.parameters.map((p) => `@${p}`).join("، ")}</span></p>}
           <div className="flex flex-wrap items-center gap-1.5">
             <Button size="xs" onClick={reuse} disabled={busy === "reuse"}>{busy === "reuse" ? <Loader2 className="animate-spin" /> : <Hammer />}باز کردن در گزارش‌ساز</Button>
-            {CAN_DOWNLOAD && r.has_rdl && <Button size="xs" variant="outline" onClick={() => download("rdl")}><FileDown />.rdl</Button>}
-            {CAN_DOWNLOAD && <Button size="xs" variant="outline" onClick={() => download("sql")}><FileDown />.sql آزمون</Button>}
-            {CAN_DOWNLOAD && <Button size="xs" variant="outline" onClick={() => download("json")} title="برای انتقال به دستگاه دیگر"><FileDown />.json</Button>}
+            {r.has_rdl && <Button size="xs" variant="outline" onClick={() => download("rdl")}><FileIcon /><bdi dir="ltr">.rdl</bdi></Button>}
+            <Button size="xs" variant="outline" onClick={() => download("sql")}><FileIcon /><bdi dir="ltr">.sql</bdi> آزمون</Button>
+            <Button size="xs" variant="outline" onClick={() => download("json")} title="برای انتقال به دستگاه دیگر"><FileIcon /><bdi dir="ltr">.json</bdi></Button>
             {newFolder === null ? (
               <Select
                 className={cn(smallInput, "w-40")}
@@ -213,7 +220,7 @@ export default function LibraryTab({ onOpenTab }) {
       <Section icon={FolderOpen} title="کتابخانهٔ گزارش‌ها" hint={data ? `${fa(data.total)} گزارش` : ""} actions={
         <label className="inline-flex min-h-8 cursor-pointer items-center gap-1 rounded-md border border-border bg-surface px-2.5 text-[11px] text-muted-foreground transition-colors hover:border-brand/45 hover:text-brand-text">
           <Upload className="h-3 w-3" />
-          ورود .json
+          ورود <bdi dir="ltr">.json</bdi>
           <input type="file" accept=".json,application/json" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ""; if (f) importJson(f); }} />
         </label>
       }>

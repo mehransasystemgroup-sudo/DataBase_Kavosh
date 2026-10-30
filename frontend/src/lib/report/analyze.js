@@ -6,7 +6,7 @@
  */
 
 import { fieldsFromColumns, HELPERS, paramPrompt } from "./build.js";
-import { blankNoise, outputColumns, paramDataType, queryParameters, referencedTables, withoutLeadingDeclares } from "./sqlmeta.js";
+import { blankNoise, leadingDeclares, literalValue, outputColumns, paramDataType, queryParameters, referencedTables, withoutLeadingDeclares } from "./sqlmeta.js";
 
 /** نوع SQL ستونی که پارامتر با آن مقایسه می‌شود (col = @P، col IN (@P)، col >= @P …). */
 export function paramSqlType(sql, name, details) {
@@ -45,14 +45,15 @@ export function paramFor(name, sql, details) {
     sqlType: sqlType || "",
     dataType: multi || split ? (paramDataType(sqlType) === "Integer" ? "Integer" : "String") : paramDataType(sqlType),
     prompt: helper?.prompt || paramPrompt(name),
-    nullable: helper ? helper.nullable : optional,
+    // چندمقداری هرگز تهی‌پذیر نیست (SSRS نمی‌پذیرد)
+    nullable: multi || split ? false : helper ? helper.nullable : optional,
     allowBlank: false,
     multiValue: multi || split,
     joinMulti: split,
     hidden: false,
     defaults: [],
     useHelper: Boolean(helper),
-    defaultNull: helper?.defaultNull || false,
+    defaultNull: !(multi || split) && (helper?.defaultNull || false),
   };
 }
 
@@ -79,7 +80,22 @@ export function analyzeSql(sql, details = new Map()) {
     if (d) columns = d.columns.filter((c) => !/^(timestamp|rowversion)$/i.test(c.type)).map((c) => ({ name: c.name, table: d.full_name, column: c.name, sqlType: c.type, aggregate: null, label: c.label_fa || "" }));
   }
   const fields = fieldsFromColumns(columns, describe);
-  const params = queryParameters(body).map((name) => paramFor(name, body, details));
+  // DECLARE های آغازین (فایل آزمون SSMS) نوع و مقدار نمونهٔ پارامتر را می‌دهند
+  const declared = new Map(leadingDeclares(sql).flatMap((blk) => blk.items).map((d) => [d.name.toLowerCase(), d]));
+  const params = queryParameters(body).map((name) => {
+    const p = paramFor(name, body, details);
+    const d = declared.get(name.toLowerCase());
+    if (!d) return p;
+    const value = literalValue(d.value);
+    return {
+      ...p,
+      sqlType: d.type || p.sqlType,
+      dataType: p.multiValue ? p.dataType : paramDataType(d.type) || p.dataType,
+      // مقدار نمونهٔ تاریخ یا شناسهٔ کشویی پیش‌فرض ثابت گزارش نمی‌شود
+      defaults: value != null && !p.useHelper && paramDataType(d.type) !== "DateTime" ? [value] : p.defaults,
+    };
+  });
+  if (declared.size) notes.push("نوع و مقدار نمونهٔ پارامترها از DECLARE های آغاز کوئری خوانده شد؛ DECLARE ها در CommandText نمی‌آیند.");
   return { body, columns, fields, params, tables: referencedTables(body), notes };
 }
 
@@ -104,20 +120,21 @@ export const PARAM_KEEP = ["prompt", "dataType", "nullable", "allowBlank", "mult
 export function toBuildSpec({ title, body, fields, params, layout, profile }) {
   const helperDataSets = [];
   const builtParams = params.map((p) => {
-    const helper = p.useHelper ? HELPERS[p.name] : null;
+    const base = p.useHelper ? HELPERS[p.name] : null;
+    const helper = base && p.multiValue && base.multi ? { ...base, ...base.multi } : base;
     if (helper && !helperDataSets.some((h) => h.name === helper.dataSet.name)) helperDataSets.push(helper.dataSet);
     const defaults = (p.defaults || []).filter((d) => d !== "" && d != null);
     return {
       name: p.name,
       dataType: p.dataType,
       prompt: p.prompt || p.name,
-      nullable: Boolean(p.nullable),
+      nullable: Boolean(p.nullable) && !p.multiValue,
       allowBlank: Boolean(p.allowBlank) && p.dataType === "String",
       multiValue: Boolean(p.multiValue),
       joinMulti: Boolean(p.joinMulti),
       hidden: Boolean(p.hidden),
       defaults,
-      defaultNull: Boolean(helper?.defaultNull && p.nullable),
+      defaultNull: Boolean(helper?.defaultNull && p.nullable && !p.multiValue),
       validValues: helper ? helper.validValues : null,
     };
   });

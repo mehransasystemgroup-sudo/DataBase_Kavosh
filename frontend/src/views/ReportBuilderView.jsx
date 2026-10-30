@@ -40,7 +40,8 @@ export default function ReportBuilderView({ sub, onNavigate }) {
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="shrink-0 border-b border-border bg-background/70 px-3 py-2 sm:px-4 lg:px-6">
-        <div role="tablist" aria-label="بخش‌های گزارش‌ساز" className="no-scrollbar -mx-1 flex gap-1 overflow-x-auto px-1">
+        <div role="tablist" aria-label="بخش‌های گزارش‌ساز" className="no-scrollbar grid grid-cols-3 gap-1 sm:-mx-1 sm:flex sm:overflow-x-auto sm:px-1">
+          {/* روی گوشی شش زبانه در دو ردیف، تا هیچ‌کدام پشت لبهٔ اسکرول پنهان نماند */}
           {REPORT_TABS.map((t) => {
             const Icon = t.icon;
             const on = t.id === active.id;
@@ -52,7 +53,7 @@ export default function ReportBuilderView({ sub, onNavigate }) {
                 type="button"
                 onClick={() => onNavigate(t.id)}
                 className={cn(
-                  "inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-md border px-3 text-xs font-medium transition-colors sm:min-h-8",
+                  "inline-flex min-h-10 min-w-0 shrink-0 items-center justify-center gap-1.5 rounded-md border px-2 text-xs font-medium transition-colors sm:min-h-8 sm:justify-start sm:px-3",
                   on ? "border-brand/45 bg-brand/12 text-brand-text" : "border-transparent text-muted-foreground hover:bg-surfaceHover hover:text-foreground",
                 )}
               >

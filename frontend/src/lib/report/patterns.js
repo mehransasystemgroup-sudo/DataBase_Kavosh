@@ -10,7 +10,7 @@
  * آن را در مرحلهٔ تحویل اجباری می‌داند.
  */
 
-import { leadingDeclares, queryParameters, withoutLeadingDeclares } from "./sqlmeta.js";
+import { blankNoise, leadingDeclares, queryParameters, withoutLeadingDeclares } from "./sqlmeta.js";
 
 const q = (name) => `[${String(name || "").replace(/]/g, "]]")}]`;
 const ident = (s, fallback) => (/^[A-Za-z_][\w]*$/.test(String(s || "").trim()) ? String(s).trim() : fallback);
@@ -65,10 +65,14 @@ export function testHarness(sql, { title = "", types = {} } = {}) {
     "",
   ].filter((l) => l !== null);
   for (const d of existing) lines.push(`DECLARE @${d.name} ${d.type}${d.value != null ? ` = ${d.value}` : ""};`);
+  const clean = blankNoise(body);
   for (const p of params) {
     if (existing.some((d) => d.name.toLowerCase() === p.toLowerCase())) continue;
     const v = testValue(p, types[p]);
-    lines.push(`DECLARE @${p} ${v.type} = ${v.value};${v.note ? ` -- ${v.note}` : ""}`);
+    // چندمقداری: در SSMS فقط یک مقدار می‌شود داد؛ با NULL، «IN (NULL)» هیچ ردیفی برنمی‌گرداند
+    const multi = new RegExp(`\\bIN\\s*\\(\\s*@${p}\\s*\\)`, "i").test(clean);
+    const note = multi ? `چندمقداری در گزارش — این‌جا یک مقدار نمونه بدهید؛ با NULL هیچ ردیفی نمی‌آید${v.note ? `؛ ${v.note}` : ""}` : v.note;
+    lines.push(`DECLARE @${p} ${v.type} = ${v.value};${note ? ` -- ${note}` : ""}`);
   }
   if (params.length || existing.length) lines.push("");
   lines.push(body.trim().replace(/;?\s*$/, ";"));

@@ -23,7 +23,7 @@
 import { escapeAttr, escapeText } from "./xml.js";
 import { cm, PAGE_SIZES } from "./units.js";
 import { isDateType, isNumericType, rdlType } from "./sqlmeta.js";
-import { SYS_PARAMS } from "./rdl.js";
+import { rdlName, SYS_PARAMS } from "./rdl.js";
 
 export const DEFAULT_PROFILE = {
   dataSource: "shared",
@@ -54,8 +54,13 @@ export const NUMBER_FORMATS = [
   { value: "#,0", label: "۱٬۲۳۴" },
   { value: "#,0.00;(#,0.00);-", label: "۱٬۲۳۴٫۵۶ — دو رقم اعشار" },
   { value: "0", label: "بدون جداکننده (کد، شماره)" },
+  { value: "yyyy/MM/dd", label: "تاریخ ۲۰۲۴/۰۳/۲۰" },
   { value: "", label: "بی‌قالب" },
 ];
+
+/** متن ثابتی که با «=» شروع شود را SSRS عبارت می‌خواند؛ رشتهٔ صریح می‌شود. */
+const lit = (s) => (/^\s*=/.test(String(s)) ? `="${String(s).replace(/"/g, '""')}"` : String(s));
+export const DATE_FORMAT = "yyyy/MM/dd";
 
 // ───────────────────────── کمک‌ها ─────────────────────────
 
@@ -84,10 +89,11 @@ export function defaultWidth(field) {
  */
 export function fieldsFromColumns(columns, describe = () => null) {
   const used = new Set();
-  return columns.filter((c) => c.name).map((c) => {
-    let name = c.name.replace(/[^\w]/g, "_");
-    if (/^\d/.test(name)) name = "F_" + name;
-    while (used.has(name.toLowerCase())) name += "_";
+  return columns.filter((c) => c.name).map((c, i) => {
+    // نام فیلد لاتین و معتبر؛ نام ستون SQL (حتی فارسی) در DataField و عنوان می‌ماند
+    const base = rdlName(c.name, `Field${i + 1}`);
+    let name = base;
+    for (let k = 2; used.has(name.toLowerCase()); k++) name = `${base}_${k}`;
     used.add(name.toLowerCase());
     const info = c.table && c.column ? describe(c.table, c.column) : null;
     const sqlType = c.sqlType || info?.type || (c.aggregate ? "decimal" : null);
@@ -100,7 +106,7 @@ export function fieldsFromColumns(columns, describe = () => null) {
       visible: true,
     };
     field.total = isMeasure(field);
-    field.format = isNumericType(field.sqlType) ? (isMeasure(field) ? DEFAULT_PROFILE.numberFormat : "0") : "";
+    field.format = isNumericType(field.sqlType) ? (isMeasure(field) ? DEFAULT_PROFILE.numberFormat : "0") : isDateType(field.sqlType) ? DATE_FORMAT : "";
     field.width = defaultWidth(field);
     return field;
   });
@@ -117,7 +123,7 @@ function uuid() {
 function namer() {
   const used = new Set();
   return (base) => {
-    const clean = String(base).replace(/[^\w]/g, "") || "tb";
+    const clean = rdlName(base, "tb");
     let name = clean;
     let k = 1;
     while (used.has(name.toLowerCase())) name = `${clean}${++k}`;
@@ -204,7 +210,7 @@ function rowModel(layout) {
 function rowHierarchy(layout, groupNames, detailSort) {
   const top = [];
   if (layout.repeatTitle) top.push("<TablixMember><KeepWithGroup>After</KeepWithGroup><RepeatOnNewPage>true</RepeatOnNewPage></TablixMember>");
-  top.push("<TablixMember><KeepWithGroup>After</KeepWithGroup><RepeatOnNewPage>true</RepeatOnNewPage><FixedData>true</FixedData></TablixMember>");
+  top.push("<TablixMember><FixedData>true</FixedData><KeepWithGroup>After</KeepWithGroup><RepeatOnNewPage>true</RepeatOnNewPage></TablixMember>");
   const groups = layout.kind === "group" ? layout.groups : [];
   const nest = (level) => {
     if (level >= groups.length) {
@@ -249,20 +255,23 @@ function tableTablix(spec, pf, name, ds, top) {
   const scope = groups.length ? groupNames.groups[groups.length - 1] : null;
   const rows = rowModel(layout);
   const firstMeasure = cols.findIndex((c) => c.kind === "field" && c.field.total);
-  const labelSpan = firstMeasure > 0 ? firstMeasure : 1;
+  // عنوان «جمع» ستون‌های پیش از نخستین ستون جمع‌دار را می‌گیرد؛ اگر نخستین ستون
+  // خودش جمع‌دار است، ردیف جمع عنوان ندارد تا جمعِ آن ستون از دست نرود
+  const labelSpan = firstMeasure === -1 ? 1 : firstMeasure;
 
   const body = rows.map((r) => {
     if (r.kind === "title") {
-      return row(0.9, [cell(textbox(name("txtTitleRow"), spec.title || "گزارش", { bold: true, size: pf.titleFontSize, align: "Center", border: false }, pf), n)]);
+      return row(0.9, [cell(textbox(name("txtTitleRow"), lit(spec.title || "گزارش"), { bold: true, size: pf.titleFontSize, align: "Center", border: false }, pf), n)]);
     }
     if (r.kind === "header") {
-      return row(pf.headerHeight, cols.map((c) => cell(textbox(name(`hdr_${c.field?.name || "RowNo"}`), c.label, { bold: true, size: pf.headerFontSize, bg: pf.headerBg, align: "Center" }, pf))));
+      return row(pf.headerHeight, cols.map((c) => cell(textbox(name(`hdr_${c.field?.name || "RowNo"}`), lit(c.label), { bold: true, size: pf.headerFontSize, bg: pf.headerBg, align: "Center" }, pf))));
     }
     if (r.kind === "group_header") {
       const g = groups[r.level];
       const f = byName.get(g.field);
       const label = (g.label || f?.label || g.field).replace(/"/g, '""');
-      return row(pf.rowHeight + 0.05, [cell(textbox(name(`grpHdr_${g.field}`), `="${label}: " & Fields!${g.field}.Value`, { bold: true, bg: pf.groupBg, align: "Right" }, pf), n)]);
+      const shown = isDateType(f?.sqlType) ? `Format(Fields!${g.field}.Value, "${DATE_FORMAT}")` : `Fields!${g.field}.Value`;
+      return row(pf.rowHeight + 0.05, [cell(textbox(name(`grpHdr_${g.field}`), `="${label}: " & ${shown}`, { bold: true, bg: pf.groupBg, align: "Right" }, pf), n)]);
     }
     if (r.kind === "detail") {
       const stripe = layout.stripes ? `=IIf(RowNumber(${scope ? `"${scope}"` : "Nothing"}) Mod 2 = 0, "${pf.stripeBg}", "Transparent")` : "";
@@ -277,7 +286,7 @@ function tableTablix(spec, pf, name, ds, top) {
     const total = r.kind === "grand_total";
     const g = total ? null : groups[r.level];
     const label = total ? "جمع کل" : `جمع ${g.label || byName.get(g.field)?.label || g.field}`;
-    const cells = [cell(textbox(name(total ? "totLabel" : `grpTot_${g.field}`), label, { bold: true, bg: pf.totalBg, align: "Right" }, pf), labelSpan)];
+    const cells = labelSpan ? [cell(textbox(name(total ? "totLabel" : `grpTot_${g.field}`), lit(label), { bold: true, bg: pf.totalBg, align: "Right" }, pf), labelSpan)] : [];
     for (let i = labelSpan; i < n; i++) {
       const c = cols[i];
       if (c.kind === "field" && c.field.total) {
@@ -325,10 +334,10 @@ function matrixTablix(spec, pf, name, ds, top) {
 
   const headerCells = [
     cell(textbox(name("hdrCorner"), rowF.label || rowF.name, { bold: true, size: pf.headerFontSize, bg: pf.headerBg, align: "Center" }, pf)),
-    cell(textbox(name("hdrColumn"), `=Fields!${colF.name}.Value`, { bold: true, size: pf.headerFontSize, bg: pf.headerBg, align: "Center" }, pf)),
+    cell(textbox(name("hdrColumn"), `=Fields!${colF.name}.Value`, { bold: true, size: pf.headerFontSize, bg: pf.headerBg, align: "Center", format: isDateType(colF.sqlType) ? DATE_FORMAT : "" }, pf)),
   ];
   const dataCells = [
-    cell(textbox(name("celRow"), `=Fields!${rowF.name}.Value`, { bold: true, bg: pf.groupBg, align: "Right" }, pf)),
+    cell(textbox(name("celRow"), `=Fields!${rowF.name}.Value`, { bold: true, bg: pf.groupBg, align: "Right", format: isDateType(rowF.sqlType) ? DATE_FORMAT : "" }, pf)),
     cell(textbox(name("celValue"), valueOf(), { align: "Left", format: fmt }, pf)),
   ];
   const totalCells = [
@@ -348,7 +357,7 @@ function matrixTablix(spec, pf, name, ds, top) {
   }
   const rows = [row(pf.headerHeight, headerCells), row(pf.rowHeight, dataCells)];
   const rowMembers = [
-    "<TablixMember><KeepWithGroup>After</KeepWithGroup><RepeatOnNewPage>true</RepeatOnNewPage><FixedData>true</FixedData></TablixMember>",
+    "<TablixMember><FixedData>true</FixedData><KeepWithGroup>After</KeepWithGroup><RepeatOnNewPage>true</RepeatOnNewPage></TablixMember>",
     `<TablixMember><Group Name="${rowGroup}"><GroupExpressions><GroupExpression>=Fields!${rowF.name}.Value</GroupExpression></GroupExpressions></Group>`
     + `<SortExpressions><SortExpression><Value>=Fields!${rowF.name}.Value</Value></SortExpression></SortExpressions></TablixMember>`,
   ];
@@ -377,21 +386,24 @@ function filterSummary(params) {
   const parts = params.filter((p) => !p.hidden && !p.system).map((p) => {
     const label = (p.prompt || p.name).replace(/"/g, '""');
     const ref = p.validValues ? `Parameters!${p.name}.Label` : `Parameters!${p.name}.Value`;
-    const value = p.multiValue ? `Join(${ref}, "، ")` : p.validValues || p.dataType === "String" ? ref : `CStr(${ref})`;
+    const value = p.multiValue ? `Join(${ref}, "، ")` : p.validValues || p.dataType === "String" ? ref
+      : p.dataType === "DateTime" ? `Format(${ref}, "${DATE_FORMAT}")` : `CStr(${ref})`;
     return `"${label}: " & ${p.nullable ? `IIf(IsNothing(Parameters!${p.name}.Value), "همه", ${value})` : value}`;
   });
   return parts.length ? `=${parts.join(' & "   |   " & ')}` : "";
 }
 
-function paramXml(p) {
+export function paramXml(p) {
+  // چندمقداری و تهی‌پذیر با هم در SSRS پذیرفته نیست
+  const nullable = p.nullable && !p.multiValue;
   const parts = [`<DataType>${p.dataType || "String"}</DataType>`];
-  if (p.nullable) parts.push("<Nullable>true</Nullable>");
+  if (nullable) parts.push("<Nullable>true</Nullable>");
   if (p.allowBlank) parts.push("<AllowBlank>true</AllowBlank>");
   if (p.multiValue) parts.push("<MultiValue>true</MultiValue>");
   const defaults = (p.defaults || []).filter((d) => d !== null && d !== undefined && d !== "");
   if (defaults.length) {
     parts.push(`<DefaultValue><Values>${defaults.map((d) => `<Value>${escapeText(d)}</Value>`).join("")}</Values></DefaultValue>`);
-  } else if (p.nullable && (p.hidden || p.defaultNull)) {
+  } else if (nullable && (p.hidden || p.defaultNull)) {
     parts.push('<DefaultValue><Values><Value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" /></Values></DefaultValue>');
   }
   parts.push(`<Prompt>${escapeText(p.prompt || p.name)}</Prompt>`);
@@ -456,6 +468,11 @@ export function buildRdl(spec) {
     for (const s of sysParamSpecs()) if (!params.some((p) => p.name.toLowerCase() === s.name.toLowerCase())) params.push(s);
   }
   const paramByLower = new Map(params.map((p) => [p.name.toLowerCase(), p]));
+  for (const p of userParams) {
+    const hasDefault = (p.defaults || []).some((d) => d !== "" && d != null) || (p.nullable && !p.multiValue);
+    if (p.hidden && !hasDefault) warnings.push(`پارامتر پنهان «${p.prompt || p.name}» مقدار پیش‌فرض ندارد؛ گزارش بی‌آن اجرا نمی‌شود. پیش‌فرض بدهید یا پنهان را بردارید.`);
+    if (p.multiValue && p.nullable) warnings.push(`پارامتر «${p.prompt || p.name}» چندمقداری است، پس تهی‌پذیر ساخته نشد (SSRS هر دو را با هم نمی‌پذیرد).`);
+  }
   const queryParams = (spec.queryParams || []).map((q) => {
     const p = paramByLower.get(q.toLowerCase());
     if (!p) warnings.push(`پارامتر @${q} در کوئری هست ولی پارامتر گزارشِ هم‌نامی ندارد.`);
@@ -490,7 +507,7 @@ export function buildRdl(spec) {
   }
   const bandWidth = Math.max(Math.min(content, Math.max(width, 8)), width);
   if (built.titleH) {
-    items.push(textbox(name("txtTitle"), spec.title || "گزارش", { bold: true, size: pf.titleFontSize, align: "Center", border: false, geometry: { top, left: 0, height: 0.9, width: bandWidth } }, pf));
+    items.push(textbox(name("txtTitle"), lit(spec.title || "گزارش"), { bold: true, size: pf.titleFontSize, align: "Center", border: false, geometry: { top, left: 0, height: 0.9, width: bandWidth } }, pf));
     top += 0.9;
   }
   if (summary) {
@@ -569,6 +586,11 @@ export const HELPERS = {
     prompt: "شعبه",
     nullable: true,
     defaultNull: true,
+    // چندمقداری مقدار تهی نمی‌پذیرد: فهرست بی‌ردیف «همهٔ شعب»
+    multi: {
+      dataSet: { name: "dsBranchList", sql: "SELECT BranchID, Title FROM GNR3.Branch ORDER BY Code;", fields: [{ name: "BranchID", sqlType: "bigint" }, { name: "Title", sqlType: "nvarchar" }] },
+      validValues: { dataSet: "dsBranchList", value: "BranchID", label: "Title" },
+    },
   },
 };
 

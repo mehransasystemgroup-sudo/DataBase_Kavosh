@@ -18,8 +18,10 @@
 
 import { ancestor, childText, elements, escapeAttr, escapeText, findAll, indentOf, kid, kids, local, parseXml, textOf } from "./xml.js";
 import { cm, toCm } from "./units.js";
-import { inspectRdl, SYS_PARAMS } from "./rdl.js";
-import { outputColumns, queryParameters, rdlType } from "./sqlmeta.js";
+import { cellGrid, inspectRdl, memberLeaves, rdlName, SYS_PARAMS, validateRdl } from "./rdl.js";
+import { leadingDeclares, outputColumns, paramDataType, queryParameters, rdlType, withoutLeadingDeclares } from "./sqlmeta.js";
+import { paramXml, sysParamSpecs } from "./build.js";
+import { paramSqlType } from "./analyze.js";
 
 export class EditError extends Error {}
 
@@ -36,13 +38,22 @@ function applyEdits(text, edits) {
   return out;
 }
 
-function finish(text, edits, changes) {
+/** کلید یافته‌های «خطا»ی اعتبارسنج، برای سنجش پیش و پس از ویرایش. */
+const errorKeys = (text) => new Set(validateRdl(text).findings.filter((f) => f.severity === "error").map((f) => `${f.code}|${f.where || ""}`));
+
+function finish(text, edits, changes, { allow = [] } = {}) {
   if (!edits.length) return { text, changes: changes.length ? changes : ["تغییری لازم نبود."], changed: false };
   const out = applyEdits(text, edits);
   try {
     parseXml(out);
   } catch (e) {
     throw new EditError(`نتیجهٔ ویرایش XML معتبر نشد (${e.message})؛ هیچ تغییری اعمال نشد.`);
+  }
+  // ویرایشی که خطای ساختاری تازه بسازد تحویل نمی‌شود — فایل خراب از دانلود بدتر است
+  const was = errorKeys(text);
+  const fresh = validateRdl(out).findings.filter((f) => f.severity === "error" && !allow.includes(f.code) && !was.has(`${f.code}|${f.where || ""}`));
+  if (fresh.length) {
+    throw new EditError(`این ویرایش فایل را از نظر ساختاری خراب می‌کرد، پس اعمال نشد: ${fresh.slice(0, 3).map((f) => f.message).join(" — ")}`);
   }
   return { text: out, changes, changed: true };
 }
@@ -112,7 +123,7 @@ function uniqueNamer(info) {
   const used = new Set(info.itemNames.map((n) => n.toLowerCase()));
   for (const g of findAll(info.root, "Group")) used.add((g.attrs.Name || "").toLowerCase());
   return (base) => {
-    const clean = String(base).replace(/[^\w]/g, "") || "Textbox";
+    const clean = rdlName(base, "Textbox");
     let name = clean;
     let k = 1;
     while (used.has(name.toLowerCase())) name = `${clean}_${++k}`;
@@ -153,25 +164,34 @@ function rowRoles(t) {
   return roles;
 }
 
-/** نقشهٔ «شکاف ستون ← سلول» یک ردیف در شکل کامل (با سلول جایگزین). */
-function slotMap(row, nCols) {
-  if (row.cells.length !== nCols) return null;
-  const map = [];
-  for (let i = 0; i < row.cells.length; i++) {
-    const c = row.cells[i];
-    if (c.empty) {
-      // سلول جایگزین زیر ادغام: صاحبش نزدیک‌ترین سلول پرِ قبلی با ColSpan کافی
-      let owner = -1;
-      for (let k = i - 1; k >= 0; k--) {
-        if (!row.cells[k].empty) {
-          if (k + row.cells[k].colSpan > i) owner = k;
-          break;
-        }
-      }
-      map.push({ cell: c, owner, placeholder: true });
-    } else map.push({ cell: c, owner: i, placeholder: false });
+/** شبکهٔ سلول‌ها؛ ردیف شکل فشرده ویرایش ستونی را ناممکن می‌کند. */
+function fullGrid(t) {
+  const { grid, overlaps } = cellGrid(t);
+  const bad = grid.findIndex((g) => !g);
+  if (bad !== -1) throw new EditError(`ردیف ${bad + 1} از Tablix «${t.name}» شکل فشرده (ColSpan بی‌سلول جایگزین) دارد؛ ابتدا آن را در Report Builder باز و ذخیره کنید.`);
+  if (overlaps.length) throw new EditError(`Tablix «${t.name}» سلول‌های هم‌پوشان دارد (ردیف ${overlaps[0].r + 1})؛ ابتدا آن را در Report Builder اصلاح کنید.`);
+  return grid;
+}
+
+/** عضو برگ ستونِ index در سلسله‌مراتب ستونی (تودرتو یا تخت). */
+function columnLeaves(t) {
+  if (findAll(t.colMembers, "TablixHeader").some((h) => ancestor(h, "Tablix") === t.el)) {
+    throw new EditError(`Tablix «${t.name}» سرستون سلسله‌مراتبی (TablixHeader در ستون‌ها) دارد؛ افزودن و حذف ستون آن را در Report Builder انجام دهید.`);
   }
-  return map;
+  const list = memberLeaves(t.colMembers);
+  if (list.length !== t.columns.length) {
+    throw new EditError(`Tablix «${t.name}»: ${t.columns.length} ستون ولی ${list.length} عضو برگ در سلسله‌مراتب ستونی — ابتدا این ناهمخوانی را اصلاح کنید.`);
+  }
+  return list;
+}
+
+/** ColSpan تازه برای سلول مبدأ (۱ یعنی حذف عنصر ColSpan). */
+function setColSpan(text, cell, value) {
+  const contents = kid(cell.el, "CellContents");
+  const span = kid(contents, "ColSpan");
+  if (value <= 1) return span ? removeEl(text, span) : null;
+  if (span) return setInner(span, String(value));
+  return appendChild(text, contents, `<ColSpan>${value}</ColSpan>`);
 }
 
 // ───────────────────────── افزودن ستون ─────────────────────────
@@ -198,47 +218,58 @@ export function addColumn(text, opts) {
   const width = Number(opts.width) > 0 ? Number(opts.width) : 2.5;
   const field = (opts.field || "").trim();
   const ds = info.dataSets.find((d) => d.name === t.dataSet);
-  if (field && !/^[A-Za-z_]\w*$/.test(field)) throw new EditError("نام فیلد فقط حروف لاتین، رقم و _ می‌تواند باشد.");
+  if (field && !/^[A-Za-z]\w*$/.test(field)) throw new EditError("نام فیلد باید با حرف لاتین شروع شود و فقط حرف لاتین، رقم و _ داشته باشد.");
   const roles = rowRoles(t);
   const name = uniqueNamer(info);
   const edits = [];
   const changes = [];
 
+  const grid = fullGrid(t);
+  const leafEls = columnLeaves(t);
+  const widened = new Set();
   t.rows.forEach((r, ri) => {
-    const map = slotMap(r, n);
-    if (!map) throw new EditError(`ردیف ${ri + 1} از Tablix «${t.name}» شکل فشرده (ColSpan بی‌سلول جایگزین) دارد؛ ابتدا آن را در Report Builder باز و ذخیره کنید.`);
-    // اگر جایگاه تازه وسط یک ادغام است، همان ادغام پهن‌تر می‌شود
-    const leftOwner = index > 0 ? map[index - 1].owner : -1;
-    const rightOwner = index < n ? map[index].owner : -2;
-    // ادغامی که به لبهٔ جدول رسیده (عنوانِ تمام‌عرض، سرگروه) هم پهن‌تر می‌شود
-    const edgeRight = index === n && leftOwner !== -1 && r.cells[leftOwner].colSpan > 1 && leftOwner + r.cells[leftOwner].colSpan === n;
-    const edgeLeft = index === 0 && rightOwner === 0 && r.cells[0].colSpan > 1;
-    if ((index > 0 && index < n && leftOwner === rightOwner && leftOwner !== -1) || edgeRight || edgeLeft) {
-      const headIdx = edgeLeft ? 0 : leftOwner;
-      const head = r.cells[headIdx];
-      const span = kid(kid(head.el, "CellContents"), "ColSpan");
-      edits.push(setInner(span, String(head.colSpan + 1)));
+    const g = grid[ri];
+    const leftO = index > 0 ? g[index - 1] : null;
+    const rightO = index < n ? g[index] : null;
+    // جایگاه تازه وسط یک ادغام افقی، یا کنار ادغامی که تا لبهٔ جدول رسیده
+    // (عنوان تمام‌عرض، سرگروه): همان ادغام پهن‌تر می‌شود
+    const inside = leftO && rightO && leftO === rightO && leftO.cs > 1;
+    const edgeRight = index === n && leftO && leftO.cs > 1 && leftO.c0 + leftO.cs === n;
+    const edgeLeft = index === 0 && rightO && rightO.cs > 1 && rightO.c0 === 0;
+    const spanO = inside || edgeRight ? leftO : edgeLeft ? rightO : null;
+    if (spanO) {
+      if (!widened.has(spanO)) {
+        widened.add(spanO);
+        edits.push(setColSpan(text, spanO.cell, spanO.cs + 1));
+      }
       edits.push(after(text, (edgeLeft ? r.cells[0] : r.cells[index - 1]).el, "<TablixCell />"));
       return;
     }
-    const srcIdx = index > 0 ? index - 1 : 0;
-    const src = map[srcIdx] && !map[srcIdx].placeholder ? map[srcIdx].cell : r.cells.find((c) => !c.empty);
+    const anchor = index < n ? r.cells[index].el : r.cells[n - 1].el;
+    const put = (xml) => edits.push(index < n ? before(text, anchor, xml) : after(text, anchor, xml));
+    // سلول همسایه الگوست؛ اگر همسایه زیر RowSpan ردیف بالاست، کپیِ آن ردیف
+    // همان RowSpan را دارد و این‌جا فقط سلول جایگزین می‌آید
+    const srcO = g[index > 0 ? index - 1 : 0];
+    if (srcO.r0 < ri) {
+      put("<TablixCell />");
+      return;
+    }
     const role = roles[ri] || "detail";
     let value = "";
     if (role === "header") value = opts.header || field || "ستون تازه";
     else if (role === "detail" && field) value = `=Fields!${field}.Value`;
     else if (role === "total" && field && opts.total) value = `=Sum(Fields!${field}.Value)`;
-    const xml = cloneCell(text, src, value, name(`${role === "header" ? "hdr" : role === "total" ? "tot" : "cel"}_${field || "New"}`), role === "detail" || role === "total" ? opts.format : "");
-    const anchor = index < n ? r.cells[index].el : r.cells[n - 1].el;
-    edits.push(index < n ? before(text, anchor, xml) : after(text, anchor, xml));
+    const src = srcO.empty ? r.cells.find((c) => !c.empty) : srcO.cell;
+    const keepRowSpan = !srcO.empty && srcO.rs > 1;
+    put(cloneCell(text, src, value, name(`${role === "header" ? "hdr" : role === "total" ? "tot" : "cel"}_${field || "New"}`), role === "detail" || role === "total" ? opts.format : "", keepRowSpan));
   });
 
   // ستون و عضو سلسله‌مراتب
   const colEls = kids(kid(kid(t.el, "TablixBody"), "TablixColumns"), "TablixColumn");
   const colXml = `<TablixColumn><Width>${cm(width)}</Width></TablixColumn>`;
   edits.push(index < n ? before(text, colEls[index], colXml) : after(text, colEls[n - 1], colXml));
-  const memEls = kids(t.colMembers, "TablixMember");
-  edits.push(index < n ? before(text, memEls[index], "<TablixMember />") : after(text, memEls[n - 1], "<TablixMember />"));
+  // عضو تازه هم‌سطحِ برگ همسایه (در سلسله‌مراتب تودرتو، زیر همان والد)
+  edits.push(index < n ? before(text, leafEls[index], "<TablixMember />") : after(text, leafEls[n - 1], "<TablixMember />"));
 
   // عرض Tablix و بخش
   const widthEl = kid(t.el, "Width");
@@ -259,11 +290,12 @@ export function addColumn(text, opts) {
     changes.push(`فیلد «${field}» به دیتاست «${ds.name}» اضافه شد — مطمئن شوید کوئری ستونی به همین نام برمی‌گرداند.`);
   }
   changes.unshift(`ستون تازه در جایگاه ${index + 1} از Tablix «${t.name}» (${n} ← ${n + 1} ستون): یک TablixColumn، یک TablixMember و در هر ${t.rows.length} ردیف یک TablixCell.`);
-  return finish(text, edits, changes);
+  // فیلد تازه‌ای که کوئری هنوز برنمی‌گرداند خطای ساختاری نیست؛ پیام بالا همین را می‌گوید
+  return finish(text, edits, changes, { allow: ["field_not_in_select"] });
 }
 
 /** کپی یک سلول با نام تازه برای هر آیتم و مقدار تازه برای Textbox اصلی. */
-function cloneCell(text, src, value, mainName, format) {
+function cloneCell(text, src, value, mainName, format, keepRowSpan = false) {
   if (!src || src.empty || !src.item || src.item.type !== "Textbox") {
     return `<TablixCell><CellContents><Textbox Name="${escapeAttr(mainName)}"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>${escapeText(value)}</Value><Style>${format ? `<Format>${escapeText(format)}</Format>` : ""}</Style></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>${escapeText(mainName)}</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>`;
   }
@@ -294,6 +326,9 @@ function cloneCell(text, src, value, mainName, format) {
   // سلولِ منبع اگر ColSpan داشت، کپی تک‌ستونه است
   const span = kid(kid(cellEl, "CellContents"), "ColSpan");
   if (span) edits.push({ start: span.start - base, end: span.end - base, insert: "" });
+  // RowSpan فقط وقتی می‌ماند که ردیف‌های زیرین سلول جایگزین بگیرند
+  const rowSpan = kid(kid(cellEl, "CellContents"), "RowSpan");
+  if (rowSpan && !keepRowSpan) edits.push({ start: rowSpan.start - base, end: rowSpan.end - base, insert: "" });
   // نام آیتم‌های تودرتو (نادر در Textbox) لازم نیست؛ Textbox فرزند آیتم ندارد
   return applyEdits(text.slice(cellEl.start, cellEl.end), edits);
 }
@@ -310,29 +345,28 @@ export function removeColumn(text, opts) {
   if (findAll(t.colMembers, "Group").some((g) => ancestor(g, "Tablix") === t.el)) {
     throw new EditError(`Tablix «${t.name}» ستون پویا دارد؛ حذف ستون ماتریس را در Report Builder انجام دهید.`);
   }
+  const grid = fullGrid(t);
+  const leafEls = columnLeaves(t);
   const edits = [];
   const removedNames = [];
+  const shrunk = new Set();
   t.rows.forEach((r, ri) => {
-    const map = slotMap(r, n);
-    if (!map) throw new EditError(`ردیف ${ri + 1} شکل فشرده دارد؛ ابتدا آن را در Report Builder باز و ذخیره کنید.`);
-    const slot = map[index];
-    if (slot.placeholder) {
-      // ستون زیر یک ادغام: ادغام یکی کوتاه‌تر و یک سلول جایگزین کمتر
-      const head = r.cells[slot.owner];
-      edits.push(setInner(kid(kid(head.el, "CellContents"), "ColSpan"), String(head.colSpan - 1)));
-      edits.push(removeEl(text, slot.cell.el));
+    const o = grid[ri][index];
+    if (o.cs === 1) {
+      // ستون کاملاً از آنِ همین سلول (یا جایگزینِ RowSpan آن): سلول این ردیف می‌رود
+      if (o.r0 === ri && o.cell.item?.name) removedNames.push(o.cell.item.name);
+      edits.push(removeEl(text, r.cells[index].el));
       return;
     }
-    const c = slot.cell;
-    if (c.colSpan > 1) {
-      // سرِ ادغام حذف نمی‌شود؛ سلول جایگزینِ بعدی حذف و ادغام کوتاه می‌شود
-      const span = kid(kid(c.el, "CellContents"), "ColSpan");
-      edits.push(c.colSpan - 1 === 1 ? removeEl(text, span) : setInner(span, String(c.colSpan - 1)));
-      edits.push(removeEl(text, r.cells[index + 1].el));
-      return;
+    // ستون زیر یک ادغام افقی: ادغام یکی کوتاه‌تر و در هر ردیفِ آن یک سلول جایگزین کمتر.
+    // سرِ ادغام خودش می‌ماند؛ اگر ستونِ حذفی همان ستون سر است، جایگزینِ کناری می‌رود.
+    if (!shrunk.has(o)) {
+      shrunk.add(o);
+      const e = setColSpan(text, o.cell, o.cs - 1);
+      if (e) edits.push(e);
     }
-    if (c.item?.name) removedNames.push(c.item.name);
-    edits.push(removeEl(text, c.el));
+    const victim = o.r0 === ri && index === o.c0 ? index + 1 : index;
+    edits.push(removeEl(text, r.cells[victim].el));
   });
   // ارجاع ReportItems! به نام‌های حذف‌شده
   const dangling = removedNames.filter((nm) => new RegExp(`ReportItems!${nm}\\b`).test(text));
@@ -341,7 +375,15 @@ export function removeColumn(text, opts) {
   }
   const colEls = kids(kid(kid(t.el, "TablixBody"), "TablixColumns"), "TablixColumn");
   edits.push(removeEl(text, colEls[index]));
-  edits.push(removeEl(text, kids(t.colMembers, "TablixMember")[index]));
+  // برگ حذف می‌شود؛ والدی که بی‌فرزند بماند هم با آن
+  let member = leafEls[index];
+  for (;;) {
+    const holder = ancestor(member, "TablixMembers");
+    const parent = holder && ancestor(holder, "TablixMember");
+    if (!parent || holder.parent !== parent || kids(holder, "TablixMember").length > 1 || ancestor(parent, "Tablix") !== t.el) break;
+    member = parent;
+  }
+  edits.push(removeEl(text, member));
   const w = t.columns[index].cm ?? 0;
   const widthEl = kid(t.el, "Width");
   if (widthEl && t.width != null) edits.push(setInner(widthEl, cm(Math.max(0.5, t.width - w))));
@@ -360,15 +402,18 @@ export function setCommandText(text, { dataSet, sql }) {
   if (!ds) throw new EditError("فایل دیتاستی ندارد.");
   const ct = kid(kid(ds.el, "Query"), "CommandText");
   if (!ct) throw new EditError(`دیتاست «${ds.name}» CommandText ندارد (احتمالاً دیتاست مشترک است).`);
-  const edits = [setInner(ct, String(sql ?? "").trim())];
+  // DECLARE های آغازین (فایل آزمون) در CommandText نمی‌آیند ولی نوع پارامترها را می‌دهند
+  const body = withoutLeadingDeclares(String(sql ?? ""));
+  const edits = [setInner(ct, body)];
   const changes = [`متن کوئری دیتاست «${ds.name}» جایگزین شد.`];
-  const r = paramEdits(text, info, ds, String(sql ?? ""));
+  const r = paramEdits(text, info, ds, body, String(sql ?? ""));
   edits.push(...r.edits);
   changes.push(...r.changes);
-  return finish(text, edits, changes);
+  // ناهمخوانی فیلدها با SELECT تازه کار «همگام‌سازی فیلدها»ست، نه دلیل ردّ کوئری
+  return finish(text, edits, changes, { allow: ["field_not_in_select"] });
 }
 
-function paramEdits(text, info, ds, sql) {
+function paramEdits(text, info, ds, sql, declSource = sql) {
   const edits = [];
   const changes = [];
   const used = queryParameters(sql);
@@ -387,9 +432,16 @@ function paramEdits(text, info, ds, sql) {
   }
   const missingRp = used.filter((u) => !params.has(u.toLowerCase()));
   if (missingRp.length) {
-    const xml = missingRp.map((u) => `<ReportParameter Name="${escapeAttr(u)}"><DataType>String</DataType><Prompt>${escapeText(u)}</Prompt></ReportParameter>`).join("");
+    // نوع: از DECLARE آغازین، وگرنه از ستونی که با آن مقایسه می‌شود (نام‌های *Date، *Ref)
+    const declared = new Map(leadingDeclares(declSource).flatMap((blk) => blk.items).map((d) => [d.name.toLowerCase(), d.type]));
+    const typed = missingRp.map((u) => {
+      const multi = new RegExp(`\\bIN\\s*\\(\\s*@${u}\\s*\\)`, "i").test(sql);
+      const sqlType = declared.get(u.toLowerCase()) || paramSqlType(sql, u, new Map());
+      return { name: u, dataType: multi && paramDataType(sqlType) !== "Integer" ? "String" : paramDataType(sqlType), multi };
+    });
+    const xml = typed.map((p) => `<ReportParameter Name="${escapeAttr(p.name)}"><DataType>${p.dataType}</DataType>${p.multi ? "<MultiValue>true</MultiValue>" : ""}<Prompt>${escapeText(p.name)}</Prompt></ReportParameter>`).join("");
     edits.push(insertParams(text, info, xml));
-    changes.push(`ReportParameter رشته‌ای برای ${missingRp.join("، ")} ساخته شد — نوع و عنوانشان را در Report Builder بازبینی کنید.`);
+    changes.push(`ReportParameter برای ${typed.map((p) => `${p.name} (${p.dataType}${p.multi ? "، چندمقداری" : ""})`).join("، ")} ساخته شد — عنوانشان را در Report Builder بازبینی کنید.`);
   }
   return { edits, changes };
 }
@@ -419,9 +471,11 @@ export function syncFields(text, { dataSet, removeGhosts = false, types = {} }) 
   const changes = [];
   const add = out.columns.filter((c) => !have.has(c.name.toLowerCase()));
   if (add.length) {
-    const xml = add.map((c) => {
-      let fname = c.name.replace(/[^\w]/g, "_");
-      while (names.has(fname.toLowerCase())) fname += "_";
+    const xml = add.map((c, i) => {
+      // نام فیلد لاتین و معتبر؛ نام ستون (حتی فارسی) در DataField می‌ماند
+      const base = rdlName(c.name, `Field${ds.fields.length + i + 1}`);
+      let fname = base;
+      for (let k = 2; names.has(fname.toLowerCase()); k++) fname = `${base}_${k}`;
       names.add(fname.toLowerCase());
       return `<Field Name="${escapeAttr(fname)}"><DataField>${escapeText(c.name)}</DataField><rd:TypeName>${rdlType(types[c.name] || c.sqlType)}</rd:TypeName></Field>`;
     }).join("");
@@ -544,7 +598,9 @@ export function addSysParams(text) {
   const have = new Set(info.params.map((p) => p.name.toLowerCase()));
   const missing = SYS_PARAMS.filter((s) => !have.has(s.toLowerCase()));
   if (!missing.length) return finish(text, [], ["همهٔ پارامترهای سیستمی هستند."]);
-  const xml = missing.map((s) => `<ReportParameter Name="${s}"><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>${s}</Prompt><Hidden>true</Hidden></ReportParameter>`).join("");
+  // همان XML سازندهٔ گزارش (پنهان، تهی‌پذیر، پیش‌فرض تهی) تا هر دو مسیر یکسان باشند
+  const specs = sysParamSpecs().filter((p) => missing.includes(p.name));
+  const xml = specs.map(paramXml).join("");
   return finish(text, [insertParams(text, info, xml)], [`پارامترهای سیستمی اضافه شد: ${missing.join("، ")}`]);
 }
 

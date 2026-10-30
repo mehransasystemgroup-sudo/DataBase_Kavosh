@@ -102,7 +102,8 @@ export function discoveryScript(tables, { focus = {}, sampleRows = 50, purpose =
     }
   });
   if (list.length) {
-    const names = [...new Set(list.map((t) => t.full_name.split(".").slice(1).join(".")))].map(lit).join(", ");
+    // با OBJECT_ID نام کامل (اسکیما + جدول)، تا جدول هم‌نامِ اسکیمای دیگر قاطی نشود
+    const ids = [...new Set(list.map((t) => t.full_name))].map((f) => `OBJECT_ID(${lit(f)})`).join(", ");
     lines.push(
       "-- ═════ ۴) کلیدهای خارجی مرتبط — برای JOIN مطمئن (نه حدس از روی نام ستون) ═════",
       "SELECT fk.name AS ForeignKeyName,",
@@ -114,7 +115,7 @@ export function discoveryScript(tables, { focus = {}, sampleRows = 50, purpose =
       "JOIN sys.columns cp ON cp.object_id = tp.object_id AND cp.column_id = fkc.parent_column_id",
       "JOIN sys.tables tr ON tr.object_id = fkc.referenced_object_id",
       "JOIN sys.columns cr ON cr.object_id = tr.object_id AND cr.column_id = fkc.referenced_column_id",
-      `WHERE tp.name IN (${names}) OR tr.name IN (${names})`,
+      `WHERE fkc.parent_object_id IN (${ids}) OR fkc.referenced_object_id IN (${ids})`,
       "ORDER BY ParentTable, ParentColumn;",
       "",
     );

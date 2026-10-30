@@ -38,6 +38,9 @@ import { Textarea } from "@/components/ui/textarea";
 // تجزیه‌گر SQL سنگین است؛ ابزار گزارش فقط وقتی پاسخی با کوئری هست بار می‌شود
 const AssistantReportTools = lazy(() => import("@/views/report/AssistantReportTools"));
 
+// پرسشی که دربارهٔ خودِ گزارش است نه جدول — راهنمایی به زبانهٔ گزارش‌ساز
+const REPORT_QUESTION = /\b(rdl|rdlc|ssrs|tablix|textbox|report\s*builder|dataset|subreport)\b|گزارش‌ساز|ریپورت|تبلیکس/i;
+
 /*
   دستیار کوئری‌نویسی.
 
@@ -827,7 +830,8 @@ export default function AssistantView({
               running: false,
               result: {
                 type: "result", offline: true, needsAi: true, sql: "", tables: [], joins: [], choices: [],
-                note: "### برداشت\nجدولی که این پرسش درباره‌اش باشد در دانش پایگاه داده پیدا نشد.\n\n### راهکار\n- نام جدول را به فارسی یا لاتین بیاورید؛ مثلاً «ستون‌های جدول سند حسابداری» یا «ارتباط FIN3.Voucher و GNR3.Party».\n- یا جدول را از پایین صفحه سنجاق کنید و دوباره بپرسید.",
+                note: "### برداشت\nجدولی که این پرسش درباره‌اش باشد در دانش پایگاه داده پیدا نشد.\n\n### راهکار\n- نام جدول را به فارسی یا لاتین بیاورید؛ مثلاً «ستون‌های جدول سند حسابداری» یا «ارتباط FIN3.Voucher و GNR3.Party».\n- یا جدول را از پایین صفحه سنجاق کنید و دوباره بپرسید." +
+                  (REPORT_QUESTION.test(q) ? "\n- پرسش دربارهٔ Report Builder یا فایل RDL است؟ زبانهٔ «گزارش‌ساز ← مرجع» همهٔ دانش مهارت گزارش‌سازی را با جست‌وجو و مترجم خطا دارد، و «تحلیل و اصلاح RDL» فایل را دقیق بررسی می‌کند." : ""),
               },
             });
             return;

@@ -45,6 +45,15 @@ def _path(data_root: Path) -> Path:
     return data_root / "reports" / "library.json"
 
 
+def _set_aside(path: Path) -> None:
+    """فایلی که خوانده نمی‌شود کنار می‌رود، نه اینکه ذخیرهٔ بعدی رویش بنویسد."""
+    backup = path.with_suffix(f".broken-{int(time.time())}.json")
+    try:
+        os.replace(path, backup)
+    except OSError:
+        pass
+
+
 def _read(data_root: Path) -> list[dict]:
     path = _path(data_root)
     if not path.is_file():
@@ -52,21 +61,21 @@ def _read(data_root: Path) -> list[dict]:
     try:
         doc = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError):
-        # فایل خراب را کنار می‌گذاریم و از نو شروع نمی‌کنیم تا چیزی پاک نشود
-        backup = path.with_suffix(f".broken-{int(time.time())}.json")
-        try:
-            os.replace(path, backup)
-        except OSError:
-            pass
+        _set_aside(path)
         return []
     items = doc.get("reports") if isinstance(doc, dict) else None
-    return [r for r in items or [] if isinstance(r, dict) and _ID.match(str(r.get("id", "")))]
+    if not isinstance(items, list):
+        # JSON معتبر ولی شکل ناشناخته — همان رفتار فایل خراب
+        _set_aside(path)
+        return []
+    return [r for r in items if isinstance(r, dict) and _ID.match(str(r.get("id", "")))]
 
 
 def _write(data_root: Path, reports: list[dict]) -> None:
     path = _path(data_root)
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
+    # نام موقت یکتا: دو فرایند هم‌زمان روی فایل موقت هم نمی‌نویسند
+    tmp = path.with_name(f"{path.name}.{os.getpid()}.{uuid.uuid4().hex[:8]}.tmp")
     tmp.write_text(json.dumps({"version": 1, "reports": reports}, ensure_ascii=False, indent=1),
                    encoding="utf-8")
     os.replace(tmp, path)
@@ -86,6 +95,8 @@ def _clean(payload: dict) -> dict:
     out: dict = {}
     for key in _TEXT_KEYS:
         if key in payload and payload[key] is not None:
+            if not isinstance(payload[key], (str, int, float)) or isinstance(payload[key], bool):
+                raise LibraryError(f"«{key}» باید متن باشد.")
             value = str(payload[key])
             limit = MAX_TEXT if key == "sql" else MAX_FIELD
             if len(value) > limit:
@@ -93,7 +104,9 @@ def _clean(payload: dict) -> dict:
             out[key] = value.strip() if key != "sql" else value
     for key in _BLOB_KEYS:
         if key in payload and payload[key] is not None:
-            value = str(payload[key])
+            if not isinstance(payload[key], str):
+                raise LibraryError(f"«{key}» باید متن باشد.")
+            value = payload[key]
             if len(value) > MAX_TEXT * 10:
                 raise LibraryError("فایل RDL بیش از حد مجاز (۴ مگابایت) بزرگ است.")
             out[key] = value

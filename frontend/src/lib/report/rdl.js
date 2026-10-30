@@ -67,6 +67,58 @@ function leaves(membersEl) {
   return out;
 }
 
+/**
+ * نام لاتینِ معتبر برای Field، Textbox، Group و… — Report Builder نامی را که با
+ * حرف شروع نشود یا نویسهٔ غیرمجاز داشته باشد نمی‌پذیرد. عنوان فارسی جای خودش
+ * (سرستون) را دارد؛ نام درونی لاتین می‌ماند تا روی هر نسخه‌ای بی‌دردسر باز شود.
+ */
+export function rdlName(base, fallback = "F") {
+  let n = String(base ?? "").replace(/[^A-Za-z0-9_]/g, "_").replace(/_+/g, "_").replace(/^_+|_+$/g, "");
+  if (!/[A-Za-z]/.test(n)) return fallback;
+  if (!/^[A-Za-z]/.test(n)) n = `${fallback}_${n}`;
+  return n;
+}
+
+// حرف: لاتین یا حروف فارسی/عربی (بی‌رقم و بی‌نشانه)؛ ادامه: حرف، رقم، _
+const NAME_START = "A-Za-z\u0621-\u063A\u0641-\u064A\u0671-\u06D3\u06FA-\u06FC\uFB50-\uFDFB\uFE70-\uFEFC";
+const VALID_NAME = new RegExp(`^[${NAME_START}][${NAME_START}0-9\u0660-\u0669\u06F0-\u06F9_]*$`);
+export const isValidRdlName = (name) => VALID_NAME.test(String(name ?? ""));
+
+/** برگ‌های سلسله‌مراتب ستونی/سطری به ترتیب سند — همان ترتیبِ ستون‌ها و ردیف‌ها. */
+export { leaves as memberLeaves };
+
+/**
+ * شبکهٔ کامل سلول‌های Tablix: برای هر ردیفِ شکل کامل (یک TablixCell به‌ازای هر
+ * ستون) و هر ستون، «سلول مبدأ» آن خانه — خودش، یا سلولی از همین ردیف (ColSpan)
+ * یا ردیف‌های بالاتر (RowSpan) که آن را پوشانده.
+ *   origin: { r0, c0, cs, rs, cell, empty }
+ * overlaps: خانه‌هایی که پوشیده‌اند ولی خودشان محتوا دارند.
+ * ردیف شکل فشرده null می‌ماند.
+ */
+export function cellGrid(t) {
+  const n = t.columns.length;
+  const covered = new Map();
+  const overlaps = [];
+  const grid = t.rows.map((row, r) => {
+    if (row.cells.length !== n) return null;
+    return row.cells.map((cell, c) => {
+      const over = covered.get(`${r},${c}`);
+      if (over) {
+        if (!cell.empty) overlaps.push({ r, c, origin: over });
+        return over;
+      }
+      const origin = cell.empty
+        ? { r0: r, c0: c, cs: 1, rs: 1, cell, empty: true }
+        : { r0: r, c0: c, cs: cell.colSpan, rs: cell.rowSpan, cell, empty: false };
+      for (let dr = 0; dr < origin.rs; dr++) {
+        for (let dc = 0; dc < origin.cs; dc++) if (dr || dc) covered.set(`${r + dr},${c + dc}`, origin);
+      }
+      return origin;
+    });
+  });
+  return { grid, overlaps };
+}
+
 function memberIsDetails(member) {
   const g = kid(member, "Group");
   return g && !kid(g, "GroupExpressions");
@@ -354,6 +406,18 @@ export function validateRdl(text, { hostRules = true } = {}) {
   const dupGroups = [...groupNames].filter(([n, c]) => n && c > 1);
   if (dupGroups.length) add("error", "duplicate_group", `نام گروه تکراری: ${dupGroups.map(([n]) => n).join("، ")}`, "نام هر Group در کل گزارش باید یکتا باشد.");
 
+  // نام‌های معتبر: با حرف شروع شود و فقط حرف، رقم و _ داشته باشد
+  const badNames = [
+    ...info.itemNames.map((n) => ["آیتم", n]),
+    ...[...groupNames.keys()].map((n) => ["گروه", n]),
+    ...info.dataSets.flatMap((d) => [["دیتاست", d.name], ...d.fields.map((f) => ["فیلد", f.name])]),
+    ...info.params.map((p) => ["پارامتر", p.name]),
+  ].filter(([, n]) => n && !isValidRdlName(n));
+  if (badNames.length) {
+    add("error", "invalid_name", `نام نامعتبر: ${badNames.slice(0, 8).map(([k, n]) => `${k} «${n}»`).join("، ")}${badNames.length > 8 ? "، …" : ""}`,
+      "Report Builder نامی را که با حرف شروع نشود یا جز حرف، رقم و _ نویسه‌ای داشته باشد نمی‌پذیرد («… is not CLS-compliant»). نام را لاتین کنید؛ عنوان فارسی در سرستون می‌ماند.");
+  }
+
   // ── دیتاست‌ها ──
   const dsByName = new Map(info.dataSets.map((d) => [d.name, d]));
   const dsNames = new Set(info.dataSources.map((d) => d.name));
@@ -437,6 +501,14 @@ export function validateRdl(text, { hostRules = true } = {}) {
         }
       }
     }
+    if (p.multiValue && p.nullable) {
+      add("error", "param_multi_nullable", `پارامتر «${p.name}» هم چندمقداری است و هم تهی‌پذیر (Nullable).`,
+        "SSRS این ترکیب را نمی‌پذیرد («A multi-value parameter cannot include null values»). Nullable را بردارید؛ «همه» را با انتخاب همهٔ گزینه‌ها یا پیش‌فرضِ همهٔ مقادیر بدهید.", where);
+    }
+    if (p.hidden && !kid(p.el, "DefaultValue") && !/^Sys_/i.test(p.name)) {
+      add("error", "param_hidden_no_default", `پارامتر پنهان «${p.name}» مقدار پیش‌فرض ندارد.`,
+        "کاربر پارامتر پنهان را نمی‌بیند تا مقدارش را بدهد، پس گزارش با «The parameter is missing a value» اجرا نمی‌شود. پیش‌فرض بدهید یا پنهان را بردارید.", where);
+    }
     if (p.dataType === "Integer" && /(Ref|ID)$/.test(p.name)) {
       add("info", "int32_trap", `پارامتر «${p.name}» از نوع Integer (Int32) است.`,
         "شناسه‌ها bigint‌اند؛ تا زیر ۲٬۱۴۷٬۴۸۳٬۶۴۷ مشکلی نیست. اگر جدول خیلی بزرگ است، نوع را String کنید و در SQL CAST(@x AS bigint) بزنید.", where);
@@ -496,6 +568,12 @@ export function validateRdl(text, { hostRules = true } = {}) {
           "خطای Report Builder: «The number of cells in row … does not match». در هر ردیف یک TablixCell به‌ازای هر ستون لازم است.", where);
       }
     });
+    // RowSpan: خانه‌ای که ردیف بالا پوشانده نباید خودش محتوا داشته باشد
+    for (const o of cellGrid(t).overlaps) {
+      if (o.origin.r0 === o.r) continue; // ادغام افقی را colspan_overlap گفته است
+      add("error", "rowspan_overlap", `Tablix «${t.name}»، ردیف ${o.r + 1}، ستون ${o.c + 1}: سلول محتوا دارد ولی زیر RowSpan سلول ردیف ${o.origin.r0 + 1} افتاده است.`,
+        "خطای Report Builder: «overlapping cells». خانه‌های زیر RowSpan=N باید در N−1 ردیف بعد سلول خالی <TablixCell /> باشند.", where);
+    }
     // عرض Tablix
     const sum = t.columns.reduce((a, c) => a + (c.cm ?? 0), 0);
     if (t.width != null && nCols && !near(sum, t.width, 0.05) && !t.hasCorner) {

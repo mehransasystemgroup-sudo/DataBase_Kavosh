@@ -22,13 +22,30 @@ export class LibraryError extends Error {
   }
 }
 
-function read(storage) {
+/** داده‌ای که خوانده نمی‌شود کنار می‌رود (همان رفتار سرور)، نه اینکه ذخیرهٔ بعدی رویش بنویسد. */
+function setAside(storage, raw) {
   try {
-    const doc = JSON.parse(storage.getItem(STORE) || "{}");
-    return (doc.reports || []).filter((r) => r && ID.test(String(r.id || "")));
+    storage.setItem(`${STORE}.broken-${Date.now()}`, raw);
+  } catch { /* جا نیست؛ چاره‌ای نیست */ }
+}
+
+function read(storage) {
+  const raw = storage.getItem(STORE);
+  if (!raw) return [];
+  let doc;
+  try {
+    doc = JSON.parse(raw);
   } catch {
+    setAside(storage, raw);
+    storage.removeItem(STORE);
     return [];
   }
+  if (!doc || !Array.isArray(doc.reports)) {
+    setAside(storage, raw);
+    storage.removeItem(STORE);
+    return [];
+  }
+  return doc.reports.filter((r) => r && typeof r === "object" && ID.test(String(r.id || "")));
 }
 
 function write(storage, reports) {
@@ -48,12 +65,14 @@ function clean(payload) {
   const out = {};
   for (const key of TEXT_KEYS) {
     if (payload[key] == null) continue;
+    if (!["string", "number"].includes(typeof payload[key])) throw new LibraryError(`«${key}» باید متن باشد.`);
     const value = String(payload[key]);
     if (value.length > (key === "sql" ? MAX_TEXT : MAX_FIELD)) throw new LibraryError(`«${key}» بیش از حد مجاز طولانی است.`);
     out[key] = key === "sql" ? value : value.trim();
   }
   if (payload.rdl != null) {
-    const value = String(payload.rdl);
+    if (typeof payload.rdl !== "string") throw new LibraryError("«rdl» باید متن باشد.");
+    const value = payload.rdl;
     if (value.length > MAX_TEXT * 10) throw new LibraryError("فایل RDL بیش از حد مجاز (۴ مگابایت) بزرگ است.");
     out.rdl = value;
   }

@@ -57,3 +57,22 @@ def test_unknown_keys_dropped_and_broken_file_kept(tmp_path):
     assert list((tmp_path / "reports").glob("library.broken-*.json"))
     lib.save_report(tmp_path, {"title": "b"})
     assert json.loads(path.read_text(encoding="utf-8"))["reports"][0]["title"] == "b"
+
+
+def test_non_text_title_rejected(tmp_path):
+    with pytest.raises(lib.LibraryError):
+        lib.save_report(tmp_path, {"title": {"a": 1}})
+    with pytest.raises(lib.LibraryError):
+        lib.save_report(tmp_path, {"title": "x", "rdl": ["<Report/>"]})
+
+
+def test_unexpected_shape_set_aside_not_overwritten(tmp_path):
+    path = tmp_path / "reports" / "library.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps([{"id": "abcdef1", "title": "قدیمی"}]), encoding="utf-8")
+    assert lib.list_reports(tmp_path)["total"] == 0
+    lib.save_report(tmp_path, {"title": "تازه"})
+    # فهرستِ شکل‌ناشناخته کنار رفته، نه اینکه زیر ذخیرهٔ تازه گم شود
+    backups = list(path.parent.glob("library.broken-*.json"))
+    assert backups and json.loads(backups[0].read_text(encoding="utf-8"))[0]["title"] == "قدیمی"
+    assert not list(path.parent.glob("*.tmp"))

@@ -31,7 +31,8 @@ const q = (name) => `[${String(name).replace(/]/g, "]]")}]`;
 const qTable = (full) => full.split(".").map(q).join(".");
 const lit = (v) => {
   if (v === null || v === undefined || v === "") return "NULL";
-  if (typeof v === "number" || /^-?\d+(\.\d+)?$/.test(String(v).trim())) return String(v).trim();
+  // «0012» کد است نه عدد: صفرهای آغازین با رشته حفظ می‌شوند
+  if (typeof v === "number" || /^-?(0|[1-9]\d*)(\.\d+)?$/.test(String(v).trim())) return String(v).trim();
   return `N'${String(v).replace(/'/g, "''")}'`;
 };
 export const safeName = (s, fallback = "Col") => {
@@ -88,9 +89,15 @@ export function planToSql(plan) {
   const warnings = [];
   if (!plan.base) return { sql: "", params: [], warnings: ["جدول مبنا انتخاب نشده."] };
   const al = aliases(plan);
-  const A = (t) => al.get(String(t || plan.base).toLowerCase()) || "t";
+  const A = (t) => al.get(String(t || plan.base).toLowerCase());
+  // ستون/فیلتر/مرتب‌سازیِ جدولی که دیگر در طرح نیست کنار گذاشته می‌شود، نه SQL نامعتبر
+  const inPlan = (x) => {
+    if (A(x.table)) return true;
+    warnings.push(`جدول ${x.table} در طرح نیست؛ «${x.column}» کنار گذاشته شد. جدول را دوباره اضافه کنید.`);
+    return false;
+  };
   const usedNames = new Set();
-  const cols = plan.columns.filter((c) => c.column);
+  const cols = plan.columns.filter((c) => c.column && inPlan(c));
   const select = cols.map((c) => {
     let name = safeName(c.alias || (c.aggregate ? `${c.aggregate === "COUNT_DISTINCT" ? "Count" : c.aggregate[0] + c.aggregate.slice(1).toLowerCase()}${c.column}` : c.column));
     for (let n = 2; usedNames.has(name.toLowerCase()); n += 1) name = `${safeName(c.alias || c.column)}${n}`;
@@ -124,7 +131,7 @@ export function planToSql(plan) {
   };
   const where = [];
   for (const f of plan.filters) {
-    if (!f.column) continue;
+    if (!f.column || !inPlan(f)) continue;
     const ref = `${A(f.table)}.${q(f.column)}`;
     const pname = safeName(f.param || f.column, "Param");
     switch (f.op) {
@@ -164,14 +171,21 @@ export function planToSql(plan) {
     const groups = cols.filter((c) => !c.aggregate).map((c) => `${A(c.table)}.${q(c.column)}`);
     if (groups.length) lines.push(`GROUP BY ${[...new Set(groups)].join(", ")}`);
   }
-  const order = plan.orderBy.filter((o) => o.column).map((o) => {
+  const orderCols = plan.orderBy.filter((o) => o.column && inPlan(o));
+  if (plan.distinct) {
+    for (const o of orderCols) {
+      const shown = cols.some((c) => c.column === o.column && (c.table || plan.base) === (o.table || plan.base));
+      if (!shown) warnings.push(`با DISTINCT، مرتب‌سازی روی ${o.column} فقط وقتی مجاز است که همان ستون در خروجی باشد (خطای SQL Server ۱۴۵).`);
+    }
+  }
+  const order = orderCols.map((o) => {
     const asAgg = aggregated && cols.find((c) => c.aggregate && c.column === o.column && (c.table || plan.base) === (o.table || plan.base));
     const expr = asAgg ? colExpr(A(o.table), o.column, asAgg.aggregate) : `${A(o.table)}.${q(o.column)}`;
     return `${expr}${o.dir === "DESC" ? " DESC" : ""}`;
   });
   if (aggregated) {
     const grouped = new Set(cols.filter((c) => !c.aggregate).map((c) => `${(c.table || plan.base).toLowerCase()}.${c.column.toLowerCase()}`));
-    for (const o of plan.orderBy.filter((x) => x.column)) {
+    for (const o of orderCols) {
       const key = `${(o.table || plan.base).toLowerCase()}.${o.column.toLowerCase()}`;
       const isAgg = cols.some((c) => c.aggregate && c.column === o.column);
       if (!grouped.has(key) && !isAgg) warnings.push(`مرتب‌سازی روی ${o.column} با GROUP BY نمی‌خواند؛ آن را به ستون‌ها بیفزایید.`);

@@ -146,6 +146,8 @@ export default function BuildTab({ onOpenTab }) {
   const orgProfile = readStore(PROFILE_STORE, null);
   const profile = useMemo(() => ({ ...DEFAULT_PROFILE, ...(orgProfile?.profile || {}), ...(state.profile || {}) }), [orgProfile, state.profile]);
 
+  // کوئریِ ویرایش‌شده پس از تحلیل: ستون‌ها و پارامترها دیگر با آن نمی‌خوانند
+  const stale = Boolean(state.analyzed && state.sql !== (state.analyzedSql ?? state.sql));
   const patch = useCallback((p) => setState((s) => ({ ...s, ...(typeof p === "function" ? p(s) : p) })), [setState]);
   const patchLayout = (p) => patch((s) => ({ layout: { ...s.layout, ...p } }));
   const patchProfile = (p) => patch((s) => ({ profile: { ...(s.profile || {}), ...p } }));
@@ -173,7 +175,7 @@ export default function BuildTab({ onOpenTab }) {
       const layout = { ...EMPTY.layout, ...base.layout };
       layout.groups = (layout.groups || []).filter((g) => names.has(g.field));
       if (layout.sortField && !names.has(layout.sortField)) layout.sortField = "";
-      setState((s) => ({ ...s, sql: sqlText, analyzed: true, body: a.body, tables: a.tables, notes: a.notes, fields, params, layout }));
+      setState((s) => ({ ...s, sql: sqlText, analyzedSql: sqlText, analyzed: true, body: a.body, tables: a.tables, notes: a.notes, fields, params, layout }));
       if (!fields.length) toast.error("هیچ ستون خروجی پیدا نشد؛ کوئری باید با SELECT نهایی تمام شود.");
     } catch (e) {
       toast.error(errorMessage(e, "تحلیل کوئری ناموفق بود."));
@@ -208,6 +210,10 @@ export default function BuildTab({ onOpenTab }) {
   const setParam = (i, p) => patch((s) => ({ params: s.params.map((x, k) => (k === i ? { ...x, ...p } : x)) }));
 
   const build = () => {
+    if (stale) {
+      toast.error("کوئری پس از تحلیل تغییر کرده؛ ابتدا دوباره تحلیل کنید.");
+      return;
+    }
     try {
       const spec = toBuildSpec({ title: state.title || "گزارش", body: state.body, fields: state.fields, params: state.params, layout: state.layout, profile });
       const res = buildRdl(spec);
@@ -224,6 +230,10 @@ export default function BuildTab({ onOpenTab }) {
   };
 
   const save = async () => {
+    if (stale) {
+      toast.error("کوئری پس از تحلیل تغییر کرده؛ ابتدا دوباره تحلیل کنید تا کوئری و گزارش ذخیره‌شده با هم بخوانند.");
+      return;
+    }
     if (!state.title.trim()) {
       toast.error("برای ذخیره، عنوان گزارش را بنویسید.");
       return;
@@ -270,7 +280,7 @@ export default function BuildTab({ onOpenTab }) {
           <>
             <label className="inline-flex min-h-8 cursor-pointer items-center gap-1 rounded-md border border-border bg-surface px-2.5 text-[11px] text-muted-foreground transition-colors hover:border-brand/45 hover:text-brand-text">
               <FileUp className="h-3 w-3" />
-              بارگذاری .sql
+              بارگذاری <bdi dir="ltr">.sql</bdi>
               <input
                 type="file"
                 accept=".sql,.txt,text/plain"
@@ -280,6 +290,7 @@ export default function BuildTab({ onOpenTab }) {
                   e.target.value = "";
                   if (!f) return;
                   const text = await readTextFile(f);
+                  setOutput(null);
                   patch({ sql: text, title: state.title || f.name.replace(/\.[^.]+$/, "") });
                 }}
               />
@@ -299,7 +310,11 @@ export default function BuildTab({ onOpenTab }) {
             <Textarea
               dir="ltr"
               value={state.sql}
-              onChange={(e) => patch({ sql: e.target.value })}
+              onChange={(e) => {
+                // خروجیِ ساخته‌شده از کوئری قبلی دیگر معتبر نیست
+                if (output) setOutput(null);
+                patch({ sql: e.target.value });
+              }}
               placeholder={"SELECT v.[Number] AS VoucherNumber, -- شماره سند\n       v.[Date] AS VoucherDate -- تاریخ\nFROM FIN3.Voucher AS v\nWHERE v.[FiscalYearRef] = @FiscalYearRef"}
               className="min-h-[180px] font-mono text-[12px] leading-6"
               spellCheck={false}
@@ -318,6 +333,11 @@ export default function BuildTab({ onOpenTab }) {
               {" "}شروع کنید.
             </span>
           </div>
+          {stale && (
+            <p className="rounded-md border border-warn/40 bg-warn/8 px-3 py-1.5 text-[11.5px] text-warn">
+              کوئری پس از آخرین تحلیل تغییر کرده؛ پیش از ساخت گزارش دوباره «تحلیل و بازبینی» را بزنید (تنظیم ستون‌ها و پارامترها حفظ می‌شود).
+            </p>
+          )}
           {state.notes?.length > 0 && (
             <ul className="space-y-1">
               {state.notes.map((n) => (

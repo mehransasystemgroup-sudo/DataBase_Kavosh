@@ -47,12 +47,31 @@ function scopes(tree) {
   return { aliases, tables };
 }
 
-/** ستون‌هایی که در شرط‌ها (WHERE، ON، HAVING) آمده‌اند. */
+const isParam = (n) => n?.type === "column_ref" && /^@/.test(String(n.column));
+const isRealColumn = (n) => isColumn(n) && !isParam(n);
+
+/**
+ * ستون‌هایی که واقعاً فیلتر شده‌اند: هر ستونِ WHERE و HAVING، ولی از ON فقط
+ * ستونی که با پارامتر یا مقدار ثابت مقایسه شده — «fy.FiscalYearID = v.FiscalYearRef»
+ * فقط پیوند برای نمایش عنوان سال است، نه محدود کردن سال مالی.
+ */
 function conditionColumns(tree) {
   const out = [];
   for (const n of walk(tree)) {
-    for (const key of ["where", "on", "having"]) {
-      if (n[key] && typeof n[key] === "object") for (const c of walk(n[key])) if (isColumn(c)) out.push(c);
+    for (const key of ["where", "having"]) {
+      if (n[key] && typeof n[key] === "object") for (const c of walk(n[key])) if (isRealColumn(c)) out.push(c);
+    }
+    if (n.on && typeof n.on === "object") {
+      for (const e of walk(n.on)) {
+        if (e.type !== "binary_expr" || ["AND", "OR"].includes(String(e.operator).toUpperCase())) continue;
+        const sides = [e.left, e.right];
+        const cols = sides.filter(isRealColumn);
+        if (cols.length === 1 && !sides.some((x) => x && x.type === "column_ref" && !isParam(x) && x !== cols[0])) {
+          // یک طرف ستون، طرف دیگر پارامتر/ثابت/فهرست
+          const other = sides.find((x) => x !== cols[0]);
+          if (!other || other.type !== "column_ref" || isParam(other)) out.push(cols[0]);
+        }
+      }
     }
   }
   return out;
@@ -139,6 +158,27 @@ export async function lintReportSql(sql, describe) {
     F.push(finding("error", "fiscal_year", `${fy.map(display).join("، ")} ستون FiscalYearRef دارد ولی کوئری روی سال مالی فیلتر نمی‌کند.`,
       "گزارش اسناد چند سال مالی را با هم جمع می‌زند — بی‌هیچ خطایی، فقط عدد غلط. بنویسید: WHERE x.[FiscalYearRef] = @FiscalYearRef (به‌صورت پارامتر گزارش، نه عدد ثابت)."));
   }
+  // جدول اقلام بی‌FiscalYearRef که سرآیندش (جدول مرجعش) سال مالی دارد ولی در کوئری نیست
+  if (!fy.length) {
+    const headers = new Map();
+    await Promise.all(known.flatMap((t) => (details.get(t.toLowerCase())?.outgoing || [])
+      // سرآیند به قرارداد نام: VoucherItem ← Voucher، از راه VoucherRef
+      .filter((o) => {
+        const head = String(o.to_table || "").split(".").pop();
+        return head && o.from_col === `${head}Ref` && t.split(".").pop().startsWith(head) && t.split(".").pop() !== head
+          && ![...tables].some((x) => x.toLowerCase() === o.to_table.toLowerCase());
+      })
+      .map(async (o) => {
+        try {
+          const d = await describe(o.to_table);
+          if (d?.columns?.some((c) => c.name.toLowerCase() === "fiscalyearref")) headers.set(o.to_table, { from: t, col: o.from_col });
+        } catch { /* ناشناخته */ }
+      })));
+    for (const [header, { from, col }] of headers) {
+      F.push(finding("warning", "header_fiscal_year", `${display(from)} خودش FiscalYearRef ندارد، ولی جدول سرآیندش ${header} (از راه ${col}) دارد و در کوئری نیست.`,
+        `اقلام چند سال مالی با هم می‌آیند. سرآیند را JOIN و روی سال مالی فیلتر کنید: JOIN ${header} h ON h.[${header.split(".").pop()}ID] = x.[${col}] … WHERE h.[FiscalYearRef] = @FiscalYearRef.`));
+    }
+  }
   const br = withCol("branchref", (t) => {
     const target = details.get(t.toLowerCase())?.outgoing?.find((o) => o.from_col === "BranchRef")?.to_table;
     return !target || /GNR3\.Branch$/i.test(target);
@@ -196,6 +236,15 @@ export async function lintReportSql(sql, describe) {
     F.push(finding("warning", "reference_type", "کوئری از ReferenceRef استفاده می‌کند ولی هیچ شرطی روی ReferenceType ندارد.", "بی‌شرط ReferenceType رکوردهای بی‌ربط به هم می‌چسبند."));
   }
 
+  // ── پارامتر اختیاری که چندمقداری هم هست ──
+  for (const m of clean.matchAll(/@(\w+)\s+IS\s+NULL/gi)) {
+    if (new RegExp(`\\bIN\\s*\\(\\s*@${m[1]}\\s*\\)`, "i").test(clean)) {
+      F.push(finding("warning", "multi_optional", `@${m[1]} هم با IS NULL اختیاری شده و هم با IN (@${m[1]}) چندمقداری.`,
+        "پارامتر چندمقداری در SSRS نمی‌تواند تهی باشد و با چند مقدار «@P IS NULL» به فهرست بسط می‌یابد و خطا می‌دهد. یا تک‌مقداری و اختیاری بگیرید، یا چندمقداری بی‌IS NULL (همه = انتخاب همهٔ گزینه‌ها)."));
+      break;
+    }
+  }
+
   // ── BETWEEN روی تاریخ ──
   for (const m of clean.matchAll(/([\w\]\[.]+)\s+(NOT\s+)?BETWEEN\b/gi)) {
     const col = strip(m[1].split(".").pop());
@@ -233,12 +282,21 @@ export async function lintReportSql(sql, describe) {
   if (dups.length) {
     F.push(finding("error", "duplicate_column", `نام ستون خروجی تکراری است: ${dups.join("، ")}`, "دیتاست گزارش فیلد تکراری نمی‌پذیرد؛ به هرکدام نام مستعار یکتا بدهید."));
   }
-  const nonLatin = out.columns.filter((c) => c.name && !/^[A-Za-z_][\w]*$/.test(c.name));
+  const nonLatin = out.columns.filter((c) => c.name && !/^[A-Za-z][\w]*$/.test(c.name));
   if (nonLatin.length) {
     F.push(finding("info", "field_names", `نام ستون‌های ${nonLatin.map((c) => c.name).join("، ")} لاتین ساده نیست.`, "گزارش‌ساز برای نام فیلد آن را بازنویسی می‌کند؛ نام مستعار انگلیسی بدون فاصله بدهید و عنوان فارسی را با کامنت «-- عنوان» کنارش بنویسید."));
   }
-  if (/\bFORMAT\s*\(/i.test(clean)) {
-    F.push(finding("warning", "format_function", "کوئری از FORMAT() استفاده می‌کند.", "عدد قالب‌خورده در SQL متن می‌شود و در خروجی Excel جمع‌پذیر نیست. نوع عددی را نگه دارید و قالب را در RDL بدهید (برای تاریخ شمسی FORMAT روی تاریخ اشکالی ندارد)."));
+  // FORMAT روی عدد بد است؛ روی تاریخ (الگوی yyyy/MM/dd یا ستون تاریخ) همان توصیهٔ خود مهارت است
+  const textKeep = blankNoise(text, { keepStrings: true });
+  const numericFormat = [...textKeep.matchAll(/\bFORMAT\s*\(\s*([^,]+?)\s*,\s*(N?'[^']*')/gi)].filter((m) => {
+    if (/[yMd]{2}|HH|mm/.test(m[2])) return false;
+    const col = strip(m[1].split(".").pop()).toLowerCase();
+    const owner = known.find((t) => colsOf(t)?.has(col));
+    const type = owner ? colsOf(owner).get(col).type : "";
+    return !/date|time/i.test(type) && !/date/i.test(col);
+  });
+  if (numericFormat.length) {
+    F.push(finding("warning", "format_function", "کوئری عدد را با FORMAT() به متن تبدیل می‌کند.", "عدد قالب‌خورده در SQL متن می‌شود و در خروجی Excel جمع‌پذیر نیست. نوع عددی را نگه دارید و قالب را در RDL بدهید."));
   }
   const rawDates = out.columns.filter((c) => c.table && c.column && known.some((t) => t.toLowerCase() === c.table.toLowerCase()) && /^(datetime|date|smalldatetime|datetime2)$/i.test(colsOf(c.table)?.get(c.column.toLowerCase())?.type || ""));
   if (rawDates.length) {

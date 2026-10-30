@@ -19,6 +19,7 @@ import { cn, fa } from "@/lib/utils";
 import {
   addColumn,
   addSysParams,
+  EditError,
   fitSectionWidth,
   fixKeepWithGroup,
   fixTablixDirection,
@@ -32,7 +33,7 @@ import {
 import { sendToBuilder } from "@/lib/report/handoff";
 import { learnProfile } from "@/lib/report/profile";
 import { summarize, validateRdl } from "@/lib/report/rdl";
-import { rdlType, withoutLeadingDeclares } from "@/lib/report/sqlmeta";
+import { rdlType } from "@/lib/report/sqlmeta";
 import { NUMBER_FORMATS } from "@/lib/report/build";
 import { Section, SqlBlock } from "@/components/primitives";
 import { Button } from "@/components/ui/button";
@@ -92,8 +93,10 @@ export default function AnalyzeTab({ onOpenTab }) {
       setDoc((d) => ({ ...d, text: res.text, history: [...d.history, { text: d.text, label }].slice(-25) }));
       toast.success(label);
     } catch (e) {
-      setLog((l) => [{ label, changes: [e.message], ok: false, at: Date.now() }, ...l].slice(0, 30));
-      toast.error(e.message || "ویرایش ناموفق بود.");
+      // خطای پیش‌بینی‌نشده (نه EditError) با پیام فنی خام به کاربر نمی‌رسد
+      const msg = e instanceof EditError ? e.message : `این ویرایش روی ساختار این فایل ممکن نشد و هیچ تغییری اعمال نشد. (${e.message})`;
+      setLog((l) => [{ label, changes: [msg], ok: false, at: Date.now() }, ...l].slice(0, 30));
+      toast.error(msg);
     }
   };
 
@@ -123,7 +126,7 @@ export default function AnalyzeTab({ onOpenTab }) {
           <div className="space-y-3">
             <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-border bg-ink/40 px-4 py-8 text-center transition-colors hover:border-brand/45">
               <FileSearch className="h-7 w-7 text-brand-text" />
-              <span className="text-sm font-semibold text-foreground">انتخاب فایل .rdl</span>
+              <span className="text-sm font-semibold text-foreground">انتخاب فایل <bdi dir="ltr">.rdl</bdi></span>
               <span className="text-[11px] text-muted-foreground">کشف ساختار، اعتبارسنجی کامل، اصلاح جراحی و یادگیری پروفایل سازمانی</span>
               <input
                 type="file"
@@ -377,11 +380,15 @@ function QueryEditor({ summary, apply }) {
         </div>
         <div className="flex flex-wrap gap-2">
           <Button size="sm" disabled={!sql.trim() || sql === ds.commandText} onClick={() => apply(`کوئری تازهٔ ${ds.name}`, (text) => {
-            const body = withoutLeadingDeclares(sql);
-            const r1 = setCommandText(text, { dataSet: ds.name, sql: body });
+            const r1 = setCommandText(text, { dataSet: ds.name, sql });
             if (!alsoSync) return r1;
-            const r2 = syncFields(r1.text, { dataSet: ds.name, removeGhosts });
-            return { text: r2.text, changes: [...r1.changes, ...r2.changes], changed: r1.changed || r2.changed };
+            // کوئری تازه می‌ماند حتی اگر فیلدها خودکار هم‌خوان نشوند (SELECT *، جدول موقت…)
+            try {
+              const r2 = syncFields(r1.text, { dataSet: ds.name, removeGhosts });
+              return { text: r2.text, changes: [...r1.changes, ...r2.changes], changed: r1.changed || r2.changed };
+            } catch (e) {
+              return { ...r1, changes: [...r1.changes, `هم‌خوانی فیلدها انجام نشد: ${e.message} — فیلدها را در Report Builder با «Refresh Fields» به‌روز کنید.`] };
+            }
           })}>
             <Hammer />جایگزینی کوئری
           </Button>

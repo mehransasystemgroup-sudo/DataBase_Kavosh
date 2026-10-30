@@ -102,6 +102,10 @@ function AppShell() {
   const [settingsVersion, setSettingsVersion] = useState(0);
 
   const view = ["graph", "lookup", "assistant", "reports"].includes(route.view) ? route.view : "explorer";
+  // زیرزبانهٔ ناشناخته (#/reports/xyz) به نشانی درست برگردد، نه اینکه در نوار نشانی بماند
+  useEffect(() => {
+    if (route.view === "reports" && !route.sub && /^#\/reports\/./.test(window.location.hash)) navigate({ view: "reports" }, { replace: true });
+  }, [route, navigate]);
   const graphSchema = route.schema || "FIN3";
 
   const refreshHealth = useCallback(async () => {

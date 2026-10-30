@@ -21,7 +21,7 @@
 
 > **هرگز یک فایل RDL را از صفر تایپ نکن.** همیشه `templates/blank-report-2016.rdl` را کپی کن و تغییرش بده.
 
-دلیل: RDL بر پایه‌ی `xsd:sequence` است، نه `xsd:all`. یعنی **ترتیب المان‌ها اجباری است.** اگر `<Direction>` را قبل از `<TablixRowHierarchy>` بگذاری، فایل well-formed می‌ماند ولی Report Builder موقع باز کردن ارور می‌دهد — و اعتبارسنجی XML این را نمی‌گیرد. قالب این ترتیب را از قبل درست دارد.
+دلیل: RDL بر پایه‌ی `xsd:sequence` است، نه `xsd:all`. یعنی **ترتیب المان‌ها اجباری است.** اگر `<LayoutDirection>` را قبل از `<TablixRowHierarchy>` بگذاری، فایل well-formed می‌ماند ولی Report Builder موقع باز کردن ارور می‌دهد — و اعتبارسنجی XML این را نمی‌گیرد. قالب این ترتیب را از قبل درست دارد.
 
 قالب موجود شامل این‌هاست و همگی با `scripts/validate_rdl.py` تست شده‌اند:
 منبع داده، سه دیتاست (اصلی + دو دیتاست پارامتر)، شش پارامتر (سال مالی، شعبه‌ی اختیاری، بازه‌ی تاریخ شمسی + دو پارامتر مخفی تبدیل تاریخ)، هدر و فوتر با شماره‌ی صفحه، و یک Tablix پنج‌ستونه‌ی RTL با ردیف عنوان تکرارشونده، گروه‌بندی، جزئیات و جمع گروه.
@@ -241,7 +241,7 @@ WHERE v.BranchRef IN (SELECT CAST(value AS bigint) FROM STRING_SPLIT(@BranchList
   </CellContents>
 </TablixCell>
 ```
-وقتی `ColSpan=5` می‌گذاری، **باید ۴ `<TablixCell>` بعدی را حذف کنی.** یعنی آن ردیف دیگر ۵ سلول ندارد، ۱ سلول دارد. این «قانون تعداد سلول == تعداد ستون» را می‌شکند و `validate_rdl.py` آن را به‌عنوان خطا گزارش می‌کند. **در قالب عمداً از ColSpan استفاده نشده** — به‌جایش سلول‌های خالی هم‌رنگ گذاشته شده که همان ظاهر را می‌دهد بدون شکستن قانون شمارش. اگر واقعاً به ColSpan نیاز داری، بعد از اضافه کردنش هشدار اعتبارسنج را دستی بررسی و تأیید کن.
+وقتی `ColSpan=5` می‌گذاری، **۴ سلول بعدی حذف نمی‌شوند، خالی می‌شوند:** هرکدام یک `<TablixCell />` بی‌محتوا. یعنی ردیف همچنان ۵ `TablixCell` دارد و «قانون تعداد سلول == تعداد ستون» برقرار می‌ماند — Report Builder خودش هم همین شکل را می‌نویسد. همین برای `RowSpan=N`: در N−1 ردیف بعد، خانه‌های زیر آن سلول `<TablixCell />` خالی‌اند. (یادداشت کاوشگر: متن قبلی این بخش می‌گفت سلول‌ها را حذف کن؛ این شکل فشرده را برخی نسخه‌ها نمی‌خوانند. گزارش‌ساز و اعتبارسنجش شکل کامل بالا را می‌سازند و می‌پذیرند.)
 
 ---
 
@@ -335,11 +335,11 @@ WHERE v.BranchRef IN (SELECT CAST(value AS bigint) FROM STRING_SPLIT(@BranchList
 ```xml
 <Tablix Name="TablixMain">
   …
-  <Direction>RTL</Direction>     <!-- بعد از TablixRowHierarchy، قبل از DataSetName -->
+  <LayoutDirection>RTL</LayoutDirection>     <!-- بعد از TablixRowHierarchy، قبل از DataSetName -->
 </Tablix>
 ```
 
-با `Direction=RTL`: **ستون اول در XML = راست‌ترین ستون روی صفحه.** این خیلی شهودی‌تر از حالت بدون فلگ است و باعث می‌شود ترتیب ستون‌ها در XML با ترتیب خواندن فارسی یکی باشد.
+با `LayoutDirection=RTL`: **ستون اول در XML = راست‌ترین ستون روی صفحه.** این خیلی شهودی‌تر از حالت بدون فلگ است و باعث می‌شود ترتیب ستون‌ها در XML با ترتیب خواندن فارسی یکی باشد.
 
 سایر تنظیمات RTL:
 - `<Language>fa-IR</Language>` در سطح `<Report>`.
@@ -392,7 +392,7 @@ WHERE v.BranchRef IN (SELECT CAST(value AS bigint) FROM STRING_SPLIT(@BranchList
 |---|---|
 | «The report definition is not valid» بدون جزئیات | ترتیب المان‌ها اشتباه است، یا namespace با ساختار نمی‌خواند |
 | `The tablix has a detail member with inner members` | یک `<TablixMember>` با `Group Name="Details"` فرزند `TablixMembers` دارد — گروه جزئیات باید برگ باشد |
-| `The number of cells in row N does not match` | قانون سه‌گانه شکسته: تعداد سلول ≠ تعداد ستون (یا `ColSpan` بدون حذف سلول‌های بعدی) |
+| `The number of cells in row N does not match` | قانون سه‌گانه شکسته: تعداد سلول ≠ تعداد ستون (یا `ColSpan`/`RowSpan` بدون `<TablixCell />` خالی به‌جای خانه‌های ادغام‌شده) |
 | `The Value expression for the textbox refers to a field. Fields cannot be used in page headers or footers` | همان محدودیت بخش ۷ |
 | `The expression … includes an aggregate … which cannot be used in page headers or footers` | `Sum`/`First`/`Lookup` در هدر — با `ReportItems!` جایگزینش کن |
 | `Textbox 'X' is not unique` | نام تکراری Textbox در کل فایل |
