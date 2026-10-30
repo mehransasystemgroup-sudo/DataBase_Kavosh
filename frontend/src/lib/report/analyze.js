@@ -113,7 +113,7 @@ export function mergeByName(fresh, previous, keep) {
   return merged.sort((a, b) => (order.get(a.name.toLowerCase()) ?? 1e6 + fresh.indexOf(a)) - (order.get(b.name.toLowerCase()) ?? 1e6 + fresh.indexOf(b)));
 }
 
-export const FIELD_KEEP = ["label", "visible", "total", "format", "width"];
+export const FIELD_KEEP = ["label", "visible", "total", "format", "width", "hideEmpty"];
 export const PARAM_KEEP = ["prompt", "dataType", "nullable", "allowBlank", "multiValue", "hidden", "defaults", "useHelper"];
 
 /** طرح UI ← spec سازندهٔ RDL. */

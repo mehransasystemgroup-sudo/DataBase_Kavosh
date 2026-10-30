@@ -304,13 +304,30 @@ function tableTablix(spec, pf, name, ds, top) {
   const xml = `<Tablix Name="${name("TablixMain")}"><TablixBody><TablixColumns>`
     + cols.map((c) => `<TablixColumn><Width>${cm(c.width)}</Width></TablixColumn>`).join("")
     + `</TablixColumns><TablixRows>${body.join("")}</TablixRows></TablixBody>`
-    + `<TablixColumnHierarchy><TablixMembers>${"<TablixMember />".repeat(n)}</TablixMembers></TablixColumnHierarchy>`
+    + `<TablixColumnHierarchy><TablixMembers>${cols.map((c) => columnMember(c, ds)).join("")}</TablixMembers></TablixColumnHierarchy>`
     + rowHierarchy(layout, groupNames, detailSort)
     + `<RepeatColumnHeaders>true</RepeatColumnHeaders><RepeatRowHeaders>true</RepeatRowHeaders><LayoutDirection>RTL</LayoutDirection>`
     + `<DataSetName>${ds}</DataSetName><NoRowsMessage>داده‌ای برای نمایش وجود ندارد.</NoRowsMessage>`
     + `<Top>${cm(top)}</Top><Left>0cm</Left><Height>${cm(height)}</Height><Width>${cm(width)}</Width>`
     + `<Style><Border><Style>None</Style></Border></Style></Tablix>`;
   return { xml, width, height };
+}
+
+/**
+ * عضو ستون؛ «ستون پویا» (hideEmpty) وقتی در کل نتیجه هیچ مقداری ندارد پنهان می‌شود.
+ * عددی: همه NULL یا صفر ← پنهان. غیرعددی: همه NULL یا رشتهٔ خالی ← پنهان.
+ * Scope دیتاست است نه ردیف، تا کل ستون (عنوان، بدنه و جمع) با هم پنهان شود.
+ */
+export function hideEmptyExpr(field, ds) {
+  const ref = `Fields!${field.name}.Value`;
+  return isNumericType(field.sqlType)
+    ? `=Sum(Abs(CDec(IIf(IsNothing(${ref}), 0, ${ref}))), "${ds}") = 0`
+    : `=Sum(IIf(Len(Trim(${ref} & "")) = 0, 0, 1), "${ds}") = 0`;
+}
+
+function columnMember(c, ds) {
+  if (c.kind !== "field" || !c.field.hideEmpty) return "<TablixMember />";
+  return `<TablixMember><Visibility><Hidden>${escapeText(hideEmptyExpr(c.field, ds))}</Hidden></Visibility></TablixMember>`;
 }
 
 // ───────────────────────── ماتریس ─────────────────────────

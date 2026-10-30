@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import sqlite3
+import threading
 from collections import deque
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -100,8 +101,16 @@ class KnowledgeBase:
 
     def __init__(self, db_path: str | Path):
         self._db_path = str(db_path)
-        self.db = self._connect()
+        # هر نخ اتصال خودش را دارد: FastAPI درخواست‌های هم‌زمان را در threadpool
+        # اجرا می‌کند و یک sqlite3.Connection مشترک زیر بار هم‌زمان با
+        # «InterfaceError: bad parameter or other API misuse» می‌شکند
+        self._local = threading.local()
+        self._conns: set[sqlite3.Connection] = set()
+        self._conns_lock = threading.Lock()
+        self._gen = 0
+        self._closed = False
         self._adj: dict[str, list[tuple]] | None = None
+        self.db  # ایندکس ناموجود/خراب همان لحظهٔ ساخت خطا بدهد، نه در اولین درخواست
 
     def _connect(self) -> sqlite3.Connection:
         db = sqlite3.connect(f"file:{self._db_path}?mode=ro", uri=True,
@@ -109,23 +118,45 @@ class KnowledgeBase:
         db.row_factory = sqlite3.Row
         return db
 
+    @property
+    def db(self) -> sqlite3.Connection:
+        """اتصال فقط-خواندنی همین نخ؛ پس از reload اتصال تازه باز می‌شود."""
+        conn = getattr(self._local, "conn", None)
+        if conn is not None and not self._closed and getattr(self._local, "gen", -1) == self._gen:
+            return conn
+        with self._conns_lock:
+            if self._closed:
+                # میان close و reload (بازسازی ایندکس) فایل نباید دوباره باز شود
+                raise sqlite3.ProgrammingError("Cannot operate on a closed database.")
+            conn = self._connect()
+            self._conns.add(conn)
+            self._local.conn = conn
+            self._local.gen = self._gen
+        return conn
+
     def close(self) -> None:
         """
-        بستن اتصال.
+        بستن همهٔ اتصال‌ها (همهٔ نخ‌ها).
 
         روی ویندوز لازم است: تا وقتی فایل ایندکس باز باشد، جایگزینی‌اش هنگام
         بازسازی با خطای «فایل در حال استفاده است» شکست می‌خورد.
         """
-        try:
-            self.db.close()
-        except Exception:
-            pass
+        with self._conns_lock:
+            conns, self._conns = self._conns, set()
+            self._gen += 1
+            self._closed = True
+        for conn in conns:
+            try:
+                conn.close()
+            except Exception:
+                pass
 
     def reload(self) -> None:
         """اتصال را به ایندکس تازه‌بازسازی‌شده بازمی‌کند — بدون ری‌استارت سرور."""
         self.close()
-        self.db = self._connect()
         self._adj = None
+        with self._conns_lock:
+            self._closed = False
 
     def apply_learned(self, kind: str, payload: dict) -> None:
         """

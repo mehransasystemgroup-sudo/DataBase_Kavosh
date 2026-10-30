@@ -181,3 +181,19 @@ describe("کتابخانهٔ گوشی (R1-21)", () => {
     expect([...m.keys()].some((k) => k.startsWith("kavosh.reports.v1.broken-"))).toBe(true);
   });
 });
+
+describe("ستون پویا (hideEmpty)", () => {
+  it("ستون علامت‌خورده Visibility با Scope دیتاست می‌گیرد و ساختار سالم می‌ماند", () => {
+    const s = spec("DECLARE @FY bigint = 1;\nSELECT v.Number, v.Description, SUM(i.Debit) AS Debit FROM FIN3.Voucher v JOIN FIN3.VoucherItem i ON i.VoucherRef = v.VoucherID WHERE v.FiscalYearRef = @FY GROUP BY v.Number, v.Description");
+    s.fields = s.fields.map((f) => (f.name === "Description" || f.name === "Debit" ? { ...f, hideEmpty: true } : f));
+    const { rdl } = buildRdl(s);
+    expect(errors(rdl)).toEqual([]);
+    const hier = rdl.match(/<TablixColumnHierarchy>([\s\S]*?)<\/TablixColumnHierarchy>/)[1];
+    const members = hier.match(/<TablixMember\s*\/>|<TablixMember>[\s\S]*?<\/TablixMember>/g);
+    const cols = (rdl.match(/<TablixColumn>/g) || []).length;
+    expect(members.length).toBe(cols);
+    expect(hier).toContain('=Sum(IIf(Len(Trim(Fields!Description.Value &amp; "")) = 0, 0, 1), "dsMain") = 0');
+    expect(hier).toMatch(/Sum\(Abs\(CDec\(IIf\(IsNothing\(Fields!Debit\.Value\), 0, Fields!Debit\.Value\)\)\), "dsMain"\) = 0/);
+    expect(hier).not.toContain("Fields!Number.Value");
+  });
+});

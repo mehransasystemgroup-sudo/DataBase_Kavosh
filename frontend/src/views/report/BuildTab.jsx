@@ -4,6 +4,7 @@ import {
   ArrowUp,
   BookmarkPlus,
   Columns3,
+  Eye,
   FileCode2,
   FileUp,
   Hammer,
@@ -48,6 +49,7 @@ import {
   structuralCheck,
   useStoredState,
 } from "./shared";
+import { LayoutPreview } from "./LayoutPreview";
 
 /*
   ساخت گزارش — از کوئری تا فایل RDL که Report Builder باز می‌کند.
@@ -371,6 +373,7 @@ export default function BuildTab({ onOpenTab }) {
                     <th className="px-2 py-1.5 text-start font-medium">فیلد</th>
                     <th className="px-2 py-1.5 text-start font-medium">عنوان ستون</th>
                     <th className="px-2 py-1.5 text-start font-medium">جمع</th>
+                    <th className="px-2 py-1.5 text-start font-medium" title="اگر در کل نتیجه هیچ مقداری نداشت (عددی: فقط صفر/NULL) ستون با عنوان و جمعش پنهان شود">ستون پویا</th>
                     <th className="px-2 py-1.5 text-start font-medium">قالب عدد</th>
                     <th className="px-2 py-1.5 text-start font-medium">عرض (cm)</th>
                     <th className="px-2 py-1.5 text-start font-medium">ترتیب</th>
@@ -386,6 +389,7 @@ export default function BuildTab({ onOpenTab }) {
                       </td>
                       <td className="px-2 py-1"><Input className={smallInput} value={f.label} onChange={(e) => setField(i, { label: e.target.value })} /></td>
                       <td className="px-2 py-1"><Check checked={f.total} onChange={(v) => setField(i, { total: v })} /></td>
+                      <td className="px-2 py-1"><Check checked={Boolean(f.hideEmpty)} onChange={(v) => setField(i, { hideEmpty: v })} title="پنهان شدن خودکار ستون وقتی در کل نتیجه خالی است" /></td>
                       <td className="px-2 py-1">
                         <Select className={cn(smallInput, "min-w-36")} value={f.format || ""} onChange={(e) => setField(i, { format: e.target.value })}>
                           {!NUMBER_FORMATS.some((n) => n.value === (f.format || "")) && <option value={f.format}>{f.format}</option>}
@@ -583,6 +587,10 @@ export default function BuildTab({ onOpenTab }) {
                 )}
               </div>
             </div>
+          </Section>
+
+          <Section icon={Eye} title="پیش‌نمایش چیدمان" hint="هم‌زمان با تغییر ستون‌ها و چیدمان به‌روز می‌شود">
+            <LayoutPreview title={state.title} fields={state.fields} params={state.params} layout={state.layout} profile={profile} />
           </Section>
 
           {/* ۵) ساخت */}
