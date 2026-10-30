@@ -12,6 +12,10 @@ import { cn } from "@/lib/utils";
 */
 
 const PX_PER_CM = 30;
+// ستون باریک‌تر از این در پیش‌نمایش ناخوانا می‌شود؛ عرض واقعی RDL دست نمی‌خورد
+const MIN_CM = 1.4;
+const colWidth = (c) => (c.key === "#" ? c.width : Math.max(MIN_CM, c.width));
+const isToken = (text) => /^\[/.test(text);
 const ref = (name) => `[${name}]`;
 const sumRef = (name, agg = "Sum") => `[${agg}(${name})]`;
 
@@ -89,7 +93,7 @@ export function LayoutPreview({ title, fields, params = [], layout, profile }) {
   if (!model.cols.length) {
     return <p className="text-[11.5px] text-warn">هیچ ستونی برای نمایش انتخاب نشده است.</p>;
   }
-  const width = model.cols.reduce((a, c) => a + c.width, 0);
+  const width = model.cols.reduce((a, c) => a + colWidth(c), 0);
   const bgOf = (r) =>
     r.kind === "header" ? profile.headerBg
       : r.kind === "group_header" ? profile.groupBg
@@ -109,7 +113,7 @@ export function LayoutPreview({ title, fields, params = [], layout, profile }) {
           {filters && <div className="pb-2 text-center text-[10px] text-[#555]">{filters}</div>}
           <table className="border-collapse" style={{ width: width * PX_PER_CM, tableLayout: "fixed", fontSize: `${profile.fontSize}pt` }}>
             <colgroup>
-              {model.cols.map((c) => <col key={c.key} style={{ width: c.width * PX_PER_CM }} />)}
+              {model.cols.map((c) => <col key={c.key} style={{ width: colWidth(c) * PX_PER_CM }} />)}
             </colgroup>
             <tbody>
               {model.rows.map((r, i) => {
@@ -131,13 +135,14 @@ export function LayoutPreview({ title, fields, params = [], layout, profile }) {
                         <td
                           key={k}
                           colSpan={cell.span || 1}
+                          dir={isToken(cell.text) ? "ltr" : undefined}
                           className={cn(
                             "border border-[#c8c8c8] px-1 py-0.5",
                             r.kind === "header" ? "break-words" : "truncate",
                             r.kind === "header" && "text-center",
                             r.kind === "group_header" && "text-start",
                             heading && "font-bold",
-                            /^\[/.test(cell.text) && !cell.label && r.kind !== "group_header" && "font-mono text-[0.85em] text-[#1f4e79]",
+                            isToken(cell.text) && !cell.label && r.kind !== "group_header" && "font-mono text-[0.85em] text-[#1f4e79]",
                             col?.dynamic && (cell.span || 1) === 1 && "bg-[repeating-linear-gradient(135deg,transparent,transparent_4px,rgba(197,85,85,0.08)_4px,rgba(197,85,85,0.08)_8px)]",
                             col?.ghost && "text-[#999]",
                           )}

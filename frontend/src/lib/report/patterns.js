@@ -68,10 +68,19 @@ export function testHarness(sql, { title = "", types = {} } = {}) {
   const clean = blankNoise(body);
   for (const p of params) {
     if (existing.some((d) => d.name.toLowerCase() === p.toLowerCase())) continue;
-    const v = testValue(p, types[p]);
+    let v = testValue(p, types[p]);
+    const name = p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     // چندمقداری: در SSMS فقط یک مقدار می‌شود داد؛ با NULL، «IN (NULL)» هیچ ردیفی برنمی‌گرداند
-    const multi = new RegExp(`\\bIN\\s*\\(\\s*@${p}\\s*\\)`, "i").test(clean);
-    const note = multi ? `چندمقداری در گزارش — این‌جا یک مقدار نمونه بدهید؛ با NULL هیچ ردیفی نمی‌آید${v.note ? `؛ ${v.note}` : ""}` : v.note;
+    const multi = new RegExp(`\\bIN\\s*\\(\\s*@${name}\\s*\\)`, "i").test(clean);
+    const split = new RegExp(`STRING_SPLIT\\s*\\(\\s*@${name}(?![\\w\u0600-\u06FF\u200C])`, "i").test(clean);
+    let note = v.note;
+    if (split) {
+      v = { type: "nvarchar(max)", value: "N'1,2'" };
+      note = "چندمقداری (STRING_SPLIT) — فهرست نمونه را با مقدارهای واقعی عوض کنید";
+    } else if (multi) {
+      if (v.value === "NULL") v = { ...v, value: /int|numeric|decimal|money|float|real|bit/.test(v.type) ? "1" : "N''" };
+      note = `چندمقداری در گزارش — مقدار نمونه را عوض کنید؛ برای آزمون چند مقدار، IN (@${p}) را موقتاً IN (1, 2) بنویسید (با NULL هیچ ردیفی نمی‌آید)`;
+    }
     lines.push(`DECLARE @${p} ${v.type} = ${v.value};${note ? ` -- ${note}` : ""}`);
   }
   if (params.length || existing.length) lines.push("");

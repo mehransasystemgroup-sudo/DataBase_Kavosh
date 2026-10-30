@@ -23,7 +23,7 @@
 import { escapeAttr, escapeText } from "./xml.js";
 import { cm, PAGE_SIZES } from "./units.js";
 import { isDateType, isNumericType, rdlType } from "./sqlmeta.js";
-import { rdlName, SYS_PARAMS } from "./rdl.js";
+import { paramName, rdlName, SYS_PARAMS } from "./rdl.js";
 
 export const DEFAULT_PROFILE = {
   dataSource: "shared",
@@ -59,7 +59,7 @@ export const NUMBER_FORMATS = [
 ];
 
 /** متن ثابتی که با «=» شروع شود را SSRS عبارت می‌خواند؛ رشتهٔ صریح می‌شود. */
-const lit = (s) => (/^\s*=/.test(String(s)) ? `="${String(s).replace(/"/g, '""')}"` : String(s));
+export const lit = (s) => (/^\s*=/.test(String(s)) ? `="${String(s).replace(/"/g, '""')}"` : String(s));
 export const DATE_FORMAT = "yyyy/MM/dd";
 
 // ───────────────────────── کمک‌ها ─────────────────────────
@@ -70,7 +70,8 @@ const ID_LIKE = /(ID|Ref|Code|Number|No|Year|YearMonth|Type|State|Status|Kind)$/
 export function isMeasure(field) {
   if (!isNumericType(field.sqlType)) return false;
   if (field.aggregate === "COUNT" || field.aggregate === "SUM" || field.aggregate === "AVG") return true;
-  return !ID_LIKE.test(field.name);
+  // «v.Number AS Num»: شناسه بودن را ستون مبدأ می‌گوید، نه نام مستعار
+  return !ID_LIKE.test(field.name) && !(field.sourceColumn && ID_LIKE.test(field.sourceColumn));
 }
 
 /** عرض پیش‌فرض ستون بر پایهٔ نوع و طول عنوان. */
@@ -96,13 +97,19 @@ export function fieldsFromColumns(columns, describe = () => null) {
     for (let k = 2; used.has(name.toLowerCase()); k++) name = `${base}_${k}`;
     used.add(name.toLowerCase());
     const info = c.table && c.column ? describe(c.table, c.column) : null;
-    const sqlType = c.sqlType || info?.type || (c.aggregate ? "decimal" : null);
+    // «a + b»: اگر همهٔ عملوندها ستون عددی‌اند، حاصل عددی است (وگرنه الحاق رشته)
+    const opTypes = (c.operands || []).map((o) => (o.table && o.column ? describe(o.table, o.column)?.type : null));
+    const arith = !c.sqlType && opTypes.length && opTypes.every((t) => t && isNumericType(t)) ? "decimal" : null;
+    const sqlType = c.sqlType || info?.type || arith || (c.aggregate ? "decimal" : null);
     const field = {
       name,
       dataField: c.name,
-      label: c.label || (c.aggregate && info?.label_fa ? `${aggLabel(c.aggregate)} ${info.label_fa}` : info?.label_fa) || c.name,
+      // نام مستعار غیرلاتین (مثل «AS [شعبه]») عنوانی است که خود کاربر نوشته و بر عنوان دانشنامه مقدم است
+      label: c.label || (/[^\x00-\x7F]/.test(c.name) ? c.name.trim() : null)
+        || (c.aggregate && info?.label_fa ? `${aggLabel(c.aggregate)} ${info.label_fa}` : info?.label_fa) || c.name,
       sqlType: sqlType || "nvarchar",
       aggregate: c.aggregate || null,
+      sourceColumn: c.column || null,
       visible: true,
     };
     field.total = isMeasure(field);
@@ -315,14 +322,15 @@ function tableTablix(spec, pf, name, ds, top) {
 
 /**
  * عضو ستون؛ «ستون پویا» (hideEmpty) وقتی در کل نتیجه هیچ مقداری ندارد پنهان می‌شود.
- * عددی: همه NULL یا صفر ← پنهان. غیرعددی: همه NULL یا رشتهٔ خالی ← پنهان.
+ * عددی: همه NULL یا صفر ← پنهان. رشته: همه NULL یا خالی ← پنهان. بقیه (تاریخ، بیت، …): همه NULL ← پنهان.
  * Scope دیتاست است نه ردیف، تا کل ستون (عنوان، بدنه و جمع) با هم پنهان شود.
  */
 export function hideEmptyExpr(field, ds) {
   const ref = `Fields!${field.name}.Value`;
-  return isNumericType(field.sqlType)
-    ? `=Sum(Abs(CDec(IIf(IsNothing(${ref}), 0, ${ref}))), "${ds}") = 0`
-    : `=Sum(IIf(Len(Trim(${ref} & "")) = 0, 0, 1), "${ds}") = 0`;
+  if (isNumericType(field.sqlType)) return `=Sum(Abs(CDec(IIf(IsNothing(${ref}), 0, ${ref}))), "${ds}") = 0`;
+  // «& ""» فقط برای رشته: روی TimeSpan/Guid/DateTimeOffset عملگر & تعریف نشده و خطای اجرا می‌دهد
+  if (rdlType(field.sqlType) === "System.String") return `=Sum(IIf(Len(Trim(${ref} & "")) = 0, 0, 1), "${ds}") = 0`;
+  return `=Sum(IIf(IsNothing(${ref}), 0, 1), "${ds}") = 0`;
 }
 
 function columnMember(c, ds) {
@@ -350,7 +358,7 @@ function matrixTablix(spec, pf, name, ds, top) {
   const rowGroup = name(`row_${rowF.name}`);
 
   const headerCells = [
-    cell(textbox(name("hdrCorner"), rowF.label || rowF.name, { bold: true, size: pf.headerFontSize, bg: pf.headerBg, align: "Center" }, pf)),
+    cell(textbox(name("hdrCorner"), lit(rowF.label || rowF.name), { bold: true, size: pf.headerFontSize, bg: pf.headerBg, align: "Center" }, pf)),
     cell(textbox(name("hdrColumn"), `=Fields!${colF.name}.Value`, { bold: true, size: pf.headerFontSize, bg: pf.headerBg, align: "Center", format: isDateType(colF.sqlType) ? DATE_FORMAT : "" }, pf)),
   ];
   const dataCells = [
@@ -461,6 +469,26 @@ function dataSetXml(name, ds, sql, fields, queryParams) {
  *   profile: DEFAULT_PROFILE را بازنویسی می‌کند,
  * }
  */
+/** آیا کوئری پارامتر چندمقداری را به شکلی به کار می‌برد که SSRS بسطش بدهد؟ */
+function multiValueUsable(sql, name) {
+  const n = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`\\bIN\\s*\\(\\s*@${n}\\s*\\)|STRING_SPLIT\\s*\\(\\s*@${n}(?![\\w\u0600-\u06FF\u200C])`, "i").test(sql);
+}
+
+/** ایراد مقدار پیش‌فرض نسبت به نوع پارامتر، یا "". */
+export function defaultProblem(dataType, value) {
+  const v = String(value ?? "").trim();
+  if (!v || v.startsWith("=")) return "";
+  if (dataType === "Integer" && !/^-?\d+$/.test(v)) return "عدد صحیح نیست؛ Report Builder آن را نمی‌پذیرد.";
+  if (dataType === "Float" && !/^-?\d+(\.\d+)?$/.test(v)) return "عدد نیست؛ Report Builder آن را نمی‌پذیرد.";
+  if (dataType === "Boolean" && !/^(true|false)$/i.test(v)) return "باید true یا false باشد.";
+  if (dataType === "DateTime") {
+    if (/^1[34]\d\d[/-]/.test(v)) return "تاریخ شمسی به نظر می‌رسد؛ پیش‌فرض DateTime میلادی است (مثلاً 2025-03-21) وگرنه سال ۱۴۰۳ میلادی تعبیر می‌شود.";
+    if (!/^\d{4}-\d{2}-\d{2}([ T]\d{2}:\d{2}(:\d{2})?)?$/.test(v) || Number.isNaN(Date.parse(v.replace(" ", "T")))) return "قالب تاریخ معتبر نیست؛ yyyy-MM-dd بنویسید.";
+  }
+  return "";
+}
+
 export function buildRdl(spec) {
   const pf = { ...DEFAULT_PROFILE, ...(spec.profile || {}) };
   const layout = { kind: "table", groups: [], grandTotal: true, rowNumber: true, stripes: true, repeatTitle: false, showFilters: true, ...(spec.layout || {}) };
@@ -489,9 +517,24 @@ export function buildRdl(spec) {
     const hasDefault = (p.defaults || []).some((d) => d !== "" && d != null) || (p.nullable && !p.multiValue);
     if (p.hidden && !hasDefault) warnings.push(`پارامتر پنهان «${p.prompt || p.name}» مقدار پیش‌فرض ندارد؛ گزارش بی‌آن اجرا نمی‌شود. پیش‌فرض بدهید یا پنهان را بردارید.`);
     if (p.multiValue && p.nullable) warnings.push(`پارامتر «${p.prompt || p.name}» چندمقداری است، پس تهی‌پذیر ساخته نشد (SSRS هر دو را با هم نمی‌پذیرد).`);
+    if (p.multiValue && !p.system && !multiValueUsable(spec.sql || "", p.name)) {
+      warnings.push(`پارامتر «${p.prompt || p.name}» چندمقداری است ولی کوئری آن را با IN (@${p.name}) یا STRING_SPLIT به کار نمی‌برد؛ سرور گزارش فهرست را «1,2» بسط می‌دهد و «= @${p.name}» خطای نحوی می‌شود.`);
+    }
+    for (const d of p.defaults || []) {
+      const bad = defaultProblem(p.dataType, d);
+      if (bad) warnings.push(`پیش‌فرض «${d}» برای پارامتر «${p.prompt || p.name}» (${p.dataType}): ${bad}`);
+    }
+  }
+  if (layout.kind === "matrix") {
+    if (fields.some((f) => f.hideEmpty)) warnings.push("«ستون پویا» در چیدمان ماتریس اعمال نمی‌شود؛ ستون‌های ماتریس خودشان فقط برای مقدارهای موجود ساخته می‌شوند.");
+    const m = layout.matrix || {};
+    const valF = fields.find((f) => f.name === m.value);
+    if (valF && ["Sum", "Avg"].includes(m.aggregate || "Sum") && !isNumericType(valF.sqlType)) {
+      warnings.push(`تابع ${m.aggregate || "Sum"} روی فیلد غیرعددی «${valF.label || valF.name}» در گزارش #Error می‌دهد؛ Count یا Min/Max را بگیرید یا فیلد عددی انتخاب کنید.`);
+    }
   }
   const queryParams = (spec.queryParams || []).map((q) => {
-    const p = paramByLower.get(q.toLowerCase());
+    const p = paramByLower.get(q.toLowerCase()) || paramByLower.get(paramName(q).toLowerCase());
     if (!p) warnings.push(`پارامتر @${q} در کوئری هست ولی پارامتر گزارشِ هم‌نامی ندارد.`);
     // چندمقداری: در کوئری متنی «IN (@P)» را خود سرور گزارش بسط می‌دهد و آرایه می‌خواهد؛
     // فقط وقتی کوئری فهرست را با STRING_SPLIT می‌شکند، رشتهٔ Join شده لازم است.

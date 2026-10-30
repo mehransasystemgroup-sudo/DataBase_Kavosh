@@ -74,6 +74,10 @@ export function blankNoise(sql, { keepStrings = false } = {}) {
   return out;
 }
 
+// نام متغیر T-SQL: حروف یونیکد هم مجازند (@عنوان). بدون \p{} که WebView اندروید ۷ ندارد.
+const FA = "\u0600-\u06FF\u200C";
+const VAR = `[A-Za-z_${FA}][\\w$#${FA}]*`;
+
 /** متغیرهای DECLARE شده (و جدول‌متغیرها) — این‌ها پارامتر گزارش نیستند. */
 export function declaredNames(sql) {
   const clean = blankNoise(sql);
@@ -81,7 +85,7 @@ export function declaredNames(sql) {
   const re = /\bDECLARE\b([\s\S]*?)(?=;|\bDECLARE\b|\bSELECT\b|\bSET\b|\bIF\b|\bWITH\b|\bINSERT\b|\bUPDATE\b|\bDELETE\b|\bEXEC(?:UTE)?\b|\bCREATE\b|\bWHILE\b|\bBEGIN\b|\bTRUNCATE\b|\bDROP\b|$)/gi;
   let m;
   while ((m = re.exec(clean))) {
-    for (const v of m[1].matchAll(/@([A-Za-z_][\w$#]*)/g)) names.add(v[1].toLowerCase());
+    for (const v of m[1].matchAll(new RegExp(`@(${VAR})`, "g"))) names.add(v[1].toLowerCase());
   }
   // پارامترهای sp_executesql داخل رشته‌اند و در blankNoise پاک شده‌اند؛ همین درست است.
   return names;
@@ -92,7 +96,7 @@ export function queryParameters(sql) {
   const clean = blankNoise(sql);
   const declared = declaredNames(sql);
   const seen = new Map();
-  for (const m of clean.matchAll(/(^|[^@\w])@([A-Za-z_][\w$#]*)/g)) {
+  for (const m of clean.matchAll(new RegExp(`(^|[^@\\w${FA}])@(${VAR})`, "g"))) {
     const name = m[2];
     const key = name.toLowerCase();
     if (declared.has(key) || seen.has(key)) continue;
@@ -101,7 +105,7 @@ export function queryParameters(sql) {
   return [...seen.values()];
 }
 
-const DECLARE_ITEM = /@([A-Za-z_][\w$#]*)\s+(?:AS\s+)?([A-Za-z_][\w]*(?:\s*\(\s*(?:\d+|max)\s*(?:,\s*\d+\s*)?\))?)\s*(?:=\s*((?:N?'(?:[^']|'')*'|[^,;\n]+?)))?\s*(?=,|;|\n|$)/gi;
+const DECLARE_ITEM = /@([A-Za-z_\u0600-\u06FF\u200C][\w$#\u0600-\u06FF\u200C]*)\s+(?:AS\s+)?([A-Za-z_][\w]*(?:\s*\(\s*(?:\d+|max)\s*(?:,\s*\d+\s*)?\))?)\s*(?:=\s*((?:N?'(?:[^']|'')*'|[^,;\n]+?)))?\s*(?=,|;|\n|$)/gi;
 
 /**
  * DECLARE های سطح بالای کوئری با نوع و مقدار نمونه.
@@ -284,6 +288,7 @@ export function outputColumns(sql) {
       let column = null;
       let sqlType = null;
       let aggregate = null;
+      let operands = null;
       if (e.type === "column_ref") {
         column = strip(typeof e.column === "object" ? e.column?.expr?.value : e.column);
         if (!name) name = column;
@@ -309,15 +314,28 @@ export function outputColumns(sql) {
         sqlType = Number.isInteger(e.value) ? "int" : "decimal";
       } else if (/string$/.test(e.type || "")) {
         sqlType = "nvarchar";
-      } else if (e.type === "binary_expr" && ["+", "-", "*", "/"].includes(e.operator)) {
-        sqlType = null;
+      } else if (e.type === "binary_expr" && ["+", "-", "*", "/", "%"].includes(e.operator)) {
+        // - * / % فقط روی عدد معنا دارد؛ + با رشته الحاق است، پس نوعش از عملوندها می‌آید
+        const leaves = arithLeaves(e);
+        if (leaves.some((x) => /string$/.test(x.type || ""))) sqlType = "nvarchar";
+        else if (e.operator !== "+" || leaves.some((x) => x.type === "number")) sqlType = "decimal";
+        operands = leaves.filter((x) => x.type === "column_ref").map((x) => {
+          const q = x.table ? strip(x.table).toLowerCase() : "";
+          return { table: q ? aliases.get(q) || null : aliases.size === 1 ? [...aliases.values()][0] : null, column: strip(x.column) };
+        });
       }
       if (!name) name = "";
-      columns.push({ name, table, column, sqlType, aggregate, label: labels.get(name.toLowerCase()) || "", expression: e.type || "" });
+      columns.push({ name, table, column, sqlType, aggregate, operands, label: labels.get(name.toLowerCase()) || "", expression: e.type || "" });
     }
     return { columns, star, method: "parser", error: null };
   }
   return { ...textColumns(src, labels), method: "text" };
+}
+
+/** برگ‌های یک عبارت حسابی (پرانتزها و + - * / تودرتو باز می‌شوند). */
+function arithLeaves(e) {
+  if (e?.type === "binary_expr" && ["+", "-", "*", "/", "%"].includes(e.operator)) return [...arithLeaves(e.left), ...arithLeaves(e.right)];
+  return e ? [e] : [];
 }
 
 /** خوانش متنی محافظه‌کار: فهرست ستون‌های آخرین SELECT سطح بالا. */

@@ -18,10 +18,10 @@
 
 import { ancestor, childText, elements, escapeAttr, escapeText, findAll, indentOf, kid, kids, local, parseXml, textOf } from "./xml.js";
 import { cm, toCm } from "./units.js";
-import { cellGrid, inspectRdl, memberLeaves, rdlName, SYS_PARAMS, validateRdl } from "./rdl.js";
+import { cellGrid, inspectRdl, memberLeaves, paramName, rdlName, SYS_PARAMS, validateRdl } from "./rdl.js";
 import { leadingDeclares, outputColumns, paramDataType, queryParameters, rdlType, withoutLeadingDeclares } from "./sqlmeta.js";
-import { paramXml, sysParamSpecs } from "./build.js";
-import { paramSqlType } from "./analyze.js";
+import { lit, paramXml, sysParamSpecs } from "./build.js";
+import { paramFor } from "./analyze.js";
 
 export class EditError extends Error {}
 
@@ -38,8 +38,14 @@ function applyEdits(text, edits) {
   return out;
 }
 
-/** کلید یافته‌های «خطا»ی اعتبارسنج، برای سنجش پیش و پس از ویرایش. */
-const errorKeys = (text) => new Set(validateRdl(text).findings.filter((f) => f.severity === "error").map((f) => `${f.code}|${f.where || ""}`));
+/*
+  کلید یافته‌های «خطا»ی اعتبارسنج، برای سنجش پیش و پس از ویرایش. یافته‌هایی که
+  فهرست نام می‌دهند (فیلد/پارامتر ناموجود) با متن کامل کلید می‌شوند: وگرنه
+  ارجاع خراب تازه پشت ارجاع خرابِ از قبل موجود در همان Tablix پنهان می‌ماند.
+*/
+const LISTING = new Set(["unknown_field", "unknown_param_ref", "unknown_param"]);
+const errorKey = (f) => `${f.code}|${f.where || ""}${LISTING.has(f.code) ? `|${f.message}` : ""}`;
+const errorKeys = (text) => new Set(validateRdl(text).findings.filter((f) => f.severity === "error").map(errorKey));
 
 function finish(text, edits, changes, { allow = [] } = {}) {
   if (!edits.length) return { text, changes: changes.length ? changes : ["تغییری لازم نبود."], changed: false };
@@ -51,7 +57,7 @@ function finish(text, edits, changes, { allow = [] } = {}) {
   }
   // ویرایشی که خطای ساختاری تازه بسازد تحویل نمی‌شود — فایل خراب از دانلود بدتر است
   const was = errorKeys(text);
-  const fresh = validateRdl(out).findings.filter((f) => f.severity === "error" && !allow.includes(f.code) && !was.has(`${f.code}|${f.where || ""}`));
+  const fresh = validateRdl(out).findings.filter((f) => f.severity === "error" && !allow.includes(f.code) && !was.has(errorKey(f)));
   if (fresh.length) {
     throw new EditError(`این ویرایش فایل را از نظر ساختاری خراب می‌کرد، پس اعمال نشد: ${fresh.slice(0, 3).map((f) => f.message).join(" — ")}`);
   }
@@ -227,6 +233,9 @@ export function addColumn(text, opts) {
   const grid = fullGrid(t);
   const leafEls = columnLeaves(t);
   const widened = new Set();
+  // در سرستون چندردیفی، عنوان ستون تازه فقط در پایین‌ترین ردیف سرستون می‌آید
+  let captionRow = -1;
+  roles.forEach((r, i) => { if (r === "header" && (captionRow === i - 1 || captionRow === -1 && i === 0)) captionRow = i; });
   t.rows.forEach((r, ri) => {
     const g = grid[ri];
     const leftO = index > 0 ? g[index - 1] : null;
@@ -234,8 +243,10 @@ export function addColumn(text, opts) {
     // جایگاه تازه وسط یک ادغام افقی، یا کنار ادغامی که تا لبهٔ جدول رسیده
     // (عنوان تمام‌عرض، سرگروه): همان ادغام پهن‌تر می‌شود
     const inside = leftO && rightO && leftO === rightO && leftO.cs > 1;
-    const edgeRight = index === n && leftO && leftO.cs > 1 && leftO.c0 + leftO.cs === n;
-    const edgeLeft = index === 0 && rightO && rightO.cs > 1 && rightO.c0 === 0;
+    // فقط ادغام تمام‌عرض (عنوان، سرگروه) پهن می‌شود؛ سرعنوانِ چندستونیِ جزئی
+    // (مثل «مبالغ» روی دو ستون) کنار لبه ستون تازه را نمی‌پوشاند
+    const edgeRight = index === n && leftO && leftO.cs === n;
+    const edgeLeft = index === 0 && rightO && rightO.cs === n;
     const spanO = inside || edgeRight ? leftO : edgeLeft ? rightO : null;
     if (spanO) {
       if (!widened.has(spanO)) {
@@ -256,7 +267,7 @@ export function addColumn(text, opts) {
     }
     const role = roles[ri] || "detail";
     let value = "";
-    if (role === "header") value = opts.header || field || "ستون تازه";
+    if (role === "header") value = ri === captionRow || captionRow === -1 ? lit(opts.header || field || "ستون تازه") : "";
     else if (role === "detail" && field) value = `=Fields!${field}.Value`;
     else if (role === "total" && field && opts.total) value = `=Sum(Fields!${field}.Value)`;
     const src = srcO.empty ? r.cells.find((c) => !c.empty) : srcO.cell;
@@ -420,9 +431,10 @@ function paramEdits(text, info, ds, sql, declSource = sql) {
   const qpEl = kid(kid(ds.el, "Query"), "QueryParameters");
   const have = new Set(ds.queryParams.map((q) => q.name.replace(/^@/, "").toLowerCase()));
   const params = new Map(info.params.map((p) => [p.name.toLowerCase(), p.name]));
+  const reportParam = (u) => params.get(u.toLowerCase()) || params.get(paramName(u).toLowerCase());
   const missingQp = used.filter((u) => !have.has(u.toLowerCase()));
   if (missingQp.length) {
-    const xml = missingQp.map((u) => `<QueryParameter Name="@${escapeAttr(u)}"><Value>=Parameters!${escapeText(params.get(u.toLowerCase()) || u)}.Value</Value></QueryParameter>`).join("");
+    const xml = missingQp.map((u) => `<QueryParameter Name="@${escapeAttr(u)}"><Value>=Parameters!${escapeText(reportParam(u) || paramName(u))}.Value</Value></QueryParameter>`).join("");
     if (qpEl && !qpEl.selfClosing) edits.push(appendChild(text, qpEl, xml));
     else {
       const ct = kid(kid(ds.el, "Query"), "CommandText");
@@ -430,18 +442,23 @@ function paramEdits(text, info, ds, sql, declSource = sql) {
     }
     changes.push(`QueryParameter برای ${missingQp.map((m) => "@" + m).join("، ")} ساخته شد.`);
   }
-  const missingRp = used.filter((u) => !params.has(u.toLowerCase()));
+  const missingRp = used.filter((u) => !reportParam(u));
   if (missingRp.length) {
     // نوع: از DECLARE آغازین، وگرنه از ستونی که با آن مقایسه می‌شود (نام‌های *Date، *Ref)
     const declared = new Map(leadingDeclares(declSource).flatMap((blk) => blk.items).map((d) => [d.name.toLowerCase(), d.type]));
+    // همان شکلی که مسیر ساخت می‌سازد: «@P IS NULL OR …» ← تهی‌پذیر با پیش‌فرض nil
+    // (گزینهٔ «همه»)، «IN (@P)» ← چندمقداری؛ نوع از DECLARE مقدم است
     const typed = missingRp.map((u) => {
-      const multi = new RegExp(`\\bIN\\s*\\(\\s*@${u}\\s*\\)`, "i").test(sql);
-      const sqlType = declared.get(u.toLowerCase()) || paramSqlType(sql, u, new Map());
-      return { name: u, dataType: multi && paramDataType(sqlType) !== "Integer" ? "String" : paramDataType(sqlType), multi };
+      const base = paramFor(u, sql, new Map());
+      const declaredType = declared.get(u.toLowerCase());
+      const dataType = declaredType
+        ? (base.multiValue && paramDataType(declaredType) !== "Integer" ? "String" : paramDataType(declaredType))
+        : base.dataType;
+      return { ...base, name: paramName(u), dataType, prompt: base.prompt || u, defaultNull: base.nullable };
     });
-    const xml = typed.map((p) => `<ReportParameter Name="${escapeAttr(p.name)}"><DataType>${p.dataType}</DataType>${p.multi ? "<MultiValue>true</MultiValue>" : ""}<Prompt>${escapeText(p.name)}</Prompt></ReportParameter>`).join("");
+    const xml = typed.map((p) => paramXml(p)).join("");
     edits.push(insertParams(text, info, xml));
-    changes.push(`ReportParameter برای ${typed.map((p) => `${p.name} (${p.dataType}${p.multi ? "، چندمقداری" : ""})`).join("، ")} ساخته شد — عنوانشان را در Report Builder بازبینی کنید.`);
+    changes.push(`ReportParameter برای ${typed.map((p) => `${p.name} (${p.dataType}${p.multiValue ? "، چندمقداری" : ""}${p.nullable ? "، اختیاری" : ""})`).join("، ")} ساخته شد — عنوانشان را در Report Builder بازبینی کنید.`);
   }
   return { edits, changes };
 }

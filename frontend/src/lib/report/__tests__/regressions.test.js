@@ -197,3 +197,50 @@ describe("ستون پویا (hideEmpty)", () => {
     expect(hier).not.toContain("Fields!Number.Value");
   });
 });
+
+describe("پارامتر فارسی (R2-18)", () => {
+  it("@ با نام فارسی و نیم‌فاصله پارامتر گزارش می‌شود و نام RDL معتبر می‌ماند", () => {
+    const s = spec("SELECT v.Number FROM FIN3.Voucher v WHERE v.FiscalYearRef = @سال AND (@شماره‌سند IS NULL OR v.Number = @شماره‌سند)");
+    expect(s.queryParams).toEqual(["سال", "شماره‌سند"]);
+    const { rdl } = buildRdl(s);
+    expect(errors(rdl)).toEqual([]);
+    expect(rdl).toContain('<QueryParameter Name="@شماره‌سند"><Value>=Parameters!شماره_سند.Value</Value>');
+    expect(rdl).toContain('<ReportParameter Name="سال">');
+    expect(rdl).toMatch(/<ReportParameter Name="شماره_سند"><DataType>Integer<\/DataType><Nullable>true<\/Nullable>/);
+  });
+});
+
+describe("نوع عبارت حسابی (R2-10)", () => {
+  it("تفاضل و جمع ستون‌های عددی عددی است؛ الحاق رشته متنی می‌ماند", () => {
+    const a = analyzeSql("SELECT v.Number, i.Debit - i.Debit * 2 AS Net, i.Debit + i.Debit AS Twice, v.Description + N' *' AS D FROM FIN3.Voucher v JOIN FIN3.VoucherItem i ON i.VoucherRef = v.VoucherID WHERE v.FiscalYearRef = @FY", details);
+    const f = Object.fromEntries(a.fields.map((x) => [x.name, x]));
+    expect(f.Net.sqlType).toBe("decimal");
+    expect(f.Net.total).toBe(true);
+    expect(f.Twice.sqlType).toBe("decimal");
+    expect(f.D.sqlType).toBe("nvarchar");
+  });
+});
+
+describe("فیلتر سال مالی در هر SELECT (R2-03، R2-04)", () => {
+  const fyCodes = async (sql) => (await lintReportSql(sql, describeStub)).findings.filter((x) => x.code === "fiscal_year");
+  it("شاخهٔ UNION بی‌فیلتر خطا دارد", async () => {
+    expect(await fyCodes("SELECT v.Number FROM FIN3.Voucher v WHERE v.FiscalYearRef = @FY AND v.State = 2 AND v.BranchRef = @B UNION ALL SELECT v2.Number FROM FIN3.Voucher v2 WHERE v2.State = 2 AND v2.BranchRef = @B")).toHaveLength(1);
+  });
+  it("فیلتر از راه برابری با FiscalYear منتقل می‌شود؛ پیوند خالی ON نه", async () => {
+    expect(await fyCodes("SELECT v.Number FROM FIN3.Voucher v JOIN GNR3.FiscalYear fy ON fy.FiscalYearID = v.FiscalYearRef AND fy.FiscalYearID = @FY WHERE v.BranchRef = @B AND v.State = 2")).toHaveLength(0);
+    expect(await fyCodes("SELECT v.Number FROM FIN3.Voucher v JOIN GNR3.FiscalYear fy ON fy.FiscalYearID = v.FiscalYearRef WHERE fy.Title = @Year AND v.BranchRef = @B AND v.State = 2")).toHaveLength(0);
+    expect(await fyCodes("SELECT v.Number, fy.Title FROM FIN3.Voucher v JOIN GNR3.FiscalYear fy ON fy.FiscalYearID = v.FiscalYearRef WHERE v.BranchRef = @B AND v.State = 2")).toHaveLength(1);
+  });
+  it("زیرکوئری IN ردیف نمی‌افزاید؛ زیرکوئری ستونی بی‌فیلتر خطاست", async () => {
+    expect(await fyCodes("SELECT v.Number FROM FIN3.Voucher v WHERE v.FiscalYearRef = @FY AND v.BranchRef = @B AND v.State = 2 AND v.VoucherID IN (SELECT v3.VoucherID FROM FIN3.Voucher v3 WHERE v3.State = 2)")).toHaveLength(0);
+    expect(await fyCodes("SELECT v.Number, (SELECT COUNT(*) FROM FIN3.Voucher v4 WHERE v4.State = 2) AS C FROM FIN3.Voucher v WHERE v.FiscalYearRef = @FY AND v.BranchRef = @B AND v.State = 2")).toHaveLength(1);
+  });
+});
+
+describe("فایل آزمون و پارامتر چندمقداری (R1-19)", () => {
+  it("IN (@P) مقدار نمونهٔ غیر NULL و STRING_SPLIT فهرست نمونه می‌گیرد", () => {
+    const h = testHarness("SELECT v.Number FROM FIN3.Voucher v WHERE v.State IN (@State) AND v.BranchRef IN (SELECT value FROM STRING_SPLIT(@Branches, N',')) AND v.FiscalYearRef = @FiscalYearRef", { types: { State: "int" } });
+    expect(h).toMatch(/DECLARE @State int = 1; -- چندمقداری/);
+    expect(h).toContain("DECLARE @Branches nvarchar(max) = N'1,2';");
+  });
+});

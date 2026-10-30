@@ -28,6 +28,7 @@ import { lintReportSql } from "@/lib/report/lint";
 import { testHarness } from "@/lib/report/patterns";
 import { validateRdl } from "@/lib/report/rdl";
 import { PAGE_SIZES } from "@/lib/report/units";
+import { isNumericType } from "@/lib/report/sqlmeta";
 import { Section, SqlBlock } from "@/components/primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -154,6 +155,21 @@ export default function BuildTab({ onOpenTab }) {
   const patchLayout = (p) => patch((s) => ({ layout: { ...s.layout, ...p } }));
   const patchProfile = (p) => patch((s) => ({ profile: { ...(s.profile || {}), ...p } }));
 
+  // هر تغییر در ستون‌ها، پارامترها، چیدمان یا پروفایل، خروجی ساخته‌شده را کهنه
+  // می‌کند؛ بدون این، دانلود و «کپی XML» همچنان RDL قبلی را می‌دادند
+  const specKey = useMemo(
+    () => JSON.stringify([state.title, state.body, state.fields, state.params, state.layout, profile]),
+    [state.title, state.body, state.fields, state.params, state.layout, profile],
+  );
+  useEffect(() => {
+    setOutput((o) => (o && o.key !== specKey ? null : o));
+  }, [specKey]);
+  // «ستون پویا» در ماتریس غیرفعال است؛ علامتش برای بازگشت به جدول نگه داشته می‌شود ولی به سازنده نمی‌رود
+  const currentSpec = () => toBuildSpec({
+    title: state.title || "گزارش", body: state.body, params: state.params, layout: state.layout, profile,
+    fields: state.layout.kind === "matrix" ? state.fields.map((f) => ({ ...f, hideEmpty: false })) : state.fields,
+  });
+
   const analyze = useCallback(async (sqlText = state.sql, base = state) => {
     if (!String(sqlText || "").trim()) {
       toast.error("ابتدا کوئری را وارد کنید.");
@@ -217,12 +233,11 @@ export default function BuildTab({ onOpenTab }) {
       return;
     }
     try {
-      const spec = toBuildSpec({ title: state.title || "گزارش", body: state.body, fields: state.fields, params: state.params, layout: state.layout, profile });
-      const res = buildRdl(spec);
+      const res = buildRdl(currentSpec());
       const verdict = validateRdl(res.rdl);
       const types = Object.fromEntries(state.params.map((p) => [p.name, p.sqlType]));
       const harness = testHarness(state.sql, { title: state.title, types });
-      setOutput({ ...res, verdict, harness });
+      setOutput({ ...res, verdict, harness, key: specKey });
       if (verdict.stats.errors) toast.error("گزارش ساخته شد ولی اعتبارسنج خطا یافت؛ یافته‌ها را ببینید.");
       else toast.success("گزارش ساخته و اعتبارسنجی شد.");
     } catch (e) {
@@ -240,13 +255,20 @@ export default function BuildTab({ onOpenTab }) {
       toast.error("برای ذخیره، عنوان گزارش را بنویسید.");
       return;
     }
+    // RDL ذخیره‌شده همیشه از همین تنظیمات فعلی ساخته می‌شود تا با spec کنارش بخواند
+    let rdl;
+    try {
+      rdl = buildRdl(currentSpec()).rdl;
+    } catch {
+      rdl = undefined;
+    }
     setSaving(true);
     try {
       const saved = await saveReport({
         id: state.libraryId || undefined,
         title: state.title.trim(),
         sql: state.sql,
-        rdl: output?.rdl || undefined,
+        rdl,
         tables: state.tables,
         parameters: state.params.map((p) => p.name),
         spec: { fields: state.fields, params: state.params, layout: state.layout, profile: state.profile, analyzed: true, body: state.body, tables: state.tables },
@@ -389,7 +411,14 @@ export default function BuildTab({ onOpenTab }) {
                       </td>
                       <td className="px-2 py-1"><Input className={smallInput} value={f.label} onChange={(e) => setField(i, { label: e.target.value })} /></td>
                       <td className="px-2 py-1"><Check checked={f.total} onChange={(v) => setField(i, { total: v })} /></td>
-                      <td className="px-2 py-1"><Check checked={Boolean(f.hideEmpty)} onChange={(v) => setField(i, { hideEmpty: v })} title="پنهان شدن خودکار ستون وقتی در کل نتیجه خالی است" /></td>
+                      <td className="px-2 py-1">
+                        <Check
+                          checked={Boolean(f.hideEmpty) && state.layout.kind !== "matrix"}
+                          disabled={state.layout.kind === "matrix"}
+                          onChange={(v) => setField(i, { hideEmpty: v })}
+                          title={state.layout.kind === "matrix" ? "در ماتریس ستون‌ها خودشان فقط برای مقدارهای موجود ساخته می‌شوند" : "پنهان شدن خودکار ستون وقتی در کل نتیجه خالی است"}
+                        />
+                      </td>
                       <td className="px-2 py-1">
                         <Select className={cn(smallInput, "min-w-36")} value={f.format || ""} onChange={(e) => setField(i, { format: e.target.value })}>
                           {!NUMBER_FORMATS.some((n) => n.value === (f.format || "")) && <option value={f.format}>{f.format}</option>}
@@ -515,7 +544,11 @@ export default function BuildTab({ onOpenTab }) {
                       <Field key={k} label={label}>
                         <Select className={smallInput} value={state.layout.matrix?.[k] || ""} onChange={(e) => patchLayout({ matrix: { ...state.layout.matrix, [k]: e.target.value } })}>
                           <option value="">—</option>
-                          {fieldsByName.map((f) => <option key={f.name} value={f.name}>{f.label} ({f.name})</option>)}
+                          {fieldsByName.map((f) => {
+                            // Sum/Avg روی فیلد متنی در گزارش #Error می‌دهد
+                            const off = k === "value" && ["Sum", "Avg"].includes(state.layout.matrix?.aggregate || "Sum") && !isNumericType(f.sqlType);
+                            return <option key={f.name} value={f.name} disabled={off}>{f.label} ({f.name}){off ? " — غیرعددی" : ""}</option>;
+                          })}
                         </Select>
                       </Field>
                     ))}

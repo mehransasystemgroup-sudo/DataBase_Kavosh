@@ -56,9 +56,9 @@ STATIC_DIR = Path(os.environ.get("STATIC_DIR", BUNDLE / "static"))
 breadcrumb(DATA, f"شروع — بسته: {BUNDLE}")
 
 
-def _build_index() -> None:
+def _build_index(swap=None) -> None:
     """ساخت ایندکس از kb/ — درون همین فرایند، بدون زیرفرایند."""
-    indexer.build(KB_ROOT, INDEX, INSTANCE if INSTANCE.exists() else None)
+    indexer.build(KB_ROOT, INDEX, INSTANCE if INSTANCE.exists() else None, swap=swap)
     # اثر انگشت دانشی که این ایندکس از رویش ساخته شد، داخل خودش می‌ماند تا
     # اجرای بعدی بداند چیزی عوض شده یا نه.
     # closing لازم است: «with» روی اتصال sqlite فقط تراکنش را می‌بندد، نه خود
@@ -557,19 +557,17 @@ async def rebuild_index() -> dict:
         return {"ok": False, "error": "بازسازی هم‌اکنون در جریان است."}
     INDEX_STATE["building"] = True
 
-    # ساخت ایندکس چند ثانیه CPU می‌برد؛ در اجراکنندهٔ جداگانه می‌رود تا حلقهٔ
-    # رویداد قفل نشود. اتصال هم باید بسته شود، وگرنه ویندوز اجازهٔ جایگزینی
-    # فایلِ باز را نمی‌دهد.
+    # ساخت ایندکس ده‌ها ثانیه CPU می‌برد؛ در اجراکنندهٔ جداگانه می‌رود تا حلقهٔ
+    # رویداد قفل نشود. در تمام این مدت جست‌وجو و جدول‌ها از ایندکس قبلی جواب
+    # می‌دهند؛ اتصال‌ها فقط دور لحظهٔ جایگزینی فایل بسته می‌شوند (ویندوز فایلِ
+    # باز را جایگزین نمی‌کند) و درخواست‌های همان لحظه منتظر می‌مانند، نه ۵۰۰.
     try:
-        kb.close()
-        await asyncio.get_running_loop().run_in_executor(None, _build_index)
-        kb.reload()          # پیش از خواندن آمار، وگرنه روی اتصال بسته می‌افتیم
+        await asyncio.get_running_loop().run_in_executor(None, _build_index, kb.swapping)
         INDEX_STATE["last"] = datetime.now().isoformat(timespec="seconds")
         INDEX_STATE["log"] = "ایندکس با موفقیت از kb/ بازساخته شد."
         return {"ok": True, "log": INDEX_STATE["log"], "at": INDEX_STATE["last"],
                 "kb": kb.stats()}
     except Exception as e:
-        kb.reload()
         return {"ok": False, "error": str(e)}
     finally:
         INDEX_STATE["building"] = False

@@ -7,27 +7,35 @@
 
 import { fieldsFromColumns, HELPERS, paramPrompt } from "./build.js";
 import { blankNoise, leadingDeclares, literalValue, outputColumns, paramDataType, queryParameters, referencedTables, withoutLeadingDeclares } from "./sqlmeta.js";
+import { paramName } from "./rdl.js";
 
 /** نوع SQL ستونی که پارامتر با آن مقایسه می‌شود (col = @P، col IN (@P)، col >= @P …). */
 export function paramSqlType(sql, name, details) {
   const clean = blankNoise(sql);
   const p = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const patterns = [
-    new RegExp(`\\[?(\\w+)\\]?\\s*(?:=|<>|!=|<=|>=|<|>|\\bLIKE\\b|\\bIN\\s*\\()\\s*@${p}\\b`, "i"),
+    new RegExp(`\\[?(\\w+)\\]?\\s*(?:=|<>|!=|<=|>=|<|>|\\bLIKE\\b|\\bIN\\s*\\()\\s*@${p}(?![\\w\u0600-\u06FF\u200C])`, "i"),
     new RegExp(`@${p}\\s*(?:=|<>|!=|<=|>=|<|>)\\s*(?:\\w+\\.)?\\[?(\\w+)\\]?`, "i"),
-    new RegExp(`\\[?(\\w+)\\]?\\s*(?:<|<=)\\s*DATEADD\\s*\\([^)]*@${p}\\b`, "i"),
+    new RegExp(`\\[?(\\w+)\\]?\\s*(?:<|<=)\\s*DATEADD\\s*\\([^)]*@${p}(?![\\w\u0600-\u06FF\u200C])`, "i"),
   ];
+  let compared = "";
   for (const re of patterns) {
     const m = re.exec(clean);
     if (!m) continue;
     const col = m[1].toLowerCase();
+    compared ||= m[1];
     for (const d of details.values()) {
       const hit = d?.columns?.find((c) => c.name.toLowerCase() === col);
       if (hit) return hit.type;
     }
   }
-  if (/date/i.test(name)) return "datetime";
-  if (/(Ref|ID)$/.test(name)) return "bigint";
+  // بی‌دانشنامه: از نام پارامتر یا ستونی که با آن مقایسه می‌شود (قرارداد نام‌گذاری راهکاران)
+  for (const n of [name, compared]) {
+    if (!n) continue;
+    if (/date/i.test(n)) return "datetime";
+    if (/(Ref|ID)$/.test(n)) return "bigint";
+    if (/(State|Status|Kind|Type)$/.test(n)) return "int";
+  }
   return null;
 }
 
@@ -39,7 +47,7 @@ export function paramFor(name, sql, details) {
   const helper = HELPERS[name] || null;
   const optional = new RegExp(`@${p}\\s+IS\\s+NULL`, "i").test(clean);
   const multi = new RegExp(`\\bIN\\s*\\(\\s*@${p}\\s*\\)`, "i").test(clean);
-  const split = new RegExp(`STRING_SPLIT\\s*\\(\\s*@${p}\\b`, "i").test(clean);
+  const split = new RegExp(`STRING_SPLIT\\s*\\(\\s*@${p}(?![\\w\u0600-\u06FF\u200C])`, "i").test(clean);
   return {
     name,
     sqlType: sqlType || "",
@@ -125,7 +133,7 @@ export function toBuildSpec({ title, body, fields, params, layout, profile }) {
     if (helper && !helperDataSets.some((h) => h.name === helper.dataSet.name)) helperDataSets.push(helper.dataSet);
     const defaults = (p.defaults || []).filter((d) => d !== "" && d != null);
     return {
-      name: p.name,
+      name: paramName(p.name),
       dataType: p.dataType,
       prompt: p.prompt || p.name,
       nullable: Boolean(p.nullable) && !p.multiValue,

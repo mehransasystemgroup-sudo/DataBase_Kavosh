@@ -84,6 +84,9 @@ const NAME_START = "A-Za-z\u0621-\u063A\u0641-\u064A\u0671-\u06D3\u06FA-\u06FC\u
 const VALID_NAME = new RegExp(`^[${NAME_START}][${NAME_START}0-9\u0660-\u0669\u06F0-\u06F9_]*$`);
 export const isValidRdlName = (name) => VALID_NAME.test(String(name ?? ""));
 
+/** نام ReportParameter برای متغیر @ کوئری: نیم‌فاصله در نام گزارش مجاز نیست، _ می‌شود. */
+export const paramName = (name) => String(name ?? "").replace(/\u200C/g, "_");
+
 /** برگ‌های سلسله‌مراتب ستونی/سطری به ترتیب سند — همان ترتیبِ ستون‌ها و ردیف‌ها. */
 export { leaves as memberLeaves };
 

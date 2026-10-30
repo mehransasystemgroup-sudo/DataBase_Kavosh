@@ -77,6 +77,81 @@ function conditionColumns(tree) {
   return out;
 }
 
+/** آیا این دو طرفِ یک مقایسه «ستون در برابر پارامتر/ثابت» است؟ ستونش را برمی‌گرداند. */
+function pinnedColumn(e) {
+  const sides = [e.left, e.right];
+  const cols = sides.filter(isRealColumn);
+  if (cols.length !== 1) return null;
+  const other = sides.find((x) => x !== cols[0]);
+  return !other || other.type !== "column_ref" || isParam(other) ? cols[0] : null;
+}
+
+/** مقایسه‌های تکیِ زیر AND (OR شرط را محدودکننده نمی‌کند؛ پس از آن پایین نمی‌رویم). */
+function* conjuncts(expr) {
+  if (!expr || typeof expr !== "object") return;
+  if (expr.type === "binary_expr" && String(expr.operator).toUpperCase() === "AND") {
+    yield* conjuncts(expr.left);
+    yield* conjuncts(expr.right);
+    return;
+  }
+  yield expr;
+}
+
+/**
+ * هر SELECT جدا (شاخه‌های UNION هم جدا): جدول‌های خودش، ستون‌های فیلترشده‌اش،
+ * و برابری‌های ستون‌به‌ستون برای انتقال فیلتر — «v.FiscalYearRef = fy.FiscalYearID
+ * AND fy.FiscalYearID = @P» یعنی v.FiscalYearRef هم محدود است.
+ */
+function* rowSources(node) {
+  // زیرکوئری درون WHERE/HAVING/ON فقط ردیف‌ها را کم می‌کند (IN، EXISTS)، نه زیاد؛ پس سنجیده نمی‌شود
+  if (Array.isArray(node)) {
+    for (const item of node) yield* rowSources(item);
+    return;
+  }
+  if (!node || typeof node !== "object") return;
+  if (node.type === "select") yield node;
+  for (const [k, v] of Object.entries(node)) {
+    if (v && typeof v === "object" && !["where", "having", "on"].includes(k)) yield* rowSources(v);
+  }
+}
+
+function selectScopes(tree) {
+  const out = [];
+  for (const n of rowSources(tree)) {
+    const aliases = new Map();
+    const tables = [];
+    const ons = [];
+    for (const f of Array.isArray(n.from) ? n.from : []) {
+      if (f?.on) ons.push(f.on);
+      if (typeof f?.table !== "string" || !f.db || f.expr) continue;
+      const full = `${strip(f.db)}.${strip(f.table)}`;
+      tables.push(full);
+      aliases.set((f.as ? strip(f.as) : strip(f.table)).toLowerCase(), full);
+    }
+    const filtered = [];
+    const equal = [];
+    for (const key of ["where", "having"]) {
+      if (n[key] && typeof n[key] === "object") for (const c of walk(n[key])) if (isRealColumn(c)) filtered.push(c);
+    }
+    // برابری ستون‌به‌ستون فقط از AND های ON و WHERE (زیر OR محدودکننده نیست)
+    for (const cond of [...ons, n.where]) {
+      for (const e of conjuncts(cond)) {
+        if (e?.type === "binary_expr" && e.operator === "=" && isRealColumn(e.left) && isRealColumn(e.right)) equal.push([e.left, e.right]);
+      }
+    }
+    // از ON فقط ستونی که با پارامتر یا ثابت مقایسه شده فیلتر است
+    for (const on of ons) {
+      for (const e of walk(on)) {
+        if (e.type !== "binary_expr" || ["AND", "OR"].includes(String(e.operator).toUpperCase())) continue;
+        const c = pinnedColumn(e);
+        if (c) filtered.push(c);
+      }
+    }
+    out.push({ aliases, tables, filtered, equal });
+  }
+  return out;
+}
+
 function selectColumns(tree) {
   const out = [];
   for (const n of walk(tree)) {
@@ -154,8 +229,46 @@ export async function lintReportSql(sql, describe) {
   const filteredAnywhere = (column) => known.some((t) => colsOf(t).has(column) && (tree ? usedIn(conds, t, column) : textCondition(column)));
   const withCol = (column, test = () => true) => known.filter((t) => colsOf(t).has(column) && test(t));
   const fy = withCol("fiscalyearref");
-  if (fy.length && !filteredAnywhere("fiscalyearref")) {
-    F.push(finding("error", "fiscal_year", `${fy.map(display).join("، ")} ستون FiscalYearRef دارد ولی کوئری روی سال مالی فیلتر نمی‌کند.`,
+  // هر SELECT (و هر شاخهٔ UNION) جدا سنجیده می‌شود: یک شاخهٔ بی‌فیلتر همهٔ سال‌ها را جمع می‌زند
+  const unfilteredFy = [];
+  if (tree && fy.length) {
+    const scoped = selectScopes(tree);
+    // فیلتر روی ستونی که جدول واقعی‌اش معلوم نیست (CTE، زیرکوئری) را حمل‌شده می‌گیریم: کمتر هشدار، نه بیشتر
+    const viaDerived = scoped.some((sc) => sc.filtered.some((c) => strip(c.column).toLowerCase() === "fiscalyearref"
+      && c.table && !sc.aliases.has(strip(c.table).toLowerCase()) && !aliases.has(strip(c.table).toLowerCase())));
+    for (const sc of scoped) {
+      const own = sc.tables.filter((t) => colsOf(t)?.has("fiscalyearref"));
+      if (!own.length || viaDerived) continue;
+      const key = (c) => {
+        const owner = c.table ? sc.aliases.get(strip(c.table).toLowerCase()) || aliases.get(strip(c.table).toLowerCase()) || "?" : ownerOf(c) || "?";
+        return `${owner.toLowerCase()}|${strip(c.column).toLowerCase()}`;
+      };
+      const pinned = new Set(sc.filtered.map(key));
+      // هر فیلتر روی یک جدول، کلید آن جدول (قرارداد XxxID) را هم محدود می‌کند:
+      // «fy.Title = @Year» یعنی یک سال مالی، پس v.FiscalYearRef = fy.FiscalYearID هم محدود است
+      for (const k of [...pinned]) {
+        const owner = k.split("|")[0];
+        if (owner !== "?") pinned.add(`${owner}|${owner.split(".").pop()}id`);
+      }
+      for (let changed = true; changed;) {
+        changed = false;
+        for (const [a, b] of sc.equal) {
+          const [ka, kb] = [key(a), key(b)];
+          if (pinned.has(ka) !== pinned.has(kb)) {
+            pinned.add(ka);
+            pinned.add(kb);
+            changed = true;
+          }
+        }
+      }
+      const ok = own.some((t) => pinned.has(`${t.toLowerCase()}|fiscalyearref`)) || pinned.has("?|fiscalyearref");
+      if (!ok) for (const t of own) if (!unfilteredFy.includes(t)) unfilteredFy.push(t);
+    }
+  } else if (fy.length && !filteredAnywhere("fiscalyearref")) {
+    unfilteredFy.push(...fy);
+  }
+  if (unfilteredFy.length) {
+    F.push(finding("error", "fiscal_year", `${unfilteredFy.map(display).join("، ")} ستون FiscalYearRef دارد ولی ${tree && selectScopes(tree).length > 1 ? "دست‌کم یکی از SELECTهای کوئری (یا شاخه‌های UNION)" : "کوئری"} روی سال مالی فیلتر نمی‌کند.`,
       "گزارش اسناد چند سال مالی را با هم جمع می‌زند — بی‌هیچ خطایی، فقط عدد غلط. بنویسید: WHERE x.[FiscalYearRef] = @FiscalYearRef (به‌صورت پارامتر گزارش، نه عدد ثابت)."));
   }
   // جدول اقلام بی‌FiscalYearRef که سرآیندش (جدول مرجعش) سال مالی دارد ولی در کوئری نیست
@@ -237,7 +350,7 @@ export async function lintReportSql(sql, describe) {
   }
 
   // ── پارامتر اختیاری که چندمقداری هم هست ──
-  for (const m of clean.matchAll(/@(\w+)\s+IS\s+NULL/gi)) {
+  for (const m of clean.matchAll(/@([\w\u0600-\u06FF\u200C]+)\s+IS\s+NULL/gi)) {
     if (new RegExp(`\\bIN\\s*\\(\\s*@${m[1]}\\s*\\)`, "i").test(clean)) {
       F.push(finding("warning", "multi_optional", `@${m[1]} هم با IS NULL اختیاری شده و هم با IN (@${m[1]}) چندمقداری.`,
         "پارامتر چندمقداری در SSRS نمی‌تواند تهی باشد و با چند مقدار «@P IS NULL» به فهرست بسط می‌یابد و خطا می‌دهد. یا تک‌مقداری و اختیاری بگیرید، یا چندمقداری بی‌IS NULL (همه = انتخاب همهٔ گزینه‌ها)."));

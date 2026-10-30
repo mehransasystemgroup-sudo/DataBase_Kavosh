@@ -360,7 +360,15 @@ def _put_in_place(tmp: Path, out: Path) -> None:
     ) from last
 
 
-def build(kb: Path, out: Path, instance: Path | None) -> None:
+def build(kb: Path, out: Path, instance: Path | None, swap=None) -> None:
+    """
+    ساخت ایندکس روی فایل کناری و نشاندنش به جای `out`.
+
+    `swap` (اختیاری): سازندهٔ context manager که فقط دور لحظهٔ جایگزینی فایل
+    باز می‌شود — برنامهٔ در حال اجرا با آن اتصال‌هایش را می‌بندد (ویندوز فایل باز
+    را جایگزین نمی‌کند) و بلافاصله دوباره باز می‌کند؛ در کل مدت ساخت، که ده‌ها
+    ثانیه است، درخواست‌ها از ایندکس قبلی جواب می‌گیرند.
+    """
     out.parent.mkdir(parents=True, exist_ok=True)
     # روی فایل کناری ساخته می‌شود و در پایان جایش می‌نشیند: تا لحظهٔ آخر
     # ایندکس قبلی سالم می‌ماند، پس ساختِ نیمه‌کاره — قطع برق، بسته‌شدن
@@ -530,7 +538,11 @@ def build(kb: Path, out: Path, instance: Path | None) -> None:
     db.commit()
     db.execute("VACUUM")
     db.close()
-    _put_in_place(tmp, out)
+    if swap is None:
+        _put_in_place(tmp, out)
+    else:
+        with swap():
+            _put_in_place(tmp, out)
 
     size = out.stat().st_size / 1024 / 1024
     print(f"✔ {out}  ({size:.1f} MB)")

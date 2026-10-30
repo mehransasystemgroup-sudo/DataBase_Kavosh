@@ -8,8 +8,9 @@ FastAPI مسیرهای هم‌زمان را در threadpool اجرا می‌کن
 
 from __future__ import annotations
 
-import sqlite3
 import sys
+import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -39,9 +40,43 @@ def test_parallel_get_table(kb):
     assert all(expected[n] == c for n, c in got)
 
 
-def test_closed_between_close_and_reload(kb):
+def test_waits_while_swapping_instead_of_failing(kb):
+    """میان close و reload درخواست منتظر می‌ماند و پس از بازگشایی جواب می‌گیرد."""
     kb.close()
-    with pytest.raises(sqlite3.ProgrammingError):
-        kb.db
-    kb.reload()
-    assert kb.db.execute("SELECT 1").fetchone()[0] == 1
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        futures = [pool.submit(lambda: kb.db.execute("SELECT 1").fetchone()[0]) for _ in range(4)]
+        time.sleep(0.3)
+        assert not any(f.done() for f in futures)
+        kb.reload()
+        assert [f.result(timeout=10) for f in futures] == [1, 1, 1, 1]
+
+
+def test_rebuild_while_serving(kb, tmp_path):
+    """بازسازی کامل ایندکس زیر بار: هیچ درخواستی نباید خطا بگیرد."""
+    names = [r["full_name"] for r in kb.db.execute("SELECT full_name FROM tables LIMIT 20")]
+    stop = threading.Event()
+    errors: list[str] = []
+    served = [0]
+
+    def hammer():
+        i = 0
+        while not stop.is_set():
+            try:
+                assert kb.get_table(names[i % len(names)]) is not None
+                kb.find_join_path("FIN3.Voucher", "GNR3.Branch")
+                served[0] += 1
+            except Exception as e:  # noqa: BLE001
+                errors.append(repr(e))
+            i += 1
+
+    threads = [threading.Thread(target=hammer) for _ in range(8)]
+    for t in threads:
+        t.start()
+    try:
+        indexer.build(BACKEND / "kb", Path(kb._db_path), None, swap=kb.swapping)
+    finally:
+        stop.set()
+        for t in threads:
+            t.join()
+    assert not errors, errors[:3]
+    assert served[0] > 0
