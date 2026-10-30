@@ -18,8 +18,8 @@
   ⚠️ اگر المانی اضافه می‌کنی، ترتیب موجود در این فایل را نگه دار (همان ترتیب ذخیرهٔ
      Report Builder). طرح‌وارهٔ 2016 بیشتر جاها xsd:choice است؛ خطای واقعی معمولاً
      والد اشتباه، المان تکراری یا کمبود المان اجباری است.
-  ⚠️ نرم‌افزار میزبان گزارشِ دارای PageHeader/PageFooter را بارگذاری نمی‌کند؛ پیش از
-     استفاده آن‌ها را حذف کن و عنوان را ردیف تکرارشوندهٔ Tablix کن (rdl-page-repeat.md).
+  ⚠️ نرم‌افزار میزبان گزارشِ دارای PageHeader/PageFooter را بارگذاری نمی‌کند؛ این قالب
+     عنوان و فیلترها را ردیف تکرارشوندهٔ Tablix گذاشته است (rdl-page-repeat.md).
 -->
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition"
         xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
@@ -174,7 +174,26 @@ ORDER BY b.Title, v.[Date], v.Number;</CommandText>
 
               <TablixRows>
 
-                <!-- ردیف ۱: عنوان ستون‌ها (ثابت، در هر صفحه تکرار می‌شود) -->
+                <!-- ردیف ۱: عنوان گزارش — جای PageHeader (که نرم‌افزار میزبان نمی‌پذیرد)؛
+                     یک سلول با ColSpan=5 و چهار TablixCell خالی، در هر صفحه تکرار می‌شود -->
+                <TablixRow>
+                  <Height>0.9cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="txtReportTitle"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>عنوان گزارش</Value><Style><FontSize>14pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>txtReportTitle</rd:DefaultName><Style><Border><Style>None</Style></Border><VerticalAlign>Middle</VerticalAlign></Style></Textbox><ColSpan>5</ColSpan></CellContents></TablixCell>
+                    <TablixCell /><TablixCell /><TablixCell /><TablixCell />
+                  </TablixCells>
+                </TablixRow>
+
+                <!-- ردیف ۲: خلاصهٔ فیلترها (در بدنه، Fields هم مجاز است) -->
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="txtFilters"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=" از تاریخ " &amp; Parameters!FromPersian.Value &amp; "  تا تاریخ " &amp; Parameters!ToPersian.Value &amp; "   |   سال مالی: " &amp; Parameters!FiscalYearRef.Label</Value><Style><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>txtFilters</rd:DefaultName><Style><Border><Style>None</Style></Border><VerticalAlign>Middle</VerticalAlign></Style></Textbox><ColSpan>5</ColSpan></CellContents></TablixCell>
+                    <TablixCell /><TablixCell /><TablixCell /><TablixCell />
+                  </TablixCells>
+                </TablixRow>
+
+                <!-- ردیف ۳: عنوان ستون‌ها (ثابت، در هر صفحه تکرار می‌شود) -->
                 <TablixRow>
                   <Height>0.7cm</Height>
                   <TablixCells>
@@ -237,11 +256,22 @@ ORDER BY b.Title, v.[Date], v.Number;</CommandText>
             </TablixColumnHierarchy>
 
             <!-- تعداد «برگ»های این درخت باید دقیقاً برابر تعداد TablixRow باشد.
-                 اینجا: ردیف عنوان (۱) + سرگروه (۲) + جزئیات (۳) + جمع گروه (۴) = ۴ -->
+                 اینجا: عنوان گزارش + فیلترها + عنوان ستون‌ها + سرگروه + جزئیات + جمع گروه = ۶ -->
             <TablixRowHierarchy>
               <TablixMembers>
 
-                <!-- برگ ۱: ردیف عنوان ستون‌ها، در هر صفحه تکرار می‌شود -->
+                <!-- برگ‌های ۱ و ۲: عنوان گزارش و فیلترها، چسبیده به بعدی و تکرار در هر صفحه
+                     (KeepWithGroup=After؛ نه Before — rdl-page-repeat.md) -->
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+
+                <!-- برگ ۳: ردیف عنوان ستون‌ها، در هر صفحه تکرار می‌شود -->
                 <TablixMember>
                   <KeepWithGroup>After</KeepWithGroup>
                   <RepeatOnNewPage>true</RepeatOnNewPage>
@@ -287,13 +317,14 @@ ORDER BY b.Title, v.[Date], v.Number;</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
 
-            <!-- RTL: با این تنظیم، ستون اول در XML سمت راست صفحه نمایش داده می‌شود -->
-            <Direction>RTL</Direction>
+            <!-- RTL: با این تنظیم، ستون اول در XML سمت راست صفحه نمایش داده می‌شود
+                 (در Tablix نامش LayoutDirection است؛ Direction فقط درون Style متن است) -->
+            <LayoutDirection>RTL</LayoutDirection>
             <DataSetName>dsMain</DataSetName>
             <NoRowsMessage>داده‌ای برای نمایش وجود ندارد.</NoRowsMessage>
             <Top>0.3cm</Top>
             <Left>0cm</Left>
-            <Height>2.7cm</Height>
+            <Height>4.2cm</Height>
             <Width>20cm</Width>
             <Style>
               <Border><Style>None</Style></Border>
@@ -302,7 +333,7 @@ ORDER BY b.Title, v.[Date], v.Number;</CommandText>
 
         </ReportItems>
         <!-- Height بدنه باید >= مجموع ارتفاع آیتم‌های داخلش باشد -->
-        <Height>3.2cm</Height>
+        <Height>4.7cm</Height>
         <Style />
       </Body>
 
@@ -312,78 +343,9 @@ ORDER BY b.Title, v.[Date], v.Number;</CommandText>
       <Width>20cm</Width>
 
       <Page>
-        <PageHeader>
-          <Height>2.2cm</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <ReportItems>
-            <Textbox Name="txtReportTitle">
-              <CanGrow>true</CanGrow>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>عنوان گزارش</Value>
-                      <Style><FontSize>14pt</FontSize><FontWeight>Bold</FontWeight></Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style><TextAlign>Center</TextAlign></Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>txtReportTitle</rd:DefaultName>
-              <Top>0.2cm</Top><Left>0cm</Left><Height>0.8cm</Height><Width>20cm</Width>
-              <Style><Border><Style>None</Style></Border></Style>
-            </Textbox>
-            <!-- در هدر/فوتر فقط Parameters، Globals و ReportItems!TextboxName.Value مجازند.
-                 نه Fields!X.Value، و نه توابع تجمعی مثل Sum/First حتی با ذکر Scope.
-                 برای نمایش یک مقدار از داده در فوتر: یک Textbox مخفی در Body بساز و
-                 در فوتر با ReportItems!<name>.Value به آن ارجاع بده. -->
-            <Textbox Name="txtFilters">
-              <CanGrow>true</CanGrow>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=" از تاریخ " &amp; Parameters!FromPersian.Value &amp; "  تا تاریخ " &amp; Parameters!ToPersian.Value &amp; "   |   سال مالی: " &amp; Parameters!FiscalYearRef.Label</Value>
-                      <Style><FontSize>9pt</FontSize></Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style><TextAlign>Right</TextAlign></Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>txtFilters</rd:DefaultName>
-              <Top>1.1cm</Top><Left>0cm</Left><Height>0.6cm</Height><Width>20cm</Width>
-              <Style><Border><Style>None</Style></Border></Style>
-            </Textbox>
-          </ReportItems>
-          <Style />
-        </PageHeader>
-
-        <PageFooter>
-          <Height>0.8cm</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <ReportItems>
-            <Textbox Name="txtPageNumber">
-              <CanGrow>true</CanGrow>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="صفحه " &amp; Globals!PageNumber &amp; " از " &amp; Globals!TotalPages</Value>
-                      <Style><FontSize>8pt</FontSize></Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style><TextAlign>Center</TextAlign></Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>txtPageNumber</rd:DefaultName>
-              <Top>0.1cm</Top><Left>0cm</Left><Height>0.5cm</Height><Width>20cm</Width>
-              <Style><Border><Style>None</Style></Border></Style>
-            </Textbox>
-          </ReportItems>
-          <Style />
-        </PageFooter>
+        <!-- PageHeader/PageFooter عمداً نیست: نرم‌افزار میزبان گزارشِ دارای آن‌ها را بارگذاری
+             نمی‌کند. عنوان و فیلترها ردیف تکرارشوندهٔ Tablix هستند. شمارهٔ صفحه
+             (Globals!PageNumber) فقط در هدر/فوتر مجاز است، پس این‌جا نمی‌آید. -->
 
         <!-- A4 افقی -->
         <PageHeight>21cm</PageHeight>

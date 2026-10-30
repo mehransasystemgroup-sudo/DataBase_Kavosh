@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils";
   در RDL ساخته می‌شود. زمینه همیشه کاغذی است (مستقل از تم برنامه).
 */
 
-const PX_PER_CM = 30;
+// اندازهٔ واقعی (96dpi) تا نسبت متن به عرض ستون همان چاپ باشد
+const PX_PER_CM = 37.8;
 // ستون باریک‌تر از این در پیش‌نمایش ناخوانا می‌شود؛ عرض واقعی RDL دست نمی‌خورد
 const MIN_CM = 1.4;
 const colWidth = (c) => (c.key === "#" ? c.width : Math.max(MIN_CM, c.width));

@@ -22,7 +22,7 @@
 
 import { escapeAttr, escapeText } from "./xml.js";
 import { cm, PAGE_SIZES } from "./units.js";
-import { isDateType, isNumericType, rdlType } from "./sqlmeta.js";
+import { blankNoise, isBinaryType, isDateType, isNumericType, rdlType } from "./sqlmeta.js";
 import { paramName, rdlName, SYS_PARAMS } from "./rdl.js";
 
 export const DEFAULT_PROFILE = {
@@ -472,7 +472,8 @@ function dataSetXml(name, ds, sql, fields, queryParams) {
 /** آیا کوئری پارامتر چندمقداری را به شکلی به کار می‌برد که SSRS بسطش بدهد؟ */
 function multiValueUsable(sql, name) {
   const n = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return new RegExp(`\\bIN\\s*\\(\\s*@${n}\\s*\\)|STRING_SPLIT\\s*\\(\\s*@${n}(?![\\w\u0600-\u06FF\u200C])`, "i").test(sql);
+  // در توضیح یا رشته حساب نیست: «-- IN (@P)» کوئری را چندمقداری نمی‌کند
+  return new RegExp(`\\bIN\\s*\\(\\s*@${n}\\s*\\)|STRING_SPLIT\\s*\\(\\s*@${n}(?![\\w\u0600-\u06FF\u200C])`, "i").test(blankNoise(sql));
 }
 
 /** ایراد مقدار پیش‌فرض نسبت به نوع پارامتر، یا "". */
@@ -513,17 +514,22 @@ export function buildRdl(spec) {
     for (const s of sysParamSpecs()) if (!params.some((p) => p.name.toLowerCase() === s.name.toLowerCase())) params.push(s);
   }
   const paramByLower = new Map(params.map((p) => [p.name.toLowerCase(), p]));
+  const paramBySql = new Map(userParams.filter((p) => p.sqlName).map((p) => [p.sqlName.toLowerCase(), p]));
   for (const p of userParams) {
     const hasDefault = (p.defaults || []).some((d) => d !== "" && d != null) || (p.nullable && !p.multiValue);
     if (p.hidden && !hasDefault) warnings.push(`پارامتر پنهان «${p.prompt || p.name}» مقدار پیش‌فرض ندارد؛ گزارش بی‌آن اجرا نمی‌شود. پیش‌فرض بدهید یا پنهان را بردارید.`);
     if (p.multiValue && p.nullable) warnings.push(`پارامتر «${p.prompt || p.name}» چندمقداری است، پس تهی‌پذیر ساخته نشد (SSRS هر دو را با هم نمی‌پذیرد).`);
-    if (p.multiValue && !p.system && !multiValueUsable(spec.sql || "", p.name)) {
+    if (p.multiValue && !p.system && !multiValueUsable(spec.sql || "", p.sqlName || p.name)) {
       warnings.push(`پارامتر «${p.prompt || p.name}» چندمقداری است ولی کوئری آن را با IN (@${p.name}) یا STRING_SPLIT به کار نمی‌برد؛ سرور گزارش فهرست را «1,2» بسط می‌دهد و «= @${p.name}» خطای نحوی می‌شود.`);
     }
     for (const d of p.defaults || []) {
       const bad = defaultProblem(p.dataType, d);
       if (bad) warnings.push(`پیش‌فرض «${d}» برای پارامتر «${p.prompt || p.name}» (${p.dataType}): ${bad}`);
     }
+  }
+  const binary = fields.filter((f) => f.visible !== false && isBinaryType(f.sqlType));
+  if (binary.length) {
+    warnings.push(`ستون ${binary.map((f) => `«${f.label || f.name}» (${f.sqlType})`).join("، ")} باینری است و در گزارش «System.Byte[]» چاپ می‌شود؛ Version و ستون‌های timestamp جای گزارش نیستند — از SELECT بردارید یا پنهان کنید.`);
   }
   if (layout.kind === "matrix") {
     if (fields.some((f) => f.hideEmpty)) warnings.push("«ستون پویا» در چیدمان ماتریس اعمال نمی‌شود؛ ستون‌های ماتریس خودشان فقط برای مقدارهای موجود ساخته می‌شوند.");
@@ -534,7 +540,7 @@ export function buildRdl(spec) {
     }
   }
   const queryParams = (spec.queryParams || []).map((q) => {
-    const p = paramByLower.get(q.toLowerCase()) || paramByLower.get(paramName(q).toLowerCase());
+    const p = paramBySql.get(q.toLowerCase()) || paramByLower.get(q.toLowerCase()) || paramByLower.get(paramName(q).toLowerCase());
     if (!p) warnings.push(`پارامتر @${q} در کوئری هست ولی پارامتر گزارشِ هم‌نامی ندارد.`);
     // چندمقداری: در کوئری متنی «IN (@P)» را خود سرور گزارش بسط می‌دهد و آرایه می‌خواهد؛
     // فقط وقتی کوئری فهرست را با STRING_SPLIT می‌شکند، رشتهٔ Join شده لازم است.

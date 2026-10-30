@@ -53,8 +53,11 @@ function expressions(node) {
   return out;
 }
 
-const fieldRefs = (expr) => [...expr.matchAll(/\bFields!([A-Za-z_][\w]*)\b/g)].map((m) => m[1]);
-const paramRefs = (expr) => [...expr.matchAll(/\bParameters!([A-Za-z_][\w]*)\b/g)].map((m) => m[1]);
+// متن درون "…" در عبارت VB ارجاع نیست («="=Fields!X.Value"» فقط نوشته است)
+const code = (expr) => String(expr).replace(/"(?:[^"]|"")*"/g, '""');
+const REF_NAME = "([A-Za-z_\u0600-\u06FF][\\w\u0600-\u06FF]*)";
+const fieldRefs = (expr) => [...code(expr).matchAll(new RegExp(`\\bFields!${REF_NAME}`, "g"))].map((m) => m[1]);
+const paramRefs = (expr) => [...code(expr).matchAll(new RegExp(`\\bParameters!${REF_NAME}`, "g"))].map((m) => m[1]);
 
 /** برگ‌های یک درخت TablixMembers — هر عضو بی‌فرزند یک ردیف/ستون فیزیکی است. */
 function leaves(membersEl) {
@@ -86,6 +89,25 @@ export const isValidRdlName = (name) => VALID_NAME.test(String(name ?? ""));
 
 /** نام ReportParameter برای متغیر @ کوئری: نیم‌فاصله در نام گزارش مجاز نیست، _ می‌شود. */
 export const paramName = (name) => String(name ?? "").replace(/\u200C/g, "_");
+
+/**
+ * نام ReportParameter یکتا برای هر متغیر کوئری: «@شرح‌سند» و «@شرح_سند» هر دو
+ * «شرح_سند» می‌شوند؛ دومی «شرح_سند_2» می‌گیرد. `taken` نام‌های موجود را دارد (حروف کوچک).
+ */
+export function uniqueParamNames(names, taken = new Set()) {
+  const used = new Set([...taken].map((n) => n.toLowerCase()));
+  const out = new Map();
+  // نام‌هایی که خودشان بی‌نیم‌فاصله‌اند اول جا می‌گیرند تا نامشان دست نخورد
+  const order = [...names].sort((a, b) => Number(a !== paramName(a)) - Number(b !== paramName(b)));
+  for (const n of order) {
+    const base = paramName(n);
+    let name = base;
+    for (let k = 2; used.has(name.toLowerCase()); k++) name = `${base}_${k}`;
+    used.add(name.toLowerCase());
+    out.set(n, name);
+  }
+  return out;
+}
 
 /** برگ‌های سلسله‌مراتب ستونی/سطری به ترتیب سند — همان ترتیبِ ستون‌ها و ردیف‌ها. */
 export { leaves as memberLeaves };
@@ -483,6 +505,13 @@ export function validateRdl(text, { hostRules = true } = {}) {
 
   // ── پارامترهای گزارش ──
   const paramIndex = new Map(info.params.map((p, i) => [p.name, i]));
+  const paramCount = new Map();
+  for (const p of info.params) paramCount.set(p.name.toLowerCase(), (paramCount.get(p.name.toLowerCase()) || 0) + 1);
+  const dupParams = [...new Set(info.params.filter((p) => paramCount.get(p.name.toLowerCase()) > 1).map((p) => p.name))];
+  if (dupParams.length) {
+    add("error", "duplicate_param", `پارامتر گزارش تکراری: ${dupParams.join("، ")}`,
+      "Report Builder دو ReportParameter هم‌نام (بی‌توجه به حروف کوچک و بزرگ) را نمی‌پذیرد؛ یکی را حذف یا نامش را عوض کنید.", "ReportParameters");
+  }
   for (const p of info.params) {
     const where = `ReportParameter ${p.name}`;
     if (p.validValues?.dataSet) {

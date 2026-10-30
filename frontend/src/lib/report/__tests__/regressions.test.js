@@ -244,3 +244,67 @@ describe("فایل آزمون و پارامتر چندمقداری (R1-19)", () 
     expect(h).toContain("DECLARE @Branches nvarchar(max) = N'1,2';");
   });
 });
+
+describe("ممیزی دور ۳", () => {
+  it("قالب پایهٔ دانلودی از اعتبارسنج خود برنامه بی‌خطا می‌گذرد و PageHeader ندارد (R3-01)", () => {
+    const tpl = readFileSync(new URL("../docs/blank-report-2016.rdl", import.meta.url), "utf8");
+    expect(errors(tpl)).toEqual([]);
+    expect(tpl).not.toMatch(/<PageHeader>|<PageFooter>|<Direction>RTL<\/Direction>/);
+    expect(validateRdl(tpl).findings.map((f) => f.code)).not.toContain("tablix_direction");
+  });
+
+  it("افزودن ستون کنار سرعنوان دو ردیفه عنوان را نگه می‌دارد (R3-02)", () => {
+    for (const index of [0, 1, 2, 3]) {
+      const r = addColumn(MERGED, { index, header: "عنوان تازه", field: "Debit" });
+      expect((r.rdl || r.text).split("عنوان تازه").length - 1).toBe(1);
+    }
+  });
+
+  it("ستون باینری (timestamp) عبارت IsNothing و نوع Byte[] می‌گیرد و هشدار دارد (R3-03)", () => {
+    const s = spec("SELECT v.Number, CAST(v.Number AS timestamp) AS Ver FROM FIN3.Voucher v WHERE v.FiscalYearRef = @FY");
+    s.fields = s.fields.map((f) => (f.name === "Ver" ? { ...f, hideEmpty: true } : f));
+    const { rdl, warnings } = buildRdl(s);
+    expect(rdl).toContain("<rd:TypeName>System.Byte[]</rd:TypeName>");
+    expect(rdl).toContain('=Sum(IIf(IsNothing(Fields!Ver.Value), 0, 1), "dsMain") = 0');
+    expect(warnings.join(" ")).toMatch(/System\.Byte\[\]/);
+  });
+
+  it("دو متغیر هم‌نام پس از تبدیل نیم‌فاصله دو پارامتر یکتا می‌شوند؛ نام تکراری خطاست (R3-04)", () => {
+    const s = spec("SELECT v.Number FROM FIN3.Voucher v WHERE v.FiscalYearRef = @FY AND v.Description = @شرح‌سند AND v.Number = @شرح_سند");
+    const { rdl } = buildRdl(s);
+    expect(errors(rdl)).toEqual([]);
+    expect(rdl).toContain('<QueryParameter Name="@شرح_سند"><Value>=Parameters!شرح_سند.Value</Value>');
+    expect(rdl).toContain('<QueryParameter Name="@شرح‌سند"><Value>=Parameters!شرح_سند_2.Value</Value>');
+    const dup = rdl.replace('<ReportParameter Name="شرح_سند_2">', '<ReportParameter Name="شرح_سند">');
+    expect(errors(dup)).toContain("duplicate_param");
+  });
+
+  it("IN (@P) درون توضیح، هشدار چندمقداری را خاموش نمی‌کند (R3-06)", () => {
+    const s = spec("SELECT v.Number FROM FIN3.Voucher v WHERE v.FiscalYearRef = @FY -- IN (@FY)");
+    s.params = s.params.map((p) => ({ ...p, multiValue: true }));
+    expect(buildRdl(s).warnings.join(" ")).toMatch(/چندمقداری است ولی کوئری/);
+  });
+
+  it("منفی یک ستون عددی است (R3-07)", () => {
+    const a = analyzeSql("SELECT -i.Debit AS Neg FROM FIN3.VoucherItem i JOIN FIN3.Voucher v ON v.VoucherID = i.VoucherRef WHERE v.FiscalYearRef = @FY", details);
+    expect(a.fields[0].sqlType).toBe("decimal");
+  });
+
+  it("سال مالی: فقط = / IN / BETWEEN محدود می‌کند؛ ON در LEFT JOIN و پیوند با Number کافی نیست؛ جدول مشتق مثل CTE (R3-08، R3-09)", async () => {
+    const fy = async (sql) => (await lintReportSql(sql, describeStub)).findings.filter((x) => x.code === "fiscal_year").length;
+    const W = " AND v.BranchRef = @B AND v.State = 2";
+    expect(await fy(`SELECT v.Number FROM FIN3.Voucher v WHERE v.FiscalYearRef IS NOT NULL${W}`)).toBe(1);
+    expect(await fy(`SELECT v.Number FROM FIN3.Voucher v WHERE v.FiscalYearRef > 0${W}`)).toBe(1);
+    expect(await fy(`SELECT v.Number FROM FIN3.Voucher v WHERE (v.FiscalYearRef = @FY OR 1 = 1)${W}`)).toBe(1);
+    expect(await fy(`SELECT v.Number FROM FIN3.Voucher v WHERE (@FY IS NULL OR v.FiscalYearRef = @FY)${W}`)).toBe(0);
+    expect(await fy(`SELECT i.Debit FROM FIN3.VoucherItem i LEFT JOIN FIN3.Voucher v ON v.VoucherID = i.VoucherRef AND v.FiscalYearRef = @FY WHERE i.Debit > 0`)).toBe(1);
+    expect(await fy(`SELECT v2.Number FROM FIN3.Voucher v JOIN FIN3.Voucher v2 ON v2.Number = v.Number WHERE v.FiscalYearRef = @FY${W}`)).toBe(1);
+    expect(await fy(`SELECT v2.Number FROM FIN3.Voucher v JOIN FIN3.Voucher v2 ON v2.VoucherID = v.VoucherID WHERE v.FiscalYearRef = @FY${W}`)).toBe(0);
+    expect(await fy("SELECT x.N FROM (SELECT v.Number AS N, v.FiscalYearRef AS F FROM FIN3.Voucher v WHERE v.BranchRef = @B AND v.State = 2) x WHERE x.F = @FY")).toBe(0);
+  });
+
+  it("متن درون رشتهٔ عبارت ارجاع فیلد نیست (R3-10)", () => {
+    const r = addColumn(MERGED, { index: 3, header: "=Fields!Zzz.Value" });
+    expect(r.rdl || r.text).toContain('<Value>="=Fields!Zzz.Value"</Value>');
+  });
+});

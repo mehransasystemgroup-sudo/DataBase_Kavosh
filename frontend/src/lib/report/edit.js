@@ -18,7 +18,7 @@
 
 import { ancestor, childText, elements, escapeAttr, escapeText, findAll, indentOf, kid, kids, local, parseXml, textOf } from "./xml.js";
 import { cm, toCm } from "./units.js";
-import { cellGrid, inspectRdl, memberLeaves, paramName, rdlName, SYS_PARAMS, validateRdl } from "./rdl.js";
+import { cellGrid, inspectRdl, memberLeaves, paramName, rdlName, SYS_PARAMS, uniqueParamNames, validateRdl } from "./rdl.js";
 import { leadingDeclares, outputColumns, paramDataType, queryParameters, rdlType, withoutLeadingDeclares } from "./sqlmeta.js";
 import { lit, paramXml, sysParamSpecs } from "./build.js";
 import { paramFor } from "./analyze.js";
@@ -266,12 +266,14 @@ export function addColumn(text, opts) {
       return;
     }
     const role = roles[ri] || "detail";
-    let value = "";
-    if (role === "header") value = ri === captionRow || captionRow === -1 ? lit(opts.header || field || "ستون تازه") : "";
-    else if (role === "detail" && field) value = `=Fields!${field}.Value`;
-    else if (role === "total" && field && opts.total) value = `=Sum(Fields!${field}.Value)`;
     const src = srcO.empty ? r.cells.find((c) => !c.empty) : srcO.cell;
     const keepRowSpan = !srcO.empty && srcO.rs > 1;
+    // سلول کپی‌شده با RowSpan تا ردیف عنوان پایین می‌رسد؟ پس عنوان در همین سلول است
+    const reachesCaption = keepRowSpan && captionRow >= ri && captionRow <= ri + srcO.rs - 1;
+    let value = "";
+    if (role === "header") value = ri === captionRow || captionRow === -1 || reachesCaption ? lit(opts.header || field || "ستون تازه") : "";
+    else if (role === "detail" && field) value = `=Fields!${field}.Value`;
+    else if (role === "total" && field && opts.total) value = `=Sum(Fields!${field}.Value)`;
     put(cloneCell(text, src, value, name(`${role === "header" ? "hdr" : role === "total" ? "tot" : "cel"}_${field || "New"}`), role === "detail" || role === "total" ? opts.format : "", keepRowSpan));
   });
 
@@ -431,10 +433,15 @@ function paramEdits(text, info, ds, sql, declSource = sql) {
   const qpEl = kid(kid(ds.el, "Query"), "QueryParameters");
   const have = new Set(ds.queryParams.map((q) => q.name.replace(/^@/, "").toLowerCase()));
   const params = new Map(info.params.map((p) => [p.name.toLowerCase(), p.name]));
-  const reportParam = (u) => params.get(u.toLowerCase()) || params.get(paramName(u).toLowerCase());
+  // «@شرح‌سند» به پارامتر «شرح_سند» وصل می‌شود، مگر کوئری خودِ «@شرح_سند» را هم داشته باشد
+  const usedLower = new Set(used.map((u) => u.toLowerCase()));
+  const reportParam = (u) => params.get(u.toLowerCase())
+    || (u !== paramName(u) && !usedLower.has(paramName(u).toLowerCase()) ? params.get(paramName(u).toLowerCase()) : undefined);
+  const missingRp = used.filter((u) => !reportParam(u));
+  const fresh = uniqueParamNames(missingRp, new Set(params.keys()));
   const missingQp = used.filter((u) => !have.has(u.toLowerCase()));
   if (missingQp.length) {
-    const xml = missingQp.map((u) => `<QueryParameter Name="@${escapeAttr(u)}"><Value>=Parameters!${escapeText(reportParam(u) || paramName(u))}.Value</Value></QueryParameter>`).join("");
+    const xml = missingQp.map((u) => `<QueryParameter Name="@${escapeAttr(u)}"><Value>=Parameters!${escapeText(reportParam(u) || fresh.get(u))}.Value</Value></QueryParameter>`).join("");
     if (qpEl && !qpEl.selfClosing) edits.push(appendChild(text, qpEl, xml));
     else {
       const ct = kid(kid(ds.el, "Query"), "CommandText");
@@ -442,7 +449,6 @@ function paramEdits(text, info, ds, sql, declSource = sql) {
     }
     changes.push(`QueryParameter برای ${missingQp.map((m) => "@" + m).join("، ")} ساخته شد.`);
   }
-  const missingRp = used.filter((u) => !reportParam(u));
   if (missingRp.length) {
     // نوع: از DECLARE آغازین، وگرنه از ستونی که با آن مقایسه می‌شود (نام‌های *Date، *Ref)
     const declared = new Map(leadingDeclares(declSource).flatMap((blk) => blk.items).map((d) => [d.name.toLowerCase(), d.type]));
@@ -454,7 +460,7 @@ function paramEdits(text, info, ds, sql, declSource = sql) {
       const dataType = declaredType
         ? (base.multiValue && paramDataType(declaredType) !== "Integer" ? "String" : paramDataType(declaredType))
         : base.dataType;
-      return { ...base, name: paramName(u), dataType, prompt: base.prompt || u, defaultNull: base.nullable };
+      return { ...base, name: fresh.get(u), dataType, prompt: base.prompt || u, defaultNull: base.nullable };
     });
     const xml = typed.map((p) => paramXml(p)).join("");
     edits.push(insertParams(text, info, xml));

@@ -103,8 +103,8 @@ export async function searchDocs(query, { limit = 30 } = {}) {
 export const ERRORS = [
   { match: /definition is not valid|not a valid report definition|invalid.*report definition/i,
     title: "تعریف گزارش معتبر نیست",
-    cause: "ترتیب المان‌های XML با xsd:sequence نمی‌خواند، یا namespace با ساختار ناهمخوان است (مثلاً المانی از RDL 2010 در فایل 2016).",
-    fix: "فایل را در «تحلیل و اصلاح RDL» بارگذاری کنید؛ اگر XML سالم است، ترتیب المان‌های اطراف آخرین تغییر را با قالب پایه مقایسه کنید." },
+    cause: "المانی زیر والد اشتباه آمده (مثلاً Direction مستقیم زیر Tablix به جای LayoutDirection)، المانی تکراری یا اجباری‌ای جا افتاده، یا namespace با ساختار ناهمخوان است (مثلاً المانی از RDL 2010 در فایل 2016).",
+    fix: "فایل را در «تحلیل و اصلاح RDL» بارگذاری کنید؛ اگر XML سالم است، المان‌های اطراف آخرین تغییر را با قالب پایه مقایسه کنید (جای هر المان زیر کدام والد)." },
   { match: /detail member with inner members|details.*inner/i,
     title: "گروه جزئیات عضو درونی دارد",
     cause: "یک TablixMember با Group Name=\"Details\" زیرگروه (Group) دارد؛ گروه جزئیات باید برگ باشد.",

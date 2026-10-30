@@ -252,7 +252,8 @@ export function parseSelection(reply, candidates) {
   const found = [];
   for (const c of candidates) {
     const low = c.full_name.toLowerCase();
-    const re = new RegExp(`(?<![\\w.])${escapeRe(low)}(?![\\w])`, "u");
+    // بی lookbehind (WebView اندروید ۷): نویسهٔ پیشین در گروه اول گرفته می‌شود
+    const re = new RegExp(`(?:^|[^\\w.])${escapeRe(low)}(?![\\w])`);
     if (re.test(text) && !found.includes(c.full_name)) found.push(c.full_name);
   }
   return found.slice(0, MAX_CHOSEN);

@@ -86,22 +86,30 @@ function pinnedColumn(e) {
   return !other || other.type !== "column_ref" || isParam(other) ? cols[0] : null;
 }
 
-/** مقایسه‌های تکیِ زیر AND (OR شرط را محدودکننده نمی‌کند؛ پس از آن پایین نمی‌رویم). */
+/** فقط =، IN و BETWEEN با پارامتر یا ثابت سطر را به مقدار معین محدود می‌کند (نه > 0، IS NOT NULL، <>). */
+const PIN_OPS = new Set(["=", "IN", "BETWEEN"]);
+
+const isNullTest = (e) => e?.type === "binary_expr" && String(e.operator).toUpperCase() === "IS" && isParam(e.left);
+
+/**
+ * مقایسه‌های تکیِ زیر AND. OR محدودکننده نیست، جز الگوی پارامتر اختیاری
+ * «(@P IS NULL OR x = @P)» که شاخهٔ دیگرش را می‌شماریم.
+ */
 function* conjuncts(expr) {
   if (!expr || typeof expr !== "object") return;
-  if (expr.type === "binary_expr" && String(expr.operator).toUpperCase() === "AND") {
+  const op = expr.type === "binary_expr" ? String(expr.operator).toUpperCase() : "";
+  if (op === "AND") {
     yield* conjuncts(expr.left);
     yield* conjuncts(expr.right);
+    return;
+  }
+  if (op === "OR" && (isNullTest(expr.left) || isNullTest(expr.right))) {
+    yield* conjuncts(isNullTest(expr.left) ? expr.right : expr.left);
     return;
   }
   yield expr;
 }
 
-/**
- * هر SELECT جدا (شاخه‌های UNION هم جدا): جدول‌های خودش، ستون‌های فیلترشده‌اش،
- * و برابری‌های ستون‌به‌ستون برای انتقال فیلتر — «v.FiscalYearRef = fy.FiscalYearID
- * AND fy.FiscalYearID = @P» یعنی v.FiscalYearRef هم محدود است.
- */
 function* rowSources(node) {
   // زیرکوئری درون WHERE/HAVING/ON فقط ردیف‌ها را کم می‌کند (IN، EXISTS)، نه زیاد؛ پس سنجیده نمی‌شود
   if (Array.isArray(node)) {
@@ -115,40 +123,92 @@ function* rowSources(node) {
   }
 }
 
+/** نام ستون خروجی ← عبارت ستونی در یک SELECT (برای جدول مشتق و CTE). */
+function outputMap(select) {
+  const out = new Map();
+  for (const c of Array.isArray(select?.columns) ? select.columns : []) {
+    if (!isRealColumn(c.expr)) continue;
+    out.set((c.as ? strip(c.as) : strip(c.expr.column)).toLowerCase(), c.expr);
+  }
+  return out;
+}
+
+/**
+ * هر SELECT جدا (شاخه‌های UNION هم جدا): جدول‌های خودش، ستون‌های فیلترشده‌اش،
+ * و برابری‌های ستون‌به‌ستون برای انتقال فیلتر — «v.FiscalYearRef = fy.FiscalYearID
+ * AND fy.FiscalYearID = @P» یعنی v.FiscalYearRef هم محدود است. فیلتر بیرونی روی
+ * ستون جدول مشتق یا CTE به ستون درونی همان SELECT برمی‌گردد.
+ */
 function selectScopes(tree) {
   const out = [];
+  const mapped = [];
+  const byNode = new Map();
+  const ctes = new Map();
+  for (const n of walk(tree)) {
+    for (const w of Array.isArray(n.with) ? n.with : []) {
+      const name = strip(w?.name?.value ?? w?.name).toLowerCase();
+      if (name && w?.stmt?.ast) ctes.set(name, w.stmt.ast);
+    }
+  }
   for (const n of rowSources(tree)) {
     const aliases = new Map();
+    const derived = new Map();
     const tables = [];
-    const ons = [];
-    for (const f of Array.isArray(n.from) ? n.from : []) {
-      if (f?.on) ons.push(f.on);
-      if (typeof f?.table !== "string" || !f.db || f.expr) continue;
-      const full = `${strip(f.db)}.${strip(f.table)}`;
-      tables.push(full);
-      aliases.set((f.as ? strip(f.as) : strip(f.table)).toLowerCase(), full);
-    }
     const filtered = [];
     const equal = [];
+    for (const f of Array.isArray(n.from) ? n.from : []) {
+      const join = String(f?.join || "").toUpperCase();
+      const outer = /LEFT|RIGHT|FULL/.test(join);
+      if (f?.expr?.ast && f.as) derived.set(strip(f.as).toLowerCase(), f.expr.ast);
+      else if (typeof f?.table === "string" && !f.db && ctes.has(strip(f.table).toLowerCase())) {
+        derived.set((f.as ? strip(f.as) : strip(f.table)).toLowerCase(), ctes.get(strip(f.table).toLowerCase()));
+      } else if (typeof f?.table === "string" && f.db && !f.expr) {
+        const full = `${strip(f.db)}.${strip(f.table)}`;
+        tables.push(full);
+        aliases.set((f.as ? strip(f.as) : strip(f.table)).toLowerCase(), full);
+      }
+      for (const e of conjuncts(f?.on)) {
+        if (e?.type !== "binary_expr") continue;
+        if (e.operator === "=" && isRealColumn(e.left) && isRealColumn(e.right)) equal.push([e.left, e.right]);
+        // شرط ON در LEFT/RIGHT JOIN سمت حفظ‌شده را محدود نمی‌کند (ردیف‌ها با NULL می‌مانند)
+        else if (!outer && PIN_OPS.has(String(e.operator).toUpperCase())) {
+          const c = pinnedColumn(e);
+          if (c) filtered.push(c);
+        }
+      }
+    }
     for (const key of ["where", "having"]) {
-      if (n[key] && typeof n[key] === "object") for (const c of walk(n[key])) if (isRealColumn(c)) filtered.push(c);
-    }
-    // برابری ستون‌به‌ستون فقط از AND های ON و WHERE (زیر OR محدودکننده نیست)
-    for (const cond of [...ons, n.where]) {
-      for (const e of conjuncts(cond)) {
-        if (e?.type === "binary_expr" && e.operator === "=" && isRealColumn(e.left) && isRealColumn(e.right)) equal.push([e.left, e.right]);
+      for (const e of conjuncts(n[key])) {
+        if (e?.type !== "binary_expr") continue;
+        if (e.operator === "=" && isRealColumn(e.left) && isRealColumn(e.right)) {
+          // «x.F = x.F» چیزی را محدود نمی‌کند
+          if (strip(e.left.table) !== strip(e.right.table) || strip(e.left.column) !== strip(e.right.column)) equal.push([e.left, e.right]);
+        } else if (PIN_OPS.has(String(e.operator).toUpperCase())) {
+          const c = pinnedColumn(e);
+          if (c) filtered.push(c);
+        }
       }
     }
-    // از ON فقط ستونی که با پارامتر یا ثابت مقایسه شده فیلتر است
-    for (const on of ons) {
-      for (const e of walk(on)) {
-        if (e.type !== "binary_expr" || ["AND", "OR"].includes(String(e.operator).toUpperCase())) continue;
-        const c = pinnedColumn(e);
-        if (c) filtered.push(c);
-      }
-    }
-    out.push({ aliases, tables, filtered, equal });
+    const scope = { node: n, aliases, derived, tables, filtered, equal };
+    byNode.set(n, scope);
+    out.push(scope);
   }
+  // فیلتر بیرونی روی x.F از جدول مشتق/CTE ← فیلتر روی ستون درونی معادلش
+  for (const sc of out) {
+    for (const c of sc.filtered) {
+      const inner = c.table ? sc.derived.get(strip(c.table).toLowerCase()) : null;
+      if (!inner) continue;
+      for (const node of rowSources(inner)) {
+        const target = byNode.get(node);
+        const col = outputMap(node).get(strip(c.column).toLowerCase());
+        if (target && col) {
+          target.filtered.push(col);
+          mapped.push({ col, aliases: target.aliases });
+        }
+      }
+    }
+  }
+  out.mapped = mapped;
   return out;
 }
 
@@ -231,24 +291,33 @@ export async function lintReportSql(sql, describe) {
   const fy = withCol("fiscalyearref");
   // هر SELECT (و هر شاخهٔ UNION) جدا سنجیده می‌شود: یک شاخهٔ بی‌فیلتر همهٔ سال‌ها را جمع می‌زند
   const unfilteredFy = [];
+  const scoped = tree ? selectScopes(tree) : [];
+  // فیلتر بیرونی جدول مشتق/CTE که به ستون درونی برگشت، برای قاعدهٔ شعبه هم حساب است
+  for (const { col, aliases: local } of scoped.mapped || []) {
+    const t = col.table ? local.get(strip(col.table).toLowerCase()) : null;
+    conds.push({ table: t || ownerOf(col), column: strip(col.column).toLowerCase() });
+  }
   if (tree && fy.length) {
-    const scoped = selectScopes(tree);
-    // فیلتر روی ستونی که جدول واقعی‌اش معلوم نیست (CTE، زیرکوئری) را حمل‌شده می‌گیریم: کمتر هشدار، نه بیشتر
-    const viaDerived = scoped.some((sc) => sc.filtered.some((c) => strip(c.column).toLowerCase() === "fiscalyearref"
-      && c.table && !sc.aliases.has(strip(c.table).toLowerCase()) && !aliases.has(strip(c.table).toLowerCase())));
     for (const sc of scoped) {
-      const own = sc.tables.filter((t) => colsOf(t)?.has("fiscalyearref"));
-      if (!own.length || viaDerived) continue;
-      const key = (c) => {
-        const owner = c.table ? sc.aliases.get(strip(c.table).toLowerCase()) || aliases.get(strip(c.table).toLowerCase()) || "?" : ownerOf(c) || "?";
-        return `${owner.toLowerCase()}|${strip(c.column).toLowerCase()}`;
+      // هویت هر جدول مستعار آن است، نه نامش: v1 و v2 هر دو FIN3.Voucher ولی دو ردیف‌اند
+      const units = [...sc.aliases.entries()];
+      const tableOf = (alias) => sc.aliases.get(alias);
+      const own = units.filter(([, t]) => colsOf(t)?.has("fiscalyearref")).map(([a]) => a);
+      if (!own.length) continue;
+      const aliasOf = (c) => {
+        if (c.table) return sc.aliases.has(strip(c.table).toLowerCase()) ? strip(c.table).toLowerCase() : null;
+        const name = strip(c.column).toLowerCase();
+        const hits = units.filter(([, t]) => colsOf(t)?.has(name));
+        return hits.length === 1 ? hits[0][0] : null;
       };
+      const pk = (alias) => `${tableOf(alias).split(".").pop().toLowerCase()}id`;
+      const key = (c) => `${aliasOf(c) ?? "?"}|${strip(c.column).toLowerCase()}`;
       const pinned = new Set(sc.filtered.map(key));
-      // هر فیلتر روی یک جدول، کلید آن جدول (قرارداد XxxID) را هم محدود می‌کند:
+      // هر فیلتر روی یک جدول، کلید آن (قرارداد XxxID) را هم محدود می‌کند:
       // «fy.Title = @Year» یعنی یک سال مالی، پس v.FiscalYearRef = fy.FiscalYearID هم محدود است
       for (const k of [...pinned]) {
-        const owner = k.split("|")[0];
-        if (owner !== "?") pinned.add(`${owner}|${owner.split(".").pop()}id`);
+        const alias = k.split("|")[0];
+        if (alias !== "?") pinned.add(`${alias}|${pk(alias)}`);
       }
       for (let changed = true; changed;) {
         changed = false;
@@ -261,14 +330,34 @@ export async function lintReportSql(sql, describe) {
           }
         }
       }
-      const ok = own.some((t) => pinned.has(`${t.toLowerCase()}|fiscalyearref`)) || pinned.has("?|fiscalyearref");
-      if (!ok) for (const t of own) if (!unfilteredFy.includes(t)) unfilteredFy.push(t);
+      // جدولی «پوشیده» است که سال مالی‌اش فیلتر شده، یا با کلید اصلی به ردیف پوشیده‌ای
+      // وصل است (اقلام ← سند سرآیند، یا برعکس). پیوند با Number و مانند آن کافی نیست.
+      const covered = new Set(own.filter((a) => pinned.has(`${a}|fiscalyearref`)));
+      if (pinned.has("?|fiscalyearref") && own.length === 1) covered.add(own[0]);
+      const isPk = (c) => {
+        const alias = aliasOf(c);
+        return alias != null && strip(c.column).toLowerCase() === pk(alias);
+      };
+      for (let changed = true; changed;) {
+        changed = false;
+        for (const [a, b] of sc.equal) {
+          if (!isPk(a) && !isPk(b)) continue;
+          const [x, y] = [aliasOf(a), aliasOf(b)];
+          if (x == null || y == null) continue;
+          if (covered.has(x) !== covered.has(y)) {
+            covered.add(x);
+            covered.add(y);
+            changed = true;
+          }
+        }
+      }
+      for (const a of own) if (!covered.has(a) && !unfilteredFy.includes(tableOf(a))) unfilteredFy.push(tableOf(a));
     }
   } else if (fy.length && !filteredAnywhere("fiscalyearref")) {
     unfilteredFy.push(...fy);
   }
   if (unfilteredFy.length) {
-    F.push(finding("error", "fiscal_year", `${unfilteredFy.map(display).join("، ")} ستون FiscalYearRef دارد ولی ${tree && selectScopes(tree).length > 1 ? "دست‌کم یکی از SELECTهای کوئری (یا شاخه‌های UNION)" : "کوئری"} روی سال مالی فیلتر نمی‌کند.`,
+    F.push(finding("error", "fiscal_year", `${unfilteredFy.map(display).join("، ")} ستون FiscalYearRef دارد ولی ${scoped.length > 1 ? "دست‌کم یکی از SELECTهای کوئری (یا شاخه‌های UNION)" : "کوئری"} روی سال مالی فیلتر نمی‌کند.`,
       "گزارش اسناد چند سال مالی را با هم جمع می‌زند — بی‌هیچ خطایی، فقط عدد غلط. بنویسید: WHERE x.[FiscalYearRef] = @FiscalYearRef (به‌صورت پارامتر گزارش، نه عدد ثابت)."));
   }
   // جدول اقلام بی‌FiscalYearRef که سرآیندش (جدول مرجعش) سال مالی دارد ولی در کوئری نیست

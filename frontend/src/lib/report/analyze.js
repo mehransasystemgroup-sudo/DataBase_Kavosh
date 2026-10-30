@@ -7,7 +7,7 @@
 
 import { fieldsFromColumns, HELPERS, paramPrompt } from "./build.js";
 import { blankNoise, leadingDeclares, literalValue, outputColumns, paramDataType, queryParameters, referencedTables, withoutLeadingDeclares } from "./sqlmeta.js";
-import { paramName } from "./rdl.js";
+import { uniqueParamNames } from "./rdl.js";
 
 /** نوع SQL ستونی که پارامتر با آن مقایسه می‌شود (col = @P، col IN (@P)، col >= @P …). */
 export function paramSqlType(sql, name, details) {
@@ -127,13 +127,15 @@ export const PARAM_KEEP = ["prompt", "dataType", "nullable", "allowBlank", "mult
 /** طرح UI ← spec سازندهٔ RDL. */
 export function toBuildSpec({ title, body, fields, params, layout, profile }) {
   const helperDataSets = [];
+  const rdlNames = uniqueParamNames(params.map((p) => p.name));
   const builtParams = params.map((p) => {
     const base = p.useHelper ? HELPERS[p.name] : null;
     const helper = base && p.multiValue && base.multi ? { ...base, ...base.multi } : base;
     if (helper && !helperDataSets.some((h) => h.name === helper.dataSet.name)) helperDataSets.push(helper.dataSet);
     const defaults = (p.defaults || []).filter((d) => d !== "" && d != null);
     return {
-      name: paramName(p.name),
+      name: rdlNames.get(p.name),
+      sqlName: p.name,
       dataType: p.dataType,
       prompt: p.prompt || p.name,
       nullable: Boolean(p.nullable) && !p.multiValue,

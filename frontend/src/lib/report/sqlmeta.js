@@ -314,6 +314,9 @@ export function outputColumns(sql) {
         sqlType = Number.isInteger(e.value) ? "int" : "decimal";
       } else if (/string$/.test(e.type || "")) {
         sqlType = "nvarchar";
+      } else if (e.type === "unary_expr" && e.operator === "-") {
+        // منفی‌کردن فقط روی عدد معنا دارد
+        sqlType = "decimal";
       } else if (e.type === "binary_expr" && ["+", "-", "*", "/", "%"].includes(e.operator)) {
         // - * / % فقط روی عدد معنا دارد؛ + با رشته الحاق است، پس نوعش از عملوندها می‌آید
         const leaves = arithLeaves(e);
@@ -335,6 +338,8 @@ export function outputColumns(sql) {
 /** برگ‌های یک عبارت حسابی (پرانتزها و + - * / تودرتو باز می‌شوند). */
 function arithLeaves(e) {
   if (e?.type === "binary_expr" && ["+", "-", "*", "/", "%"].includes(e.operator)) return [...arithLeaves(e.left), ...arithLeaves(e.right)];
+  // «-x» در میان عبارت: عملوند عددی است
+  if (e?.type === "unary_expr" && e.operator === "-") return [{ type: "number", value: 0 }, ...arithLeaves(e.expr)];
   return e ? [e] : [];
 }
 
@@ -447,12 +452,16 @@ const RDL_TYPES = {
   datetime: "System.DateTime", datetime2: "System.DateTime", smalldatetime: "System.DateTime",
   date: "System.DateTime", time: "System.TimeSpan", datetimeoffset: "System.DateTimeOffset",
   uniqueidentifier: "System.Guid",
+  // باینری (Version از نوع timestamp در همهٔ جدول‌ها): در گزارش «System.Byte[]» چاپ می‌شود
+  timestamp: "System.Byte[]", rowversion: "System.Byte[]", binary: "System.Byte[]", varbinary: "System.Byte[]", image: "System.Byte[]",
 };
 
 const baseType = (t) => String(t || "").toLowerCase().replace(/\(.*$/, "").trim();
 
 /** نوع SQL ← rd:TypeName. */
 export const rdlType = (sqlType) => RDL_TYPES[baseType(sqlType)] || "System.String";
+
+export const isBinaryType = (sqlType) => RDL_TYPES[baseType(sqlType)] === "System.Byte[]";
 
 const NUMERIC = new Set(["bigint", "int", "smallint", "tinyint", "decimal", "numeric", "money", "smallmoney", "float", "real"]);
 export const isNumericType = (sqlType) => NUMERIC.has(baseType(sqlType));

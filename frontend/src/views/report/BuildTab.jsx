@@ -553,7 +553,19 @@ export default function BuildTab({ onOpenTab }) {
                       </Field>
                     ))}
                     <Field label="تجمیع">
-                      <Select className={smallInput} value={state.layout.matrix?.aggregate || "Sum"} onChange={(e) => patchLayout({ matrix: { ...state.layout.matrix, aggregate: e.target.value } })}>
+                      <Select
+                        className={smallInput}
+                        value={state.layout.matrix?.aggregate || "Sum"}
+                        onChange={(e) => {
+                          const aggregate = e.target.value;
+                          const m = state.layout.matrix || {};
+                          // برگشت به Sum/Avg: مقدار متنیِ انتخاب‌شده (که حالا غیرفعال است) پاک می‌شود
+                          const valF = fieldsByName.find((f) => f.name === m.value);
+                          const clear = ["Sum", "Avg"].includes(aggregate) && valF && !isNumericType(valF.sqlType);
+                          patchLayout({ matrix: { ...m, aggregate, ...(clear ? { value: "" } : {}) } });
+                          if (clear) toast.info(`${aggregate} روی «${valF.label}» معنا ندارد؛ فیلد مقدار را دوباره انتخاب کنید.`);
+                        }}
+                      >
                         {["Sum", "Count", "Avg", "Min", "Max"].map((a) => <option key={a} value={a}>{a}</option>)}
                       </Select>
                     </Field>
