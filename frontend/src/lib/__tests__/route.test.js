@@ -30,4 +30,14 @@ describe("مسیریابی", () => {
     expect(parse("#/q/%D8%B3%D9%86%D8%AF")).toEqual({ view: "explorer", query: "سند" });
     expect(parse("")).toEqual({ view: "explorer" });
   });
+
+  it("گزارش‌ساز و زیرزبانه‌هایش", () => {
+    expect(build(routeForView("reports"))).toBe("#/reports");
+    expect(parse("#/reports")).toEqual({ view: "reports" });
+    expect(parse("#/reports/analyze")).toEqual({ view: "reports", sub: "analyze" });
+    expect(build({ view: "reports", sub: "library" })).toBe("#/reports/library");
+    // زیرزبانهٔ پیش‌فرض نشانی کوتاه دارد و زیرزبانهٔ ناشناخته به آن برمی‌گردد
+    expect(build({ view: "reports", sub: "build" })).toBe("#/reports");
+    expect(parse("#/reports/nope")).toEqual({ view: "reports" });
+  });
 });

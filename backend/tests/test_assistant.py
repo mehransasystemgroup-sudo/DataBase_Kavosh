@@ -380,6 +380,13 @@ def test_draft_rules_cover_fiscal_year_parameters_and_fallback():
     for phrase in ("FiscalYearRef", "DECLARE", "CASE", "LEFT JOIN", "راهکار"):
         assert phrase in assistant.DRAFT_SYSTEM
 
+
+def test_draft_rules_carry_report_builder_skill():
+    """قواعد مهارت گزارش‌سازی راهکاران: شعبه، State با ELSE، بازهٔ نیم‌باز، Version، ReferenceType، FORMAT، فرض اثبات‌نشده."""
+    for phrase in ("BranchRef", "ELSE", "DATEADD(day, 1, @ToDate)", "BETWEEN", "fnGetPersianYearMonth",
+                   "Version", "ReferenceType", "IsDeleted", "FORMAT", "-- عنوان", "فرضی / نیازمند تأیید"):
+        assert phrase in assistant.DRAFT_SYSTEM, phrase
+
 # ───────────── همسانی روی ایندکس واقعی (مرجعِ نسخهٔ اندروید) ─────────────
 
 

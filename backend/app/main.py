@@ -33,6 +33,7 @@ from app.crashlog import breadcrumb, fatal_guard               # noqa: E402
 from app.version import VERSION                                # noqa: E402
 from app import settings as user_settings                      # noqa: E402
 from core import assistant, providers                          # noqa: E402
+from core import report_library                               # noqa: E402
 from core.sqlcheck import SchemaIndex, check_sql                # noqa: E402
 from app.paths import (bundle_root, data_root,               # noqa: E402
                        kb_fingerprint, seed_data_dir)
@@ -577,6 +578,36 @@ async def rebuild_index() -> dict:
 @app.get("/api/index/state")
 def index_state() -> dict:
     return {**INDEX_STATE, "path": str(INDEX)}
+
+
+# ═══════════════ کتابخانهٔ گزارش‌ها (گزارش‌ساز) ═══════════════
+
+@app.get("/api/reports")
+def reports_list(q: str = "", folder: str = "") -> dict:
+    return report_library.list_reports(DATA, q=q, folder=folder)
+
+
+@app.get("/api/reports/{report_id}")
+def reports_get(report_id: str) -> dict:
+    found = report_library.get_report(DATA, report_id)
+    if found is None:
+        raise HTTPException(404, "این گزارش در کتابخانه نیست.")
+    return found
+
+
+@app.post("/api/reports")
+def reports_save(body: dict) -> dict:
+    try:
+        return report_library.save_report(DATA, body)
+    except report_library.LibraryError as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.delete("/api/reports/{report_id}")
+def reports_delete(report_id: str) -> dict:
+    if not report_library.delete_report(DATA, report_id):
+        raise HTTPException(404, "این گزارش در کتابخانه نیست.")
+    return {"ok": True}
 
 
 # ═══════════════ سرو کردن بیلد فرانت‌اند ═══════════════

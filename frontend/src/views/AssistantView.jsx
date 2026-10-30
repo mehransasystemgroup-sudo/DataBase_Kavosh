@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import {
   AlertTriangle,
   ArrowUp,
@@ -34,6 +34,9 @@ import { answerOffline, OFFLINE_SAMPLES } from "@/lib/assistant/offline";
 import { CopyButton, SqlBlock } from "@/components/primitives";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+
+// تجزیه‌گر SQL سنگین است؛ ابزار گزارش فقط وقتی پاسخی با کوئری هست بار می‌شود
+const AssistantReportTools = lazy(() => import("@/views/report/AssistantReportTools"));
 
 /*
   دستیار کوئری‌نویسی.
@@ -401,7 +404,7 @@ function Choices({ choices, onAsk }) {
   );
 }
 
-function Answer({ turn, onOpenTable, onClarify, onAsk, aiReady }) {
+function Answer({ turn, onOpenTable, onOpenReports, onClarify, onAsk, aiReady }) {
   const { question, steps, running, result, error } = turn;
   const offline = Boolean(result?.offline);
   const sections = splitSections(result?.note);
@@ -463,6 +466,11 @@ function Answer({ turn, onOpenTable, onClarify, onAsk, aiReady }) {
               }
             />
             <Verdict check={result.check} />
+            {!running && (
+              <Suspense fallback={null}>
+                <AssistantReportTools sql={result.sql} question={question} tables={result.check?.tables || []} onOpenReports={onOpenReports} />
+              </Suspense>
+            )}
           </>
         )}
 
@@ -717,7 +725,7 @@ function TablePicker({ pinned, onChange, disabled }) {
 }
 
 export default function AssistantView({
-  onOpenTable, onOpenSettings, settingsVersion = 0, pinnedFromRoute = "", onClearRoutePin,
+  onOpenTable, onOpenReports, onOpenSettings, settingsVersion = 0, pinnedFromRoute = "", onClearRoutePin,
 }) {
   const [turns, setTurns] = useState(loadTurns);
   const [pinned, setPinned] = useState(loadPinned);
@@ -967,6 +975,7 @@ export default function AssistantView({
               key={i}
               turn={turn}
               onOpenTable={onOpenTable}
+              onOpenReports={onOpenReports}
               onClarify={clarify}
               onAsk={ask}
               aiReady={aiReady}
