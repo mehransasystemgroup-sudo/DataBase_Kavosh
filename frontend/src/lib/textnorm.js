@@ -24,7 +24,8 @@ const ARABIC_TO_PERSIAN = {
 const ARABIC_RE = new RegExp(`[${Object.keys(ARABIC_TO_PERSIAN).join("")}]`, "g");
 const DIACRITICS = /[ً-ٰٟۖ-ۭ]/g;
 const PERSIAN_DIGITS = /[۰-۹٠-٩]/g;
-const PUNCT = /[^\p{L}\p{N}_؀-ۿ]+/gu;
+// حرف و رقم با بازه‌های صریح (لاتین، یونانی، سیریلیک، عربی/فارسی)؛ \p{L} در WebView قدیمی اندروید نیست
+const PUNCT = /[^A-Za-z0-9_\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F\u0370-\u03FF\u0400-\u04FF\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]+/g;
 const CAMEL = /[A-Z]+(?![a-z])|[A-Z][a-z0-9]*|[a-z0-9]+/g;
 const IDENTIFIER = /^[A-Za-z0-9_.]+$/;
 

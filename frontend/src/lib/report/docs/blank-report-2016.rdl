@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  قالب پایه‌ی گزارش Report Builder 2016 — فارسی / راست‌به‌چپ
+  ==========================================================
+  این فایل یک اسکلت کامل و قابل‌بازشدن است که شامل همه‌ی اجزایی است که یک گزارش
+  مالی واقعی لازم دارد و ساختن از صفرشان سخت است:
+    • DataSource + سه DataSet (اصلی + دو دیتاست پارامتر)
+    • چهار ReportParameter (سال مالی، شعبه‌ی اختیاری، بازه‌ی تاریخ شمسی)
+    • هدر و فوتر صفحه با شماره‌ی صفحه
+    • یک Tablix راست‌به‌چپ با: ردیف عنوان تکرارشونده، گروه‌بندی، ردیف جزئیات، جمع گروه، جمع کل
+  ==========================================================
+  قبل از استفاده این چهار مورد را عوض کن:
+    1) ConnectString در DataSource (نام سرور و دیتابیس)
+    2) CommandText دیتاست dsMain
+    3) نام و عنوان ستون‌های Tablix
+    4) rd:ReportID را با یک GUID جدید عوض کن (اگر چند گزارش از این قالب می‌سازی)
+  ==========================================================
+  ⚠️ اگر المانی اضافه می‌کنی، ترتیب موجود در این فایل را نگه دار (همان ترتیب ذخیرهٔ
+     Report Builder). طرح‌وارهٔ 2016 بیشتر جاها xsd:choice است؛ خطای واقعی معمولاً
+     والد اشتباه، المان تکراری یا کمبود المان اجباری است.
+  ⚠️ نرم‌افزار میزبان گزارشِ دارای PageHeader/PageFooter را بارگذاری نمی‌کند؛ این قالب
+     عنوان و فیلترها را ردیف تکرارشوندهٔ Tablix گذاشته است (rdl-page-repeat.md).
+-->
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition"
+        xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+
+  <!-- ==================== منبع داده ====================
+       گزینه‌ی جایگزین (توصیه‌شده در محیط عملیاتی): به‌جای ConnectionProperties از
+       یک منبع داده‌ی مشترک روی سرور گزارش استفاده کن:
+         <DataSource Name="DataSource1">
+           <DataSourceReference>/DataSources/MainDB</DataSourceReference>
+           <rd:DataSourceID>...</rd:DataSourceID>
+         </DataSource>
+  -->
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=YOUR_SERVER;Initial Catalog=YOUR_DATABASE</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>1a1a1a1a-0000-4000-8000-000000000001</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+
+  <!-- ==================== دیتاست‌ها ==================== -->
+  <DataSets>
+
+    <!-- دیتاست اصلی گزارش.
+         نکته: نام هر <Field> باید دقیقاً با نام ستون خروجی SELECT یکی باشد،
+         وگرنه Report Builder فیلد را پیدا نمی‌کند (خطای زمان اجرا، نه طراحی). -->
+    <DataSet Name="dsMain">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT
+    CONVERT(nvarchar(10), v.[Date], 120)              AS DocDate,
+    v.Number                                          AS DocNumber,
+    v.Description                                     AS DocDescription,
+    b.Title                                           AS BranchTitle,
+    CAST(0 AS decimal(18,0))                          AS Debit,
+    CAST(0 AS decimal(18,0))                          AS Credit
+FROM FIN3.Voucher v WITH (NOLOCK)
+JOIN GNR3.Branch  b WITH (NOLOCK) ON b.BranchID = v.BranchRef
+WHERE v.FiscalYearRef = @FiscalYearRef
+  AND (@BranchRef IS NULL OR v.BranchRef = @BranchRef)
+  AND v.[Date] &gt;= @FromDate
+  AND v.[Date] &lt;  DATEADD(day, 1, @ToDate)
+ORDER BY b.Title, v.[Date], v.Number;</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@FiscalYearRef">
+            <Value>=Parameters!FiscalYearRef.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@BranchRef">
+            <Value>=Parameters!BranchRef.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@FromDate">
+            <Value>=Parameters!FromDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@ToDate">
+            <Value>=Parameters!ToDate.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DocDate">
+          <DataField>DocDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DocNumber">
+          <DataField>DocNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DocDescription">
+          <DataField>DocDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BranchTitle">
+          <DataField>BranchTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Debit">
+          <DataField>Debit</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Credit">
+          <DataField>Credit</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+
+    <!-- دیتاست پارامتر: سال مالی -->
+    <DataSet Name="dsFiscalYear">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT FiscalYearID, Title FROM GNR3.FiscalYear WITH (NOLOCK) ORDER BY Title DESC;</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="FiscalYearID">
+          <DataField>FiscalYearID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Title">
+          <DataField>Title</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+
+    <!-- دیتاست پارامتر: شعبه -->
+    <DataSet Name="dsBranch">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT BranchID, Title FROM GNR3.Branch WITH (NOLOCK) ORDER BY Code;</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="BranchID">
+          <DataField>BranchID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Title">
+          <DataField>Title</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+
+  </DataSets>
+
+  <!-- ==================== بدنه‌ی گزارش ==================== -->
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+
+          <Tablix Name="TablixMain">
+            <TablixBody>
+
+              <!-- ترتیب ستون‌ها در XML = ترتیب راست‌به‌چپ روی صفحه،
+                   چون Direction گزارش RTL است. یعنی ستون اول اینجا =
+                   راست‌ترین ستون روی کاغذ. -->
+              <TablixColumns>
+                <TablixColumn><Width>2.5cm</Width></TablixColumn><!-- تاریخ -->
+                <TablixColumn><Width>2.5cm</Width></TablixColumn><!-- شماره -->
+                <TablixColumn><Width>9cm</Width></TablixColumn><!-- شرح -->
+                <TablixColumn><Width>3cm</Width></TablixColumn><!-- بدهکار -->
+                <TablixColumn><Width>3cm</Width></TablixColumn><!-- بستانکار -->
+              </TablixColumns>
+
+              <TablixRows>
+
+                <!-- ردیف ۱: عنوان گزارش — جای PageHeader (که نرم‌افزار میزبان نمی‌پذیرد)؛
+                     یک سلول با ColSpan=5 و چهار TablixCell خالی، در هر صفحه تکرار می‌شود -->
+                <TablixRow>
+                  <Height>0.9cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="txtReportTitle"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>عنوان گزارش</Value><Style><FontSize>14pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>txtReportTitle</rd:DefaultName><Style><Border><Style>None</Style></Border><VerticalAlign>Middle</VerticalAlign></Style></Textbox><ColSpan>5</ColSpan></CellContents></TablixCell>
+                    <TablixCell /><TablixCell /><TablixCell /><TablixCell />
+                  </TablixCells>
+                </TablixRow>
+
+                <!-- ردیف ۲: خلاصهٔ فیلترها (در بدنه، Fields هم مجاز است) -->
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="txtFilters"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=" از تاریخ " &amp; Parameters!FromPersian.Value &amp; "  تا تاریخ " &amp; Parameters!ToPersian.Value &amp; "   |   سال مالی: " &amp; Parameters!FiscalYearRef.Label</Value><Style><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>txtFilters</rd:DefaultName><Style><Border><Style>None</Style></Border><VerticalAlign>Middle</VerticalAlign></Style></Textbox><ColSpan>5</ColSpan></CellContents></TablixCell>
+                    <TablixCell /><TablixCell /><TablixCell /><TablixCell />
+                  </TablixCells>
+                </TablixRow>
+
+                <!-- ردیف ۳: عنوان ستون‌ها (ثابت، در هر صفحه تکرار می‌شود) -->
+                <TablixRow>
+                  <Height>0.7cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="hdrDate"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>تاریخ</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>hdrDate</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>LightGrey</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="hdrNumber"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>شماره سند</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>hdrNumber</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>LightGrey</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="hdrDesc"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>شرح</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>hdrDesc</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>LightGrey</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="hdrDebit"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>بدهکار</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>hdrDebit</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>LightGrey</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="hdrCredit"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>بستانکار</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>hdrCredit</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>LightGrey</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+
+                <!-- ردیف ۲: سرگروه (عنوان شعبه) -->
+                <TablixRow>
+                  <Height>0.7cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="grpTitle"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!BranchTitle.Value</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>grpTitle</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>WhiteSmoke</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="grpBlank1"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>grpBlank1</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>WhiteSmoke</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="grpBlank2"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>grpBlank2</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>WhiteSmoke</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="grpBlank3"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>grpBlank3</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>WhiteSmoke</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="grpBlank4"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>grpBlank4</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>WhiteSmoke</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+
+                <!-- ردیف ۳: جزئیات (به‌ازای هر رکورد دیتاست) -->
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="celDate"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!DocDate.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>celDate</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="celNumber"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!DocNumber.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>celNumber</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="celDesc"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!DocDescription.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>celDesc</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="celDebit"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Debit.Value</Value><Style><Format>#,0;(#,0);-</Format></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>celDebit</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="celCredit"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!Credit.Value</Value><Style><Format>#,0;(#,0);-</Format></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>celCredit</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+
+                <!-- ردیف ۴: جمع گروه -->
+                <TablixRow>
+                  <Height>0.7cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="totLabel"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>جمع گروه</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>totLabel</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>Gainsboro</BackgroundColor><VerticalAlign>Middle</VerticalAlign></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="totBlank1"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>totBlank1</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>Gainsboro</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="totBlank2"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>totBlank2</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>Gainsboro</BackgroundColor></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="totDebit"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!Debit.Value)</Value><Style><FontWeight>Bold</FontWeight><Format>#,0;(#,0);-</Format></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>totDebit</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>Gainsboro</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="totCredit"><CanGrow>true</CanGrow><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Sum(Fields!Credit.Value)</Value><Style><FontWeight>Bold</FontWeight><Format>#,0;(#,0);-</Format></Style></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>totCredit</rd:DefaultName><Style><Border><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></Border><BackgroundColor>Gainsboro</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+
+              </TablixRows>
+            </TablixBody>
+
+            <!-- تعداد اعضای این بخش باید دقیقاً برابر تعداد TablixColumn باشد -->
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+
+            <!-- تعداد «برگ»های این درخت باید دقیقاً برابر تعداد TablixRow باشد.
+                 اینجا: عنوان گزارش + فیلترها + عنوان ستون‌ها + سرگروه + جزئیات + جمع گروه = ۶ -->
+            <TablixRowHierarchy>
+              <TablixMembers>
+
+                <!-- برگ‌های ۱ و ۲: عنوان گزارش و فیلترها، چسبیده به بعدی و تکرار در هر صفحه
+                     (KeepWithGroup=After؛ نه Before — rdl-page-repeat.md) -->
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+
+                <!-- برگ ۳: ردیف عنوان ستون‌ها، در هر صفحه تکرار می‌شود -->
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+
+                <!-- گروه‌بندی بر اساس شعبه -->
+                <TablixMember>
+                  <Group Name="grpBranch">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!BranchTitle.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!BranchTitle.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+
+                    <!-- برگ ۲: سرگروه -->
+                    <TablixMember>
+                      <KeepWithGroup>After</KeepWithGroup>
+                    </TablixMember>
+
+                    <!-- برگ ۳: جزئیات -->
+                    <TablixMember>
+                      <Group Name="Details" />
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!DocDate.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                    </TablixMember>
+
+                    <!-- برگ ۴: جمع گروه -->
+                    <TablixMember>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+
+                  </TablixMembers>
+                </TablixMember>
+
+              </TablixMembers>
+            </TablixRowHierarchy>
+
+            <!-- RTL: با این تنظیم، ستون اول در XML سمت راست صفحه نمایش داده می‌شود
+                 (در Tablix نامش LayoutDirection است؛ Direction فقط درون Style متن است) -->
+            <LayoutDirection>RTL</LayoutDirection>
+            <DataSetName>dsMain</DataSetName>
+            <NoRowsMessage>داده‌ای برای نمایش وجود ندارد.</NoRowsMessage>
+            <Top>0.3cm</Top>
+            <Left>0cm</Left>
+            <Height>4.2cm</Height>
+            <Width>20cm</Width>
+            <Style>
+              <Border><Style>None</Style></Border>
+            </Style>
+          </Tablix>
+
+        </ReportItems>
+        <!-- Height بدنه باید >= مجموع ارتفاع آیتم‌های داخلش باشد -->
+        <Height>4.7cm</Height>
+        <Style />
+      </Body>
+
+      <!-- Width بخش گزارش باید >= مجموع عرض ستون‌های Tablix باشد،
+           وگرنه هنگام Export ستون‌ها بریده می‌شوند یا صفحه‌ی خالی اضافه می‌شود.
+           اینجا: 2.5+2.5+9+3+3 = 20cm -->
+      <Width>20cm</Width>
+
+      <Page>
+        <!-- PageHeader/PageFooter عمداً نیست: نرم‌افزار میزبان گزارشِ دارای آن‌ها را بارگذاری
+             نمی‌کند. عنوان و فیلترها ردیف تکرارشوندهٔ Tablix هستند. شمارهٔ صفحه
+             (Globals!PageNumber) فقط در هدر/فوتر مجاز است، پس این‌جا نمی‌آید. -->
+
+        <!-- A4 افقی -->
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+
+  <!-- ==================== پارامترها ====================
+       ترتیب اینجا مهم است: پارامتری که در ValidValues به دیتاستی وابسته است که
+       خودش پارامتر دارد (پارامتر آبشاری)، باید بعد از آن پارامتر بیاید. -->
+  <ReportParameters>
+
+    <ReportParameter Name="FiscalYearRef">
+      <DataType>Integer</DataType>
+      <Prompt>سال مالی</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsFiscalYear</DataSetName>
+          <ValueField>FiscalYearID</ValueField>
+          <LabelField>Title</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+
+    <!-- شعبه‌ی اختیاری: Nullable یعنی کاربر می‌تواند تیک NULL بزند = «همه‌ی شعب».
+         کوئری هم شرط (@BranchRef IS NULL OR ...) را دارد. -->
+    <ReportParameter Name="BranchRef">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>شعبه (خالی = همه)</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsBranch</DataSetName>
+          <ValueField>BranchID</ValueField>
+          <LabelField>Title</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+
+    <!-- تاریخ شمسی به‌صورت رشته وارد می‌شود (کاربر: 1405/02/15) -->
+    <ReportParameter Name="FromPersian">
+      <DataType>String</DataType>
+      <Prompt>از تاریخ (شمسی)</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ToPersian">
+      <DataType>String</DataType>
+      <Prompt>تا تاریخ (شمسی)</Prompt>
+    </ReportParameter>
+
+    <!-- پارامترهای مخفی که تاریخ شمسی را به میلادی تبدیل می‌کنند و به SQL می‌روند.
+         روش جایگزین و دقیق‌تر: تبدیل را در خود SQL با
+         SYS3.fnGetDateFromPersianDate انجام بده و این دو پارامتر را حذف کن. -->
+    <ReportParameter Name="FromDate">
+      <DataType>DateTime</DataType>
+      <Prompt>FromDate</Prompt>
+      <Hidden>true</Hidden>
+      <DefaultValue>
+        <Values>
+          <Value>=CDate(New System.Globalization.PersianCalendar().ToDateTime(CInt(Split(Parameters!FromPersian.Value,"/")(0)), CInt(Split(Parameters!FromPersian.Value,"/")(1)), CInt(Split(Parameters!FromPersian.Value,"/")(2)), 0, 0, 0, 0))</Value>
+        </Values>
+      </DefaultValue>
+    </ReportParameter>
+    <ReportParameter Name="ToDate">
+      <DataType>DateTime</DataType>
+      <Prompt>ToDate</Prompt>
+      <Hidden>true</Hidden>
+      <DefaultValue>
+        <Values>
+          <Value>=CDate(New System.Globalization.PersianCalendar().ToDateTime(CInt(Split(Parameters!ToPersian.Value,"/")(0)), CInt(Split(Parameters!ToPersian.Value,"/")(1)), CInt(Split(Parameters!ToPersian.Value,"/")(2)), 0, 0, 0, 0))</Value>
+        </Values>
+      </DefaultValue>
+    </ReportParameter>
+
+  </ReportParameters>
+
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition><ColumnIndex>0</ColumnIndex><RowIndex>0</RowIndex><ParameterName>FiscalYearRef</ParameterName></CellDefinition>
+        <CellDefinition><ColumnIndex>1</ColumnIndex><RowIndex>0</RowIndex><ParameterName>BranchRef</ParameterName></CellDefinition>
+        <CellDefinition><ColumnIndex>2</ColumnIndex><RowIndex>0</RowIndex><ParameterName>FromPersian</ParameterName></CellDefinition>
+        <CellDefinition><ColumnIndex>3</ColumnIndex><RowIndex>0</RowIndex><ParameterName>ToPersian</ParameterName></CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+
+  <Language>fa-IR</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>9f9f9f9f-0000-4000-8000-000000000001</rd:ReportID>
+</Report>

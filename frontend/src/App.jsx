@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Database, ListChecks, Network, Search, Settings, TriangleAlert, Wand2 } from "lucide-react";
+import { Database, FileSpreadsheet, ListChecks, Network, Search, Settings, TriangleAlert, Wand2 } from "lucide-react";
 
 import { http, OFFLINE_HINT } from "@/lib/api";
 import { cn, fa } from "@/lib/utils";
@@ -12,6 +12,7 @@ import ExplorerView from "@/views/ExplorerView";
 import SchemaGraphView from "@/views/SchemaGraphView";
 import LookupView from "@/views/LookupView";
 import AssistantView from "@/views/AssistantView";
+import ReportBuilderView from "@/views/ReportBuilderView";
 import SettingsDialog from "@/views/SettingsDialog";
 
 const VIEWS = [
@@ -19,6 +20,7 @@ const VIEWS = [
   { id: "graph", label: "گراف روابط اسکیما", short: "گراف", icon: Network },
   { id: "lookup", label: "کد و شرح", short: "کد و شرح", icon: ListChecks },
   { id: "assistant", label: "دستیار کوئری‌نویسی", short: "دستیار", icon: Wand2 },
+  { id: "reports", label: "گزارش‌ساز", short: "گزارش", icon: FileSpreadsheet },
 ];
 
 function Brand({ health }) {
@@ -72,17 +74,18 @@ function ViewSwitch({ view, setView, className }) {
             aria-selected={active}
             type="button"
             onClick={() => setView(v.id)}
-            // روی لمس ارتفاع کامل ۴۴ پیکسل، روی اشاره‌گر جمع‌وجورتر
+            // روی لمس ارتفاع کامل ۴۴ پیکسل و آیکون بالای عنوان تا پنج زبانه در عرض گوشی جا شوند
             className={cn(
-              "flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-sm px-3 text-xs font-medium transition-colors sm:min-h-9 sm:flex-none",
+              "flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-sm px-1 text-[11px] font-medium transition-colors sm:min-h-9 sm:flex-none sm:flex-row sm:gap-1.5 sm:px-3 sm:text-xs",
               active
                 ? "bg-brand text-brand-foreground shadow-sm"
                 : "text-muted-foreground hover:bg-surfaceHover hover:text-foreground",
             )}
           >
             <Icon className="h-3.5 w-3.5 shrink-0" />
-            <span className="hidden sm:inline">{v.label}</span>
-            <span className="whitespace-nowrap sm:hidden">{v.short}</span>
+            {/* پنج زبانه با عنوان کامل فقط روی صفحهٔ پهن جا می‌شود */}
+            <span className="hidden lg:inline">{v.label}</span>
+            <span className="whitespace-nowrap lg:hidden">{v.short}</span>
           </button>
         );
       })}
@@ -98,7 +101,11 @@ function AppShell() {
   // بفهمد کلید ثبت شده — وگرنه تب تا بستن و باز کردن برنامه قفل می‌ماند.
   const [settingsVersion, setSettingsVersion] = useState(0);
 
-  const view = ["graph", "lookup", "assistant"].includes(route.view) ? route.view : "explorer";
+  const view = ["graph", "lookup", "assistant", "reports"].includes(route.view) ? route.view : "explorer";
+  // زیرزبانهٔ ناشناخته (#/reports/xyz) به نشانی درست برگردد، نه اینکه در نوار نشانی بماند
+  useEffect(() => {
+    if (route.view === "reports" && !route.sub && /^#\/reports\/./.test(window.location.hash)) navigate({ view: "reports" }, { replace: true });
+  }, [route, navigate]);
   const graphSchema = route.schema || "FIN3";
 
   const refreshHealth = useCallback(async () => {
@@ -191,9 +198,13 @@ function AppShell() {
             pinnedFromRoute={route.table || ""}
             onClearRoutePin={() => navigate({ view: "assistant" }, { replace: true })}
             onOpenTable={(full) => navigate({ view: "explorer", table: full })}
+            onOpenReports={(sub) => navigate({ view: "reports", sub })}
             onOpenSettings={() => setSettingsOpen(true)}
             settingsVersion={settingsVersion}
           />
+        )}
+        {view === "reports" && (
+          <ReportBuilderView sub={route.sub} onNavigate={(sub) => navigate({ view: "reports", sub })} />
         )}
       </main>
 

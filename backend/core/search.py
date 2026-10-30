@@ -8,7 +8,9 @@
 from __future__ import annotations
 
 import sqlite3
+import threading
 from collections import deque
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable
@@ -95,13 +97,62 @@ def _type_clause(field_type: str) -> tuple[str, list[str]]:
     return f"({clause})", [f"%{p}%" for p in patterns]
 
 
+# بیشینهٔ صبر یک درخواست برای بازگشایی ایندکس — هم‌اندازهٔ مهلت جایگزینی فایل
+# در indexer (ضدویروس روی ویندوز می‌تواند ده‌ها ثانیه فایل را نگه دارد)
+_REOPEN_WAIT = 75.0
+
+
+class _Rows(list):
+    """نتیجهٔ کامل‌خوانده‌شدهٔ یک کوئری با رابط مکان‌نمای sqlite3."""
+
+    def fetchone(self):
+        return self[0] if self else None
+
+    def fetchall(self):
+        return list(self)
+
+
+class _Reader:
+    """
+    `kb.db` — همان `execute` اتصال sqlite، ولی ایمن در برابر جایگزینی ایندکس.
+
+    هر کوئری کامل خوانده می‌شود و تا پایانش «در حال استفاده» شمرده می‌شود؛
+    جایگزینی فایل تا تمام شدن کوئری‌های در جریان صبر می‌کند و کوئری‌های تازه
+    تا بازگشایی. پس نه اتصالی زیر دست کوئریِ نخ دیگر بسته می‌شود، نه درخواستی
+    در لحظهٔ بازسازی ۵۰۰ می‌گیرد.
+    """
+
+    __slots__ = ("_kb",)
+
+    def __init__(self, kb: "KnowledgeBase"):
+        self._kb = kb
+
+    def execute(self, sql: str, params=()) -> _Rows:
+        conn = self._kb._acquire()
+        try:
+            return _Rows(conn.execute(sql, params).fetchall())
+        finally:
+            self._kb._release()
+
+
 class KnowledgeBase:
     """دسترسی فقط-خواندنی به ایندکس SQLite ساخته‌شده از kb/."""
 
     def __init__(self, db_path: str | Path):
         self._db_path = str(db_path)
-        self.db = self._connect()
+        # هر نخ اتصال خودش را دارد: FastAPI درخواست‌های هم‌زمان را در threadpool
+        # اجرا می‌کند و یک sqlite3.Connection مشترک زیر بار هم‌زمان با
+        # «InterfaceError: bad parameter or other API misuse» می‌شکند
+        self._local = threading.local()
+        self._conns: set[sqlite3.Connection] = set()
+        self._state = threading.Condition()
+        self._active = 0          # کوئری‌های در جریان
+        self._closed = False      # میان close و reload (جایگزینی فایل ایندکس)
+        self._gen = 0
         self._adj: dict[str, list[tuple]] | None = None
+        self._adj_lock = threading.Lock()
+        self.db = _Reader(self)
+        self.db.execute("SELECT 1")   # ایندکس ناموجود/خراب همان لحظهٔ ساخت خطا بدهد
 
     def _connect(self) -> sqlite3.Connection:
         db = sqlite3.connect(f"file:{self._db_path}?mode=ro", uri=True,
@@ -109,23 +160,64 @@ class KnowledgeBase:
         db.row_factory = sqlite3.Row
         return db
 
+    def _acquire(self) -> sqlite3.Connection:
+        """اتصال فقط-خواندنی همین نخ؛ هنگام جایگزینی ایندکس منتظر می‌ماند."""
+        with self._state:
+            if not self._state.wait_for(lambda: not self._closed, timeout=_REOPEN_WAIT):
+                raise sqlite3.ProgrammingError("Cannot operate on a closed database.")
+            self._active += 1
+            conn = getattr(self._local, "conn", None)
+            if conn is None or getattr(self._local, "gen", -1) != self._gen:
+                try:
+                    conn = self._connect()
+                except BaseException:
+                    self._active -= 1
+                    raise
+                self._conns.add(conn)
+                self._local.conn = conn
+                self._local.gen = self._gen
+            return conn
+
+    def _release(self) -> None:
+        with self._state:
+            self._active -= 1
+            if not self._active:
+                self._state.notify_all()
+
     def close(self) -> None:
         """
-        بستن اتصال.
+        بستن همهٔ اتصال‌ها (همهٔ نخ‌ها)، پس از تمام شدن کوئری‌های در جریان.
 
         روی ویندوز لازم است: تا وقتی فایل ایندکس باز باشد، جایگزینی‌اش هنگام
         بازسازی با خطای «فایل در حال استفاده است» شکست می‌خورد.
         """
-        try:
-            self.db.close()
-        except Exception:
-            pass
+        with self._state:
+            self._closed = True
+            self._state.wait_for(lambda: self._active == 0)
+            conns, self._conns = self._conns, set()
+            self._gen += 1
+        for conn in conns:
+            try:
+                conn.close()
+            except Exception:
+                pass
 
     def reload(self) -> None:
         """اتصال را به ایندکس تازه‌بازسازی‌شده بازمی‌کند — بدون ری‌استارت سرور."""
         self.close()
-        self.db = self._connect()
-        self._adj = None
+        with self._state:
+            self._adj = None
+            self._closed = False
+            self._state.notify_all()
+
+    @contextmanager
+    def swapping(self):
+        """بستن همهٔ اتصال‌ها فقط دور جایگزینی فایل ایندکس؛ پس از آن بازگشایی."""
+        self.close()
+        try:
+            yield
+        finally:
+            self.reload()
 
     def apply_learned(self, kind: str, payload: dict) -> None:
         """
@@ -682,7 +774,14 @@ class KnowledgeBase:
 
     def _adjacency(self) -> dict[str, list[tuple]]:
         """گراف بدون‌جهت — برای JOIN، جهت اهمیتی ندارد."""
-        if self._adj is None:
+        adj = self._adj
+        if adj is not None:
+            return adj
+        # یک بار ساخته شود: بی‌قفل، درخواست‌های هم‌زمانِ پس از بازسازی هر کدام
+        # کل گراف را از نو می‌ساختند و هر کدام ده‌ها ثانیه می‌گرفت
+        with self._adj_lock:
+            if self._adj is not None:
+                return self._adj
             adj: dict[str, list[tuple]] = {}
             for j in self.db.execute("SELECT * FROM joins"):
                 a, b = j["from_table"], j["to_table"]
@@ -691,7 +790,7 @@ class KnowledgeBase:
                 adj.setdefault(b, []).append(
                     (a, j["to_col"], j["from_col"], j["confidence"], j["verified"], False))
             self._adj = adj
-        return self._adj
+        return adj
 
     def find_join_path(
         self, source: str, target: str, max_hops: int = 4,

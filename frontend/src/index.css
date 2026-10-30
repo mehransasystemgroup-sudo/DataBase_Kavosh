@@ -206,7 +206,9 @@
     font-family:
       "JetBrains Mono Variable", "JetBrains Mono", "Vazirmatn Variable", "Vazirmatn",
       ui-monospace, monospace;
-    font-feature-settings: "liga" 0;
+    /* JetBrains Mono «>=» را با calt به «≥» می‌چسباند؛ کد باید همان نویسه‌ها را نشان دهد که کپی می‌شود */
+    font-feature-settings: "liga" 0, "calt" 0;
+    font-variant-ligatures: none;
   }
 
   /* راهنمای داخل ورودی‌های مونو معمولاً جملهٔ فارسی است («نام کامل جدول

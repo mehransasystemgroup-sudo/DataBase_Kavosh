@@ -12,6 +12,7 @@ import {
   askAssistant, checkQuery, getSettings, invalidateSchemaIndex, putSettings, testSettings,
 } from "./assistant/mobile.js";
 import { buildSearchText, normalize, stemFa } from "./textnorm.js";
+import { localLibrary } from "./report/libstore.js";
 
 // نگاشت دستهٔ نوع فیلد → الگوهای LIKE روی ستون type
 const FIELD_TYPE_PATTERNS = {
@@ -875,10 +876,19 @@ async function handleKnowledge(kb, body) {
  * جدا شده تا آزمون‌ها (و موتور آفلاین دستیار در آزمون) همان مسیرهای برنامه
  * را روی ایندکسِ آزمون صدا بزنند، بی‌آنکه فایل از شبکه بار شود.
  */
-export function httpFor(source) {
+export function httpFor(source, { library = null } = {}) {
   const kbOf = typeof source === "function" ? source : async () => source;
+  // کتابخانهٔ گزارش‌ها به ایندکس دانش نیازی ندارد؛ پیش از بارش آن پاسخ می‌دهد
+  const lib = () => library || (library = localLibrary());
+  const reportId = (url) => /^\/reports\/([^/]+)$/.exec(url)?.[1];
   return {
     async get(url, config = {}) {
+      if (url === "/reports") return { data: lib().list(config.params || {}) };
+      if (reportId(url)) {
+        const found = lib().get(decodeURIComponent(reportId(url)));
+        if (!found) throw notFound("این گزارش در کتابخانه نیست.");
+        return { data: found };
+      }
       const kb = await kbOf();
       for (const [pattern, handler] of ROUTES) {
         const m = pattern.exec(url);
@@ -888,6 +898,7 @@ export function httpFor(source) {
     },
 
     async post(url, body) {
+      if (url === "/reports") return { data: lib().save(body) };
       const kb = await kbOf();
       if (url === "/knowledge") return { data: await handleKnowledge(kb, body) };
       if (url === "/settings/test") return { data: await testSettings(body) };
@@ -897,6 +908,14 @@ export function httpFor(source) {
 
     async put(url, body) {
       if (url === "/settings") return { data: await putSettings(body) };
+      throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
+    },
+
+    async delete(url) {
+      if (reportId(url)) {
+        if (!lib().remove(decodeURIComponent(reportId(url)))) throw notFound("این گزارش در کتابخانه نیست.");
+        return { data: { ok: true } };
+      }
       throw notFound(`مسیر «${url}» در نسخهٔ موبایل پشتیبانی نمی‌شود.`);
     },
   };

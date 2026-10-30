@@ -33,6 +33,7 @@ from app.crashlog import breadcrumb, fatal_guard               # noqa: E402
 from app.version import VERSION                                # noqa: E402
 from app import settings as user_settings                      # noqa: E402
 from core import assistant, providers                          # noqa: E402
+from core import report_library                               # noqa: E402
 from core.sqlcheck import SchemaIndex, check_sql                # noqa: E402
 from app.paths import (bundle_root, data_root,               # noqa: E402
                        kb_fingerprint, seed_data_dir)
@@ -55,9 +56,9 @@ STATIC_DIR = Path(os.environ.get("STATIC_DIR", BUNDLE / "static"))
 breadcrumb(DATA, f"شروع — بسته: {BUNDLE}")
 
 
-def _build_index() -> None:
+def _build_index(swap=None) -> None:
     """ساخت ایندکس از kb/ — درون همین فرایند، بدون زیرفرایند."""
-    indexer.build(KB_ROOT, INDEX, INSTANCE if INSTANCE.exists() else None)
+    indexer.build(KB_ROOT, INDEX, INSTANCE if INSTANCE.exists() else None, swap=swap)
     # اثر انگشت دانشی که این ایندکس از رویش ساخته شد، داخل خودش می‌ماند تا
     # اجرای بعدی بداند چیزی عوض شده یا نه.
     # closing لازم است: «with» روی اتصال sqlite فقط تراکنش را می‌بندد، نه خود
@@ -556,19 +557,17 @@ async def rebuild_index() -> dict:
         return {"ok": False, "error": "بازسازی هم‌اکنون در جریان است."}
     INDEX_STATE["building"] = True
 
-    # ساخت ایندکس چند ثانیه CPU می‌برد؛ در اجراکنندهٔ جداگانه می‌رود تا حلقهٔ
-    # رویداد قفل نشود. اتصال هم باید بسته شود، وگرنه ویندوز اجازهٔ جایگزینی
-    # فایلِ باز را نمی‌دهد.
+    # ساخت ایندکس ده‌ها ثانیه CPU می‌برد؛ در اجراکنندهٔ جداگانه می‌رود تا حلقهٔ
+    # رویداد قفل نشود. در تمام این مدت جست‌وجو و جدول‌ها از ایندکس قبلی جواب
+    # می‌دهند؛ اتصال‌ها فقط دور لحظهٔ جایگزینی فایل بسته می‌شوند (ویندوز فایلِ
+    # باز را جایگزین نمی‌کند) و درخواست‌های همان لحظه منتظر می‌مانند، نه ۵۰۰.
     try:
-        kb.close()
-        await asyncio.get_running_loop().run_in_executor(None, _build_index)
-        kb.reload()          # پیش از خواندن آمار، وگرنه روی اتصال بسته می‌افتیم
+        await asyncio.get_running_loop().run_in_executor(None, _build_index, kb.swapping)
         INDEX_STATE["last"] = datetime.now().isoformat(timespec="seconds")
         INDEX_STATE["log"] = "ایندکس با موفقیت از kb/ بازساخته شد."
         return {"ok": True, "log": INDEX_STATE["log"], "at": INDEX_STATE["last"],
                 "kb": kb.stats()}
     except Exception as e:
-        kb.reload()
         return {"ok": False, "error": str(e)}
     finally:
         INDEX_STATE["building"] = False
@@ -577,6 +576,36 @@ async def rebuild_index() -> dict:
 @app.get("/api/index/state")
 def index_state() -> dict:
     return {**INDEX_STATE, "path": str(INDEX)}
+
+
+# ═══════════════ کتابخانهٔ گزارش‌ها (گزارش‌ساز) ═══════════════
+
+@app.get("/api/reports")
+def reports_list(q: str = "", folder: str = "") -> dict:
+    return report_library.list_reports(DATA, q=q, folder=folder)
+
+
+@app.get("/api/reports/{report_id}")
+def reports_get(report_id: str) -> dict:
+    found = report_library.get_report(DATA, report_id)
+    if found is None:
+        raise HTTPException(404, "این گزارش در کتابخانه نیست.")
+    return found
+
+
+@app.post("/api/reports")
+def reports_save(body: dict) -> dict:
+    try:
+        return report_library.save_report(DATA, body)
+    except report_library.LibraryError as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.delete("/api/reports/{report_id}")
+def reports_delete(report_id: str) -> dict:
+    if not report_library.delete_report(DATA, report_id):
+        raise HTTPException(404, "این گزارش در کتابخانه نیست.")
+    return {"ok": True}
 
 
 # ═══════════════ سرو کردن بیلد فرانت‌اند ═══════════════

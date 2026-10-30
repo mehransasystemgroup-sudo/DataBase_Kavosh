@@ -16,7 +16,11 @@ import { useCallback, useEffect, useState } from "react";
     #/lookup                 جدول‌های کد و شرحی
     #/assistant              دستیار کوئری‌نویسی
     #/assistant/<FIN3.Voucher>  دستیار، با این جدول سنجاق‌شده
+    #/reports                گزارش‌ساز (زیرزبانهٔ ساخت گزارش)
+    #/reports/<build|design|analyze|patterns|library|docs>  زیرزبانهٔ گزارش‌ساز
 */
+
+export const REPORT_SUBS = ["build", "design", "analyze", "patterns", "library", "docs"];
 
 export function parse(hash) {
   const raw = (hash || "").replace(/^#\/?/, "");
@@ -30,6 +34,7 @@ export function parse(hash) {
   if (kind === "graph" && rest) return { view: "graph", schema: rest };
   if (kind === "lookup") return { view: "lookup" };
   if (kind === "assistant") return rest ? { view: "assistant", table: rest } : { view: "assistant" };
+  if (kind === "reports") return REPORT_SUBS.includes(rest) ? { view: "reports", sub: rest } : { view: "reports" };
   if (kind === "q") return { view: "explorer", query: rest };
   return { view: "explorer" };
 }
@@ -39,6 +44,9 @@ export function build(route) {
   if (route.view === "lookup") return "#/lookup";
   if (route.view === "assistant") {
     return route.table ? `#/assistant/${encodeURIComponent(route.table)}` : "#/assistant";
+  }
+  if (route.view === "reports") {
+    return REPORT_SUBS.includes(route.sub) && route.sub !== "build" ? `#/reports/${route.sub}` : "#/reports";
   }
   if (route.table) return `#/table/${encodeURIComponent(route.table)}`;
   if (route.query) return `#/q/${encodeURIComponent(route.query)}`;
@@ -56,6 +64,7 @@ export function routeForView(view, { graphSchema = "FIN3" } = {}) {
   if (view === "graph") return { view: "graph", schema: graphSchema };
   if (view === "lookup") return { view: "lookup" };
   if (view === "assistant") return { view: "assistant" };
+  if (view === "reports") return { view: "reports" };
   return { view: "explorer" };
 }
 
